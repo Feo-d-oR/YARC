@@ -1,0 +1,7 @@
+VARIALES:
+    All variable names and UI field names must equal database field names as much as possible.
+    Indexes/models named like id_N, idx_N, model_N, where N is first letters of table,column,model or UI field name.
+    Main query to "orders" table named "q", queries to oter tables named qN, wher N is first letters of table name.
+
+UI:
+    Editable fields starts with "e", read-only fiels starts with "d" (as "display"), buttons starts with "b", checkboxes with "c", etc.
