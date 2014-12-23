@@ -15,7 +15,7 @@ VERSION = 0.1a
 include(../QtRpt/QtRpt/QtRpt.pri)
 include($$PWD/../config.pri)
 
-#DESTDIR = $${DEST_DIRECTORY}
+DESTDIR = $${DEST_DIRECTORY}
 
 SOURCES += main.cpp\
         mainwindow.cpp \

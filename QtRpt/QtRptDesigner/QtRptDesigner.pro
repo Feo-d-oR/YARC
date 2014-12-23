@@ -20,8 +20,6 @@ include(../CommonFiles/CommonFiles_QtRptDesigner.pri)
 include(../QtRpt/QtRpt.pri)
 include(SQLDiagram/SQLDiagram.pri)
 
-#DESTDIR = $${DEST_DIRECTORY}
-
 SOURCES += main.cpp\
     mainwindow.cpp \
     PageSettingDlg.cpp \
