@@ -22,13 +22,13 @@ void CatWorkTypes::initModel()
     ui->tview->setModel(model);
 
     ui->tview->setColumnWidth(model->fieldIndex("id"), 50);
-    model->setHeaderData(model->fieldIndex("id"), Qt::Horizontal, "ID");
+    model->setHeaderData(model->fieldIndex("id"), Qt::Horizontal, tr("ID"));
     ui->tview->setColumnWidth(model->fieldIndex("name"), 250);
-    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, "Наименование");
+    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Наименование"));
     ui->tview->setColumnWidth(model->fieldIndex("price"), 70);
-    model->setHeaderData(model->fieldIndex("price"), Qt::Horizontal, "Стоимость");
+    model->setHeaderData(model->fieldIndex("price"), Qt::Horizontal, tr("Стоимость"));
     ui->tview->setColumnWidth(model->fieldIndex("comment"), 250);
-    model->setHeaderData(model->fieldIndex("comment"), Qt::Horizontal, "Примечание");
+    model->setHeaderData(model->fieldIndex("comment"), Qt::Horizontal, tr("Примечание"));
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();

@@ -78,4 +78,11 @@ OTHER_FILES += \
 RESOURCES += \
     Icons.qrc
 
+TRANSLATIONS += i18n/repaircenter_ru_RU.ts
+TRANSLATIONS += i18n/repaircenter_en_GB.ts
+
+OTHER_FILES += \
+    i18n/repaircenter_ru_RU.ts \
+    i18n/repaircenter_en_GB.ts
+
 win32:RC_FILE = appicon.rc

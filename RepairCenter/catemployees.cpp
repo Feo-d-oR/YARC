@@ -35,9 +35,9 @@ void CatEmployees::initModel()
     ui->tview->setColumnWidth(model->fieldIndex("position"), 200);
     ui->tview->setColumnWidth(pt_idx, 160);
 
-    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, "Ф.И.О.");
-    model->setHeaderData(model->fieldIndex("position"), Qt::Horizontal, "Должность");
-    model->setHeaderData(pt_idx, Qt::Horizontal, "Тип должности");
+    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Ф.И.О."));
+    model->setHeaderData(model->fieldIndex("position"), Qt::Horizontal, tr("Должность"));
+    model->setHeaderData(pt_idx, Qt::Horizontal, tr("Тип должности"));
 
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();

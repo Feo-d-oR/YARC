@@ -30,8 +30,8 @@ void CatSpares::initModels()
     ui->tview->setColumnWidth(model->fieldIndex("name"), 350);
     ui->tview->setColumnWidth(model->fieldIndex("price"), 70);
 
-    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, "Наименование");
-    model->setHeaderData(model->fieldIndex("price"), Qt::Horizontal, "Цена");
+    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Наименование"));
+    model->setHeaderData(model->fieldIndex("price"), Qt::Horizontal, tr("Цена"));
 
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();

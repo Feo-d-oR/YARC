@@ -19,16 +19,16 @@ void GiveOrder::closeEvent(QCloseEvent *event)
     if (saved == false)
     {
         QMessageBox mb;
-        mb.setWindowTitle("Выдача из ремонта");
-        mb.setText("Сохранить изменения?");
-        QPushButton *bSave = mb.addButton("Да", QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton("Нет", QMessageBox::ActionRole);
-        QPushButton *bCancel = mb.addButton("Отмена", QMessageBox::ActionRole);
+        mb.setWindowTitle(tr("Выдача из ремонта"));
+        mb.setText(tr("Сохранить изменения?"));
+        QPushButton *bSave = mb.addButton(tr("Да"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("Нет"), QMessageBox::ActionRole);
+        QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
 
         if (mb.clickedButton() == bSave){
-//            submitOrder();
+            submitOrder();
             saved = true;
             event->accept();
         }

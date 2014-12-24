@@ -35,12 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     else{
         QMessageBox mb;
-        mb.setWindowTitle("Ошибка!");
-        mb.setText("База данных не найдена!");
-        mb.setInformativeText("Изменить настройки или создать новую?");
-        QPushButton *bCreate = mb.addButton("Создать", QMessageBox::ActionRole);
-        QPushButton *bEdit = mb.addButton("Изменить", QMessageBox::ActionRole);
-        QPushButton *bCancel = mb.addButton("Отмена", QMessageBox::RejectRole);
+        mb.setWindowTitle(tr("Ошибка!"));
+        mb.setText(tr("База данных не найдена!"));
+        mb.setInformativeText(tr("Изменить настройки или создать новую?"));
+        QPushButton *bCreate = mb.addButton(tr("Создать"), QMessageBox::ActionRole);
+        QPushButton *bEdit = mb.addButton(tr("Изменить"), QMessageBox::ActionRole);
+        QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::RejectRole);
         mb.setDefaultButton(bEdit);
         mb.exec();
 
@@ -242,9 +242,9 @@ void MainWindow::on_lSearch_textEdited(const QString &arg1)
     model->setFilter(QString());
     if(ui->lSearch->text() != "")
     {
-        if(ui->searchtexttype->currentText() == "Номер квитанции")
+        if(ui->searchtexttype->currentText() == tr("Номер квитанции"))
             model->setFilter("number = " + arg1);
-        if(ui->searchtexttype->currentText() == "Имя")
+        if(ui->searchtexttype->currentText() == tr("Имя"))
         {
             getCustomerIds();
             model->setFilter("customer IN ('" + namesstr + "')");
@@ -299,10 +299,10 @@ void MainWindow::on_mInit_triggered()
 void MainWindow::on_bDelete_clicked()
 {
     QMessageBox mb;
-    mb.setWindowTitle("Внимание!");
-    mb.setText("Действительно удалить запись?");
-    QPushButton *bYes = mb.addButton("Да", QMessageBox::ActionRole);
-    QPushButton *bNo = mb.addButton("Нет", QMessageBox::RejectRole);
+    mb.setWindowTitle(tr("Внимание!"));
+    mb.setText(tr("Действительно удалить запись?"));
+    QPushButton *bYes = mb.addButton(tr("Да"), QMessageBox::ActionRole);
+    QPushButton *bNo = mb.addButton(tr("Нет"), QMessageBox::RejectRole);
     mb.setDefaultButton(bNo);
     mb.exec();
 
@@ -395,7 +395,7 @@ void MainWindow::on_mGiveOrder_triggered()
 void MainWindow::on_mAbout_triggered()
 {
     QMessageBox mb;
-    mb.setWindowTitle("О программе...");
+    mb.setWindowTitle(tr("О программе..."));
     mb.setTextFormat(Qt::RichText);
     mb.setText("RepairCenter ver. 0.1a");
     mb.setInformativeText("<a href = 'http://sourceforge.net/projects/repaircenter/'>RepairCenter on SourceForge</a> \n "

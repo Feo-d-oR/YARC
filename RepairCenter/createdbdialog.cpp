@@ -23,8 +23,8 @@ void CreateDBDialog::on_create_clicked()
 {
     if (dbCheckConnect()){
         QMessageBox mb;
-        mb.setWindowTitle("Ошибка!");
-        mb.setText("База данных с таким именем уже существует!");
+        mb.setWindowTitle(tr("Ошибка!"));
+        mb.setText(tr("База данных с таким именем уже существует!"));
         QPushButton *bOk = mb.addButton(QMessageBox::Ok);
         mb.setDefaultButton(bOk);
         mb.exec();
@@ -80,42 +80,42 @@ void CreateDBDialog::createDatabase()
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
 
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, type VARCHAR(16), name VARCHAR(32))");
-    q.exec("INSERT INTO states VALUES(1,'accepted','Принято в ремонт')");
-    q.exec("INSERT INTO states VALUES(2,'accepted','Принято на диагностику')");
-    q.exec("INSERT INTO states VALUES(3,'complete','Отказ клиента от ремонта')");
-    q.exec("INSERT INTO states VALUES(4,'complete','Отказ в ремонте')");
-    q.exec("INSERT INTO states VALUES(5,'complete','Диагностика выполнена')");
-    q.exec("INSERT INTO states VALUES(6,'complete','Ремонт выполнен')");
-    q.exec("INSERT INTO states VALUES(7,'consent','Ожидает согласования')");
-    q.exec("INSERT INTO states VALUES(8,'consent','Согласовано')");
-    q.exec("INSERT INTO states VALUES(9,'given','Выдано с актом диагностики')");
-    q.exec("INSERT INTO states VALUES(10,'given','Выдано с ремонтом')");
-    q.exec("INSERT INTO states VALUES(11,'given','Выдано без ремонта')");
-    q.exec("INSERT INTO states VALUES(12,'processing','На диагностике')");
-    q.exec("INSERT INTO states VALUES(13,'processing','В работе')");
-    q.exec("INSERT INTO states VALUES(14,'waitspares','Ожидает запчастей')");
-    q.exec("INSERT INTO states VALUES(15,'waitspares','Запчасти заказаны')");
-    q.exec("INSERT INTO states VALUES(16,'waitspares','На руках-Ожидает запчастей')");
-    q.exec("INSERT INTO states VALUES(17,'waitspares','На руках-Запчасти заказаны')");
-    q.exec("INSERT INTO states VALUES(18,'complete','Ожидает выдачи')");
-    q.exec("INSERT INTO states VALUES(19,'accepted','Принято в ремонт (гарантия)')");
+    q.exec("INSERT INTO states VALUES(1,'accepted','" + tr("Принято в ремонт") + "')");
+    q.exec("INSERT INTO states VALUES(2,'accepted','" + tr("Принято на диагностику") + "')");
+    q.exec("INSERT INTO states VALUES(3,'complete','" + tr("Отказ клиента от ремонта") + "')");
+    q.exec("INSERT INTO states VALUES(4,'complete','" + tr("Отказ в ремонте") + "')");
+    q.exec("INSERT INTO states VALUES(5,'complete','" + tr("Диагностика выполнена") + "')");
+    q.exec("INSERT INTO states VALUES(6,'complete','" + tr("Ремонт выполнен") + "')");
+    q.exec("INSERT INTO states VALUES(7,'consent','" + tr("Ожидает согласования") + "')");
+    q.exec("INSERT INTO states VALUES(8,'consent','" + tr("Согласовано") + "')");
+    q.exec("INSERT INTO states VALUES(9,'given','" + tr("Выдано с актом диагностики") + "')");
+    q.exec("INSERT INTO states VALUES(10,'given','" + tr("Выдано с ремонтом") + "')");
+    q.exec("INSERT INTO states VALUES(11,'given','" + tr("Выдано без ремонта") + "')");
+    q.exec("INSERT INTO states VALUES(12,'processing','" + tr("На диагностике") + "')");
+    q.exec("INSERT INTO states VALUES(13,'processing','" + tr("В работе") + "')");
+    q.exec("INSERT INTO states VALUES(14,'waitspares','" + tr("Ожидает запчастей") + "')");
+    q.exec("INSERT INTO states VALUES(15,'waitspares','" + tr("Запчасти заказаны") + "')");
+    q.exec("INSERT INTO states VALUES(16,'waitspares','" + tr("На руках-Ожидает запчастей") + "')");
+    q.exec("INSERT INTO states VALUES(17,'waitspares','" + tr("На руках-Запчасти заказаны") + "')");
+    q.exec("INSERT INTO states VALUES(18,'complete','" + tr("Ожидает выдачи") + "')");
+    q.exec("INSERT INTO states VALUES(19,'accepted','" + tr("Принято в ремонт (гарантия)") + "')");
 
     q.exec("CREATE TABLE constants (id INTEGER PRIMARY KEY, name VARCHAR(32), value VARCHAR(128))");
-    q.exec("INSERT INTO constants VALUES(1,'Название организации', NULL)");
-    q.exec("INSERT INTO constants VALUES(2,'ИНН',NULL)");
-    q.exec("INSERT INTO constants VALUES(3,'Адрес',NULL)");
-    q.exec("INSERT INTO constants VALUES(4,'Телефон',NULL)");
-    q.exec("INSERT INTO constants VALUES(5,'Время работы',NULL)");
-    q.exec("INSERT INTO constants VALUES(6,'Выходные',NULL)");
+    q.exec("INSERT INTO constants VALUES(1,0'" + tr("Название организации") + "', NULL)");
+    q.exec("INSERT INTO constants VALUES(2,'" + tr("ИНН") + "',NULL)");
+    q.exec("INSERT INTO constants VALUES(3,'" + tr("Адрес") + "',NULL)");
+    q.exec("INSERT INTO constants VALUES(4,'" + tr("Телефон") + "',NULL)");
+    q.exec("INSERT INTO constants VALUES(5,'" + tr("Время работы") + "',NULL)");
+    q.exec("INSERT INTO constants VALUES(6,'" + tr("Выходные") + "',NULL)");
 
     q.exec("CREATE TABLE position_types (id INTEGER PRIMARY KEY, name VARCHAR(64))");
-    q.exec("INSERT INTO position_types VALUES(1,'Мастер')");
-    q.exec("INSERT INTO position_types VALUES(2,'Приёмщик')");
-    q.exec("INSERT INTO position_types VALUES(3,'Продавец')");
-    q.exec("INSERT INTO position_types VALUES(4,'Кладовщик')");
-    q.exec("INSERT INTO position_types VALUES(5,'Закупщик')");
-    q.exec("INSERT INTO position_types VALUES(6,'Бухгалтер')");
-    q.exec("INSERT INTO position_types VALUES(7,'Директор')");
+    q.exec("INSERT INTO position_types VALUES(1,'" + tr("Мастер") + "')");
+    q.exec("INSERT INTO position_types VALUES(2,'" + tr("Приёмщик") + "')");
+    q.exec("INSERT INTO position_types VALUES(3,'" + tr("Продавец") + "')");
+    q.exec("INSERT INTO position_types VALUES(4,'" + tr("Кладовщик") + "')");
+    q.exec("INSERT INTO position_types VALUES(5,'" + tr("Закупщик") + "')");
+    q.exec("INSERT INTO position_types VALUES(6,'" + tr("Бухгалтер") + "')");
+    q.exec("INSERT INTO position_types VALUES(7,'" + tr("Директор") + "')");
 }
 
 void CreateDBDialog::saveSettings()

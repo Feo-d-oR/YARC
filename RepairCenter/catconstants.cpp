@@ -24,8 +24,8 @@ void CatConstants::initModel()
     ui->tview->hideColumn(model->fieldIndex("id"));
     ui->tview->setColumnWidth(model->fieldIndex("name"), 200);
     ui->tview->setColumnWidth(model->fieldIndex("value"), 300);
-    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, "Константа");
-    model->setHeaderData(model->fieldIndex("value"), Qt::Horizontal, "Значение");
+    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Константа"));
+    model->setHeaderData(model->fieldIndex("value"), Qt::Horizontal, tr("Значение"));
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();

@@ -21,11 +21,11 @@ void EditOrder::closeEvent(QCloseEvent *event)
     if (saved == false)
     {
         QMessageBox mb;
-        mb.setWindowTitle("Новый заказ");
-        mb.setText("Сохранить изменения?");
-        QPushButton *bSave = mb.addButton("Сохранить", QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton("Удалить", QMessageBox::ActionRole);
-        QPushButton *bCancel = mb.addButton("Отмена", QMessageBox::ActionRole);
+        mb.setWindowTitle(tr("Новый заказ"));
+        mb.setText(tr("Сохранить изменения?"));
+        QPushButton *bSave = mb.addButton(tr("Сохранить"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("Удалить"), QMessageBox::ActionRole);
+        QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
 
@@ -52,7 +52,7 @@ void EditOrder::getMode(QString mode, QString num)
     if (mode == "new" && isnew == true)
     {
         isnew = false; //this prevents multiple records creation
-        QWidget::setWindowTitle("Новый заказ");
+        QWidget::setWindowTitle(tr("Новый заказ"));
         allocateNumber();
         ui->eDate->setDate(QDate::currentDate());
         setModels();
@@ -62,7 +62,7 @@ void EditOrder::getMode(QString mode, QString num)
         isnew = false;
         saved = true;
         orderID = num;
-        QWidget::setWindowTitle("Просмотр заказа");
+        QWidget::setWindowTitle(tr("Просмотр заказа"));
         ui->bSave->setDisabled(true);
         setModels();
         fillFields();
@@ -72,7 +72,7 @@ void EditOrder::getMode(QString mode, QString num)
         isnew = false;
         saved = true;
         orderID = num;
-        QWidget::setWindowTitle("Редактирование заказа");
+        QWidget::setWindowTitle(tr("Редактирование заказа"));
         setModels();
         fillFields();
     }
