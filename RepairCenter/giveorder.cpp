@@ -49,13 +49,12 @@ void GiveOrder::getMode(QString mode, QString num)
     if (mode == "new")
     {
         ui->eDate->setDate(QDate::currentDate());
-        ui->eNumber->setText(num);
+        ui->eOrderID->setText(num);
         setModels();
-
     }
 }
 
-void GiveOrder::on_eNumber_textChanged(const QString &arg1)
+void GiveOrder::on_eOrderID_textChanged(const QString &arg1)
 {
     ui->tvieww->setRowCount(0);
     ui->tviews->setRowCount(0);
@@ -176,7 +175,7 @@ void GiveOrder::setRptValue(int &recNo, QString &paramName, QVariant &paramValue
     q.first();
     rec = q.record();
     if (paramName == "number")
-        paramValue = ui->eNumber->text();
+        paramValue = ui->eOrderID->text();
     if (paramName == "date")
         paramValue = ui->eDate->text();
     if (paramName == "product")
@@ -273,6 +272,7 @@ void GiveOrder::on_bSave_clicked()
 {
     submitOrder();
     close();
+    emit orderSubmited();
 }
 
 void GiveOrder::on_eWarranty_textChanged(const QString &arg1)

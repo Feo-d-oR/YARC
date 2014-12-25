@@ -21,7 +21,7 @@ void EditOrder::closeEvent(QCloseEvent *event)
     if (saved == false)
     {
         QMessageBox mb;
-        mb.setWindowTitle(tr("Новый заказ"));
+        mb.setWindowTitle(tr("Заказ"));
         mb.setText(tr("Сохранить изменения?"));
         QPushButton *bSave = mb.addButton(tr("Сохранить"), QMessageBox::ActionRole);
         QPushButton *bDiscard = mb.addButton(tr("Удалить"), QMessageBox::ActionRole);

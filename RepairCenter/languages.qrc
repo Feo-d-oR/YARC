@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/langs">
+        <file>i18n/repaircenter_en_US.qm</file>
+        <file>i18n/repaircenter_ru_RU.qm</file>
+    </qresource>
+</RCC>

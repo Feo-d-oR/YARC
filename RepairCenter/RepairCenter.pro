@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     catspares.cpp \
     catsparetypes.cpp \
     giveorder.cpp \
-    settings.cpp
+    settings.cpp \
+    giveorderdiag.cpp
 
 HEADERS  += mainwindow.h \
     createdbdialog.h \
@@ -50,7 +51,8 @@ HEADERS  += mainwindow.h \
     catspares.h \
     catsparetypes.h \
     giveorder.h \
-    settings.h
+    settings.h \
+    giveorderdiag.h
 
 FORMS    += mainwindow.ui \
     createdbdialog.ui \
@@ -67,7 +69,8 @@ FORMS    += mainwindow.ui \
     catspares.ui \
     catsparetypes.ui \
     giveorder.ui \
-    settings.ui
+    settings.ui \
+    giveorderdiag.ui
 
 OTHER_FILES += \
     about_code_style.txt \
@@ -75,7 +78,8 @@ OTHER_FILES += \
     db.conf
 
 RESOURCES += \
-    Icons.qrc
+    Icons.qrc \
+    languages.qrc
 
 TRANSLATIONS += i18n/repaircenter_ru_RU.ts
 TRANSLATIONS += i18n/repaircenter_en_US.ts

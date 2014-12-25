@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     if (loSettings != "")//if language is set then ignore system locale
         locale = loSettings;
 
-    if (qTranslator.load(QCoreApplication::applicationDirPath() + "/i18n/repaircenter_"+locale+".qm")) {
+    if (qTranslator.load(":/langs/i18n/repaircenter_"+locale+".qm")) {
         a.installTranslator(&qTranslator);
     }
 

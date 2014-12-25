@@ -884,9 +884,6 @@
            <property name="accelerated">
             <bool>false</bool>
            </property>
-           <property name="showGroupSeparator" stdset="0">
-            <bool>false</bool>
-           </property>
            <property name="displayFormat">
             <string>dd.MM.yyyy</string>
            </property>
@@ -902,6 +899,9 @@
              <month>12</month>
              <day>1</day>
             </date>
+           </property>
+           <property name="showGroupSeparator" stdset="0">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -981,7 +981,7 @@
      <x>0</x>
      <y>0</y>
      <width>974</width>
-     <height>20</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="app">
@@ -1001,6 +1001,7 @@
     </property>
     <addaction name="mNewOrder"/>
     <addaction name="mGiveOrder"/>
+    <addaction name="mGiveOrderDiag"/>
     <addaction name="separator"/>
     <addaction name="mNewWorkReport"/>
     <addaction name="mNewDiagReport"/>
@@ -1048,6 +1049,7 @@
    </attribute>
    <addaction name="mNewOrder"/>
    <addaction name="mGiveOrder"/>
+   <addaction name="mGiveOrderDiag"/>
    <addaction name="separator"/>
    <addaction name="mNewWorkReport"/>
    <addaction name="mNewDiagReport"/>
@@ -1264,6 +1266,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="mGiveOrderDiag">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/page_go.png</normaloff>:/icons/icons/page_go.png</iconset>
+   </property>
+   <property name="text">
+    <string>Выдать с актом диагностики</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
  </widget>

@@ -89,6 +89,7 @@ void JrnDiagReports::on_tview_clicked(const QModelIndex &index)
     int row = index.row();
     const QAbstractItemModel * mdl = index.model();
     iddr = mdl->data(mdl->index(row, 0), Qt::DisplayRole).toString();
+    qDebug()<<iddr;
 }
 
 void JrnDiagReports::on_dialog_closed()

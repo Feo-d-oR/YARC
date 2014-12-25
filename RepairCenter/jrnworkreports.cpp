@@ -21,14 +21,14 @@ void JrnWorkReports::initModels()
     model->setJoinMode(QSqlRelationalTableModel::LeftJoin);
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->setTable("work_reports");
-    model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
+    model->setSort(model->fieldIndex("id"),Qt::DescendingOrder);
     master_idx = model->fieldIndex("master");
     work_idx = model->fieldIndex("work");
     model->setRelation(master_idx, QSqlRelation("employees", "id", "name"));
     model->setRelation(work_idx, QSqlRelation("works", "id", "name"));
     ui->tview->setModel(model);
 
-    ui->tview->hideColumn(model->fieldIndex("number"));
+    ui->tview->hideColumn(model->fieldIndex("id"));
     ui->tview->hideColumn(model->fieldIndex("spares"));
 
     ui->tview->setColumnWidth(model->fieldIndex("date"), 130);

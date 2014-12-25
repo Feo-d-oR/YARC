@@ -333,8 +333,8 @@
        <widget class="QPushButton" name="bUse">
         <property name="maximumSize">
          <size>
-          <width>116</width>
-          <height>24</height>
+          <width>16777215</width>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">

@@ -56,8 +56,11 @@ private slots:
     void on_mAbout_triggered();
     void on_mJrnDiagReports_triggered();
     void on_mNewDiagReport_triggered();
+    void on_tview_clicked(const QModelIndex &index);
+    void on_mGiveOrderDiag_triggered();
 
 private:
+    bool checkSettings();
     bool dbConnect();
     Ui::MainWindow *ui;
     void initModelOrders();
@@ -68,10 +71,13 @@ private:
     void showEditWorkReport();
     void showEditDiagReport();
     void showGiveOrder();
+    void showGiveOrderDiag();
+    QSettings * settings;
     QSqlRelationalTableModel *model;
     QDataWidgetMapper *mapper;
     int customerIdx, stateIdx, masterIdx, typeIdx, acceptorIdx, giverIdx;
     QString namesstr;
+    QString currentID;
 };
 
 #endif // MAINWINDOW_H

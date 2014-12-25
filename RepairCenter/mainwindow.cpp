@@ -3,6 +3,7 @@
 
 #include "editorder.h"
 #include "giveorder.h"
+#include "giveorderdiag.h"
 #include "createdbdialog.h"
 #include "settings.h"
 #include "catemployees.h"
@@ -22,27 +23,51 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow){
     ui->setupUi(this);
 //init database
-    if (dbConnect()) {
-        initModelOrders(); }
+    if (checkSettings()) {
+        if (dbConnect())
+            initModelOrders();
+        else{
+            QMessageBox mb;
+            mb.setIcon(QMessageBox::Critical);
+            mb.setWindowTitle(tr("RepairCenter"));
+            mb.setText(tr("База данных не найдена!"));
+            mb.setInformativeText(tr("Изменить настройки или создать новую?"));
+            QPushButton *bCreate = mb.addButton(tr("Создать"), QMessageBox::ActionRole);
+            QPushButton *bEdit = mb.addButton(tr("Изменить"), QMessageBox::ActionRole);
+            QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::RejectRole);
+            mb.setDefaultButton(bEdit);
+            mb.exec();
+
+            if (mb.clickedButton() == bCreate){
+                CreateDBDialog* cdb = new CreateDBDialog();
+                cdb->show();
+            }
+            if (mb.clickedButton() == bEdit){
+                Settings* sdb = new Settings();
+                sdb->show();
+            }
+            if (mb.clickedButton() == bCancel)
+                close();
+        }
+    }
     else{
         QMessageBox mb;
-        mb.setWindowTitle(tr("Ошибка!"));
-        mb.setText(tr("База данных не найдена!"));
-        mb.setInformativeText(tr("Изменить настройки или создать новую?"));
-        QPushButton *bCreate = mb.addButton(tr("Создать"), QMessageBox::ActionRole);
+        mb.setIcon(QMessageBox::Critical);
+        mb.setWindowTitle(tr("RepairCenter"));
+        mb.setText(tr("Файл настроек не найден!"));
+        mb.setInformativeText(tr("Изменить настройки?"));
         QPushButton *bEdit = mb.addButton(tr("Изменить"), QMessageBox::ActionRole);
         QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::RejectRole);
         mb.setDefaultButton(bEdit);
         mb.exec();
 
-        if (mb.clickedButton() == bCreate){
-            CreateDBDialog* cdb = new CreateDBDialog();
-            cdb->show(); }
         if (mb.clickedButton() == bEdit){
             Settings* sdb = new Settings();
-            sdb->show(); }
+            sdb->show();
+        }
         if (mb.clickedButton() == bCancel)
-            close(); }
+            close();
+    }
 
     ui->dateend->setDate(QDate::currentDate());
 }
@@ -50,11 +75,20 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow(){
     delete ui; }
 
+bool MainWindow::checkSettings()
+{
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
+    if (settings->contains("mysql/hostname"))
+        return true;
+    else
+        return false;
+
+}
+
 bool MainWindow::dbConnect()
 {
         QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-        QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
-        settings->setIniCodec("UTF-8");
         db.setHostName(settings->value("mysql/hostname").toString());
         db.setPort(settings->value("mysql/port").toInt());
         db.setDatabaseName(settings->value("mysql/database").toString());
@@ -64,6 +98,7 @@ bool MainWindow::dbConnect()
             return true;
         else
             return false;
+        return false;
 }
 
 void MainWindow::initModelOrders()
@@ -85,15 +120,12 @@ void MainWindow::initModelOrders()
     model->setRelation(masterIdx, QSqlRelation("employees","id","name"));
     model->setRelation(typeIdx, QSqlRelation("product_types","id","name"));
     model->setRelation(customerIdx, QSqlRelation("customers","id","name"));
-//    model->setRelation(acceptorIdx, QSqlRelation("employees","ida","name"));
-//    model->setRelation(giverIdx, QSqlRelation("employees","idg","name"));
     model->setRelation(model->fieldIndex("phone"), QSqlRelation("customers","id","phone"));
 
     model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);  //setting default sorting
 
 //setting tableview widget
     ui->tview->setModel(model);
-//    ui->tview->setItemDelegate(new QSqlRelationalDelegate(ui->tview));
 
     //setting headers
     model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, "№");
@@ -259,6 +291,12 @@ void MainWindow::on_bDelete_clicked()
         mb.close();
     }
 }
+
+void MainWindow::on_tview_clicked(const QModelIndex &index){
+    int row = index.row();
+    const QAbstractItemModel * mdl = index.model();
+    currentID = mdl->data(mdl->index(row, 0), Qt::DisplayRole).toString();}
+
 void MainWindow::on_dialog_closed(){
     model->select();}
 
@@ -280,11 +318,11 @@ void MainWindow::on_mNewOrder_triggered(){
 
 void MainWindow::on_bView_clicked(){
     showEditOrder();
-    emit sendMode("view", ui->dNumber->text());}
+    emit sendMode("view", currentID);}
 
 void MainWindow::on_bEdit_clicked(){
     showEditOrder();
-    emit sendMode("edit", ui->dNumber->text());}
+    emit sendMode("edit", currentID);}
 
 void MainWindow::on_mEmployees_triggered(){
     CatEmployees* ce = new CatEmployees();
@@ -333,16 +371,17 @@ void MainWindow::showEditWorkReport(){
 
 void MainWindow::on_mNewWorkReport_triggered(){
     showEditWorkReport();
-    emit sendMode("new", "0");}
+    emit sendMode("new", currentID);}
 
 void MainWindow::showGiveOrder(){
     GiveOrder *gor = new GiveOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), gor, SLOT(getMode(QString, QString)));
+    connect(gor,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
     gor->show();}
 
 void MainWindow::on_mGiveOrder_triggered(){
     showGiveOrder();
-    emit sendMode("new", ui->dNumber->text());}
+    emit sendMode("new", currentID);}
 
 void MainWindow::on_mAbout_triggered()
 {
@@ -363,13 +402,21 @@ void MainWindow::on_mJrnDiagReports_triggered(){
     JrnDiagReports* jdr = new JrnDiagReports();
     jdr->show();}
 
+void MainWindow::on_mNewDiagReport_triggered(){
+    showEditDiagReport();
+    emit sendMode("new", currentID);}
+
 void MainWindow::showEditDiagReport(){
     EditDiagReport * edr = new EditDiagReport();
     connect(this, SIGNAL(sendMode(QString, QString)), edr, SLOT(getMode(QString, QString)));
     edr->show();}
 
-void MainWindow::on_mNewDiagReport_triggered(){
-    showEditDiagReport();
-    emit sendMode("new", "0");}
+void MainWindow::on_mGiveOrderDiag_triggered(){
+    showGiveOrderDiag();
+    emit sendMode("new", currentID);}
 
-
+void MainWindow::showGiveOrderDiag(){
+    GiveOrderDiag * god = new GiveOrderDiag();
+    connect(this, SIGNAL(sendMode(QString, QString)), god, SLOT(getMode(QString, QString)));
+    connect(god,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
+    god->show();}

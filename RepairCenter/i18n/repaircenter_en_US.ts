@@ -632,15 +632,97 @@
     <name>EditDiagReport</name>
     <message>
         <location filename="../editdiagreport.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <location filename="../editdiagreport.cpp" line="19"/>
+        <source>Отчёт диагностики</source>
+        <translation>Diagnosis report</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="32"/>
+        <source>№ заказа:</source>
+        <translation>Order #:</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="52"/>
+        <source>Дата:</source>
+        <translation>Date:</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="74"/>
+        <source>dd.MM.yyyy</source>
+        <translation>yyyy.MM.dd</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="97"/>
+        <source>Мастер:</source>
+        <translation>Repairer:</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="129"/>
+        <source>Результаты
+осмотра:</source>
+        <translation>Inspection
+results:</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="147"/>
+        <source>Выявленные
+неисправности:</source>
+        <translation>Identified
+defects:</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="161"/>
+        <source>Рекомендации
+к ремонту:</source>
+        <translation>Recommendations
+for repair:</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="184"/>
+        <location filename="../editdiagreport.cpp" line="23"/>
+        <source>Отмена</source>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="209"/>
+        <source>Сохранить и закрыть</source>
+        <translation>Save and close</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.cpp" line="20"/>
+        <source>Сохранить изменения?</source>
+        <translation>Save changes?</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.cpp" line="21"/>
+        <source>Сохранить</source>
+        <translation>Save</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.cpp" line="22"/>
+        <source>Удалить</source>
+        <translation>Delete</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.cpp" line="43"/>
+        <source>Новый отчёт диагностики</source>
+        <translation>New diagnosis report</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.cpp" line="50"/>
+        <source>Просмотр отчёта диагностики</source>
+        <translation>View diagnosis report</translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.cpp" line="59"/>
+        <source>Редактирование отчёта диагностики</source>
+        <translation>Edit diagnosi report</translation>
     </message>
 </context>
 <context>
     <name>EditOrder</name>
     <message>
         <location filename="../editorder.ui" line="20"/>
-        <location filename="../editorder.cpp" line="24"/>
         <location filename="../editorder.cpp" line="55"/>
         <source>Новый заказ</source>
         <translation>New order</translation>
@@ -746,6 +828,11 @@
         <translation>Customer name:</translation>
     </message>
     <message>
+        <location filename="../editorder.cpp" line="24"/>
+        <source>Заказ</source>
+        <translation>Order</translation>
+    </message>
+    <message>
         <location filename="../editorder.cpp" line="25"/>
         <source>Сохранить изменения?</source>
         <translation>Save changes?</translation>
@@ -780,8 +867,7 @@
     <name>EditWorkReport</name>
     <message>
         <location filename="../editworkreport.ui" line="14"/>
-        <location filename="../editworkreport.cpp" line="23"/>
-        <location filename="../editworkreport.cpp" line="53"/>
+        <location filename="../editworkreport.cpp" line="51"/>
         <source>Новый отчёт о работе</source>
         <translation>New work report</translation>
     </message>
@@ -838,7 +924,7 @@
     <message>
         <location filename="../editworkreport.ui" line="274"/>
         <source>Запчасти:</source>
-        <translation>Parts</translation>
+        <translation>Parts:</translation>
     </message>
     <message>
         <location filename="../editworkreport.ui" line="283"/>
@@ -857,7 +943,7 @@
     </message>
     <message>
         <location filename="../editworkreport.ui" line="353"/>
-        <location filename="../editworkreport.cpp" line="26"/>
+        <location filename="../editworkreport.cpp" line="25"/>
         <source>Удалить</source>
         <translation>Remove</translation>
     </message>
@@ -882,27 +968,32 @@
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="24"/>
+        <location filename="../editworkreport.cpp" line="22"/>
+        <source>Отчёт о работе</source>
+        <translation>Work report</translation>
+    </message>
+    <message>
+        <location filename="../editworkreport.cpp" line="23"/>
         <source>Сохранить изменения?</source>
         <translation>Save changes?</translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="25"/>
+        <location filename="../editworkreport.cpp" line="24"/>
         <source>Сохранить</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="27"/>
+        <location filename="../editworkreport.cpp" line="26"/>
         <source>Отмена</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="61"/>
+        <location filename="../editworkreport.cpp" line="59"/>
         <source>Просмотр отчёта о работе</source>
         <translation>View work report</translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="72"/>
+        <location filename="../editworkreport.cpp" line="69"/>
         <source>Редактирование отчёта о работе</source>
         <translation>Edit work report</translation>
     </message>
@@ -1049,51 +1140,160 @@
     </message>
 </context>
 <context>
+    <name>GiveOrderDiag</name>
+    <message>
+        <location filename="../giveorderdiag.ui" line="14"/>
+        <source>Выдача с отчётом диагностики</source>
+        <translation>Give order with diagnosis act</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="29"/>
+        <source>Номер заказа:</source>
+        <translation>Order #:</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="52"/>
+        <source>Дата выдачи:</source>
+        <translation>Iss. date:</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="65"/>
+        <source>dd.MM.yyyy</source>
+        <translation>yyyy.MM.dd</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="88"/>
+        <source>Выдал:</source>
+        <translation>Issued by:</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="126"/>
+        <source>Результаты
+осмотра:</source>
+        <translation>Inspection
+results:</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="144"/>
+        <source>Выявленные
+неисправности:</source>
+        <translation>Identified
+defects:</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="158"/>
+        <source>Рекомендации
+к ремонту:</source>
+        <translation>Recommendations
+for repair:</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="181"/>
+        <source>Отменить</source>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="209"/>
+        <source>Просмотр</source>
+        <translation>Preview</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="219"/>
+        <source>Печать...</source>
+        <translation>Print</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="231"/>
+        <source>Сохранить и закрыть</source>
+        <translation>Save and close</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.cpp" line="22"/>
+        <source>Выдача c диагностикой</source>
+        <translation>Issuance of diagnosis</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.cpp" line="23"/>
+        <source>Сохранить изменения?</source>
+        <translation>Save changes?</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.cpp" line="24"/>
+        <source>Да</source>
+        <translation>Yes</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.cpp" line="25"/>
+        <source>Нет</source>
+        <translation>No</translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.cpp" line="26"/>
+        <source>Отмена</source>
+        <translation>Cancel</translation>
+    </message>
+</context>
+<context>
     <name>JrnDiagReports</name>
     <message>
         <location filename="../jrndiagreports.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <source>Журнал отчётов диагностики</source>
+        <translation>Diagnosis reports journal</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="24"/>
         <source>Поиск</source>
-        <translation type="unfinished">Search</translation>
+        <translation>Search</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="30"/>
         <source>№ заказа:</source>
-        <translation type="unfinished">Order #:</translation>
+        <translation>Order #:</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="53"/>
         <source>Сотрудник:</source>
-        <translation type="unfinished"></translation>
+        <translation>Repairer:</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="115"/>
         <source>Новый</source>
-        <translation type="unfinished">Add</translation>
+        <translation>Add</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="127"/>
         <source>Просмотр</source>
-        <translation type="unfinished"></translation>
+        <translation>View</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="138"/>
         <source>Изменить</source>
-        <translation type="unfinished">Edit</translation>
+        <translation>Edit</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="149"/>
         <source>Удалить</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete</translation>
     </message>
     <message>
         <location filename="../jrndiagreports.ui" line="174"/>
         <source>Закрыть</source>
-        <translation type="unfinished">Close</translation>
+        <translation>Close</translation>
+    </message>
+    <message>
+        <location filename="../jrndiagreports.cpp" line="38"/>
+        <source>Дата</source>
+        <translation>Date</translation>
+    </message>
+    <message>
+        <location filename="../jrndiagreports.cpp" line="39"/>
+        <source>№ заказа</source>
+        <translation>Order #</translation>
+    </message>
+    <message>
+        <location filename="../jrndiagreports.cpp" line="40"/>
+        <source>Мастер</source>
+        <translation>Repairer</translation>
     </message>
 </context>
 <context>
@@ -1168,7 +1368,9 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="32"/>
+        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="269"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1197,7 +1399,7 @@
         <location filename="../mainwindow.ui" line="203"/>
         <location filename="../mainwindow.ui" line="424"/>
         <location filename="../mainwindow.ui" line="856"/>
-        <location filename="../mainwindow.ui" line="891"/>
+        <location filename="../mainwindow.ui" line="888"/>
         <source>dd.MM.yyyy</source>
         <translation>yyyy.MM.dd</translation>
     </message>
@@ -1248,7 +1450,8 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="566"/>
-        <location filename="../mainwindow.cpp" line="40"/>
+        <location filename="../mainwindow.cpp" line="36"/>
+        <location filename="../mainwindow.cpp" line="59"/>
         <source>Изменить</source>
         <translation>Edit</translation>
     </message>
@@ -1289,40 +1492,50 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="785"/>
-        <location filename="../mainwindow.cpp" line="260"/>
+        <location filename="../mainwindow.cpp" line="253"/>
         <source>Номер квитанции</source>
         <translation>Order #</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="790"/>
-        <location filename="../mainwindow.cpp" line="262"/>
+        <location filename="../mainwindow.cpp" line="255"/>
         <source>Имя</source>
         <translation>Customer name</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1164"/>
+        <location filename="../mainwindow.ui" line="1166"/>
         <source>Переподключиться</source>
         <translation>Reconnect</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1167"/>
+        <location filename="../mainwindow.ui" line="1169"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Повторное подключение к базе данных&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reconnection to the database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1236"/>
+        <location filename="../mainwindow.ui" line="1238"/>
         <source>Новый отчёт о работе</source>
         <translation>New work report</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1251"/>
+        <location filename="../mainwindow.ui" line="1253"/>
         <source>Новый отчёт диагностики</source>
         <translation>New diagnosis report</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1263"/>
+        <location filename="../mainwindow.ui" line="1265"/>
         <source>Выдать из ремонта</source>
         <translation>Issue of repair</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="1277"/>
+        <source>Выдать с актом диагностики</source>
+        <translation>Give with diagnosis act</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="1280"/>
+        <source>Ctrl+D</source>
+        <translation></translation>
     </message>
     <message>
         <source>Файл</source>
@@ -1334,17 +1547,17 @@
         <translation>Actions</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1086"/>
+        <location filename="../mainwindow.ui" line="1088"/>
         <source>Новый заказ</source>
         <translation>New order</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1110"/>
+        <location filename="../mainwindow.ui" line="1112"/>
         <source>Настройки</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1010"/>
+        <location filename="../mainwindow.ui" line="1011"/>
         <source>Справка</source>
         <translation>Help</translation>
     </message>
@@ -1354,22 +1567,22 @@
         <translation>Application</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1017"/>
+        <location filename="../mainwindow.ui" line="1018"/>
         <source>Справочники</source>
         <translation>Catalogs</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1031"/>
+        <location filename="../mainwindow.ui" line="1032"/>
         <source>Журналы</source>
         <translation>Journals</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1064"/>
+        <location filename="../mainwindow.ui" line="1066"/>
         <source>Выход</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1067"/>
+        <location filename="../mainwindow.ui" line="1069"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
@@ -1378,12 +1591,12 @@
         <translation>New order</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1089"/>
+        <location filename="../mainwindow.ui" line="1091"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1097"/>
+        <location filename="../mainwindow.ui" line="1099"/>
         <source>О программе</source>
         <translation>About RepairCenter</translation>
     </message>
@@ -1392,22 +1605,22 @@
         <translation>Select database</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1123"/>
+        <location filename="../mainwindow.ui" line="1125"/>
         <source>Создать базу данных</source>
         <translation>Create database</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1133"/>
+        <location filename="../mainwindow.ui" line="1135"/>
         <source>Сотрудники</source>
         <translation>Employees</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1146"/>
+        <location filename="../mainwindow.ui" line="1148"/>
         <source>Константы</source>
         <translation>Constants</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1155"/>
+        <location filename="../mainwindow.ui" line="1157"/>
         <source>Типы изделий</source>
         <translation>Product types</translation>
     </message>
@@ -1416,32 +1629,32 @@
         <translation>Reconnect</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1177"/>
+        <location filename="../mainwindow.ui" line="1179"/>
         <source>Клиенты</source>
         <translation>Customers</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1187"/>
+        <location filename="../mainwindow.ui" line="1189"/>
         <source>Запчасти</source>
         <translation>Parts</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1197"/>
+        <location filename="../mainwindow.ui" line="1199"/>
         <source>Виды запчастей</source>
         <translation>Part types</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1206"/>
+        <location filename="../mainwindow.ui" line="1208"/>
         <source>Виды работ</source>
         <translation>Works</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1215"/>
+        <location filename="../mainwindow.ui" line="1217"/>
         <source>Отчёты о работе</source>
         <translation>Work reports</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1227"/>
+        <location filename="../mainwindow.ui" line="1229"/>
         <source>Отчёты диагностики</source>
         <translation>Diagnosis reports</translation>
     </message>
@@ -1450,7 +1663,7 @@
         <translation>New work report</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1239"/>
+        <location filename="../mainwindow.ui" line="1241"/>
         <source>Shift+W</source>
         <translation></translation>
     </message>
@@ -1459,7 +1672,7 @@
         <translation>New diagnosis report</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1254"/>
+        <location filename="../mainwindow.ui" line="1256"/>
         <source>Shift+D</source>
         <translation></translation>
     </message>
@@ -1468,62 +1681,72 @@
         <translation>Issue of repair</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1266"/>
+        <location filename="../mainwindow.ui" line="1268"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="36"/>
         <source>Ошибка!</source>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="37"/>
+        <location filename="../mainwindow.cpp" line="33"/>
         <source>База данных не найдена!</source>
         <translation>Database not found!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="38"/>
+        <location filename="../mainwindow.cpp" line="34"/>
         <source>Изменить настройки или создать новую?</source>
         <translation>Change settings or create new?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="39"/>
+        <location filename="../mainwindow.cpp" line="35"/>
         <source>Создать</source>
         <translation>Create</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="41"/>
+        <location filename="../mainwindow.cpp" line="37"/>
+        <location filename="../mainwindow.cpp" line="60"/>
         <source>Отмена</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="57"/>
+        <source>Файл настроек не найден!</source>
+        <translation>Settinfs file not found!</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="58"/>
+        <source>Изменить настройки?</source>
+        <translation>Change settings?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="269"/>
         <source>Не удалось подключиться к базе данных.</source>
         <translation>Unable to connect to database.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="276"/>
         <source>Внимание!</source>
         <translation>Attention!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="277"/>
         <source>Действительно удалить запись?</source>
         <translation>Really delete order?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="324"/>
+        <location filename="../mainwindow.cpp" line="278"/>
         <source>Да</source>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="325"/>
+        <location filename="../mainwindow.cpp" line="279"/>
         <source>Нет</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>О программе...</source>
         <translation>About RepairCenter</translation>
     </message>

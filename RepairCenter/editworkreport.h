@@ -5,7 +5,6 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 #include <QtSql>
-#include <QDataWidgetMapper>
 
 namespace Ui {
 class EditWorkReport;
@@ -31,7 +30,6 @@ private:
     void submitReport();
     void fillFields();
     void setModels();
-    bool isnew;
     bool saved;
     int i;
     QString reportID;

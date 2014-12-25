@@ -6,7 +6,6 @@ EditWorkReport::EditWorkReport(QWidget *parent) :
     ui(new Ui::EditWorkReport)
 {
     EditWorkReport::activateWindow();
-    isnew = true;
     ui->setupUi(this);
 }
 
@@ -20,7 +19,7 @@ void EditWorkReport::closeEvent(QCloseEvent *event)
     if (saved == false)
     {
         QMessageBox mb;
-        mb.setWindowTitle(tr("Новый отчёт о работе"));
+        mb.setWindowTitle(tr("Отчёт о работе"));
         mb.setText(tr("Сохранить изменения?"));
         QPushButton *bSave = mb.addButton(tr("Сохранить"), QMessageBox::ActionRole);
         QPushButton *bDiscard = mb.addButton(tr("Удалить"), QMessageBox::ActionRole);
@@ -47,16 +46,15 @@ void EditWorkReport::closeEvent(QCloseEvent *event)
 
 void EditWorkReport::getMode(QString mode, QString num)
 {
-    if (mode == "new" && isnew == true)
+    if (mode == "new")
     {
-        isnew = false; //this prevents multiple records creation
         QWidget::setWindowTitle(tr("Новый отчёт о работе"));
+        ui->eOrderID->setText(num);
         ui->eDate->setDate(QDate::currentDate());
         setModels();
     }
     else if (mode == "view")
     {
-        isnew = false;
         saved = true;
         QWidget::setWindowTitle(tr("Просмотр отчёта о работе"));
         ui->bSave->setDisabled(true);
@@ -67,7 +65,6 @@ void EditWorkReport::getMode(QString mode, QString num)
     }
     else if (mode == "edit")
     {
-        isnew = false;
         saved = true;
         QWidget::setWindowTitle(tr("Редактирование отчёта о работе"));
         setModels();
@@ -105,7 +102,7 @@ void EditWorkReport::setModels()
 
 void EditWorkReport::fillFields()
 {
-    qf.exec("SELECT * FROM work_reports WHERE number = " + reportID);
+    qf.exec("SELECT * FROM work_reports WHERE id = " + reportID);
     recf = qf.record();
     qf.first();
 
