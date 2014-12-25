@@ -75,7 +75,8 @@ FORMS    += mainwindow.ui \
 OTHER_FILES += \
     about_code_style.txt \
     print_forms/order.xml \
-    db.conf
+    db.conf \
+    i18n/README_en.txt
 
 RESOURCES += \
     Icons.qrc \
