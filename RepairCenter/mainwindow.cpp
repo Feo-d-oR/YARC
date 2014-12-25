@@ -128,12 +128,12 @@ void MainWindow::initModelOrders()
     ui->tview->setModel(model);
 
     //setting headers
-    model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, "№");
-    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, "Дата");
-    model->setHeaderData(typeIdx, Qt::Horizontal, "Тип");
-    model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, "Изделие");
-    model->setHeaderData(stateIdx, Qt::Horizontal, "Статус");
-    model->setHeaderData(masterIdx, Qt::Horizontal, "Мастер");
+    model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, tr("№"));
+    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Дата");
+    model->setHeaderData(typeIdx, Qt::Horizontal, tr("Тип"));
+    model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, tr("Изделие"));
+    model->setHeaderData(stateIdx, Qt::Horizontal, tr("Статус"));
+    model->setHeaderData(masterIdx, Qt::Horizontal, tr("Мастер"));
 
     //hiding unneeded columns
     ui->tview->hideColumn(model->fieldIndex("date_out"));
