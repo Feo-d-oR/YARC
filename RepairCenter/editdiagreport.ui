@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
-    <normaloff>:/icons/icons/report_edit.png</normaloff>:/icons/icons/report_edit.png</iconset>
+    <normaloff>:/icons/icons/report_magnify_edit.png</normaloff>:/icons/icons/report_magnify_edit.png</iconset>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">

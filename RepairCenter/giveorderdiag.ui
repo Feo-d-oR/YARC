@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>666</width>
+    <width>670</width>
     <height>354</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
-    <normaloff>:/icons/icons/page_go.png</normaloff>:/icons/icons/page_go.png</iconset>
+    <normaloff>:/icons/icons/report_magnify_go.png</normaloff>:/icons/icons/report_magnify_go.png</iconset>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="labelAlignment">

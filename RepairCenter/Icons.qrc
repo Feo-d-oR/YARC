@@ -52,5 +52,22 @@
         <file>icons/disk.png</file>
         <file>icons/brick_delete.png</file>
         <file>icons/report.png</file>
+        <file>icons/page_hammer_go.png</file>
+        <file>icons/page_hammer.png</file>
+        <file>icons/page_magnify_go.png</file>
+        <file>icons/page_magnify.png</file>
+        <file>icons/report_hammer_add.png</file>
+        <file>icons/report_hammer_delete.png</file>
+        <file>icons/report_hammer_edit.png</file>
+        <file>icons/report_hammer_go.png</file>
+        <file>icons/report_hammer_magnify.png</file>
+        <file>icons/report_hammer.png</file>
+        <file>icons/report_magnify_add.png</file>
+        <file>icons/report_magnify_delete.png</file>
+        <file>icons/report_magnify_edit.png</file>
+        <file>icons/report_magnify_go.png</file>
+        <file>icons/report_magnify_magnify.png</file>
+        <file>icons/reports_hammer.png</file>
+        <file>icons/reports_magnify.png</file>
     </qresource>
 </RCC>

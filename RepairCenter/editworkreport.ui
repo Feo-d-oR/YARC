@@ -14,9 +14,8 @@
    <string>Новый отчёт о работе</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normalon>:/icons/icons/report_edit.png</normalon>
-   </iconset>
+   <iconset resource="Icons.qrc">
+    <normaloff>:/icons/icons/report_hammer_edit.png</normaloff>:/icons/icons/report_hammer_edit.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="1" column="0" alignment="Qt::AlignRight">
@@ -404,6 +403,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

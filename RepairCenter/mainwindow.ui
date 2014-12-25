@@ -884,6 +884,9 @@
            <property name="accelerated">
             <bool>false</bool>
            </property>
+           <property name="showGroupSeparator" stdset="0">
+            <bool>false</bool>
+           </property>
            <property name="displayFormat">
             <string>dd.MM.yyyy</string>
            </property>
@@ -899,9 +902,6 @@
              <month>12</month>
              <day>1</day>
             </date>
-           </property>
-           <property name="showGroupSeparator" stdset="0">
-            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -981,7 +981,7 @@
      <x>0</x>
      <y>0</y>
      <width>974</width>
-     <height>27</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="app">
@@ -1127,9 +1127,9 @@
   </action>
   <action name="mEmployees">
    <property name="icon">
-    <iconset>
-     <normalon>:/icons/icons/user_edit.png</normalon>
-    </iconset>
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/group.png</normaloff>
+     <normalon>:/icons/icons/user_edit.png</normalon>:/icons/icons/group.png</iconset>
    </property>
    <property name="text">
     <string>Сотрудники</string>
@@ -1211,7 +1211,7 @@
   <action name="mJrnWorkReports">
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/reports.png</normaloff>:/icons/icons/reports.png</iconset>
+     <normaloff>:/icons/icons/reports_hammer.png</normaloff>:/icons/icons/reports_hammer.png</iconset>
    </property>
    <property name="text">
     <string>Отчёты о работе</string>
@@ -1223,7 +1223,7 @@
    </property>
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/reports.png</normaloff>:/icons/icons/reports.png</iconset>
+     <normaloff>:/icons/icons/reports_magnify.png</normaloff>:/icons/icons/reports_magnify.png</iconset>
    </property>
    <property name="text">
     <string>Отчёты диагностики</string>
@@ -1232,7 +1232,7 @@
   <action name="mNewWorkReport">
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/report_add.png</normaloff>:/icons/icons/report_add.png</iconset>
+     <normaloff>:/icons/icons/report_hammer_add.png</normaloff>:/icons/icons/report_hammer_add.png</iconset>
    </property>
    <property name="text">
     <string>Новый отчёт о работе</string>
@@ -1247,7 +1247,7 @@
    </property>
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/report_add.png</normaloff>:/icons/icons/report_add.png</iconset>
+     <normaloff>:/icons/icons/report_magnify_add.png</normaloff>:/icons/icons/report_magnify_add.png</iconset>
    </property>
    <property name="text">
     <string>Новый отчёт диагностики</string>
@@ -1259,7 +1259,7 @@
   <action name="mGiveOrder">
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/page_go.png</normaloff>:/icons/icons/page_go.png</iconset>
+     <normaloff>:/icons/icons/page_hammer_go.png</normaloff>:/icons/icons/page_hammer_go.png</iconset>
    </property>
    <property name="text">
     <string>Выдать из ремонта</string>
@@ -1271,7 +1271,7 @@
   <action name="mGiveOrderDiag">
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/page_go.png</normaloff>:/icons/icons/page_go.png</iconset>
+     <normaloff>:/icons/icons/page_magnify_go.png</normaloff>:/icons/icons/page_magnify_go.png</iconset>
    </property>
    <property name="text">
     <string>Выдать с актом диагностики</string>

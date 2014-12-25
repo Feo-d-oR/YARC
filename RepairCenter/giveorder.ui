@@ -14,9 +14,8 @@
    <string>Выдача заказа</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normalon>:/icons/icons/page_go.png</normalon>
-   </iconset>
+   <iconset resource="Icons.qrc">
+    <normaloff>:/icons/icons/page_hammer_go.png</normaloff>:/icons/icons/page_hammer_go.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -418,6 +417,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
