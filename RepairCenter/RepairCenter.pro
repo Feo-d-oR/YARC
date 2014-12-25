@@ -20,7 +20,6 @@ DESTDIR = $${DEST_DIRECTORY}
 SOURCES += main.cpp\
         mainwindow.cpp \
     createdbdialog.cpp \
-    dbsettingsdialog.cpp \
     editorder.cpp \
     catemployees.cpp \
     catconstants.cpp \
@@ -33,12 +32,11 @@ SOURCES += main.cpp\
     catworktypes.cpp \
     catspares.cpp \
     catsparetypes.cpp \
-    giveorder.cpp
+    giveorder.cpp \
+    settings.cpp
 
 HEADERS  += mainwindow.h \
     createdbdialog.h \
-    dbsettingsdialog.h \
-    dbwork.h \
     editorder.h \
     catemployees.h \
     catconstants.h \
@@ -51,11 +49,11 @@ HEADERS  += mainwindow.h \
     catworktypes.h \
     catspares.h \
     catsparetypes.h \
-    giveorder.h
+    giveorder.h \
+    settings.h
 
 FORMS    += mainwindow.ui \
     createdbdialog.ui \
-    dbsettingsdialog.ui \
     editorder.ui \
     catemployees.ui \
     catconstants.ui \
@@ -68,7 +66,8 @@ FORMS    += mainwindow.ui \
     catworktypes.ui \
     catspares.ui \
     catsparetypes.ui \
-    giveorder.ui
+    giveorder.ui \
+    settings.ui
 
 OTHER_FILES += \
     about_code_style.txt \
@@ -79,10 +78,10 @@ RESOURCES += \
     Icons.qrc
 
 TRANSLATIONS += i18n/repaircenter_ru_RU.ts
-TRANSLATIONS += i18n/repaircenter_en_GB.ts
+TRANSLATIONS += i18n/repaircenter_en_US.ts
 
 OTHER_FILES += \
     i18n/repaircenter_ru_RU.ts \
-    i18n/repaircenter_en_GB.ts
+    i18n/repaircenter_en_US.ts
 
 win32:RC_FILE = appicon.rc

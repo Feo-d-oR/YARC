@@ -29,7 +29,7 @@ signals:
 private slots:
     void on_exit_triggered();
     void on_mCreatedb_triggered();
-    void on_mSelectdb_triggered();
+    void on_mSettings_triggered();
     void on_rbAll_clicked(bool checked);
     void on_rbCompleted_clicked(bool checked);
     void on_rbAccepted_clicked(bool checked);
@@ -57,6 +57,7 @@ private slots:
     void on_mAbout_triggered();
 
 private:
+    bool dbConnect();
     Ui::MainWindow *ui;
     void initModelOrders();
     void getCustomerIds();

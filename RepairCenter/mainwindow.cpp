@@ -1,12 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "dbwork.h"
 
 #include "editorder.h"
 #include "giveorder.h"
 
 #include "createdbdialog.h"
-#include "dbsettingsdialog.h"
+#include "settings.h"
 
 #include "catemployees.h"
 #include "catconstants.h"
@@ -31,7 +30,6 @@ MainWindow::MainWindow(QWidget *parent) :
 //init database
     if (dbConnect()) {
         initModelOrders();
-        ui->dateend->setDate(QDate::currentDate());
     }
     else{
         QMessageBox mb;
@@ -49,17 +47,34 @@ MainWindow::MainWindow(QWidget *parent) :
             cdb->show();
         }
         if (mb.clickedButton() == bEdit){
-            DBSettingsDialog* sdb = new DBSettingsDialog();
+            Settings* sdb = new Settings();
             sdb->show();
         }
         if (mb.clickedButton() == bCancel)
             close();
         }
 
+    ui->dateend->setDate(QDate::currentDate());
 }
 
 MainWindow::~MainWindow(){
     delete ui;
+}
+
+bool MainWindow::dbConnect()
+{
+        QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+        QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+        settings->setIniCodec("UTF-8");
+        db.setHostName(settings->value("mysql/hostname").toString());
+        db.setPort(settings->value("mysql/port").toInt());
+        db.setDatabaseName(settings->value("mysql/database").toString());
+        db.setUserName(settings->value("mysql/user").toString());
+        db.setPassword(settings->value("mysql/password").toString());
+        if (db.open())
+            return true;
+        else
+            return false;
 }
 
 void MainWindow::initModelOrders()
@@ -170,9 +185,9 @@ void MainWindow::on_mCreatedb_triggered()
     cdb->show();
 }
 
-void MainWindow::on_mSelectdb_triggered()
+void MainWindow::on_mSettings_triggered()
 {
-    DBSettingsDialog* sdb = new DBSettingsDialog();
+    Settings* sdb = new Settings();
     sdb->show();
 }
 
@@ -293,7 +308,12 @@ void MainWindow::on_mEmployees_triggered()
 
 void MainWindow::on_mInit_triggered()
 {
-    initModelOrders();
+    if (dbConnect()) {
+        initModelOrders();
+    }
+    else{
+        QMessageBox::critical(this, tr("RepairCenter"), tr("Не удалось подключиться к базе данных."));
+    }
 }
 
 void MainWindow::on_bDelete_clicked()
@@ -399,11 +419,10 @@ void MainWindow::on_mAbout_triggered()
     mb.setTextFormat(Qt::RichText);
     mb.setText("RepairCenter ver. 0.1a");
     mb.setInformativeText("<a href = 'http://sourceforge.net/projects/repaircenter/'>RepairCenter on SourceForge</a> \n "
-                          "<a href = 'http://qt.io'>Qt</a> \n "
                           "<a href = 'http://sourceforge.net/projects/qtrpt/'>QtRPT 1.4.5</a>");
     QPushButton *bOk = mb.addButton("OK", QMessageBox::AcceptRole);
     mb.setDefaultButton(bOk);
     mb.exec();
     if (mb.clickedButton() == bOk)
-        close();
+        mb.close();
 }

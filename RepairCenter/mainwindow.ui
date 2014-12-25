@@ -981,14 +981,17 @@
      <x>0</x>
      <y>0</y>
      <width>974</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
-   <widget class="QMenu" name="file">
+   <widget class="QMenu" name="app">
     <property name="title">
-     <string>Файл</string>
+     <string>Приложение</string>
     </property>
     <addaction name="mInit"/>
+    <addaction name="separator"/>
+    <addaction name="mSettings"/>
+    <addaction name="mCreatedb"/>
     <addaction name="separator"/>
     <addaction name="exit"/>
    </widget>
@@ -1002,21 +1005,14 @@
     <addaction name="mNewWorkReport"/>
     <addaction name="mNewDiagReport"/>
    </widget>
-   <widget class="QMenu" name="settings">
-    <property name="title">
-     <string>Настройки</string>
-    </property>
-    <addaction name="mSelectdb"/>
-    <addaction name="mCreatedb"/>
-   </widget>
-   <widget class="QMenu" name="reference">
+   <widget class="QMenu" name="help">
     <property name="title">
      <string>Справка</string>
     </property>
     <addaction name="separator"/>
     <addaction name="mAbout"/>
    </widget>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="catalogs">
     <property name="title">
      <string>Справочники</string>
     </property>
@@ -1030,19 +1026,18 @@
     <addaction name="separator"/>
     <addaction name="mConstants"/>
    </widget>
-   <widget class="QMenu" name="menu_2">
+   <widget class="QMenu" name="journals">
     <property name="title">
      <string>Журналы</string>
     </property>
     <addaction name="mJrnWorkReports"/>
     <addaction name="mJrnDiagReports"/>
    </widget>
-   <addaction name="file"/>
+   <addaction name="app"/>
    <addaction name="actions"/>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="settings"/>
-   <addaction name="reference"/>
+   <addaction name="catalogs"/>
+   <addaction name="journals"/>
+   <addaction name="help"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -1088,7 +1083,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Новый заказ...</string>
+    <string>Новый заказ</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -1102,17 +1097,17 @@
     <string>О программе</string>
    </property>
   </action>
-  <action name="mSelectdb">
+  <action name="mSettings">
    <property name="enabled">
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normalon>:/icons/icons/database_connect.png</normalon>
-    </iconset>
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/setting_tools.png</normaloff>
+     <normalon>:/icons/icons/database_connect.png</normalon>:/icons/icons/setting_tools.png</iconset>
    </property>
    <property name="text">
-    <string>Выбор базы данных</string>
+    <string>Настройки</string>
    </property>
   </action>
   <action name="mCreatedb">
@@ -1166,7 +1161,10 @@
      <normaloff>:/icons/icons/update.png</normaloff>:/icons/icons/update.png</iconset>
    </property>
    <property name="text">
-    <string>Инициализировать</string>
+    <string>Переподключиться</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Повторное подключение к базе данных&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="mCustomers">
@@ -1235,7 +1233,7 @@
      <normaloff>:/icons/icons/report_add.png</normaloff>:/icons/icons/report_add.png</iconset>
    </property>
    <property name="text">
-    <string>Новый отчёт о работе...</string>
+    <string>Новый отчёт о работе</string>
    </property>
    <property name="shortcut">
     <string>Shift+W</string>
@@ -1250,7 +1248,7 @@
      <normaloff>:/icons/icons/report_add.png</normaloff>:/icons/icons/report_add.png</iconset>
    </property>
    <property name="text">
-    <string>Новый отчёт диагностики...</string>
+    <string>Новый отчёт диагностики</string>
    </property>
    <property name="shortcut">
     <string>Shift+D</string>
@@ -1262,7 +1260,7 @@
      <normaloff>:/icons/icons/page_go.png</normaloff>:/icons/icons/page_go.png</iconset>
    </property>
    <property name="text">
-    <string>Выдать из ремонта...</string>
+    <string>Выдать из ремонта</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
