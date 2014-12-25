@@ -41,7 +41,6 @@ private:
     QSqlRecord rec_e;
     QString id_t;
     QString idwr;
-//    QSqlQuery qst;
     void initModels();
     void showEditWorkReport();
     int master_idx;

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Журнал отчётов диагностики</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
@@ -32,7 +32,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lSearchNumber">
+       <widget class="QLineEdit" name="eSearchNumber">
         <property name="minimumSize">
          <size>
           <width>41</width>
@@ -84,7 +84,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QToolButton" name="bClerarFilter">
+       <widget class="QToolButton" name="bClerar">
         <property name="text">
          <string/>
         </property>

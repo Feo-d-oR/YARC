@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = RepairCenter
 TEMPLATE = app
-VERSION = 0.1a
+VERSION = 0.2a
 
 include(../QtRpt/QtRpt/QtRpt.pri)
 include($$PWD/../config.pri)

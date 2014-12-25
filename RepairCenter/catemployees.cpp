@@ -42,6 +42,7 @@ void CatEmployees::initModel()
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();
+    ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     ui->ePositionType->setModel(model->relationModel(pt_idx));
     ui->ePositionType->setModelColumn(model->relationModel(pt_idx)->fieldIndex("name"));

@@ -53,8 +53,9 @@ private slots:
     void on_mJrnWorkReports_triggered();
     void on_mNewWorkReport_triggered();
     void on_mGiveOrder_triggered();
-
     void on_mAbout_triggered();
+    void on_mJrnDiagReports_triggered();
+    void on_mNewDiagReport_triggered();
 
 private:
     bool dbConnect();
@@ -65,6 +66,7 @@ private:
     void editDone();
     void showEditOrder();
     void showEditWorkReport();
+    void showEditDiagReport();
     void showGiveOrder();
     QSqlRelationalTableModel *model;
     QDataWidgetMapper *mapper;

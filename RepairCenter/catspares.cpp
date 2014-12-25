@@ -36,6 +36,7 @@ void CatSpares::initModels()
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();
+    ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     ui->eType->setModel(model->relationModel(type_idx));
     ui->eType->setModelColumn(model->relationModel(type_idx)->fieldIndex("name"));

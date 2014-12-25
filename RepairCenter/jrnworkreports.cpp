@@ -44,6 +44,7 @@ void JrnWorkReports::initModels()
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();
+    ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     model_e = new QSqlTableModel();
     model_e->setTable("employees");

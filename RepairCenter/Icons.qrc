@@ -51,5 +51,6 @@
         <file>icons/brick_add.png</file>
         <file>icons/disk.png</file>
         <file>icons/brick_delete.png</file>
+        <file>icons/report.png</file>
     </qresource>
 </RCC>

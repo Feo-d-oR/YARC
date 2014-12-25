@@ -3,10 +3,8 @@
 
 #include "editorder.h"
 #include "giveorder.h"
-
 #include "createdbdialog.h"
 #include "settings.h"
-
 #include "catemployees.h"
 #include "catconstants.h"
 #include "catproducttypes.h"
@@ -14,14 +12,10 @@
 #include "catspares.h"
 #include "catsparetypes.h"
 #include "catworktypes.h"
-
 #include "jrndiagreports.h"
 #include "editdiagreport.h"
-
 #include "jrnworkreports.h"
 #include "editworkreport.h"
-
-
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,8 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 //init database
     if (dbConnect()) {
-        initModelOrders();
-    }
+        initModelOrders(); }
     else{
         QMessageBox mb;
         mb.setWindowTitle(tr("Ошибка!"));
@@ -44,22 +37,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
         if (mb.clickedButton() == bCreate){
             CreateDBDialog* cdb = new CreateDBDialog();
-            cdb->show();
-        }
+            cdb->show(); }
         if (mb.clickedButton() == bEdit){
             Settings* sdb = new Settings();
-            sdb->show();
-        }
+            sdb->show(); }
         if (mb.clickedButton() == bCancel)
-            close();
-        }
+            close(); }
 
     ui->dateend->setDate(QDate::currentDate());
 }
 
 MainWindow::~MainWindow(){
-    delete ui;
-}
+    delete ui; }
 
 bool MainWindow::dbConnect()
 {
@@ -114,7 +103,6 @@ void MainWindow::initModelOrders()
     model->setHeaderData(stateIdx, Qt::Horizontal, "Статус");
     model->setHeaderData(masterIdx, Qt::Horizontal, "Мастер");
 
-
     //hiding unneeded columns
     ui->tview->hideColumn(model->fieldIndex("date_out"));
     ui->tview->hideColumn(model->fieldIndex("serial"));
@@ -141,6 +129,7 @@ void MainWindow::initModelOrders()
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();
+    ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 //setting mapper & relations for right panel
     ui->eState->setModel(model->relationModel(stateIdx));
@@ -148,7 +137,6 @@ void MainWindow::initModelOrders()
 
     ui->eMaster->setModel(model->relationModel(masterIdx));
     ui->eMaster->setModelColumn(model->relationModel(masterIdx)->fieldIndex("name"));
-
 
     mapper = new QDataWidgetMapper(this);
     mapper->setModel(model);
@@ -165,8 +153,6 @@ void MainWindow::initModelOrders()
     mapper->addMapping(ui->dDateOut, model->fieldIndex("date_out"));
     mapper->addMapping(ui->dComment, model->fieldIndex("comment"));
 
-
-
     connect(ui->tview->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
 
@@ -174,25 +160,7 @@ void MainWindow::initModelOrders()
 //    ui->tview->setCurrentIndex(model->index(0, 0));
 }
 
-void MainWindow::on_exit_triggered()
-{
-    close();
-}
-
-void MainWindow::on_mCreatedb_triggered()
-{
-    CreateDBDialog* cdb = new CreateDBDialog();
-    cdb->show();
-}
-
-void MainWindow::on_mSettings_triggered()
-{
-    Settings* sdb = new Settings();
-    sdb->show();
-}
-
-void MainWindow::on_rbAll_clicked(bool checked)
-{
+void MainWindow::on_rbAll_clicked(bool checked){
     if (checked)
         ui->lSearch->clear();
         ui->searchtexttype->setCurrentIndex(0);
@@ -201,29 +169,25 @@ void MainWindow::on_rbAll_clicked(bool checked)
         model->select();
 }
 
-void MainWindow::on_rbCompleted_clicked(bool checked)
-{
+void MainWindow::on_rbCompleted_clicked(bool checked){
     if (checked)
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
         model->setFilter("state IN (3, 4, 5, 6, 18)");
 }
 
-void MainWindow::on_rbAccepted_clicked(bool checked)
-{
+void MainWindow::on_rbAccepted_clicked(bool checked){
     if (checked)
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
         model->setFilter("state IN (1, 2, 12, 13, 19)");
 }
 
-void MainWindow::on_rbConsent_clicked(bool checked)
-{
+void MainWindow::on_rbConsent_clicked(bool checked){
     if (checked)
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
         model->setFilter("state IN (7, 8)");
 }
 
-void MainWindow::on_rbWaitSpares_clicked(bool checked)
-{
+void MainWindow::on_rbWaitSpares_clicked(bool checked){
     if (checked)
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
         model->setFilter("state IN (14, 15, 16, 17)");
@@ -244,9 +208,7 @@ void MainWindow::getCustomerIds()
     q.first();
     list.append(q.value(0).toString());
     while (q.next())
-    {
-        list.append(q.value(0).toString());
-    }
+    { list.append(q.value(0).toString()); }
     namesstr = list.join("','");
     qDebug() << "list:" << list;
     qDebug() << "string:" << namesstr;
@@ -255,55 +217,15 @@ void MainWindow::getCustomerIds()
 void MainWindow::on_lSearch_textEdited(const QString &arg1)
 {
     model->setFilter(QString());
-    if(ui->lSearch->text() != "")
-    {
+    if(ui->lSearch->text() != ""){
         if(ui->searchtexttype->currentText() == tr("Номер квитанции"))
             model->setFilter("number = " + arg1);
-        if(ui->searchtexttype->currentText() == tr("Имя"))
-        {
+        if(ui->searchtexttype->currentText() == tr("Имя"))        {
             getCustomerIds();
             model->setFilter("customer IN ('" + namesstr + "')");
             qDebug() << "filter:" << model->filter();
         }
     }
-}
-
-
-void MainWindow::on_bSubmit_clicked()
-{
-    model->submitAll();
-}
-
-void MainWindow::showEditOrder()
-{
-    EditOrder *ord = new EditOrder();
-    connect(this, SIGNAL(sendMode(QString, QString)), ord, SLOT(getMode(QString, QString)));
-    connect(ord,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
-    ord->show();
-}
-
-void MainWindow::on_mNewOrder_triggered()
-{
-    showEditOrder();
-    emit sendMode("new", "0");
-}
-
-void MainWindow::on_bView_clicked()
-{
-    showEditOrder();
-    emit sendMode("view", ui->dNumber->text());
-}
-
-void MainWindow::on_bEdit_clicked()
-{
-    showEditOrder();
-    emit sendMode("edit", ui->dNumber->text());
-}
-
-void MainWindow::on_mEmployees_triggered()
-{
-    CatEmployees* ce = new CatEmployees();
-    ce->show();
 }
 
 void MainWindow::on_mInit_triggered()
@@ -337,80 +259,90 @@ void MainWindow::on_bDelete_clicked()
         mb.close();
     }
 }
+void MainWindow::on_dialog_closed(){
+    model->select();}
 
-void MainWindow::on_dialog_closed()
-{
-    model->select();
-}
+void MainWindow::on_exit_triggered(){
+    close();}
 
+void MainWindow::on_bSubmit_clicked(){
+    model->submitAll();}
 
-void MainWindow::on_mConstants_triggered()
-{
+void MainWindow::showEditOrder(){
+    EditOrder *ord = new EditOrder();
+    connect(this, SIGNAL(sendMode(QString, QString)), ord, SLOT(getMode(QString, QString)));
+    connect(ord,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
+    ord->show();}
+
+void MainWindow::on_mNewOrder_triggered(){
+    showEditOrder();
+    emit sendMode("new", "0");}
+
+void MainWindow::on_bView_clicked(){
+    showEditOrder();
+    emit sendMode("view", ui->dNumber->text());}
+
+void MainWindow::on_bEdit_clicked(){
+    showEditOrder();
+    emit sendMode("edit", ui->dNumber->text());}
+
+void MainWindow::on_mEmployees_triggered(){
+    CatEmployees* ce = new CatEmployees();
+    ce->show();}
+
+void MainWindow::on_mCreatedb_triggered(){
+    CreateDBDialog* cdb = new CreateDBDialog();
+    cdb->show();}
+
+void MainWindow::on_mSettings_triggered(){
+    Settings* sdb = new Settings();
+    sdb->show();}
+
+void MainWindow::on_mConstants_triggered(){
     CatConstants* cconst = new CatConstants();
-    cconst->show();
-}
+    cconst->show();}
 
-void MainWindow::on_mProductTypes_triggered()
-{
+void MainWindow::on_mProductTypes_triggered(){
     CatProductTypes* cptype = new CatProductTypes();
-    cptype->show();
-}
+    cptype->show();}
 
-void MainWindow::on_mCustomers_triggered()
-{
+void MainWindow::on_mCustomers_triggered(){
     CatCustomers* ccust = new CatCustomers();
-    ccust->show();
-}
+    ccust->show();}
 
-void MainWindow::on_mSpares_triggered()
-{
+void MainWindow::on_mSpares_triggered(){
     CatSpares* csp = new CatSpares();
-    csp->show();
-}
+    csp->show();}
 
-void MainWindow::on_mSpareTypes_triggered()
-{
+void MainWindow::on_mSpareTypes_triggered(){
     CatSpareTypes* cst = new CatSpareTypes();
-    cst->show();
-}
+    cst->show();}
 
-void MainWindow::on_mWorkTypes_triggered()
-{
+void MainWindow::on_mWorkTypes_triggered(){
     CatWorkTypes* cwt = new CatWorkTypes();
-    cwt->show();
-}
+    cwt->show();}
 
-void MainWindow::on_mJrnWorkReports_triggered()
-{
+void MainWindow::on_mJrnWorkReports_triggered(){
     JrnWorkReports* jwr = new JrnWorkReports();
-    jwr->show();
-}
+    jwr->show();}
 
-void MainWindow::showEditWorkReport()
-{
+void MainWindow::showEditWorkReport(){
     EditWorkReport *ewr = new EditWorkReport();
     connect(this, SIGNAL(sendMode(QString, QString)), ewr, SLOT(getMode(QString, QString)));
-    ewr->show();
-}
+    ewr->show();}
 
-void MainWindow::on_mNewWorkReport_triggered()
-{
+void MainWindow::on_mNewWorkReport_triggered(){
     showEditWorkReport();
-    emit sendMode("new", "0");
-}
+    emit sendMode("new", "0");}
 
-void MainWindow::showGiveOrder()
-{
+void MainWindow::showGiveOrder(){
     GiveOrder *gor = new GiveOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), gor, SLOT(getMode(QString, QString)));
-    gor->show();
-}
+    gor->show();}
 
-void MainWindow::on_mGiveOrder_triggered()
-{
+void MainWindow::on_mGiveOrder_triggered(){
     showGiveOrder();
-    emit sendMode("new", ui->dNumber->text());
-}
+    emit sendMode("new", ui->dNumber->text());}
 
 void MainWindow::on_mAbout_triggered()
 {
@@ -426,3 +358,18 @@ void MainWindow::on_mAbout_triggered()
     if (mb.clickedButton() == bOk)
         mb.close();
 }
+
+void MainWindow::on_mJrnDiagReports_triggered(){
+    JrnDiagReports* jdr = new JrnDiagReports();
+    jdr->show();}
+
+void MainWindow::showEditDiagReport(){
+    EditDiagReport * edr = new EditDiagReport();
+    connect(this, SIGNAL(sendMode(QString, QString)), edr, SLOT(getMode(QString, QString)));
+    edr->show();}
+
+void MainWindow::on_mNewDiagReport_triggered(){
+    showEditDiagReport();
+    emit sendMode("new", "0");}
+
+
