@@ -37,7 +37,10 @@ void CatCustomers::initModel()
 
 void CatCustomers::on_bAdd_clicked()
 {
-    model->insertRows(model->rowCount(), 1);
+    int rc;
+    rc = model->rowCount();
+    model->insertRows(rc, 1);
+    ui->tview->selectRow(rc);
 }
 
 void CatCustomers::on_bSave_clicked()

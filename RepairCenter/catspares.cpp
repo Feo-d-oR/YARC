@@ -87,15 +87,15 @@ void CatSpares::on_eSearchName_textEdited(const QString &arg1)
 
 void CatSpares::on_bAdd_clicked()
 {
-    model->insertRows(model->rowCount(), 1);
-    ui->tview->setCurrentIndex(model->index(model->rowCount()-1, 1));
-    qDebug() << "rc:" << model->rowCount();
+    int rc;
+    rc = model->rowCount();
+    model->insertRows(rc, 1);
+    ui->tview->selectRow(rc);
 }
 
 void CatSpares::on_bSave_clicked()
 {
     model->submitAll();
-
 }
 
 void CatSpares::on_bClose_clicked()

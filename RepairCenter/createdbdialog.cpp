@@ -51,7 +51,7 @@ bool CreateDBDialog::dbCheckConnect()
         return false;
 }
 
-void CreateDBDialog::createDatabase()
+QSqlError CreateDBDialog::createDatabase()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName(ui->server->text());
@@ -62,6 +62,7 @@ void CreateDBDialog::createDatabase()
 
     QSqlQuery q;
     q.exec("CREATE DATABASE "+ui->dbname->text()+" DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
+    q.exec("GRANT ALL PRIVILEGES ON "+ui->dbname->text()+".* TO '"+ui->username2->text()+"'@'%' IDENTIFIED BY '"+ui->password2->text()+"' WITH GRANT OPTION");
     db.close();
     db.setHostName(ui->server->text());
     db.setPort(ui->port->text().toInt());
@@ -69,6 +70,8 @@ void CreateDBDialog::createDatabase()
     db.setPassword(ui->password->text());
     db.setDatabaseName(ui->dbname->text());
     db.open();
+//    q.exec("GRANT ALL PRIVILEGES ON '"+ui->dbname->text()+"'.* TO '"+ui->username2->text()+"'@'%' IDENTIFIED BY '"+ui->password2->text()+"' WITH GRANT OPTION");
+
     q.exec("create table orders (number INTEGER AUTO_INCREMENT PRIMARY KEY, date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), cond VARCHAR(255), complect VARCHAR(255), cost DECIMAL(10, 2), acceptor INTEGER, master INTEGER, giver INTEGER, warranty VARCHAR(16), comment VARCHAR(255))");
     q.exec("create table product_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(32))");
     q.exec("CREATE TABLE employees (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), fullname VARCHAR(255), phone VARCHAR(64), address VARCHAR(255), position_type INTEGER, position VARCHAR(128), hired TIMESTAMP, dismissed TIMESTAMP)");
@@ -78,6 +81,7 @@ void CreateDBDialog::createDatabase()
     q.exec("CREATE TABLE works (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DECIMAL(10, 2), comment VARCHAR(128))");
     q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DECIMAL(10, 2))");
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
+
 
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, type VARCHAR(16), name VARCHAR(32))");
     q.exec("INSERT INTO states VALUES(1,'accepted','" + tr("Принято в ремонт") + "')");
@@ -116,11 +120,13 @@ void CreateDBDialog::createDatabase()
     q.exec("INSERT INTO position_types VALUES(5,'" + tr("Закупщик") + "')");
     q.exec("INSERT INTO position_types VALUES(6,'" + tr("Бухгалтер") + "')");
     q.exec("INSERT INTO position_types VALUES(7,'" + tr("Директор") + "')");
+    return q.lastError();
 }
 
 void CreateDBDialog::saveSettings()
 {
-    QSettings *settings = new QSettings("db.conf",QSettings::IniFormat);
+    QSettings * settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
     settings->setValue("mysql/hostname", ui->server->text());
     settings->setValue("mysql/port", ui->port->text());
     settings->setValue("mysql/database", ui->dbname->text());

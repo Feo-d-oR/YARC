@@ -6,7 +6,7 @@
 #include <QSettings>
 #include <QDataWidgetMapper>
 #include <QMessageBox>
-
+#include <QDesktopServices>
 
 namespace Ui {
 class MainWindow;
@@ -59,6 +59,8 @@ private slots:
     void on_tview_clicked(const QModelIndex &index);
     void on_mGiveOrderDiag_triggered();
 
+    void on_mHelp_triggered();
+
 private:
     bool checkSettings();
     bool dbConnect();
@@ -78,6 +80,10 @@ private:
     int customerIdx, stateIdx, masterIdx, typeIdx, acceptorIdx, giverIdx;
     QString namesstr;
     QString currentID;
+
+protected:
+    void closeEvent(QCloseEvent *event);
+    void reject();
 };
 
 #endif // MAINWINDOW_H

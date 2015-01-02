@@ -7,6 +7,7 @@ EditWorkReport::EditWorkReport(QWidget *parent) :
 {
     EditWorkReport::activateWindow();
     ui->setupUi(this);
+    isnew = true;
 }
 
 EditWorkReport::~EditWorkReport()
@@ -52,6 +53,7 @@ void EditWorkReport::getMode(QString mode, QString num)
         ui->eOrderID->setText(num);
         ui->eDate->setDate(QDate::currentDate());
         setModels();
+        isnew = true;
     }
     else if (mode == "view")
     {
@@ -62,6 +64,7 @@ void EditWorkReport::getMode(QString mode, QString num)
         reportID = num;
         fillFields();
         ui->bSave->setEnabled(false);
+        isnew = false;
     }
     else if (mode == "edit")
     {
@@ -70,6 +73,7 @@ void EditWorkReport::getMode(QString mode, QString num)
         setModels();
         reportID = num;
         fillFields();
+        isnew = false;
     }
 }
 
@@ -172,7 +176,10 @@ void EditWorkReport::submitReport()
     quants = lqt.join(",");
 
     QSqlQuery q;
-    q.prepare("INSERT INTO work_reports VALUES (NULL, NULL, :orderid, :master, :work, :quant, :spares, :quants)");
+    if (isnew)
+        q.prepare("INSERT INTO work_reports VALUES (NULL, NULL, :orderid, :master, :work, :quant, :spares, :quants)");
+    else
+        q.prepare("UPDATE work_reports SET master = :master, work = :work, quant = :quant, spares = :spares, quants = :quants WHERE id = " + reportID);
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":master", id_m);
     q.bindValue(":work", id_w);
@@ -210,7 +217,7 @@ void EditWorkReport::on_bUse_clicked()
     ui->tview->insertRow(rc);
     ui->tview->setItem(rc, 0, new QTableWidgetItem(ui->eSpare->currentText()));
     ui->tview->setItem(rc, 1, new QTableWidgetItem(ui->eSPrice->text()));
-    ui->tview->setItem(rc, 2, new QTableWidgetItem("?"));
+    ui->tview->setItem(rc, 2, new QTableWidgetItem("1"));
     ui->tview->setItem(rc, 3, new QTableWidgetItem(id_s));
 }
 
@@ -232,4 +239,7 @@ void EditWorkReport::on_bSave_clicked()
     emit reportSubmited();
 }
 
-
+void EditWorkReport::reject()
+{
+    close();
+}

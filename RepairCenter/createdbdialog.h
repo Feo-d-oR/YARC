@@ -24,7 +24,7 @@ private slots:
 
 private:
     bool dbCheckConnect();
-    void createDatabase();
+    QSqlError createDatabase();
     void saveSettings();
     Ui::CreateDBDialog *ui;
 };

@@ -50,7 +50,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Сотрудник:</string>
+         <string>Мастер:</string>
         </property>
        </widget>
       </item>

@@ -28,14 +28,16 @@ private:
     void submitReport();
     void fillFields();
     void setModels();
+    bool isnew;
     bool saved;
     QString reportID;
     QString orderID;
     QSqlQueryModel *model_m;
-
+    void checkExist();
 
 protected:
     void closeEvent(QCloseEvent *event);
+    void reject();
 
 public slots:
    void getMode(QString mode, QString num);
@@ -44,6 +46,7 @@ private slots:
    void on_bCancel_clicked();
    void on_bSave_clicked();
 
+   void on_eOrderID_textChanged(const QString &arg1);
 };
 
 #endif // EDITDIAGREPORT_H

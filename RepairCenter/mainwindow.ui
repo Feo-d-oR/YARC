@@ -1011,6 +1011,7 @@
      <string>Справка</string>
     </property>
     <addaction name="separator"/>
+    <addaction name="mHelp"/>
     <addaction name="mAbout"/>
    </widget>
    <widget class="QMenu" name="catalogs">
@@ -1096,7 +1097,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>О программе</string>
+    <string>О RepairCenter</string>
    </property>
   </action>
   <action name="mSettings">
@@ -1196,7 +1197,10 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Виды запчастей</string>
+    <string>Типы запчастей</string>
+   </property>
+   <property name="toolTip">
+    <string>Типы запчастей</string>
    </property>
   </action>
   <action name="mWorkTypes">
@@ -1205,7 +1209,7 @@
      <normaloff>:/icons/icons/hammer.png</normaloff>:/icons/icons/hammer.png</iconset>
    </property>
    <property name="text">
-    <string>Виды работ</string>
+    <string>Работы</string>
    </property>
   </action>
   <action name="mJrnWorkReports">
@@ -1278,6 +1282,15 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="mHelp">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/help.png</normaloff>:/icons/icons/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Руководство</string>
    </property>
   </action>
  </widget>

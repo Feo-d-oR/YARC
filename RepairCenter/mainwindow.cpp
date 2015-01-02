@@ -55,8 +55,8 @@ MainWindow::MainWindow(QWidget *parent) :
         mb.setIcon(QMessageBox::Critical);
         mb.setWindowTitle(tr("RepairCenter"));
         mb.setText(tr("Файл настроек не найден!"));
-        mb.setInformativeText(tr("Изменить настройки?"));
-        QPushButton *bEdit = mb.addButton(tr("Изменить"), QMessageBox::ActionRole);
+        mb.setInformativeText(tr("Создать файл настроек?"));
+        QPushButton *bEdit = mb.addButton(tr("Создать"), QMessageBox::ActionRole);
         QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::RejectRole);
         mb.setDefaultButton(bEdit);
         mb.exec();
@@ -129,7 +129,7 @@ void MainWindow::initModelOrders()
 
     //setting headers
     model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, tr("№"));
-    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Дата");
+    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Дата"));
     model->setHeaderData(typeIdx, Qt::Horizontal, tr("Тип"));
     model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, tr("Изделие"));
     model->setHeaderData(stateIdx, Qt::Horizontal, tr("Статус"));
@@ -301,7 +301,8 @@ void MainWindow::on_dialog_closed(){
     model->select();}
 
 void MainWindow::on_exit_triggered(){
-    close();}
+    close();
+}
 
 void MainWindow::on_bSubmit_clicked(){
     model->submitAll();}
@@ -388,7 +389,7 @@ void MainWindow::on_mAbout_triggered()
     QMessageBox mb;
     mb.setWindowTitle(tr("О программе..."));
     mb.setTextFormat(Qt::RichText);
-    mb.setText("RepairCenter ver. 0.1a");
+    mb.setText("RepairCenter ver. 0.2b");
     mb.setInformativeText("<a href = 'http://sourceforge.net/projects/repaircenter/'>RepairCenter on SourceForge</a> \n "
                           "<a href = 'http://sourceforge.net/projects/qtrpt/'>QtRPT 1.4.5</a>");
     QPushButton *bOk = mb.addButton("OK", QMessageBox::AcceptRole);
@@ -420,3 +421,14 @@ void MainWindow::showGiveOrderDiag(){
     connect(this, SIGNAL(sendMode(QString, QString)), god, SLOT(getMode(QString, QString)));
     connect(god,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
     god->show();}
+
+void MainWindow::reject(){
+    return; }
+
+void MainWindow::closeEvent(QCloseEvent *event){
+    QApplication::closeAllWindows();
+    event->accept(); }
+
+void MainWindow::on_mHelp_triggered(){
+    QDesktopServices::openUrl(QUrl("file://"+QCoreApplication::applicationDirPath()+"/help/RU_ru/index.html"));
+}

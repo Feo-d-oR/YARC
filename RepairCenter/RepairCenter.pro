@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = RepairCenter
 TEMPLATE = app
-VERSION = 0.2a
+VERSION = 0.2b
 
 include(../QtRpt/QtRpt/QtRpt.pri)
 include($$PWD/../config.pri)
@@ -76,7 +76,17 @@ OTHER_FILES += \
     about_code_style.txt \
     print_forms/order.xml \
     db.conf \
-    i18n/README_en.txt
+    i18n/README_en.txt \
+    help/RU_ru/application.html \
+    help/RU_ru/catalogs.html \
+    help/RU_ru/firststart.html \
+    help/RU_ru/index.html \
+    help/RU_ru/install.html \
+    help/RU_ru/journals.html \
+    help/RU_ru/mainwindow.html \
+    help/RU_ru/print_forms.html \
+    help/RU_ru/qtrpt.html \
+    help/RU_ru/workflow.html
 
 RESOURCES += \
     Icons.qrc \

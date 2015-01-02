@@ -30,6 +30,8 @@ void JrnWorkReports::initModels()
 
     ui->tview->hideColumn(model->fieldIndex("id"));
     ui->tview->hideColumn(model->fieldIndex("spares"));
+    ui->tview->hideColumn(model->fieldIndex("quant"));
+    ui->tview->hideColumn(model->fieldIndex("quants"));
 
     ui->tview->setColumnWidth(model->fieldIndex("date"), 130);
     ui->tview->setColumnWidth(model->fieldIndex("orderid"), 70);

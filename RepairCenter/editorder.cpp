@@ -275,3 +275,8 @@ void EditOrder::on_bAddType_clicked()
     ui->eProductType->setCurrentIndex(idx_t.value(0).row());
 
 }
+
+void EditOrder::reject()
+{
+    close();
+}

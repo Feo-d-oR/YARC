@@ -7,6 +7,7 @@ EditDiagReport::EditDiagReport(QWidget *parent) :
 {
     EditDiagReport::activateWindow();
     ui->setupUi(this);
+    isnew = true;
 }
 
 EditDiagReport::~EditDiagReport(){
@@ -44,15 +45,16 @@ void EditDiagReport::getMode(QString mode, QString num)
         ui->eDate->setDate(QDate::currentDate());
         ui->eOrderID->setText(num);
         setModels();
+        isnew = true;
     }
     else if (mode == "view"){
         saved = true;
         QWidget::setWindowTitle(tr("Просмотр отчёта диагностики"));
-        ui->bSave->setDisabled(true);
         setModels();
         reportID = num;
         fillFields();
         ui->bSave->setEnabled(false);
+        isnew = false;
     }
     else if (mode == "edit"){
         saved = true;
@@ -60,6 +62,7 @@ void EditDiagReport::getMode(QString mode, QString num)
         setModels();
         reportID = num;
         fillFields();
+        isnew = false;
     }
 }
 
@@ -69,6 +72,35 @@ void EditDiagReport::setModels()
     model_m->setQuery("SELECT id, name FROM employees");
     ui->eMaster->setModel(model_m);
     ui->eMaster->setModelColumn(1);
+}
+
+void EditDiagReport::checkExist()
+{
+    QSqlQuery qc;
+    QSqlRecord recc;
+    qc.exec("SELECT * FROM diag_reports WHERE orderid = " + ui->eOrderID->text());
+    if (qc.first()) {
+        QMessageBox mbex;
+        mbex.setWindowTitle(tr("Отчёт диагностики"));
+        mbex.setText(tr("Отчёт диагностики для этого заказа уже существует!"));
+        QPushButton *bEdit = mbex.addButton(tr("Редактировать"), QMessageBox::ActionRole);
+        QPushButton *bClose = mbex.addButton(tr("Закрыть"), QMessageBox::ActionRole);
+        mbex.setDefaultButton(bEdit);
+        mbex.exec();
+
+        if (mbex.clickedButton() == bEdit){
+            saved = true;
+            QWidget::setWindowTitle(tr("Редактирование отчёта диагностики"));
+            setModels();
+            reportID = qc.value(recc.indexOf("id")).toString();
+            fillFields();
+            isnew = false;
+        }
+        if (mbex.clickedButton() == bClose)
+            close();
+    }
+    else
+        return;
 }
 
 void EditDiagReport::fillFields()
@@ -94,7 +126,10 @@ void EditDiagReport::submitReport()
     QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
 
     QSqlQuery q;
-    q.prepare("INSERT INTO diag_reports VALUES (NULL, NULL, :orderid, :master, :inspect, :defects, :recomm)");
+    if (isnew)
+        q.prepare("INSERT INTO diag_reports VALUES (NULL, NULL, :orderid, :master, :inspect, :defects, :recomm)");
+    else
+        q.prepare("UPDATE diag_reports SET master = :master, inspect = :inspect, defects = :defects, recomm = :recomm WHERE id = " + reportID);
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":master", id_m);
     q.bindValue(":inspect", ui->eInspect->toPlainText());
@@ -112,3 +147,12 @@ void EditDiagReport::on_bSave_clicked(){
     close();
     emit reportSubmited();}
 
+void EditDiagReport::reject()
+{
+    close();
+}
+
+void EditDiagReport::on_eOrderID_textChanged(const QString &arg1)
+{
+//    checkExist();
+}

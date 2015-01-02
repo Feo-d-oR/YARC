@@ -59,6 +59,7 @@ private:
 
 protected:
     void closeEvent(QCloseEvent *event);
+    void reject();
 
 public slots:
    void getMode(QString mode, QString num);

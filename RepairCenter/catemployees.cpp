@@ -67,7 +67,10 @@ void CatEmployees::initModel()
 
 void CatEmployees::on_bAdd_clicked()
 {
-    model->insertRows(model->rowCount(), 1);
+    int rc;
+    rc = model->rowCount();
+    model->insertRows(rc, 1);
+    ui->tview->selectRow(rc);
 }
 
 void CatEmployees::on_bSave_clicked()

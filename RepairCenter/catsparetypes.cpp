@@ -51,6 +51,7 @@ void CatSpareTypes::on_bClose_clicked()
 
 void CatSpareTypes::on_bDelete_clicked()
 {
+    model->revertAll();
     QItemSelectionModel *sm = ui->tview->selectionModel();
     if (sm->hasSelection()){
         model->removeRow(sm->selectedRows().first().row());

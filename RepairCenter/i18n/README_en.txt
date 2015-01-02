@@ -1,4 +1,21 @@
-----------------------------------
+===========================================
+================ CHANGELOG ================
+===========================================
+
+---------------- v0.2b --------------------
+Fixed reports editing
+Various UI improvements
+Added MySQL user creation
+Added help in Russian
+
+---------------- v0.2a --------------------
+Added diagnosis processing
+Added translation support
+Some fixes
+
+===========================================
+================= README ==================
+===========================================
 
 Dependencies for Qt5 in Ubuntu:
 Until someone (maybe me) build packages you should install them manually :(
@@ -16,15 +33,9 @@ libqt5core5a
 
 Also you shold copy contents of "lib" folder to /usr/lib.
 
-----------------------------------
-
-At this moment application didn't create MYSQL users, so you should add one manually for network access
-
-----------------------------------
+-------------------------------------------
 
 Hey, guys, i need come help!
 As you can see my english is bad and pretty much google-translated, so i need help with english translation,
-especially in professional slang/country-specific items.
+especially in professional slang/country-specific items and printable forms.
 Then I can make all the fields in the source code English.
-
-----------------------------------

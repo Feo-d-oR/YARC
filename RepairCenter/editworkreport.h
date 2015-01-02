@@ -31,6 +31,7 @@ private:
     void fillFields();
     void setModels();
     bool saved;
+    bool isnew;
     int i;
     QString reportID;
     QString orderID;
@@ -43,6 +44,7 @@ private:
 
 protected:
     void closeEvent(QCloseEvent *event);
+    void reject();
 
 public slots:
    void getMode(QString mode, QString num);

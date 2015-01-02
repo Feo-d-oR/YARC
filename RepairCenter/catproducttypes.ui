@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Состояния закзов</string>
+   <string>Типы изделий</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">

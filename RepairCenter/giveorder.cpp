@@ -282,3 +282,8 @@ void GiveOrder::on_eWarranty_textChanged(const QString &arg1)
     else
         ui->cWarranty->setChecked(false);
 }
+
+void GiveOrder::reject()
+{
+    close();
+}

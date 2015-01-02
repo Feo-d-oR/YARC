@@ -38,8 +38,10 @@ void CatWorkTypes::initModel()
 
 void CatWorkTypes::on_bAdd_clicked()
 {
-    model->insertRows(model->rowCount(), 1);
-    ui->tview->setCurrentIndex(model->index(model->rowCount()-1, 1));
+    int rc;
+    rc = model->rowCount();
+    model->insertRows(rc, 1);
+    ui->tview->selectRow(rc);
 }
 
 void CatWorkTypes::on_bSave_clicked()

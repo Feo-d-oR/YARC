@@ -155,3 +155,8 @@ void GiveOrderDiag::on_bSave_clicked(){
     submitOrder();
     close();
     emit orderSubmited();}
+
+void GiveOrderDiag::reject()
+{
+    close();
+}
