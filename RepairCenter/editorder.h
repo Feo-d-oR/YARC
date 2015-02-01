@@ -38,6 +38,7 @@ private:
     QSqlQuery qpt;
     QString orderID;
     QString customerID;
+    bool block;
     bool isnew;
     bool saved;
     QSqlQueryModel *model_s;

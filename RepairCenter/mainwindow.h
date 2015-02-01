@@ -44,7 +44,6 @@ private slots:
     void on_mEmployees_triggered();
     void on_mInit_triggered();
     void on_bDelete_clicked();
-    void on_mConstants_triggered();
     void on_mProductTypes_triggered();
     void on_mCustomers_triggered();
     void on_mSpares_triggered();
@@ -58,8 +57,8 @@ private slots:
     void on_mNewDiagReport_triggered();
     void on_tview_clicked(const QModelIndex &index);
     void on_mGiveOrderDiag_triggered();
-
     void on_mHelp_triggered();
+    void on_mPrintHWDocs_triggered();
 
 private:
     bool checkSettings();

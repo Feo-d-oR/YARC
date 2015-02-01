@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     catsparetypes.cpp \
     giveorder.cpp \
     settings.cpp \
-    giveorderdiag.cpp
+    giveorderdiag.cpp \
+    printhwdocuments.cpp
 
 HEADERS  += mainwindow.h \
     createdbdialog.h \
@@ -52,7 +53,8 @@ HEADERS  += mainwindow.h \
     catsparetypes.h \
     giveorder.h \
     settings.h \
-    giveorderdiag.h
+    giveorderdiag.h \
+    printhwdocuments.h
 
 FORMS    += mainwindow.ui \
     createdbdialog.ui \
@@ -70,7 +72,8 @@ FORMS    += mainwindow.ui \
     catsparetypes.ui \
     giveorder.ui \
     settings.ui \
-    giveorderdiag.ui
+    giveorderdiag.ui \
+    printhwdocuments.ui
 
 OTHER_FILES += \
     about_code_style.txt \
@@ -86,7 +89,15 @@ OTHER_FILES += \
     help/RU_ru/mainwindow.html \
     help/RU_ru/print_forms.html \
     help/RU_ru/qtrpt.html \
-    help/RU_ru/workflow.html
+    help/RU_ru/workflow.html \
+    ../print_forms/act_diag.xml \
+    ../print_forms/act_works.xml \
+    ../print_forms/order.xml \
+    ../print_forms/warranty_works.xml \
+    ../print_forms/act_diag_hw.xml \
+    ../print_forms/act_works_hw.xml \
+    ../print_forms/order_hw.xml \
+    ../print_forms/warranty_works_hw.xml
 
 RESOURCES += \
     Icons.qrc \

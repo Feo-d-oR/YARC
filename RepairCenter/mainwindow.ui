@@ -1005,6 +1005,8 @@
     <addaction name="separator"/>
     <addaction name="mNewWorkReport"/>
     <addaction name="mNewDiagReport"/>
+    <addaction name="separator"/>
+    <addaction name="mPrintHWDocs"/>
    </widget>
    <widget class="QMenu" name="help">
     <property name="title">
@@ -1025,8 +1027,6 @@
     <addaction name="mSpares"/>
     <addaction name="mSpareTypes"/>
     <addaction name="mWorkTypes"/>
-    <addaction name="separator"/>
-    <addaction name="mConstants"/>
    </widget>
    <widget class="QMenu" name="journals">
     <property name="title">
@@ -1134,19 +1134,6 @@
    </property>
    <property name="text">
     <string>Сотрудники</string>
-   </property>
-  </action>
-  <action name="mConstants">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/table.png</normaloff>
-     <normalon>:/icons/icons/page_edit.png</normalon>:/icons/icons/table.png</iconset>
-   </property>
-   <property name="text">
-    <string>Константы</string>
    </property>
   </action>
   <action name="mProductTypes">
@@ -1291,6 +1278,15 @@
    </property>
    <property name="text">
     <string>Руководство</string>
+   </property>
+  </action>
+  <action name="mPrintHWDocs">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/printer.png</normaloff>:/icons/icons/printer.png</iconset>
+   </property>
+   <property name="text">
+    <string>Напечатать рукописные документы</string>
    </property>
   </action>
  </widget>

@@ -19,7 +19,6 @@ Some fixes
 
 Dependencies for Qt5 in Ubuntu:
 Until someone (maybe me) build packages you should install them manually :(
-Qt4 versions also should work.
 
 libqt5printsupport5
 libqt5widgets5

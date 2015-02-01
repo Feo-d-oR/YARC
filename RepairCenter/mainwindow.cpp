@@ -17,6 +17,7 @@
 #include "editdiagreport.h"
 #include "jrnworkreports.h"
 #include "editworkreport.h"
+#include "printhwdocuments.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -295,7 +296,9 @@ void MainWindow::on_bDelete_clicked()
 void MainWindow::on_tview_clicked(const QModelIndex &index){
     int row = index.row();
     const QAbstractItemModel * mdl = index.model();
-    currentID = mdl->data(mdl->index(row, 0), Qt::DisplayRole).toString();}
+    currentID = mdl->data(mdl->index(row, 0), Qt::DisplayRole).toString();
+    qDebug() << "orderID: " << currentID;
+}
 
 void MainWindow::on_dialog_closed(){
     model->select();}
@@ -336,10 +339,6 @@ void MainWindow::on_mCreatedb_triggered(){
 void MainWindow::on_mSettings_triggered(){
     Settings* sdb = new Settings();
     sdb->show();}
-
-void MainWindow::on_mConstants_triggered(){
-    CatConstants* cconst = new CatConstants();
-    cconst->show();}
 
 void MainWindow::on_mProductTypes_triggered(){
     CatProductTypes* cptype = new CatProductTypes();
@@ -432,3 +431,7 @@ void MainWindow::closeEvent(QCloseEvent *event){
 void MainWindow::on_mHelp_triggered(){
     QDesktopServices::openUrl(QUrl("file://"+QCoreApplication::applicationDirPath()+"/help/RU_ru/index.html"));
 }
+
+void MainWindow::on_mPrintHWDocs_triggered(){
+    PrintHWDocuments * phwd = new PrintHWDocuments();
+    phwd->show();}

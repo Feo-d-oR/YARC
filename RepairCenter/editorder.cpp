@@ -7,7 +7,7 @@ EditOrder::EditOrder(QWidget *parent):
 {
     EditOrder::activateWindow();
 
-    isnew = true;
+    block = false;
     ui->setupUi(this);
 }
 
@@ -49,13 +49,13 @@ void EditOrder::closeEvent(QCloseEvent *event)
 
 void EditOrder::getMode(QString mode, QString num)
 {
-    if (mode == "new" && isnew == true)
+    if (mode == "new" && block == false)
     {
-        isnew = false; //this prevents multiple records creation
+        block = true; //this prevents multiple records creation
         QWidget::setWindowTitle(tr("Новый заказ"));
-        allocateNumber();
         ui->eDate->setDate(QDate::currentDate());
         setModels();
+        allocateNumber();
     }
     else if (mode == "view")
     {
@@ -70,15 +70,11 @@ void EditOrder::getMode(QString mode, QString num)
     else if (mode == "edit")
     {
         isnew = false;
-        saved = true;
+        saved = false;
         orderID = num;
         QWidget::setWindowTitle(tr("Редактирование заказа"));
         setModels();
         fillFields();
-    }
-    else if (mode == "fill")
-    {
-
     }
 }
 
@@ -89,10 +85,12 @@ void EditOrder::allocateNumber()
 
     qc.exec("INSERT INTO customers (id) VALUES (null)");
     customerID = qc.lastInsertId().toString();
+    qDebug() << "customerID: " << customerID;
 
     ui->eNumber->setText(orderID);
     ui->eNumber->setReadOnly(true);
     saved = false;
+    isnew = true;
 }
 
 void EditOrder::setModels()
@@ -109,8 +107,6 @@ void EditOrder::setModels()
     ui->eMaster->setModel(model_e);
     ui->eMaster->setModelColumn(1);
 
-//    model_t = new QSqlQueryModel();
-//    model_t->setQuery("SELECT id, name FROM product_types");
     model_t = new QSqlTableModel();
     model_t->setTable("product_types");
     model_t->setEditStrategy(QSqlTableModel::OnFieldChange);
@@ -118,7 +114,6 @@ void EditOrder::setModels()
     ui->eProductType->setModel(model_t);
     ui->eProductType->setModelColumn(model_t->fieldIndex("name"));
     model_t->select();
-//    ui->eProductType->setDuplicatesEnabled(false);
 }
 
 void EditOrder::removeAllocated()
@@ -145,12 +140,22 @@ void EditOrder::fillFields()
     ui->eCost->setText(q.value(rec.indexOf("cost")).toString());
     ui->eComment->setPlainText(q.value(rec.indexOf("comment")).toString());
 
-    customerID = q.value(rec.indexOf("customer")).toString();
-    qc.exec("SELECT name, phone FROM customers WHERE id = " + customerID);
-    recc = qc.record();
-    qc.first();
-    ui->eCustomer->setText(qc.value(recc.indexOf("name")).toString());
-    ui->ePhone->setText(qc.value(recc.indexOf("phone")).toString());
+    if ((q.value(rec.indexOf("product")).toString() == "reserved") && block == false)
+    {
+        block = true;
+        qc.exec("INSERT INTO customers (id) VALUES (null)");
+        customerID = qc.lastInsertId().toString();
+        ui->eDate->setDate(QDate::currentDate());
+    }
+    else
+    {
+        customerID = q.value(rec.indexOf("customer")).toString();
+        qc.exec("SELECT name, phone FROM customers WHERE id = " + customerID);
+        recc = qc.record();
+        qc.first();
+        ui->eCustomer->setText(qc.value(recc.indexOf("name")).toString());
+        ui->ePhone->setText(qc.value(recc.indexOf("phone")).toString());
+    }
 
     QModelIndexList idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("state")), 1, Qt::MatchExactly);
     ui->eState->setCurrentIndex(idx_s.value(0).row());
@@ -163,7 +168,6 @@ void EditOrder::fillFields()
 
     QModelIndexList idx_m = ui->eMaster->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("master")), 1, Qt::MatchExactly);
     ui->eMaster->setCurrentIndex(idx_m.value(0).row());
-
 }
 
 void EditOrder::submitOrder()
@@ -185,9 +189,10 @@ void EditOrder::submitOrder()
     qc.bindValue(":phone", ui->ePhone->text());
     qc.exec();
 
-    q.prepare("UPDATE orders SET state = :state, customer = :customer, phone = :phone, product_type = :product_type, product = :product, "
+    q.prepare("UPDATE orders SET date_in = :date_in, state = :state, customer = :customer, phone = :phone, product_type = :product_type, product = :product, "
               " serial = :serial, disease = :disease, cond = :cond, complect = :complect, cost = :cost, acceptor = :acceptor, master = :master, comment = :comment "
               "WHERE number = " + orderID);
+    q.bindValue(":date_in", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":state", id_s);
     q.bindValue(":customer", customerID);
     q.bindValue(":phone", customerID);
@@ -204,6 +209,8 @@ void EditOrder::submitOrder()
     q.exec();
     saved = true;
 }
+
+//q.bindValue(":date_out", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
 
 void EditOrder::setRptValue(int &recNo, QString &paramName, QVariant &paramValue, int reportPage)
 {

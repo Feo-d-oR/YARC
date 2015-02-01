@@ -4,7 +4,7 @@
 #include <QMap>
 #include <QMetaEnum>
 #include <QEvent>
-#include <QtMath>
+#include <qmath.h>
 #include <QObject>
 #include <QWidget>
 
