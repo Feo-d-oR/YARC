@@ -27,7 +27,7 @@ private:
     Ui::GiveOrder *ui;
     QString orderID;
     bool saved;
-    QSqlTableModel * model_e;
+    QSqlQueryModel * model_e;
 
     QSqlQuery qw;
     QSqlQuery qgn;

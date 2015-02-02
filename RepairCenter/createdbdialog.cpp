@@ -104,14 +104,6 @@ QSqlError CreateDBDialog::createDatabase()
     q.exec("INSERT INTO states VALUES(18,'complete','" + tr("Ожидает выдачи") + "')");
     q.exec("INSERT INTO states VALUES(19,'accepted','" + tr("Принято в ремонт (гарантия)") + "')");
 
-    q.exec("CREATE TABLE constants (id INTEGER PRIMARY KEY, name VARCHAR(32), value VARCHAR(128))");
-    q.exec("INSERT INTO constants VALUES(1,0'" + tr("Название организации") + "', NULL)");
-    q.exec("INSERT INTO constants VALUES(2,'" + tr("ИНН") + "',NULL)");
-    q.exec("INSERT INTO constants VALUES(3,'" + tr("Адрес") + "',NULL)");
-    q.exec("INSERT INTO constants VALUES(4,'" + tr("Телефон") + "',NULL)");
-    q.exec("INSERT INTO constants VALUES(5,'" + tr("Время работы") + "',NULL)");
-    q.exec("INSERT INTO constants VALUES(6,'" + tr("Выходные") + "',NULL)");
-
     q.exec("CREATE TABLE position_types (id INTEGER PRIMARY KEY, name VARCHAR(64))");
     q.exec("INSERT INTO position_types VALUES(1,'" + tr("Мастер") + "')");
     q.exec("INSERT INTO position_types VALUES(2,'" + tr("Приёмщик") + "')");

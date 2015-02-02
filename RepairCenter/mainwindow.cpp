@@ -7,7 +7,6 @@
 #include "createdbdialog.h"
 #include "settings.h"
 #include "catemployees.h"
-#include "catconstants.h"
 #include "catproducttypes.h"
 #include "catcustomers.h"
 #include "catspares.h"
@@ -125,6 +124,8 @@ void MainWindow::initModelOrders()
 
     model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);  //setting default sorting
 
+    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1");
+
 //setting tableview widget
     ui->tview->setModel(model);
 
@@ -167,9 +168,11 @@ void MainWindow::initModelOrders()
 //setting mapper & relations for right panel
     ui->eState->setModel(model->relationModel(stateIdx));
     ui->eState->setModelColumn(model->relationModel(stateIdx)->fieldIndex("name"));
+    ui->eState->model()->sort(2, Qt::AscendingOrder);
 
     ui->eMaster->setModel(model->relationModel(masterIdx));
     ui->eMaster->setModelColumn(model->relationModel(masterIdx)->fieldIndex("name"));
+    ui->eMaster->model()->sort(1, Qt::AscendingOrder);
 
     mapper = new QDataWidgetMapper(this);
     mapper->setModel(model);
@@ -233,19 +236,19 @@ void MainWindow::on_searchbydate_clicked()
     model->select();
 }
 
-void MainWindow::getCustomerIds()
-{
-    QStringList list;
-    QSqlQuery q;
-    q.exec("SELECT * FROM customers WHERE name LIKE '%" + ui->lSearch->text() + "%'");
-    q.first();
-    list.append(q.value(0).toString());
-    while (q.next())
-    { list.append(q.value(0).toString()); }
-    namesstr = list.join("','");
-    qDebug() << "list:" << list;
-    qDebug() << "string:" << namesstr;
-}
+//void MainWindow::getCustomerIds()
+//{
+//    QStringList list;
+//    QSqlQuery q;
+//    q.exec("SELECT * FROM customers WHERE name LIKE '%" + ui->lSearch->text() + "%'");
+//    q.first();
+//    list.append(q.value(0).toString());
+//    while (q.next())
+//    { list.append(q.value(0).toString()); }
+//    namesstr = list.join("','");
+//    qDebug() << "list:" << list;
+//    qDebug() << "string:" << namesstr;
+//}
 
 void MainWindow::on_lSearch_textEdited(const QString &arg1)
 {
@@ -254,8 +257,9 @@ void MainWindow::on_lSearch_textEdited(const QString &arg1)
         if(ui->searchtexttype->currentText() == tr("Номер квитанции"))
             model->setFilter("number = " + arg1);
         if(ui->searchtexttype->currentText() == tr("Имя"))        {
-            getCustomerIds();
-            model->setFilter("customer IN ('" + namesstr + "')");
+//            getCustomerIds();
+//            model->setFilter("customer IN ('" + namesstr + "')");
+            model->setFilter("relTblAl_5.name LIKE '%" + arg1 + "%'");
             qDebug() << "filter:" << model->filter();
         }
     }

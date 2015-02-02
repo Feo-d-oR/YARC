@@ -96,15 +96,20 @@ void EditOrder::allocateNumber()
 void EditOrder::setModels()
 {
     model_s = new QSqlQueryModel();
-    model_s->setQuery("SELECT id, name FROM states");
+    model_s->setQuery("SELECT id, name FROM states WHERE id IN (1, 2, 14, 16, 19)");
     ui->eState->setModel(model_s);
     ui->eState->setModelColumn(1);
 
-    model_e = new QSqlQueryModel();
-    model_e->setQuery("SELECT id, name FROM employees");
-    ui->eAcceptor->setModel(model_e);
+    model_a = new QSqlQueryModel();
+    model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2");
+    ui->eAcceptor->setModel(model_a);
+    ui->eAcceptor->model()->sort(1, Qt::AscendingOrder);
     ui->eAcceptor->setModelColumn(1);
-    ui->eMaster->setModel(model_e);
+
+    model_m = new QSqlQueryModel();
+    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = 1");
+    ui->eMaster->setModel(model_m);
+    ui->eMaster->model()->sort(1, Qt::AscendingOrder);
     ui->eMaster->setModelColumn(1);
 
     model_t = new QSqlTableModel();
@@ -178,10 +183,10 @@ void EditOrder::submitOrder()
     QSqlRecord rec_t = model_t->record(ui->eProductType->currentIndex());
     QString id_t = rec_t.value(rec_t.indexOf("id")).toString();
 
-    QSqlRecord rec_a = model_e->record(ui->eAcceptor->currentIndex());
+    QSqlRecord rec_a = model_a->record(ui->eAcceptor->currentIndex());
     QString id_a= rec_a.value(rec_a.indexOf("id")).toString();
 
-    QSqlRecord rec_m = model_e->record(ui->eMaster->currentIndex());
+    QSqlRecord rec_m = model_a->record(ui->eMaster->currentIndex());
     QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
 
     qc.prepare("UPDATE customers SET name = :name, phone = :phone WHERE id = " + customerID);

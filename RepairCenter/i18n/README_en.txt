@@ -1,6 +1,9 @@
 ===========================================
 ================ CHANGELOG ================
 ===========================================
+----------------- v0.3 --------------------
+Added hand-writed documents support
+Filtration in comboboxes
 
 ---------------- v0.2b --------------------
 Fixed reports editing
@@ -30,7 +33,7 @@ libqt5xml5
 libqt5gui5
 libqt5core5a
 
-Also you shold copy contents of "lib" folder to /usr/lib.
+Also you should copy contents of "lib" folder to /usr/lib.
 
 -------------------------------------------
 

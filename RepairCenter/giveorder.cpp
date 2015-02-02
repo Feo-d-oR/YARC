@@ -65,11 +65,11 @@ void GiveOrder::on_eOrderID_textChanged(const QString &arg1)
 
 void GiveOrder::setModels()
 {
-    model_e = new QSqlTableModel();
-    model_e->setTable("employees");
+    model_e = new QSqlQueryModel();
+    model_e->setQuery("SELECT id, name FROM employees WHERE position_type = '2'");
     ui->eGiver->setModel(model_e);
-    ui->eGiver->setModelColumn(model_e->fieldIndex("name"));
-    model_e->select();
+    ui->eGiver->setModelColumn(1);
+    ui->eGiver->model()->sort(1, Qt::AscendingOrder);
 
     ui->tvieww->setColumnWidth(0, 300);
     ui->tvieww->setColumnWidth(1, 100);

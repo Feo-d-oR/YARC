@@ -22,7 +22,6 @@ SOURCES += main.cpp\
     createdbdialog.cpp \
     editorder.cpp \
     catemployees.cpp \
-    catconstants.cpp \
     catproducttypes.cpp \
     catcustomers.cpp \
     editworkreport.cpp \
@@ -41,7 +40,6 @@ HEADERS  += mainwindow.h \
     createdbdialog.h \
     editorder.h \
     catemployees.h \
-    catconstants.h \
     catproducttypes.h \
     catcustomers.h \
     editworkreport.h \
@@ -60,7 +58,6 @@ FORMS    += mainwindow.ui \
     createdbdialog.ui \
     editorder.ui \
     catemployees.ui \
-    catconstants.ui \
     catproducttypes.ui \
     catcustomers.ui \
     editworkreport.ui \
