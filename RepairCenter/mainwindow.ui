@@ -991,7 +991,6 @@
     <addaction name="mInit"/>
     <addaction name="separator"/>
     <addaction name="mSettings"/>
-    <addaction name="mCreatedb"/>
     <addaction name="separator"/>
     <addaction name="exit"/>
    </widget>
@@ -1111,19 +1110,6 @@
    </property>
    <property name="text">
     <string>Настройки</string>
-   </property>
-  </action>
-  <action name="mCreatedb">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normalon>:/icons/icons/database_add.png</normalon>
-    </iconset>
-   </property>
-   <property name="text">
-    <string>Создать базу данных</string>
    </property>
   </action>
   <action name="mEmployees">

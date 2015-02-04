@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = RepairCenter
 TEMPLATE = app
-VERSION = 0.2b
+VERSION = 0.3
 
 include(../QtRpt/QtRpt/QtRpt.pri)
 include($$PWD/../config.pri)
@@ -19,7 +19,6 @@ DESTDIR = $${DEST_DIRECTORY}
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    createdbdialog.cpp \
     editorder.cpp \
     catemployees.cpp \
     catproducttypes.cpp \
@@ -37,7 +36,6 @@ SOURCES += main.cpp\
     printhwdocuments.cpp
 
 HEADERS  += mainwindow.h \
-    createdbdialog.h \
     editorder.h \
     catemployees.h \
     catproducttypes.h \
@@ -55,7 +53,6 @@ HEADERS  += mainwindow.h \
     printhwdocuments.h
 
 FORMS    += mainwindow.ui \
-    createdbdialog.ui \
     editorder.ui \
     catemployees.ui \
     catproducttypes.ui \

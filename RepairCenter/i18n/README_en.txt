@@ -4,6 +4,7 @@
 ----------------- v0.3 --------------------
 Added hand-writed documents support
 Filtration in comboboxes
+Database operations moved to standalone utility "DBTool"
 
 ---------------- v0.2b --------------------
 Fixed reports editing
