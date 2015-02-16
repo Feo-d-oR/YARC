@@ -300,54 +300,14 @@
      <item row="6" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Нанят:</string>
+        <string>Активный:</string>
        </property>
       </widget>
      </item>
      <item row="6" column="1">
-      <widget class="QDateEdit" name="eHired">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="displayFormat">
-        <string>dd.MM.yyyy</string>
-       </property>
-       <property name="calendarPopup">
-        <bool>true</bool>
-       </property>
-       <property name="date">
-        <date>
-         <year>2014</year>
-         <month>1</month>
-         <day>1</day>
-        </date>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_6">
+      <widget class="QCheckBox" name="eisActive">
        <property name="text">
-        <string>Уволен:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QDateEdit" name="eDismissed">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="displayFormat">
-        <string>dd.MM.yyyy</string>
-       </property>
-       <property name="calendarPopup">
-        <bool>true</bool>
-       </property>
-       <property name="date">
-        <date>
-         <year>2014</year>
-         <month>1</month>
-         <day>1</day>
-        </date>
+        <string/>
        </property>
       </widget>
      </item>

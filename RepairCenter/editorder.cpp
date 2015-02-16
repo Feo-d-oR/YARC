@@ -35,7 +35,8 @@ void EditOrder::closeEvent(QCloseEvent *event)
             event->accept();
         }
         if (mb.clickedButton() == bDiscard){
-            removeAllocated();
+            if (isnew == true)
+                removeAllocated();
             event->accept();
         }
         if (mb.clickedButton() == bCancel){
@@ -51,6 +52,8 @@ void EditOrder::getMode(QString mode, QString num)
 {
     if (mode == "new" && block == false)
     {
+        saved = false;
+        isnew = true;
         block = true; //this prevents multiple records creation
         QWidget::setWindowTitle(tr("Новый заказ"));
         ui->eDate->setDate(QDate::currentDate());
@@ -89,25 +92,26 @@ void EditOrder::allocateNumber()
 
     ui->eNumber->setText(orderID);
     ui->eNumber->setReadOnly(true);
-    saved = false;
-    isnew = true;
 }
 
 void EditOrder::setModels()
 {
     model_s = new QSqlQueryModel();
-    model_s->setQuery("SELECT id, name FROM states WHERE id IN (1, 2, 14, 16, 19)");
+    if (isnew == true)
+        model_s->setQuery("SELECT id, name FROM states WHERE id IN (1, 2, 14, 16, 19)");
+    if (isnew == false)
+        model_s->setQuery("SELECT id, name FROM states");
     ui->eState->setModel(model_s);
     ui->eState->setModelColumn(1);
 
     model_a = new QSqlQueryModel();
-    model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2");
+    model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2 AND isactive = '1'");
     ui->eAcceptor->setModel(model_a);
     ui->eAcceptor->model()->sort(1, Qt::AscendingOrder);
     ui->eAcceptor->setModelColumn(1);
 
     model_m = new QSqlQueryModel();
-    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = 1");
+    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = 1 AND isactive = '1'");
     ui->eMaster->setModel(model_m);
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);
     ui->eMaster->setModelColumn(1);

@@ -17,6 +17,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    static QString local;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -28,7 +29,6 @@ signals:
 
 private slots:
     void on_exit_triggered();
-    void on_mCreatedb_triggered();
     void on_mSettings_triggered();
     void on_rbAll_clicked(bool checked);
     void on_rbCompleted_clicked(bool checked);
@@ -59,6 +59,9 @@ private slots:
     void on_mGiveOrderDiag_triggered();
     void on_mHelp_triggered();
     void on_mPrintHWDocs_triggered();
+    void on_rbCall_clicked(bool checked);
+
+    void on_mAboutQt_triggered();
 
 private:
     bool checkSettings();

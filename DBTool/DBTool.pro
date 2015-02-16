@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,3 +23,14 @@ HEADERS  += mainwindow.h \
     createdb.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    Icons.qrc \
+    languages.qrc
+
+TRANSLATIONS += i18n/dbtool_ru_RU.ts
+TRANSLATIONS += i18n/dbtool_en_US.ts
+
+OTHER_FILES += \
+    i18n/dbtool_ru_RU.ts \
+    i18n/dbtool_en_US.ts

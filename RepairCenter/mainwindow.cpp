@@ -4,7 +4,6 @@
 #include "editorder.h"
 #include "giveorder.h"
 #include "giveorderdiag.h"
-#include "createdbdialog.h"
 #include "settings.h"
 #include "catemployees.h"
 #include "catproducttypes.h"
@@ -17,6 +16,9 @@
 #include "jrnworkreports.h"
 #include "editworkreport.h"
 #include "printhwdocuments.h"
+#include "about.h"
+
+QString MainWindow::local = "";
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -39,8 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
             mb.exec();
 
             if (mb.clickedButton() == bCreate){
-                CreateDBDialog* cdb = new CreateDBDialog();
-                cdb->show();
+                if (QProcess::startDetached(QDir::toNativeSeparators(QCoreApplication::applicationDirPath()+"/DBTool")))
+                    QApplication::quit();
             }
             if (mb.clickedButton() == bEdit){
                 Settings* sdb = new Settings();
@@ -124,7 +126,7 @@ void MainWindow::initModelOrders()
 
     model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);  //setting default sorting
 
-    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1");
+    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1 AND isactive = 1");
 
 //setting tableview widget
     ui->tview->setModel(model);
@@ -134,6 +136,7 @@ void MainWindow::initModelOrders()
     model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Дата"));
     model->setHeaderData(typeIdx, Qt::Horizontal, tr("Тип"));
     model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, tr("Изделие"));
+    model->setHeaderData(model->fieldIndex("called"), Qt::Horizontal, tr("Оповещён?"));
     model->setHeaderData(stateIdx, Qt::Horizontal, tr("Статус"));
     model->setHeaderData(masterIdx, Qt::Horizontal, tr("Мастер"));
 
@@ -179,6 +182,7 @@ void MainWindow::initModelOrders()
     mapper->setItemDelegate(new QSqlRelationalDelegate(this));
     mapper->addMapping(ui->dNumber, model->fieldIndex("number"));
     mapper->addMapping(ui->dDateIn, model->fieldIndex("date_in"));
+    mapper->addMapping(ui->eCalled, model->fieldIndex("called"));
     mapper->addMapping(ui->eState, stateIdx);
     mapper->addMapping(ui->eMaster, masterIdx);
     mapper->addMapping(ui->dCustomer,customerIdx);
@@ -227,6 +231,13 @@ void MainWindow::on_rbWaitSpares_clicked(bool checked){
     if (checked)
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
         model->setFilter("state IN (14, 15, 16, 17)");
+}
+
+void MainWindow::on_rbCall_clicked(bool checked)
+{
+    if (checked)
+        model->setSort(model->fieldIndex("number"),Qt::AscendingOrder);
+        model->setFilter("state IN (4,5,6,7,20) AND called = 0");
 }
 
 void MainWindow::on_searchbydate_clicked()
@@ -336,10 +347,6 @@ void MainWindow::on_mEmployees_triggered(){
     CatEmployees* ce = new CatEmployees();
     ce->show();}
 
-void MainWindow::on_mCreatedb_triggered(){
-    CreateDBDialog* cdb = new CreateDBDialog();
-    cdb->show();}
-
 void MainWindow::on_mSettings_triggered(){
     Settings* sdb = new Settings();
     sdb->show();}
@@ -387,20 +394,9 @@ void MainWindow::on_mGiveOrder_triggered(){
     showGiveOrder();
     emit sendMode("new", currentID);}
 
-void MainWindow::on_mAbout_triggered()
-{
-    QMessageBox mb;
-    mb.setWindowTitle(tr("О программе..."));
-    mb.setTextFormat(Qt::RichText);
-    mb.setText("RepairCenter ver. 0.2b");
-    mb.setInformativeText("<a href = 'http://sourceforge.net/projects/repaircenter/'>RepairCenter on SourceForge</a> \n "
-                          "<a href = 'http://sourceforge.net/projects/qtrpt/'>QtRPT 1.4.5</a>");
-    QPushButton *bOk = mb.addButton("OK", QMessageBox::AcceptRole);
-    mb.setDefaultButton(bOk);
-    mb.exec();
-    if (mb.clickedButton() == bOk)
-        mb.close();
-}
+void MainWindow::on_mAbout_triggered(){
+    About * ab = new About();
+    ab->show();}
 
 void MainWindow::on_mJrnDiagReports_triggered(){
     JrnDiagReports* jdr = new JrnDiagReports();
@@ -433,9 +429,20 @@ void MainWindow::closeEvent(QCloseEvent *event){
     event->accept(); }
 
 void MainWindow::on_mHelp_triggered(){
-    QDesktopServices::openUrl(QUrl("file://"+QCoreApplication::applicationDirPath()+"/help/RU_ru/index.html"));
+//    QString path;
+//    path = QDir::toNativeSeparators("file://"+QCoreApplication::applicationDirPath()+"/help/"+ local +"/index.html");
+    QDesktopServices::openUrl(QUrl::fromLocalFile(QString(QCoreApplication::applicationDirPath()+"/help/"+ local +"/index.html")));
 }
 
 void MainWindow::on_mPrintHWDocs_triggered(){
     PrintHWDocuments * phwd = new PrintHWDocuments();
     phwd->show();}
+
+
+void MainWindow::on_mAboutQt_triggered()
+{
+    QMessageBox mb;
+    mb.aboutQt(this, tr("About Qt"));
+    mb.exec();
+
+}

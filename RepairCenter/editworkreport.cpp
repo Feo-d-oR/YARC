@@ -80,7 +80,7 @@ void EditWorkReport::getMode(QString mode, QString num)
 void EditWorkReport::setModels()
 {
     model_m = new QSqlQueryModel();
-    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = '1'");
+    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = '1' AND isactive = '1'");
     ui->eMaster->setModel(model_m);
     ui->eMaster->setModelColumn(1);
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);

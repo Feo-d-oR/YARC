@@ -61,7 +61,7 @@ void GiveOrderDiag::on_eOrderID_textChanged(const QString &arg1)
 void GiveOrderDiag::setModels()
 {
     model_e = new QSqlQueryModel();
-    model_e->setQuery("SELECT id, name FROM employees WHERE position_type = '2'");
+    model_e->setQuery("SELECT id, name FROM employees WHERE position_type = '2' AND isactive = '1'");
     ui->eGiver->setModel(model_e);
     ui->eGiver->setModelColumn(1);
     ui->eGiver->model()->sort(1, Qt::AscendingOrder);

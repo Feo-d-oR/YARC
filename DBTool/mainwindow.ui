@@ -14,15 +14,15 @@
    <string>DBTool</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../RepairCenter/Icons.qrc">
-    <normaloff>:/icons/icons/database_connect.png</normaloff>:/icons/icons/database_connect.png</iconset>
+   <iconset resource="Icons.qrc">
+    <normaloff>:/iconsdb/icons/database_edit.png</normaloff>:/iconsdb/icons/database_edit.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -111,8 +111,8 @@
            <string>Update</string>
           </property>
           <property name="icon">
-           <iconset resource="../RepairCenter/Icons.qrc">
-            <normaloff>:/icons/icons/database_go.png</normaloff>:/icons/icons/database_go.png</iconset>
+           <iconset resource="Icons.qrc">
+            <normaloff>:/iconsdb/icons/database_refresh.png</normaloff>:/iconsdb/icons/database_refresh.png</iconset>
           </property>
          </widget>
         </item>
@@ -293,9 +293,8 @@
             <string>Create</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normalon>:/icons/icons/database_add.png</normalon>
-            </iconset>
+            <iconset resource="Icons.qrc">
+             <normaloff>:/iconsdb/icons/database_add.png</normaloff>:/iconsdb/icons/database_add.png</iconset>
            </property>
           </widget>
          </widget>
@@ -309,7 +308,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../RepairCenter/Icons.qrc"/>
+  <include location="Icons.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -5,6 +5,8 @@
 Added hand-writed documents support
 Filtration in comboboxes
 Database operations moved to standalone utility "DBTool"
+Minor improvements
+Some minor fixes
 
 ---------------- v0.2b --------------------
 Fixed reports editing

@@ -40,7 +40,17 @@ bool MainWindow::connectDB()
     if(db.open())
         return true;
     else
+    {
+        QMessageBox mb;
+        mb.setWindowTitle(tr("Error!"));
+        mb.setText(tr("Unable to connect to the database!"));
+        mb.setInformativeText(db.lastError().text());
+        QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+        mb.setDefaultButton(bOk);
+        mb.exec();
         return false;
+    }
+
 }
 
 void MainWindow::readSettings()
@@ -82,8 +92,8 @@ void MainWindow::on_create_clicked()
         db.setPort(ui->port->text().toInt());
         db.setUserName(ui->username->text());
         db.setPassword(ui->password->text());
-        db.open();
-
+        if (db.open())
+        {
         QSqlQuery q;
         q.exec("CREATE DATABASE "+ui->dbname->text()+" DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
         q.exec("GRANT ALL PRIVILEGES ON "+ui->dbname->text()+".* TO '"+ui->username2->text()+"'@'%' IDENTIFIED BY '"+ui->password2->text()+"' WITH GRANT OPTION");
@@ -99,7 +109,17 @@ void MainWindow::on_create_clicked()
 
         if (ui->cbSave->isChecked())
             saveSettings();
-        close();
+        }
+        else
+        {
+            QMessageBox mb;
+            mb.setWindowTitle(tr("Error!"));
+            mb.setText(tr("Unable to create database!"));
+            mb.setInformativeText(db.lastError().text());
+            QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+            mb.setDefaultButton(bOk);
+            mb.exec();
+        }
     }
 }
 
@@ -107,12 +127,21 @@ void MainWindow::on_bUpdate_clicked()
 {
     connectDB();
     QSqlQuery q;
-    QSqlRecord rec;
+    QSqlError err;
+//    QSqlRecord rec;
 
     qDebug() << "check:" << q.exec("SHOW TABLES LIKE 'system'");
 
     if (!q.exec("SELECT * FROM system WHERE name = 'dbversion'"))
-        updateTo2();
+    {
+        err = updateTo2();
+        if (err.type() == QSqlError::NoError)
+            allUpdated();
+        else
+            updateError(err);
+    }
+    else
+        allUpdated();
 
 //    q.exec("SELECT * FROM system WHERE name = 'dbversion'");
 //    rec = q.record();
@@ -122,6 +151,37 @@ void MainWindow::on_bUpdate_clicked()
 //    if(dbversion == 2)
 //        updateTo3();
 
+}
+
+void MainWindow::allUpdated()
+{
+    QMessageBox mb;
+    mb.setWindowTitle(tr("Done!"));
+    mb.setText(tr("Database succesfully updated!"));
+    QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+    mb.setDefaultButton(bOk);
+    mb.exec();
+}
+
+void MainWindow::allLatest()
+{
+    QMessageBox mb;
+    mb.setWindowTitle(tr("Done!"));
+    mb.setText(tr("Database doesn't need to be updated"));
+    QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+    mb.setDefaultButton(bOk);
+    mb.exec();
+}
+
+void MainWindow::updateError(QSqlError error)
+{
+    QMessageBox mb;
+    mb.setWindowTitle(tr("Error!"));
+    mb.setText(tr("Something went wrong during update"));
+    mb.setInformativeText(error.text());
+    QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+    mb.setDefaultButton(bOk);
+    mb.exec();
 }
 
 void MainWindow::on_mExit_triggered()

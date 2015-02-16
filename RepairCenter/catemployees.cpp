@@ -28,8 +28,7 @@ void CatEmployees::initModel()
     ui->tview->hideColumn(model->fieldIndex("fullname"));
     ui->tview->hideColumn(model->fieldIndex("phone"));
     ui->tview->hideColumn(model->fieldIndex("address"));
-    ui->tview->hideColumn(model->fieldIndex("hired"));
-    ui->tview->hideColumn(model->fieldIndex("dismissed"));
+    ui->tview->hideColumn(model->fieldIndex("isactive"));
 
     ui->tview->setColumnWidth(model->fieldIndex("name"), 200);
     ui->tview->setColumnWidth(model->fieldIndex("position"), 200);
@@ -56,8 +55,7 @@ void CatEmployees::initModel()
     mapper->addMapping(ui->eAddress, model->fieldIndex("address"));
     mapper->addMapping(ui->ePositionType, pt_idx);
     mapper->addMapping(ui->ePosition, model->fieldIndex("position"));
-    mapper->addMapping(ui->eHired, model->fieldIndex("hired"));
-    mapper->addMapping(ui->eDismissed, model->fieldIndex("dismissed"));
+    mapper->addMapping(ui->eisActive, model->fieldIndex("isactive"));
 
     connect(ui->tview->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));

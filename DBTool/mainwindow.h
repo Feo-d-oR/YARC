@@ -29,6 +29,9 @@ private:
     void saveSettings();
     bool connectDB();
     void readSettings();
+    void allUpdated();
+    void allLatest();
+    void updateError(QSqlError error);
     int dbversion;
     Ui::MainWindow *ui;
 };

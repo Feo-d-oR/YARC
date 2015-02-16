@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/iconsdb">
+        <file>icons/database_add.png</file>
+        <file>icons/database_connect.png</file>
+        <file>icons/database_delete.png</file>
+        <file>icons/database_edit.png</file>
+        <file>icons/database_go.png</file>
+        <file>icons/database_refresh.png</file>
+        <file>icons/database_save.png</file>
+        <file>icons/database_server.png</file>
+        <file>icons/database_table.png</file>
+        <file>icons/door_out.png</file>
+    </qresource>
+</RCC>
