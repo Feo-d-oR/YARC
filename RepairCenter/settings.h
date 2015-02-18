@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QProcess>
+#include <QtSql>
 
 namespace Ui {
 class Settings;
@@ -26,6 +27,8 @@ private:
     Ui::Settings *ui;
     int langIdx;
     QSettings * settings;
+    QSqlQuery q;
+    QString st;
 };
 
 #endif // DBSETTINGSDIALOG_H

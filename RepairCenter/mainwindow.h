@@ -17,7 +17,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    static QString local;
+    static QString sLocale;
+    static float sPercMast;
+    static float sPercAcc;
+    static float sPercFirm;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -60,8 +63,9 @@ private slots:
     void on_mHelp_triggered();
     void on_mPrintHWDocs_triggered();
     void on_rbCall_clicked(bool checked);
-
     void on_mAboutQt_triggered();
+
+    void on_mPaySalaries_triggered();
 
 private:
     bool checkSettings();
@@ -76,6 +80,7 @@ private:
     void showEditDiagReport();
     void showGiveOrder();
     void showGiveOrderDiag();
+    void readGlobalSettings();
     QSettings * settings;
     QSqlRelationalTableModel *model;
     QDataWidgetMapper *mapper;

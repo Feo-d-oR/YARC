@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     settings.cpp \
     giveorderdiag.cpp \
     printhwdocuments.cpp \
-    about.cpp
+    about.cpp \
+    salaries.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -52,7 +53,8 @@ HEADERS  += mainwindow.h \
     settings.h \
     giveorderdiag.h \
     printhwdocuments.h \
-    about.h
+    about.h \
+    salaries.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -70,7 +72,8 @@ FORMS    += mainwindow.ui \
     settings.ui \
     giveorderdiag.ui \
     printhwdocuments.ui \
-    about.ui
+    about.ui \
+    salaries.ui
 
 OTHER_FILES += \
     about_code_style.txt \

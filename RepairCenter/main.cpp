@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
     loSettings = settings->value("locale/language").toString();
 
     if (loSettings != "")//if language is set then ignore system locale
-        MainWindow::local = loSettings;
+        MainWindow::sLocale = loSettings;
 
-    if (qTranslator.load(":/langs/i18n/repaircenter_"+MainWindow::local+".qm")) {
+    if (qTranslator.load(":/langs/i18n/repaircenter_"+MainWindow::sLocale+".qm")) {
         a.installTranslator(&qTranslator);
     }
 

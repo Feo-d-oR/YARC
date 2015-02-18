@@ -13,9 +13,13 @@ QSqlError createTables()
     q.exec("CREATE TABLE works (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DECIMAL(10, 2), comment VARCHAR(128))");
     q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DECIMAL(10, 2))");
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
+    q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ FLOAT)");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n INTEGER, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
+    q.exec("INSERT INTO system VALUES('percMaster', 0.5, NULL)");
+    q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
+    q.exec("INSERT INTO system VALUES('percFirm', 0.4, NULL)");
 
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, type VARCHAR(16), name VARCHAR(32))");
     q.exec(QString("INSERT INTO states VALUES(1,'accepted','") + QT_TR_NOOP("Принято в ремонт") + "')");

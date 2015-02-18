@@ -17,8 +17,12 @@
 #include "editworkreport.h"
 #include "printhwdocuments.h"
 #include "about.h"
+#include "salaries.h"
 
-QString MainWindow::local = "";
+QString MainWindow::sLocale = "";
+float MainWindow::sPercMast = 0;
+float MainWindow::sPercAcc = 0;
+float MainWindow::sPercFirm = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +31,10 @@ MainWindow::MainWindow(QWidget *parent) :
 //init database
     if (checkSettings()) {
         if (dbConnect())
+        {
             initModelOrders();
+            readGlobalSettings();
+        }
         else{
             QMessageBox mb;
             mb.setIcon(QMessageBox::Critical);
@@ -86,6 +93,20 @@ bool MainWindow::checkSettings()
     else
         return false;
 
+}
+
+void MainWindow::readGlobalSettings()
+{
+    QSqlQuery q;
+    q.exec("SELECT value_n FROM system WHERE name = 'percMaster'");
+    q.first();
+    sPercMast = q.value(0).toFloat();
+    q.exec("SELECT value_n FROM system WHERE name = 'percAcceptor'");
+    q.first();
+    sPercAcc = q.value(0).toFloat();
+    q.exec("SELECT value_n FROM system WHERE name = 'percFirm'");
+    q.first();
+    sPercFirm = q.value(0).toFloat();
 }
 
 bool MainWindow::dbConnect()
@@ -431,18 +452,18 @@ void MainWindow::closeEvent(QCloseEvent *event){
 void MainWindow::on_mHelp_triggered(){
 //    QString path;
 //    path = QDir::toNativeSeparators("file://"+QCoreApplication::applicationDirPath()+"/help/"+ local +"/index.html");
-    QDesktopServices::openUrl(QUrl::fromLocalFile(QString(QCoreApplication::applicationDirPath()+"/help/"+ local +"/index.html")));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(QString(QCoreApplication::applicationDirPath()+"/help/"+ sLocale +"/index.html")));
 }
 
 void MainWindow::on_mPrintHWDocs_triggered(){
     PrintHWDocuments * phwd = new PrintHWDocuments();
     phwd->show();}
 
-
-void MainWindow::on_mAboutQt_triggered()
-{
+void MainWindow::on_mAboutQt_triggered(){
     QMessageBox mb;
     mb.aboutQt(this, tr("About Qt"));
-    mb.exec();
+    mb.exec();}
 
-}
+void MainWindow::on_mPaySalaries_triggered(){
+    Salaries * sal = new Salaries();
+    sal->show();}

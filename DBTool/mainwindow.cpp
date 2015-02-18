@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    readSettings();
 }
 
 MainWindow::~MainWindow()
@@ -17,7 +18,7 @@ MainWindow::~MainWindow()
 
 bool MainWindow::dbCheckConnect()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName(ui->server->text());
     db.setPort(ui->port->text().toInt());
     db.setUserName(ui->username->text());
@@ -27,18 +28,23 @@ bool MainWindow::dbCheckConnect()
         return true;
     else
         return false;
+    return false;
 }
 
 bool MainWindow::connectDB()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName(ui->eserver->text());
     db.setPort(ui->eport->text().toInt());
     db.setUserName(ui->eusername->text());
     db.setPassword(ui->epassword->text());
     db.setDatabaseName(ui->edbname->text());
+
     if(db.open())
+    {
+        q = QSqlQuery(db);
         return true;
+    }
     else
     {
         QMessageBox mb;
@@ -50,7 +56,7 @@ bool MainWindow::connectDB()
         mb.exec();
         return false;
     }
-
+    return false;
 }
 
 void MainWindow::readSettings()
@@ -78,7 +84,8 @@ void MainWindow::saveSettings()
 
 void MainWindow::on_create_clicked()
 {
-    if (dbCheckConnect()){
+    if (dbCheckConnect())
+    {
         QMessageBox mb;
         mb.setWindowTitle(tr("Error!"));
         mb.setText(tr("Database with that name already exist!"));
@@ -94,21 +101,28 @@ void MainWindow::on_create_clicked()
         db.setPassword(ui->password->text());
         if (db.open())
         {
-        QSqlQuery q;
-        q.exec("CREATE DATABASE "+ui->dbname->text()+" DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
-        q.exec("GRANT ALL PRIVILEGES ON "+ui->dbname->text()+".* TO '"+ui->username2->text()+"'@'%' IDENTIFIED BY '"+ui->password2->text()+"' WITH GRANT OPTION");
-        db.close();
-        db.setHostName(ui->server->text());
-        db.setPort(ui->port->text().toInt());
-        db.setUserName(ui->username->text());
-        db.setPassword(ui->password->text());
-        db.setDatabaseName(ui->dbname->text());
-        db.open();
+            q = QSqlQuery(db);
+            q.exec("CREATE DATABASE "+ui->dbname->text()+" DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
+            q.exec("GRANT ALL PRIVILEGES ON "+ui->dbname->text()+".* TO '"+ui->username2->text()+"'@'%' IDENTIFIED BY '"+ui->password2->text()+"' WITH GRANT OPTION");
+            db.close();
+            db.setHostName(ui->server->text());
+            db.setPort(ui->port->text().toInt());
+            db.setUserName(ui->username->text());
+            db.setPassword(ui->password->text());
+            db.setDatabaseName(ui->dbname->text());
+            db.open();
 
-        createTables();
+            createTables();
 
-        if (ui->cbSave->isChecked())
-            saveSettings();
+            if (ui->cbSave->isChecked())
+                saveSettings();
+
+            QMessageBox mb;
+            mb.setWindowTitle(tr("Done!"));
+            mb.setText(tr("Database succesfully created!"));
+            QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+            mb.setDefaultButton(bOk);
+            mb.exec();
         }
         else
         {
@@ -125,14 +139,15 @@ void MainWindow::on_create_clicked()
 
 void MainWindow::on_bUpdate_clicked()
 {
-    connectDB();
-    QSqlQuery q;
-    QSqlError err;
-//    QSqlRecord rec;
+    if (connectDB())
+    {
+    q.exec("SELECT value_n FROM system WHERE name = 'dbversion'");
+    q.first();
 
-    qDebug() << "check:" << q.exec("SHOW TABLES LIKE 'system'");
+    if(q.value(0).toFloat() == 2)
+        allLatest();
 
-    if (!q.exec("SELECT * FROM system WHERE name = 'dbversion'"))
+    if(q.value(0).toFloat() == 0)
     {
         err = updateTo2();
         if (err.type() == QSqlError::NoError)
@@ -140,17 +155,16 @@ void MainWindow::on_bUpdate_clicked()
         else
             updateError(err);
     }
-    else
-        allUpdated();
+
 
 //    q.exec("SELECT * FROM system WHERE name = 'dbversion'");
 //    rec = q.record();
 //    q.first();
-//    dbversion = q.value(rec.indexOf("value_n")).toInt();
+//    dbversion = q.value(rec.indexOf("value_n"));
 
 //    if(dbversion == 2)
 //        updateTo3();
-
+    }
 }
 
 void MainWindow::allUpdated()
@@ -173,6 +187,16 @@ void MainWindow::allLatest()
     mb.exec();
 }
 
+void MainWindow::allCleared()
+{
+    QMessageBox mb;
+    mb.setWindowTitle(tr("Done!"));
+    mb.setText(tr("Database succecfully cleared!"));
+    QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+    mb.setDefaultButton(bOk);
+    mb.exec();
+}
+
 void MainWindow::updateError(QSqlError error)
 {
     QMessageBox mb;
@@ -184,7 +208,42 @@ void MainWindow::updateError(QSqlError error)
     mb.exec();
 }
 
-void MainWindow::on_mExit_triggered()
+void MainWindow::on_bClearSalary_clicked()
 {
-    close();
+    if(connectDB())
+    {
+        q.exec("TRUNCATE TABLE salaries");
+
+        if(q.lastError().type() == QSqlError::NoError)
+            allCleared();
+        else
+        {
+            QMessageBox mb;
+            mb.setWindowTitle(tr("Error!"));
+            mb.setText(tr("Something went wrong during clearing"));
+            mb.setInformativeText(q.lastError().text());
+            QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+            mb.setDefaultButton(bOk);
+            mb.exec();
+        }
+    }
+}
+
+void MainWindow::on_bClearOrders_clicked()
+{
+    connectDB();
+    q.exec("DELETE FROM orders WHERE state IN (9,10,11)");
+
+    if(q.lastError().type() == QSqlError::NoError)
+        allCleared();
+    else
+    {
+        QMessageBox mb;
+        mb.setWindowTitle(tr("Error!"));
+        mb.setText(tr("Something went wrong during clearing"));
+        mb.setInformativeText(q.lastError().text());
+        QPushButton *bOk = mb.addButton(QMessageBox::Ok);
+        mb.setDefaultButton(bOk);
+        mb.exec();
+    }
 }

@@ -10,5 +10,6 @@
         <file>icons/database_server.png</file>
         <file>icons/database_table.png</file>
         <file>icons/door_out.png</file>
+        <file>icons/database_gear.png</file>
     </qresource>
 </RCC>

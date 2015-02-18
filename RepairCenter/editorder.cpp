@@ -175,7 +175,7 @@ void EditOrder::fillFields()
     QModelIndexList idx_a = ui->eAcceptor->model()->match(ui->eAcceptor->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("acceptor")), 1, Qt::MatchExactly);
     ui->eAcceptor->setCurrentIndex(idx_a.value(0).row());
 
-    QModelIndexList idx_m = ui->eMaster->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("master")), 1, Qt::MatchExactly);
+    QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("master")), 1, Qt::MatchExactly);
     ui->eMaster->setCurrentIndex(idx_m.value(0).row());
 }
 

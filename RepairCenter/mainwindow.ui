@@ -1032,6 +1032,7 @@
     <addaction name="mNewDiagReport"/>
     <addaction name="separator"/>
     <addaction name="mPrintHWDocs"/>
+    <addaction name="mPaySalaries"/>
    </widget>
    <widget class="QMenu" name="help">
     <property name="title">
@@ -1314,6 +1315,15 @@
   <action name="mAboutQt">
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="mPaySalaries">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/money_in_envelope.png</normaloff>:/icons/icons/money_in_envelope.png</iconset>
+   </property>
+   <property name="text">
+    <string>Выплатить зарплату</string>
    </property>
   </action>
  </widget>

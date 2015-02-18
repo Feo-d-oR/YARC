@@ -69,5 +69,6 @@
         <file>icons/report_magnify_magnify.png</file>
         <file>icons/reports_hammer.png</file>
         <file>icons/reports_magnify.png</file>
+        <file>icons/money_in_envelope.png</file>
     </qresource>
 </RCC>

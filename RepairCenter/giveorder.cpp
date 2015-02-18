@@ -1,5 +1,6 @@
-#include "giveorder.h"
+﻿#include "giveorder.h"
 #include "ui_giveorder.h"
+#include "mainwindow.h"
 
 GiveOrder::GiveOrder(QWidget *parent) :
     QDialog(parent),
@@ -136,11 +137,11 @@ void GiveOrder::calculateSumm()
 
     for (roww=0; roww < rcw; roww++)
     {
-        summ += ui->tvieww->item(roww, 1)->text().toInt() * ui->tvieww->item(roww, 2)->text().toInt();
+        summ += ui->tvieww->item(roww, 1)->text().toInt() * ui->tvieww->item(roww, 2)->text().toFloat();
     }
     for (rows=0; rows < rcs; rows++)
     {
-        summ += ui->tviews->item(rows, 1)->text().toInt() * ui->tviews->item(rows, 2)->text().toInt();
+        summ += ui->tviews->item(rows, 1)->text().toInt() * ui->tviews->item(rows, 2)->text().toFloat();
     }
 
     summstr = QString::number(summ);
@@ -154,6 +155,33 @@ void GiveOrder::on_bSumm_clicked()
 
 void GiveOrder::submitOrder()
 {
+    q.exec("SELECT state FROM orders WHERE number = "+ orderID);
+    q.first();
+    if(q.value(0).toInt() != 10)
+    {
+        qDebug() << "Going salary";
+
+        sala = 0;
+        salf = 0;
+        QString st;
+        for(roww=0; roww<ui->tvieww->rowCount(); roww++)
+        {
+            q.exec("SELECT id FROM employees WHERE name = '"+ ui->tvieww->item(roww,3)->text() +"'");
+            q.first();
+            emp = q.value(0).toString();
+            sal = ui->tvieww->item(roww,1)->text().toFloat() * ui->tvieww->item(roww,2)->text().toFloat();
+            salm = sal * MainWindow::sPercMast;
+            sala += sal * MainWindow::sPercAcc;
+            salf += sal * MainWindow::sPercFirm;
+            q.exec(QString("INSERT INTO salaries VALUES (NULL, "+ emp +", "+ st.setNum(salm) +")"));
+        }
+        q.exec("SELECT acceptor FROM orders WHERE number = "+ orderID);
+        q.first();
+        emp = q.value(0).toString();
+        q.exec(QString("INSERT INTO salaries VALUES (NULL, "+ emp +", "+ st.setNum(sala) +")"));
+        q.exec(QString("INSERT INTO salaries VALUES (NULL, -5, "+ st.setNum(salf) +")"));
+    }
+
     QSqlRecord rec_e = model_e->record(ui->eGiver->currentIndex());
     QString id_e = rec_e.value(rec_e.indexOf("id")).toString();
 
@@ -163,10 +191,9 @@ void GiveOrder::submitOrder()
     q.bindValue(":date_out", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":giver", id_e);
     q.bindValue(":warranty", ui->eWarranty->text());
-
     q.exec();
-    saved = true;
     q.clear();
+    saved = true;
 }
 
 void GiveOrder::setRptValue(int &recNo, QString &paramName, QVariant &paramValue, int reportPage)
@@ -212,11 +239,11 @@ void GiveOrder::setRptValue(int &recNo, QString &paramName, QVariant &paramValue
     }
     if (paramName == "summ") {
         if (ui->tvieww->item(recNo,0) == 0) return;
-        summ = ui->tvieww->item(recNo, 1)->text().toInt() * ui->tvieww->item(recNo, 2)->text().toInt();
+        summ = ui->tvieww->item(recNo, 1)->text().toFloat() * ui->tvieww->item(recNo, 2)->text().toFloat();
         rcs = ui->tviews->rowCount();
         for (rows=0; rows < rcs; rows++) {
             if (ui->tviews->item(rows, 3)->text() == ui->tvieww->item(recNo, 4)->text()) {
-                summ += ui->tviews->item(rows, 1)->text().toInt() * ui->tviews->item(rows, 2)->text().toInt();
+                summ += ui->tviews->item(rows, 1)->text().toFloat() * ui->tviews->item(rows, 2)->text().toFloat();
             }
         }
         summstr = QString::number(summ);

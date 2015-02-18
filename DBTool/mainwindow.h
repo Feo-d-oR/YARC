@@ -22,7 +22,8 @@ public:
 private slots:
     void on_create_clicked();
     void on_bUpdate_clicked();
-    void on_mExit_triggered();
+    void on_bClearSalary_clicked();
+    void on_bClearOrders_clicked();
 
 private:
     bool dbCheckConnect();
@@ -30,10 +31,14 @@ private:
     bool connectDB();
     void readSettings();
     void allUpdated();
+    void allCleared();
     void allLatest();
     void updateError(QSqlError error);
     int dbversion;
     Ui::MainWindow *ui;
+    QSqlQuery q;
+    QSqlError err;
+    QSqlDatabase db;
 };
 
 #endif // MAINWINDOW_H

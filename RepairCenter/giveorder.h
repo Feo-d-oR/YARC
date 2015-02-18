@@ -48,7 +48,12 @@ private:
     int rows;
     int rcw;
     int rcs;
-    int summ;
+    float summ;
+    float sal;
+    float salm;
+    float sala;
+    float salf;
+    QString emp;
 
     void submitOrder();
     void fillFields();

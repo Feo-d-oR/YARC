@@ -189,6 +189,7 @@ void EditWorkReport::submitReport()
     q.bindValue(":quants", quants);
     q.exec();
     saved = true;
+    qDebug() << q.lastError().text();
 }
 
 void EditWorkReport::on_eSpare_currentIndexChanged(int index)

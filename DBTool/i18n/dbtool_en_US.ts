@@ -111,46 +111,81 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="45"/>
-        <location filename="../mainwindow.cpp" line="83"/>
-        <location filename="../mainwindow.cpp" line="116"/>
-        <location filename="../mainwindow.cpp" line="175"/>
+        <location filename="../mainwindow.ui" line="306"/>
+        <source>Cleanup</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="312"/>
+        <source>Clear salaries</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="323"/>
+        <source>Clear completed orders</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="51"/>
+        <location filename="../mainwindow.cpp" line="90"/>
+        <location filename="../mainwindow.cpp" line="130"/>
+        <location filename="../mainwindow.cpp" line="203"/>
+        <location filename="../mainwindow.cpp" line="222"/>
+        <location filename="../mainwindow.cpp" line="242"/>
         <source>Error!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="46"/>
+        <location filename="../mainwindow.cpp" line="52"/>
         <source>Unable to connect to the database!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="117"/>
+        <location filename="../mainwindow.cpp" line="131"/>
         <source>Unable to create database!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="155"/>
-        <location filename="../mainwindow.cpp" line="165"/>
+        <location filename="../mainwindow.cpp" line="121"/>
+        <location filename="../mainwindow.cpp" line="173"/>
+        <location filename="../mainwindow.cpp" line="183"/>
+        <location filename="../mainwindow.cpp" line="193"/>
         <source>Done!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="156"/>
+        <location filename="../mainwindow.cpp" line="122"/>
+        <source>Database succesfully created!</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="174"/>
         <source>Database succesfully updated!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="166"/>
+        <location filename="../mainwindow.cpp" line="184"/>
         <source>Database doesn&apos;t need to be updated</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="176"/>
+        <location filename="../mainwindow.cpp" line="194"/>
+        <source>Database succecfully cleared!</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="204"/>
         <source>Something went wrong during update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="84"/>
+        <location filename="../mainwindow.cpp" line="223"/>
+        <location filename="../mainwindow.cpp" line="243"/>
+        <source>Something went wrong during clearing</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="91"/>
         <source>Database with that name already exist!</source>
         <translation></translation>
     </message>

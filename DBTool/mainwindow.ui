@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>331</width>
+    <width>291</width>
     <height>312</height>
    </rect>
   </property>
@@ -297,6 +297,35 @@
              <normaloff>:/iconsdb/icons/database_add.png</normaloff>:/iconsdb/icons/database_add.png</iconset>
            </property>
           </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Cleanup</string>
+       </attribute>
+       <layout class="QFormLayout" name="formLayout_3">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="bClearSalary">
+          <property name="text">
+           <string>Clear salaries</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Icons.qrc">
+            <normaloff>:/iconsdb/icons/database_gear.png</normaloff>:/iconsdb/icons/database_gear.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="bClearOrders">
+          <property name="text">
+           <string>Clear completed orders</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Icons.qrc">
+            <normaloff>:/iconsdb/icons/database_gear.png</normaloff>:/iconsdb/icons/database_gear.png</iconset>
+          </property>
          </widget>
         </item>
        </layout>
