@@ -8,13 +8,12 @@ QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = RepairCenter
+TARGET = DBTool
 TEMPLATE = app
-VERSION = 0.1
 
 include($$PWD/../config.pri)
 
-DESTDIR = $${DEST_DIRECTORY}
+#DESTDIR = $${DEST_DIRECTORY}
 
 SOURCES += main.cpp\
         mainwindow.cpp

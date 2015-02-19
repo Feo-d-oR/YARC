@@ -2,11 +2,11 @@
 ================ CHANGELOG ================
 ===========================================
 ----------------- v0.3 --------------------
-Added hand-writed documents support
+Added handwritten documents support
+Added salaries accounting
 Filtration in comboboxes
-Database operations moved to standalone utility "DBTool"
-Minor improvements
-Some minor fixes
+Global database operations moved to standalone utility "DBTool"
+Some improvements, some fixes...
 
 ---------------- v0.2b --------------------
 Fixed reports editing
@@ -36,11 +36,12 @@ libqt5xml5
 libqt5gui5
 libqt5core5a
 
-Also you should copy contents of "lib" folder to /usr/lib.
+To run application under Linux use "Launch RepairCenter.sh" and "Launch QtRptDesigner.sh",
+also you can copy "libQtZint.so.1" to /usr/lib and run executables directly.
 
 -------------------------------------------
 
-Hey, guys, i need come help!
+Hey, guys, i need some help!
 As you can see my english is bad and pretty much google-translated, so i need help with english translation,
-especially in professional slang/country-specific items and printable forms.
+especially in professional slang or country-specific terms and printable forms.
 Then I can make all the fields in the source code English.

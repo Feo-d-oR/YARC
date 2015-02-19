@@ -10,12 +10,11 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = RepairCenter
 TEMPLATE = app
-VERSION = 0.3
 
 include(../QtRpt/QtRpt/QtRpt.pri)
 include($$PWD/../config.pri)
 
-DESTDIR = $${DEST_DIRECTORY}
+#DESTDIR = $${DEST_DIRECTORY}
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -79,25 +78,26 @@ OTHER_FILES += \
     about_code_style.txt \
     print_forms/order.xml \
     db.conf \
-    i18n/README_en.txt \
-    help/RU_ru/application.html \
-    help/RU_ru/catalogs.html \
-    help/RU_ru/firststart.html \
-    help/RU_ru/index.html \
-    help/RU_ru/install.html \
-    help/RU_ru/journals.html \
-    help/RU_ru/mainwindow.html \
-    help/RU_ru/print_forms.html \
-    help/RU_ru/qtrpt.html \
-    help/RU_ru/workflow.html \
-    ../print_forms/act_diag.xml \
-    ../print_forms/act_works.xml \
-    ../print_forms/order.xml \
-    ../print_forms/warranty_works.xml \
-    ../print_forms/act_diag_hw.xml \
-    ../print_forms/act_works_hw.xml \
-    ../print_forms/order_hw.xml \
-    ../print_forms/warranty_works_hw.xml
+    ../CommonFiles/README_en.txt \
+    ../CommonFiles/setting.ini \
+    ../CommonFiles/print_forms/act_diag_hw.xml \
+    ../CommonFiles/print_forms/act_diag.xml \
+    ../CommonFiles/print_forms/act_works_hw.xml \
+    ../CommonFiles/print_forms/act_works.xml \
+    ../CommonFiles/print_forms/order_hw.xml \
+    ../CommonFiles/print_forms/order.xml \
+    ../CommonFiles/print_forms/warranty_works_hw.xml \
+    ../CommonFiles/print_forms/warranty_works.xml \
+    ../CommonFiles/help/RU_ru/application.html \
+    ../CommonFiles/help/RU_ru/catalogs.html \
+    ../CommonFiles/help/RU_ru/firststart.html \
+    ../CommonFiles/help/RU_ru/index.html \
+    ../CommonFiles/help/RU_ru/install.html \
+    ../CommonFiles/help/RU_ru/journals.html \
+    ../CommonFiles/help/RU_ru/mainwindow.html \
+    ../CommonFiles/help/RU_ru/print_forms.html \
+    ../CommonFiles/help/RU_ru/qtrpt.html \
+    ../CommonFiles/help/RU_ru/workflow.html
 
 RESOURCES += \
     Icons.qrc \
