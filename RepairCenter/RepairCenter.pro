@@ -14,8 +14,6 @@ TEMPLATE = app
 include(../QtRpt/QtRpt/QtRpt.pri)
 include($$PWD/../config.pri)
 
-#DESTDIR = $${DEST_DIRECTORY}
-
 SOURCES += main.cpp\
         mainwindow.cpp \
     editorder.cpp \
@@ -75,9 +73,6 @@ FORMS    += mainwindow.ui \
     salaries.ui
 
 OTHER_FILES += \
-    about_code_style.txt \
-    print_forms/order.xml \
-    db.conf \
     ../CommonFiles/README_en.txt \
     ../CommonFiles/setting.ini \
     ../CommonFiles/print_forms/act_diag_hw.xml \
@@ -97,7 +92,9 @@ OTHER_FILES += \
     ../CommonFiles/help/RU_ru/mainwindow.html \
     ../CommonFiles/help/RU_ru/print_forms.html \
     ../CommonFiles/help/RU_ru/qtrpt.html \
-    ../CommonFiles/help/RU_ru/workflow.html
+    ../CommonFiles/help/RU_ru/workflow.html \
+    ../CommonFiles/Launch QtRptDesigner.sh \
+    ../CommonFiles/Launch RepairCenter.sh
 
 RESOURCES += \
     Icons.qrc \
@@ -106,8 +103,10 @@ RESOURCES += \
 TRANSLATIONS += i18n/repaircenter_ru_RU.ts
 TRANSLATIONS += i18n/repaircenter_en_US.ts
 
-OTHER_FILES += \
-    i18n/repaircenter_ru_RU.ts \
-    i18n/repaircenter_en_US.ts
-
 win32:RC_FILE = appicon.rc
+
+cf_copy.commands = $(COPY_DIR) $$PWD/../CommonFiles/* $$DESTDIR
+first.depends = $(first) cf_copy
+export(first.depends)
+export(cf_copy.commands)
+QMAKE_EXTRA_TARGETS += first cf_copy

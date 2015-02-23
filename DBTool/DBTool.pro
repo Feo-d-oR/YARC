@@ -13,8 +13,6 @@ TEMPLATE = app
 
 include($$PWD/../config.pri)
 
-#DESTDIR = $${DEST_DIRECTORY}
-
 SOURCES += main.cpp\
         mainwindow.cpp
 
