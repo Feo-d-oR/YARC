@@ -1,6 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.1" language="ru_RU">
+<context>
+    <name>DBWork</name>
+    <message>
+        <location filename="../dbwork.cpp" line="28"/>
+        <source>Taken for repair</source>
+        <translation>Принято в ремонт</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="29"/>
+        <source>Taken for diagnosis</source>
+        <translation>Принято на диагностику</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="30"/>
+        <source>Customer refused to repair</source>
+        <translation>Отказ клиента от ремонта</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="31"/>
+        <source>Refused to repair</source>
+        <translation>Отказ в ремонте</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="32"/>
+        <source>Diagnosis completed</source>
+        <translation>Диагностика выполнена</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="33"/>
+        <source>Repair completed</source>
+        <translation>Ремонт выполнен</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="34"/>
+        <source>Waits for agreement</source>
+        <translation>Ожидает согласования</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="35"/>
+        <source>Agreed</source>
+        <translation>Согласовано</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="36"/>
+        <source>Given with diagnosis</source>
+        <translation>Выдано с диагностикой</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="37"/>
+        <source>Given with repair</source>
+        <translation>Выдано с ремонтом</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="38"/>
+        <source>Given without repair</source>
+        <translation>Выдано без ремонта</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="39"/>
+        <source>In diagnosing</source>
+        <translation>На диагностике</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="40"/>
+        <source>In the work</source>
+        <translation>В работе</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="41"/>
+        <source>Waits for spares</source>
+        <translation>Ожидает запчастей</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="42"/>
+        <source>Spares ordered</source>
+        <translation>Запчасти заказаны</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="43"/>
+        <source>Customer-Waits for spares</source>
+        <translation>На руках-Ожидает запчастей</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="44"/>
+        <source>Customer-Spares ordered</source>
+        <translation>На руках-Запчасти заказаны</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="45"/>
+        <source>Waits for giving out</source>
+        <translation>Ожидает выдачи</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="46"/>
+        <source>Taken for repair (warranty)</source>
+        <translation>Принято в ремонт (гарантия)</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="47"/>
+        <location filename="../dbwork.cpp" line="71"/>
+        <source>Customer-Spares recieved</source>
+        <translation>На руках-Запчасти получены</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="48"/>
+        <location filename="../dbwork.cpp" line="72"/>
+        <source>Spares recieved</source>
+        <translation>Запчасти получены</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="51"/>
+        <source>Master</source>
+        <translation>Мастер</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="52"/>
+        <source>Acceptor</source>
+        <translation>Приёмщик</translation>
+    </message>
+</context>
 <context>
     <name>MainWindow</name>
     <message>
@@ -126,66 +246,66 @@
         <translation>Очистить выданные заказы</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="51"/>
-        <location filename="../mainwindow.cpp" line="90"/>
-        <location filename="../mainwindow.cpp" line="130"/>
-        <location filename="../mainwindow.cpp" line="203"/>
-        <location filename="../mainwindow.cpp" line="222"/>
-        <location filename="../mainwindow.cpp" line="242"/>
+        <location filename="../mainwindow.cpp" line="50"/>
+        <location filename="../mainwindow.cpp" line="89"/>
+        <location filename="../mainwindow.cpp" line="131"/>
+        <location filename="../mainwindow.cpp" line="206"/>
+        <location filename="../mainwindow.cpp" line="225"/>
+        <location filename="../mainwindow.cpp" line="245"/>
         <source>Error!</source>
         <translation>Ошибка!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="52"/>
+        <location filename="../mainwindow.cpp" line="51"/>
         <source>Unable to connect to the database!</source>
         <translation>Не могу подключиться к базе данных!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="131"/>
+        <location filename="../mainwindow.cpp" line="132"/>
         <source>Unable to create database!</source>
         <translation>Не могу создать базу данных!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="121"/>
-        <location filename="../mainwindow.cpp" line="173"/>
-        <location filename="../mainwindow.cpp" line="183"/>
-        <location filename="../mainwindow.cpp" line="193"/>
+        <location filename="../mainwindow.cpp" line="122"/>
+        <location filename="../mainwindow.cpp" line="176"/>
+        <location filename="../mainwindow.cpp" line="186"/>
+        <location filename="../mainwindow.cpp" line="196"/>
         <source>Done!</source>
         <translation>Готово!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="122"/>
+        <location filename="../mainwindow.cpp" line="123"/>
         <source>Database succesfully created!</source>
         <translation>База данных успешно создана!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="174"/>
+        <location filename="../mainwindow.cpp" line="177"/>
         <source>Database succesfully updated!</source>
         <translation>База данных успешно обновлена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="184"/>
+        <location filename="../mainwindow.cpp" line="187"/>
         <source>Database doesn&apos;t need to be updated</source>
         <translation>База данных не нуждается в обновлении</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="194"/>
+        <location filename="../mainwindow.cpp" line="197"/>
         <source>Database succecfully cleared!</source>
         <translation>База данных успешно очищена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="204"/>
+        <location filename="../mainwindow.cpp" line="207"/>
         <source>Something went wrong during update</source>
         <translation>Что-то пошло не так во время обновления</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="223"/>
-        <location filename="../mainwindow.cpp" line="243"/>
+        <location filename="../mainwindow.cpp" line="226"/>
+        <location filename="../mainwindow.cpp" line="246"/>
         <source>Something went wrong during clearing</source>
         <translation>Что-то пошло не так во время очистки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="91"/>
+        <location filename="../mainwindow.cpp" line="90"/>
         <source>Database with that name already exist!</source>
         <translation>База данных с таким именем уже существует!</translation>
     </message>

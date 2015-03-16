@@ -239,7 +239,7 @@ void MainWindow::on_rbCompleted_clicked(bool checked){
 void MainWindow::on_rbAccepted_clicked(bool checked){
     if (checked)
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (1, 2, 12, 13, 19)");
+        model->setFilter("state IN (1, 2, 12, 13, 19, 20, 21)");
 }
 
 void MainWindow::on_rbConsent_clicked(bool checked){

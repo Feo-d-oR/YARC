@@ -22,6 +22,7 @@ void Salaries::setModels()
     ui->eEmployee->setModel(model_e);
     ui->eEmployee->setModelColumn(1);
     ui->eEmployee->model()->sort(1, Qt::AscendingOrder);
+    ui->eEmployee->setCurrentIndex(-1);
 }
 
 void Salaries::calcSummEmpl()

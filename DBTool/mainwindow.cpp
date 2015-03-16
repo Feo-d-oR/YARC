@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "createdb.h"
-#include "updatedb.h"
+#include "dbwork.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -112,7 +111,9 @@ void MainWindow::on_create_clicked()
             db.setDatabaseName(ui->dbname->text());
             db.open();
 
-            createTables();
+            DBWork dbw;
+            dbw.createTables();
+
 
             if (ui->cbSave->isChecked())
                 saveSettings();
@@ -149,7 +150,9 @@ void MainWindow::on_bUpdate_clicked()
 
     if(q.value(0).toFloat() == 0)
     {
-        err = updateTo2();
+        DBWork upd;
+        QSqlError err = upd.updateTo2();
+        qDebug() << err.text();
         if (err.type() == QSqlError::NoError)
             allUpdated();
         else

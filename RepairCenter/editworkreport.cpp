@@ -54,6 +54,7 @@ void EditWorkReport::getMode(QString mode, QString num)
         ui->eDate->setDate(QDate::currentDate());
         setModels();
         isnew = true;
+        ui->eMaster->setCurrentIndex(-1);
     }
     else if (mode == "view")
     {
@@ -91,6 +92,7 @@ void EditWorkReport::setModels()
     ui->eWork->setModel(model_w);
     ui->eWork->setModelColumn(model_w->fieldIndex("name"));
     model_w->select();
+    ui->eWork->setCurrentIndex(-1);
 
     model_s = new QSqlTableModel();
     model_s->setTable("spares");
@@ -98,6 +100,7 @@ void EditWorkReport::setModels()
     ui->eSpare->setModel(model_s);
     ui->eSpare->setModelColumn(model_s->fieldIndex("name"));
     model_s->select();
+    ui->eSpare->setCurrentIndex(-1);
 
     ui->tview->setColumnWidth(0, 300);
     ui->tview->setColumnWidth(1, 100);

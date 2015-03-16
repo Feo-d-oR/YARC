@@ -104,6 +104,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Текст для печати, например, &quot;100 дней&quot;</string>
+       </property>
       </widget>
      </item>
      <item>
@@ -160,7 +163,7 @@
    <item>
     <widget class="QTabWidget" name="tw">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="documentMode">
       <bool>false</bool>
@@ -417,6 +420,23 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>eOrderID</tabstop>
+  <tabstop>eDate</tabstop>
+  <tabstop>eWarranty</tabstop>
+  <tabstop>eGiver</tabstop>
+  <tabstop>tw</tabstop>
+  <tabstop>tvieww</tabstop>
+  <tabstop>tviews</tabstop>
+  <tabstop>eSumm</tabstop>
+  <tabstop>bSumm</tabstop>
+  <tabstop>bPrint</tabstop>
+  <tabstop>bSave</tabstop>
+  <tabstop>cAct</tabstop>
+  <tabstop>cWarranty</tabstop>
+  <tabstop>cPreview</tabstop>
+  <tabstop>bCancel</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

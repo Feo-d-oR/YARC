@@ -14,11 +14,11 @@ TEMPLATE = app
 include($$PWD/../config.pri)
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    dbwork.cpp
 
 HEADERS  += mainwindow.h \
-    updatedb.h \
-    createdb.h
+    dbwork.h
 
 FORMS    += mainwindow.ui
 
@@ -32,3 +32,11 @@ TRANSLATIONS += i18n/dbtool_en_US.ts
 OTHER_FILES += \
     i18n/dbtool_ru_RU.ts \
     i18n/dbtool_en_US.ts
+
+dbtupd.commands = lupdate $$PWD/DBTool.pro
+dbtrel.commands = lrelease $$PWD/DBTool.pro
+dbtrel.depends = dbtupd
+
+QMAKE_EXTRA_TARGETS += dbtupd dbtrel
+PRE_TARGETDEPS += dbtrel
+#translate.commands = $(COPY) *.qm $$DESTDIR/i18n/

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>About</name>
     <message>
@@ -433,12 +433,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../editdiagreport.cpp" line="52"/>
+        <location filename="../editdiagreport.cpp" line="53"/>
         <source>Просмотр отчёта диагностики</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editdiagreport.cpp" line="61"/>
+        <location filename="../editdiagreport.cpp" line="62"/>
         <location filename="../editdiagreport.cpp" line="95"/>
         <source>Редактирование отчёта диагностики</source>
         <translation></translation>
@@ -468,102 +468,107 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="42"/>
+        <location filename="../editorder.ui" line="428"/>
         <source>Комплектность:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="58"/>
+        <location filename="../editorder.ui" line="119"/>
         <source>dd.MM.yyyy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="102"/>
+        <location filename="../editorder.ui" line="163"/>
         <source>Мастер:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="124"/>
+        <location filename="../editorder.ui" line="368"/>
         <source>Комментарии:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="140"/>
+        <location filename="../editorder.ui" line="335"/>
         <source>Серийный номер:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="156"/>
+        <location filename="../editorder.ui" line="42"/>
         <source>Дата:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="182"/>
+        <location filename="../editorder.ui" line="268"/>
         <source>Телефон:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="198"/>
+        <location filename="../editorder.ui" line="58"/>
         <source>Неисправность:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="227"/>
+        <location filename="../editorder.ui" line="390"/>
         <source>Принял:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="246"/>
+        <location filename="../editorder.ui" line="409"/>
         <source>Состояние:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="294"/>
+        <location filename="../editorder.ui" line="84"/>
         <source>Статус:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="306"/>
+        <location filename="../editorder.ui" line="175"/>
         <source>Отменить</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="331"/>
+        <location filename="../editorder.ui" line="200"/>
         <source>Просмотр</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="338"/>
+        <location filename="../editorder.ui" line="207"/>
         <source>Печать...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="350"/>
+        <location filename="../editorder.ui" line="219"/>
         <source>Сохранить и закрыть</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="449"/>
+        <location filename="../editorder.ui" line="497"/>
+        <source>Добавить в справочник</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../editorder.ui" line="577"/>
         <source>Тип изделия:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="462"/>
+        <location filename="../editorder.ui" line="523"/>
         <source>Изделие:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="484"/>
+        <location filename="../editorder.ui" line="555"/>
         <source>Номер:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="503"/>
+        <location filename="../editorder.ui" line="284"/>
         <source>Примерная стоимость:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="557"/>
+        <location filename="../editorder.ui" line="100"/>
         <source>Ф.И.О. заказчика:</source>
         <translation></translation>
     </message>
@@ -593,12 +598,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="68"/>
+        <location filename="../editorder.cpp" line="71"/>
         <source>Просмотр заказа</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="78"/>
+        <location filename="../editorder.cpp" line="81"/>
         <source>Редактирование заказа</source>
         <translation></translation>
     </message>
@@ -647,63 +652,79 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="217"/>
+        <location filename="../editworkreport.ui" line="205"/>
+        <location filename="../editworkreport.ui" line="325"/>
+        <source>Добавить в справочник</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../editworkreport.ui" line="220"/>
         <source>Кол-во:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="245"/>
+        <location filename="../editworkreport.ui" line="248"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="263"/>
+        <location filename="../editworkreport.ui" line="266"/>
         <source>Номер заказа:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="273"/>
+        <location filename="../editworkreport.ui" line="276"/>
         <source>Запчасти:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="282"/>
+        <location filename="../editworkreport.ui" line="285"/>
         <source>Запчасть:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="302"/>
+        <location filename="../editworkreport.ui" line="305"/>
         <source>Цена:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="340"/>
+        <location filename="../editworkreport.ui" line="346"/>
+        <source>Добавить в список</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../editworkreport.ui" line="349"/>
         <source>Добавить</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="352"/>
+        <location filename="../editworkreport.ui" line="361"/>
+        <source>Удалить из списка</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../editworkreport.ui" line="364"/>
         <location filename="../editworkreport.cpp" line="26"/>
         <source>Удалить</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="374"/>
+        <location filename="../editworkreport.ui" line="386"/>
         <source>Наименование</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="379"/>
+        <location filename="../editworkreport.ui" line="391"/>
         <source>Цена</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="384"/>
+        <location filename="../editworkreport.ui" line="396"/>
         <source>Кол-во</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="389"/>
+        <location filename="../editworkreport.ui" line="401"/>
         <source>ID</source>
         <translation></translation>
     </message>
@@ -728,12 +749,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="61"/>
+        <location filename="../editworkreport.cpp" line="62"/>
         <source>Просмотр отчёта о работе</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="72"/>
+        <location filename="../editworkreport.cpp" line="73"/>
         <source>Редактирование отчёта о работе</source>
         <translation></translation>
     </message>
@@ -766,90 +787,95 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="125"/>
+        <location filename="../giveorder.ui" line="108"/>
+        <source>Текст для печати, например, &quot;100 дней&quot;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../giveorder.ui" line="128"/>
         <source>Выдал:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="181"/>
+        <location filename="../giveorder.ui" line="184"/>
         <source>Работы</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="197"/>
-        <location filename="../giveorder.ui" line="247"/>
+        <location filename="../giveorder.ui" line="200"/>
+        <location filename="../giveorder.ui" line="250"/>
         <source>Наименование</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="202"/>
-        <location filename="../giveorder.ui" line="252"/>
+        <location filename="../giveorder.ui" line="205"/>
+        <location filename="../giveorder.ui" line="255"/>
         <source>Кол-во</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="207"/>
+        <location filename="../giveorder.ui" line="210"/>
         <source>Стоимость</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="212"/>
+        <location filename="../giveorder.ui" line="215"/>
         <source>Мастер</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="217"/>
-        <location filename="../giveorder.ui" line="267"/>
+        <location filename="../giveorder.ui" line="220"/>
+        <location filename="../giveorder.ui" line="270"/>
         <source>ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="231"/>
+        <location filename="../giveorder.ui" line="234"/>
         <source>Запчасти</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="257"/>
+        <location filename="../giveorder.ui" line="260"/>
         <source>Цена</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="262"/>
+        <location filename="../giveorder.ui" line="265"/>
         <source>Работа</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="294"/>
+        <location filename="../giveorder.ui" line="297"/>
         <source>Сумма:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="346"/>
+        <location filename="../giveorder.ui" line="349"/>
         <source>Отменить</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="371"/>
+        <location filename="../giveorder.ui" line="374"/>
         <source>Акт</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="381"/>
+        <location filename="../giveorder.ui" line="384"/>
         <source>Гарантия</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="388"/>
+        <location filename="../giveorder.ui" line="391"/>
         <source>Просмотр</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="395"/>
+        <location filename="../giveorder.ui" line="398"/>
         <source>Печать...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="407"/>
+        <location filename="../giveorder.ui" line="410"/>
         <source>Сохранить и закрыть</source>
         <translation></translation>
     </message>
@@ -1112,31 +1138,31 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="422"/>
-        <location filename="../mainwindow.ui" line="877"/>
+        <location filename="../mainwindow.ui" line="441"/>
+        <location filename="../mainwindow.ui" line="953"/>
         <source>Просмотр</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="477"/>
+        <location filename="../mainwindow.ui" line="496"/>
         <source>Статус:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="521"/>
+        <location filename="../mainwindow.ui" line="543"/>
         <source>Мастер:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="560"/>
+        <location filename="../mainwindow.ui" line="594"/>
         <source>Дата приёма:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="327"/>
-        <location filename="../mainwindow.ui" line="362"/>
-        <location filename="../mainwindow.ui" line="595"/>
-        <location filename="../mainwindow.ui" line="816"/>
+        <location filename="../mainwindow.ui" line="346"/>
+        <location filename="../mainwindow.ui" line="378"/>
+        <location filename="../mainwindow.ui" line="632"/>
+        <location filename="../mainwindow.ui" line="889"/>
         <source>dd.MM.yyyy</source>
         <translation></translation>
     </message>
@@ -1146,68 +1172,68 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="223"/>
+        <location filename="../mainwindow.ui" line="229"/>
         <source>Позвонить</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="547"/>
+        <location filename="../mainwindow.ui" line="578"/>
         <source>Клиент оповещён:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="625"/>
+        <location filename="../mainwindow.ui" line="662"/>
         <source>Клиент:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="654"/>
+        <location filename="../mainwindow.ui" line="694"/>
         <source>Телефон:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="690"/>
+        <location filename="../mainwindow.ui" line="733"/>
         <source>Тип:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="716"/>
+        <location filename="../mainwindow.ui" line="768"/>
         <source>Изделие:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="742"/>
+        <location filename="../mainwindow.ui" line="803"/>
         <source>Неисправность:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="781"/>
+        <location filename="../mainwindow.ui" line="851"/>
         <source>Дата выдачи:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="839"/>
+        <location filename="../mainwindow.ui" line="912"/>
         <source>Комментарий:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="938"/>
+        <location filename="../mainwindow.ui" line="1014"/>
         <source>Сохранить</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="461"/>
+        <location filename="../mainwindow.ui" line="480"/>
         <source>Номер квитанции:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="888"/>
+        <location filename="../mainwindow.ui" line="964"/>
         <location filename="../mainwindow.cpp" line="45"/>
         <source>Изменить</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="899"/>
+        <location filename="../mainwindow.ui" line="975"/>
         <source>Удалить</source>
         <translation></translation>
     </message>
@@ -1237,186 +1263,186 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="256"/>
+        <location filename="../mainwindow.ui" line="275"/>
         <location filename="../mainwindow.cpp" line="289"/>
         <source>Номер квитанции</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="261"/>
+        <location filename="../mainwindow.ui" line="280"/>
         <location filename="../mainwindow.cpp" line="291"/>
         <source>Имя</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1085"/>
+        <location filename="../mainwindow.ui" line="1160"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1136"/>
+        <location filename="../mainwindow.ui" line="1211"/>
         <source>About RepairCenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1177"/>
+        <location filename="../mainwindow.ui" line="1252"/>
         <source>Переподключиться</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1180"/>
+        <location filename="../mainwindow.ui" line="1255"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Повторное подключение к базе данных&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1210"/>
-        <location filename="../mainwindow.ui" line="1213"/>
+        <location filename="../mainwindow.ui" line="1285"/>
+        <location filename="../mainwindow.ui" line="1288"/>
         <source>Типы запчастей</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1222"/>
+        <location filename="../mainwindow.ui" line="1297"/>
         <source>Работы</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1252"/>
+        <location filename="../mainwindow.ui" line="1327"/>
         <source>Новый отчёт о работе</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1267"/>
+        <location filename="../mainwindow.ui" line="1342"/>
         <source>Новый отчёт диагностики</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1279"/>
+        <location filename="../mainwindow.ui" line="1354"/>
         <source>Выдать из ремонта</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1291"/>
+        <location filename="../mainwindow.ui" line="1366"/>
         <source>Выдать с актом диагностики</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1294"/>
+        <location filename="../mainwindow.ui" line="1369"/>
         <source>Ctrl+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1303"/>
+        <location filename="../mainwindow.ui" line="1378"/>
         <source>Руководство</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1312"/>
+        <location filename="../mainwindow.ui" line="1387"/>
         <source>Напечатать рукописные документы</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1317"/>
+        <location filename="../mainwindow.ui" line="1392"/>
         <location filename="../mainwindow.cpp" line="464"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1326"/>
+        <location filename="../mainwindow.ui" line="1401"/>
         <source>Выплатить зарплату</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1025"/>
+        <location filename="../mainwindow.ui" line="1101"/>
         <source>Действия</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1125"/>
+        <location filename="../mainwindow.ui" line="1200"/>
         <source>Новый заказ</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1149"/>
+        <location filename="../mainwindow.ui" line="1224"/>
         <source>Настройки</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1039"/>
+        <location filename="../mainwindow.ui" line="1115"/>
         <source>Справка</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1015"/>
+        <location filename="../mainwindow.ui" line="1091"/>
         <source>Приложение</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1048"/>
+        <location filename="../mainwindow.ui" line="1124"/>
         <source>Справочники</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1060"/>
+        <location filename="../mainwindow.ui" line="1136"/>
         <source>Журналы</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1103"/>
+        <location filename="../mainwindow.ui" line="1178"/>
         <source>Выход</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1106"/>
+        <location filename="../mainwindow.ui" line="1181"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1128"/>
+        <location filename="../mainwindow.ui" line="1203"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1159"/>
+        <location filename="../mainwindow.ui" line="1234"/>
         <source>Сотрудники</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1168"/>
+        <location filename="../mainwindow.ui" line="1243"/>
         <source>Типы изделий</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1190"/>
+        <location filename="../mainwindow.ui" line="1265"/>
         <source>Клиенты</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1200"/>
+        <location filename="../mainwindow.ui" line="1275"/>
         <source>Запчасти</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1231"/>
+        <location filename="../mainwindow.ui" line="1306"/>
         <source>Отчёты о работе</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1243"/>
+        <location filename="../mainwindow.ui" line="1318"/>
         <source>Отчёты диагностики</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1255"/>
+        <location filename="../mainwindow.ui" line="1330"/>
         <source>Shift+W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1270"/>
+        <location filename="../mainwindow.ui" line="1345"/>
         <source>Shift+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1282"/>
+        <location filename="../mainwindow.ui" line="1357"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>

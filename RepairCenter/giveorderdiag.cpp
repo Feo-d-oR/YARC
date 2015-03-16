@@ -49,6 +49,7 @@ void GiveOrderDiag::getMode(QString mode, QString num)
         ui->eOrderID->setText(num);
         qDebug()<<num;
         setModels();
+        ui->eGiver->setCurrentIndex(-1);
     }
 }
 

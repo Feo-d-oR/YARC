@@ -52,6 +52,7 @@ void GiveOrder::getMode(QString mode, QString num)
         ui->eDate->setDate(QDate::currentDate());
         ui->eOrderID->setText(num);
         setModels();
+        ui->eGiver->setCurrentIndex(-1);
     }
 }
 

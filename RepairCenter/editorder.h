@@ -44,7 +44,6 @@ private:
     QSqlQueryModel *model_s;
     QSqlQueryModel *model_a;
     QSqlQueryModel *model_m;
-//    QSqlQueryModel *model_t;
     QSqlTableModel *model_t;
     QtRPT *report;
 

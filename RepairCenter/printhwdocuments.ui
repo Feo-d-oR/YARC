@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>270</width>
-    <height>228</height>
+    <width>272</width>
+    <height>240</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -137,6 +137,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>eNumOrders</tabstop>
+  <tabstop>bPrintOrders</tabstop>
+  <tabstop>eNumGives</tabstop>
+  <tabstop>bPrintGives</tabstop>
+  <tabstop>eNumDiags</tabstop>
+  <tabstop>bPrintDiags</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

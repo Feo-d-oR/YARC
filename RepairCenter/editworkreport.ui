@@ -201,6 +201,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="bAddWork">
+       <property name="toolTip">
+        <string>Добавить в справочник</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -318,6 +321,9 @@
       </item>
       <item row="0" column="5">
        <widget class="QToolButton" name="bAddSpare">
+        <property name="toolTip">
+         <string>Добавить в справочник</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -336,6 +342,9 @@
           <height>16777215</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Добавить в список</string>
+        </property>
         <property name="text">
          <string>Добавить</string>
         </property>
@@ -348,6 +357,9 @@
       </item>
       <item row="1" column="4" colspan="2">
        <widget class="QPushButton" name="bRemove">
+        <property name="toolTip">
+         <string>Удалить из списка</string>
+        </property>
         <property name="text">
          <string>Удалить</string>
         </property>
@@ -403,6 +415,23 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>eOrderID</tabstop>
+  <tabstop>eDate</tabstop>
+  <tabstop>eMaster</tabstop>
+  <tabstop>eWork</tabstop>
+  <tabstop>eWPrice</tabstop>
+  <tabstop>bAddWork</tabstop>
+  <tabstop>eQuant</tabstop>
+  <tabstop>eSpare</tabstop>
+  <tabstop>eSPrice</tabstop>
+  <tabstop>bAddSpare</tabstop>
+  <tabstop>bUse</tabstop>
+  <tabstop>bRemove</tabstop>
+  <tabstop>tview</tabstop>
+  <tabstop>bSave</tabstop>
+  <tabstop>bCancel</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

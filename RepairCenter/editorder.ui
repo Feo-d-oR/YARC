@@ -30,21 +30,82 @@
    <bool>false</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="10" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_11">
+   <item row="0" column="2" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_2">
      <property name="maximumSize">
       <size>
-       <width>111</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
      <property name="text">
-      <string>Комплектность:</string>
+      <string>Дата:</string>
      </property>
      <property name="buddy">
-      <cstring>eComplect</cstring>
+      <cstring>eDate</cstring>
      </property>
     </widget>
+   </item>
+   <item row="8" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_9">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Неисправность:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eDisease</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="eNumber">
+     <property name="maximumSize">
+      <size>
+       <width>71</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4" colspan="2" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_3">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Статус:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eState</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_4">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Ф.И.О. заказчика:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eCustomer</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="6">
+    <widget class="QLineEdit" name="eProduct"/>
    </item>
    <item row="0" column="3">
     <widget class="QDateEdit" name="eDate">
@@ -62,206 +123,8 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="6">
-    <widget class="QLineEdit" name="ePhone"/>
-   </item>
-   <item row="13" column="1" colspan="6">
-    <widget class="QPlainTextEdit" name="eComment">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>31</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>81</height>
-      </size>
-     </property>
-     <property name="plainText">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="4" colspan="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_14">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>150</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Мастер:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eMaster</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="6">
-    <widget class="QLineEdit" name="eSerial"/>
-   </item>
-   <item row="9" column="1" colspan="6">
-    <widget class="QLineEdit" name="eCond"/>
-   </item>
-   <item row="13" column="0" alignment="Qt::AlignRight|Qt::AlignTop">
-    <widget class="QLabel" name="label_12">
-     <property name="maximumSize">
-      <size>
-       <width>101</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Комментарии:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eComment</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="4" colspan="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_8">
-     <property name="maximumSize">
-      <size>
-       <width>121</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Серийный номер:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eSerial</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_2">
-     <property name="maximumSize">
-      <size>
-       <width>41</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Дата:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eDate</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="eNumber">
-     <property name="maximumSize">
-      <size>
-       <width>71</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="4" colspan="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_5">
-     <property name="maximumSize">
-      <size>
-       <width>100</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Телефон:</string>
-     </property>
-     <property name="buddy">
-      <cstring>ePhone</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_9">
-     <property name="maximumSize">
-      <size>
-       <width>111</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Неисправность:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eDisease</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0" colspan="7">
-    <widget class="Line" name="line_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_13">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>100</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Принял:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eAcceptor</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="6">
-    <widget class="QLineEdit" name="eProduct"/>
-   </item>
-   <item row="9" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_10">
-     <property name="maximumSize">
-      <size>
-       <width>81</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Состояние:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eCond</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="7">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1" colspan="6">
-    <widget class="QLineEdit" name="eDisease"/>
-   </item>
-   <item row="14" column="6">
-    <widget class="QComboBox" name="eMaster">
+   <item row="14" column="1" colspan="3">
+    <widget class="QComboBox" name="eAcceptor">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -282,19 +145,25 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="4" colspan="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_3">
+   <item row="14" column="4" colspan="2" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_14">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="maximumSize">
       <size>
-       <width>100</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
      <property name="text">
-      <string>Статус:</string>
+      <string>Мастер:</string>
      </property>
      <property name="buddy">
-      <cstring>eState</cstring>
+      <cstring>eMaster</cstring>
      </property>
     </widget>
    </item>
@@ -358,6 +227,243 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="0" colspan="7">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="6">
+    <widget class="QComboBox" name="eState">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>201</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>260</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4" colspan="2" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_5">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Телефон:</string>
+     </property>
+     <property name="buddy">
+      <cstring>ePhone</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_15">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Примерная стоимость:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eCost</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1" colspan="2">
+    <widget class="QLineEdit" name="eCost">
+     <property name="maximumSize">
+      <size>
+       <width>91</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="inputMask">
+      <string/>
+     </property>
+     <property name="maxLength">
+      <number>16</number>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="1" colspan="6">
+    <widget class="QPlainTextEdit" name="eComment">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>31</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>81</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4" colspan="2" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_8">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Серийный номер:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eSerial</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="6">
+    <widget class="QLineEdit" name="eSerial"/>
+   </item>
+   <item row="7" column="0" colspan="7">
+    <widget class="Line" name="line_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0" colspan="7">
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0" alignment="Qt::AlignRight|Qt::AlignTop">
+    <widget class="QLabel" name="label_12">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Комментарии:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eComment</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_13">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Принял:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eAcceptor</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1" colspan="6">
+    <widget class="QLineEdit" name="eDisease"/>
+   </item>
+   <item row="9" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_10">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Состояние:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eCond</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1" colspan="6">
+    <widget class="QLineEdit" name="eCond"/>
+   </item>
+   <item row="10" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_11">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Комплектность:</string>
+     </property>
+     <property name="buddy">
+      <cstring>eComplect</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1" colspan="6">
+    <widget class="QLineEdit" name="eComplect"/>
+   </item>
+   <item row="14" column="6">
+    <widget class="QComboBox" name="eMaster">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>200</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>300</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0" colspan="7">
+    <widget class="Line" name="line_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
    <item row="5" column="1" colspan="3">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
@@ -387,6 +493,9 @@
          <height>23</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Добавить в справочник</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -395,66 +504,18 @@
          <normalon>:/icons/icons/add.png</normalon>
         </iconset>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="6">
-    <widget class="QComboBox" name="eState">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>201</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>260</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="7">
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="1" colspan="6">
-    <widget class="QLineEdit" name="eComplect"/>
-   </item>
-   <item row="5" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_6">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>20</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>91</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Тип изделия:</string>
-     </property>
-    </widget>
    </item>
    <item row="5" column="4" colspan="2" alignment="Qt::AlignRight">
     <widget class="QLabel" name="label_7">
      <property name="maximumSize">
       <size>
-       <width>100</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
@@ -463,6 +524,16 @@
      </property>
      <property name="buddy">
       <cstring>eProduct</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="3">
+    <widget class="QLineEdit" name="eCustomer"/>
+   </item>
+   <item row="4" column="0" colspan="7">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -476,7 +547,7 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>51</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
@@ -488,95 +559,52 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="3">
-    <widget class="QLineEdit" name="eCustomer"/>
-   </item>
-   <item row="11" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_15">
-     <property name="maximumSize">
-      <size>
-       <width>151</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Примерная стоимость:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eCost</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="1" colspan="2">
-    <widget class="QLineEdit" name="eCost">
-     <property name="maximumSize">
-      <size>
-       <width>91</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="inputMask">
-      <string/>
-     </property>
-     <property name="maxLength">
-      <number>16</number>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="1" colspan="3">
-    <widget class="QComboBox" name="eAcceptor">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+   <item row="5" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_6">
      <property name="minimumSize">
       <size>
-       <width>200</width>
-       <height>0</height>
+       <width>0</width>
+       <height>20</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>300</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_4">
-     <property name="maximumSize">
-      <size>
-       <width>121</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
      <property name="text">
-      <string>Ф.И.О. заказчика:</string>
-     </property>
-     <property name="buddy">
-      <cstring>eCustomer</cstring>
+      <string>Тип изделия:</string>
      </property>
     </widget>
    </item>
-   <item row="15" column="0" colspan="7">
-    <widget class="Line" name="line_4">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="7">
-    <widget class="Line" name="line_5">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
+   <item row="3" column="6">
+    <widget class="QLineEdit" name="ePhone"/>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>eNumber</tabstop>
+  <tabstop>eDate</tabstop>
+  <tabstop>eState</tabstop>
+  <tabstop>eCustomer</tabstop>
+  <tabstop>ePhone</tabstop>
+  <tabstop>eProductType</tabstop>
+  <tabstop>eProduct</tabstop>
+  <tabstop>eSerial</tabstop>
+  <tabstop>eDisease</tabstop>
+  <tabstop>eCond</tabstop>
+  <tabstop>eComplect</tabstop>
+  <tabstop>eCost</tabstop>
+  <tabstop>eComment</tabstop>
+  <tabstop>eAcceptor</tabstop>
+  <tabstop>eMaster</tabstop>
+  <tabstop>bPrint</tabstop>
+  <tabstop>bSave</tabstop>
+  <tabstop>bCancel</tabstop>
+  <tabstop>cPreview</tabstop>
+  <tabstop>bAddType</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

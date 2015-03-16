@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1009</width>
-    <height>543</height>
+    <width>1000</width>
+    <height>547</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,7 +75,7 @@
       </attribute>
      </widget>
     </item>
-    <item row="0" column="0">
+    <item row="0" column="0" alignment="Qt::AlignLeft">
      <widget class="QGroupBox" name="gbfilters">
       <property name="title">
        <string>Поиск по базе</string>
@@ -113,7 +113,7 @@
        </property>
        <item row="0" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
+         <item alignment="Qt::AlignLeft">
           <widget class="QRadioButton" name="rbAll">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -123,13 +123,13 @@
            </property>
            <property name="minimumSize">
             <size>
-             <width>50</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -141,17 +141,17 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignLeft">
           <widget class="QRadioButton" name="rbCompleted">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>80</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -160,17 +160,17 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignLeft">
           <widget class="QRadioButton" name="rbAccepted">
            <property name="minimumSize">
             <size>
-             <width>90</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>90</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -179,17 +179,17 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignLeft">
           <widget class="QRadioButton" name="rbConsent">
            <property name="minimumSize">
             <size>
-             <width>135</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>135</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -198,17 +198,17 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignLeft">
           <widget class="QRadioButton" name="rbWaitSpares">
            <property name="minimumSize">
             <size>
-             <width>150</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>150</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -217,12 +217,31 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignLeft">
           <widget class="QRadioButton" name="rbCall">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="text">
             <string>Позвонить</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -234,20 +253,20 @@
          <item>
           <widget class="QComboBox" name="searchtexttype">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>140</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>140</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -355,9 +374,6 @@
            <property name="accelerated">
             <bool>false</bool>
            </property>
-           <property name="showGroupSeparator" stdset="0">
-            <bool>false</bool>
-           </property>
            <property name="displayFormat">
             <string>dd.MM.yyyy</string>
            </property>
@@ -373,6 +389,9 @@
              <month>12</month>
              <day>1</day>
             </date>
+           </property>
+           <property name="showGroupSeparator" stdset="0">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -453,7 +472,7 @@
         <widget class="QLabel" name="label">
          <property name="maximumSize">
           <size>
-           <width>117</width>
+           <width>2000</width>
            <height>23</height>
           </size>
          </property>
@@ -461,7 +480,7 @@
           <string>Номер квитанции:</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -469,12 +488,15 @@
         <widget class="QLabel" name="label_15">
          <property name="maximumSize">
           <size>
-           <width>71</width>
+           <width>2000</width>
            <height>23</height>
           </size>
          </property>
          <property name="text">
           <string>Статус:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -482,13 +504,13 @@
         <widget class="QComboBox" name="eState">
          <property name="minimumSize">
           <size>
-           <width>201</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>271</width>
+           <width>16777215</width>
            <height>23</height>
           </size>
          </property>
@@ -513,12 +535,15 @@
         <widget class="QLabel" name="label_12">
          <property name="maximumSize">
           <size>
-           <width>51</width>
+           <width>2000</width>
            <height>23</height>
           </size>
          </property>
          <property name="text">
           <string>Мастер:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -526,13 +551,13 @@
         <widget class="QComboBox" name="eMaster">
          <property name="minimumSize">
           <size>
-           <width>201</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>271</width>
+           <width>16777215</width>
            <height>23</height>
           </size>
          </property>
@@ -543,8 +568,17 @@
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_6">
+         <property name="maximumSize">
+          <size>
+           <width>2000</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Клиент оповещён:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -552,12 +586,15 @@
         <widget class="QLabel" name="label_2">
          <property name="maximumSize">
           <size>
-           <width>86</width>
+           <width>2000</width>
            <height>23</height>
           </size>
          </property>
          <property name="text">
           <string>Дата приёма:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -568,7 +605,7 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>100</width>
+           <width>0</width>
            <height>0</height>
           </size>
          </property>
@@ -617,12 +654,15 @@
         <widget class="QLabel" name="label_10">
          <property name="maximumSize">
           <size>
-           <width>51</width>
+           <width>2000</width>
            <height>23</height>
           </size>
          </property>
          <property name="text">
           <string>Клиент:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -630,13 +670,13 @@
         <widget class="QLineEdit" name="dCustomer">
          <property name="minimumSize">
           <size>
-           <width>141</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>291</width>
+           <width>16777215</width>
            <height>23</height>
           </size>
          </property>
@@ -646,12 +686,15 @@
         <widget class="QLabel" name="label_11">
          <property name="maximumSize">
           <size>
-           <width>60</width>
+           <width>2000</width>
            <height>23</height>
           </size>
          </property>
          <property name="text">
           <string>Телефон:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -659,13 +702,13 @@
         <widget class="QLineEdit" name="dPhone">
          <property name="minimumSize">
           <size>
-           <width>141</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>291</width>
+           <width>16777215</width>
            <height>23</height>
           </size>
          </property>
@@ -682,12 +725,15 @@
         <widget class="QLabel" name="label_4">
          <property name="maximumSize">
           <size>
-           <width>27</width>
+           <width>2000</width>
            <height>23</height>
           </size>
          </property>
          <property name="text">
           <string>Тип:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -695,13 +741,13 @@
         <widget class="QLineEdit" name="dProductType">
          <property name="minimumSize">
           <size>
-           <width>141</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>291</width>
+           <width>16777215</width>
            <height>23</height>
           </size>
          </property>
@@ -712,8 +758,17 @@
        </item>
        <item row="11" column="0">
         <widget class="QLabel" name="label_5">
+         <property name="maximumSize">
+          <size>
+           <width>2000</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Изделие:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -721,13 +776,13 @@
         <widget class="QLineEdit" name="dProduct">
          <property name="minimumSize">
           <size>
-           <width>141</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>291</width>
+           <width>16777215</width>
            <height>23</height>
           </size>
          </property>
@@ -738,8 +793,17 @@
        </item>
        <item row="12" column="0">
         <widget class="QLabel" name="label_7">
+         <property name="maximumSize">
+          <size>
+           <width>2000</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Неисправность:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -747,13 +811,13 @@
         <widget class="QLineEdit" name="dDisease">
          <property name="minimumSize">
           <size>
-           <width>141</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>291</width>
+           <width>16777215</width>
            <height>23</height>
           </size>
          </property>
@@ -777,8 +841,17 @@
        </item>
        <item row="14" column="0">
         <widget class="QLabel" name="label_3">
+         <property name="maximumSize">
+          <size>
+           <width>2000</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Дата выдачи:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -789,7 +862,7 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>100</width>
+           <width>0</width>
            <height>0</height>
           </size>
          </property>
@@ -831,12 +904,15 @@
         <widget class="QLabel" name="label_14">
          <property name="maximumSize">
           <size>
-           <width>91</width>
+           <width>2000</width>
            <height>26</height>
           </size>
          </property>
          <property name="text">
           <string>Комментарий:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -844,7 +920,7 @@
         <widget class="QPlainTextEdit" name="dComment">
          <property name="minimumSize">
           <size>
-           <width>151</width>
+           <width>0</width>
            <height>41</height>
           </size>
          </property>
@@ -953,13 +1029,13 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>41</width>
+           <width>0</width>
            <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>71</width>
+           <width>70</width>
            <height>23</height>
           </size>
          </property>
@@ -1006,8 +1082,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1009</width>
-     <height>20</height>
+     <width>1000</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="app">
@@ -1079,7 +1155,6 @@
    <addaction name="mGiveOrder"/>
    <addaction name="mGiveOrderDiag"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="masterToolBar">
    <property name="windowTitle">
     <string>toolBar</string>

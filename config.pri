@@ -7,7 +7,7 @@ win32{
     CONFIG(release, debug|release) {
         DEST_DIRECTORY = $$PWD/../RepairCenter_$${REPAIRC_VERSION}_windows_x86_Qt$$[QT_VERSION]_binary
     }
-#    DEST_DIRECTORY ~= s,/,\\,g
+    DEST_DIRECTORY ~= s,/,\\,g
 }
 
 linux-g++-64{
@@ -19,7 +19,7 @@ linux-g++-64{
     }
 }
 
-linux-g++-32{
+linux-g++{
     CONFIG(debug, debug|release) {
         DEST_DIRECTORY = $$PWD/../RepairCenter_$${REPAIRC_VERSION}_linux_x86_Qt$$[QT_VERSION]_binary/debug
     }

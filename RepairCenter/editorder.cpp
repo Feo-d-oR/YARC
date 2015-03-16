@@ -59,6 +59,9 @@ void EditOrder::getMode(QString mode, QString num)
         ui->eDate->setDate(QDate::currentDate());
         setModels();
         allocateNumber();
+        ui->eState->setCurrentIndex(-1);
+        ui->eMaster->setCurrentIndex(-1);
+        ui->eAcceptor->setCurrentIndex(-1);
     }
     else if (mode == "view")
     {
@@ -88,7 +91,6 @@ void EditOrder::allocateNumber()
 
     qc.exec("INSERT INTO customers (id) VALUES (null)");
     customerID = qc.lastInsertId().toString();
-    qDebug() << "customerID: " << customerID;
 
     ui->eNumber->setText(orderID);
     ui->eNumber->setReadOnly(true);
@@ -105,13 +107,14 @@ void EditOrder::setModels()
     ui->eState->setModelColumn(1);
 
     model_a = new QSqlQueryModel();
-    model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2 AND isactive = '1'");
+    model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2 AND isactive = 1");
     ui->eAcceptor->setModel(model_a);
     ui->eAcceptor->model()->sort(1, Qt::AscendingOrder);
     ui->eAcceptor->setModelColumn(1);
 
+
     model_m = new QSqlQueryModel();
-    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = 1 AND isactive = '1'");
+    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = 1 AND isactive = 1");
     ui->eMaster->setModel(model_m);
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);
     ui->eMaster->setModelColumn(1);
@@ -188,9 +191,9 @@ void EditOrder::submitOrder()
     QString id_t = rec_t.value(rec_t.indexOf("id")).toString();
 
     QSqlRecord rec_a = model_a->record(ui->eAcceptor->currentIndex());
-    QString id_a= rec_a.value(rec_a.indexOf("id")).toString();
+    QString id_a = rec_a.value(rec_a.indexOf("id")).toString();
 
-    QSqlRecord rec_m = model_a->record(ui->eMaster->currentIndex());
+    QSqlRecord rec_m = model_m->record(ui->eMaster->currentIndex());
     QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
 
     qc.prepare("UPDATE customers SET name = :name, phone = :phone WHERE id = " + customerID);

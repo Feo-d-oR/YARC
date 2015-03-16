@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>392</width>
-    <height>244</height>
+    <height>277</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
    <item>
     <widget class="QTabWidget" name="tw">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -307,6 +307,19 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>tw</tabstop>
+  <tabstop>language</tabstop>
+  <tabstop>server</tabstop>
+  <tabstop>port</tabstop>
+  <tabstop>dbname</tabstop>
+  <tabstop>username</tabstop>
+  <tabstop>password</tabstop>
+  <tabstop>prmast</tabstop>
+  <tabstop>pracc</tabstop>
+  <tabstop>save</tabstop>
+  <tabstop>cancel</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

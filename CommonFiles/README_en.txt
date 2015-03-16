@@ -6,6 +6,8 @@ Added handwritten documents support
 Added salaries accounting
 Filtration in comboboxes
 Global database operations moved to standalone utility "DBTool"
+English help
+Printable forms examples translated to english
 Some improvements, some fixes...
 
 ---------------- v0.2b --------------------
@@ -37,11 +39,11 @@ libqt5gui5
 libqt5core5a
 
 To run application under Linux use "Launch RepairCenter.sh" and "Launch QtRptDesigner.sh",
-also you can copy "libQtZint.so.1" to /usr/lib and run executables directly.
+also you can copy "libQtZint.so" and symlinks to /usr/lib and run executables directly.
 
 -------------------------------------------
 
 Hey, guys, i need some help!
 As you can see my english is bad and pretty much google-translated, so i need help with english translation,
-especially in professional slang or country-specific terms and printable forms.
+especially in country-specific professional slang.
 Then I can make all the fields in the source code English.

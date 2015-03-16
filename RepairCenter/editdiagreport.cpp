@@ -46,6 +46,7 @@ void EditDiagReport::getMode(QString mode, QString num)
         ui->eOrderID->setText(num);
         setModels();
         isnew = true;
+        ui->eMaster->setCurrentIndex(-1);
     }
     else if (mode == "view"){
         saved = true;
@@ -73,7 +74,6 @@ void EditDiagReport::setModels()
     ui->eMaster->setModel(model_m);
     ui->eMaster->setModelColumn(1);
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);
-
 }
 
 void EditDiagReport::checkExist()

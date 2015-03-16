@@ -68,236 +68,246 @@
     </message>
     <message>
         <location filename="../EditFldDlg.ui" line="103"/>
-        <location filename="../EditFldDlg.ui" line="120"/>
-        <location filename="../EditFldDlg.ui" line="137"/>
-        <location filename="../EditFldDlg.ui" line="424"/>
-        <location filename="../EditFldDlg.ui" line="655"/>
-        <location filename="../EditFldDlg.ui" line="669"/>
+        <location filename="../EditFldDlg.ui" line="123"/>
+        <location filename="../EditFldDlg.ui" line="143"/>
+        <location filename="../EditFldDlg.ui" line="452"/>
         <location filename="../EditFldDlg.ui" line="683"/>
         <location filename="../EditFldDlg.ui" line="697"/>
+        <location filename="../EditFldDlg.ui" line="711"/>
+        <location filename="../EditFldDlg.ui" line="725"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="117"/>
+        <location filename="../EditFldDlg.ui" line="120"/>
         <source>Add function</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="134"/>
+        <location filename="../EditFldDlg.ui" line="140"/>
         <source>Add formatting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="148"/>
+        <location filename="../EditFldDlg.ui" line="160"/>
+        <source>Text direction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../EditFldDlg.ui" line="163"/>
+        <source>&lt;-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../EditFldDlg.ui" line="176"/>
         <source>Proccess as Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="177"/>
+        <location filename="../EditFldDlg.ui" line="205"/>
         <source>Attention! You may enter just ONE varibale and not any text.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="185"/>
+        <location filename="../EditFldDlg.ui" line="213"/>
         <source>Condtion</source>
         <translation>მდგომარეობა</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="193"/>
+        <location filename="../EditFldDlg.ui" line="221"/>
         <source>Printing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="206"/>
+        <location filename="../EditFldDlg.ui" line="234"/>
         <source>Hightlighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="218"/>
+        <location filename="../EditFldDlg.ui" line="246"/>
         <source>Condition</source>
         <translation>მდგომარეობა</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="235"/>
+        <location filename="../EditFldDlg.ui" line="263"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="241"/>
+        <location filename="../EditFldDlg.ui" line="269"/>
         <source>Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="248"/>
+        <location filename="../EditFldDlg.ui" line="276"/>
         <source>Italic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="255"/>
+        <location filename="../EditFldDlg.ui" line="283"/>
         <source>Underline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="262"/>
+        <location filename="../EditFldDlg.ui" line="290"/>
         <source>Strikeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="297"/>
-        <location filename="../EditFldDlg.ui" line="363"/>
+        <location filename="../EditFldDlg.ui" line="325"/>
+        <location filename="../EditFldDlg.ui" line="391"/>
         <source>Color...</source>
         <translation>ფერი ...</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="312"/>
+        <location filename="../EditFldDlg.ui" line="340"/>
         <source>Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="318"/>
+        <location filename="../EditFldDlg.ui" line="346"/>
         <source>Transparent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="328"/>
+        <location filename="../EditFldDlg.ui" line="356"/>
         <source>Other</source>
         <translation>სხვა</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="438"/>
+        <location filename="../EditFldDlg.ui" line="466"/>
         <source>Ignore aspect ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="534"/>
+        <location filename="../EditFldDlg.ui" line="562"/>
         <source>Diagram&apos;s property</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="540"/>
+        <location filename="../EditFldDlg.ui" line="568"/>
         <source>Diagram</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="548"/>
+        <location filename="../EditFldDlg.ui" line="576"/>
         <source>Chart&apos;s caption</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="560"/>
+        <location filename="../EditFldDlg.ui" line="588"/>
         <source>Show caption</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="567"/>
+        <location filename="../EditFldDlg.ui" line="595"/>
         <source>Show grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="574"/>
+        <location filename="../EditFldDlg.ui" line="602"/>
         <source>Show legend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="581"/>
+        <location filename="../EditFldDlg.ui" line="609"/>
         <source>Set the params of the graphs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="588"/>
+        <location filename="../EditFldDlg.ui" line="616"/>
         <source>Show graph&apos;s caption</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="598"/>
+        <location filename="../EditFldDlg.ui" line="626"/>
         <source>Graph&apos;s caption</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="604"/>
+        <location filename="../EditFldDlg.ui" line="632"/>
         <source>Real values</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="614"/>
+        <location filename="../EditFldDlg.ui" line="642"/>
         <source>Percent values</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="641"/>
+        <location filename="../EditFldDlg.ui" line="669"/>
         <source>Graphs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="652"/>
+        <location filename="../EditFldDlg.ui" line="680"/>
         <source>Add row</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="666"/>
+        <location filename="../EditFldDlg.ui" line="694"/>
         <source>Remove row</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="680"/>
+        <location filename="../EditFldDlg.ui" line="708"/>
         <source>Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="694"/>
+        <location filename="../EditFldDlg.ui" line="722"/>
         <source>Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="748"/>
+        <location filename="../EditFldDlg.ui" line="776"/>
         <source>Caption</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="753"/>
+        <location filename="../EditFldDlg.ui" line="781"/>
         <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="758"/>
+        <location filename="../EditFldDlg.ui" line="786"/>
         <source>Color</source>
         <translation>ფერი</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="784"/>
+        <location filename="../EditFldDlg.ui" line="812"/>
         <source>Barcode type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="794"/>
+        <location filename="../EditFldDlg.ui" line="822"/>
         <source>Frame type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="806"/>
+        <location filename="../EditFldDlg.ui" line="834"/>
         <source>Value:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="859"/>
+        <location filename="../EditFldDlg.ui" line="887"/>
         <source>OK</source>
         <translation>ОК</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.ui" line="866"/>
+        <location filename="../EditFldDlg.ui" line="894"/>
         <source>Cancel</source>
         <translation>გაუქმება</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.cpp" line="182"/>
-        <location filename="../EditFldDlg.cpp" line="230"/>
+        <location filename="../EditFldDlg.cpp" line="202"/>
+        <location filename="../EditFldDlg.cpp" line="262"/>
         <source>Empty line</source>
         <translation>ცარიელი სტრიქონი</translation>
     </message>
     <message>
-        <location filename="../EditFldDlg.cpp" line="182"/>
-        <location filename="../EditFldDlg.cpp" line="230"/>
+        <location filename="../EditFldDlg.cpp" line="202"/>
+        <location filename="../EditFldDlg.cpp" line="262"/>
         <source>The field contains empty line at the end.
 Remove it?</source>
         <translation type="unfinished"></translation>
@@ -485,8 +495,8 @@ Remove it?</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="152"/>
-        <location filename="../mainwindow.cpp" line="1993"/>
-        <location filename="../mainwindow.cpp" line="2157"/>
+        <location filename="../mainwindow.cpp" line="2017"/>
+        <location filename="../mainwindow.cpp" line="2181"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
@@ -574,28 +584,28 @@ Remove it?</source>
     <message>
         <location filename="../mainwindow.ui" line="425"/>
         <location filename="../mainwindow.ui" line="428"/>
-        <location filename="../mainwindow.cpp" line="2018"/>
+        <location filename="../mainwindow.cpp" line="2042"/>
         <source>Justify</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="440"/>
         <location filename="../mainwindow.ui" line="443"/>
-        <location filename="../mainwindow.cpp" line="2179"/>
+        <location filename="../mainwindow.cpp" line="2203"/>
         <source>Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="455"/>
         <location filename="../mainwindow.ui" line="458"/>
-        <location filename="../mainwindow.cpp" line="2189"/>
+        <location filename="../mainwindow.cpp" line="2213"/>
         <source>Italic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="470"/>
         <location filename="../mainwindow.ui" line="473"/>
-        <location filename="../mainwindow.cpp" line="2199"/>
+        <location filename="../mainwindow.cpp" line="2223"/>
         <source>Underline</source>
         <translation type="unfinished"></translation>
     </message>
@@ -855,7 +865,7 @@ Remove it?</source>
     <message>
         <location filename="../mainwindow.ui" line="992"/>
         <location filename="../mainwindow.ui" line="995"/>
-        <location filename="../mainwindow.cpp" line="2209"/>
+        <location filename="../mainwindow.cpp" line="2233"/>
         <source>Strikeout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -992,13 +1002,13 @@ Remove it?</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
-        <location filename="../mainwindow.cpp" line="2388"/>
+        <location filename="../mainwindow.cpp" line="2418"/>
         <source>Master Header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="446"/>
-        <location filename="../mainwindow.cpp" line="2384"/>
+        <location filename="../mainwindow.cpp" line="2414"/>
         <source>Master Footer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1053,228 +1063,243 @@ Remove it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="773"/>
-        <location filename="../mainwindow.cpp" line="1020"/>
+        <location filename="../mainwindow.cpp" line="778"/>
+        <location filename="../mainwindow.cpp" line="1025"/>
         <source>Page %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="952"/>
-        <location filename="../mainwindow.cpp" line="964"/>
-        <location filename="../mainwindow.cpp" line="1715"/>
-        <location filename="../mainwindow.cpp" line="2507"/>
+        <location filename="../mainwindow.cpp" line="957"/>
+        <location filename="../mainwindow.cpp" line="969"/>
+        <location filename="../mainwindow.cpp" line="1735"/>
+        <location filename="../mainwindow.cpp" line="2537"/>
         <source>Saving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="952"/>
-        <location filename="../mainwindow.cpp" line="964"/>
-        <location filename="../mainwindow.cpp" line="1715"/>
-        <location filename="../mainwindow.cpp" line="2507"/>
+        <location filename="../mainwindow.cpp" line="957"/>
+        <location filename="../mainwindow.cpp" line="969"/>
+        <location filename="../mainwindow.cpp" line="1735"/>
+        <location filename="../mainwindow.cpp" line="2537"/>
         <source>The report was changed.
 Save the report?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="980"/>
+        <location filename="../mainwindow.cpp" line="985"/>
         <source>Select File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1422"/>
+        <location filename="../mainwindow.cpp" line="1312"/>
+        <source>Going to make undo: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1320"/>
+        <source>Going to make redo: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1440"/>
         <source>Save File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1422"/>
+        <location filename="../mainwindow.cpp" line="1440"/>
         <source>XML Files (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1436"/>
-        <location filename="../mainwindow.cpp" line="2650"/>
+        <location filename="../mainwindow.cpp" line="1454"/>
+        <location filename="../mainwindow.cpp" line="2681"/>
         <source>Error</source>
         <translation>შეცდომა</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1643"/>
+        <location filename="../mainwindow.cpp" line="1662"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1651"/>
+        <location filename="../mainwindow.cpp" line="1670"/>
         <source>Frame</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1999"/>
+        <location filename="../mainwindow.cpp" line="2023"/>
         <source>Aligment hor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2003"/>
-        <location filename="../mainwindow.cpp" line="2064"/>
-        <location filename="../mainwindow.cpp" line="2093"/>
+        <location filename="../mainwindow.cpp" line="2027"/>
+        <location filename="../mainwindow.cpp" line="2088"/>
+        <location filename="../mainwindow.cpp" line="2117"/>
         <source>Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2008"/>
-        <location filename="../mainwindow.cpp" line="2036"/>
+        <location filename="../mainwindow.cpp" line="2032"/>
+        <location filename="../mainwindow.cpp" line="2060"/>
         <source>Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2013"/>
-        <location filename="../mainwindow.cpp" line="2103"/>
+        <location filename="../mainwindow.cpp" line="2037"/>
+        <location filename="../mainwindow.cpp" line="2127"/>
         <source>Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2027"/>
+        <location filename="../mainwindow.cpp" line="2051"/>
         <source>Aligment ver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2031"/>
-        <location filename="../mainwindow.cpp" line="2077"/>
-        <location filename="../mainwindow.cpp" line="2113"/>
+        <location filename="../mainwindow.cpp" line="2055"/>
+        <location filename="../mainwindow.cpp" line="2101"/>
+        <location filename="../mainwindow.cpp" line="2137"/>
         <source>Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2041"/>
-        <location filename="../mainwindow.cpp" line="2123"/>
+        <location filename="../mainwindow.cpp" line="2065"/>
+        <location filename="../mainwindow.cpp" line="2147"/>
         <source>Bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2050"/>
+        <location filename="../mainwindow.cpp" line="2074"/>
         <source>Height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2057"/>
+        <location filename="../mainwindow.cpp" line="2081"/>
         <source>Width</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2071"/>
+        <location filename="../mainwindow.cpp" line="2095"/>
         <source>Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2147"/>
+        <location filename="../mainwindow.cpp" line="2171"/>
         <source>FrameWidth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2167"/>
+        <location filename="../mainwindow.cpp" line="2191"/>
         <source>Size</source>
         <translation>ზომა</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2216"/>
+        <location filename="../mainwindow.cpp" line="2240"/>
         <source>Printing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2222"/>
+        <location filename="../mainwindow.cpp" line="2246"/>
         <source>Start New Numeration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2228"/>
+        <location filename="../mainwindow.cpp" line="2252"/>
         <source>Show In Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2234"/>
+        <location filename="../mainwindow.cpp" line="2258"/>
         <source>Start New Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2240"/>
+        <location filename="../mainwindow.cpp" line="2264"/>
         <source>AutoHeight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2246"/>
+        <location filename="../mainwindow.cpp" line="2270"/>
         <source>IgnoreRatioAspect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2252"/>
+        <location filename="../mainwindow.cpp" line="2276"/>
         <source>ArrowStart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2258"/>
+        <location filename="../mainwindow.cpp" line="2282"/>
         <source>ArrowEnd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2264"/>
+        <location filename="../mainwindow.cpp" line="2288"/>
+        <source>TextWrap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="2294"/>
         <source>BackgroundColor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2270"/>
+        <location filename="../mainwindow.cpp" line="2300"/>
         <source>BorderColor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2279"/>
+        <location filename="../mainwindow.cpp" line="2309"/>
         <source>FontColor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2285"/>
+        <location filename="../mainwindow.cpp" line="2315"/>
         <source>BarcodeType</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2291"/>
+        <location filename="../mainwindow.cpp" line="2321"/>
         <source>BarcodeFrameType</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2364"/>
+        <location filename="../mainwindow.cpp" line="2394"/>
         <source>Report title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2368"/>
+        <location filename="../mainwindow.cpp" line="2398"/>
         <source>Report summary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2372"/>
+        <location filename="../mainwindow.cpp" line="2402"/>
         <source>Page header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2376"/>
+        <location filename="../mainwindow.cpp" line="2406"/>
         <source>Page footer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2380"/>
+        <location filename="../mainwindow.cpp" line="2410"/>
         <source>Master data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2392"/>
+        <location filename="../mainwindow.cpp" line="2422"/>
         <source>Data Group Header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2396"/>
+        <location filename="../mainwindow.cpp" line="2426"/>
         <source>Data Group Footer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2650"/>
+        <location filename="../mainwindow.cpp" line="2681"/>
         <source>This object %1 can&apos;t be a parent for %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1372,12 +1397,12 @@ Save the report?</source>
         <translation>QtRptDesigner</translation>
     </message>
     <message>
-        <location filename="../PageSettingDlg.cpp" line="29"/>
+        <location filename="../PageSettingDlg.cpp" line="30"/>
         <source>Cm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PageSettingDlg.cpp" line="32"/>
+        <location filename="../PageSettingDlg.cpp" line="33"/>
         <source>Inch</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1388,6 +1413,29 @@ Save the report?</source>
         <location filename="../main.cpp" line="14"/>
         <source>QtRptDesigner</source>
         <translation>QtRptDesigner</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../UndoCommands.cpp" line="29"/>
+        <source>Changing Container&apos;s geometry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../UndoCommands.cpp" line="87"/>
+        <source>Adding Container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../UndoCommands.cpp" line="152"/>
+        <source>Deleting Container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../UndoCommands.cpp" line="194"/>
+        <source>Changing Container&apos;s parameters</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1478,37 +1526,47 @@ Save the report?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CommonFiles/qtexteditex.cpp" line="47"/>
+        <location filename="../../CommonFiles/qtexteditex.ui" line="438"/>
+        <source>TextDirection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CommonFiles/qtexteditex.ui" line="441"/>
+        <source>&lt;-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CommonFiles/qtexteditex.cpp" line="78"/>
         <source>Standard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CommonFiles/qtexteditex.cpp" line="48"/>
+        <location filename="../../CommonFiles/qtexteditex.cpp" line="79"/>
         <source>Bullet List (Disc)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CommonFiles/qtexteditex.cpp" line="49"/>
+        <location filename="../../CommonFiles/qtexteditex.cpp" line="80"/>
         <source>Bullet List (Circle)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CommonFiles/qtexteditex.cpp" line="50"/>
+        <location filename="../../CommonFiles/qtexteditex.cpp" line="81"/>
         <source>Bullet List (Square)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CommonFiles/qtexteditex.cpp" line="51"/>
+        <location filename="../../CommonFiles/qtexteditex.cpp" line="82"/>
         <source>Ordered List (Decimal)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CommonFiles/qtexteditex.cpp" line="52"/>
+        <location filename="../../CommonFiles/qtexteditex.cpp" line="83"/>
         <source>Ordered List (Alpha lower)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CommonFiles/qtexteditex.cpp" line="53"/>
+        <location filename="../../CommonFiles/qtexteditex.cpp" line="84"/>
         <source>Ordered List (Alpha upper)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1709,144 +1767,154 @@ Restart application?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="104"/>
+        <location filename="../SqlDesigner.ui" line="211"/>
         <source>Host name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="201"/>
+        <location filename="../SqlDesigner.ui" line="137"/>
         <source>Password</source>
         <translation>პაროლი</translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="211"/>
+        <location filename="../SqlDesigner.ui" line="197"/>
         <source>User name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="218"/>
+        <location filename="../SqlDesigner.ui" line="225"/>
         <source>DB name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="148"/>
+        <location filename="../SqlDesigner.ui" line="190"/>
         <source>Connection</source>
         <translation>ნაერთის</translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="156"/>
+        <location filename="../SqlDesigner.ui" line="145"/>
         <source>QSQLITE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="161"/>
+        <location filename="../SqlDesigner.ui" line="150"/>
         <source>QMYSQL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="166"/>
+        <location filename="../SqlDesigner.ui" line="155"/>
         <source>QMYSQL3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="171"/>
+        <location filename="../SqlDesigner.ui" line="160"/>
         <source>QODBC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="176"/>
+        <location filename="../SqlDesigner.ui" line="165"/>
         <source>QODBC3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="181"/>
+        <location filename="../SqlDesigner.ui" line="170"/>
         <source>QPSQL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="186"/>
+        <location filename="../SqlDesigner.ui" line="175"/>
         <source>QPSQL7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="322"/>
-        <location filename="../SqlDesigner.ui" line="325"/>
+        <location filename="../SqlDesigner.ui" line="232"/>
+        <source>Connection name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SqlDesigner.ui" line="239"/>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SqlDesigner.ui" line="342"/>
+        <location filename="../SqlDesigner.ui" line="345"/>
         <source>Clear diagram</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="340"/>
-        <location filename="../SqlDesigner.ui" line="343"/>
+        <location filename="../SqlDesigner.ui" line="360"/>
+        <location filename="../SqlDesigner.ui" line="363"/>
         <source>Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="352"/>
-        <location filename="../SqlDesigner.ui" line="355"/>
+        <location filename="../SqlDesigner.ui" line="372"/>
+        <location filename="../SqlDesigner.ui" line="375"/>
         <source>Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="358"/>
+        <location filename="../SqlDesigner.ui" line="378"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="367"/>
-        <location filename="../SqlDesigner.ui" line="370"/>
+        <location filename="../SqlDesigner.ui" line="387"/>
+        <location filename="../SqlDesigner.ui" line="390"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="373"/>
+        <location filename="../SqlDesigner.ui" line="393"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="385"/>
-        <location filename="../SqlDesigner.ui" line="388"/>
+        <location filename="../SqlDesigner.ui" line="405"/>
+        <location filename="../SqlDesigner.ui" line="408"/>
         <source>Add relationship</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="397"/>
-        <location filename="../SqlDesigner.ui" line="400"/>
+        <location filename="../SqlDesigner.ui" line="417"/>
+        <location filename="../SqlDesigner.ui" line="420"/>
         <source>Delete</source>
         <translation type="unfinished">ამოიღონ</translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="403"/>
+        <location filename="../SqlDesigner.ui" line="423"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="121"/>
+        <location filename="../SqlDesigner.ui" line="107"/>
         <source>Driver</source>
         <translation>მძღოლი</translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="128"/>
+        <location filename="../SqlDesigner.ui" line="183"/>
         <source>Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="135"/>
+        <location filename="../SqlDesigner.ui" line="204"/>
         <source>Connection coding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SqlDesigner.ui" line="114"/>
-        <location filename="../SqlDesigner.ui" line="225"/>
+        <location filename="../SqlDesigner.ui" line="218"/>
         <source>UTF8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="194"/>
+        <location filename="../SqlDesigner.ui" line="127"/>
         <source>Charset coding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.ui" line="297"/>
+        <location filename="../SqlDesigner.ui" line="317"/>
         <source>SQL query</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1856,17 +1924,17 @@ Restart application?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.cpp" line="83"/>
+        <location filename="../SqlDesigner.cpp" line="88"/>
         <source>Error</source>
         <translation>შეცდომა</translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.cpp" line="86"/>
+        <location filename="../SqlDesigner.cpp" line="91"/>
         <source>Info</source>
         <translation>საქონელი</translation>
     </message>
     <message>
-        <location filename="../SqlDesigner.cpp" line="86"/>
+        <location filename="../SqlDesigner.cpp" line="91"/>
         <source>Connected</source>
         <translation>დაკავშირებული</translation>
     </message>
@@ -1874,32 +1942,37 @@ Restart application?</source>
 <context>
     <name>TContainerField</name>
     <message>
-        <location filename="../TContainerField.cpp" line="43"/>
+        <location filename="../TContainerField.cpp" line="13"/>
+        <source>New Label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../TContainerField.cpp" line="57"/>
         <source>Edit</source>
         <translation>რედაქტირება</translation>
     </message>
     <message>
-        <location filename="../TContainerField.cpp" line="47"/>
+        <location filename="../TContainerField.cpp" line="61"/>
         <source>Delete</source>
         <translation>ამოიღონ</translation>
     </message>
     <message>
-        <location filename="../TContainerField.cpp" line="54"/>
+        <location filename="../TContainerField.cpp" line="68"/>
         <source>Move forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TContainerField.cpp" line="60"/>
+        <location filename="../TContainerField.cpp" line="74"/>
         <source>Move back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../TContainerField.cpp" line="235"/>
+        <location filename="../TContainerField.cpp" line="250"/>
         <source>New image</source>
         <translation>ახალი იმიჯი</translation>
     </message>
     <message>
-        <location filename="../TContainerField.cpp" line="242"/>
+        <location filename="../TContainerField.cpp" line="257"/>
         <source>New diagram</source>
         <translation>ახალი სქემა</translation>
     </message>

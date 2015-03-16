@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>670</width>
-    <height>354</height>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -241,6 +241,18 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>eOrderID</tabstop>
+  <tabstop>eDate</tabstop>
+  <tabstop>eGiver</tabstop>
+  <tabstop>eInspect</tabstop>
+  <tabstop>eDefects</tabstop>
+  <tabstop>eRecomm</tabstop>
+  <tabstop>bPrint</tabstop>
+  <tabstop>bSave</tabstop>
+  <tabstop>bCancel</tabstop>
+  <tabstop>cPreview</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>
