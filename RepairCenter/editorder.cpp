@@ -224,7 +224,7 @@ void EditOrder::submitOrder()
 
 //q.bindValue(":date_out", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
 
-void EditOrder::setRptValue(int &recNo, QString &paramName, QVariant &paramValue, int reportPage)
+void EditOrder::setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage)
 {
     Q_UNUSED(reportPage);
     Q_UNUSED(recNo);
@@ -262,7 +262,7 @@ void EditOrder::print()
     if (report->loadReport(fileName) == false) {
         qDebug()<<"Report file not found: " << fileName;
     }
-    connect(report,SIGNAL(setValue(int&,QString&,QVariant&,int)), this, SLOT(setRptValue(int&,QString&,QVariant&,int)));
+    connect(report,SIGNAL(setValue(const int, const QString, QVariant&, const int)), this, SLOT(setRptValue(const int, const QString, QVariant&, const int)));
     if (ui->cPreview->isChecked())
         report->printExec(true);
     else

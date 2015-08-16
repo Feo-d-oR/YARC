@@ -67,6 +67,16 @@ void MainWindow::readSettings()
     ui->edbname->setText(settings->value("mysql/database").toString());
     ui->eusername->setText(settings->value("mysql/user").toString());
     ui->epassword->setText(settings->value("mysql/password").toString());
+
+    QString lang = settings->value("locale/language").toString();
+    if (lang == "") //default system language
+        ui->language->setCurrentIndex(0);
+
+    else if (lang == "ru_RU")//russian
+        ui->language->setCurrentIndex(1);
+
+    else if (lang == "en_US")//english
+        ui->language->setCurrentIndex(2);
 }
 
 void MainWindow::saveSettings()
@@ -78,7 +88,20 @@ void MainWindow::saveSettings()
     settings->setValue("mysql/database", ui->dbname->text());
     settings->setValue("mysql/user", ui->username2->text());
     settings->setValue("mysql/password", ui->password2->text());
+
+    switch(ui->language->currentIndex())  {
+    case 0://system default
+        settings->setValue("locale/language", "");
+        break;
+    case 1://russian
+        settings->setValue("locale/language", "ru_RU");
+        break;
+    case 2://american english
+        settings->setValue("locale/language", "en_US");
+        break;
+    }
     settings->sync();
+
 }
 
 void MainWindow::on_create_clicked()
@@ -250,3 +273,42 @@ void MainWindow::on_bClearOrders_clicked()
         mb.exec();
     }
 }
+
+void MainWindow::on_language_activated(int index)
+{
+    qDebug()<< "index: "<<index;
+    QApplication::instance()->removeTranslator(&qTranslator);
+    switch(index){
+    case 0://system default
+        locale = QLocale::system().name(); //reading system locale
+        if (qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm"))
+            break;
+        else
+        {   qTranslator.load(":/langs/i18n/repaircenter_en_US.qm");
+            break;
+        }
+        break;
+    case 1://russian
+        locale = "ru_RU";
+        qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm");
+        break;
+    case 2://american english
+        locale = "en_US";
+        qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm");
+        break;
+    }
+    QApplication::installTranslator(&qTranslator);
+}
+
+void MainWindow::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange)
+    {
+        // retranslate designer form (single inheritance approach)
+        ui->retranslateUi(this);
+    }
+
+    // remember to call base class implementation
+    QMainWindow::changeEvent(event);
+}
+

@@ -31,7 +31,7 @@ private slots:
    void printWorks();
    void printWarranty();
    void printDiag();
-   void setRptValue(int &recNo, QString &paramName, QVariant &paramValue, int reportPage);
+   void setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage);
 
    void on_bPrintOrders_clicked();
    void on_bPrintGives_clicked();

@@ -24,7 +24,7 @@ void PrintHWDocuments::allocateNumbers()
     }
 }
 
-void PrintHWDocuments::setRptValue(int &recNo, QString &paramName, QVariant &paramValue, int reportPage)
+void PrintHWDocuments::setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage)
 {
     Q_UNUSED(reportPage);
     Q_UNUSED(recNo);
@@ -40,7 +40,7 @@ void PrintHWDocuments::printOrders()
     if (report->loadReport(fileName) == false) {
         qDebug()<<"Report file not found: " << fileName;
     }
-    connect(report,SIGNAL(setValue(int&,QString&,QVariant&,int)), this, SLOT(setRptValue(int&,QString&,QVariant&,int)));
+    connect(report,SIGNAL(setValue(const int, const QString, QVariant&, const int)), this, SLOT(setRptValue(const int, const QString, QVariant&, const int)));
     report->printExec(true, true);
 }
 

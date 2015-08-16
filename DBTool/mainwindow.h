@@ -24,6 +24,8 @@ private slots:
     void on_bUpdate_clicked();
     void on_bClearSalary_clicked();
     void on_bClearOrders_clicked();
+    void changeEvent(QEvent* event);
+    void on_language_activated(int index);
 
 private:
     bool dbCheckConnect();
@@ -39,6 +41,9 @@ private:
     QSqlQuery q;
     QSqlError err;
     QSqlDatabase db;
+    QTranslator qTranslator;
+    QString locale;
+    QString loSettings;
 };
 
 #endif // MAINWINDOW_H

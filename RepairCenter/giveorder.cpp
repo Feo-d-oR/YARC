@@ -197,7 +197,7 @@ void GiveOrder::submitOrder()
     saved = true;
 }
 
-void GiveOrder::setRptValue(int &recNo, QString &paramName, QVariant &paramValue, int reportPage)
+void GiveOrder::setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage)
 {
     q.exec("SELECT * FROM orders WHERE number = " + orderID);
     q.first();
@@ -262,7 +262,7 @@ void GiveOrder::print()
         if (report1->loadReport(fileName) == false) {
         qDebug()<<"Report file not found: " << fileName;
         }
-        connect(report1,SIGNAL(setValue(int&,QString&,QVariant&,int)), this, SLOT(setRptValue(int&,QString&,QVariant&,int)));
+        connect(report1,SIGNAL(setValue(const int, const QString, QVariant&, const int)), this, SLOT(setRptValue(const int, const QString, QVariant&, const int)));
 
         if (ui->cPreview->isChecked())
             report1->printExec(true);

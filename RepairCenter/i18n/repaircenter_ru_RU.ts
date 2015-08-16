@@ -1577,6 +1577,46 @@
     </message>
 </context>
 <context>
+    <name>QtRPT</name>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1409"/>
+        <source>Save as PDF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1414"/>
+        <source>Save as HTML</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1419"/>
+        <source>Save as ODT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1440"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1445"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1450"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1440"/>
+        <source>PDF Files (*.pdf)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1445"/>
+        <source>HTML Files (*.html)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1450"/>
+        <source>ODT Files (*.odt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Salaries</name>
     <message>
         <location filename="../salaries.ui" line="14"/>

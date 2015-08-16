@@ -23,4 +23,4 @@ HEADERS += $$PWD/qtrpt.h \
            $$PWD/RptPageObject.h
 
 RESOURCES += \
-    ../QtRPT/imagesRpt.qrc
+    $$PWD/imagesRpt.qrc

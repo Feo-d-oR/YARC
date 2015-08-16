@@ -56,7 +56,7 @@ public slots:
 
 private slots:
    void print();
-   void setRptValue(int &recNo, QString &paramName, QVariant &paramValue, int reportPage);
+   void setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage);
    void on_bCancel_clicked();
    void on_bPrint_clicked();
    void on_bSave_clicked();
