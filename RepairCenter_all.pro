@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
-SUBDIRS =   RepairCenter DBTool
+SUBDIRS = QtRpt/QtRptDesigner RepairCenter DBTool
 
 #prj2.file = $$PWD/translations.pro
 

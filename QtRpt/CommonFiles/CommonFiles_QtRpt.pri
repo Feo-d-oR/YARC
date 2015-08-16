@@ -1,6 +1,6 @@
 INCLUDEPATH += $$PWD
 
-include($$PWD/../QtRPT/config.pri)
+include($$PWD/../../config.pri)
 
 !contains(DEFINES,NO_BARCODE) {
     INCLUDEPATH += $$PWD/../zint-2.4.4/backend_qt4
