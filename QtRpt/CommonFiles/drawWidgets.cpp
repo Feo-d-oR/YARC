@@ -151,16 +151,20 @@ void drawLabel(QPainter *painter, QWidget *widget, double koefRes_w, double koef
     textRect.translate(0, cor );
 
     QString txt;
-    if (!qobject_cast<QLabel *>(widget) == 0) {
+    if (qobject_cast<QLabel *>(widget) != 0) {
         QLabel *lb = qobject_cast<QLabel *>(widget);
         txt = lb->text();
     }
-    if (!qobject_cast<QLineEdit *>(widget) == 0) {
+    if (qobject_cast<QComboBox *>(widget) != 0) {
+        QComboBox *lb = qobject_cast<QComboBox *>(widget);
+        txt = lb->currentText();
+    }
+    if (qobject_cast<QLineEdit *>(widget) != 0) {
         QLineEdit *le = qobject_cast<QLineEdit *>(widget);
         txt = le->text();
         //painter->drawLine(left_,top_+height_-5,left_+width_,top_+height_-5);
     }
-    if (!qobject_cast<QDateEdit *>(widget) == 0) {
+    if (qobject_cast<QDateEdit *>(widget) != 0) {
         QDateEdit *de = qobject_cast<QDateEdit *>(widget);
         txt = de->date().toString("dd.MM.yyyy");
     }

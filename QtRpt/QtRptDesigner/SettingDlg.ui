@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>366</width>
-    <height>227</height>
+    <width>368</width>
+    <height>228</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -128,7 +128,22 @@
           </item>
           <item>
            <property name="text">
+            <string>Dutch</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>French</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Georgian ქართული</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>German</string>
            </property>
           </item>
           <item>
@@ -149,6 +164,11 @@
           <item>
            <property name="text">
             <string>Serbian Latin</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Spanish</string>
            </property>
           </item>
           <item>

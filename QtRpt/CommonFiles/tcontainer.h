@@ -1,8 +1,24 @@
 /*
 Name: CommonFiles
-Version: 1.3.4
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #ifndef TCONTAINER_H
@@ -30,23 +46,30 @@ enum modes{
 class TContainer : public QWidget {
     Q_OBJECT
     Q_PROPERTY(bool Selected READ isSelected WRITE setSelected)
+    Q_PROPERTY(bool Overlayed READ hasOverlay WRITE setHasOverlay)
+
 public:
     TContainer(QWidget *parent, QPoint p, QWidget *cWidget = 0);
     ~TContainer();
     QWidget *childWidget;
-    QMenu *menu = 0;
+    QMenu *menu;
     void setChildWidget(QWidget *cWidget);
-    void setSelected(bool value);
+    void setSelected(bool value, bool repaint = true);
     void setPasted(bool value);
     bool isSelected();
+    bool isDesigning();
+    bool isEditing();
     qreal scale;
     void setScale(qreal scale);
     void allowResize(bool value);
     void allowDrawSelection(bool value);
     bool isAllowDrawSelection();
+    void setHasOverlay(bool value);
+    bool hasOverlay();
     virtual TContainer *clone();
     QRect getOldGeom();
     void setOldGeom(QRect rect);
+    void emitInFocus(bool mode) {emit inFocus(mode);}
 
     friend QDataStream &operator<<(QDataStream &stream, const TContainer &obj);
     friend QDataStream &operator>>(QDataStream &stream, TContainer &obj);
@@ -67,6 +90,7 @@ protected:
     bool m_selected;
     bool m_pasting;
     bool m_showMenu;
+    bool m_isDesigning;
     bool m_isEditing;
     void popupShow(const QPoint &pt);
 
@@ -74,6 +98,7 @@ private:
     QRect m_oldRect;
     bool m_allowResize;
     bool m_allowDrawSelection;
+    bool m_hasOverlay;
     void m_geomChanged(QRect oldRect, QRect newRect);
 
 signals:
@@ -83,7 +108,8 @@ signals:
     void deleteByUser();
 
 public slots:
-    void designMode(bool mode);
+    void setDesignMode(bool mode);
+    void setEditMode(bool mode);
 };
 
 #endif // TCONTAINER_H

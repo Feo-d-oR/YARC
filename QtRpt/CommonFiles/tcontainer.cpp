@@ -1,8 +1,24 @@
 /*
 Name: CommonFiles
-Version: 1.3.4
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "tcontainer.h"
@@ -12,6 +28,7 @@ e-mail: aliks-os@ukr.net012-2014
 
 TContainer::TContainer(QWidget *parent, QPoint p, QWidget *cWidget) : QWidget(parent) {
     mode = NONE;
+    menu = 0;
     childWidget = cWidget;
     setAttribute(Qt::WA_DeleteOnClose);    
     this->setAutoFillBackground(false);
@@ -26,32 +43,48 @@ TContainer::TContainer(QWidget *parent, QPoint p, QWidget *cWidget) : QWidget(pa
         cWidget->setParent(this);
         cWidget->releaseMouse();
         cWidget->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+        cWidget->installEventFilter(this);   //////////////////
         vLayout->addWidget(cWidget);
         vLayout->setContentsMargins(0,0,0,0);
     }
     this->setLayout(vLayout);
 
     m_showMenu = false;
-    m_isEditing = true;
+    m_isDesigning = true;
+    m_isEditing = false;
     m_selected = false;
     m_allowResize = true;
     m_allowDrawSelection = true;
+    m_hasOverlay = false;
     scale = 1;
     this->installEventFilter(parent);
 }
 
-void TContainer::designMode(bool mode) {
+void TContainer::setDesignMode(bool mode) {
+    m_isDesigning = mode;
+    setEditMode(!mode);
+}
+
+void TContainer::setEditMode(bool mode) {
     m_isEditing = mode;
     if (mode) {
         childWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
-        childWidget->setFocusProxy(this);
-        childWidget->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-    } else {
-        childWidget->setContextMenuPolicy(Qt::NoContextMenu);
         childWidget->setFocusProxy(0);
         childWidget->setAttribute(Qt::WA_TransparentForMouseEvents, false);
         setCursor(QCursor(Qt::ArrowCursor));
+    } else {
+        childWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
+        childWidget->setFocusProxy(this);
+        childWidget->setAttribute(Qt::WA_TransparentForMouseEvents, true);
     }
+}
+
+bool TContainer::isDesigning() {
+    return m_isDesigning;
+}
+
+bool TContainer::isEditing() {
+    return m_isEditing;
 }
 
 void TContainer::setScale(qreal scale) {
@@ -86,14 +119,15 @@ bool TContainer::isSelected() {
     return m_selected;
 }
 
-void TContainer::setSelected(bool value) {
+void TContainer::setSelected(bool value, bool repaint) {
     m_selected = value;
     if (value) {
         this->parentWidget()->installEventFilter(this);
     } else {
         mode = NONE;
     }
-    this->parentWidget()->repaint();
+    if (repaint)
+        this->parentWidget()->repaint();
 }
 
 void TContainer::setPasted(bool value) {
@@ -108,7 +142,7 @@ void TContainer::focusInEvent(QFocusEvent *e) {
 void TContainer::focusOutEvent(QFocusEvent *e) {
     Q_UNUSED(e);
     if (QApplication::keyboardModifiers() == Qt::ShiftModifier) return;
-    if (!m_isEditing) return;
+    if (!m_isDesigning) return;
     if (m_showMenu) return;
     mode = NONE;
     emit inFocus(false);
@@ -119,9 +153,9 @@ void TContainer::focusOutEvent(QFocusEvent *e) {
 }
 
 bool TContainer::eventFilter( QObject *obj, QEvent *evt ) {
-    if (m_selected && m_allowDrawSelection) {
+    if (m_isDesigning && m_selected && m_allowDrawSelection) {
         QWidget *w = this->parentWidget();
-        if (w == obj && evt->type()==QEvent::Paint && m_isEditing) {
+        if (w == obj && evt->type()==QEvent::Paint && m_isDesigning && !m_hasOverlay) {
             //Draw container selection
             QPainter painter(w);
             QPoint p = this->mapTo(w,QPoint(-3,-3));
@@ -141,10 +175,15 @@ bool TContainer::eventFilter( QObject *obj, QEvent *evt ) {
             return QWidget::eventFilter(obj,evt);
         }
     }
+    if (m_isDesigning && obj == childWidget && evt->type() == QEvent::FocusIn) {
+        this->setFocus();
+    }
     return QWidget::eventFilter(obj, evt);
 }
 
 void TContainer::mousePressEvent(QMouseEvent *e) {
+    if (!m_isDesigning) return;
+
     if (QApplication::keyboardModifiers() == Qt::ShiftModifier && !m_pasting) {
         m_selected = !m_selected;
         setSelected(m_selected);
@@ -155,7 +194,6 @@ void TContainer::mousePressEvent(QMouseEvent *e) {
     position = QPoint(e->globalX()-geometry().x(), e->globalY()-geometry().y());
     m_oldRect = this->geometry(); //Fix a start geom
 
-    if (!m_isEditing) return;
     if (!m_selected) return;
     //QWidget::mouseMoveEvent(e);
     if (!e->buttons() & Qt::LeftButton) {
@@ -169,7 +207,7 @@ void TContainer::mousePressEvent(QMouseEvent *e) {
 }
 
 void TContainer::keyPressEvent(QKeyEvent *e) {
-    if (!m_isEditing) return;
+    if (!m_isDesigning) return;
     if (e->key() == Qt::Key_Delete) {
         emit deleteByUser();
         this->deleteLater();
@@ -185,7 +223,7 @@ void TContainer::keyPressEvent(QKeyEvent *e) {
         if (e->key() == Qt::Key_Left) newPos.setX(newPos.x()-1);
         if (e->key() == Qt::Key_Right) newPos.setX(newPos.x()+1);
         move(newPos);
-        this->parentWidget()->repaint();
+        //this->parentWidget()->repaint();
     }
     //Change size of the container by key
     if (QApplication::keyboardModifiers() == Qt::ShiftModifier) {
@@ -194,7 +232,7 @@ void TContainer::keyPressEvent(QKeyEvent *e) {
         if (e->key() == Qt::Key_Left) resize(width()-1,height());
         if (e->key() == Qt::Key_Right) resize(width()+1,height());
         setBaseSize(width()/scale,height()/scale);
-        this->parentWidget()->repaint();
+        //this->parentWidget()->repaint();
     }
     emit newGeometry(oldRect, this->geometry());
     m_geomChanged(oldRect, this->geometry());
@@ -209,7 +247,7 @@ void TContainer::setOldGeom(QRect rect) {
 }
 
 void TContainer::m_geomChanged(QRect oldRect, QRect newRect) {
-    if (oldRect != newRect ) {
+    if (m_isDesigning && oldRect != newRect) {
         emit geomChanged(oldRect, newRect);
     }
 }
@@ -295,12 +333,13 @@ void TContainer::setCursorShape(const QPoint &e_pos) {
 
 void TContainer::mouseReleaseEvent(QMouseEvent *e) {
     QWidget::mouseReleaseEvent(e);
+    if (!m_isDesigning) return;
     m_geomChanged(m_oldRect, this->geometry());
 }
 
 void TContainer::mouseMoveEvent(QMouseEvent *e) {
     QWidget::mouseMoveEvent(e);
-    if (!m_isEditing) return;
+    if (!m_isDesigning) return;
     if (!m_selected) return;
     if (!e->buttons() & Qt::LeftButton) {
         QPoint p = QPoint(e->x()+geometry().x(), e->y()+geometry().y());
@@ -311,12 +350,9 @@ void TContainer::mouseMoveEvent(QMouseEvent *e) {
     const QRect oldRect = this->geometry();
     if ((mode == MOVE || mode == NONE) && e->buttons() && Qt::LeftButton) {
         QPoint toMove = e->globalPos() - position;
-        //if (toMove.x() < 0) return;
-        //if (toMove.y() < 0) return;
         if (toMove.x() > this->parentWidget()->width()-this->width()) return;
         move(toMove);
         emit newGeometry(oldRect, this->geometry());
-        this->parentWidget()->repaint();
         return;
     }
     if ((mode != MOVE && m_allowResize) && e->buttons() && Qt::LeftButton) {
@@ -386,6 +422,14 @@ void TContainer::allowDrawSelection(bool value) {
 
 bool TContainer::isAllowDrawSelection() {
     return m_allowDrawSelection;
+}
+
+void TContainer::setHasOverlay(bool value) {
+    m_hasOverlay = value;
+}
+
+bool TContainer::hasOverlay() {
+    return m_hasOverlay;
 }
 
 TContainer *TContainer::clone() {

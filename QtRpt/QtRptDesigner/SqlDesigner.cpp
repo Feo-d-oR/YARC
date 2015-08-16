@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "SqlDesigner.h"
@@ -13,6 +28,9 @@ e-mail: aliks-os@ukr.net
 #include <QGraphicsSceneDragDropEvent>
 #include <QGraphicsTextItem>
 #include <QGraphicsProxyWidget>
+#include <QFileDialog>
+#include "SQLHighlighter.h"
+#include "XmlViewModel.h"
 
 SqlDesigner::SqlDesigner(QWidget *parent) : QWidget(parent), ui(new Ui::SqlDesigner) {
     ui->setupUi(this);
@@ -33,6 +51,7 @@ SqlDesigner::SqlDesigner(QWidget *parent) : QWidget(parent), ui(new Ui::SqlDesig
     new SQLHighlighter(ui->sqlEditor->document(), &settings);
     QObject::connect(ui->rbCustom, SIGNAL(clicked()), this, SLOT(rbChecked()));
     QObject::connect(ui->rbSql, SIGNAL(clicked()), this, SLOT(rbChecked()));
+    QObject::connect(ui->rbXml, SIGNAL(clicked()), this, SLOT(rbChecked()));
     QObject::connect(ui->btnCheck, SIGNAL(clicked()), this, SLOT(connectDB()));
     QObject::connect(ui->btnClose, SIGNAL(clicked()), this, SLOT(btnClose()));
     QObject::connect(ui->actAddRelationship, SIGNAL(triggered()), this, SLOT(addRelation()));
@@ -41,6 +60,7 @@ SqlDesigner::SqlDesigner(QWidget *parent) : QWidget(parent), ui(new Ui::SqlDesig
     QObject::connect(ui->actUndo, SIGNAL(triggered()), this, SLOT(undo()));
     QObject::connect(ui->actRedo, SIGNAL(triggered()), this, SLOT(redo()));
     QObject::connect(ui->actDelete, SIGNAL(triggered()), this, SLOT(deleteSelected()));
+    QObject::connect(ui->btnSelectXML, SIGNAL(clicked()), this, SLOT(selectXMLFile()));
     QObject::connect(scene, SIGNAL(sqlChanged(QString)), this, SLOT(sqlChanged(QString)));
 }
 
@@ -57,11 +77,15 @@ void SqlDesigner::showDataSource(QDomElement e) {
         ui->edtPassword->setText(e.attribute("dbPassword"));
         ui->edtConnectionCoding->setText(e.attribute("dbCoding"));
         ui->edtCharsetCoding->setText(e.attribute("charsetCoding"));
-        ui->cmbType->setCurrentText(e.attribute("dbType"));
+        ui->cmbType->setCurrentIndex(ui->cmbType->findText(e.attribute("dbType")));
         ui->edtConName->setText(e.attribute("dbConnectionName"));
         ui->edtPort->setText(e.attribute("dbPort"));
 
         scene->load(e);
+    } else if (!e.isNull() && e.attribute("type") == "XML") {
+        ui->stackedWidget->setCurrentIndex(2);
+
+
     } else {
         ui->stackedWidget->setCurrentIndex(0);
         ui->rbCustom->setChecked(true);
@@ -127,9 +151,44 @@ QDomElement SqlDesigner::saveParamToXML(QDomDocument *xmlDoc) {
     return elem;
 }
 
+void SqlDesigner::selectXMLFile() {
+    QString folderPath = QApplication::applicationDirPath();
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Select File"), folderPath, "XML (*.xml);;User Interface files (*.ui)");
+    if (fileName.isEmpty())
+        return;
+
+    QFile file(fileName);
+    if (file.open(QIODevice::ReadOnly)) {
+        QDomDocument document;
+        if (document.setContent(&file)) {
+            XMLViewModel *model = new XMLViewModel(&document, this);
+            ui->treeView->setModel(model);
+
+        } else qDebug()<<"not set";
+        file.close();
+    } else qDebug()<<"not found";
+}
+
+void SqlDesigner::showXMLStuct() {
+    QFile file("11.xml");
+    if (file.open(QIODevice::ReadOnly)) {
+        QDomDocument document;
+        if (document.setContent(&file)) {
+            XMLViewModel *model = new XMLViewModel(&document, this);
+            ui->treeView->setModel(model);
+
+        } else qDebug()<<"not set";
+        file.close();
+    } else qDebug()<<"not found";
+}
+
 void SqlDesigner::rbChecked() {
     if (ui->rbCustom->isChecked()) ui->stackedWidget->setCurrentIndex(0);
     if (ui->rbSql->isChecked()) ui->stackedWidget->setCurrentIndex(1);
+    if (ui->rbXml->isChecked()) {
+        ui->stackedWidget->setCurrentIndex(2);
+        //showXMLStuct();
+    }
     emit changed(true);
 }
 

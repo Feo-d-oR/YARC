@@ -1,8 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "FldPropertyDlg.h"
@@ -68,11 +84,19 @@ QString FldPropertyDlg::showThis(int index, QWidget *widget, QString value) {
                 item->setData(0,Qt::UserRole,"<LineNo>");
                 f1->addChild(item);
 
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconVariable);
+                item->setText(0,"LineCount");
+                item->setData(0,Qt::UserRole,"<LineCount>");
+                f1->addChild(item);
+
                 this->setWindowTitle(tr("Variables"));
                 this->setWindowIcon(iconVariable);
             }
             if (index == 3) {   //Functions
                 rootItem->setText(0,tr("Functions"));
+
+                //------------------Aggregate functions----------------------
                 f1->setText(0,tr("Aggregate functions"));
 
                 item = new QTreeWidgetItem(f1);
@@ -91,6 +115,44 @@ QString FldPropertyDlg::showThis(int index, QWidget *widget, QString value) {
                 item->setIcon(0,iconFunction);
                 item->setText(0,"Count");
                 item->setData(0,Qt::UserRole,"<Count([])>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setText(0,"Max");
+                item->setData(0,Qt::UserRole,"<Max([])>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setText(0,"Min");
+                item->setData(0,Qt::UserRole,"<Min([])>");
+                f1->addChild(item);
+
+                //------------------Text functions----------------------
+                f1 = new QTreeWidgetItem(rootItem);
+                f1->setIcon(0,iconFolder);
+                f1->setText(0,tr("Text functions"));
+                f1->setExpanded(true);
+                rootItem->addChild(f1);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setText(0,"NumberToWords (ENG)");
+                item->setData(0,Qt::UserRole,"<NumberToWords('ENG', )>");
+                f1->addChild(item);
+
+                 //------------------Math functions----------------------
+                f1 = new QTreeWidgetItem(rootItem);
+                f1->setIcon(0,iconFolder);
+                f1->setText(0,tr("Math functions"));
+                f1->setExpanded(true);
+                rootItem->addChild(f1);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setText(0,"Frac");
+                item->setData(0,Qt::UserRole,"Frac()");
                 f1->addChild(item);
 
                 this->setWindowTitle(tr("Functions"));

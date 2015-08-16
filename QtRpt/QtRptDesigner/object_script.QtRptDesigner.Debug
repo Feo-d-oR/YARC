@@ -1,5 +1,5 @@
 INPUT(
-./tmp-win32\qlabelex.o
+./tmp-win32\Qxyz_Label.o
 ./tmp-win32\qtexteditex.o
 ./tmp-win32\tcontainer.o
 ./tmp-win32\downloadmanager.o
@@ -42,8 +42,10 @@ INPUT(
 ./tmp-win32\TContainerLine.o
 ./tmp-win32\TContainerField.o
 ./tmp-win32\UndoCommands.o
+./tmp-win32\XmlViewModel.o
+./tmp-win32\qrc_imagesRpt.o
 ./tmp-win32\qrc_images.o
-./tmp-win32\moc_qlabelex.o
+./tmp-win32\moc_Qxyz_Label.o
 ./tmp-win32\moc_qtexteditex.o
 ./tmp-win32\moc_tcontainer.o
 ./tmp-win32\moc_downloadmanager.o
@@ -76,4 +78,5 @@ INPUT(
 ./tmp-win32\moc_SqlDesigner.o
 ./tmp-win32\moc_TContainerLine.o
 ./tmp-win32\moc_TContainerField.o
+./tmp-win32\moc_XmlViewModel.o
 );

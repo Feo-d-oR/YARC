@@ -252,6 +252,9 @@
    <addaction name="actPageSettings"/>
    <addaction name="actDataSource"/>
    <addaction name="separator"/>
+   <addaction name="actGroup"/>
+   <addaction name="actUngroup"/>
+   <addaction name="separator"/>
    <addaction name="actShowGrid"/>
    <addaction name="separator"/>
    <addaction name="actFieldLeft"/>
@@ -1008,6 +1011,10 @@
    </property>
   </action>
   <action name="actCheckUpdates">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/new/prefix1/images/update.png</normaloff>:/new/prefix1/images/update.png</iconset>
+   </property>
    <property name="text">
     <string>Check updates</string>
    </property>
@@ -1130,6 +1137,10 @@
    </property>
   </action>
   <action name="actReadme">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/new/prefix1/images/readme.png</normaloff>:/new/prefix1/images/readme.png</iconset>
+   </property>
    <property name="text">
     <string>Readme</string>
    </property>
@@ -1150,6 +1161,30 @@
    </property>
    <property name="toolTip">
     <string>Add Rich Text</string>
+   </property>
+  </action>
+  <action name="actGroup">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/new/prefix1/images/group.png</normaloff>:/new/prefix1/images/group.png</iconset>
+   </property>
+   <property name="text">
+    <string>To group</string>
+   </property>
+   <property name="toolTip">
+    <string>To group</string>
+   </property>
+  </action>
+  <action name="actUngroup">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/new/prefix1/images/ungroup.png</normaloff>:/new/prefix1/images/ungroup.png</iconset>
+   </property>
+   <property name="text">
+    <string>To ungroup</string>
+   </property>
+   <property name="toolTip">
+    <string>To ungroup</string>
    </property>
   </action>
  </widget>

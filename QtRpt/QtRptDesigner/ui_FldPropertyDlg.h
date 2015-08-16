@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'FldPropertyDlg.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -248,8 +248,9 @@ public:
         QObject::connect(btnCancel, SIGNAL(clicked()), FldPropertyDlg, SLOT(reject()));
         QObject::connect(btnOK, SIGNAL(clicked()), FldPropertyDlg, SLOT(accept()));
         QObject::connect(btnClear, SIGNAL(clicked()), edtFornatString, SLOT(clear()));
+        QObject::connect(treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), FldPropertyDlg, SLOT(accept()));
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(FldPropertyDlg);

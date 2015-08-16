@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "mainwindow.h"
@@ -341,6 +356,9 @@ MainWindow::MainWindow(QWidget *parent) :  QMainWindow(parent), ui(new Ui::MainW
     QObject::connect(ui->actAddPicture, SIGNAL(triggered()), this, SLOT(AddPicture()));
     QObject::connect(ui->actAddRichText, SIGNAL(triggered()), this, SLOT(addFieldTextRich()));
 
+    QObject::connect(ui->actGroup, SIGNAL(triggered()), this, SLOT(setGroupingField()));
+    QObject::connect(ui->actUngroup, SIGNAL(triggered()), this, SLOT(setGroupingField()));
+
     QObject::connect(ui->actionOpenReport, SIGNAL(triggered()), this, SLOT(openFile()));
     QObject::connect(ui->actionNewReport, SIGNAL(triggered()), this, SLOT(newReport()));
     QObject::connect(ui->actSaveReport, SIGNAL(triggered()), this, SLOT(saveReport()));
@@ -586,9 +604,9 @@ void MainWindow::openReadme() {
 }
 
 void MainWindow::checkUpdates() {
-    DownloadManager dl;
+    DownloadManager dl(this);
     dl.setParent(this);
-    QString urlVersion = "http://master.dl.sourceforge.net/project/qtrpt/version.txt";
+    QString urlVersion = "http://garr.dl.sourceforge.net/project/qtrpt/version.txt";
     dl.setTarget(urlVersion);
     dl.download(true);
 
@@ -601,7 +619,7 @@ void MainWindow::openDBGroupProperty() {
     ReportBand *band = qobject_cast<ReportBand *>(widgetInFocus);
     FldPropertyDlg *dlg = new FldPropertyDlg(this);
     if ((band !=0) && (band->bandType == DataGroupHeader)) {
-        dlg->showThis(1,band);
+        dlg->showThis(1,band,"");
         setParamTree(StartNewNumeration, band->getStartNewNumertaion());
         setParamTree(StartNewPage, band->getStartNewPage());
         ui->actSaveReport->setEnabled(true);
@@ -727,7 +745,6 @@ void MainWindow::showAbout() {
 }
 
 void MainWindow::reportPageChanged(int index) {
-    //if (rootItem != 0 && rootItem->childCount() > 0)
     rootItem->takeChildren();
     widgetInFocus = 0;
 
@@ -879,6 +896,7 @@ void MainWindow::showPageSetting() {
         repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->widget(ui->tabWidget->currentIndex()));
         repPage->pageSetting = dialog->pageSetting;
         repPage->setPaperSize(0);
+        ui->actSaveReport->setEnabled(true);
     }
     delete dialog;
 }
@@ -1021,6 +1039,10 @@ void MainWindow::openFile() {
         repPage->pageSetting.pageWidth       = repElem.attribute("pageWidth").toInt();
         repPage->pageSetting.pageHeight      = repElem.attribute("pageHeight").toInt();
         repPage->pageSetting.pageOrientation = repElem.attribute("orientation").toInt();
+        repPage->pageSetting.border          = repElem.attribute("border", "0").toInt();
+        repPage->pageSetting.borderWidth     = repElem.attribute("borderWidth", "1").toInt();
+        repPage->pageSetting.borderColor     = repElem.attribute("borderColor", "rgba(0,0,0,255)");
+        repPage->pageSetting.borderStyle     = repElem.attribute("borderStyle", "solid");
 
         ui->tabWidget->setTabText(ui->tabWidget->currentIndex(), tr("Page %1").arg(ui->tabWidget->currentIndex()+1));
         repPage->setPaperSize(0);
@@ -1059,8 +1081,6 @@ void MainWindow::openFile() {
                 reportBand->setShowInGroup(e.attribute("showInGroup").toInt());
                 reportBand->setStartNewPage(e.attribute("startNewPage").toInt());
 
-                //reportBand->setUpdatesEnabled(false);
-
                 QDomNode c = n.firstChild();
                 while(!c.isNull()) {
                     QDomElement e = c.toElement(); // try to convert the node to an element.
@@ -1086,9 +1106,6 @@ void MainWindow::openFile() {
                     c = c.nextSibling();
                 }
                 repPage->overlay->raise();
-
-                //reportBand->setUpdatesEnabled(true);
-                //QCoreApplication::processEvents();
             }
 
             n = n.nextSibling();
@@ -1207,6 +1224,11 @@ Command MainWindow::getCommand(QObject *widget) {
 
 //Get from container signal about geometry/position changes
 void MainWindow::contGeomChanging(QRect oldRect, QRect newRect) {
+    ui->actSaveReport->setEnabled(true);
+    shiftToDelta(oldRect,newRect,sender(), true);
+}
+
+void MainWindow::shiftToDelta(QRect oldRect, QRect newRect, QObject *sender, bool change) {
     TContainerLine *contLine = qobject_cast<TContainerLine *>(widgetInFocus);
     TContainerField *contField = qobject_cast<TContainerField *>(widgetInFocus);
     if (contLine != 0)
@@ -1217,29 +1239,23 @@ void MainWindow::contGeomChanging(QRect oldRect, QRect newRect) {
         setParamTree(Width, newRect.width());
         setParamTree(Height, newRect.height());
     }
-    ui->actSaveReport->setEnabled(true);
 
-    shiftToDelta(oldRect,newRect,sender(), true);
-}
-
-void MainWindow::shiftToDelta(QRect oldRect, QRect newRect, QObject *sender, bool change) {
     RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
-    QList<RptContainer *> allContList = repPage->findChildren<RptContainer *>();
-    for (int i=0; i<allContList.size(); i++) {
-        if (allContList.at(i)->isSelected() && allContList.at(i) != sender) {
+    foreach(RptContainer *cont, repPage->findChildren<RptContainer *>()) {
+        if (cont->isSelected() && cont != sender) {
             int delta;
             if (oldRect.x() != newRect.x()) {
                 //двигаем по гор
                 delta = newRect.x() - oldRect.x();
 
                 if (change) {
-                    QPoint newPos(allContList.at(i)->x(),allContList.at(i)->y());
+                    QPoint newPos(cont->x(),cont->y());
                     newPos.setX(newPos.x()+delta);
-                    allContList.at(i)->move(newPos);
+                    cont->move(newPos);
                 } else {
-                    QRect m_oldRect = allContList.at(i)->getOldGeom();
-                    m_oldRect.moveLeft(m_oldRect.x()+delta);
-                    allContList.at(i)->setOldGeom(m_oldRect);
+                    QRect m_oldRect = cont->getOldGeom();
+                    m_oldRect.moveLeft(m_oldRect.x() + delta);
+                    cont->setOldGeom(m_oldRect);
                 }
             }
             if (oldRect.y() != newRect.y()) {
@@ -1247,13 +1263,13 @@ void MainWindow::shiftToDelta(QRect oldRect, QRect newRect, QObject *sender, boo
                 delta = newRect.y() - oldRect.y();
 
                 if (change) {
-                    QPoint newPos(allContList.at(i)->x(),allContList.at(i)->y());
+                    QPoint newPos(cont->x(),cont->y());
                     newPos.setY(newPos.y()+delta);
-                    allContList.at(i)->move(newPos);
+                    cont->move(newPos);
                 } else {
-                    QRect m_oldRect = allContList.at(i)->getOldGeom();
+                    QRect m_oldRect = cont->getOldGeom();
                     m_oldRect.moveTop(m_oldRect.y()+delta);
-                    allContList.at(i)->setOldGeom(m_oldRect);
+                    cont->setOldGeom(m_oldRect);
                 }
             }
             if (oldRect.width() != newRect.width()) {
@@ -1261,11 +1277,11 @@ void MainWindow::shiftToDelta(QRect oldRect, QRect newRect, QObject *sender, boo
                 delta = newRect.width() - oldRect.width();
 
                 if (change) {
-                    allContList.at(i)->resize(allContList.at(i)->width()+delta, allContList.at(i)->height());
+                    cont->resize(cont->width()+delta, cont->height());
                 } else {
-                    QRect m_oldRect = allContList.at(i)->getOldGeom();
+                    QRect m_oldRect = cont->getOldGeom();
                     m_oldRect.setWidth(m_oldRect.width()+delta);
-                    allContList.at(i)->setOldGeom(m_oldRect);
+                    cont->setOldGeom(m_oldRect);
                 }
             }
             if (oldRect.height() != newRect.height()) {
@@ -1273,18 +1289,17 @@ void MainWindow::shiftToDelta(QRect oldRect, QRect newRect, QObject *sender, boo
                 delta = newRect.height() - oldRect.height();
 
                 if (change) {
-                    allContList.at(i)->resize(allContList.at(i)->width(), allContList.at(i)->height()+delta);
+                    cont->resize(cont->width(), cont->height()+delta);
                 } else {
-                    QRect m_oldRect = allContList.at(i)->getOldGeom();
+                    QRect m_oldRect = cont->getOldGeom();
                     m_oldRect.setHeight(m_oldRect.height()+delta);
-                    allContList.at(i)->setOldGeom(m_oldRect);
+                    cont->setOldGeom(m_oldRect);
                 }
             }
-
-            allContList.at(i)->parentWidget()->repaint();
         }
     }
-    repPage->overlay->repaint();
+    if (change)
+        repPage->overlay->repaint();
 }
 
 void MainWindow::contGeomChanged(QRect oldRect, QRect newRect) {
@@ -1324,76 +1339,134 @@ void MainWindow::redo() {
     showParamState();
 }
 
-//При выборе виджета, показываем его параметры в дереве и на кнопках
+void MainWindow::setGroupingField() {
+    if (widgetInFocus == 0) return;
+    QList<RptContainer *> list = getSelectedContainer();
+    QString groupName = "";
+    if (sender() == ui->actGroup) {
+        groupName = "group%1";
+        bool good = false;
+        int cf = 1;
+        QList<RptContainer *> lst = this->findChildren<RptContainer *>();
+        while (!good) {
+            bool fnd = false;
+            QList<RptContainer*>::const_iterator it = lst.constBegin();
+            while (it != lst.end()) {
+                if ((*it)->getGroupName() == QString(groupName).arg(cf)) {
+                    fnd = true;
+                    break;
+                }
+                ++it;
+            }
+
+            if (fnd)
+                cf += 1;
+            else {
+                groupName = QString(groupName).arg(cf);
+                break;
+            }
+        }
+    }
+
+    RptContainer *contF = qobject_cast<RptContainer *>(widgetInFocus);    
+    foreach (RptContainer *cont, list) {
+        if (sender() == ui->actUngroup && cont->getGroupName() == contF->getGroupName()) {
+            cont->setGroupName("");
+            cont->setSelected(false,false);
+        }
+        if (sender() == ui->actGroup && cont->isSelected())
+            cont->setGroupName(groupName);
+    }
+
+    if (sender() == ui->actUngroup) {
+        RptContainer *contF = qobject_cast<RptContainer *>(widgetInFocus);
+        contF->parentWidget()->repaint();
+    }
+}
+
+//Container's selection
 void MainWindow::setWidgetInFocus(bool inFocus) {
     if (inFocus && sender() != 0) {
         if (QApplication::keyboardModifiers() != Qt::ShiftModifier) {
             widgetInFocus = qobject_cast<QWidget *>(sender());
-            RptContainer *cont = qobject_cast<RptContainer *>(widgetInFocus);
-            if (cont != 0) {
-                cont->setSelected(true);
-                cont->parentWidget()->repaint();
-            }
-            ui->treeParams->clear();
-            showParamState();            
-        }
+            RptContainer *contF = qobject_cast<RptContainer *>(widgetInFocus);
+            if (contF != 0) {
+                contF->setSelected(true,false);
 
-        //Un-select containters
-        if (QApplication::keyboardModifiers() != Qt::ShiftModifier) {
-            RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
-            foreach (RptContainer *cont, repPage->findChildren<RptContainer *>()) {
-                if (cont->isSelected() && cont != sender()) {
-                    cont->setSelected(false);
+                RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
+                foreach (RptContainer *cont, repPage->findChildren<RptContainer *>()) {
+                    if (!cont->getGroupName().isEmpty() && cont->getGroupName() == contF->getGroupName() && cont != sender()) {
+                        cont->setSelected(true,false);
+                    }
+
+                    //Un-select containters
+                    if (cont->isSelected() && cont != sender()) {
+                        if (!contF->getGroupName().isEmpty() && cont->getGroupName() != contF->getGroupName())
+                            cont->setSelected(false,false);
+                        if (contF->getGroupName().isEmpty())
+                            cont->setSelected(false,false);
+                    }
+                }
+
+                contF->parentWidget()->repaint();
+            } else {
+                //Un-select containters
+                RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
+                foreach (RptContainer *cont, repPage->findChildren<RptContainer *>()) {
+                    if (cont->isSelected() && cont != sender()) {
+                        cont->setSelected(false,false);
+                    }
                 }
             }
+
+            ui->treeParams->clear();
+            showParamState();            
         }
     }
 }
 
 void MainWindow::alignFields() {
     RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
-    QList<TContainerField *> allContList = repPage->findChildren<TContainerField *>();
     TContainerField *cont = qobject_cast<TContainerField *>(widgetInFocus);
-    for (int i=0; i<allContList.size(); i++) {
-        if (allContList.at(i)->isSelected()) {
-            QPoint newPos(allContList.at(i)->x(),allContList.at(i)->y());
+    foreach (RptContainer *container, repPage->findChildren<TContainerField *>()) {
+        if (container->isSelected()) {
+            QPoint newPos(container->x(),container->y());
             QRect rect1(cont->geometry());
-            QRect rect2(allContList.at(i)->geometry());
+            QRect rect2(container->geometry());
 
             if (sender() == ui->actFieldRight) {
                 newPos.setX(rect1.x()+rect1.width()-rect2.width());
-                allContList.at(i)->move(newPos);
+                container->move(newPos);
             }
             if (sender() == ui->actFieldLeft) {
                 newPos.setX(cont->x());
-                allContList.at(i)->move(newPos);
+                container->move(newPos);
             }
             if (sender() == ui->actFieldMiddle) {
                 newPos.setX(rect1.x()+rect1.width()/2-rect2.width()/2);
-                allContList.at(i)->move(newPos);
+                container->move(newPos);
             }
             if (sender() == ui->actFieldTop) {
                 newPos.setY(cont->y());
-                allContList.at(i)->move(newPos);
+                container->move(newPos);
             }
             if (sender() == ui->actFieldBottom) {
                 newPos.setY(rect1.y()+rect1.height()-rect2.height());
-                allContList.at(i)->move(newPos);
+                container->move(newPos);
             }
             if (sender() == ui->actFieldCenter) {
                 newPos.setY(rect1.y()+rect1.height()/2-rect2.height()/2);
-                allContList.at(i)->move(newPos);
+                container->move(newPos);
             }
             if (sender() == ui->actFieldSameHeight) {
-                allContList.at(i)->resize(allContList.at(i)->width(), rect1.height());
+                container->resize(container->width(), rect1.height());
             }
             if (sender() == ui->actFieldSameWidth) {
-                allContList.at(i)->resize(rect1.width(), allContList.at(i)->height());
+                container->resize(rect1.width(), container->height());
             }
-
-            allContList.at(i)->parentWidget()->repaint();
         }
     }
+    cont->parentWidget()->repaint();
 }
 
 void MainWindow::saveReport() {
@@ -1422,6 +1495,10 @@ void MainWindow::saveReport() {
         repElem.setAttribute("marginsTop",repPage->pageSetting.marginsTop);
         repElem.setAttribute("marginsBottom",repPage->pageSetting.marginsBottom);
         repElem.setAttribute("orientation",repPage->pageSetting.pageOrientation);
+        repElem.setAttribute("border",repPage->pageSetting.border);
+        repElem.setAttribute("borderWidth",repPage->pageSetting.borderWidth);
+        repElem.setAttribute("borderColor",repPage->pageSetting.borderColor);
+        repElem.setAttribute("borderStyle",repPage->pageSetting.borderStyle);
         docElem.appendChild(repElem);
 
         foreach (QWidget *widget, repPage->getReportItems()) {
@@ -2081,7 +2158,6 @@ void MainWindow::setParamTree(Command command, QVariant value, bool child) {
             item->setText(0,tr("Width"));
             item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
             item->setText(1,QString::number(value.toInt()-1));
-            //item->setText(1, QString::number(qRound(value.toDouble()/repPage->getScale()-1)));
             break;
         }
         case Left: {
@@ -2171,7 +2247,7 @@ void MainWindow::setParamTree(Command command, QVariant value, bool child) {
             item->setText(0,tr("FrameWidth"));
             item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
             item->setText(1, value.toString());
-            this->cbFrameWidth->setCurrentText(value.toString());
+            this->cbFrameWidth->setCurrentIndex(this->cbFrameWidth->findText(value.toString()));
             break;
         }
         case FontName: {
@@ -2459,7 +2535,7 @@ void MainWindow::addField(FieldType type) {
 }
 
 void MainWindow::addDraw() {
-    FieldType fieldType;
+    FieldType fieldType = Text;
     if (sender()->objectName() == "actDrawRectangle") {
         fieldType = Reactangle;
     }
@@ -2501,12 +2577,17 @@ void MainWindow::addDraw() {
         addContainer(newContainer);
         newContMoving = true;
     }
+
     ui->actSelect_tool->setChecked(true);
 }
 
 void MainWindow::showPreview() {
     QtRPT *report = new QtRPT(this);
-    report->loadReport(*xmlDoc);
+    if (fileName.isEmpty()) {
+        report->loadReport(*xmlDoc);
+    } else {
+        report->loadReport(fileName);
+    }
     report->printExec();
 }
 
@@ -2550,7 +2631,7 @@ void MainWindow::changeZoom() {
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *e) {
-    if(e->type()==QEvent::Wheel ) {
+    if (e->type() == QEvent::Wheel ) {
         QWheelEvent *m = static_cast< QWheelEvent * >( e );
         RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
         if (QApplication::keyboardModifiers() == Qt::ControlModifier) {
@@ -2571,7 +2652,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e) {
             return true;
         }
     }
-    if(e->type()==QEvent::Paint) {
+    if (e->type() == QEvent::Paint) {
         if (obj->objectName() == "repWidget") {
             RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
             repPage->paintGrid();
@@ -2607,7 +2688,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e) {
             setCursor(Qt::ArrowCursor);
         }
     }
-    if(e->type() == QMouseEvent::MouseButtonPress) {
+    if (e->type() == QMouseEvent::MouseButtonPress) {
         if (ui->actMagnifying->isChecked()) {
             qreal scale;
             if (QApplication::keyboardModifiers() != Qt::ShiftModifier) scale = 1;
@@ -2671,7 +2752,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e) {
                     m_newContainer->move(QPoint(p.x()+1,  p.y()+0));
                     m_newContainer->setVisible(true);
                     m_newContainer->allowEditing(true);
-                    emit m_newContainer->inFocus(true);
+                    //emit m_newContainer->inFocus(true);
+                    m_newContainer->emitInFocus(true);
                     m_undoStack->push(new AddContainerCommand( getSelectedContainer() ));
                     //m_newContainer->edit();
                 }
@@ -2687,7 +2769,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e) {
     return QWidget::eventFilter(obj,e);
 }
 
-//Обработка при клике на встроенном чек-боксе
+//Process click on CheckBox
 void MainWindow::itemChanged(QTreeWidgetItem *item, int column) {
     if (column == 1 ) {
         if (widgetInFocus == 0) return;
@@ -2723,7 +2805,7 @@ void MainWindow::itemChanged(QTreeWidgetItem *item, int column) {
     }
 }
 
-//Меняем параметр в дереве параметров
+//Change param in paramTree
 void MainWindow::closeEditor() {
     QTreeWidgetItem *item = ui->treeParams->currentItem();
     if (item == 0) return;
@@ -2784,12 +2866,6 @@ void MainWindow::clipBoard() {
                 allContList.at(i)->setVisible(false);
             }
         }
-
-
-
-        //cloneCont = qobject_cast<RptContainer*>(widgetInFocus);
-        //if (cloneCont == 0) return;
-        //cloneCont->setVisible(false);
         ui->actPaste->setEnabled(true);
     }
     if (sender() == ui->actPaste) {
@@ -2813,8 +2889,8 @@ void MainWindow::clipBoard() {
 
             m_newContainer->setParent(band->contWidget);
             m_newContainer->setMenu(contMenu);
-            m_newContainer->setFocus();
-            m_newContainer->setSelected(false);
+            //m_newContainer->setFocus();
+            //m_newContainer->setSelected(false);
             m_newContainer->setVisible(true);
             widgetInFocus = m_newContainer;
         }
@@ -2847,6 +2923,8 @@ void MainWindow::deleteByUser() {
 }
 
 MainWindow::~MainWindow() {
+    delete xmlDoc;
+    xmlDoc = 0;
     delete ui;
 }
 

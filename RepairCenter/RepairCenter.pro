@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = RepairCenter
 TEMPLATE = app
 
-include(../QtRpt/QtRpt/QtRpt.pri)
+#include(../QtRpt/QtRpt/QtRpt.pri)
 include($$PWD/../config.pri)
 
 SOURCES += main.cpp\

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SqlDesigner.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -21,12 +21,16 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QTreeView>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -46,6 +50,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QRadioButton *rbCustom;
     QRadioButton *rbSql;
+    QRadioButton *rbXml;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
@@ -83,14 +88,30 @@ public:
     QGraphicsView *graphicsView;
     QLabel *label;
     QTextEdit *sqlEditor;
+    QWidget *page_3;
+    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer_3;
+    QPushButton *btnSelectXML;
+    QSplitter *splitter_2;
+    QSplitter *splitter;
+    QPlainTextEdit *plainTextEdit;
+    QTreeView *treeView;
+    QTableWidget *tableWidget;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *pushButton;
+    QSpacerItem *horizontalSpacer_4;
+    QTableWidget *tableWidget1;
 
     void setupUi(QWidget *SqlDesigner)
     {
         if (SqlDesigner->objectName().isEmpty())
             SqlDesigner->setObjectName(QStringLiteral("SqlDesigner"));
-        SqlDesigner->resize(500, 497);
-        SqlDesigner->setMinimumSize(QSize(500, 0));
-        SqlDesigner->setMaximumSize(QSize(500, 16777215));
+        SqlDesigner->resize(600, 577);
+        SqlDesigner->setMinimumSize(QSize(600, 0));
+        SqlDesigner->setMaximumSize(QSize(600, 16777215));
         SqlDesigner->setWindowTitle(QStringLiteral(""));
         actClearDiagram = new QAction(SqlDesigner);
         actClearDiagram->setObjectName(QStringLiteral("actClearDiagram"));
@@ -139,6 +160,11 @@ public:
         rbSql->setObjectName(QStringLiteral("rbSql"));
 
         horizontalLayout_2->addWidget(rbSql);
+
+        rbXml = new QRadioButton(SqlDesigner);
+        rbXml->setObjectName(QStringLiteral("rbXml"));
+
+        horizontalLayout_2->addWidget(rbXml);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -325,6 +351,77 @@ public:
         verticalLayout_2->addWidget(sqlEditor);
 
         stackedWidget->addWidget(page_2);
+        page_3 = new QWidget();
+        page_3->setObjectName(QStringLiteral("page_3"));
+        verticalLayout_4 = new QVBoxLayout(page_3);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_3);
+
+        btnSelectXML = new QPushButton(page_3);
+        btnSelectXML->setObjectName(QStringLiteral("btnSelectXML"));
+
+        horizontalLayout_4->addWidget(btnSelectXML);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_4);
+
+        splitter_2 = new QSplitter(page_3);
+        splitter_2->setObjectName(QStringLiteral("splitter_2"));
+        splitter_2->setOrientation(Qt::Vertical);
+        splitter = new QSplitter(splitter_2);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        plainTextEdit = new QPlainTextEdit(splitter);
+        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
+        splitter->addWidget(plainTextEdit);
+        treeView = new QTreeView(splitter);
+        treeView->setObjectName(QStringLiteral("treeView"));
+        splitter->addWidget(treeView);
+        splitter_2->addWidget(splitter);
+        tableWidget = new QTableWidget(splitter_2);
+        if (tableWidget->columnCount() < 2)
+            tableWidget->setColumnCount(2);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        splitter_2->addWidget(tableWidget);
+        tableWidget->horizontalHeader()->setStretchLastSection(true);
+        tableWidget->verticalHeader()->setStretchLastSection(false);
+        layoutWidget = new QWidget(splitter_2);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        pushButton = new QPushButton(layoutWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        horizontalLayout_5->addWidget(pushButton);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_4);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_5);
+
+        tableWidget1 = new QTableWidget(layoutWidget);
+        tableWidget1->setObjectName(QStringLiteral("tableWidget1"));
+
+        verticalLayout_3->addWidget(tableWidget1);
+
+        splitter_2->addWidget(layoutWidget);
+
+        verticalLayout_4->addWidget(splitter_2);
+
+        stackedWidget->addWidget(page_3);
 
         gridLayout->addWidget(stackedWidget, 1, 0, 1, 1);
 
@@ -390,22 +487,13 @@ public:
         actDelete->setShortcut(QApplication::translate("SqlDesigner", "Del", 0));
         rbCustom->setText(QApplication::translate("SqlDesigner", "Custom DS", 0));
         rbSql->setText(QApplication::translate("SqlDesigner", "SQL DS", 0));
+        rbXml->setText(QApplication::translate("SqlDesigner", "XML DS", 0));
         btnClose->setText(QApplication::translate("SqlDesigner", "Close", 0));
         groupBox->setTitle(QApplication::translate("SqlDesigner", "Connection's parameters", 0));
         label_2->setText(QApplication::translate("SqlDesigner", "Driver", 0));
         edtConnectionCoding->setText(QApplication::translate("SqlDesigner", "UTF8", 0));
         label_9->setText(QApplication::translate("SqlDesigner", "Charset coding", 0));
         label_6->setText(QApplication::translate("SqlDesigner", "Password", 0));
-        cmbType->clear();
-        cmbType->insertItems(0, QStringList()
-         << QApplication::translate("SqlDesigner", "QSQLITE", 0)
-         << QApplication::translate("SqlDesigner", "QMYSQL", 0)
-         << QApplication::translate("SqlDesigner", "QMYSQL3", 0)
-         << QApplication::translate("SqlDesigner", "QODBC", 0)
-         << QApplication::translate("SqlDesigner", "QODBC3", 0)
-         << QApplication::translate("SqlDesigner", "QPSQL", 0)
-         << QApplication::translate("SqlDesigner", "QPSQL7", 0)
-        );
         btnCheck->setText(QApplication::translate("SqlDesigner", "Check", 0));
         label_7->setText(QApplication::translate("SqlDesigner", "Connection", 0));
         label_5->setText(QApplication::translate("SqlDesigner", "User name", 0));
@@ -416,6 +504,12 @@ public:
         label_11->setText(QApplication::translate("SqlDesigner", "Connection name", 0));
         label_10->setText(QApplication::translate("SqlDesigner", "Port", 0));
         label->setText(QApplication::translate("SqlDesigner", "SQL query", 0));
+        btnSelectXML->setText(QApplication::translate("SqlDesigner", "Select XML", 0));
+        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("SqlDesigner", "Field name", 0));
+        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("SqlDesigner", "Description", 0));
+        pushButton->setText(QApplication::translate("SqlDesigner", "Preview data", 0));
         Q_UNUSED(SqlDesigner);
     } // retranslateUi
 

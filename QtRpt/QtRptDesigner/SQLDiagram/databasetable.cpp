@@ -16,10 +16,8 @@
 
 #include <QGraphicsScene>
 #include <QStringList>
-//#include <QMimeData>
 #include <QDebug>
 #include "databasetable.h"
-//#include "databasetableproperties.h"
 #include "diagramdocument.h"
 #include "column.h"
 #include "columnlist.h"

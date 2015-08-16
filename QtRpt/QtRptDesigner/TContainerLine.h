@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.ru
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 
@@ -13,7 +28,7 @@ e-mail: aliks-os@ukr.ru
 #include <QWidget>
 #include <tcontainer.h>
 #include <QLabel>
-#include <RptContainer.h>
+#include "RptContainer.h"
 
 class TContainerLine : public RptContainer
 {
@@ -27,8 +42,8 @@ public:
     TContainerLine(QWidget *parent, QPoint p, QWidget *cWidget = 0);
     ~TContainerLine();
     QLineF line;
-    TContainer *cs = 0;
-    TContainer *ce = 0;
+    TContainer *cs;
+    TContainer *ce;
     qreal getLength();
     TContainerLine *clone();
     void setMenu(QMenu *menu_);

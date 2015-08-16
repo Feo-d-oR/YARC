@@ -3,7 +3,10 @@
 
 #include <QWidget>
 #include <QMetaEnum>
-#include <qzint.h>
+#ifndef NO_BARCODE
+    #include <qzint.h>
+#endif
+#include <QPainter>
 
 class BarCode : public QWidget
 {
@@ -11,6 +14,7 @@ class BarCode : public QWidget
     Q_ENUMS(BarcodeTypes)
     Q_ENUMS(FrameTypes)
     Q_PROPERTY(QString value READ getValue WRITE setValue)
+
 public:
     enum BarcodeTypes {
         CODE11		=1,
@@ -102,6 +106,8 @@ public:
     BarcodeTypes getBarcodeType() {return m_BarcodeType;}
     void setFrameType(FrameTypes value);
     FrameTypes getFrameType() {return m_FrameType;}
+    void setHeight(int value);
+    int getHeight() {return m_height;}
     typedef QList<QPair<BarcodeTypes, QString> > BarcodeTypePairList;
     typedef QList<QPair<FrameTypes, QString> > FrameTypePairList;
     static BarcodeTypePairList getTypeList();
@@ -118,10 +124,13 @@ protected:
     void setParamFromProperties();
 
 private:
-    Zint::QZint *bc;
+    #ifndef NO_BARCODE
+        Zint::QZint *bc;
+    #endif
     QString m_value;
     BarcodeTypes m_BarcodeType;
     FrameTypes m_FrameType;
+    int m_height;
     const static QStringList getTypeNameList();
 
 signals:

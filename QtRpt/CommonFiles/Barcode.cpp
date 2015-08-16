@@ -1,22 +1,25 @@
 #include "Barcode.h"
 #include <QDebug>
 #include <QLibrary>
-#include "qzint.h"
+#ifndef NO_BARCODE
+    #include "qzint.h"
+#endif
 
 BarCode::BarCode(QWidget *parent) : QWidget(parent) {
-    bc = 0;
-    QLibrary library("QtZint");
-    if (!library.load())
-        qDebug() << library.errorString();
+    #ifndef NO_BARCODE
+        bc = 0;
+        QLibrary library("QtZint");
+        if (!library.load())
+            qDebug() << library.errorString();
 
-    typedef Zint::QZint*(*CreateZint)();
-    CreateZint cwf = (CreateZint)library.resolve("createWidget");
-    if (cwf) {
-        bc = cwf();
-    } else {
-        qDebug() << "Could not create Zint from the loaded library";
-    }
-
+        typedef Zint::QZint*(*CreateZint)();
+        CreateZint cwf = (CreateZint)library.resolve("createWidget");
+        if (cwf) {
+            bc = cwf();
+        } else {
+            qDebug() << "Could not create Zint from the loaded library";
+        }
+    #endif
     m_value = "QtRPT";
     m_BarcodeType = CODE128; //CODE128
     m_FrameType = NO_BORDER; //NO FRAME
@@ -25,46 +28,68 @@ BarCode::BarCode(QWidget *parent) : QWidget(parent) {
 void BarCode::paintEvent(QPaintEvent * event) {
     Q_UNUSED(event);
     QPainter painter(this);
-    if (bc == 0) {
-        painter.drawText(QPointF(0,0),"Zint library not found");
-    } else
-        drawBarcode(&painter, 0, 0, this->width(), this->height());
+    #ifndef NO_BARCODE
+        if (bc == 0) {
+            painter.drawText(QPointF(0,0),"Zint library not found");
+        } else
+            drawBarcode(&painter, 0, 0, this->width(), this->height());
+
+    #else
+        painter.drawText(QPointF(0,0),"NO_BARCODE");
+    #endif
 }
 
 void BarCode::drawBarcode(QPainter *painter, qreal x, qreal y, qreal width, qreal height) {
-    if (bc == 0) {
-        painter->drawText(QRectF(x,y,width,height), Qt::AlignCenter,"Zint library not found");
-        return;
-    }
-    bc->setSymbol(m_BarcodeType);
+    #ifndef NO_BARCODE
+        if (bc == 0) {
+            painter->drawText(QRectF(x,y,width,height), Qt::AlignCenter,"Zint library not found");
+            return;
+        }
+        bc->setSymbol(m_BarcodeType);
 
-    //bc.setPrimaryMessage("dprimaryMessage");  //???
-    bc->setBorderType((Zint::QZint::BorderType)m_FrameType);  //Тип обрамляющей рамки
-    //bc->setHeight(height);
-    bc->setWidth(width);
-    bc->setSecurityLevel(0);
-    //bc.setBorderWidth(1);
-    /*bc.setPdf417CodeWords(d->pdf417Max);
-    bc.setFgColor(d->barcodeColor);*/
-    bc->setBgColor(QColor(0,0,0,0));
-    bc->setText(m_value);
-    bc->setWhitespace(5);
+        //bc.setPrimaryMessage("dprimaryMessage");  //???
+        bc->setBorderType((Zint::QZint::BorderType)m_FrameType);  //Тип обрамляющей рамки
+        //bc->setHeight(height);
+        bc->setWidth(width);
+        bc->setSecurityLevel(0);
+        //bc.setBorderWidth(1);
+        /*bc.setPdf417CodeWords(d->pdf417Max);
+        bc.setFgColor(d->barcodeColor);*/
+        bc->setBgColor(QColor(0,0,0,0));
+        bc->setText(m_value);
+        bc->setWhitespace(5);
 
-    bc->render(*painter,QRectF(x,y,width,height), Zint::QZint::KeepAspectRatio);
+        bc->render(*painter,QRectF(x,y,width,height), Zint::QZint::KeepAspectRatio);
+    #else
+        painter->drawText(QRectF(x,y,width,height), Qt::AlignCenter,"NO_BARCODE");
+    #endif
 }
 
 void BarCode::setBarcodeType(BarcodeTypes value) {
     m_BarcodeType = value;
-    if (bc != 0)
-        bc->setSymbol(value);
-    repaint();
+    #ifndef NO_BARCODE
+        if (bc != 0)
+            bc->setSymbol(value);
+        repaint();
+    #endif
 }
 
 void BarCode::setFrameType(FrameTypes value) {
     m_FrameType = value;
-    if (bc != 0)
-        bc->setBorderType((Zint::QZint::BorderType)m_FrameType);
-    repaint();
+    #ifndef NO_BARCODE
+        if (bc != 0)
+            bc->setBorderType((Zint::QZint::BorderType)m_FrameType);
+        repaint();
+    #endif
+}
+
+void BarCode::setHeight(int value) {
+    m_height = value;
+    #ifndef NO_BARCODE
+        if (bc != 0)
+            bc->setHeight(value);
+        repaint();
+    #endif
 }
 
 BarCode::BarcodeTypePairList BarCode::getTypeList() {
@@ -195,7 +220,9 @@ void BarCode::setValue(QString value) {
 }
 
 BarCode::~BarCode() {
-    delete bc;
+    #ifndef NO_BARCODE
+        delete bc;
+    #endif
 }
 
 void BarCode::setProperties() {

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ReportBand.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -20,7 +20,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "../CommonFiles/qlabelex.h"
+#include "../CommonFiles/Qxyz_Label.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -30,7 +30,7 @@ public:
     QVBoxLayout *verticalLayout;
     QFrame *frame;
     QHBoxLayout *horizontalLayout;
-    QLabelEx *lblBandType;
+    QxyzLabel *lblBandType;
     QLabel *lblIcon;
     QSpacerItem *horizontalSpacer;
     QWidget *conWidget;
@@ -60,7 +60,7 @@ public:
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        lblBandType = new QLabelEx(frame);
+        lblBandType = new QxyzLabel(frame);
         lblBandType->setObjectName(QStringLiteral("lblBandType"));
         sizePolicy.setHeightForWidth(lblBandType->sizePolicy().hasHeightForWidth());
         lblBandType->setSizePolicy(sizePolicy);
@@ -93,6 +93,11 @@ public:
 
         conWidget = new QWidget(ReportBand);
         conWidget->setObjectName(QStringLiteral("conWidget"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(conWidget->sizePolicy().hasHeightForWidth());
+        conWidget->setSizePolicy(sizePolicy2);
         conWidget->setAcceptDrops(true);
         conWidget->setAutoFillBackground(false);
         conWidget->setStyleSheet(QStringLiteral(""));

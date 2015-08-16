@@ -66,7 +66,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QLabelEx" name="lblBandType">
+       <widget class="QxyzLabel" name="lblBandType">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -130,6 +130,12 @@
    </item>
    <item>
     <widget class="QWidget" name="conWidget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="acceptDrops">
       <bool>true</bool>
      </property>
@@ -145,9 +151,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QLabelEx</class>
+   <class>QxyzLabel</class>
    <extends>QLabel</extends>
-   <header>../CommonFiles/qlabelex.h</header>
+   <header>../CommonFiles/Qxyz_Label.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

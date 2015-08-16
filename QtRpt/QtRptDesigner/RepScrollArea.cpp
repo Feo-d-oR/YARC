@@ -1,13 +1,30 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "RepScrollArea.h"
 #include "ui_RepScrollArea.h"
 #include <QGraphicsDropShadowEffect>
+#include <QSettings>
 
 RepScrollArea::RepScrollArea(QWidget *parent) : QScrollArea(parent), ui(new Ui::RepScrollArea) {
     ui->setupUi(this);
@@ -41,7 +58,6 @@ RepScrollArea::RepScrollArea(QWidget *parent) : QScrollArea(parent), ui(new Ui::
     effect->setBlurRadius(5);
     ui->repWidget->setGraphicsEffect(effect);
 
-
     overlay = new Overlay(ui->repWidget);
     overlay->resize(ui->repWidget->size());
     overlay->setVisible(true);
@@ -68,6 +84,7 @@ double RepScrollArea::setPaperSize(qreal scale) {
         }
     }
 
+    setUpdatesEnabled(false);
     ui->repWidget->setMinimumWidth(pageSetting.pageWidth*m_scale);
     ui->repWidget->setMinimumHeight(pageSetting.pageHeight*m_scale);
     ui->leftMarginsSpacer->changeSize(pageSetting.marginsLeft*m_scale+26,
@@ -84,16 +101,18 @@ double RepScrollArea::setPaperSize(qreal scale) {
     for (int j=0; j<allReportBand.size(); j++) {
         ReportBand *band = qobject_cast<ReportBand *>(allReportBand.at(j));
         band->scale = m_scale;
+        band->setTitleHeight(band->titleHeight*m_scale);
+
         band->setGeometry(pageSetting.marginsLeft*m_scale,
                           top_,
                           (pageSetting.pageWidth*m_scale - pageSetting.marginsLeft*m_scale - pageSetting.marginsRight*m_scale ),
-                          (band->baseSize().height()-band->titleHeight)*m_scale + band->titleHeight);
-        top_ += band->geometry().height()+5;
+                          band->baseSize().height()*m_scale);
+        top_ += band->geometry().height() + 5*m_scale;  //Step between bands
 
         QList<TContainerField *> widgetsOfBand = band->findChildren<TContainerField *>();
         for (int i=0; i<widgetsOfBand.size(); i++) {
             TContainerField *cont = qobject_cast<TContainerField *>(widgetsOfBand.at(i));
-            //qDebug()<<cont->scale;
+
             qreal x_ = qRound(cont->x()/cont->scale);
             qreal y_ = qRound(cont->y()/cont->scale);
 
@@ -107,6 +126,7 @@ double RepScrollArea::setPaperSize(qreal scale) {
         }
     }
 
+    setUpdatesEnabled(true);
     getKoef();
     return m_scale;
 }
@@ -122,7 +142,7 @@ QWidgetList RepScrollArea::getReportItems() {
 void RepScrollArea::clearReport() {
     m_scale = 1;
     qDeleteAll(ui->repWidget->findChildren<ReportBand*>());
-    setPaperSize(1);
+    setPaperSize(100);
 }
 
 bool RepScrollArea::allowField() {

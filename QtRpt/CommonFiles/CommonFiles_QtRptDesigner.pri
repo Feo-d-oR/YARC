@@ -1,13 +1,13 @@
 INCLUDEPATH += $$PWD
 
-SOURCES += $$PWD/qlabelex.cpp \
+SOURCES += $$PWD/Qxyz_Label.cpp \
            $$PWD/qtexteditex.cpp \
            $$PWD/tcontainer.cpp \
            $$PWD/downloadmanager.cpp \
            $$PWD/updatedlg.cpp \
            $$PWD/selectcolor.cpp \
            $$PWD/SQLHighlighter.cpp
-HEADERS += $$PWD/qlabelex.h \
+HEADERS += $$PWD/Qxyz_Label.h \
            $$PWD/qtexteditex.h \
            $$PWD/tcontainer.h \
            $$PWD/downloadmanager.h \

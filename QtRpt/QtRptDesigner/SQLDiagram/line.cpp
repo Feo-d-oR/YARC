@@ -20,7 +20,6 @@
 #include "diagramdocument.h"
 #include "diagramobject.h"
 #include "connector.h"
-//#include "domutils.h"
 
 Line::Line(DiagramItem *parent) : DiagramItem(parent), m_fillStartArrow(false), m_fillEndArrow(false), m_dirty(false) {
 	m_connectors[0] = new Connector(this);
@@ -124,9 +123,7 @@ void Line::setFillStartArrow(bool fill) {
 	}
 }
 
-QPainterPath
-Line::endArrow() const
-{
+QPainterPath Line::endArrow() const {
 	return m_endArrow;
 }
 
@@ -165,8 +162,7 @@ void Line::updateCache() {
 		matrix.translate(firstSegment.p1().x(), firstSegment.p1().y());
 		matrix.rotate(360 - firstSegment.angle() + 90 + 180);
 		m_transformedStartArrow = matrix.map(m_startArrow);
-	}
-	else {
+    } else {
 		m_transformedStartArrow = QPainterPath();
 	}
 
@@ -177,8 +173,7 @@ void Line::updateCache() {
 		matrix.translate(lastSegment.p2().x(), lastSegment.p2().y());
 		matrix.rotate(-lastSegment.angle() + 90);
 		m_transformedEndArrow = matrix.map(m_endArrow);
-	}
-	else {
+    } else {
 		m_transformedEndArrow = QPainterPath();
 	}
 
@@ -215,7 +210,7 @@ void Line::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 	QPen pen(QPen(QColor(0, 0, 0), 1.33));
 	pen.setJoinStyle(Qt::MiterJoin);
 	pen.setStyle(m_lineStyle);
-    if (/*!document()->isPrinting() &&*/ isSelected()) {
+    if (isSelected()) {
 		pen.setColor(QColor(0, 96, 255));
     }
 

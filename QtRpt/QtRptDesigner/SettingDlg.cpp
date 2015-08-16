@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "SettingDlg.h"
@@ -25,7 +40,7 @@ SettingDlg::SettingDlg(QWidget *parent) : QDialog(parent),  ui(new Ui::SettingDl
     if (language == "") //default system language
         ui->cmbLanguage->setCurrentIndex(0);
 
-    else if (language == "Arabic")//english united states
+    else if (language == "Arabic")
         ui->cmbLanguage->setCurrentIndex(1);
 
     else if (language == "en_US")//english united states
@@ -34,23 +49,35 @@ SettingDlg::SettingDlg(QWidget *parent) : QDialog(parent),  ui(new Ui::SettingDl
     else if (language == "zh_CN")//Chinese
         ui->cmbLanguage->setCurrentIndex(3);
 
-    else if (language == "ka_GE")//georgian
+    else if (language == "nl_BE")//Dutch
         ui->cmbLanguage->setCurrentIndex(4);
 
-    else if (language == "pt_PT")//portuguese
+    else if (language == "fr_FR")//French
         ui->cmbLanguage->setCurrentIndex(5);
 
-    else if (language == "ru_RU")//russian
+    else if (language == "ka_GE")//georgian
         ui->cmbLanguage->setCurrentIndex(6);
 
-    else if (language == "sr_RS")//serbian cyrilic
+    else if (language == "de_DE")//german
         ui->cmbLanguage->setCurrentIndex(7);
 
-    else if (language == "sr_RS@latin")
+    else if (language == "pt_PT")//portuguese
         ui->cmbLanguage->setCurrentIndex(8);
 
-    else if (language == "uk_UA")
+    else if (language == "ru_RU")//russian
         ui->cmbLanguage->setCurrentIndex(9);
+
+    else if (language == "sr_RS")//serbian cyrilic
+        ui->cmbLanguage->setCurrentIndex(10);
+
+    else if (language == "sr_RS@latin")
+        ui->cmbLanguage->setCurrentIndex(11);
+
+    else if (language == "es_ES")
+        ui->cmbLanguage->setCurrentIndex(12);
+
+    else if (language == "uk_UA")
+        ui->cmbLanguage->setCurrentIndex(13);
 
     langIndex = ui->cmbLanguage->currentIndex();
 
@@ -74,38 +101,49 @@ void SettingDlg::showThis() {
 
         settings.beginGroup("language");
         if (ui->cmbLanguage->currentIndex() != langIndex) {
-
             switch(ui->cmbLanguage->currentIndex())  {
-            case 0://system default
-                settings.setValue("language", "");
-                break;
-            case 1://Arabic
-                settings.setValue("language", "ar");
-                break;
-            case 2://american english
-                settings.setValue("language", "en_US");
-                break;
-            case 3://Chinese
-                settings.setValue("language", "zh_CN");
-                break;
-            case 4://goergian
-                settings.setValue("language", "ka_GE");
-                break;
-            case 5://portuguese
-                settings.setValue("language", "pt_PT");
-                break;
-            case 6://russian
-                settings.setValue("language", "ru_RU");
-                break;
-            case 7://serbian
-                settings.setValue("language", "sr_RS");
-                break;
-            case 8://serbian latin
-                settings.setValue("language", "sr_RS@latin");
-                break;
-            case 9://ukraine
-                settings.setValue("language", "uk_UA");
-                break;
+                case 0://system default
+                    settings.setValue("language", "");
+                    break;
+                case 1://Arabic
+                    settings.setValue("language", "ar");
+                    break;
+                case 2://american english
+                    settings.setValue("language", "en_US");
+                    break;
+                case 3://Chinese
+                    settings.setValue("language", "zh_CN");
+                    break;
+                case 4://Dutch
+                    settings.setValue("language", "nl_BE");
+                    break;
+                case 5://French
+                    settings.setValue("language", "fr_FR");
+                    break;
+                case 6://georgian
+                    settings.setValue("language", "ka_GE");
+                    break;
+                case 7://german
+                    settings.setValue("language", "de_DE");
+                    break;
+                case 8://portuguese
+                    settings.setValue("language", "pt_PT");
+                    break;
+                case 9://russian
+                    settings.setValue("language", "ru_RU");
+                    break;
+                case 10://serbian
+                    settings.setValue("language", "sr_RS");
+                    break;
+                case 11://serbian latin
+                    settings.setValue("language", "sr_RS@latin");
+                    break;
+                case 12://spanish
+                    settings.setValue("language", "es_ES");
+                    break;
+                case 13://ukraine
+                    settings.setValue("language", "uk_UA");
+                    break;
             }
             QMessageBox::StandardButton reply;
             reply = QMessageBox::question(this, tr("Message QtRptDesigner"),tr("The language for this application has been changed.\n"

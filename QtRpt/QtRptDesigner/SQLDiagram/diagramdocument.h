@@ -73,7 +73,7 @@ public:
     void itemMoved(DiagramItem *table);
     void itemHasMoved(DiagramItem *table);
 
-    QList<::Line *> findConnections(DiagramObject *object);
+    QList< ::Line *> findConnections(DiagramObject *object);
     template <class T>QList<T *> itemsByType();
 
     void addItemLater(DiagramItem *item);

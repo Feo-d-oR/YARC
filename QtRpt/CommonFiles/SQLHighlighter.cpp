@@ -107,6 +107,7 @@ SQLHighlighter::SQLHighlighter(class QTextDocument *parent, QSettings *settings)
         commentFormat.setFontWeight(QFont::Normal);
 
 	rules.push_back( Rule("--[^\n]*", commentFormat) );
+    rules.push_back( Rule("//[^\n]*", commentFormat) );
 
 	commentStartExpression = QRegExp("/\\*");
 	commentEndExpression = QRegExp("\\*/");
@@ -175,7 +176,7 @@ SQLHighlighter::SQLHighlighter(class QTextDocument *parent, QSettings *settings)
 
 void SQLHighlighter::highlightBlock(const QString &text) {
     Q_FOREACH(Rule rule, rules) {
-        QRegExp expr = rule.pattern;
+        QRegExp expr(rule.pattern);
         int index = text.indexOf(expr);
         while (index >= 0) {
             int length = expr.matchedLength();
@@ -188,7 +189,7 @@ void SQLHighlighter::highlightBlock(const QString &text) {
 
     int startIndex = 0;
     if (previousBlockState() != 1)
-	startIndex = text.indexOf(commentStartExpression);
+        startIndex = text.indexOf(commentStartExpression);
 
     while (startIndex >= 0) {
         int endIndex = text.indexOf(commentEndExpression, startIndex);

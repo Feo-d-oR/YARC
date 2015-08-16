@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'EditFldDlg.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -27,6 +27,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
@@ -90,6 +91,7 @@ public:
     QWidget *widget;
     QHBoxLayout *horizontalLayout_2;
     QToolButton *btnLoadImage;
+    QToolButton *btnSaveImage;
     QCheckBox *chkIgnoreAspectRatio;
     QSpacerItem *horizontalSpacer_2;
     QScrollArea *scrollArea;
@@ -127,14 +129,16 @@ public:
     QTableWidget *tableWidget;
     QWidget *page_4;
     QGridLayout *gridLayout;
-    BarCode *wBarcode;
     QLabel *label_4;
     QComboBox *bstyle;
-    QLabel *label_5;
-    QComboBox *cbFrameType;
     QHBoxLayout *horizontalLayout_10;
     QLabel *label_3;
     QLineEdit *edtValue;
+    QLabel *label_5;
+    QComboBox *cbFrameType;
+    BarCode *wBarcode;
+    QLabel *label_6;
+    QSpinBox *spnHeight;
     QWidget *page_5;
     QVBoxLayout *verticalLayout_15;
     QTextEditEx *textEditRich;
@@ -397,6 +401,15 @@ public:
 
         horizontalLayout_2->addWidget(btnLoadImage);
 
+        btnSaveImage = new QToolButton(widget);
+        btnSaveImage->setObjectName(QStringLiteral("btnSaveImage"));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/new/prefix1/images/saveAll.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnSaveImage->setIcon(icon4);
+        btnSaveImage->setAutoRaise(true);
+
+        horizontalLayout_2->addWidget(btnSaveImage);
+
         chkIgnoreAspectRatio = new QCheckBox(widget);
         chkIgnoreAspectRatio->setObjectName(QStringLiteral("chkIgnoreAspectRatio"));
 
@@ -414,7 +427,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 98, 28));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 509, 293));
         verticalLayout_4 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
@@ -527,33 +540,33 @@ public:
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
         btnAddRow = new QToolButton(tabGraphs);
         btnAddRow->setObjectName(QStringLiteral("btnAddRow"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/new/prefix1/images/edit_add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnAddRow->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/new/prefix1/images/edit_add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnAddRow->setIcon(icon5);
 
         horizontalLayout_9->addWidget(btnAddRow);
 
         btnRemoveRow = new QToolButton(tabGraphs);
         btnRemoveRow->setObjectName(QStringLiteral("btnRemoveRow"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/new/prefix1/images/edit_remove.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnRemoveRow->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/new/prefix1/images/edit_remove.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnRemoveRow->setIcon(icon6);
 
         horizontalLayout_9->addWidget(btnRemoveRow);
 
         btnUp = new QToolButton(tabGraphs);
         btnUp->setObjectName(QStringLiteral("btnUp"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/new/prefix1/images/up.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnUp->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/new/prefix1/images/up.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnUp->setIcon(icon7);
 
         horizontalLayout_9->addWidget(btnUp);
 
         btnDown = new QToolButton(tabGraphs);
         btnDown->setObjectName(QStringLiteral("btnDown"));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/new/prefix1/images/down.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnDown->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/new/prefix1/images/down.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnDown->setIcon(icon8);
 
         horizontalLayout_9->addWidget(btnDown);
 
@@ -594,16 +607,6 @@ public:
         page_4->setObjectName(QStringLiteral("page_4"));
         gridLayout = new QGridLayout(page_4);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        wBarcode = new BarCode(page_4);
-        wBarcode->setObjectName(QStringLiteral("wBarcode"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(wBarcode->sizePolicy().hasHeightForWidth());
-        wBarcode->setSizePolicy(sizePolicy2);
-
-        gridLayout->addWidget(wBarcode, 0, 0, 1, 4);
-
         label_4 = new QLabel(page_4);
         label_4->setObjectName(QStringLiteral("label_4"));
 
@@ -613,16 +616,6 @@ public:
         bstyle->setObjectName(QStringLiteral("bstyle"));
 
         gridLayout->addWidget(bstyle, 1, 1, 1, 1);
-
-        label_5 = new QLabel(page_4);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        gridLayout->addWidget(label_5, 1, 2, 1, 1);
-
-        cbFrameType = new QComboBox(page_4);
-        cbFrameType->setObjectName(QStringLiteral("cbFrameType"));
-
-        gridLayout->addWidget(cbFrameType, 1, 3, 1, 1);
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
@@ -637,7 +630,39 @@ public:
         horizontalLayout_10->addWidget(edtValue);
 
 
-        gridLayout->addLayout(horizontalLayout_10, 2, 0, 1, 4);
+        gridLayout->addLayout(horizontalLayout_10, 3, 0, 1, 4);
+
+        label_5 = new QLabel(page_4);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout->addWidget(label_5, 1, 2, 1, 1);
+
+        cbFrameType = new QComboBox(page_4);
+        cbFrameType->setObjectName(QStringLiteral("cbFrameType"));
+
+        gridLayout->addWidget(cbFrameType, 1, 3, 1, 1);
+
+        wBarcode = new BarCode(page_4);
+        wBarcode->setObjectName(QStringLiteral("wBarcode"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(wBarcode->sizePolicy().hasHeightForWidth());
+        wBarcode->setSizePolicy(sizePolicy2);
+
+        gridLayout->addWidget(wBarcode, 0, 0, 1, 4);
+
+        label_6 = new QLabel(page_4);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout->addWidget(label_6, 2, 0, 1, 1);
+
+        spnHeight = new QSpinBox(page_4);
+        spnHeight->setObjectName(QStringLiteral("spnHeight"));
+        spnHeight->setMaximum(300);
+        spnHeight->setValue(50);
+
+        gridLayout->addWidget(spnHeight, 2, 1, 1, 1);
 
         stackedWidget->addWidget(page_4);
         page_5 = new QWidget();
@@ -681,7 +706,7 @@ public:
         QObject::connect(chkImage, SIGNAL(clicked(bool)), lblAttention, SLOT(setVisible(bool)));
         QObject::connect(chkGraphsCaption, SIGNAL(toggled(bool)), grpGraphCaption, SLOT(setEnabled(bool)));
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(3);
         tabWidget->setCurrentIndex(0);
         tabDiagram->setCurrentIndex(0);
 
@@ -728,6 +753,10 @@ public:
         btnColorB->setText(QApplication::translate("EditFldDlg", "Color...", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("EditFldDlg", "Condtion", 0));
         btnLoadImage->setText(QApplication::translate("EditFldDlg", "...", 0));
+#ifndef QT_NO_TOOLTIP
+        btnSaveImage->setToolTip(QApplication::translate("EditFldDlg", "Save As", 0));
+#endif // QT_NO_TOOLTIP
+        btnSaveImage->setText(QApplication::translate("EditFldDlg", "...", 0));
         chkIgnoreAspectRatio->setText(QApplication::translate("EditFldDlg", "Ignore aspect ratio", 0));
         label->setText(QString());
         groupBox->setTitle(QApplication::translate("EditFldDlg", "Diagram", 0));
@@ -765,8 +794,10 @@ public:
         ___qtablewidgetitem2->setText(QApplication::translate("EditFldDlg", "Color", 0));
         tabDiagram->setTabText(tabDiagram->indexOf(tabGraphs), QApplication::translate("EditFldDlg", "Graphs", 0));
         label_4->setText(QApplication::translate("EditFldDlg", "Barcode type", 0));
-        label_5->setText(QApplication::translate("EditFldDlg", "Frame type", 0));
         label_3->setText(QApplication::translate("EditFldDlg", "Value:", 0));
+        label_5->setText(QApplication::translate("EditFldDlg", "Frame type", 0));
+        label_6->setText(QApplication::translate("EditFldDlg", "Height", 0));
+        spnHeight->setSuffix(QApplication::translate("EditFldDlg", "X", 0));
         btnOK->setText(QApplication::translate("EditFldDlg", "OK", 0));
         btnCancel->setText(QApplication::translate("EditFldDlg", "Cancel", 0));
     } // retranslateUi

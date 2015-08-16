@@ -31,7 +31,7 @@
 #include <QStyle>
 #include <QSet>
 #include <QPainter>
-#include <QtPrintSupport/QPrinter>
+#include <QPrinter>
 #include <QMimeData>
 #include "ItemPropertyDlg.h"
 

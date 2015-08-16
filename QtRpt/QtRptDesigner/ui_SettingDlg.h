@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SettingDlg.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -57,7 +57,7 @@ public:
     {
         if (SettingDlg->objectName().isEmpty())
             SettingDlg->setObjectName(QStringLiteral("SettingDlg"));
-        SettingDlg->resize(366, 227);
+        SettingDlg->resize(368, 228);
         QIcon icon;
         icon.addFile(QStringLiteral(":/new/prefix1/images/setting.png"), QSize(), QIcon::Normal, QIcon::Off);
         SettingDlg->setWindowIcon(icon);
@@ -186,11 +186,15 @@ public:
          << QApplication::translate("SettingDlg", "Arabic \330\271\330\261\330\250\331\212", 0)
          << QApplication::translate("SettingDlg", "American English", 0)
          << QApplication::translate("SettingDlg", "Chinese", 0)
+         << QApplication::translate("SettingDlg", "Dutch", 0)
+         << QApplication::translate("SettingDlg", "French", 0)
          << QApplication::translate("SettingDlg", "Georgian \341\203\245\341\203\220\341\203\240\341\203\227\341\203\243\341\203\232\341\203\230", 0)
+         << QApplication::translate("SettingDlg", "German", 0)
          << QApplication::translate("SettingDlg", "Portuguese", 0)
          << QApplication::translate("SettingDlg", "Russian \320\240\321\203\321\201\321\201\320\272\320\270\320\271", 0)
          << QApplication::translate("SettingDlg", "Serbian", 0)
          << QApplication::translate("SettingDlg", "Serbian Latin", 0)
+         << QApplication::translate("SettingDlg", "Spanish", 0)
          << QApplication::translate("SettingDlg", "Ukraine \320\243\320\272\321\200\320\260\321\227\320\275\321\201\321\214\320\272\320\270\320\271", 0)
         );
         chkUpdates->setText(QApplication::translate("SettingDlg", "Check updates during start application", 0));

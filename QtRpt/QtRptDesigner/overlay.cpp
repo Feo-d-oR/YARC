@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "overlay.h"
@@ -18,27 +33,23 @@ void Overlay::paintEvent(QPaintEvent *event) {
     Q_UNUSED(event);
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
-    //painter.setPen(QColor("blue"));
-    //painter.drawLine(QPoint(0,0),QPoint(this->width(),this->height()));
-
     allContList = ContList();
     allContList << this->parentWidget()->findChildren<RptContainer *>();
 
-    for (int i=0; i<allContList.size(); i++) {
-        if (allContList.at(i)->isSelected() && allContList.at(i)->isAllowDrawSelection()) {
-            RptContainer *w = qobject_cast<RptContainer *>(allContList.at(i));
-            if (w == 0) return;
-            if (w == NULL) return;
+    foreach(RptContainer *cont, allContList) {
+        if (cont->isSelected() && cont->isAllowDrawSelection()) {
+            if (cont == 0) return;
+            if (cont == NULL) return;
 
-            QPoint pc = allContList.at(i)->mapToParent(QPoint(-3,-3));
-            QPoint pb = allContList.at(i)->parentWidget()->mapToParent(pc);
-            QPoint LT = allContList.at(i)->parentWidget()->parentWidget()->mapToParent(pb);
+            QPoint pc = cont->mapToParent(QPoint(-3,-3));
+            QPoint pb = cont->parentWidget()->mapToParent(pc);
+            QPoint LT = cont->parentWidget()->parentWidget()->mapToParent(pb);
 
-            QPoint LB = QPoint(LT.x(),LT.y()+w->height());
-            QPoint RB = QPoint(LT.x()+w->width(),LT.y()+w->height());
-            QPoint CB = QPoint(LT.x()+w->width()/2,LT.y()+w->height());
-            QPoint RT = QPoint(LT.x()+w->width(),LT.y());
-            QPoint CT = QPoint(LT.x()+w->width()/2,LT.y());
+            QPoint LB = QPoint(LT.x(),LT.y()+cont->height());
+            QPoint RB = QPoint(LT.x()+cont->width(),LT.y()+cont->height());
+            QPoint CB = QPoint(LT.x()+cont->width()/2,LT.y()+cont->height());
+            QPoint RT = QPoint(LT.x()+cont->width(),LT.y());
+            QPoint CT = QPoint(LT.x()+cont->width()/2,LT.y());
 
             painter.fillRect(LT.x(),LT.y(),6,6,QColor("blue"));
             painter.fillRect(LB.x(),LB.y(),6,6,QColor("blue"));

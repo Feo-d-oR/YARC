@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>497</height>
+    <width>600</width>
+    <height>577</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>500</width>
+    <width>600</width>
     <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
+    <width>600</width>
     <height>16777215</height>
    </size>
   </property>
@@ -42,6 +42,13 @@
       <widget class="QRadioButton" name="rbSql">
        <property name="text">
         <string>SQL DS</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="rbXml">
+       <property name="text">
+        <string>XML DS</string>
        </property>
       </widget>
      </item>
@@ -139,43 +146,7 @@
            </widget>
           </item>
           <item row="0" column="1" colspan="2">
-           <widget class="QComboBox" name="cmbType">
-            <item>
-             <property name="text">
-              <string>QSQLITE</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>QMYSQL</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>QMYSQL3</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>QODBC</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>QODBC3</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>QPSQL</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>QPSQL7</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QComboBox" name="cmbType"/>
           </item>
           <item row="0" column="4">
            <widget class="QPushButton" name="btnCheck">
@@ -326,6 +297,97 @@
            <height>100</height>
           </size>
          </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_3">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSelectXML">
+           <property name="text">
+            <string>Select XML</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSplitter" name="splitter_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QPlainTextEdit" name="plainTextEdit"/>
+          <widget class="QTreeView" name="treeView"/>
+         </widget>
+         <widget class="QTableWidget" name="tableWidget">
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderStretchLastSection">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Field name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Description</string>
+           </property>
+          </column>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="text">
+                <string>Preview data</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tableWidget"/>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>

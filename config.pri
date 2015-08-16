@@ -1,4 +1,4 @@
-REPAIRC_VERSION = v0.3
+REPAIRC_VERSION = v0.4a
 
 win32{
     CONFIG(debug, debug|release) {

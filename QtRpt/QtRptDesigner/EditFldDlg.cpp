@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "EditFldDlg.h"
@@ -17,12 +32,13 @@ EditFldDlg::EditFldDlg(QWidget *parent) :  QDialog(parent), ui(new Ui::EditFldDl
 
     this->setStyleSheet("/**/");
     QObject::connect(ui->btnLoadImage, SIGNAL(clicked()), this, SLOT(loadImage()));
+    QObject::connect(ui->btnSaveImage, SIGNAL(clicked()), this, SLOT(saveImage()));
     QObject::connect(ui->btnAddVariable, SIGNAL(clicked()), this, SLOT(openProperty()));
     QObject::connect(ui->btnFormatting, SIGNAL(clicked()), this, SLOT(openProperty()));
     QObject::connect(ui->btnAddFunction, SIGNAL(clicked()), this, SLOT(openProperty()));
     QObject::connect(ui->rdPrinting, SIGNAL(toggled(bool)), this, SLOT(conditionalToggled(bool)));
     QObject::connect(ui->rdTransparent, SIGNAL(toggled(bool)), this, SLOT(backGroundToggled(bool)));
-    QObject::connect(ui->edtCondition, SIGNAL(textEdited(const QString&)), this, SLOT(conditionChanged(const QString&)));
+    //QObject::connect(ui->edtCondition, SIGNAL(textEdited(const QString&)), this, SLOT(conditionChanged(const QString&)));
     QObject::connect(ui->btnColorB, SIGNAL(clicked()), this, SLOT(chooseColor()));
     QObject::connect(ui->btnColorF, SIGNAL(clicked()), this, SLOT(chooseColor()));
     QObject::connect(ui->chkBold, SIGNAL(clicked()), this, SLOT(encodeHighLightingString()));
@@ -63,7 +79,6 @@ void EditFldDlg::conditionChanged(const QString &text) {
 void EditFldDlg::conditionalToggled(bool value) {
     ui->grpBackground->setEnabled(!value);
     ui->grpFont->setEnabled(!value);
-    backGroundToggled(!false);
 
     if (value) { //Show printting condition
         encodeHighLightingString();
@@ -73,6 +88,7 @@ void EditFldDlg::conditionalToggled(bool value) {
         decodeHighLightingString();
         ui->edtCondition->setText(m_cond_higlighting.section(";",0,0));
     }
+    backGroundToggled(!false);
 }
 
 void EditFldDlg::decodeHighLightingString() {
@@ -140,11 +156,11 @@ void EditFldDlg::backGroundToggled(bool value) {
 void EditFldDlg::openProperty() {
     FldPropertyDlg *dlg = new FldPropertyDlg(this);
     if (sender() == ui->btnAddVariable) {
-        QString str = dlg->showThis(0);
+        QString str = dlg->showThis(0,0,"");
         ui->textEdit->insertPlainText(str);
     }
     if (sender() == ui->btnAddFunction) {
-        QString str = dlg->showThis(3);
+        QString str = dlg->showThis(3,0,"");
         ui->textEdit->insertPlainText(str);
     }
     if (sender() == ui->btnFormatting) {
@@ -306,6 +322,7 @@ int EditFldDlg::showBarcode(TContainerField *cont) {
     QObject::connect(ui->edtValue, SIGNAL(textChanged(QString)), ui->wBarcode, SLOT(setValue(QString)));
     QObject::connect(ui->bstyle, SIGNAL(activated(int)), SLOT(update_preview()));
     QObject::connect(ui->cbFrameType, SIGNAL(activated(int)), SLOT(update_preview()));
+    QObject::connect(ui->spnHeight, SIGNAL(valueChanged(int)), SLOT(update_preview()));
     ui->edtValue->setText(cont->getText());
 
     BarCode::BarcodeTypePairList list1 = BarCode::getTypeList();
@@ -321,11 +338,13 @@ int EditFldDlg::showBarcode(TContainerField *cont) {
         if (list2.at(i).first == cont->getBarcodeFrameType() )
             ui->cbFrameType->setCurrentIndex(i);
     }
+    ui->spnHeight->setValue(cont->getBarcodeHeight());
 
     if (this->exec()) {
         cont->setText(ui->edtValue->text());
         cont->setBarcodeType((BarCode::BarcodeTypes)ui->wBarcode->metaObject()->enumerator(0).value(ui->bstyle->currentIndex()));
         cont->setBarcodeFrameType((BarCode::FrameTypes)ui->wBarcode->metaObject()->enumerator(1).value(ui->cbFrameType->currentIndex()));
+        cont->setBarcodeHeight(ui->spnHeight->value());
 
         return QDialog::Accepted;
     } else return QDialog::Rejected;
@@ -336,6 +355,8 @@ void EditFldDlg::update_preview() {
         ui->wBarcode->setBarcodeType((BarCode::BarcodeTypes)ui->wBarcode->metaObject()->enumerator(0).value(ui->bstyle->currentIndex()));
     if (sender() == ui->cbFrameType)
         ui->wBarcode->setFrameType((BarCode::FrameTypes)ui->wBarcode->metaObject()->enumerator(1).value(ui->cbFrameType->currentIndex()));
+    if (sender() == ui->spnHeight)
+        ui->wBarcode->setHeight(ui->spnHeight->value());
 }
 
 void EditFldDlg::setScaledContents(bool value) {
@@ -501,6 +522,17 @@ void EditFldDlg::loadImage() {
         //ui->label->adjustSize();
         //ui->label->resize(ui->label->pixmap()->size());
        // ui->label->updateGeometry();
+    }
+}
+
+void EditFldDlg::saveImage() {
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save Image As"),
+                                                    QCoreApplication::applicationDirPath(),
+                                                    tr("Images (*.png)"));
+    if (!fileName.isEmpty()) {
+        QPixmap p = QPixmap(*ui->label->pixmap());
+        if (p.isNull()) return;
+        p.save(fileName, m_imgFormat.toLatin1().data());
     }
 }
 

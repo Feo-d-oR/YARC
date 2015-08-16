@@ -12,13 +12,15 @@ greaterThan(QT_MAJOR_VERSION, 4){
 }
 
 TARGET = QtRptDesigner
-VERSION = 1.4.5
+VERSION = 1.5.3
 DEFINES += VERSION=\\\"$$VERSION\\\"
 TEMPLATE = app
 
 include(../CommonFiles/CommonFiles_QtRptDesigner.pri)
-include(../QtRpt/QtRpt.pri)
+include(../QtRPT/QtRPT.pri)
 include(SQLDiagram/SQLDiagram.pri)
+
+DESTDIR = $${DEST_DIRECTORY}
 
 SOURCES += main.cpp\
     mainwindow.cpp \
@@ -34,7 +36,8 @@ SOURCES += main.cpp\
     SqlDesigner.cpp \
     TContainerLine.cpp \
     TContainerField.cpp \
-    UndoCommands.cpp
+    UndoCommands.cpp \
+    XmlViewModel.cpp
 
 HEADERS  += mainwindow.h \
     PageSettingDlg.h \
@@ -49,7 +52,8 @@ HEADERS  += mainwindow.h \
     SqlDesigner.h \
     TContainerLine.h \
     TContainerField.h \
-    UndoCommands.h
+    UndoCommands.h \
+    XmlViewModel.h
 
 FORMS    += mainwindow.ui \
     PageSettingDlg.ui \
@@ -72,6 +76,10 @@ TRANSLATIONS += i18n/QtRprtDesigner_ar.ts
 TRANSLATIONS += i18n/QtRprtDesigner_ka_GE.ts
 TRANSLATIONS += i18n/QtRprtDesigner_pt_PT.ts
 TRANSLATIONS += i18n/QtRprtDesigner_zh_CN.ts
+TRANSLATIONS += i18n/QtRprtDesigner_es_ES.ts
+TRANSLATIONS += i18n/QtRprtDesigner_fr_FR.ts
+TRANSLATIONS += i18n/QtRprtDesigner_de_DE.ts
+TRANSLATIONS += i18n/QtRprtDesigner_nl_BE.ts
 
 OTHER_FILES += \
     i18n/QtRprtDesigner_ar.ts \
@@ -80,7 +88,11 @@ OTHER_FILES += \
     i18n/QtRprtDesigner_uk_UA.ts \
     i18n/QtRprtDesigner_ka_GE.ts \
     i18n/QtRprtDesigner_pt_PT.ts \
-    i18n/QtRprtDesigner_zh_CN.ts
+    i18n/QtRprtDesigner_zh_CN.ts \
+    i18n/QtRprtDesigner_es_ES.ts \
+    i18n/QtRprtDesigner_fr_FR.ts \
+    i18n/QtRprtDesigner_de_DE.ts \
+    i18n/QtRprtDesigner_nl_BE.ts
 
 win32 {
     MOC_DIR = tmp-win32
@@ -101,3 +113,4 @@ linux {
 }
 
 CONFIG += c++11
+CONFIG += app_bundle

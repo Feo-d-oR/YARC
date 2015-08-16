@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.ru
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "RptContainer.h"
@@ -11,14 +26,16 @@ e-mail: aliks-os@ukr.ru
 RptContainer::RptContainer(QWidget *parent, QPoint p, QWidget *cWidget) : TContainer(parent,p,cWidget) {
     this->setAttribute(Qt::WA_TranslucentBackground,true);
     m_printing = "1";
+    m_groupName = "";
     backgroundColor = Qt::white;
     borderWidth = 1;
     borderColor = Qt::black;
+    setHasOverlay(true);
     menu = new QMenu(this);
 }
 
 void RptContainer::allowEditing(bool value) {
-    this->m_isEditing = value;
+    this->m_isDesigning = value;
 }
 
 void RptContainer::setType(FieldType value) {
@@ -39,6 +56,7 @@ void RptContainer::loadParamFromXML(QDomElement e) {
     this->setBaseSize(e.attribute("width").toInt(),e.attribute("height").toInt());
     this->setObjectName(e.attribute("name"));
     this->m_printing = e.attribute("printing","1");
+    this->m_groupName = e.attribute("groupName","");
     this->borderWidth = e.attribute("borderWidth","1px").replace("px","").toInt();
     this->setSheetValue(FrameWidth,e.attribute("borderWidth","1px"));
     this->setSheetValue(FrameStyle,e.attribute("borderStyle","solid"));
@@ -49,6 +67,7 @@ QDomElement RptContainer::saveParamToXML(QDomDocument *xmlDoc) {
 
     elem.setAttribute("type",QtRPT::getFieldTypeName(m_type));
     elem.setAttribute("printing",this->m_printing);
+    elem.setAttribute("groupName",this->m_groupName);
     elem.setAttribute("name",this->objectName());
     elem.setAttribute("borderWidth",QString::number(getBorderWidth())+"px");
 
@@ -78,7 +97,7 @@ bool RptContainer::borderIsCheck(Command command) {
 
     end = stl.indexOf(";",start+1,Qt::CaseInsensitive);
     QString tmp = stl.mid(start+1,end-start-1);
-    if (!tmp.contains("#ffffff") && !tmp.contains("rgba(255,255,255,0)"))  //Если не белый
+    if (!tmp.contains("#ffffff") && !tmp.contains("rgba(255,255,255,0)"))  //If not white
         return true;
     else return false;
 }

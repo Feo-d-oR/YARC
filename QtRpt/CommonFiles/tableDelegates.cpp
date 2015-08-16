@@ -1,11 +1,50 @@
 /***********************
 *   Aleksey Osipov     *
-*  aliks-os@yandex.ru  *
-*     2011-2012        *
+*  aliks-os@ukr.net    *
+*     2011-2015        *
 ************************/
 
 #include "tableDelegates.h"
 #include <QtWidgets>
+
+//Обычный делегат, в котором есть сигнал о закрытии
+ItemDelegate::ItemDelegate(QObject *parent) : QItemDelegate(parent) {
+    QObject::connect(this, SIGNAL(closeEditor(QWidget *, QAbstractItemDelegate::EndEditHint)),
+                     this, SLOT(editorClose_(QWidget *, QAbstractItemDelegate::EndEditHint)));
+}
+
+QWidget *ItemDelegate::createEditor(QWidget *parent,
+                                    const QStyleOptionViewItem& option,
+                                    const QModelIndex& index ) const {
+    return QItemDelegate::createEditor(parent, option,index);
+}
+
+void ItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const {
+    QItemDelegate::setEditorData(editor,index);
+}
+
+void ItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex& index) const {
+    QItemDelegate::setModelData(editor,model,index);
+}
+
+void ItemDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex& index) const {
+    QItemDelegate::updateEditorGeometry(editor,option,index);
+}
+
+void ItemDelegate::editorClose_(QWidget *editor, QAbstractItemDelegate::EndEditHint hint) {
+    Q_UNUSED(editor);
+    Q_UNUSED(hint);
+    emit editorClose(this);
+    qDebug()<<"close";
+}
+
+void ItemDelegate::commitAndCloseEditor() {
+    QWidget *editor = qobject_cast<QWidget *>(sender());
+    emit commitData(editor);
+    emit closeEditor(editor);
+    qDebug()<<"commit";
+}
+
 
 //Описываем делегат с проверкой на числа
 DigDelegate::DigDelegate(QObject *parent, QString type) : QItemDelegate(parent),

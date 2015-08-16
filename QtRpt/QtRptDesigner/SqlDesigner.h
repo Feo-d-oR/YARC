@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #ifndef SQLDESIGNER_H
@@ -12,17 +27,13 @@ e-mail: aliks-os@ukr.net
 #include <QWidget>
 #include <QDomDocument>
 #include <QtSql>
-#include "SQLHighlighter.h"
 #include <QTreeWidgetItem>
 #include <QTreeWidget>
 #include <QGraphicsScene>
-//#include "diagramscene.h"
-//#include "diagramitem.h"
 #include "diagramdocument.h"
-//#include "diagramtable.h"
 
 namespace Ui {
-class SqlDesigner;
+    class SqlDesigner;
 }
 
 class SqlDesigner : public QWidget
@@ -44,6 +55,7 @@ private:
     DiagramDocument *scene;
     void refreshTable(QSqlDatabase *db);
     void newDiagramDocument();
+    void showXMLStuct();
 
 private slots:
     void rbChecked();
@@ -57,6 +69,7 @@ private slots:
     void updateMode(DiagramDocument::Mode mode);
     void deleteSelected();
     void sqlChanged(const QString value);
+    void selectXMLFile();
 
 signals:
     void changed(bool value);

@@ -106,6 +106,12 @@
         <file>images/moveBack.png</file>
         <file>images/moveForward.png</file>
         <file>images/richText.png</file>
+        <file>images/ungroup.png</file>
+        <file>images/group.png</file>
+        <file>images/xmlTag.png</file>
+        <file>images/xmlAttr.png</file>
+        <file>images/update.png</file>
+        <file>images/readme.png</file>
     </qresource>
     <qresource prefix="/language">
         <file>i18n/QtRprtDesigner_sr_RS.qm</file>
@@ -115,5 +121,9 @@
         <file>i18n/QtRprtDesigner_ka_GE.qm</file>
         <file>i18n/QtRprtDesigner_pt_PT.qm</file>
         <file>i18n/QtRprtDesigner_zh_CN.qm</file>
+        <file>i18n/QtRprtDesigner_fr_FR.qm</file>
+        <file>i18n/QtRprtDesigner_de_DE.qm</file>
+        <file>i18n/QtRprtDesigner_nl_BE.qm</file>
+        <file>i18n/QtRprtDesigner_es_ES.qm</file>
     </qresource>
 </RCC>

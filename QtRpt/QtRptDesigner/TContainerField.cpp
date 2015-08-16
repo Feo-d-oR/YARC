@@ -1,9 +1,24 @@
 /*
-Name: QtRptDesigner
-Version: 1.4.5
+Name: QtRpt
+Version: 1.5.3
+Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
-e-mail: aliks-os@ukr.net
-2012-2014
+E-mail: aliks-os@ukr.net
+Web-site: http://www.aliks-os.tk
+
+Copyright 2012-2015 Aleksey Osipov
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 */
 
 #include "TContainerField.h"
@@ -105,6 +120,7 @@ TContainerField *TContainerField::clone() {
     newContField->setText(m_label->text());
     newContField->m_label->setFont(m_label->font());
     newContField->m_label->setAlignment(m_label->alignment());
+    newContField->setFontSize(this->getFontSize());
     newContField->setGeometry(this->geometry());
     newContField->setBaseSize(this->baseSize());    
     newContField->m_formatString = this->m_formatString;
@@ -323,6 +339,7 @@ void TContainerField::loadParamFromXML(QDomElement e) {
     } else if (this->m_type == Barcode) {
         setBarcodeType( (BarCode::BarcodeTypes)e.attribute("barcodeType","13").toInt() );
         setBarcodeFrameType( (BarCode::FrameTypes)e.attribute("barcodeFrameType","0").toInt() );
+        setBarcodeHeight(e.attribute("barcodeHeight","50").toInt() );
     }
     this->setText(e.attribute("value"));
 
@@ -413,8 +430,9 @@ QDomElement TContainerField::saveParamToXML(QDomDocument *xmlDoc) {
         }
     }
     if (this->m_type == Barcode) {
-        elem.setAttribute("barcodeType",m_barcode->getBarcodeType() );
-        elem.setAttribute("barcodeFrameType",m_barcode->getFrameType() );
+        elem.setAttribute("barcodeType",m_barcode->getBarcodeType());
+        elem.setAttribute("barcodeFrameType",m_barcode->getFrameType());
+        elem.setAttribute("barcodeHeight",m_barcode->getHeight());
     }
 
     QString hAl, vAl;
@@ -480,7 +498,10 @@ Chart *TContainerField::getChart() {
 void TContainerField::paintEvent( QPaintEvent * event) {
     Q_UNUSED(event);
 
-    //if (!QtRPT::getDrawingFields().contains(m_type)) return;
+    if (!QtRPT::getDrawingFields().contains(m_type) && m_type != Barcode) {
+        QWidget::paintEvent(event);
+        return;
+    }
 
     //label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     QBrush brush( getColorValue(BackgroundColor) );
@@ -586,6 +607,15 @@ BarCode::FrameTypes TContainerField::getBarcodeFrameType() {
 
 void TContainerField::setBarcodeFrameType(BarCode::FrameTypes value) {
     m_barcode->setFrameType(value);
+    this->repaint();
+}
+
+int TContainerField::getBarcodeHeight() {
+    return m_barcode->getHeight();
+}
+
+void TContainerField::setBarcodeHeight(int value) {
+    m_barcode->setHeight(value);
     this->repaint();
 }
 

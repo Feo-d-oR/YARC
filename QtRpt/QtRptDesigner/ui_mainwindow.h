@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -90,6 +90,8 @@ public:
     QAction *actAddBarcode;
     QAction *actReadme;
     QAction *actAddRichText;
+    QAction *actGroup;
+    QAction *actUngroup;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QSplitter *splitter;
@@ -390,57 +392,73 @@ public:
         actGroupProperty->setIcon(icon48);
         actCheckUpdates = new QAction(MainWindow);
         actCheckUpdates->setObjectName(QStringLiteral("actCheckUpdates"));
+        QIcon icon49;
+        icon49.addFile(QStringLiteral(":/new/prefix1/images/update.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actCheckUpdates->setIcon(icon49);
         actAddDiagram = new QAction(MainWindow);
         actAddDiagram->setObjectName(QStringLiteral("actAddDiagram"));
         actAddDiagram->setEnabled(false);
-        QIcon icon49;
-        icon49.addFile(QStringLiteral(":/new/prefix1/images/diagram.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actAddDiagram->setIcon(icon49);
+        QIcon icon50;
+        icon50.addFile(QStringLiteral(":/new/prefix1/images/diagram.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actAddDiagram->setIcon(icon50);
         actAddDrawing = new QAction(MainWindow);
         actAddDrawing->setObjectName(QStringLiteral("actAddDrawing"));
         actAddDrawing->setCheckable(true);
         actAddDrawing->setEnabled(false);
-        QIcon icon50;
-        icon50.addFile(QStringLiteral(":/new/prefix1/images/drawing.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actAddDrawing->setIcon(icon50);
+        QIcon icon51;
+        icon51.addFile(QStringLiteral(":/new/prefix1/images/drawing.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actAddDrawing->setIcon(icon51);
         actPreview = new QAction(MainWindow);
         actPreview->setObjectName(QStringLiteral("actPreview"));
         actPreview->setEnabled(true);
-        QIcon icon51;
-        icon51.addFile(QStringLiteral(":/new/prefix1/images/preview.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actPreview->setIcon(icon51);
+        QIcon icon52;
+        icon52.addFile(QStringLiteral(":/new/prefix1/images/preview.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actPreview->setIcon(icon52);
         actDataSource = new QAction(MainWindow);
         actDataSource->setObjectName(QStringLiteral("actDataSource"));
         actDataSource->setCheckable(true);
-        QIcon icon52;
-        icon52.addFile(QStringLiteral(":/new/prefix1/images/data.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actDataSource->setIcon(icon52);
+        QIcon icon53;
+        icon53.addFile(QStringLiteral(":/new/prefix1/images/data.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actDataSource->setIcon(icon53);
         actUndo = new QAction(MainWindow);
         actUndo->setObjectName(QStringLiteral("actUndo"));
         actUndo->setEnabled(false);
-        QIcon icon53;
-        icon53.addFile(QStringLiteral(":/new/prefix1/images/undo.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actUndo->setIcon(icon53);
+        QIcon icon54;
+        icon54.addFile(QStringLiteral(":/new/prefix1/images/undo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actUndo->setIcon(icon54);
         actRedo = new QAction(MainWindow);
         actRedo->setObjectName(QStringLiteral("actRedo"));
         actRedo->setEnabled(false);
-        QIcon icon54;
-        icon54.addFile(QStringLiteral(":/new/prefix1/images/redo.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actRedo->setIcon(icon54);
+        QIcon icon55;
+        icon55.addFile(QStringLiteral(":/new/prefix1/images/redo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actRedo->setIcon(icon55);
         actAddBarcode = new QAction(MainWindow);
         actAddBarcode->setObjectName(QStringLiteral("actAddBarcode"));
         actAddBarcode->setEnabled(false);
-        QIcon icon55;
-        icon55.addFile(QStringLiteral(":/new/prefix1/images/barcode.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actAddBarcode->setIcon(icon55);
+        QIcon icon56;
+        icon56.addFile(QStringLiteral(":/new/prefix1/images/barcode.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actAddBarcode->setIcon(icon56);
         actReadme = new QAction(MainWindow);
         actReadme->setObjectName(QStringLiteral("actReadme"));
+        QIcon icon57;
+        icon57.addFile(QStringLiteral(":/new/prefix1/images/readme.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actReadme->setIcon(icon57);
         actAddRichText = new QAction(MainWindow);
         actAddRichText->setObjectName(QStringLiteral("actAddRichText"));
         actAddRichText->setEnabled(false);
-        QIcon icon56;
-        icon56.addFile(QStringLiteral(":/new/prefix1/images/richText.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actAddRichText->setIcon(icon56);
+        QIcon icon58;
+        icon58.addFile(QStringLiteral(":/new/prefix1/images/richText.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actAddRichText->setIcon(icon58);
+        actGroup = new QAction(MainWindow);
+        actGroup->setObjectName(QStringLiteral("actGroup"));
+        QIcon icon59;
+        icon59.addFile(QStringLiteral(":/new/prefix1/images/group.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actGroup->setIcon(icon59);
+        actUngroup = new QAction(MainWindow);
+        actUngroup->setObjectName(QStringLiteral("actUngroup"));
+        QIcon icon60;
+        icon60.addFile(QStringLiteral(":/new/prefix1/images/ungroup.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actUngroup->setIcon(icon60);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -584,6 +602,9 @@ public:
         mainToolBar->addAction(actDeleteReportPage);
         mainToolBar->addAction(actPageSettings);
         mainToolBar->addAction(actDataSource);
+        mainToolBar->addSeparator();
+        mainToolBar->addAction(actGroup);
+        mainToolBar->addAction(actUngroup);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actShowGrid);
         mainToolBar->addSeparator();
@@ -876,6 +897,14 @@ public:
         actAddRichText->setText(QApplication::translate("MainWindow", "Add Rich Text", 0));
 #ifndef QT_NO_TOOLTIP
         actAddRichText->setToolTip(QApplication::translate("MainWindow", "Add Rich Text", 0));
+#endif // QT_NO_TOOLTIP
+        actGroup->setText(QApplication::translate("MainWindow", "To group", 0));
+#ifndef QT_NO_TOOLTIP
+        actGroup->setToolTip(QApplication::translate("MainWindow", "To group", 0));
+#endif // QT_NO_TOOLTIP
+        actUngroup->setText(QApplication::translate("MainWindow", "To ungroup", 0));
+#ifndef QT_NO_TOOLTIP
+        actUngroup->setToolTip(QApplication::translate("MainWindow", "To ungroup", 0));
 #endif // QT_NO_TOOLTIP
         QTreeWidgetItem *___qtreewidgetitem = treeParams->headerItem();
         ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "Value", 0));
