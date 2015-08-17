@@ -38,10 +38,10 @@ void JrnWorkReports::initModels()
     ui->tview->setColumnWidth(model->fieldIndex("master"), 120);
     ui->tview->setColumnWidth(model->fieldIndex("work"), 350);
 
-    model->setHeaderData(model->fieldIndex("date"), Qt::Horizontal, tr("Дата"));
-    model->setHeaderData(model->fieldIndex("orderid"), Qt::Horizontal, tr("№ заказа"));
-    model->setHeaderData(model->fieldIndex("master"), Qt::Horizontal, tr("Мастер"));
-    model->setHeaderData(model->fieldIndex("work"), Qt::Horizontal, tr("Работа"));
+    model->setHeaderData(model->fieldIndex("date"), Qt::Horizontal, tr("Date"));
+    model->setHeaderData(model->fieldIndex("orderid"), Qt::Horizontal, tr("Order #"));
+    model->setHeaderData(model->fieldIndex("master"), Qt::Horizontal, tr("Master"));
+    model->setHeaderData(model->fieldIndex("work"), Qt::Horizontal, tr("Work"));
 
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();

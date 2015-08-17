@@ -78,7 +78,7 @@
     <item row="0" column="0" alignment="Qt::AlignLeft">
      <widget class="QGroupBox" name="gbfilters">
       <property name="title">
-       <string>Поиск по базе</string>
+       <string>Search</string>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -134,7 +134,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Все</string>
+            <string>All</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -156,7 +156,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Готовые</string>
+            <string>Completed</string>
            </property>
           </widget>
          </item>
@@ -175,7 +175,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Принятые</string>
+            <string>Accepted</string>
            </property>
           </widget>
          </item>
@@ -194,7 +194,7 @@
             </size>
            </property>
            <property name="text">
-            <string>На согласовании</string>
+            <string>Coordination</string>
            </property>
           </widget>
          </item>
@@ -213,7 +213,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Ждут запчастей</string>
+            <string>Wait for spares</string>
            </property>
           </widget>
          </item>
@@ -226,7 +226,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Позвонить</string>
+            <string>To notify</string>
            </property>
           </widget>
          </item>
@@ -272,12 +272,12 @@
            </property>
            <item>
             <property name="text">
-             <string>Номер квитанции</string>
+             <string>Order #</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>Имя</string>
+             <string>Name</string>
             </property>
            </item>
           </widget>
@@ -409,6 +409,9 @@
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>Search by date range</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -438,7 +441,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Просмотр</string>
+       <string>Quick preview</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -477,7 +480,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Номер квитанции:</string>
+          <string>Order #:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -493,7 +496,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Статус:</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;State:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -540,7 +543,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Мастер:</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Master:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -575,7 +578,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Клиент оповещён:</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notified?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -591,7 +594,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Дата приёма:</string>
+          <string>Acceptance date:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -659,7 +662,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Клиент:</string>
+          <string>Customer:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -691,7 +694,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Телефон:</string>
+          <string>Phone:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -730,7 +733,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Тип:</string>
+          <string>Type:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -765,7 +768,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Изделие:</string>
+          <string>Product:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -800,7 +803,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Неисправность:</string>
+          <string>Defect:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -848,7 +851,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Дата выдачи:</string>
+          <string>Issue date:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -909,7 +912,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Комментарий:</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notes:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -950,7 +953,7 @@
          <item>
           <widget class="QPushButton" name="bView">
            <property name="text">
-            <string>Просмотр</string>
+            <string>View</string>
            </property>
            <property name="icon">
             <iconset resource="Icons.qrc">
@@ -961,7 +964,7 @@
          <item>
           <widget class="QPushButton" name="bEdit">
            <property name="text">
-            <string>Изменить</string>
+            <string>Edit</string>
            </property>
            <property name="icon">
             <iconset resource="Icons.qrc">
@@ -972,7 +975,7 @@
          <item>
           <widget class="QPushButton" name="bDelete">
            <property name="text">
-            <string>Удалить</string>
+            <string>Delete</string>
            </property>
            <property name="icon">
             <iconset>
@@ -1011,7 +1014,7 @@
          <item>
           <widget class="QPushButton" name="bSubmit">
            <property name="text">
-            <string>Сохранить</string>
+            <string>Save</string>
            </property>
            <property name="icon">
             <iconset>
@@ -1088,7 +1091,7 @@
    </property>
    <widget class="QMenu" name="app">
     <property name="title">
-     <string>Приложение</string>
+     <string>Application</string>
     </property>
     <addaction name="mInit"/>
     <addaction name="separator"/>
@@ -1098,7 +1101,7 @@
    </widget>
    <widget class="QMenu" name="actions">
     <property name="title">
-     <string>Действия</string>
+     <string>Actions</string>
     </property>
     <addaction name="mNewOrder"/>
     <addaction name="mGiveOrder"/>
@@ -1112,7 +1115,7 @@
    </widget>
    <widget class="QMenu" name="help">
     <property name="title">
-     <string>Справка</string>
+     <string>?</string>
     </property>
     <addaction name="separator"/>
     <addaction name="mHelp"/>
@@ -1121,7 +1124,7 @@
    </widget>
    <widget class="QMenu" name="catalogs">
     <property name="title">
-     <string>Справочники</string>
+     <string>Catalogs</string>
     </property>
     <addaction name="mCustomers"/>
     <addaction name="mEmployees"/>
@@ -1133,7 +1136,7 @@
    </widget>
    <widget class="QMenu" name="journals">
     <property name="title">
-     <string>Журналы</string>
+     <string>Journals</string>
     </property>
     <addaction name="mJrnWorkReports"/>
     <addaction name="mJrnDiagReports"/>
@@ -1175,7 +1178,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Выход</string>
+    <string>Exit</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -1197,7 +1200,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Новый заказ</string>
+    <string>New order</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -1221,7 +1224,7 @@
      <normalon>:/icons/icons/database_connect.png</normalon>:/icons/icons/setting_tools.png</iconset>
    </property>
    <property name="text">
-    <string>Настройки</string>
+    <string>Settings</string>
    </property>
   </action>
   <action name="mEmployees">
@@ -1231,7 +1234,7 @@
      <normalon>:/icons/icons/user_edit.png</normalon>:/icons/icons/group.png</iconset>
    </property>
    <property name="text">
-    <string>Сотрудники</string>
+    <string>Employees</string>
    </property>
   </action>
   <action name="mProductTypes">
@@ -1240,7 +1243,7 @@
      <normaloff>:/icons/icons/laptop.png</normaloff>:/icons/icons/laptop.png</iconset>
    </property>
    <property name="text">
-    <string>Типы изделий</string>
+    <string>Product types</string>
    </property>
   </action>
   <action name="mInit">
@@ -1249,10 +1252,10 @@
      <normaloff>:/icons/icons/update.png</normaloff>:/icons/icons/update.png</iconset>
    </property>
    <property name="text">
-    <string>Переподключиться</string>
+    <string>Reconnect</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Повторное подключение к базе данных&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reconnect to database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="mCustomers">
@@ -1262,7 +1265,7 @@
      <normalon>:/icons/icons/client_account_template.png</normalon>:/icons/icons/vcard.png</iconset>
    </property>
    <property name="text">
-    <string>Клиенты</string>
+    <string>Customers</string>
    </property>
   </action>
   <action name="mSpares">
@@ -1272,7 +1275,7 @@
      <normalon>:/icons/icons/brick_edit.png</normalon>:/icons/icons/brick.png</iconset>
    </property>
    <property name="text">
-    <string>Запчасти</string>
+    <string>Spare parts</string>
    </property>
   </action>
   <action name="mSpareTypes">
@@ -1282,10 +1285,10 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Типы запчастей</string>
+    <string>Spare part types</string>
    </property>
    <property name="toolTip">
-    <string>Типы запчастей</string>
+    <string>Spare part types</string>
    </property>
   </action>
   <action name="mWorkTypes">
@@ -1294,7 +1297,7 @@
      <normaloff>:/icons/icons/hammer.png</normaloff>:/icons/icons/hammer.png</iconset>
    </property>
    <property name="text">
-    <string>Работы</string>
+    <string>Works</string>
    </property>
   </action>
   <action name="mJrnWorkReports">
@@ -1303,7 +1306,7 @@
      <normaloff>:/icons/icons/reports_hammer.png</normaloff>:/icons/icons/reports_hammer.png</iconset>
    </property>
    <property name="text">
-    <string>Отчёты о работе</string>
+    <string>Work reports</string>
    </property>
   </action>
   <action name="mJrnDiagReports">
@@ -1315,7 +1318,7 @@
      <normaloff>:/icons/icons/reports_magnify.png</normaloff>:/icons/icons/reports_magnify.png</iconset>
    </property>
    <property name="text">
-    <string>Отчёты диагностики</string>
+    <string>Diagnostics reports</string>
    </property>
   </action>
   <action name="mNewWorkReport">
@@ -1324,7 +1327,7 @@
      <normaloff>:/icons/icons/report_hammer_add.png</normaloff>:/icons/icons/report_hammer_add.png</iconset>
    </property>
    <property name="text">
-    <string>Новый отчёт о работе</string>
+    <string>New work report</string>
    </property>
    <property name="shortcut">
     <string>Shift+W</string>
@@ -1339,7 +1342,7 @@
      <normaloff>:/icons/icons/report_magnify_add.png</normaloff>:/icons/icons/report_magnify_add.png</iconset>
    </property>
    <property name="text">
-    <string>Новый отчёт диагностики</string>
+    <string>New diagnostics report</string>
    </property>
    <property name="shortcut">
     <string>Shift+D</string>
@@ -1351,7 +1354,7 @@
      <normaloff>:/icons/icons/page_hammer_go.png</normaloff>:/icons/icons/page_hammer_go.png</iconset>
    </property>
    <property name="text">
-    <string>Выдать из ремонта</string>
+    <string>Issue off repair</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
@@ -1363,7 +1366,7 @@
      <normaloff>:/icons/icons/page_magnify_go.png</normaloff>:/icons/icons/page_magnify_go.png</iconset>
    </property>
    <property name="text">
-    <string>Выдать с актом диагностики</string>
+    <string>Issue off diagnostics</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -1375,7 +1378,7 @@
      <normaloff>:/icons/icons/help.png</normaloff>:/icons/icons/help.png</iconset>
    </property>
    <property name="text">
-    <string>Руководство</string>
+    <string>Help</string>
    </property>
   </action>
   <action name="mPrintHWDocs">
@@ -1384,7 +1387,7 @@
      <normaloff>:/icons/icons/printer.png</normaloff>:/icons/icons/printer.png</iconset>
    </property>
    <property name="text">
-    <string>Напечатать рукописные документы</string>
+    <string>Print handwritten documents</string>
    </property>
   </action>
   <action name="mAboutQt">
@@ -1398,7 +1401,7 @@
      <normaloff>:/icons/icons/money_in_envelope.png</normaloff>:/icons/icons/money_in_envelope.png</iconset>
    </property>
    <property name="text">
-    <string>Выплатить зарплату</string>
+    <string>Pay salary</string>
    </property>
   </action>
  </widget>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Выдача с отчётом диагностики</string>
+   <string>Issue off diagnostics</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
@@ -26,7 +26,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Номер заказа:</string>
+        <string>Order #:</string>
        </property>
       </widget>
      </item>
@@ -49,7 +49,7 @@
      <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Дата выдачи:</string>
+        <string>Date:</string>
        </property>
       </widget>
      </item>
@@ -85,7 +85,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Выдал:</string>
+        <string>Issued by:</string>
        </property>
       </widget>
      </item>
@@ -123,8 +123,8 @@
    <item row="2" column="0">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>Результаты
-осмотра:</string>
+      <string>Inspection 
+ results:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -141,8 +141,8 @@
    <item row="3" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>Выявленные
-неисправности:</string>
+      <string>Identified 
+ defects:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -155,8 +155,8 @@
    <item row="4" column="0">
     <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>Рекомендации
-к ремонту:</string>
+      <string>Recommendations 
+ for repair:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -178,7 +178,7 @@
      <item>
       <widget class="QPushButton" name="bCancel">
        <property name="text">
-        <string>Отменить</string>
+        <string>Cancel</string>
        </property>
        <property name="icon">
         <iconset>
@@ -206,7 +206,7 @@
         <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>Просмотр</string>
+        <string>Preview</string>
        </property>
        <property name="tristate">
         <bool>false</bool>
@@ -216,7 +216,7 @@
      <item>
       <widget class="QPushButton" name="bPrint">
        <property name="text">
-        <string>Печать...</string>
+        <string>Print</string>
        </property>
        <property name="icon">
         <iconset>
@@ -228,7 +228,7 @@
      <item>
       <widget class="QPushButton" name="bSave">
        <property name="text">
-        <string>Сохранить и закрыть</string>
+        <string>Save and close</string>
        </property>
        <property name="icon">
         <iconset>

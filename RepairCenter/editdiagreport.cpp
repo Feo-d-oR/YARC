@@ -17,11 +17,11 @@ void EditDiagReport::closeEvent(QCloseEvent *event)
 {
     if (saved == false){
         QMessageBox mb;
-        mb.setWindowTitle(tr("Отчёт диагностики"));
-        mb.setText(tr("Сохранить изменения?"));
-        QPushButton *bSave = mb.addButton(tr("Сохранить"), QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton(tr("Удалить"), QMessageBox::ActionRole);
-        QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::ActionRole);
+        mb.setWindowTitle(tr("Diagnostics report"));
+        mb.setText(tr("Save changes?"));
+        QPushButton *bSave = mb.addButton(tr("Save"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("Delete"), QMessageBox::ActionRole);
+        QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
 
@@ -41,7 +41,7 @@ void EditDiagReport::closeEvent(QCloseEvent *event)
 void EditDiagReport::getMode(QString mode, QString num)
 {
     if (mode == "new"){
-        QWidget::setWindowTitle(tr("Новый отчёт диагностики"));
+        QWidget::setWindowTitle(tr("New diagnostics report"));
         ui->eDate->setDate(QDate::currentDate());
         ui->eOrderID->setText(num);
         setModels();
@@ -50,7 +50,7 @@ void EditDiagReport::getMode(QString mode, QString num)
     }
     else if (mode == "view"){
         saved = true;
-        QWidget::setWindowTitle(tr("Просмотр отчёта диагностики"));
+        QWidget::setWindowTitle(tr("View diagnostics report"));
         setModels();
         reportID = num;
         fillFields();
@@ -59,7 +59,7 @@ void EditDiagReport::getMode(QString mode, QString num)
     }
     else if (mode == "edit"){
         saved = true;
-        QWidget::setWindowTitle(tr("Редактирование отчёта диагностики"));
+        QWidget::setWindowTitle(tr("Edit diagnostics report"));
         setModels();
         reportID = num;
         fillFields();
@@ -83,16 +83,16 @@ void EditDiagReport::checkExist()
     qc.exec("SELECT * FROM diag_reports WHERE orderid = " + ui->eOrderID->text());
     if (qc.first()) {
         QMessageBox mbex;
-        mbex.setWindowTitle(tr("Отчёт диагностики"));
-        mbex.setText(tr("Отчёт диагностики для этого заказа уже существует!"));
-        QPushButton *bEdit = mbex.addButton(tr("Редактировать"), QMessageBox::ActionRole);
-        QPushButton *bClose = mbex.addButton(tr("Закрыть"), QMessageBox::ActionRole);
+        mbex.setWindowTitle(tr("Diagnostics report"));
+        mbex.setText(tr("Diagnostics report for that order already exist!"));
+        QPushButton *bEdit = mbex.addButton(tr("Edit"), QMessageBox::ActionRole);
+        QPushButton *bClose = mbex.addButton(tr("Close"), QMessageBox::ActionRole);
         mbex.setDefaultButton(bEdit);
         mbex.exec();
 
         if (mbex.clickedButton() == bEdit){
             saved = true;
-            QWidget::setWindowTitle(tr("Редактирование отчёта диагностики"));
+            QWidget::setWindowTitle(tr("Edit diagnostics report"));
             setModels();
             reportID = qc.value(recc.indexOf("id")).toString();
             fillFields();

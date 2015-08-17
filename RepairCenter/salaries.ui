@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Выплата зарплаты</string>
+   <string>Salaries</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
@@ -21,7 +21,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Сотрудник:</string>
+      <string>Employee:</string>
      </property>
     </widget>
    </item>
@@ -44,7 +44,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Сумма:</string>
+      <string>Sum:</string>
      </property>
     </widget>
    </item>
@@ -85,7 +85,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Выплатить</string>
+        <string>Pay</string>
        </property>
        <property name="icon">
         <iconset resource="Icons.qrc">
@@ -105,7 +105,7 @@
    <item row="3" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Выручка:</string>
+      <string>Earnings:</string>
      </property>
     </widget>
    </item>
@@ -146,7 +146,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Изъять</string>
+        <string>Take away</string>
        </property>
        <property name="icon">
         <iconset resource="Icons.qrc">

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Журнал отчётов о работе</string>
+   <string>Work reports</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
@@ -21,13 +21,13 @@
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Поиск</string>
+      <string>Search</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>№ заказа:</string>
+         <string>Order #:</string>
         </property>
        </widget>
       </item>
@@ -50,7 +50,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Мастер:</string>
+         <string>Master:</string>
         </property>
        </widget>
       </item>
@@ -88,6 +88,9 @@
       </item>
       <item>
        <widget class="QToolButton" name="bClear">
+        <property name="toolTip">
+         <string>Reset filter</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -105,7 +108,7 @@
      <item>
       <widget class="QPushButton" name="bAdd">
        <property name="text">
-        <string>Новый</string>
+        <string>New</string>
        </property>
        <property name="icon">
         <iconset>
@@ -117,7 +120,7 @@
      <item>
       <widget class="QPushButton" name="bView">
        <property name="text">
-        <string>Просмотр</string>
+        <string>View</string>
        </property>
        <property name="icon">
         <iconset resource="Icons.qrc">
@@ -128,7 +131,7 @@
      <item>
       <widget class="QPushButton" name="bEdit">
        <property name="text">
-        <string>Изменить</string>
+        <string>Edit</string>
        </property>
        <property name="icon">
         <iconset resource="Icons.qrc">
@@ -139,7 +142,7 @@
      <item>
       <widget class="QPushButton" name="bDelete">
        <property name="text">
-        <string>Удалить</string>
+        <string>Delete</string>
        </property>
        <property name="icon">
         <iconset>
@@ -164,7 +167,7 @@
      <item>
       <widget class="QPushButton" name="bClose">
        <property name="text">
-        <string>Закрыть</string>
+        <string>Close</string>
        </property>
        <property name="icon">
         <iconset>

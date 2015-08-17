@@ -24,7 +24,7 @@ void CatProductTypes::initModel()
 
     ui->tview->hideColumn(model->fieldIndex("id"));
     ui->tview->setColumnWidth(model->fieldIndex("name"), 250);
-    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Наименование"));
+    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Name"));
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();

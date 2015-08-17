@@ -35,9 +35,9 @@ void JrnDiagReports::initModels()
     ui->tview->setColumnWidth(model->fieldIndex("orderid"), 70);
     ui->tview->setColumnWidth(model->fieldIndex("master"), 120);
 
-    model->setHeaderData(model->fieldIndex("date"), Qt::Horizontal, tr("Дата"));
-    model->setHeaderData(model->fieldIndex("orderid"), Qt::Horizontal, tr("№ заказа"));
-    model->setHeaderData(model->fieldIndex("master"), Qt::Horizontal, tr("Мастер"));
+    model->setHeaderData(model->fieldIndex("date"), Qt::Horizontal, tr("Date"));
+    model->setHeaderData(model->fieldIndex("orderid"), Qt::Horizontal, tr("Order #"));
+    model->setHeaderData(model->fieldIndex("master"), Qt::Horizontal, tr("Master"));
 
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();

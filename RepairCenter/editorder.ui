@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Новый заказ</string>
+   <string>Order</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
@@ -39,7 +39,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Дата:</string>
+      <string>Date:</string>
      </property>
      <property name="buddy">
       <cstring>eDate</cstring>
@@ -55,7 +55,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Неисправность:</string>
+      <string>Claimed defect:</string>
      </property>
      <property name="buddy">
       <cstring>eDisease</cstring>
@@ -81,7 +81,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Статус:</string>
+      <string>State:</string>
      </property>
      <property name="buddy">
       <cstring>eState</cstring>
@@ -97,7 +97,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Ф.И.О. заказчика:</string>
+      <string>Name:</string>
      </property>
      <property name="buddy">
       <cstring>eCustomer</cstring>
@@ -160,7 +160,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Мастер:</string>
+      <string>Master:</string>
      </property>
      <property name="buddy">
       <cstring>eMaster</cstring>
@@ -172,7 +172,7 @@
      <item>
       <widget class="QPushButton" name="bCancel">
        <property name="text">
-        <string>Отменить</string>
+        <string>Cancel</string>
        </property>
        <property name="icon">
         <iconset>
@@ -197,14 +197,14 @@
      <item>
       <widget class="QCheckBox" name="cPreview">
        <property name="text">
-        <string>Просмотр</string>
+        <string>Preview</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="bPrint">
        <property name="text">
-        <string>Печать...</string>
+        <string>Print</string>
        </property>
        <property name="icon">
         <iconset>
@@ -216,7 +216,7 @@
      <item>
       <widget class="QPushButton" name="bSave">
        <property name="text">
-        <string>Сохранить и закрыть</string>
+        <string>Save and close</string>
        </property>
        <property name="icon">
         <iconset>
@@ -265,7 +265,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Телефон:</string>
+      <string>Phone:</string>
      </property>
      <property name="buddy">
       <cstring>ePhone</cstring>
@@ -281,7 +281,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Примерная стоимость:</string>
+      <string>Approx. cost:</string>
      </property>
      <property name="buddy">
       <cstring>eCost</cstring>
@@ -332,7 +332,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Серийный номер:</string>
+      <string>Serial:</string>
      </property>
      <property name="buddy">
       <cstring>eSerial</cstring>
@@ -365,7 +365,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Комментарии:</string>
+      <string>Notes:</string>
      </property>
      <property name="buddy">
       <cstring>eComment</cstring>
@@ -387,7 +387,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Принял:</string>
+      <string>Acceptor:</string>
      </property>
      <property name="buddy">
       <cstring>eAcceptor</cstring>
@@ -406,7 +406,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Состояние:</string>
+      <string>Condition:</string>
      </property>
      <property name="buddy">
       <cstring>eCond</cstring>
@@ -425,7 +425,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Комплектность:</string>
+      <string>Completeness:</string>
      </property>
      <property name="buddy">
       <cstring>eComplect</cstring>
@@ -494,7 +494,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>Добавить в справочник</string>
+        <string>Add to catalog</string>
        </property>
        <property name="text">
         <string/>
@@ -520,7 +520,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Изделие:</string>
+      <string>Product:</string>
      </property>
      <property name="buddy">
       <cstring>eProduct</cstring>
@@ -552,7 +552,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Номер:</string>
+      <string>Order #:</string>
      </property>
      <property name="buddy">
       <cstring>eNumber</cstring>
@@ -574,7 +574,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Тип изделия:</string>
+      <string>Product type:</string>
      </property>
     </widget>
    </item>

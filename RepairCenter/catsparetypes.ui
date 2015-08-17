@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Типы запчастей</string>
+   <string>Spare part typess</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
@@ -33,7 +33,7 @@
      <item>
       <widget class="QPushButton" name="bAdd">
        <property name="text">
-        <string>Добавить</string>
+        <string>Add</string>
        </property>
        <property name="icon">
         <iconset>
@@ -45,7 +45,7 @@
      <item>
       <widget class="QPushButton" name="bDelete">
        <property name="text">
-        <string>Удалить</string>
+        <string>Delete</string>
        </property>
        <property name="icon">
         <iconset>
@@ -70,7 +70,7 @@
      <item>
       <widget class="QPushButton" name="bSave">
        <property name="text">
-        <string>Сохранить</string>
+        <string>Save</string>
        </property>
        <property name="icon">
         <iconset>
@@ -82,7 +82,7 @@
      <item>
       <widget class="QPushButton" name="bClose">
        <property name="text">
-        <string>Закрыть</string>
+        <string>Close</string>
        </property>
        <property name="icon">
         <iconset>

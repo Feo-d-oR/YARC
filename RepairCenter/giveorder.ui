@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Выдача заказа</string>
+   <string>Issue off repair</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
@@ -23,7 +23,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Номер заказа:</string>
+        <string>Order #:</string>
        </property>
       </widget>
      </item>
@@ -63,7 +63,7 @@
      <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Дата выдачи:</string>
+        <string>Date:</string>
        </property>
       </widget>
      </item>
@@ -86,7 +86,7 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Гарантия:</string>
+        <string>Warranty:</string>
        </property>
       </widget>
      </item>
@@ -105,7 +105,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>Текст для печати, например, &quot;100 дней&quot;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Text to print, for example, &amp;quot;100 days&amp;quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -125,7 +125,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Выдал:</string>
+        <string>Issued by:</string>
        </property>
       </widget>
      </item>
@@ -163,7 +163,7 @@
    <item>
     <widget class="QTabWidget" name="tw">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="documentMode">
       <bool>false</bool>
@@ -181,7 +181,7 @@
        </iconset>
       </attribute>
       <attribute name="title">
-       <string>Работы</string>
+       <string>Works</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -197,22 +197,22 @@
          </property>
          <column>
           <property name="text">
-           <string>Наименование</string>
+           <string>Name</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Кол-во</string>
+           <string>Qty</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Стоимость</string>
+           <string>Cost</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Мастер</string>
+           <string>Master</string>
           </property>
          </column>
          <column>
@@ -231,7 +231,7 @@
        </iconset>
       </attribute>
       <attribute name="title">
-       <string>Запчасти</string>
+       <string>Spare parts</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -247,22 +247,22 @@
          </property>
          <column>
           <property name="text">
-           <string>Наименование</string>
+           <string>Name</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Кол-во</string>
+           <string>Qty</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Цена</string>
+           <string>Price</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Работа</string>
+           <string>Work</string>
           </property>
          </column>
          <column>
@@ -294,7 +294,7 @@
      <item alignment="Qt::AlignRight">
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Сумма:</string>
+        <string>Total:</string>
        </property>
       </widget>
      </item>
@@ -346,7 +346,7 @@
      <item>
       <widget class="QPushButton" name="bCancel">
        <property name="text">
-        <string>Отменить</string>
+        <string>Cancel</string>
        </property>
        <property name="icon">
         <iconset>
@@ -371,7 +371,7 @@
      <item>
       <widget class="QCheckBox" name="cAct">
        <property name="text">
-        <string>Акт</string>
+        <string>Act</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -381,21 +381,21 @@
      <item>
       <widget class="QCheckBox" name="cWarranty">
        <property name="text">
-        <string>Гарантия</string>
+        <string>Warranty card</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QCheckBox" name="cPreview">
        <property name="text">
-        <string>Просмотр</string>
+        <string>Preview</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="bPrint">
        <property name="text">
-        <string>Печать...</string>
+        <string>Print</string>
        </property>
        <property name="icon">
         <iconset>
@@ -407,7 +407,7 @@
      <item>
       <widget class="QPushButton" name="bSave">
        <property name="text">
-        <string>Сохранить и закрыть</string>
+        <string>Save and close</string>
        </property>
        <property name="icon">
         <iconset>

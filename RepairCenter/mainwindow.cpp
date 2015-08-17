@@ -39,11 +39,11 @@ MainWindow::MainWindow(QWidget *parent) :
             QMessageBox mb;
             mb.setIcon(QMessageBox::Critical);
             mb.setWindowTitle(tr("RepairCenter"));
-            mb.setText(tr("База данных не найдена!"));
-            mb.setInformativeText(tr("Изменить настройки или создать новую?"));
-            QPushButton *bCreate = mb.addButton(tr("Создать"), QMessageBox::ActionRole);
-            QPushButton *bEdit = mb.addButton(tr("Изменить"), QMessageBox::ActionRole);
-            QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::RejectRole);
+            mb.setText(tr("Database not found!"));
+            mb.setInformativeText(tr("Change settings or create new one?"));
+            QPushButton *bCreate = mb.addButton(tr("Create"), QMessageBox::ActionRole);
+            QPushButton *bEdit = mb.addButton(tr("Change"), QMessageBox::ActionRole);
+            QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::RejectRole);
             mb.setDefaultButton(bEdit);
             mb.exec();
 
@@ -63,10 +63,10 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox mb;
         mb.setIcon(QMessageBox::Critical);
         mb.setWindowTitle(tr("RepairCenter"));
-        mb.setText(tr("Файл настроек не найден!"));
-        mb.setInformativeText(tr("Создать файл настроек?"));
-        QPushButton *bEdit = mb.addButton(tr("Создать"), QMessageBox::ActionRole);
-        QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::RejectRole);
+        mb.setText(tr("Settings file not found!"));
+        mb.setInformativeText(tr("Create settings file?"));
+        QPushButton *bEdit = mb.addButton(tr("Create"), QMessageBox::ActionRole);
+        QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::RejectRole);
         mb.setDefaultButton(bEdit);
         mb.exec();
 
@@ -153,13 +153,13 @@ void MainWindow::initModelOrders()
     ui->tview->setModel(model);
 
     //setting headers
-    model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, tr("№"));
-    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Дата"));
-    model->setHeaderData(typeIdx, Qt::Horizontal, tr("Тип"));
-    model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, tr("Изделие"));
-    model->setHeaderData(model->fieldIndex("called"), Qt::Horizontal, tr("Оповещён?"));
-    model->setHeaderData(stateIdx, Qt::Horizontal, tr("Статус"));
-    model->setHeaderData(masterIdx, Qt::Horizontal, tr("Мастер"));
+    model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, tr("#"));
+    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Date"));
+    model->setHeaderData(typeIdx, Qt::Horizontal, tr("Type"));
+    model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, tr("Product"));
+    model->setHeaderData(model->fieldIndex("called"), Qt::Horizontal, tr("Notified?"));
+    model->setHeaderData(stateIdx, Qt::Horizontal, tr("State"));
+    model->setHeaderData(masterIdx, Qt::Horizontal, tr("Master"));
 
     //hiding unneeded columns
     ui->tview->hideColumn(model->fieldIndex("date_out"));
@@ -286,9 +286,9 @@ void MainWindow::on_lSearch_textEdited(const QString &arg1)
 {
     model->setFilter(QString());
     if(ui->lSearch->text() != ""){
-        if(ui->searchtexttype->currentText() == tr("Номер квитанции"))
+        if(ui->searchtexttype->currentText() == tr("Order #"))
             model->setFilter("number = " + arg1);
-        if(ui->searchtexttype->currentText() == tr("Имя"))        {
+        if(ui->searchtexttype->currentText() == tr("Name"))        {
 //            getCustomerIds();
 //            model->setFilter("customer IN ('" + namesstr + "')");
             model->setFilter("relTblAl_5.name LIKE '%" + arg1 + "%'");
@@ -303,17 +303,17 @@ void MainWindow::on_mInit_triggered()
         initModelOrders();
     }
     else{
-        QMessageBox::critical(this, tr("RepairCenter"), tr("Не удалось подключиться к базе данных."));
+        QMessageBox::critical(this, tr("RepairCenter"), tr("Unable to connect to database!"));
     }
 }
 
 void MainWindow::on_bDelete_clicked()
 {
     QMessageBox mb;
-    mb.setWindowTitle(tr("Внимание!"));
-    mb.setText(tr("Действительно удалить запись?"));
-    QPushButton *bYes = mb.addButton(tr("Да"), QMessageBox::ActionRole);
-    QPushButton *bNo = mb.addButton(tr("Нет"), QMessageBox::RejectRole);
+    mb.setWindowTitle(tr("Caution!"));
+    mb.setText(tr("Are you sure to delete order?"));
+    QPushButton *bYes = mb.addButton(tr("Yes"), QMessageBox::ActionRole);
+    QPushButton *bNo = mb.addButton(tr("No"), QMessageBox::RejectRole);
     mb.setDefaultButton(bNo);
     mb.exec();
 

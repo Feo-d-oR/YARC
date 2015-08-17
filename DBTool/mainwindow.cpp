@@ -284,17 +284,20 @@ void MainWindow::on_language_activated(int index)
         if (qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm"))
             break;
         else
-        {   qTranslator.load(":/langs/i18n/repaircenter_en_US.qm");
+        {   qTranslator.load(":/langs/i18n/repaircenter_en_US.qm");\
+            langIdx = 0;
             break;
         }
         break;
     case 1://russian
         locale = "ru_RU";
         qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm");
+        langIdx = 1;
         break;
     case 2://american english
         locale = "en_US";
         qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm");
+        langIdx = 2;
         break;
     }
     QApplication::installTranslator(&qTranslator);
@@ -306,6 +309,7 @@ void MainWindow::changeEvent(QEvent* event)
     {
         // retranslate designer form (single inheritance approach)
         ui->retranslateUi(this);
+        ui->language->setCurrentIndex(langIdx);
     }
 
     // remember to call base class implementation

@@ -77,11 +77,11 @@ void Settings::on_save_clicked()
     settings->sync();
 
     QMessageBox mb;
-    mb.setWindowTitle(tr("Внимание!"));
-    mb.setText(tr("Все изменения вступят в силу при следующем запуске.\n Перезапустить приложение?"));
+    mb.setWindowTitle(tr("Attention!"));
+    mb.setText(tr("Some changes will take effect the next time.\n Restart application?"));
     mb.setInformativeText(tr(""));
-    QPushButton *bYes = mb.addButton(tr("Да"), QMessageBox::ActionRole);
-    QPushButton *bNo = mb.addButton(tr("Нет"), QMessageBox::ActionRole);
+    QPushButton *bYes = mb.addButton(tr("Yes"), QMessageBox::ActionRole);
+    QPushButton *bNo = mb.addButton(tr("No"), QMessageBox::ActionRole);
     mb.setDefaultButton(bNo);
     mb.exec();
 

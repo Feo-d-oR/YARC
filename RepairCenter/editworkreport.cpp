@@ -20,11 +20,11 @@ void EditWorkReport::closeEvent(QCloseEvent *event)
     if (saved == false)
     {
         QMessageBox mb;
-        mb.setWindowTitle(tr("Отчёт о работе"));
-        mb.setText(tr("Сохранить изменения?"));
-        QPushButton *bSave = mb.addButton(tr("Сохранить"), QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton(tr("Удалить"), QMessageBox::ActionRole);
-        QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::ActionRole);
+        mb.setWindowTitle(tr("Work report"));
+        mb.setText(tr("Save changes?"));
+        QPushButton *bSave = mb.addButton(tr("Save"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("Delete"), QMessageBox::ActionRole);
+        QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
 
@@ -49,7 +49,7 @@ void EditWorkReport::getMode(QString mode, QString num)
 {
     if (mode == "new")
     {
-        QWidget::setWindowTitle(tr("Новый отчёт о работе"));
+        QWidget::setWindowTitle(tr("New work report"));
         ui->eOrderID->setText(num);
         ui->eDate->setDate(QDate::currentDate());
         setModels();
@@ -59,7 +59,7 @@ void EditWorkReport::getMode(QString mode, QString num)
     else if (mode == "view")
     {
         saved = true;
-        QWidget::setWindowTitle(tr("Просмотр отчёта о работе"));
+        QWidget::setWindowTitle(tr("View work report"));
         ui->bSave->setDisabled(true);
         setModels();
         reportID = num;
@@ -70,7 +70,7 @@ void EditWorkReport::getMode(QString mode, QString num)
     else if (mode == "edit")
     {
         saved = true;
-        QWidget::setWindowTitle(tr("Редактирование отчёта о работе"));
+        QWidget::setWindowTitle(tr("Edit work report"));
         setModels();
         reportID = num;
         fillFields();

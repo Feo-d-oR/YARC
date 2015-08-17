@@ -37,6 +37,7 @@ private:
     void allLatest();
     void updateError(QSqlError error);
     int dbversion;
+    int langIdx;
     Ui::MainWindow *ui;
     QSqlQuery q;
     QSqlError err;

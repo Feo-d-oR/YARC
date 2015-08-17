@@ -19,11 +19,11 @@ void GiveOrderDiag::closeEvent(QCloseEvent *event)
     if (saved == false)
     {
         QMessageBox mb;
-        mb.setWindowTitle(tr("Выдача c диагностикой"));
-        mb.setText(tr("Сохранить изменения?"));
-        QPushButton *bSave = mb.addButton(tr("Да"), QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton(tr("Нет"), QMessageBox::ActionRole);
-        QPushButton *bCancel = mb.addButton(tr("Отмена"), QMessageBox::ActionRole);
+        mb.setWindowTitle(tr("Issue off diagnostics"));
+        mb.setText(tr("Save changes?"));
+        QPushButton *bSave = mb.addButton(tr("Save"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("Delete"), QMessageBox::ActionRole);
+        QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
 
