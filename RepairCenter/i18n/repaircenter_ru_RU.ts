@@ -1228,7 +1228,7 @@
     <message>
         <location filename="../mainwindow.ui" line="444"/>
         <source>Quick preview</source>
-        <translation>Бвстрый просмотр</translation>
+        <translation type="unfinished">Быстрый просмотр</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="483"/>
