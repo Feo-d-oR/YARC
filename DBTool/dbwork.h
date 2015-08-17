@@ -11,6 +11,7 @@ public:
     explicit DBWork(QObject *parent = 0);
     QSqlError createTables();
     QSqlError updateTo2();
+    QSqlError updateTo3();
 
 signals:
 

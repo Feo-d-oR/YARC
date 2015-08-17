@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "dbwork.h"
 
+QString MainWindow::lang = "";
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -68,15 +70,34 @@ void MainWindow::readSettings()
     ui->eusername->setText(settings->value("mysql/user").toString());
     ui->epassword->setText(settings->value("mysql/password").toString());
 
-    QString lang = settings->value("locale/language").toString();
-    if (lang == "") //default system language
-        ui->language->setCurrentIndex(0);
+    lang = settings->value("locale/language").toString();
+    qDebug()<< "lang: "<<lang;
 
+    QApplication::instance()->removeTranslator(&qTranslator);
+    if (lang == "") //default system language
+    {
+        locale = QLocale::system().name(); //reading system locale
+        if (qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm"))
+            langIdx = 0;
+        else
+        {   qTranslator.load(":/langs/i18n/repaircenter_en_US.qm");\
+            langIdx = 2;
+        }
+    }
     else if (lang == "ru_RU")//russian
-        ui->language->setCurrentIndex(1);
+    {
+        locale = "ru_RU";
+        qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm");
+        langIdx = 1;
+    }
 
     else if (lang == "en_US")//english
-        ui->language->setCurrentIndex(2);
+    {
+        locale = "en_US";
+        qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm");
+        langIdx = 2;
+    }
+    QApplication::installTranslator(&qTranslator);
 }
 
 void MainWindow::saveSettings()
@@ -168,7 +189,7 @@ void MainWindow::on_bUpdate_clicked()
     q.exec("SELECT value_n FROM system WHERE name = 'dbversion'");
     q.first();
 
-    if(q.value(0).toFloat() == 2)
+    if(q.value(0).toFloat() == 3)
         allLatest();
 
     if(q.value(0).toFloat() == 0)
@@ -181,15 +202,16 @@ void MainWindow::on_bUpdate_clicked()
         else
             updateError(err);
     }
-
-
-//    q.exec("SELECT * FROM system WHERE name = 'dbversion'");
-//    rec = q.record();
-//    q.first();
-//    dbversion = q.value(rec.indexOf("value_n"));
-
-//    if(dbversion == 2)
-//        updateTo3();
+    if(q.value(0).toFloat() == 2)
+    {
+        DBWork upd;
+        QSqlError err = upd.updateTo3();
+        qDebug() << err.text();
+        if (err.type() == QSqlError::NoError)
+            allUpdated();
+        else
+            updateError(err);
+    }
     }
 }
 
@@ -282,10 +304,11 @@ void MainWindow::on_language_activated(int index)
     case 0://system default
         locale = QLocale::system().name(); //reading system locale
         if (qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm"))
-            break;
+        {langIdx = 0;
+         break;}
         else
         {   qTranslator.load(":/langs/i18n/repaircenter_en_US.qm");\
-            langIdx = 0;
+            langIdx = 2;
             break;
         }
         break;

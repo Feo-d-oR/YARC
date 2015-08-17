@@ -1,4 +1,5 @@
 #include "dbwork.h"
+#include "mainwindow.h"
 
 DBWork::DBWork(QObject *parent) :
     QObject(parent)
@@ -23,42 +24,42 @@ QSqlError DBWork::createTables()
     q.exec("INSERT INTO system VALUES('percMaster', 0.5, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
     q.exec("INSERT INTO system VALUES('percFirm', 0.4, NULL)");
+    q.exec("INSERT INTO system VALUES('dblocale', NULL, '" + MainWindow::lang +"')");
 
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
-    q.exec(QString("INSERT INTO states VALUES(1,'") + tr("Taken for repair") + "')");
-    q.exec(QString("INSERT INTO states VALUES(2,'") + tr("Taken for diagnosis") + "')");
+    q.exec(QString("INSERT INTO states VALUES(1,'") + tr("Accepted for repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(2,'") + tr("Accepted for diagnostics") + "')");
     q.exec(QString("INSERT INTO states VALUES(3,'") + tr("Customer refused to repair") + "')");
     q.exec(QString("INSERT INTO states VALUES(4,'") + tr("Refused to repair") + "')");
-    q.exec(QString("INSERT INTO states VALUES(5,'") + tr("Diagnosis completed") + "')");
+    q.exec(QString("INSERT INTO states VALUES(5,'") + tr("Diagnostics completed") + "')");
     q.exec(QString("INSERT INTO states VALUES(6,'") + tr("Repair completed") + "')");
-    q.exec(QString("INSERT INTO states VALUES(7,'") + tr("Waits for agreement") + "')");
-    q.exec(QString("INSERT INTO states VALUES(8,'") + tr("Agreed") + "')");
-    q.exec(QString("INSERT INTO states VALUES(9,'") + tr("Given with diagnosis") + "')");
-    q.exec(QString("INSERT INTO states VALUES(10,'") + tr("Given with repair") + "')");
-    q.exec(QString("INSERT INTO states VALUES(11,'") + tr("Given without repair") + "')");
-    q.exec(QString("INSERT INTO states VALUES(12,'") + tr("In diagnosing") + "')");
-    q.exec(QString("INSERT INTO states VALUES(13,'") + tr("In the work") + "')");
-    q.exec(QString("INSERT INTO states VALUES(14,'") + tr("Waits for spares") + "')");
+    q.exec(QString("INSERT INTO states VALUES(7,'") + tr("Awaits coordination") + "')");
+    q.exec(QString("INSERT INTO states VALUES(8,'") + tr("Customer agreed") + "')");
+    q.exec(QString("INSERT INTO states VALUES(9,'") + tr("Issued with diagnostics") + "')");
+    q.exec(QString("INSERT INTO states VALUES(10,'") + tr("Issued with repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(11,'") + tr("Isuued without repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(12,'") + tr("In diagnostics") + "')");
+    q.exec(QString("INSERT INTO states VALUES(13,'") + tr("In work") + "')");
+    q.exec(QString("INSERT INTO states VALUES(14,'") + tr("Awaits spares") + "')");
     q.exec(QString("INSERT INTO states VALUES(15,'") + tr("Spares ordered") + "')");
-    q.exec(QString("INSERT INTO states VALUES(16,'") + tr("Customer-Waits for spares") + "')");
+    q.exec(QString("INSERT INTO states VALUES(16,'") + tr("Customer-Awaits spares") + "')");
     q.exec(QString("INSERT INTO states VALUES(17,'") + tr("Customer-Spares ordered") + "')");
-    q.exec(QString("INSERT INTO states VALUES(18,'") + tr("Waits for giving out") + "')");
-    q.exec(QString("INSERT INTO states VALUES(19,'") + tr("Taken for repair (warranty)") + "')");
+    q.exec(QString("INSERT INTO states VALUES(18,'") + tr("Awaits issuing") + "')");
+    q.exec(QString("INSERT INTO states VALUES(19,'") + tr("Accepted for repair (warranty)") + "')");
     q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
     q.exec(QString("INSERT INTO states VALUES(21,'") + tr("Spares recieved") + "')");
 
     q.exec("CREATE TABLE position_types (id INTEGER PRIMARY KEY, name VARCHAR(64))");
     q.exec(QString("INSERT INTO position_types VALUES(1,'") + tr("Master") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(2,'") + tr("Acceptor") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Seller") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Storekeeper") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Notice Buyer") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(6,'") + tr("Bookkeeper") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(7,'") + tr("Boss") + "')");
+    q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
+//    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Seller") + "')");
+//    q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Bookkeeper") + "')");
+//    q.exec(QString("INSERT INTO position_types VALUES(6,'") + tr("Boss") + "')");
     return q.lastError();
 }
 
-QSqlError DBWork::updateTo2() /*repaircenter greater than v0.3*/
+QSqlError DBWork::updateTo2() /*from repaircenter v0.3*/
 {
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n FLOAT, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
@@ -71,5 +72,40 @@ QSqlError DBWork::updateTo2() /*repaircenter greater than v0.3*/
     q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
     q.exec(QString("INSERT INTO states VALUES(21,'") + tr("Spares recieved") + "')");
     q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ FLOAT)");
+    return q.lastError();
+}
+
+QSqlError DBWork::updateTo3() /*from repaircenter v0.4*/
+{
+    updateTo2();
+    q.exec("DROP TABLE states");
+    q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
+    q.exec(QString("INSERT INTO states VALUES(1,'") + tr("Accepted for repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(2,'") + tr("Accepted for diagnostics") + "')");
+    q.exec(QString("INSERT INTO states VALUES(3,'") + tr("Customer refused to repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(4,'") + tr("Refused to repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(5,'") + tr("Diagnostics completed") + "')");
+    q.exec(QString("INSERT INTO states VALUES(6,'") + tr("Repair completed") + "')");
+    q.exec(QString("INSERT INTO states VALUES(7,'") + tr("Awaits coordination") + "')");
+    q.exec(QString("INSERT INTO states VALUES(8,'") + tr("Customer agreed") + "')");
+    q.exec(QString("INSERT INTO states VALUES(9,'") + tr("Issued with diagnostics") + "')");
+    q.exec(QString("INSERT INTO states VALUES(10,'") + tr("Issued with repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(11,'") + tr("Isuued without repair") + "')");
+    q.exec(QString("INSERT INTO states VALUES(12,'") + tr("In diagnostics") + "')");
+    q.exec(QString("INSERT INTO states VALUES(13,'") + tr("In work") + "')");
+    q.exec(QString("INSERT INTO states VALUES(14,'") + tr("Awaits spares") + "')");
+    q.exec(QString("INSERT INTO states VALUES(15,'") + tr("Spares ordered") + "')");
+    q.exec(QString("INSERT INTO states VALUES(16,'") + tr("Customer-Awaits spares") + "')");
+    q.exec(QString("INSERT INTO states VALUES(17,'") + tr("Customer-Spares ordered") + "')");
+    q.exec(QString("INSERT INTO states VALUES(18,'") + tr("Awaits issuing") + "')");
+    q.exec(QString("INSERT INTO states VALUES(19,'") + tr("Accepted for repair (warranty)") + "')");
+    q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
+    q.exec(QString("INSERT INTO states VALUES(21,'") + tr("Spares recieved") + "')");
+
+    q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
+
+    q.exec(QString("INSERT INTO system VALUES('dblocale', NULL, '") + MainWindow::lang +"')");
+    q.exec(QString("UPDATE system SET value_n = 3 WHERE name = 'dbversion'"));
+
     return q.lastError();
 }
