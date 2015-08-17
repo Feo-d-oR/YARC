@@ -374,6 +374,9 @@
            <property name="accelerated">
             <bool>false</bool>
            </property>
+           <property name="showGroupSeparator" stdset="0">
+            <bool>false</bool>
+           </property>
            <property name="displayFormat">
             <string>dd.MM.yyyy</string>
            </property>
@@ -389,9 +392,6 @@
              <month>12</month>
              <day>1</day>
             </date>
-           </property>
-           <property name="showGroupSeparator" stdset="0">
-            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -516,6 +516,9 @@
            <width>16777215</width>
            <height>23</height>
           </size>
+         </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
          </property>
          <property name="editable">
           <bool>false</bool>
@@ -1086,7 +1089,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="app">

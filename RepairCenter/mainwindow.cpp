@@ -107,6 +107,7 @@ void MainWindow::readGlobalSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'percFirm'");
     q.first();
     sPercFirm = q.value(0).toFloat();
+    sLocale = settings->value("locale/language").toString();
 }
 
 bool MainWindow::dbConnect()
@@ -450,9 +451,10 @@ void MainWindow::closeEvent(QCloseEvent *event){
     event->accept(); }
 
 void MainWindow::on_mHelp_triggered(){
-//    QString path;
-//    path = QDir::toNativeSeparators("file://"+QCoreApplication::applicationDirPath()+"/help/"+ local +"/index.html");
+//    QString hpath;
+//    hpath = QDir::toNativeSeparators("file://"+QCoreApplication::applicationDirPath()+"/help/"+ sLocale +"/index.html");
     QDesktopServices::openUrl(QUrl::fromLocalFile(QString(QCoreApplication::applicationDirPath()+"/help/"+ sLocale +"/index.html")));
+//    QDesktopServices::openUrl(hpath);
 }
 
 void MainWindow::on_mPrintHWDocs_triggered(){

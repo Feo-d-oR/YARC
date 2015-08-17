@@ -22,8 +22,8 @@ void GiveOrder::closeEvent(QCloseEvent *event)
         QMessageBox mb;
         mb.setWindowTitle(tr("Issue off repair"));
         mb.setText(tr("Save changes?"));
-        QPushButton *bSave = mb.addButton(tr("Save"), QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton(tr("Delete"), QMessageBox::ActionRole);
+        QPushButton *bSave = mb.addButton(tr("Yes"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("No"), QMessageBox::ActionRole);
         QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
@@ -277,7 +277,7 @@ void GiveOrder::print()
         if (report2->loadReport(fileName) == false) {
         qDebug()<<"Report file not found: " << fileName;
         }
-        connect(report2,SIGNAL(setValue(int&,QString&,QVariant&,int)), this, SLOT(setRptValue(int&,QString&,QVariant&,int)));
+        connect(report2,SIGNAL(setValue(const int, const QString, QVariant&, const int)), this, SLOT(setRptValue(const int, const QString, QVariant&, const int)));
 
         if (ui->cPreview->isChecked())
             report2->printExec(true);

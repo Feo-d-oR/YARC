@@ -22,8 +22,8 @@ void EditWorkReport::closeEvent(QCloseEvent *event)
         QMessageBox mb;
         mb.setWindowTitle(tr("Work report"));
         mb.setText(tr("Save changes?"));
-        QPushButton *bSave = mb.addButton(tr("Save"), QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton(tr("Delete"), QMessageBox::ActionRole);
+        QPushButton *bSave = mb.addButton(tr("Yes"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("No"), QMessageBox::ActionRole);
         QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
@@ -123,6 +123,8 @@ void EditWorkReport::fillFields()
     QModelIndexList idx_w = ui->eWork->model()->match(ui->eWork->model()->index(0, 0), Qt::EditRole, qf.value(recf.indexOf("work")), 1, Qt::MatchExactly);
     ui->eWork->setCurrentIndex(idx_w.value(0).row());
 
+    lqt.clear();
+    lsp.clear();
     lsp = qf.value(recf.indexOf("spares")).toString().split(",");
     lqt = qf.value(recf.indexOf("quants")).toString().split(",");
 
@@ -173,6 +175,8 @@ void EditWorkReport::submitReport()
     int r;
     for(r=0; r<i; r++)
     {
+        lqt.clear();
+        lsp.clear();
         lqt.append(ui->tview->item(r,2)->text());
         lsp.append(ui->tview->item(r,3)->text());
     }

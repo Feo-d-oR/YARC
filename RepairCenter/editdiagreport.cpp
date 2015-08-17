@@ -19,8 +19,8 @@ void EditDiagReport::closeEvent(QCloseEvent *event)
         QMessageBox mb;
         mb.setWindowTitle(tr("Diagnostics report"));
         mb.setText(tr("Save changes?"));
-        QPushButton *bSave = mb.addButton(tr("Save"), QMessageBox::ActionRole);
-        QPushButton *bDiscard = mb.addButton(tr("Delete"), QMessageBox::ActionRole);
+        QPushButton *bSave = mb.addButton(tr("Yes"), QMessageBox::ActionRole);
+        QPushButton *bDiscard = mb.addButton(tr("No"), QMessageBox::ActionRole);
         QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::ActionRole);
         mb.setDefaultButton(bCancel);
         mb.exec();
