@@ -8,23 +8,6 @@ int main(int argc, char *argv[])
     QTextCodec *codec = QTextCodec::codecForName("UTF8");
     QTextCodec::setCodecForLocale(codec);
 
-//    QTranslator qTranslator;
-//    QString locale = QLocale::system().name(); //reading system locale
-//    QString loSettings;
-//    QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
-//    settings->setIniCodec("UTF-8");
-//    loSettings = settings->value("locale/language").toString();
-
-//    if (loSettings != "")//if language is set then ignore system locale
-//        locale = loSettings;
-
-//    if (qTranslator.load(":/langs/i18n/dbtool_"+locale+".qm")) {
-//        a.installTranslator(&qTranslator);
-//    } else
-//    {   qTranslator.load(":/langs/i18n/dbtool_en_US.qm");
-//        a.installTranslator(&qTranslator);
-//    }
-
     MainWindow w;
     w.show();
 

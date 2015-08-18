@@ -27,17 +27,20 @@ private slots:
     void on_bClearOrders_clicked();
     void changeEvent(QEvent* event);
     void on_language_activated(int index);
+    void on_bRetranslate_clicked();
 
 private:
     bool dbCheckConnect();
     void saveSettings();
     bool connectDB();
+    void readTranslation();
     void readSettings();
     void allUpdated();
     void allCleared();
     void allLatest();
     void updateError(QSqlError error);
     int dbversion;
+    int newdbversion;
     int langIdx;
     Ui::MainWindow *ui;
     QSqlQuery q;

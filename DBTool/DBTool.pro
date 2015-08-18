@@ -23,8 +23,7 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 RESOURCES += \
-    Icons.qrc \
-    languages.qrc
+    Icons.qrc
 
 TRANSLATIONS += i18n/dbtool_ru_RU.ts
 TRANSLATIONS += i18n/dbtool_en_US.ts
@@ -36,7 +35,9 @@ OTHER_FILES += \
 dbtupd.commands = lupdate $$PWD/DBTool.pro
 dbtrel.commands = lrelease $$PWD/DBTool.pro
 dbtrel.depends = dbtupd
+md.commands = $(MKDIR) $$DESTDIR/i18n/
+copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$DESTDIR/i18n
+copy.depends = dbtrel md
 
-QMAKE_EXTRA_TARGETS += dbtupd dbtrel
-PRE_TARGETDEPS += dbtrel
-#translate.commands = $(COPY) *.qm $$DESTDIR/i18n/
+QMAKE_EXTRA_TARGETS += dbtupd dbtrel md copy
+PRE_TARGETDEPS += copy

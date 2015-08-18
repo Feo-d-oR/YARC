@@ -21,9 +21,9 @@ QSqlError DBWork::createTables()
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n INTEGER, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
-    q.exec("INSERT INTO system VALUES('percMaster', 0.5, NULL)");
+    q.exec("INSERT INTO system VALUES('percMaster', 0.6, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
-    q.exec("INSERT INTO system VALUES('percFirm', 0.4, NULL)");
+    q.exec("INSERT INTO system VALUES('percFirm', 0.3, NULL)");
     q.exec("INSERT INTO system VALUES('dblocale', NULL, '" + MainWindow::lang +"')");
 
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
@@ -53,31 +53,11 @@ QSqlError DBWork::createTables()
     q.exec(QString("INSERT INTO position_types VALUES(1,'") + tr("Master") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(2,'") + tr("Acceptor") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Seller") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Bookkeeper") + "')");
-//    q.exec(QString("INSERT INTO position_types VALUES(6,'") + tr("Boss") + "')");
     return q.lastError();
 }
 
-QSqlError DBWork::updateTo2() /*from repaircenter v0.3*/
+QSqlError DBWork::retranslate() //requires latest dbversion
 {
-    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n FLOAT, value_c VARCHAR(255))");
-    q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
-    q.exec("INSERT INTO system VALUES('percMaster', 0.5, NULL)");
-    q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
-    q.exec("INSERT INTO system VALUES('percFirm', 0.4, NULL)");
-    q.exec("ALTER TABLE employees DROP hired, DROP dismissed");
-    q.exec("ALTER TABLE employees ADD COLUMN isactive BOOLEAN NOT NULL DEFAULT 1");
-    q.exec("ALTER TABLE orders ADD COLUMN called BOOLEAN NOT NULL DEFAULT 0");
-    q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
-    q.exec(QString("INSERT INTO states VALUES(21,'") + tr("Spares recieved") + "')");
-    q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ FLOAT)");
-    return q.lastError();
-}
-
-QSqlError DBWork::updateTo3() /*from repaircenter v0.4*/
-{
-    updateTo2();
     q.exec("DROP TABLE states");
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
     q.exec(QString("INSERT INTO states VALUES(1,'") + tr("Accepted for repair") + "')");
@@ -102,6 +82,32 @@ QSqlError DBWork::updateTo3() /*from repaircenter v0.4*/
     q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
     q.exec(QString("INSERT INTO states VALUES(21,'") + tr("Spares recieved") + "')");
 
+    q.exec("DROP TABLE position_types");
+    q.exec("CREATE TABLE position_types (id INTEGER PRIMARY KEY, name VARCHAR(64))");
+    q.exec(QString("INSERT INTO position_types VALUES(1,'") + tr("Master") + "')");
+    q.exec(QString("INSERT INTO position_types VALUES(2,'") + tr("Acceptor") + "')");
+    q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
+    return q.lastError();
+}
+
+QSqlError DBWork::updateTo2() /*from repaircenter v0.3*/
+{
+    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n FLOAT, value_c VARCHAR(255))");
+    q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
+    q.exec("INSERT INTO system VALUES('percMaster', 0.5, NULL)");
+    q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
+    q.exec("INSERT INTO system VALUES('percFirm', 0.4, NULL)");
+    q.exec("ALTER TABLE employees DROP hired, DROP dismissed");
+    q.exec("ALTER TABLE employees ADD COLUMN isactive BOOLEAN NOT NULL DEFAULT 1");
+    q.exec("ALTER TABLE orders ADD COLUMN called BOOLEAN NOT NULL DEFAULT 0");
+    q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
+    q.exec(QString("INSERT INTO states VALUES(21,'") + tr("Spares recieved") + "')");
+    q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ FLOAT)");
+    return q.lastError();
+}
+
+QSqlError DBWork::updateTo3() /*from repaircenter v0.3.1*/
+{
     q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
 
     q.exec(QString("INSERT INTO system VALUES('dblocale', NULL, '") + MainWindow::lang +"')");
