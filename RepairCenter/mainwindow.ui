@@ -374,9 +374,6 @@
            <property name="accelerated">
             <bool>false</bool>
            </property>
-           <property name="showGroupSeparator" stdset="0">
-            <bool>false</bool>
-           </property>
            <property name="displayFormat">
             <string>dd.MM.yyyy</string>
            </property>
@@ -392,6 +389,9 @@
              <month>12</month>
              <day>1</day>
             </date>
+           </property>
+           <property name="showGroupSeparator" stdset="0">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -686,6 +686,9 @@
            <height>23</height>
           </size>
          </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="8" column="0">
@@ -717,6 +720,9 @@
            <width>16777215</width>
            <height>23</height>
           </size>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -760,6 +766,9 @@
          <property name="text">
           <string/>
          </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="11" column="0">
@@ -795,6 +804,9 @@
          <property name="text">
           <string/>
          </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="12" column="0">
@@ -829,6 +841,9 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -1089,7 +1104,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="app">

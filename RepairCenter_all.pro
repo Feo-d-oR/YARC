@@ -1,6 +1,6 @@
 TEMPLATE = subdirs   
 
-SUBDIRS = QtRpt/QtRptDesigner RepairCenter DBTool
+SUBDIRS = QtRpt/QtRptDesigner DBTool RepairCenter
 
 #Un-remark this line, if you want to buld QtRPT as a library
 #DEFINES += QTRPT_LIBRARY

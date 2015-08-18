@@ -115,8 +115,7 @@ OTHER_FILES += \
 
 
 RESOURCES += \
-    Icons.qrc \
-    languages.qrc
+    Icons.qrc
 
 TRANSLATIONS += i18n/repaircenter_ru_RU.ts
 TRANSLATIONS += i18n/repaircenter_en_US.ts
@@ -129,12 +128,19 @@ rpcrel.depends = rpcupd
 #translate.commands = $(COPY_DIR) *.qm $$DESTDIR/i18n/
 
 QMAKE_EXTRA_TARGETS += rpcupd rpcrel
-PRE_TARGETDEPS += rpcrel
 
 cf_copy.commands = $(COPY_DIR) $$shell_path($$PWD/../CommonFiles/*) $$DESTDIR
 
 first.depends = $(first) cf_copy
 export(first.depends)
 export(cf_copy.commands)
-QMAKE_EXTRA_TARGETS += first cf_copy
+
+#md.commands = $(MKDIR) $$DESTDIR/i18n/
+tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$DESTDIR/i18n
+tl_copy.depends = rpcrel
+
+QMAKE_EXTRA_TARGETS += first cf_copy tl_copy
+
+PRE_TARGETDEPS += tl_copy
+
 
