@@ -138,14 +138,14 @@ void GiveOrder::calculateSumm()
 
     for (roww=0; roww < rcw; roww++)
     {
-        summ += ui->tvieww->item(roww, 1)->text().toInt() * ui->tvieww->item(roww, 2)->text().toFloat();
+        summ += ui->tvieww->item(roww, 1)->text().toDouble() * ui->tvieww->item(roww, 2)->text().toDouble();
     }
     for (rows=0; rows < rcs; rows++)
     {
-        summ += ui->tviews->item(rows, 1)->text().toInt() * ui->tviews->item(rows, 2)->text().toFloat();
+        summ += ui->tviews->item(rows, 1)->text().toDouble() * ui->tviews->item(rows, 2)->text().toDouble();
     }
 
-    summstr = QString::number(summ);
+    summstr = QString::number(summ,'f',2);
     ui->eSumm->setText(summstr);
 }
 
@@ -170,7 +170,7 @@ void GiveOrder::submitOrder()
             q.exec("SELECT id FROM employees WHERE name = '"+ ui->tvieww->item(roww,3)->text() +"'");
             q.first();
             emp = q.value(0).toString();
-            sal = ui->tvieww->item(roww,1)->text().toFloat() * ui->tvieww->item(roww,2)->text().toFloat();
+            sal = ui->tvieww->item(roww,1)->text().toDouble() * ui->tvieww->item(roww,2)->text().toDouble();
             salm = sal * MainWindow::sPercMast;
             sala += sal * MainWindow::sPercAcc;
             salf += sal * MainWindow::sPercFirm;
@@ -240,11 +240,11 @@ void GiveOrder::setRptValue(const int recNo, const QString paramName, QVariant &
     }
     if (paramName == "summ") {
         if (ui->tvieww->item(recNo,0) == 0) return;
-        summ = ui->tvieww->item(recNo, 1)->text().toFloat() * ui->tvieww->item(recNo, 2)->text().toFloat();
+        summ = ui->tvieww->item(recNo, 1)->text().toDouble() * ui->tvieww->item(recNo, 2)->text().toDouble();
         rcs = ui->tviews->rowCount();
         for (rows=0; rows < rcs; rows++) {
             if (ui->tviews->item(rows, 3)->text() == ui->tvieww->item(recNo, 4)->text()) {
-                summ += ui->tviews->item(rows, 1)->text().toFloat() * ui->tviews->item(rows, 2)->text().toFloat();
+                summ += ui->tviews->item(rows, 1)->text().toDouble() * ui->tviews->item(rows, 2)->text().toDouble();
             }
         }
         summstr = QString::number(summ);

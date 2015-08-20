@@ -48,11 +48,11 @@ private:
     int rows;
     int rcw;
     int rcs;
-    float summ;
-    float sal;
-    float salm;
-    float sala;
-    float salf;
+    double summ;
+    double sal;
+    double salm;
+    double sala;
+    double salf;
     QString emp;
 
     void submitOrder();

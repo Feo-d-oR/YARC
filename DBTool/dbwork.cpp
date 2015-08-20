@@ -8,18 +8,18 @@ DBWork::DBWork(QObject *parent) :
 
 QSqlError DBWork::createTables()
 {
-    q.exec("CREATE TABLE orders (number INTEGER AUTO_INCREMENT PRIMARY KEY, date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), cond VARCHAR(255), complect VARCHAR(255), cost DECIMAL(10, 2), acceptor INTEGER, master INTEGER, giver INTEGER, warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT 0)");
+    q.exec("CREATE TABLE orders (number INTEGER AUTO_INCREMENT PRIMARY KEY, date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), cond VARCHAR(255), complect VARCHAR(255), cost DOUBLE, acceptor INTEGER, master INTEGER, giver INTEGER, warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT 0)");
     q.exec("CREATE TABLE product_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(32))");
     q.exec("CREATE TABLE employees (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), fullname VARCHAR(255), phone VARCHAR(64), address VARCHAR(255), position_type INTEGER, position VARCHAR(128), isactive BOOLEAN NOT NULL DEFAULT 1)");
     q.exec("CREATE TABLE customers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), phone VARCHAR(64), address VARCHAR(128))");
     q.exec("CREATE TABLE work_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, date TIMESTAMP, orderid INTEGER, master INTEGER, work INTEGER, quant INTEGER, spares VARCHAR(64), quants VARCHAR(64))");
     q.exec("CREATE TABLE diag_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, date TIMESTAMP, orderid INTEGER, master INTEGER, inspect VARCHAR(1024), defects VARCHAR(1024), recomm VARCHAR(1024))");
-    q.exec("CREATE TABLE works (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DECIMAL(10, 2), comment VARCHAR(128))");
-    q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DECIMAL(10, 2))");
+    q.exec("CREATE TABLE works (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DOUBLE, comment VARCHAR(128))");
+    q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DOUBLE)");
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
-    q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ FLOAT)");
+    q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ DOUBLE)");
 
-    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n FLOAT(11), value_c VARCHAR(255))");
+    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
     q.exec("INSERT INTO system VALUES('percMaster', 0.6, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
@@ -95,7 +95,7 @@ QSqlError DBWork::retranslate() //requires latest dbversion
 
 QSqlError DBWork::updateTo2() /*from repaircenter v0.3*/
 {
-    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n FLOAT, value_c VARCHAR(255))");
+    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
     q.exec("INSERT INTO system VALUES('percMaster', 0.5, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
@@ -105,7 +105,7 @@ QSqlError DBWork::updateTo2() /*from repaircenter v0.3*/
     q.exec("ALTER TABLE orders ADD COLUMN called BOOLEAN NOT NULL DEFAULT 0");
     q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
     q.exec(QString("INSERT INTO states VALUES(21,'") + tr("Spares recieved") + "')");
-    q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ FLOAT)");
+    q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ DOUBLE)");
     return q.lastError();
 }
 
@@ -115,14 +115,18 @@ QSqlError DBWork::updateTo3() /*from repaircenter v0.3.1b*/
 
     q.exec(QString("INSERT INTO system VALUES('dblocale', NULL, '") + MainWindow::lang +"')");
     q.exec(QString("UPDATE system SET value_n = 3 WHERE name = 'dbversion'"));
-    q.exec(QString("ALTER TABLE `system` CHANGE `value_n` `value_n` FLOAT(11) NULL DEFAULT NULL ;"));
+    q.exec(QString("ALTER TABLE `system` CHANGE `value_n` `value_n` DOUBLE NULL DEFAULT NULL ;"));
 
     return q.lastError();
 }
 
 QSqlError DBWork::updateTo4() /*from repaircenter v0.3.2b*/
 {
-    q.exec(QString("ALTER TABLE `system` CHANGE `value_n` `value_n` FLOAT( 11 ) NULL DEFAULT NULL ;"));
+    q.exec(QString("ALTER TABLE system CHANGE value_n value_n DOUBLE NULL DEFAULT NULL"));
+    q.exec(QString("ALTER TABLE orders CHANGE cost cost DOUBLE NULL DEFAULT NULL"));
+    q.exec(QString("ALTER TABLE spares CHANGE price price DOUBLE NULL DEFAULT NULL"));
+    q.exec(QString("ALTER TABLE works CHANGE price price DOUBLE NULL DEFAULT NULL"));
+    q.exec(QString(""));
     q.exec(QString("UPDATE system SET value_n = 4 WHERE name = 'dbversion'"));
     return q.lastError();
 }
