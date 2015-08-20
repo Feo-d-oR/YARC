@@ -1170,7 +1170,7 @@
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="41"/>
         <location filename="../mainwindow.cpp" line="65"/>
-        <location filename="../mainwindow.cpp" line="307"/>
+        <location filename="../mainwindow.cpp" line="309"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1199,7 +1199,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="1413"/>
-        <location filename="../mainwindow.cpp" line="466"/>
+        <location filename="../mainwindow.cpp" line="468"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1250,13 +1250,13 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="275"/>
-        <location filename="../mainwindow.cpp" line="290"/>
+        <location filename="../mainwindow.cpp" line="292"/>
         <source>Order #</source>
         <translation>№ заказа</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="280"/>
-        <location filename="../mainwindow.cpp" line="292"/>
+        <location filename="../mainwindow.cpp" line="294"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
@@ -1529,62 +1529,62 @@
         <translation>Создать файл настроек?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="157"/>
+        <location filename="../mainwindow.cpp" line="159"/>
         <source>#</source>
         <translation>№</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="158"/>
+        <location filename="../mainwindow.cpp" line="160"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="159"/>
+        <location filename="../mainwindow.cpp" line="161"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="160"/>
+        <location filename="../mainwindow.cpp" line="162"/>
         <source>Product</source>
         <translation>Изделие</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="161"/>
+        <location filename="../mainwindow.cpp" line="163"/>
         <source>Notified?</source>
         <translation>Уведомлён?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="162"/>
+        <location filename="../mainwindow.cpp" line="164"/>
         <source>State</source>
         <translation>Состояние</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="163"/>
+        <location filename="../mainwindow.cpp" line="165"/>
         <source>Master</source>
         <translation>Мастер</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="307"/>
+        <location filename="../mainwindow.cpp" line="309"/>
         <source>Unable to connect to database!</source>
         <translation>Невозможно соедениться с базой данных!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Caution!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="317"/>
         <source>Are you sure to delete order?</source>
         <translation>Вы уверены, что хотите удалить закза?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="316"/>
+        <location filename="../mainwindow.cpp" line="318"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="317"/>
+        <location filename="../mainwindow.cpp" line="319"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>

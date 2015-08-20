@@ -12,6 +12,7 @@ public:
     QSqlError createTables();
     QSqlError updateTo2();
     QSqlError updateTo3();
+    QSqlError updateTo4();
     QSqlError retranslate();
 
 signals:

@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    newdbversion = 3;
+    newdbversion = 4;
     readTranslation();
 }
 
@@ -77,6 +77,7 @@ void MainWindow::readTranslation()
         else
         {   qTranslator.load("./i18n/dbtool_en_US.qm");\
             langIdx = 2;
+            MainWindow::lang = "en_US";
         }
     }
     else if (lang == "ru_RU")//russian
@@ -84,6 +85,7 @@ void MainWindow::readTranslation()
         locale = "ru_RU";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
         langIdx = 1;
+        MainWindow::lang = "ru_RU";
     }
 
     else if (lang == "en_US")//english
@@ -91,6 +93,7 @@ void MainWindow::readTranslation()
         locale = "en_US";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
         langIdx = 2;
+        MainWindow::lang = "en_US";
     }
     QApplication::installTranslator(&qTranslator);
 }
@@ -200,7 +203,7 @@ void MainWindow::on_bUpdate_clicked()
             q.clear();
             qDebug()<<"dbversion: "<< dbversion;
 
-            if(dbversion == 3)
+            if(dbversion == newdbversion)
             {
                 allLatest();
                 break;
@@ -219,6 +222,15 @@ void MainWindow::on_bUpdate_clicked()
             {
                 DBWork upd;
                 QSqlError err = upd.updateTo3();
+                qDebug() << err.text();
+                if (err.type() != QSqlError::NoError)
+                    updateError(err);
+            }
+
+            if(dbversion == 3)
+            {
+                DBWork upd;
+                QSqlError err = upd.updateTo4();
                 qDebug() << err.text();
                 if (err.type() != QSqlError::NoError)
                     updateError(err);
@@ -325,6 +337,7 @@ void MainWindow::on_language_activated(int index)
         else
         {   qTranslator.load("./i18n/dbtool_en_US.qm");\
             langIdx = 2;
+            MainWindow::lang = "en_US";
             break;
         }
         break;
@@ -332,11 +345,13 @@ void MainWindow::on_language_activated(int index)
         locale = "ru_RU";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
         langIdx = 1;
+        MainWindow::lang = "ru_RU";
         break;
     case 2://american english
         locale = "en_US";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
         langIdx = 2;
+        MainWindow::lang = "en_US";
         break;
     }
     QApplication::installTranslator(&qTranslator);

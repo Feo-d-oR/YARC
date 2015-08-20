@@ -107,6 +107,8 @@ void MainWindow::readGlobalSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'percFirm'");
     q.first();
     sPercFirm = q.value(0).toFloat();
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
     sLocale = settings->value("locale/language").toString();
 }
 

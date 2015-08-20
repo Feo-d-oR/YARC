@@ -205,20 +205,21 @@ void EditOrder::submitOrder()
               " serial = :serial, disease = :disease, cond = :cond, complect = :complect, cost = :cost, acceptor = :acceptor, master = :master, comment = :comment "
               "WHERE number = " + orderID);
     q.bindValue(":date_in", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
-    q.bindValue(":state", id_s);
+    q.bindValue(":state", id_s.toInt());
     q.bindValue(":customer", customerID);
     q.bindValue(":phone", customerID);
-    q.bindValue(":product_type", id_t);
+    q.bindValue(":product_type", id_t.toInt());
     q.bindValue(":product", ui->eProduct->text());
     q.bindValue(":serial", ui->eSerial->text());
     q.bindValue(":disease", ui->eDisease->text());
     q.bindValue(":cond", ui->eCond->text());
     q.bindValue(":complect", ui->eComplect->text());
     q.bindValue(":cost", ui->eCost->text());
-    q.bindValue(":acceptor", id_a);
-    q.bindValue(":master", id_m);
+    q.bindValue(":acceptor", id_a.toInt());
+    q.bindValue(":master", id_m.toInt());
     q.bindValue(":comment", ui->eComment->toPlainText());
     q.exec();
+
     saved = true;
 }
 

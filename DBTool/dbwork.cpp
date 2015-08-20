@@ -19,7 +19,7 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
     q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ FLOAT)");
 
-    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n INTEGER, value_c VARCHAR(255))");
+    q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n FLOAT(11), value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
     q.exec("INSERT INTO system VALUES('percMaster', 0.6, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
@@ -87,6 +87,9 @@ QSqlError DBWork::retranslate() //requires latest dbversion
     q.exec(QString("INSERT INTO position_types VALUES(1,'") + tr("Master") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(2,'") + tr("Acceptor") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
+
+    q.exec(QString("UPDATE system SET value_c = '")+ MainWindow::lang +("' WHERE name = 'dblocale'"));
+
     return q.lastError();
 }
 
@@ -106,12 +109,20 @@ QSqlError DBWork::updateTo2() /*from repaircenter v0.3*/
     return q.lastError();
 }
 
-QSqlError DBWork::updateTo3() /*from repaircenter v0.3.1*/
+QSqlError DBWork::updateTo3() /*from repaircenter v0.3.1b*/
 {
     q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
 
     q.exec(QString("INSERT INTO system VALUES('dblocale', NULL, '") + MainWindow::lang +"')");
     q.exec(QString("UPDATE system SET value_n = 3 WHERE name = 'dbversion'"));
+    q.exec(QString("ALTER TABLE `system` CHANGE `value_n` `value_n` FLOAT(11) NULL DEFAULT NULL ;"));
 
+    return q.lastError();
+}
+
+QSqlError DBWork::updateTo4() /*from repaircenter v0.3.2b*/
+{
+    q.exec(QString("ALTER TABLE `system` CHANGE `value_n` `value_n` FLOAT( 11 ) NULL DEFAULT NULL ;"));
+    q.exec(QString("UPDATE system SET value_n = 4 WHERE name = 'dbversion'"));
     return q.lastError();
 }
