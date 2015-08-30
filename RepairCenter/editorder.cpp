@@ -1,5 +1,6 @@
 #include "editorder.h"
 #include "ui_editorder.h"
+#include "mainwindow.h"
 
 EditOrder::EditOrder(QWidget *parent):
     QDialog(parent),
@@ -52,9 +53,9 @@ void EditOrder::getMode(QString mode, QString num)
 {
     if (mode == "new" && block == false)
     {
+        block = true; //this prevents multiple records creation
         saved = false;
         isnew = true;
-        block = true; //this prevents multiple records creation
         QWidget::setWindowTitle(tr("New order"));
         ui->eDate->setDate(QDate::currentDate());
         setModels();
@@ -90,7 +91,8 @@ void EditOrder::allocateNumber()
     orderID = q.lastInsertId().toString();  //gets auto-incremet value
 
     qc.exec("INSERT INTO customers (id) VALUES (null)");
-    customerID = qc.lastInsertId().toString();
+    newCustomerID = qc.lastInsertId().toString();
+    customerID = newCustomerID;
 
     ui->eNumber->setText(orderID);
     ui->eNumber->setReadOnly(true);
@@ -131,8 +133,17 @@ void EditOrder::setModels()
 void EditOrder::removeAllocated()
 {
     q.exec("DELETE FROM orders WHERE number = " + orderID);
-    q.exec("DELETE FROM customers WHERE id =" + customerID);
+    q.exec("DELETE FROM customers WHERE id =" + newCustomerID);
     saved = true;
+}
+
+void EditOrder::getCustomer()
+{
+    qc.exec("SELECT name, phone FROM customers WHERE id = " + customerID);
+    recc = qc.record();
+    qc.first();
+    ui->eCustomer->setText(qc.value(recc.indexOf("name")).toString());
+    ui->ePhone->setText(qc.value(recc.indexOf("phone")).toString());
 }
 
 void EditOrder::fillFields()
@@ -156,17 +167,14 @@ void EditOrder::fillFields()
     {
         block = true;
         qc.exec("INSERT INTO customers (id) VALUES (null)");
-        customerID = qc.lastInsertId().toString();
+        newCustomerID = qc.lastInsertId().toString();
         ui->eDate->setDate(QDate::currentDate());
+        customerID = newCustomerID;
     }
     else
     {
         customerID = q.value(rec.indexOf("customer")).toString();
-        qc.exec("SELECT name, phone FROM customers WHERE id = " + customerID);
-        recc = qc.record();
-        qc.first();
-        ui->eCustomer->setText(qc.value(recc.indexOf("name")).toString());
-        ui->ePhone->setText(qc.value(recc.indexOf("phone")).toString());
+        getCustomer();
     }
 
     QModelIndexList idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("state")), 1, Qt::MatchExactly);
@@ -219,7 +227,7 @@ void EditOrder::submitOrder()
     q.bindValue(":master", id_m.toInt());
     q.bindValue(":comment", ui->eComment->toPlainText());
     q.exec();
-
+    MainWindow::prevCustomer = customerID;
     saved = true;
 }
 
@@ -300,3 +308,56 @@ void EditOrder::reject()
 {
     close();
 }
+
+void EditOrder::on_rbNew_clicked(bool checked)
+{
+    if(checked)
+    {
+        qc.exec("DELETE FROM customers WHERE id =" + newCustomerID);
+        ui->eCustomer->clear();
+        ui->ePhone->clear();
+        ui->cbOldCustomer->setEnabled(false);
+        qc.exec("INSERT INTO customers (id) VALUES (null)");
+        newCustomerID = qc.lastInsertId().toString();
+        customerID = newCustomerID;
+    }
+
+}
+
+void EditOrder::on_rbPrev_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->eCustomer->clear();
+        ui->ePhone->clear();
+        ui->cbOldCustomer->setEnabled(false);
+        qc.exec("DELETE FROM customers WHERE id =" + newCustomerID);
+        customerID = MainWindow::prevCustomer;
+        getCustomer();
+    }
+}
+
+void EditOrder::on_rbOld_clicked(bool checked)
+{
+    if(checked)
+    {
+        qc.exec("DELETE FROM customers WHERE id =" + newCustomerID);
+        model_c = new QSqlQueryModel();
+        model_c->setQuery("SELECT id, name, phone FROM customers WHERE regular = 1");
+        ui->cbOldCustomer->setModel(model_c);
+        ui->cbOldCustomer->setModelColumn(1);
+        ui->cbOldCustomer->model()->sort(Qt::AscendingOrder);
+        ui->cbOldCustomer->setEnabled(true);
+    }
+}
+
+void EditOrder::on_cbOldCustomer_currentIndexChanged(int index)
+{
+    if (index != -1)
+    {
+        recc = model_c->record(index);
+        customerID = recc.value(recc.indexOf("id")).toString();
+        getCustomer();
+    }
+}
+

@@ -31,6 +31,7 @@ private:
     void removeAllocated();
     void fillFields();
     void setModels();
+    void getCustomer();
     QSqlQuery q;
     QSqlRecord rec;
     QSqlQuery qc;
@@ -38,6 +39,7 @@ private:
     QSqlQuery qpt;
     QString orderID;
     QString customerID;
+    QString newCustomerID;
     bool block;
     bool isnew;
     bool saved;
@@ -45,6 +47,7 @@ private:
     QSqlQueryModel *model_a;
     QSqlQueryModel *model_m;
     QSqlTableModel *model_t;
+    QSqlQueryModel *model_c;
     QtRPT *report;
 
 protected:
@@ -61,6 +64,10 @@ private slots:
    void on_bPrint_clicked();
    void on_bSave_clicked();
    void on_bAddType_clicked();
+   void on_rbNew_clicked(bool checked);
+   void on_rbPrev_clicked(bool checked);
+   void on_rbOld_clicked(bool checked);
+   void on_cbOldCustomer_currentIndexChanged(int index);
 };
 
 #endif // EditOrder_H

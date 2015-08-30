@@ -14,11 +14,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../about.ui" line="27"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;version 0.3.2b&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../about.ui" line="75"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;QtRpt library version 1.5.3 (&lt;a href=&quot;http://sourceforge.net/projects/qtrpt/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;sourceforge.net/projects/qtrpt/&lt;/span&gt;&lt;/a&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
@@ -27,6 +22,11 @@
         <location filename="../about.ui" line="51"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://sourceforge.net/projects/repaircenter/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;sourceforge.net/projects/repaircenter/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../about.ui" line="27"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;version 0.3.3b&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../about.ui" line="34"/>
@@ -67,19 +67,24 @@
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../catcustomers.cpp" line="28"/>
+        <location filename="../catcustomers.cpp" line="29"/>
         <source>Name</source>
         <translation>Ф.И.О.</translation>
     </message>
     <message>
-        <location filename="../catcustomers.cpp" line="29"/>
+        <location filename="../catcustomers.cpp" line="30"/>
         <source>Phone</source>
         <translation>Телефон</translation>
     </message>
     <message>
-        <location filename="../catcustomers.cpp" line="30"/>
+        <location filename="../catcustomers.cpp" line="31"/>
         <source>Address</source>
         <translation>Адрес</translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.cpp" line="32"/>
+        <source>Regular?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -473,120 +478,140 @@
 <context>
     <name>EditOrder</name>
     <message>
-        <location filename="../editorder.ui" line="42"/>
+        <location filename="../editorder.ui" line="58"/>
         <source>Date:</source>
         <translation>Дата:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="58"/>
+        <location filename="../editorder.ui" line="74"/>
         <source>Claimed defect:</source>
         <translation>Заявленная
 неисправность:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="84"/>
+        <location filename="../editorder.ui" line="103"/>
         <source>State:</source>
         <translation>Состояние заказа:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="100"/>
+        <location filename="../editorder.ui" line="119"/>
         <source>Name:</source>
         <translation>Ф.И.О.:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="163"/>
+        <location filename="../editorder.ui" line="182"/>
         <source>Master:</source>
         <translation>Мастер:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="175"/>
-        <location filename="../editorder.cpp" line="28"/>
+        <location filename="../editorder.ui" line="194"/>
+        <location filename="../editorder.cpp" line="29"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="200"/>
+        <location filename="../editorder.ui" line="219"/>
         <source>Preview</source>
         <translation>Просмотр</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="207"/>
+        <location filename="../editorder.ui" line="226"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="219"/>
+        <location filename="../editorder.ui" line="238"/>
         <source>Save and close</source>
         <translation>Сохранить и закрыть</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="268"/>
+        <location filename="../editorder.ui" line="290"/>
         <source>Phone:</source>
         <translation>Телефон:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="284"/>
+        <location filename="../editorder.ui" line="306"/>
         <source>Approx. cost:</source>
         <translation>Примерная стоим.:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="335"/>
+        <location filename="../editorder.ui" line="341"/>
         <source>Serial:</source>
         <translation>Серийный номер:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="368"/>
+        <location filename="../editorder.ui" line="374"/>
         <source>Notes:</source>
         <translation>Заметки:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="390"/>
+        <location filename="../editorder.ui" line="396"/>
         <source>Acceptor:</source>
         <translation>Приёмщик:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="409"/>
+        <location filename="../editorder.ui" line="415"/>
         <source>Condition:</source>
         <translation>Состояние:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="428"/>
+        <location filename="../editorder.ui" line="437"/>
         <source>Completeness:</source>
         <translation>Комплектность:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="497"/>
+        <location filename="../editorder.ui" line="512"/>
         <source>Add to catalog</source>
         <translation>Добавить в справочник</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="523"/>
+        <location filename="../editorder.ui" line="545"/>
         <source>Product:</source>
         <translation>Изделие:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="555"/>
+        <location filename="../editorder.ui" line="570"/>
         <source>Order #:</source>
         <translation>№ заказа:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="577"/>
+        <location filename="../editorder.ui" line="592"/>
         <source>Product type:</source>
         <translation>Тип изделия:</translation>
     </message>
     <message>
-        <location filename="../editorder.ui" line="119"/>
+        <location filename="../editorder.ui" line="599"/>
+        <source>Customer type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editorder.ui" line="614"/>
+        <source>New</source>
+        <translation type="unfinished">Новый</translation>
+    </message>
+    <message>
+        <location filename="../editorder.ui" line="624"/>
+        <source>Previous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editorder.ui" line="631"/>
+        <source>Old</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editorder.ui" line="135"/>
         <source>dd.MM.yyyy</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../editorder.ui" line="20"/>
-        <location filename="../editorder.cpp" line="24"/>
+        <location filename="../editorder.cpp" line="25"/>
         <source>Order</source>
         <translation>Заказ</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="25"/>
+        <location filename="../editorder.cpp" line="26"/>
         <source>Save changes?</source>
         <translation>Сохранить изменения?</translation>
     </message>
@@ -599,27 +624,27 @@
         <translation type="vanished">Удалить</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="26"/>
+        <location filename="../editorder.cpp" line="27"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="27"/>
+        <location filename="../editorder.cpp" line="28"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="58"/>
+        <location filename="../editorder.cpp" line="59"/>
         <source>New order</source>
         <translation>Новый заказ</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="71"/>
+        <location filename="../editorder.cpp" line="72"/>
         <source>View order</source>
         <translation>Просмотр заказа</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="81"/>
+        <location filename="../editorder.cpp" line="82"/>
         <source>Edit order</source>
         <translation>Редактирование заказа</translation>
     </message>
@@ -1168,9 +1193,9 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="41"/>
-        <location filename="../mainwindow.cpp" line="65"/>
-        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="42"/>
+        <location filename="../mainwindow.cpp" line="66"/>
+        <location filename="../mainwindow.cpp" line="310"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1199,7 +1224,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="1413"/>
-        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="469"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1250,13 +1275,13 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="275"/>
-        <location filename="../mainwindow.cpp" line="292"/>
+        <location filename="../mainwindow.cpp" line="293"/>
         <source>Order #</source>
         <translation>№ заказа</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="280"/>
-        <location filename="../mainwindow.cpp" line="294"/>
+        <location filename="../mainwindow.cpp" line="295"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
@@ -1492,99 +1517,99 @@
         <translation>Выплата зарплаты</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="42"/>
+        <location filename="../mainwindow.cpp" line="43"/>
         <source>Database not found!</source>
         <translation>База данных не найдена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="43"/>
+        <location filename="../mainwindow.cpp" line="44"/>
         <source>Change settings or create new one?</source>
         <translation>Изменить настройки или создать новую?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="44"/>
-        <location filename="../mainwindow.cpp" line="68"/>
+        <location filename="../mainwindow.cpp" line="45"/>
+        <location filename="../mainwindow.cpp" line="69"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="45"/>
+        <location filename="../mainwindow.cpp" line="46"/>
         <source>Change</source>
         <translation>Изменить</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="46"/>
-        <location filename="../mainwindow.cpp" line="69"/>
+        <location filename="../mainwindow.cpp" line="47"/>
+        <location filename="../mainwindow.cpp" line="70"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="66"/>
+        <location filename="../mainwindow.cpp" line="67"/>
         <source>Settings file not found!</source>
         <translation>Файл настроек не найден!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="67"/>
+        <location filename="../mainwindow.cpp" line="68"/>
         <source>Create settings file?</source>
         <translation>Создать файл настроек?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="159"/>
+        <location filename="../mainwindow.cpp" line="160"/>
         <source>#</source>
         <translation>№</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="160"/>
+        <location filename="../mainwindow.cpp" line="161"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="161"/>
+        <location filename="../mainwindow.cpp" line="162"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="162"/>
+        <location filename="../mainwindow.cpp" line="163"/>
         <source>Product</source>
         <translation>Изделие</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="163"/>
+        <location filename="../mainwindow.cpp" line="164"/>
         <source>Notified?</source>
         <translation>Уведомлён?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="164"/>
+        <location filename="../mainwindow.cpp" line="165"/>
         <source>State</source>
         <translation>Состояние</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="165"/>
+        <location filename="../mainwindow.cpp" line="166"/>
         <source>Master</source>
         <translation>Мастер</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="310"/>
         <source>Unable to connect to database!</source>
         <translation>Невозможно соедениться с базой данных!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="316"/>
+        <location filename="../mainwindow.cpp" line="317"/>
         <source>Caution!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="317"/>
+        <location filename="../mainwindow.cpp" line="318"/>
         <source>Are you sure to delete order?</source>
         <translation>Вы уверены, что хотите удалить закза?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="318"/>
+        <location filename="../mainwindow.cpp" line="319"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="319"/>
+        <location filename="../mainwindow.cpp" line="320"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>

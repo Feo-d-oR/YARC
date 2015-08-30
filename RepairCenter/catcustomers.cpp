@@ -25,9 +25,11 @@ void CatCustomers::initModel()
     ui->tview->setColumnWidth(model->fieldIndex("name"), 200);
     ui->tview->setColumnWidth(model->fieldIndex("phone"), 150);
     ui->tview->setColumnWidth(model->fieldIndex("address"), 300);
+    ui->tview->setColumnWidth(model->fieldIndex("regilar"), 70);
     model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Name"));
     model->setHeaderData(model->fieldIndex("phone"), Qt::Horizontal, tr("Phone"));
     model->setHeaderData(model->fieldIndex("address"), Qt::Horizontal, tr("Address"));
+    model->setHeaderData(model->fieldIndex("regular"), Qt::Horizontal, tr("Regular?"));
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();

@@ -11,7 +11,7 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE orders (number INTEGER AUTO_INCREMENT PRIMARY KEY, date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), cond VARCHAR(255), complect VARCHAR(255), cost DOUBLE, acceptor INTEGER, master INTEGER, giver INTEGER, warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT 0)");
     q.exec("CREATE TABLE product_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(32))");
     q.exec("CREATE TABLE employees (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), fullname VARCHAR(255), phone VARCHAR(64), address VARCHAR(255), position_type INTEGER, position VARCHAR(128), isactive BOOLEAN NOT NULL DEFAULT 1)");
-    q.exec("CREATE TABLE customers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), phone VARCHAR(64), address VARCHAR(128))");
+    q.exec("CREATE TABLE customers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), phone VARCHAR(64), address VARCHAR(128)), regular BOOLEAN NULL DEFAULT NULL");
     q.exec("CREATE TABLE work_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, date TIMESTAMP, orderid INTEGER, master INTEGER, work INTEGER, quant INTEGER, spares VARCHAR(64), quants VARCHAR(64))");
     q.exec("CREATE TABLE diag_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, date TIMESTAMP, orderid INTEGER, master INTEGER, inspect VARCHAR(1024), defects VARCHAR(1024), recomm VARCHAR(1024))");
     q.exec("CREATE TABLE works (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DOUBLE, comment VARCHAR(128))");
@@ -126,7 +126,17 @@ QSqlError DBWork::updateTo4() /*from repaircenter v0.3.2b*/
     q.exec(QString("ALTER TABLE orders CHANGE cost cost DOUBLE NULL DEFAULT NULL"));
     q.exec(QString("ALTER TABLE spares CHANGE price price DOUBLE NULL DEFAULT NULL"));
     q.exec(QString("ALTER TABLE works CHANGE price price DOUBLE NULL DEFAULT NULL"));
-    q.exec(QString(""));
     q.exec(QString("UPDATE system SET value_n = 4 WHERE name = 'dbversion'"));
+    return q.lastError();
+}
+
+QSqlError DBWork::updateTo5() /*from repaircenter v0.3.3b*/
+{
+    q.exec(QString("ALTER TABLE customers ADD regular BOOLEAN NULL DEFAULT NULL"));
+//    q.exec(QString(""));
+//    q.exec(QString(""));
+//    q.exec(QString(""));
+
+    q.exec(QString("UPDATE system SET value_n = 5 WHERE name = 'dbversion'"));
     return q.lastError();
 }

@@ -367,9 +367,9 @@ with selected language.</source>
         <location filename="../mainwindow.cpp" line="53"/>
         <location filename="../mainwindow.cpp" line="142"/>
         <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="280"/>
-        <location filename="../mainwindow.cpp" line="299"/>
-        <location filename="../mainwindow.cpp" line="319"/>
+        <location filename="../mainwindow.cpp" line="289"/>
+        <location filename="../mainwindow.cpp" line="308"/>
+        <location filename="../mainwindow.cpp" line="328"/>
         <source>Error!</source>
         <translation>Ошибка!</translation>
     </message>
@@ -385,9 +385,9 @@ with selected language.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="175"/>
-        <location filename="../mainwindow.cpp" line="250"/>
-        <location filename="../mainwindow.cpp" line="260"/>
-        <location filename="../mainwindow.cpp" line="270"/>
+        <location filename="../mainwindow.cpp" line="259"/>
+        <location filename="../mainwindow.cpp" line="269"/>
+        <location filename="../mainwindow.cpp" line="279"/>
         <source>Done!</source>
         <translation>Готово!</translation>
     </message>
@@ -397,28 +397,28 @@ with selected language.</source>
         <translation>База данных успешно создана!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="251"/>
+        <location filename="../mainwindow.cpp" line="260"/>
         <source>Database succesfully updated!</source>
         <translation>База данных успешно обновлена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="261"/>
+        <location filename="../mainwindow.cpp" line="270"/>
         <source>Database doesn&apos;t need to be updated</source>
         <translation>База данных не нуждается в обновлении</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="271"/>
+        <location filename="../mainwindow.cpp" line="280"/>
         <source>Database succecfully cleared!</source>
         <translation>База данных успешно очищена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="281"/>
+        <location filename="../mainwindow.cpp" line="290"/>
         <source>Something went wrong during update</source>
         <translation>Что-то пошло не так во время обновления</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="300"/>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="329"/>
         <source>Something went wrong during clearing</source>
         <translation>Что-то пошло не так во время очистки</translation>
     </message>

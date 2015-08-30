@@ -1,4 +1,4 @@
-REPAIRC_VERSION = v0.3.2b
+REPAIRC_VERSION = v0.3.3b
 
 win32{
     TARGET_CUSTOM_EXT = .exe

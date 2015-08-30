@@ -129,14 +129,14 @@ rpcrel.depends = rpcupd
 
 QMAKE_EXTRA_TARGETS += rpcupd rpcrel
 
-cf_copy.commands = $(COPY_DIR) $$shell_path($$PWD/../CommonFiles/*) $$DESTDIR
+cf_copy.commands = $(COPY_DIR) $$shell_path($$PWD/../CommonFiles/*) $$shell_path($$DESTDIR)
 
 first.depends = $(first) cf_copy
 export(first.depends)
 export(cf_copy.commands)
 
 #md.commands = $(MKDIR) $$DESTDIR/i18n/
-tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$DESTDIR/i18n
+tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = rpcrel
 
 QMAKE_EXTRA_TARGETS += first cf_copy tl_copy

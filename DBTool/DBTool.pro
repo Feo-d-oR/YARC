@@ -35,8 +35,8 @@ OTHER_FILES += \
 dbtupd.commands = lupdate $$PWD/DBTool.pro
 dbtrel.commands = lrelease $$PWD/DBTool.pro
 dbtrel.depends = dbtupd
-md.commands = $(MKDIR) $$DESTDIR/i18n/
-tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$DESTDIR/i18n
+md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
+tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = dbtrel md
 
 QMAKE_EXTRA_TARGETS += dbtupd dbtrel md tl_copy

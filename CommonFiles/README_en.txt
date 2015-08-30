@@ -1,6 +1,15 @@
 ===========================================
 ================ CHANGELOG ================
 ===========================================
+---------------- v0.3.3b ------------------
+"Regular" field in "Customers"
+"New order by previous customer" feature
+Search for regular customers in "New order"
+
+---------------- v0.3.2b ------------------
+Fixed "Work report" editing
+Fixed salary calculation
+
 ---------------- v0.3.1b ------------------
 Complete retranslation
 DBTool improvements

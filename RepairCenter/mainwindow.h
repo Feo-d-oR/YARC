@@ -21,6 +21,7 @@ public:
     static float sPercMast;
     static float sPercAcc;
     static float sPercFirm;
+    static QString prevCustomer;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 

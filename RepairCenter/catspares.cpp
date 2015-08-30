@@ -66,7 +66,6 @@ void CatSpares::on_cSearchType_currentIndexChanged(int index)
 {
     if (index != -1)
     {
-//        model->setFilter(QString());
         rec_t = model_t->record(index);
         id_t = rec_t.value(rec_t.indexOf("id")).toString();
         model->setFilter("type = '" + id_t + "'");
@@ -75,7 +74,6 @@ void CatSpares::on_cSearchType_currentIndexChanged(int index)
 
 void CatSpares::on_eSearchName_textEdited(const QString &arg1)
 {
-//    model->setFilter(QString());
     if(arg1 != "")
     {
         model->setFilter("spares.name LIKE '%" + arg1 + "%'");

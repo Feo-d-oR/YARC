@@ -23,6 +23,7 @@ QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
 float MainWindow::sPercAcc = 0;
 float MainWindow::sPercFirm = 0;
+QString MainWindow::prevCustomer = "";
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
