@@ -65,8 +65,8 @@ private slots:
     void on_mPrintHWDocs_triggered();
     void on_rbCall_clicked(bool checked);
     void on_mAboutQt_triggered();
-
     void on_mPaySalaries_triggered();
+    void on_eCalled_stateChanged(int state);
 
 private:
     bool checkSettings();

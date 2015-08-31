@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>981</width>
     <height>547</height>
    </rect>
   </property>
@@ -332,6 +332,16 @@
              <height>16777215</height>
             </size>
            </property>
+           <property name="dateTime">
+            <datetime>
+             <hour>0</hour>
+             <minute>0</minute>
+             <second>0</second>
+             <year>2015</year>
+             <month>1</month>
+             <day>1</day>
+            </datetime>
+           </property>
            <property name="time">
             <time>
              <hour>0</hour>
@@ -350,8 +360,8 @@
            </property>
            <property name="date">
             <date>
-             <year>2014</year>
-             <month>12</month>
+             <year>2015</year>
+             <month>1</month>
              <day>1</day>
             </date>
            </property>
@@ -374,6 +384,16 @@
            <property name="accelerated">
             <bool>false</bool>
            </property>
+           <property name="dateTime">
+            <datetime>
+             <hour>0</hour>
+             <minute>0</minute>
+             <second>0</second>
+             <year>2015</year>
+             <month>12</month>
+             <day>31</day>
+            </datetime>
+           </property>
            <property name="displayFormat">
             <string>dd.MM.yyyy</string>
            </property>
@@ -385,9 +405,9 @@
            </property>
            <property name="date">
             <date>
-             <year>2014</year>
+             <year>2015</year>
              <month>12</month>
-             <day>1</day>
+             <day>31</day>
             </date>
            </property>
            <property name="showGroupSeparator" stdset="0">
@@ -879,7 +899,7 @@
        <item row="14" column="1">
         <widget class="QDateEdit" name="dDateOut">
          <property name="enabled">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="minimumSize">
           <size>
@@ -914,8 +934,8 @@
          </property>
          <property name="date">
           <date>
-           <year>2014</year>
-           <month>12</month>
+           <year>2015</year>
+           <month>1</month>
            <day>1</day>
           </date>
          </property>
@@ -1017,6 +1037,32 @@
           </widget>
          </item>
          <item>
+          <widget class="QDateEdit" name="datenotify">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="accelerated">
+            <bool>false</bool>
+           </property>
+           <property name="dateTime">
+            <datetime>
+             <hour>0</hour>
+             <minute>0</minute>
+             <second>0</second>
+             <year>2015</year>
+             <month>1</month>
+             <day>1</day>
+            </datetime>
+           </property>
+           <property name="displayFormat">
+            <string>dd.MM.yyyy</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -1103,7 +1149,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>981</width>
      <height>25</height>
     </rect>
    </property>

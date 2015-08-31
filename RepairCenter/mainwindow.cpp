@@ -163,6 +163,7 @@ void MainWindow::readGlobalSettings()
     ui->tview->hideColumn(model->fieldIndex("cond"));
     ui->tview->hideColumn(model->fieldIndex("complect"));
     ui->tview->hideColumn(model->fieldIndex("cost"));
+    ui->tview->hideColumn(model->fieldIndex("date_called"));
 
     ui->tview->setColumnWidth(model->fieldIndex("number"), 50);
 
@@ -231,6 +232,7 @@ void MainWindow::initModelOrders()
     mapper->addMapping(ui->dNumber, model->fieldIndex("number"));
     mapper->addMapping(ui->dDateIn, model->fieldIndex("date_in"));
     mapper->addMapping(ui->eCalled, model->fieldIndex("called"));
+    mapper->addMapping(ui->datenotify, model->fieldIndex("date_called"));
     mapper->addMapping(ui->eState, stateIdx);
     mapper->addMapping(ui->eMaster, masterIdx);
     mapper->addMapping(ui->dCustomer,customerIdx);
@@ -245,7 +247,6 @@ void MainWindow::initModelOrders()
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
 
     model->select();
-//    ui->tview->setCurrentIndex(model->index(0, 0));
 }
 
 void MainWindow::on_rbAll_clicked(bool checked){
@@ -496,3 +497,12 @@ void MainWindow::on_mAboutQt_triggered(){
 void MainWindow::on_mPaySalaries_triggered(){
     Salaries * sal = new Salaries();
     sal->show();}
+
+void MainWindow::on_eCalled_stateChanged(int state)
+{
+    if (state == 0){
+        ui->datenotify->setDate(QDate::currentDate());
+        ui->datenotify->setEnabled(false);}
+    if (state == 2){
+        ui->datenotify->setEnabled(true);}
+}

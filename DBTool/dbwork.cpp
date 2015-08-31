@@ -8,7 +8,7 @@ DBWork::DBWork(QObject *parent) :
 
 QSqlError DBWork::createTables()
 {
-    q.exec("CREATE TABLE orders (number INTEGER AUTO_INCREMENT PRIMARY KEY, date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), cond VARCHAR(255), complect VARCHAR(255), cost DOUBLE, acceptor INTEGER, master INTEGER, giver INTEGER, warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT 0)");
+    q.exec("CREATE TABLE orders (number INTEGER AUTO_INCREMENT PRIMARY KEY, date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), cond VARCHAR(255), complect VARCHAR(255), cost DOUBLE, acceptor INTEGER, master INTEGER, giver INTEGER, warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT 0, date_called TIMESTAMP DEFAULT NULL)");
     q.exec("CREATE TABLE product_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(32))");
     q.exec("CREATE TABLE employees (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), fullname VARCHAR(255), phone VARCHAR(64), address VARCHAR(255), position_type INTEGER, position VARCHAR(128), isactive BOOLEAN NOT NULL DEFAULT 1)");
     q.exec("CREATE TABLE customers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), phone VARCHAR(64), address VARCHAR(128)), regular BOOLEAN NULL DEFAULT NULL");
@@ -133,7 +133,7 @@ QSqlError DBWork::updateTo4() /*from repaircenter v0.3.2b*/
 QSqlError DBWork::updateTo5() /*from repaircenter v0.3.3b*/
 {
     q.exec(QString("ALTER TABLE customers ADD regular BOOLEAN NULL DEFAULT NULL"));
-//    q.exec(QString(""));
+    q.exec(QString("ALTER TABLE orders ADD date_called TIMESTAMP NULL default NULL"));
 //    q.exec(QString(""));
 //    q.exec(QString(""));
 

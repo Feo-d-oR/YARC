@@ -6,6 +6,7 @@
 "New order by previous customer" feature
 Search for regular customers in "New order"
 Custom columns in main window
+Added "Notify date"
 
 ---------------- v0.3.2b ------------------
 Fixed "Work report" editing
