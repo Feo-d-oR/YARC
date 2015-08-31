@@ -28,6 +28,9 @@ private:
     int langIdx;
     QSettings * settings;
     QSqlQuery q;
+    QSqlQueryModel *model_a;
+    QSqlQueryModel *model_m;
+    QSqlQueryModel *model_s;
     QString st;
 };
 

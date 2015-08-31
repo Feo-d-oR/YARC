@@ -1,5 +1,6 @@
 #include "editdiagreport.h"
 #include "ui_editdiagreport.h"
+#include "mainwindow.h"
 
 EditDiagReport::EditDiagReport(QWidget *parent) :
     QDialog(parent),
@@ -46,7 +47,6 @@ void EditDiagReport::getMode(QString mode, QString num)
         ui->eOrderID->setText(num);
         setModels();
         isnew = true;
-        ui->eMaster->setCurrentIndex(-1);
     }
     else if (mode == "view"){
         saved = true;
@@ -74,6 +74,9 @@ void EditDiagReport::setModels()
     ui->eMaster->setModel(model_m);
     ui->eMaster->setModelColumn(1);
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);
+
+    QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, MainWindow::defMaster, 1, Qt::MatchExactly);
+    ui->eMaster->setCurrentIndex(idx_m.value(0).row());
 }
 
 void EditDiagReport::checkExist()

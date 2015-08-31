@@ -7,6 +7,7 @@
 Search for regular customers in "New order"
 Custom columns in main window
 Added "Notify date"
+Default employees and order state options
 
 ---------------- v0.3.2b ------------------
 Fixed "Work report" editing

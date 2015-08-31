@@ -1,5 +1,6 @@
 #include "editworkreport.h"
 #include "ui_editworkreport.h"
+#include "mainwindow.h"
 
 EditWorkReport::EditWorkReport(QWidget *parent) :
     QDialog(parent),
@@ -54,7 +55,6 @@ void EditWorkReport::getMode(QString mode, QString num)
         ui->eDate->setDate(QDate::currentDate());
         setModels();
         isnew = true;
-        ui->eMaster->setCurrentIndex(-1);
     }
     else if (mode == "view")
     {
@@ -85,6 +85,9 @@ void EditWorkReport::setModels()
     ui->eMaster->setModel(model_m);
     ui->eMaster->setModelColumn(1);
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);
+
+    QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, MainWindow::defMaster, 1, Qt::MatchExactly);
+    ui->eMaster->setCurrentIndex(idx_m.value(0).row());
 
     model_w = new QSqlTableModel();
     model_w->setTable("works");

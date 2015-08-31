@@ -52,7 +52,6 @@ void GiveOrder::getMode(QString mode, QString num)
         ui->eDate->setDate(QDate::currentDate());
         ui->eOrderID->setText(num);
         setModels();
-        ui->eGiver->setCurrentIndex(-1);
     }
 }
 
@@ -72,6 +71,9 @@ void GiveOrder::setModels()
     ui->eGiver->setModel(model_e);
     ui->eGiver->setModelColumn(1);
     ui->eGiver->model()->sort(1, Qt::AscendingOrder);
+
+    QModelIndexList idx_a = ui->eGiver->model()->match(ui->eGiver->model()->index(0, 0), Qt::EditRole, MainWindow::defAcceptor, 1, Qt::MatchExactly);
+    ui->eGiver->setCurrentIndex(idx_a.value(0).row());
 
     ui->tvieww->setColumnWidth(0, 300);
     ui->tvieww->setColumnWidth(1, 100);

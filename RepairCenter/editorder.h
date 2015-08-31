@@ -32,6 +32,7 @@ private:
     void fillFields();
     void setModels();
     void getCustomer();
+    void setDefaults();
     QSqlQuery q;
     QSqlRecord rec;
     QSqlQuery qc;

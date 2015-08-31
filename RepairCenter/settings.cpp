@@ -57,6 +57,35 @@ Settings::Settings(QWidget *parent) :
         ui->language->setCurrentIndex(2);
 
     langIdx = ui->language->currentIndex();
+
+    model_a = new QSqlQueryModel();
+    model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2 AND isactive = 1");
+    ui->eDefAcceptor->setModel(model_a);
+    ui->eDefAcceptor->model()->sort(1, Qt::AscendingOrder);
+    ui->eDefAcceptor->setModelColumn(1);
+
+
+    model_m = new QSqlQueryModel();
+    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = 1 AND isactive = 1");
+    ui->eDefMaster->setModel(model_m);
+    ui->eDefMaster->model()->sort(1, Qt::AscendingOrder);
+    ui->eDefMaster->setModelColumn(1);
+
+    model_s = new QSqlQueryModel();
+    model_s->setQuery("SELECT id, name FROM states WHERE id IN (1, 2, 14, 16, 19)");
+    ui->eDefState->setModel(model_s);
+    ui->eDefState->model()->sort(1, Qt::AscendingOrder);
+    ui->eDefState->setModelColumn(1);
+
+    QModelIndexList idx_a = ui->eDefAcceptor->model()->match(ui->eDefAcceptor->model()->index(0, 0), Qt::EditRole, settings->value("defaults/acceptor").toInt(), 1, Qt::MatchExactly);
+    ui->eDefAcceptor->setCurrentIndex(idx_a.value(0).row());
+
+    QModelIndexList idx_m = ui->eDefMaster->model()->match(ui->eDefMaster->model()->index(0, 0), Qt::EditRole, settings->value("defaults/master").toInt(), 1, Qt::MatchExactly);
+    ui->eDefMaster->setCurrentIndex(idx_m.value(0).row());
+
+    QModelIndexList idx_s = ui->eDefState->model()->match(ui->eDefState->model()->index(0, 0), Qt::EditRole, settings->value("defaults/state").toInt(), 1, Qt::MatchExactly);
+    ui->eDefState->setCurrentIndex(idx_s.value(0).row());
+
 }
 
 Settings::~Settings()
@@ -104,6 +133,17 @@ void Settings::on_save_clicked()
     st.setNum(1 - (ui->pracc->text().toFloat() /100) - (ui->prmast->text().toFloat() /100));
     q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percFirm'"));
 
+    QSqlRecord rec_a = model_a->record(ui->eDefAcceptor->currentIndex());
+    QString id_a = rec_a.value(rec_a.indexOf("id")).toString();
+    settings->setValue("defaults/acceptor", id_a);
+
+    QSqlRecord rec_m = model_m->record(ui->eDefMaster->currentIndex());
+    QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
+    settings->setValue("defaults/master", id_m);
+
+    QSqlRecord rec_s = model_s->record(ui->eDefState->currentIndex());
+    QString id_s = rec_s.value(rec_s.indexOf("id")).toString();
+    settings->setValue("defaults/state", id_s);
 
     if (ui->language->currentIndex() != langIdx) {
 

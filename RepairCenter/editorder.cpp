@@ -60,9 +60,7 @@ void EditOrder::getMode(QString mode, QString num)
         ui->eDate->setDate(QDate::currentDate());
         setModels();
         allocateNumber();
-        ui->eState->setCurrentIndex(-1);
-        ui->eMaster->setCurrentIndex(-1);
-        ui->eAcceptor->setCurrentIndex(-1);
+        setDefaults();
     }
     else if (mode == "view")
     {
@@ -98,6 +96,19 @@ void EditOrder::allocateNumber()
     ui->eNumber->setReadOnly(true);
 }
 
+void EditOrder::setDefaults()
+{
+    QModelIndexList idx_a = ui->eAcceptor->model()->match(ui->eAcceptor->model()->index(0, 0), Qt::EditRole, MainWindow::defAcceptor, 1, Qt::MatchExactly);
+    ui->eAcceptor->setCurrentIndex(idx_a.value(0).row());
+
+    QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, MainWindow::defMaster, 1, Qt::MatchExactly);
+    ui->eMaster->setCurrentIndex(idx_m.value(0).row());
+
+    QModelIndexList idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, MainWindow::defState, 1, Qt::MatchExactly);
+    ui->eState->setCurrentIndex(idx_s.value(0).row());
+
+}
+
 void EditOrder::setModels()
 {
     model_s = new QSqlQueryModel();
@@ -106,6 +117,7 @@ void EditOrder::setModels()
     if (isnew == false)
         model_s->setQuery("SELECT id, name FROM states");
     ui->eState->setModel(model_s);
+    ui->eState->model()->sort(1, Qt::AscendingOrder);
     ui->eState->setModelColumn(1);
 
     model_a = new QSqlQueryModel();
@@ -124,7 +136,6 @@ void EditOrder::setModels()
     model_t = new QSqlTableModel();
     model_t->setTable("product_types");
     model_t->setEditStrategy(QSqlTableModel::OnFieldChange);
-
     ui->eProductType->setModel(model_t);
     ui->eProductType->setModelColumn(model_t->fieldIndex("name"));
     model_t->select();

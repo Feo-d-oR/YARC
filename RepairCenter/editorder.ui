@@ -628,7 +628,7 @@
       <item>
        <widget class="QRadioButton" name="rbOld">
         <property name="text">
-         <string>Old</string>
+         <string>Regular</string>
         </property>
        </widget>
       </item>

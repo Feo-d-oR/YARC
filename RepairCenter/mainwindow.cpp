@@ -23,6 +23,9 @@ QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
 float MainWindow::sPercAcc = 0;
 float MainWindow::sPercFirm = 0;
+int MainWindow::defAcceptor = -1;
+int MainWindow::defMaster = -1;
+int MainWindow::defState = -1;
 QString MainWindow::prevCustomer = "";
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -108,9 +111,14 @@ void MainWindow::readGlobalSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'percFirm'");
     q.first();
     sPercFirm = q.value(0).toFloat();
+
     settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     sLocale = settings->value("locale/language").toString();
+
+    defAcceptor = settings->value("defaults/acceptor").toInt();
+    defMaster = settings->value("defaults/master").toInt();
+    defState = settings->value("defaults/state").toInt();
 
     //setting headers
     model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, tr("#"));

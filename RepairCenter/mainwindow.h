@@ -22,6 +22,9 @@ public:
     static float sPercAcc;
     static float sPercFirm;
     static QString prevCustomer;
+    static int defAcceptor;
+    static int defMaster;
+    static int defState;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
