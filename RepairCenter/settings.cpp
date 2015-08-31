@@ -15,6 +15,30 @@ Settings::Settings(QWidget *parent) :
     ui->dbname->setText(settings->value("mysql/database").toString());
     ui->username->setText(settings->value("mysql/user").toString());
     ui->password->setText(settings->value("mysql/password").toString());
+
+    if(settings->contains("orderstable/datee"))
+    {
+    ui->cbDate->setChecked(settings->value("orderstable/datee").toBool());
+    ui->cbState->setChecked(settings->value("orderstable/statee").toBool());
+    ui->cbCustomer->setChecked(settings->value("orderstable/customere").toBool());
+    ui->cbType->setChecked(settings->value("orderstable/typee").toBool());
+    ui->cbProduct->setChecked(settings->value("orderstable/producte").toBool());
+    ui->cbDefect->setChecked(settings->value("orderstable/defecte").toBool());
+    ui->cbAcceptor->setChecked(settings->value("orderstable/acceptore").toBool());
+    ui->cbMaster->setChecked(settings->value("orderstable/mastere").toBool());
+    ui->cbNotified->setChecked(settings->value("orderstable/notifiede").toBool());
+
+    ui->wDate->setText(settings->value("orderstable/datew").toString());
+    ui->wState->setText(settings->value("orderstable/statew").toString());
+    ui->wCustomer->setText(settings->value("orderstable/customerw").toString());
+    ui->wType->setText(settings->value("orderstable/typew").toString());
+    ui->wProduct->setText(settings->value("orderstable/productw").toString());
+    ui->wDefect->setText(settings->value("orderstable/defectw").toString());
+    ui->wAcceptor->setText(settings->value("orderstable/acceptorw").toString());
+    ui->wMaster->setText(settings->value("orderstable/masterw").toString());
+    ui->wNotified->setText(settings->value("orderstable/notifiedw").toString());
+    }
+
     q.exec("SELECT value_n FROM system WHERE name = 'percMaster'");
     q.first();
     ui->prmast->setText(st.setNum(q.value(0).toFloat() *100));
@@ -52,6 +76,27 @@ void Settings::on_save_clicked()
     settings->setValue("mysql/database", ui->dbname->text());
     settings->setValue("mysql/user", ui->username->text());
     settings->setValue("mysql/password", ui->password->text());
+
+    settings->setValue("orderstable/datee", ui->cbDate->isChecked());
+    settings->setValue("orderstable/statee", ui->cbState->isChecked());
+    settings->setValue("orderstable/customere", ui->cbCustomer->isChecked());
+    settings->setValue("orderstable/typee", ui->cbType->isChecked());
+    settings->setValue("orderstable/producte", ui->cbProduct->isChecked());
+    settings->setValue("orderstable/defecte", ui->cbDefect->isChecked());
+    settings->setValue("orderstable/acceptore", ui->cbAcceptor->isChecked());
+    settings->setValue("orderstable/mastere", ui->cbMaster->isChecked());
+    settings->setValue("orderstable/notifiede", ui->cbNotified->isChecked());
+
+    settings->setValue("orderstable/datew", ui->wDate->text());
+    settings->setValue("orderstable/statew", ui->wState->text());
+    settings->setValue("orderstable/customerw", ui->wCustomer->text());
+    settings->setValue("orderstable/typew", ui->wType->text());
+    settings->setValue("orderstable/productw", ui->wProduct->text());
+    settings->setValue("orderstable/defectw", ui->wDefect->text());
+    settings->setValue("orderstable/acceptorw", ui->wAcceptor->text());
+    settings->setValue("orderstable/masterw", ui->wMaster->text());
+    settings->setValue("orderstable/notifiedw", ui->wNotified->text());
+
     st.setNum(ui->prmast->text().toFloat() /100);
     q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percMaster'"));
     st.setNum(ui->pracc->text().toFloat() /100);

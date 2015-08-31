@@ -111,6 +111,65 @@ void MainWindow::readGlobalSettings()
     settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     sLocale = settings->value("locale/language").toString();
+
+    //setting headers
+    model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, tr("#"));
+    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Date"));
+    model->setHeaderData(typeIdx, Qt::Horizontal, tr("Type"));
+    model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, tr("Product"));
+    model->setHeaderData(model->fieldIndex("called"), Qt::Horizontal, tr("Notified?"));
+    model->setHeaderData(stateIdx, Qt::Horizontal, tr("State"));
+    model->setHeaderData(masterIdx, Qt::Horizontal, tr("Master"));
+    model->setHeaderData(acceptorIdx, Qt::Horizontal, tr("Acceptor"));
+    model->setHeaderData(customerIdx, Qt::Horizontal, tr("Customer"));
+    model->setHeaderData(model->fieldIndex("disease"), Qt::Horizontal, tr("Defect"));
+
+
+    if (settings->value("orderstable/datee").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("date_in"), settings->value("orderstable/datew").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("date_in"));
+    if (settings->value("orderstable/statee").toBool() == true){
+        ui->tview->setColumnWidth(stateIdx, settings->value("orderstable/statew").toInt());}
+                else ui->tview->hideColumn(stateIdx);
+    if (settings->value("orderstable/customere").toBool() == true){
+        ui->tview->setColumnWidth(customerIdx, settings->value("orderstable/customerw").toInt());}
+                else ui->tview->hideColumn(customerIdx);
+    if (settings->value("orderstable/typee").toBool() == true){
+        ui->tview->setColumnWidth(typeIdx, settings->value("orderstable/typew").toInt());}
+                else ui->tview->hideColumn(typeIdx);
+    if (settings->value("orderstable/producte").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("product"), settings->value("orderstable/productw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("product"));
+    if (settings->value("orderstable/defecte").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("defect"), settings->value("orderstable/defectw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("defect"));
+    if (settings->value("orderstable/acceptore").toBool() == true){
+        ui->tview->setColumnWidth(acceptorIdx, settings->value("orderstable/acceptorw").toInt());}
+                else ui->tview->hideColumn(acceptorIdx);
+    if (settings->value("orderstable/mastere").toBool() == true){
+        ui->tview->setColumnWidth(masterIdx, settings->value("orderstable/masterw").toInt());}
+                else ui->tview->hideColumn(masterIdx);
+    if (settings->value("orderstable/notifiede").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("called"), settings->value("orderstable/notifiedw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("called"));
+
+    //hiding unneeded columns
+    ui->tview->hideColumn(model->fieldIndex("date_out"));
+    ui->tview->hideColumn(model->fieldIndex("serial"));
+    ui->tview->hideColumn(giverIdx);
+    ui->tview->hideColumn(model->fieldIndex("warranty"));
+    ui->tview->hideColumn(model->fieldIndex("comment"));
+    ui->tview->hideColumn(model->fieldIndex("phone"));
+    ui->tview->hideColumn(model->fieldIndex("cond"));
+    ui->tview->hideColumn(model->fieldIndex("complect"));
+    ui->tview->hideColumn(model->fieldIndex("cost"));
+
+    ui->tview->setColumnWidth(model->fieldIndex("number"), 50);
+
+    ui->tview->verticalHeader()->setDefaultSectionSize(24);
+    ui->tview->verticalHeader()->hide();
+    ui->tview->horizontalHeader()->show();
+    ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 bool MainWindow::dbConnect()
@@ -145,6 +204,7 @@ void MainWindow::initModelOrders()
     //setting relations
     model->setRelation(stateIdx, QSqlRelation("states","id","name"));
     model->setRelation(masterIdx, QSqlRelation("employees","id","name"));
+    model->setRelation(acceptorIdx, QSqlRelation("employees","id","name"));
     model->setRelation(typeIdx, QSqlRelation("product_types","id","name"));
     model->setRelation(customerIdx, QSqlRelation("customers","id","name"));
     model->setRelation(model->fieldIndex("phone"), QSqlRelation("customers","id","phone"));
@@ -155,43 +215,6 @@ void MainWindow::initModelOrders()
 
 //setting tableview widget
     ui->tview->setModel(model);
-
-    //setting headers
-    model->setHeaderData(model->fieldIndex("number"), Qt::Horizontal, tr("#"));
-    model->setHeaderData(model->fieldIndex("date_in"), Qt::Horizontal, tr("Date"));
-    model->setHeaderData(typeIdx, Qt::Horizontal, tr("Type"));
-    model->setHeaderData(model->fieldIndex("product"), Qt::Horizontal, tr("Product"));
-    model->setHeaderData(model->fieldIndex("called"), Qt::Horizontal, tr("Notified?"));
-    model->setHeaderData(stateIdx, Qt::Horizontal, tr("State"));
-    model->setHeaderData(masterIdx, Qt::Horizontal, tr("Master"));
-
-    //hiding unneeded columns
-    ui->tview->hideColumn(model->fieldIndex("date_out"));
-    ui->tview->hideColumn(model->fieldIndex("serial"));
-    ui->tview->hideColumn(acceptorIdx);
-    ui->tview->hideColumn(giverIdx);
-    ui->tview->hideColumn(customerIdx);
-    ui->tview->hideColumn(model->fieldIndex("disease"));
-    ui->tview->hideColumn(model->fieldIndex("warranty"));
-    ui->tview->hideColumn(model->fieldIndex("comment"));
-    ui->tview->hideColumn(model->fieldIndex("phone"));
-    ui->tview->hideColumn(model->fieldIndex("cond"));
-    ui->tview->hideColumn(model->fieldIndex("complect"));
-    ui->tview->hideColumn(model->fieldIndex("cost"));
-
-    //setting column properties
-    ui->tview->setColumnWidth(model->fieldIndex("number"),50);
-    ui->tview->setColumnWidth(model->fieldIndex("date_in"),100);
-    ui->tview->setColumnWidth(customerIdx,100);
-    ui->tview->setColumnWidth(typeIdx,120);
-    ui->tview->setColumnWidth(model->fieldIndex("product"),160);
-    ui->tview->setColumnWidth(stateIdx,210);
-    ui->tview->setColumnWidth(masterIdx,100);
-
-    ui->tview->verticalHeader()->setDefaultSectionSize(24);
-    ui->tview->verticalHeader()->hide();
-    ui->tview->horizontalHeader()->show();
-    ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 //setting mapper & relations for right panel
     ui->eState->setModel(model->relationModel(stateIdx));
@@ -305,6 +328,7 @@ void MainWindow::on_mInit_triggered()
 {
     if (dbConnect()) {
         initModelOrders();
+        readGlobalSettings();
     }
     else{
         QMessageBox::critical(this, tr("RepairCenter"), tr("Unable to connect to database!"));
