@@ -21,7 +21,7 @@ linux-g++-64{
         DEST_DIRECTORY = $$PWD/../RepairCenter_$${REPAIRC_VERSION}_linux_x64_Qt$$[QT_VERSION]_binary/debug
     }
     CONFIG(release, debug|release) {
-        DEST_DIRECTORY = $$PWD/../RepairCenter_$${REPAIRC_VERSION}_linux_x64_$$[QT_VERSION]_binary
+        DEST_DIRECTORY = $$PWD/../RepairCenter_$${REPAIRC_VERSION}_linux_x64_Qt$$[QT_VERSION]_binary
     }
 }
 

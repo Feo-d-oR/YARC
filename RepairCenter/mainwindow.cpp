@@ -149,8 +149,8 @@ void MainWindow::readGlobalSettings()
         ui->tview->setColumnWidth(model->fieldIndex("product"), settings->value("orderstable/productw").toInt());}
                 else ui->tview->hideColumn(model->fieldIndex("product"));
     if (settings->value("orderstable/defecte").toBool() == true){
-        ui->tview->setColumnWidth(model->fieldIndex("defect"), settings->value("orderstable/defectw").toInt());}
-                else ui->tview->hideColumn(model->fieldIndex("defect"));
+        ui->tview->setColumnWidth(model->fieldIndex("disease"), settings->value("orderstable/defectw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("disease"));
     if (settings->value("orderstable/acceptore").toBool() == true){
         ui->tview->setColumnWidth(acceptorIdx, settings->value("orderstable/acceptorw").toInt());}
                 else ui->tview->hideColumn(acceptorIdx);
