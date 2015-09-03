@@ -1197,9 +1197,9 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="47"/>
-        <location filename="../mainwindow.cpp" line="71"/>
-        <location filename="../mainwindow.cpp" line="150"/>
+        <location filename="../mainwindow.cpp" line="48"/>
+        <location filename="../mainwindow.cpp" line="72"/>
+        <location filename="../mainwindow.cpp" line="154"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="352"/>
-        <location filename="../mainwindow.cpp" line="266"/>
+        <location filename="../mainwindow.cpp" line="270"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1484,39 +1484,39 @@
         <translation>Выплата зарплаты</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="48"/>
+        <location filename="../mainwindow.cpp" line="49"/>
         <source>Database not found!</source>
         <translation>База данных не найдена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="49"/>
+        <location filename="../mainwindow.cpp" line="50"/>
         <source>Change settings or create new one?</source>
         <translation>Изменить настройки или создать новую?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="50"/>
-        <location filename="../mainwindow.cpp" line="74"/>
+        <location filename="../mainwindow.cpp" line="51"/>
+        <location filename="../mainwindow.cpp" line="75"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="51"/>
+        <location filename="../mainwindow.cpp" line="52"/>
         <source>Change</source>
         <translation>Изменить</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="52"/>
-        <location filename="../mainwindow.cpp" line="75"/>
+        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="76"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="72"/>
+        <location filename="../mainwindow.cpp" line="73"/>
         <source>Settings file not found!</source>
         <translation>Файл настроек не найден!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="73"/>
+        <location filename="../mainwindow.cpp" line="74"/>
         <source>Create settings file?</source>
         <translation>Создать файл настроек?</translation>
     </message>
@@ -1561,7 +1561,7 @@
         <translation type="vanished">Неисправность</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="150"/>
+        <location filename="../mainwindow.cpp" line="154"/>
         <source>Unable to connect to database!</source>
         <translation>Невозможно соедениться с базой данных!</translation>
     </message>
@@ -1804,6 +1804,171 @@
         <location filename="../orderswidgetmain.cpp" line="260"/>
         <source>No</source>
         <translation type="unfinished">Нет</translation>
+    </message>
+</context>
+<context>
+    <name>OrdersWidgetMaster</name>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="35"/>
+        <source>Search</source>
+        <translation type="unfinished">Поиск</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="94"/>
+        <source>All</source>
+        <translation type="unfinished">Все</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="116"/>
+        <source>Completed</source>
+        <translation type="unfinished">Выданные</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="135"/>
+        <source>Accepted</source>
+        <translation type="unfinished">Принятые</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="154"/>
+        <source>Coordination</source>
+        <translation type="unfinished">На согласовании</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="173"/>
+        <source>Wait for spares</source>
+        <translation type="unfinished">Ждут запчастей</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="186"/>
+        <source>To notify</source>
+        <translation type="unfinished">Уведомить</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="213"/>
+        <source>Master:</source>
+        <translation type="unfinished">Мастер:</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="230"/>
+        <location filename="../orderswidgetmaster.ui" line="452"/>
+        <source>Order #:</source>
+        <translation type="unfinished">№ заказа:</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="305"/>
+        <location filename="../orderswidgetmaster.ui" line="347"/>
+        <location filename="../orderswidgetmaster.ui" line="645"/>
+        <source>dd.MM.yyyy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="382"/>
+        <source>Search by date range</source>
+        <translation type="unfinished">Поиск по диапазону дат</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="413"/>
+        <source>Quick preview</source>
+        <translation type="unfinished">Быстрый просмотр</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="490"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;State:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="540"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Master:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="587"/>
+        <source>Save</source>
+        <translation type="unfinished">Сохранить</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="607"/>
+        <source>Acceptance date:</source>
+        <translation type="unfinished">Дата приёма:</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="675"/>
+        <source>Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="713"/>
+        <source>Product:</source>
+        <translation type="unfinished">Изделие:</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="751"/>
+        <source>Defect:</source>
+        <translation type="unfinished">Неисправность:</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.ui" line="802"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notes:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="92"/>
+        <source>#</source>
+        <translation type="unfinished">№</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="93"/>
+        <source>Date</source>
+        <translation type="unfinished">Дата</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="94"/>
+        <source>Type</source>
+        <translation type="unfinished">Тип</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="95"/>
+        <source>Product</source>
+        <translation type="unfinished">Изделие</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="96"/>
+        <source>Notified?</source>
+        <translation type="unfinished">Уведомлён?</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="97"/>
+        <source>State</source>
+        <translation type="unfinished">Состояние</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="98"/>
+        <source>Master</source>
+        <translation type="unfinished">Мастер</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="99"/>
+        <source>Acceptor</source>
+        <translation type="unfinished">Приёмщик</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="100"/>
+        <source>Customer</source>
+        <translation type="unfinished">Клиент</translation>
+    </message>
+    <message>
+        <location filename="../orderswidgetmaster.cpp" line="101"/>
+        <source>Defect</source>
+        <translation type="unfinished">Неисправность</translation>
+    </message>
+    <message>
+        <source>Order #</source>
+        <translation type="obsolete">№ заказа</translation>
     </message>
 </context>
 <context>

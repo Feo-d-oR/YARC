@@ -19,6 +19,7 @@
 #include "about.h"
 #include "salaries.h"
 #include "orderswidgetmain.h"
+#include "orderswidgetmaster.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -122,7 +123,10 @@ void MainWindow::readGlobalSettings()
 
 void MainWindow::loadMainWidget()
 {
-    OrdersWidgetMain * orders = new OrdersWidgetMain(this);
+//    OrdersWidgetMain * orders = new OrdersWidgetMain(this);
+//    setCentralWidget(orders);
+
+    OrdersWidgetMaster * orders = new OrdersWidgetMaster(this);
     setCentralWidget(orders);
 }
 

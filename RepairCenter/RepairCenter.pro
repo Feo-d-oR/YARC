@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     printhwdocuments.cpp \
     about.cpp \
     salaries.cpp \
-    orderswidgetmain.cpp
+    orderswidgetmain.cpp \
+    orderswidgetmaster.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -53,7 +54,8 @@ HEADERS  += mainwindow.h \
     printhwdocuments.h \
     about.h \
     salaries.h \
-    orderswidgetmain.h
+    orderswidgetmain.h \
+    orderswidgetmaster.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -73,7 +75,8 @@ FORMS    += mainwindow.ui \
     printhwdocuments.ui \
     about.ui \
     salaries.ui \
-    orderswidgetmain.ui
+    orderswidgetmain.ui \
+    orderswidgetmaster.ui
 
 OTHER_FILES += \
     ../CommonFiles/README_en.txt \
