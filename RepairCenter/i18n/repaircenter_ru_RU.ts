@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>About</name>
     <message>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../about.ui" line="27"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;version 0.3.4b&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../about.ui" line="34"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;by Alexander Bonov &lt;a href=&quot;mailto:evilgremlin8@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;evilgremlin8@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../about.ui" line="75"/>
@@ -427,11 +427,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation type="vanished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../editdiagreport.cpp" line="23"/>
@@ -601,7 +601,7 @@
     </message>
     <message>
         <source>Old</source>
-        <translation type="vanished">Постоянный</translation>
+        <translation>Постоянный</translation>
     </message>
     <message>
         <location filename="../editorder.ui" line="135"/>
@@ -621,11 +621,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation type="vanished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../editorder.cpp" line="27"/>
@@ -780,11 +780,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation type="vanished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../editworkreport.cpp" line="26"/>
@@ -951,11 +951,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation type="vanished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
 </context>
 <context>
@@ -1045,11 +1045,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation type="vanished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
 </context>
 <context>
@@ -1236,111 +1236,111 @@
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">Поиск</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <source>All</source>
-        <translation type="vanished">Все</translation>
+        <translation>Все</translation>
     </message>
     <message>
         <source>Completed</source>
-        <translation type="vanished">Выданные</translation>
+        <translation>Выданные</translation>
     </message>
     <message>
         <source>Accepted</source>
-        <translation type="vanished">Принятые</translation>
+        <translation>Принятые</translation>
     </message>
     <message>
         <source>Coordination</source>
-        <translation type="vanished">На согласовании</translation>
+        <translation>На согласовании</translation>
     </message>
     <message>
         <source>Wait for spares</source>
-        <translation type="vanished">Ждут запчастей</translation>
+        <translation>Ждут запчастей</translation>
     </message>
     <message>
         <source>To notify</source>
-        <translation type="vanished">Уведомить</translation>
+        <translation>Уведомить</translation>
     </message>
     <message>
         <source>Order #</source>
-        <translation type="vanished">№ заказа</translation>
+        <translation>№ заказа</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Имя</translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <source>Search by date range</source>
-        <translation type="vanished">Поиск по диапазону дат</translation>
+        <translation>Поиск по диапазону дат</translation>
     </message>
     <message>
         <source>Quick preview</source>
-        <translation type="vanished">Быстрый просмотр</translation>
+        <translation>Быстрый просмотр</translation>
     </message>
     <message>
         <source>Order #:</source>
-        <translation type="vanished">№ заказа:</translation>
+        <translation>№ заказа:</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;State:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Master:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notified?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Уведомлён?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Уведомлён?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Acceptance date:</source>
-        <translation type="vanished">Дата приёма:</translation>
+        <translation>Дата приёма:</translation>
     </message>
     <message>
         <source>Customer:</source>
-        <translation type="vanished">Заказчик:</translation>
+        <translation>Заказчик:</translation>
     </message>
     <message>
         <source>Phone:</source>
-        <translation type="vanished">Телефон:</translation>
+        <translation>Телефон:</translation>
     </message>
     <message>
         <source>Type:</source>
-        <translation type="vanished">Тип изделия:</translation>
+        <translation>Тип изделия:</translation>
     </message>
     <message>
         <source>Product:</source>
-        <translation type="vanished">Изделие:</translation>
+        <translation>Изделие:</translation>
     </message>
     <message>
         <source>Defect:</source>
-        <translation type="vanished">Неисправность:</translation>
+        <translation>Неисправность:</translation>
     </message>
     <message>
         <source>Issue date:</source>
-        <translation type="vanished">Дата выдачи:</translation>
+        <translation>Дата выдачи:</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notes:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>View</source>
-        <translation type="vanished">Просмотр</translation>
+        <translation>Просмотр</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="vanished">Редактирование</translation>
+        <translation>Редактирование</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="vanished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="51"/>
@@ -1522,43 +1522,43 @@
     </message>
     <message>
         <source>#</source>
-        <translation type="vanished">№</translation>
+        <translation>№</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="vanished">Дата</translation>
+        <translation>Дата</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <source>Product</source>
-        <translation type="vanished">Изделие</translation>
+        <translation>Изделие</translation>
     </message>
     <message>
         <source>Notified?</source>
-        <translation type="vanished">Уведомлён?</translation>
+        <translation>Уведомлён?</translation>
     </message>
     <message>
         <source>State</source>
-        <translation type="vanished">Состояние</translation>
+        <translation>Состояние</translation>
     </message>
     <message>
         <source>Master</source>
-        <translation type="vanished">Мастер</translation>
+        <translation>Мастер</translation>
     </message>
     <message>
         <source>Acceptor</source>
-        <translation type="vanished">Приёмщик</translation>
+        <translation>Приёмщик</translation>
     </message>
     <message>
         <source>Customer</source>
-        <translation type="vanished">Клиент</translation>
+        <translation>Клиент</translation>
     </message>
     <message>
         <source>Defect</source>
-        <translation type="vanished">Неисправность</translation>
+        <translation>Неисправность</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="154"/>
@@ -1567,19 +1567,19 @@
     </message>
     <message>
         <source>Caution!</source>
-        <translation type="vanished">Внимание!</translation>
+        <translation>Внимание!</translation>
     </message>
     <message>
         <source>Are you sure to delete order?</source>
-        <translation type="vanished">Вы уверены, что хотите удалить закза?</translation>
+        <translation>Вы уверены, что хотите удалить закза?</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation type="vanished">Да</translation>
+        <translation>Да</translation>
     </message>
     <message>
         <source>No</source>
-        <translation type="vanished">Нет</translation>
+        <translation>Нет</translation>
     </message>
 </context>
 <context>
@@ -1587,54 +1587,54 @@
     <message>
         <location filename="../orderswidgetmain.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="35"/>
         <source>Search</source>
-        <translation type="unfinished">Поиск</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="94"/>
         <source>All</source>
-        <translation type="unfinished">Все</translation>
+        <translation>Все</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="116"/>
         <source>Completed</source>
-        <translation type="unfinished">Выданные</translation>
+        <translation>Выданные</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="135"/>
         <source>Accepted</source>
-        <translation type="unfinished">Принятые</translation>
+        <translation>Принятые</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="154"/>
         <source>Coordination</source>
-        <translation type="unfinished">На согласовании</translation>
+        <translation>На согласовании</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="173"/>
         <source>Wait for spares</source>
-        <translation type="unfinished">Ждут запчастей</translation>
+        <translation>Ждут запчастей</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="186"/>
         <source>To notify</source>
-        <translation type="unfinished">Уведомить</translation>
+        <translation>Уведомить</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="232"/>
         <location filename="../orderswidgetmain.cpp" line="215"/>
         <source>Order #</source>
-        <translation type="unfinished">№ заказа</translation>
+        <translation>№ заказа</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="237"/>
         <location filename="../orderswidgetmain.cpp" line="217"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="313"/>
@@ -1643,167 +1643,167 @@
         <location filename="../orderswidgetmain.ui" line="887"/>
         <location filename="../orderswidgetmain.ui" line="1015"/>
         <source>dd.MM.yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="390"/>
         <source>Search by date range</source>
-        <translation type="unfinished">Поиск по диапазону дат</translation>
+        <translation>Поиск по диапазону дат</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="421"/>
         <source>Quick preview</source>
-        <translation type="unfinished">Быстрый просмотр</translation>
+        <translation>Быстрый просмотр</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="460"/>
         <source>Order #:</source>
-        <translation type="unfinished">№ заказа:</translation>
+        <translation>№ заказа:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="476"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;State:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="526"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Master:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="561"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notified?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Уведомлён?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Уведомлён?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="577"/>
         <source>Acceptance date:</source>
-        <translation type="unfinished">Дата приёма:</translation>
+        <translation>Дата приёма:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="645"/>
         <source>Customer:</source>
-        <translation type="unfinished">Заказчик:</translation>
+        <translation>Заказчик:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="680"/>
         <source>Phone:</source>
-        <translation type="unfinished">Телефон:</translation>
+        <translation>Телефон:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="722"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип изделия:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="760"/>
         <source>Product:</source>
-        <translation type="unfinished">Изделие:</translation>
+        <translation>Изделие:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="798"/>
         <source>Defect:</source>
-        <translation type="unfinished">Неисправность:</translation>
+        <translation>Неисправность:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="849"/>
         <source>Issue date:</source>
-        <translation type="unfinished">Дата выдачи:</translation>
+        <translation>Дата выдачи:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="910"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notes:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="951"/>
         <source>View</source>
-        <translation type="unfinished">Просмотр</translation>
+        <translation>Просмотр</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="962"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="973"/>
         <source>Delete</source>
-        <translation type="unfinished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="1038"/>
         <source>Save</source>
-        <translation type="unfinished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="89"/>
         <source>#</source>
-        <translation type="unfinished">№</translation>
+        <translation>№</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="90"/>
         <source>Date</source>
-        <translation type="unfinished">Дата</translation>
+        <translation>Дата</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="91"/>
         <source>Type</source>
-        <translation type="unfinished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="92"/>
         <source>Product</source>
-        <translation type="unfinished">Изделие</translation>
+        <translation>Изделие</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="93"/>
         <source>Notified?</source>
-        <translation type="unfinished">Уведомлён?</translation>
+        <translation>Уведомлён?</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="94"/>
         <source>State</source>
-        <translation type="unfinished">Состояние</translation>
+        <translation>Состояние</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="95"/>
         <source>Master</source>
-        <translation type="unfinished">Мастер</translation>
+        <translation>Мастер</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="96"/>
         <source>Acceptor</source>
-        <translation type="unfinished">Приёмщик</translation>
+        <translation>Приёмщик</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="97"/>
         <source>Customer</source>
-        <translation type="unfinished">Клиент</translation>
+        <translation>Клиент</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="98"/>
         <source>Defect</source>
-        <translation type="unfinished">Неисправность</translation>
+        <translation>Неисправность</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="257"/>
         <source>Caution!</source>
-        <translation type="unfinished">Внимание!</translation>
+        <translation>Внимание!</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="258"/>
         <source>Are you sure to delete order?</source>
-        <translation type="unfinished">Вы уверены, что хотите удалить закза?</translation>
+        <translation>Вы уверены, что хотите удалить закза?</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="259"/>
         <source>Yes</source>
-        <translation type="unfinished">Да</translation>
+        <translation>Да</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.cpp" line="260"/>
         <source>No</source>
-        <translation type="unfinished">Нет</translation>
+        <translation>Нет</translation>
     </message>
 </context>
 <context>
@@ -1811,160 +1811,160 @@
     <message>
         <location filename="../orderswidgetmaster.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="35"/>
         <source>Search</source>
-        <translation type="unfinished">Поиск</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="94"/>
         <source>All</source>
-        <translation type="unfinished">Все</translation>
+        <translation>Все</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="116"/>
         <source>Completed</source>
-        <translation type="unfinished">Выданные</translation>
+        <translation>Выданные</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="135"/>
         <source>Accepted</source>
-        <translation type="unfinished">Принятые</translation>
+        <translation>Принятые</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="154"/>
         <source>Coordination</source>
-        <translation type="unfinished">На согласовании</translation>
+        <translation>На согласовании</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="173"/>
         <source>Wait for spares</source>
-        <translation type="unfinished">Ждут запчастей</translation>
+        <translation>Ждут запчастей</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="186"/>
         <source>To notify</source>
-        <translation type="unfinished">Уведомить</translation>
+        <translation>Уведомить</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="213"/>
         <source>Master:</source>
-        <translation type="unfinished">Мастер:</translation>
+        <translation>Мастер:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="230"/>
         <location filename="../orderswidgetmaster.ui" line="452"/>
         <source>Order #:</source>
-        <translation type="unfinished">№ заказа:</translation>
+        <translation>№ заказа:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="305"/>
         <location filename="../orderswidgetmaster.ui" line="347"/>
         <location filename="../orderswidgetmaster.ui" line="645"/>
         <source>dd.MM.yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="382"/>
         <source>Search by date range</source>
-        <translation type="unfinished">Поиск по диапазону дат</translation>
+        <translation>Поиск по диапазону дат</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="413"/>
         <source>Quick preview</source>
-        <translation type="unfinished">Быстрый просмотр</translation>
+        <translation>Быстрый просмотр</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="490"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;State:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="540"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Master:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="587"/>
         <source>Save</source>
-        <translation type="unfinished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="607"/>
         <source>Acceptance date:</source>
-        <translation type="unfinished">Дата приёма:</translation>
+        <translation>Дата приёма:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="675"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип изделия:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="713"/>
         <source>Product:</source>
-        <translation type="unfinished">Изделие:</translation>
+        <translation>Изделие:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="751"/>
         <source>Defect:</source>
-        <translation type="unfinished">Неисправность:</translation>
+        <translation>Неисправность:</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="802"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notes:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="92"/>
         <source>#</source>
-        <translation type="unfinished">№</translation>
+        <translation>№</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="93"/>
         <source>Date</source>
-        <translation type="unfinished">Дата</translation>
+        <translation>Дата</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="94"/>
         <source>Type</source>
-        <translation type="unfinished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="95"/>
         <source>Product</source>
-        <translation type="unfinished">Изделие</translation>
+        <translation>Изделие</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="96"/>
         <source>Notified?</source>
-        <translation type="unfinished">Уведомлён?</translation>
+        <translation>Уведомлён?</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="97"/>
         <source>State</source>
-        <translation type="unfinished">Состояние</translation>
+        <translation>Состояние</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="98"/>
         <source>Master</source>
-        <translation type="unfinished">Мастер</translation>
+        <translation>Мастер</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="99"/>
         <source>Acceptor</source>
-        <translation type="unfinished">Приёмщик</translation>
+        <translation>Приёмщик</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="100"/>
         <source>Customer</source>
-        <translation type="unfinished">Клиент</translation>
+        <translation>Клиент</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.cpp" line="101"/>
         <source>Defect</source>
-        <translation type="unfinished">Неисправность</translation>
+        <translation>Неисправность</translation>
     </message>
     <message>
         <source>Order #</source>
@@ -2095,7 +2095,7 @@
     </message>
     <message>
         <source>Язык (Language):</source>
-        <translation type="vanished">Язык (Language):</translation>
+        <translation>Язык (Language):</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="95"/>
