@@ -6,6 +6,7 @@
 #include <QSettings>
 #include <QDataWidgetMapper>
 #include <QMessageBox>
+#include <QPushButton>
 #include <QDesktopServices>
 
 namespace Ui {
@@ -25,11 +26,12 @@ public:
     static int defAcceptor;
     static int defMaster;
     static int defState;
+    static QString currentID;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-public slots:
-    void on_dialog_closed();
+//public slots:
+//    void on_dialog_closed();
 
 signals:
     void sendMode(QString mode, QString num);
@@ -37,20 +39,9 @@ signals:
 private slots:
     void on_exit_triggered();
     void on_mSettings_triggered();
-    void on_rbAll_clicked(bool checked);
-    void on_rbCompleted_clicked(bool checked);
-    void on_rbAccepted_clicked(bool checked);
-    void on_rbConsent_clicked(bool checked);
-    void on_rbWaitSpares_clicked(bool checked);
-    void on_searchbydate_clicked();
-    void on_lSearch_textEdited(const QString &arg1);
-    void on_bSubmit_clicked();
     void on_mNewOrder_triggered();
-    void on_bView_clicked();
-    void on_bEdit_clicked();
     void on_mEmployees_triggered();
     void on_mInit_triggered();
-    void on_bDelete_clicked();
     void on_mProductTypes_triggered();
     void on_mCustomers_triggered();
     void on_mSpares_triggered();
@@ -62,35 +53,24 @@ private slots:
     void on_mAbout_triggered();
     void on_mJrnDiagReports_triggered();
     void on_mNewDiagReport_triggered();
-    void on_tview_clicked(const QModelIndex &index);
     void on_mGiveOrderDiag_triggered();
     void on_mHelp_triggered();
     void on_mPrintHWDocs_triggered();
-    void on_rbCall_clicked(bool checked);
     void on_mAboutQt_triggered();
     void on_mPaySalaries_triggered();
-    void on_eCalled_stateChanged(int state);
 
 private:
     bool checkSettings();
     bool dbConnect();
     Ui::MainWindow *ui;
-    void initModelOrders();
-    void getCustomerIds();
-    void initDataMapper();
-    void editDone();
     void showEditOrder();
     void showEditWorkReport();
     void showEditDiagReport();
     void showGiveOrder();
     void showGiveOrderDiag();
     void readGlobalSettings();
+    void loadMainWidget();
     QSettings * settings;
-    QSqlRelationalTableModel *model;
-    QDataWidgetMapper *mapper;
-    int customerIdx, stateIdx, masterIdx, typeIdx, acceptorIdx, giverIdx;
-    QString namesstr;
-    QString currentID;
 
 protected:
     void closeEvent(QCloseEvent *event);

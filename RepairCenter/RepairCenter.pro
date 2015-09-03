@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     giveorderdiag.cpp \
     printhwdocuments.cpp \
     about.cpp \
-    salaries.cpp
+    salaries.cpp \
+    orderswidgetmain.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -51,7 +52,8 @@ HEADERS  += mainwindow.h \
     giveorderdiag.h \
     printhwdocuments.h \
     about.h \
-    salaries.h
+    salaries.h \
+    orderswidgetmain.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -70,7 +72,8 @@ FORMS    += mainwindow.ui \
     giveorderdiag.ui \
     printhwdocuments.ui \
     about.ui \
-    salaries.ui
+    salaries.ui \
+    orderswidgetmain.ui
 
 OTHER_FILES += \
     ../CommonFiles/README_en.txt \
