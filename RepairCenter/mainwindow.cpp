@@ -123,11 +123,11 @@ void MainWindow::readGlobalSettings()
 
 void MainWindow::loadMainWidget()
 {
-//    OrdersWidgetMain * orders = new OrdersWidgetMain(this);
-//    setCentralWidget(orders);
-
-    OrdersWidgetMaster * orders = new OrdersWidgetMaster(this);
+    OrdersWidgetMain * orders = new OrdersWidgetMain(this);
     setCentralWidget(orders);
+
+//    OrdersWidgetMaster * orders = new OrdersWidgetMaster(this);
+//    setCentralWidget(orders);
 }
 
 bool MainWindow::dbConnect()
