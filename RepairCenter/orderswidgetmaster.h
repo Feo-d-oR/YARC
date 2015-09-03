@@ -22,6 +22,7 @@ public:
 
 public slots:
     void on_dialog_closed();
+    void on_reconnect_recieved();
 
 signals:
     void sendMode(QString mode, QString num);

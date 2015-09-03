@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>About</name>
     <message>
@@ -1148,7 +1148,7 @@
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="48"/>
         <location filename="../mainwindow.cpp" line="72"/>
-        <location filename="../mainwindow.cpp" line="154"/>
+        <location filename="../mainwindow.cpp" line="157"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1169,7 +1169,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="352"/>
-        <location filename="../mainwindow.cpp" line="270"/>
+        <location filename="../mainwindow.cpp" line="273"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1362,9 +1362,9 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="154"/>
+        <location filename="../mainwindow.cpp" line="157"/>
         <source>Unable to connect to database!</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1571,22 +1571,22 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="257"/>
+        <location filename="../orderswidgetmain.cpp" line="262"/>
         <source>Caution!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="258"/>
+        <location filename="../orderswidgetmain.cpp" line="263"/>
         <source>Are you sure to delete order?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="259"/>
+        <location filename="../orderswidgetmain.cpp" line="264"/>
         <source>Yes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="260"/>
+        <location filename="../orderswidgetmain.cpp" line="265"/>
         <source>No</source>
         <translation></translation>
     </message>

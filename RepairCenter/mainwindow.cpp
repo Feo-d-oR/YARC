@@ -124,10 +124,12 @@ void MainWindow::readGlobalSettings()
 void MainWindow::loadMainWidget()
 {
     OrdersWidgetMain * orders = new OrdersWidgetMain(this);
+    connect(this, SIGNAL(sendReconnect()), orders, SLOT(on_reconnect_recieved()));
     setCentralWidget(orders);
 
 //    OrdersWidgetMaster * orders = new OrdersWidgetMaster(this);
 //    setCentralWidget(orders);
+
 }
 
 bool MainWindow::dbConnect()
@@ -149,6 +151,7 @@ void MainWindow::on_mInit_triggered()
 {
     if (dbConnect()) {
         readGlobalSettings();
+        emit sendReconnect();
     }
     else{
         QMessageBox::critical(this, tr("RepairCenter"), tr("Unable to connect to database!"));

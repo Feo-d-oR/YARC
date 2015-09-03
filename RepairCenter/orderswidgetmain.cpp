@@ -234,6 +234,11 @@ void OrdersWidgetMain::on_tview_clicked(const QModelIndex &index){
 void OrdersWidgetMain::on_dialog_closed(){
     model->select();}
 
+void OrdersWidgetMain::on_reconnect_recieved(){
+    initModelOrders();
+    readUiSettings();
+}
+
 void OrdersWidgetMain::on_bSubmit_clicked(){
     model->submitAll();}
 

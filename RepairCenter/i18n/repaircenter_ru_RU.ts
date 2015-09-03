@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>About</name>
     <message>
@@ -427,11 +427,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation type="vanished">Удалить</translation>
     </message>
     <message>
         <location filename="../editdiagreport.cpp" line="23"/>
@@ -601,7 +601,7 @@
     </message>
     <message>
         <source>Old</source>
-        <translation>Постоянный</translation>
+        <translation type="vanished">Постоянный</translation>
     </message>
     <message>
         <location filename="../editorder.ui" line="135"/>
@@ -621,11 +621,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation type="vanished">Удалить</translation>
     </message>
     <message>
         <location filename="../editorder.cpp" line="27"/>
@@ -780,11 +780,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation type="vanished">Удалить</translation>
     </message>
     <message>
         <location filename="../editworkreport.cpp" line="26"/>
@@ -951,11 +951,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation type="vanished">Удалить</translation>
     </message>
 </context>
 <context>
@@ -1045,11 +1045,11 @@
     </message>
     <message>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation type="vanished">Удалить</translation>
     </message>
 </context>
 <context>
@@ -1199,7 +1199,7 @@
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="48"/>
         <location filename="../mainwindow.cpp" line="72"/>
-        <location filename="../mainwindow.cpp" line="154"/>
+        <location filename="../mainwindow.cpp" line="157"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="352"/>
-        <location filename="../mainwindow.cpp" line="270"/>
+        <location filename="../mainwindow.cpp" line="273"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1236,111 +1236,111 @@
     </message>
     <message>
         <source>Search</source>
-        <translation>Поиск</translation>
+        <translation type="vanished">Поиск</translation>
     </message>
     <message>
         <source>All</source>
-        <translation>Все</translation>
+        <translation type="vanished">Все</translation>
     </message>
     <message>
         <source>Completed</source>
-        <translation>Выданные</translation>
+        <translation type="vanished">Выданные</translation>
     </message>
     <message>
         <source>Accepted</source>
-        <translation>Принятые</translation>
+        <translation type="vanished">Принятые</translation>
     </message>
     <message>
         <source>Coordination</source>
-        <translation>На согласовании</translation>
+        <translation type="vanished">На согласовании</translation>
     </message>
     <message>
         <source>Wait for spares</source>
-        <translation>Ждут запчастей</translation>
+        <translation type="vanished">Ждут запчастей</translation>
     </message>
     <message>
         <source>To notify</source>
-        <translation>Уведомить</translation>
+        <translation type="vanished">Уведомить</translation>
     </message>
     <message>
         <source>Order #</source>
-        <translation>№ заказа</translation>
+        <translation type="vanished">№ заказа</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Имя</translation>
+        <translation type="vanished">Имя</translation>
     </message>
     <message>
         <source>Search by date range</source>
-        <translation>Поиск по диапазону дат</translation>
+        <translation type="vanished">Поиск по диапазону дат</translation>
     </message>
     <message>
         <source>Quick preview</source>
-        <translation>Быстрый просмотр</translation>
+        <translation type="vanished">Быстрый просмотр</translation>
     </message>
     <message>
         <source>Order #:</source>
-        <translation>№ заказа:</translation>
+        <translation type="vanished">№ заказа:</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;State:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Состояние:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Master:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Мастер:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notified?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Уведомлён?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Уведомлён?:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Acceptance date:</source>
-        <translation>Дата приёма:</translation>
+        <translation type="vanished">Дата приёма:</translation>
     </message>
     <message>
         <source>Customer:</source>
-        <translation>Заказчик:</translation>
+        <translation type="vanished">Заказчик:</translation>
     </message>
     <message>
         <source>Phone:</source>
-        <translation>Телефон:</translation>
+        <translation type="vanished">Телефон:</translation>
     </message>
     <message>
         <source>Type:</source>
-        <translation>Тип изделия:</translation>
+        <translation type="vanished">Тип изделия:</translation>
     </message>
     <message>
         <source>Product:</source>
-        <translation>Изделие:</translation>
+        <translation type="vanished">Изделие:</translation>
     </message>
     <message>
         <source>Defect:</source>
-        <translation>Неисправность:</translation>
+        <translation type="vanished">Неисправность:</translation>
     </message>
     <message>
         <source>Issue date:</source>
-        <translation>Дата выдачи:</translation>
+        <translation type="vanished">Дата выдачи:</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Notes:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Заметки:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>View</source>
-        <translation>Просмотр</translation>
+        <translation type="vanished">Просмотр</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation>Редактирование</translation>
+        <translation type="vanished">Редактирование</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation type="vanished">Удалить</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="51"/>
@@ -1522,64 +1522,64 @@
     </message>
     <message>
         <source>#</source>
-        <translation>№</translation>
+        <translation type="vanished">№</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>Дата</translation>
+        <translation type="vanished">Дата</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Тип</translation>
+        <translation type="vanished">Тип</translation>
     </message>
     <message>
         <source>Product</source>
-        <translation>Изделие</translation>
+        <translation type="vanished">Изделие</translation>
     </message>
     <message>
         <source>Notified?</source>
-        <translation>Уведомлён?</translation>
+        <translation type="vanished">Уведомлён?</translation>
     </message>
     <message>
         <source>State</source>
-        <translation>Состояние</translation>
+        <translation type="vanished">Состояние</translation>
     </message>
     <message>
         <source>Master</source>
-        <translation>Мастер</translation>
+        <translation type="vanished">Мастер</translation>
     </message>
     <message>
         <source>Acceptor</source>
-        <translation>Приёмщик</translation>
+        <translation type="vanished">Приёмщик</translation>
     </message>
     <message>
         <source>Customer</source>
-        <translation>Клиент</translation>
+        <translation type="vanished">Клиент</translation>
     </message>
     <message>
         <source>Defect</source>
-        <translation>Неисправность</translation>
+        <translation type="vanished">Неисправность</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="154"/>
+        <location filename="../mainwindow.cpp" line="157"/>
         <source>Unable to connect to database!</source>
         <translation>Невозможно соедениться с базой данных!</translation>
     </message>
     <message>
         <source>Caution!</source>
-        <translation>Внимание!</translation>
+        <translation type="vanished">Внимание!</translation>
     </message>
     <message>
         <source>Are you sure to delete order?</source>
-        <translation>Вы уверены, что хотите удалить закза?</translation>
+        <translation type="vanished">Вы уверены, что хотите удалить закза?</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>Да</translation>
+        <translation type="vanished">Да</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>Нет</translation>
+        <translation type="vanished">Нет</translation>
     </message>
 </context>
 <context>
@@ -1786,22 +1786,22 @@
         <translation>Неисправность</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="257"/>
+        <location filename="../orderswidgetmain.cpp" line="262"/>
         <source>Caution!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="258"/>
+        <location filename="../orderswidgetmain.cpp" line="263"/>
         <source>Are you sure to delete order?</source>
         <translation>Вы уверены, что хотите удалить закза?</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="259"/>
+        <location filename="../orderswidgetmain.cpp" line="264"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="260"/>
+        <location filename="../orderswidgetmain.cpp" line="265"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>
@@ -2095,7 +2095,7 @@
     </message>
     <message>
         <source>Язык (Language):</source>
-        <translation>Язык (Language):</translation>
+        <translation type="vanished">Язык (Language):</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="95"/>

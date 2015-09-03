@@ -35,6 +35,7 @@ public:
 
 signals:
     void sendMode(QString mode, QString num);
+    void sendReconnect();
 
 private slots:
     void on_exit_triggered();
