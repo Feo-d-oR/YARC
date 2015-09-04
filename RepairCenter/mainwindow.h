@@ -60,6 +60,8 @@ private slots:
     void on_mAboutQt_triggered();
     void on_mPaySalaries_triggered();
 
+    void on_mUsers_triggered();
+
 private:
     bool checkSettings();
     bool dbConnect();

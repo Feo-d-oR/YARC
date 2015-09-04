@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     about.cpp \
     salaries.cpp \
     orderswidgetmain.cpp \
-    orderswidgetmaster.cpp
+    orderswidgetmaster.cpp \
+    users.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -55,7 +56,8 @@ HEADERS  += mainwindow.h \
     about.h \
     salaries.h \
     orderswidgetmain.h \
-    orderswidgetmaster.h
+    orderswidgetmaster.h \
+    users.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -76,7 +78,8 @@ FORMS    += mainwindow.ui \
     about.ui \
     salaries.ui \
     orderswidgetmain.ui \
-    orderswidgetmaster.ui
+    orderswidgetmaster.ui \
+    users.ui
 
 OTHER_FILES += \
     ../CommonFiles/README_en.txt \

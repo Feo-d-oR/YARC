@@ -9,8 +9,79 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    newdbversion = 5;
+    newdbversion = 6;
     readTranslation();
+}
+
+void MainWindow::on_bUpdate_clicked()
+{
+    if (connectDB())
+    {
+        for (int i=0 ; i<newdbversion; i++)
+        {
+            q.exec("SELECT value_n FROM system WHERE name = 'dbversion'");
+            q.first();
+            dbversion = q.value(0).toInt();
+            q.clear();
+            qDebug()<<"dbversion: "<< dbversion;
+
+            if(dbversion == newdbversion)
+            {
+                allLatest();
+                break;
+            }
+
+            if(dbversion == 0)
+            {
+                DBWork upd;
+                QSqlError err = upd.updateTo2();
+                qDebug() << err.text();
+                if (err.type() != QSqlError::NoError)
+                    updateError(err);
+            }
+
+            if(dbversion == 2)
+            {
+                DBWork upd;
+                QSqlError err = upd.updateTo3();
+                qDebug() << err.text();
+                if (err.type() != QSqlError::NoError)
+                    updateError(err);
+            }
+
+            if(dbversion == 3)
+            {
+                DBWork upd;
+                QSqlError err = upd.updateTo4();
+                qDebug() << err.text();
+                if (err.type() != QSqlError::NoError)
+                    updateError(err);
+            }
+
+            if(dbversion == 4)
+            {
+                DBWork upd;
+                QSqlError err = upd.updateTo4();
+                qDebug() << err.text();
+                if (err.type() != QSqlError::NoError)
+                    updateError(err);
+            }
+
+            if(dbversion == 5)
+            {
+                DBWork upd;
+                QSqlError err = upd.updateTo6();
+                qDebug() << err.text();
+                if (err.type() != QSqlError::NoError)
+                    updateError(err);
+                else
+                {
+                    allUpdated();
+                    break;
+                }
+            }
+        }
+    }
 }
 
 MainWindow::~MainWindow()
@@ -191,67 +262,7 @@ void MainWindow::on_create_clicked()
     }
 }
 
-void MainWindow::on_bUpdate_clicked()
-{
-    if (connectDB())
-    {
-        for (int i=0 ; i<newdbversion; i++)
-        {
-            q.exec("SELECT value_n FROM system WHERE name = 'dbversion'");
-            q.first();
-            dbversion = q.value(0).toInt();
-            q.clear();
-            qDebug()<<"dbversion: "<< dbversion;
 
-            if(dbversion == newdbversion)
-            {
-                allLatest();
-                break;
-            }
-
-            if(dbversion == 0)
-            {
-                DBWork upd;
-                QSqlError err = upd.updateTo2();
-                qDebug() << err.text();
-                if (err.type() != QSqlError::NoError)
-                    updateError(err);
-            }
-
-            if(dbversion == 2)
-            {
-                DBWork upd;
-                QSqlError err = upd.updateTo3();
-                qDebug() << err.text();
-                if (err.type() != QSqlError::NoError)
-                    updateError(err);
-            }
-
-            if(dbversion == 3)
-            {
-                DBWork upd;
-                QSqlError err = upd.updateTo4();
-                qDebug() << err.text();
-                if (err.type() != QSqlError::NoError)
-                    updateError(err);
-            }
-
-            if(dbversion == 4)
-            {
-                DBWork upd;
-                QSqlError err = upd.updateTo5();
-                qDebug() << err.text();
-                if (err.type() != QSqlError::NoError)
-                    updateError(err);
-                else
-                {
-                    allUpdated();
-                    break;
-                }
-            }
-        }
-    }
-}
 
 void MainWindow::allUpdated()
 {

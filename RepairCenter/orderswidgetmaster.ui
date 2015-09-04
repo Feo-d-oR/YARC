@@ -136,6 +136,19 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QRadioButton" name="rbInWork">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>In work</string>
+          </property>
+         </widget>
+        </item>
         <item alignment="Qt::AlignLeft">
          <widget class="QRadioButton" name="rbConsent">
           <property name="minimumSize">
@@ -171,19 +184,6 @@
           </property>
           <property name="text">
            <string>Wait for spares</string>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignLeft">
-         <widget class="QRadioButton" name="rbCall">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>To notify</string>
           </property>
          </widget>
         </item>

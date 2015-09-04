@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>303</width>
+    <width>375</width>
     <height>432</height>
    </rect>
   </property>
@@ -154,7 +154,7 @@ with selected language.</string>
            <string/>
           </property>
           <property name="echoMode">
-           <enum>QLineEdit::PasswordEchoOnEdit</enum>
+           <enum>QLineEdit::Normal</enum>
           </property>
          </widget>
         </item>
@@ -276,9 +276,6 @@ with selected language.</string>
           <property name="text">
            <string/>
           </property>
-          <property name="echoMode">
-           <enum>QLineEdit::PasswordEchoOnEdit</enum>
-          </property>
          </widget>
         </item>
         <item row="4" column="0" colspan="2">
@@ -312,7 +309,7 @@ with selected language.</string>
         <item row="6" column="1">
          <widget class="QLineEdit" name="username2">
           <property name="text">
-           <string>rpc</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -329,7 +326,7 @@ with selected language.</string>
            <string/>
           </property>
           <property name="echoMode">
-           <enum>QLineEdit::PasswordEchoOnEdit</enum>
+           <enum>QLineEdit::Normal</enum>
           </property>
          </widget>
         </item>

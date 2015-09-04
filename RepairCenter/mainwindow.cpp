@@ -20,6 +20,7 @@
 #include "salaries.h"
 #include "orderswidgetmain.h"
 #include "orderswidgetmaster.h"
+#include "users.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -276,3 +277,7 @@ void MainWindow::on_mAboutQt_triggered(){
 void MainWindow::on_mPaySalaries_triggered(){
     Salaries * sal = new Salaries();
     sal->show();}
+
+void MainWindow::on_mUsers_triggered(){
+    Users * users = new Users();
+    users->show();}

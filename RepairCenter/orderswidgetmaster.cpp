@@ -182,11 +182,11 @@ void OrdersWidgetMaster::on_rbWaitSpares_clicked(bool checked){
         model->setFilter("state IN (14, 15, 16, 17)");
 }
 
-void OrdersWidgetMaster::on_rbCall_clicked(bool checked)
+void OrdersWidgetMaster::on_rbInWork_clicked(bool checked)
 {
     if (checked)
-        model->setSort(model->fieldIndex("number"),Qt::AscendingOrder);
-        model->setFilter("state IN (4,5,6,7,20) AND called = 0");
+        model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
+        model->setFilter("state IN (8,12,13,21)");
 }
 
 void OrdersWidgetMaster::on_searchbydate_clicked()

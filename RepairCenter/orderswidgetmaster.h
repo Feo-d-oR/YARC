@@ -33,7 +33,7 @@ private slots:
     void on_rbAccepted_clicked(bool checked);
     void on_rbConsent_clicked(bool checked);
     void on_rbWaitSpares_clicked(bool checked);
-    void on_rbCall_clicked(bool checked);
+    void on_rbInWork_clicked(bool checked);
     void on_searchbydate_clicked();
     void on_lSearch_textEdited(const QString &arg1);
     void on_bSubmit_clicked();

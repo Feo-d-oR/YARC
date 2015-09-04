@@ -36,7 +36,7 @@ void CatEmployees::initModel()
 
     model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Name"));
     model->setHeaderData(model->fieldIndex("position"), Qt::Horizontal, tr("Position"));
-    model->setHeaderData(pt_idx, Qt::Horizontal, tr("Position type"));
+    model->setHeaderData(pt_idx, Qt::Horizontal, tr("Role"));
 
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();

@@ -11,5 +11,7 @@
         <file>icons/database_table.png</file>
         <file>icons/door_out.png</file>
         <file>icons/database_gear.png</file>
+        <file>icons/user_add.png</file>
+        <file>icons/user_delete.png</file>
     </qresource>
 </RCC>

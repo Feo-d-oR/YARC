@@ -4,149 +4,149 @@
 <context>
     <name>DBWork</name>
     <message>
-        <location filename="../dbwork.cpp" line="32"/>
-        <location filename="../dbwork.cpp" line="65"/>
-        <source>Customer refused to repair</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dbwork.cpp" line="33"/>
         <location filename="../dbwork.cpp" line="66"/>
-        <source>Refused to repair</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="35"/>
-        <location filename="../dbwork.cpp" line="68"/>
-        <source>Repair completed</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="44"/>
-        <location filename="../dbwork.cpp" line="77"/>
-        <source>Spares ordered</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="46"/>
-        <location filename="../dbwork.cpp" line="79"/>
-        <source>Customer-Spares ordered</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="30"/>
-        <location filename="../dbwork.cpp" line="63"/>
-        <source>Accepted for repair</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="31"/>
-        <location filename="../dbwork.cpp" line="64"/>
-        <source>Accepted for diagnostics</source>
+        <source>Customer refused to repair</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="34"/>
         <location filename="../dbwork.cpp" line="67"/>
-        <source>Diagnostics completed</source>
+        <source>Refused to repair</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="36"/>
         <location filename="../dbwork.cpp" line="69"/>
-        <source>Awaits coordination</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="37"/>
-        <location filename="../dbwork.cpp" line="70"/>
-        <source>Customer agreed</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="38"/>
-        <location filename="../dbwork.cpp" line="71"/>
-        <source>Issued with diagnostics</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="39"/>
-        <location filename="../dbwork.cpp" line="72"/>
-        <source>Issued with repair</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="40"/>
-        <location filename="../dbwork.cpp" line="73"/>
-        <source>Isuued without repair</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="41"/>
-        <location filename="../dbwork.cpp" line="74"/>
-        <source>In diagnostics</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="42"/>
-        <location filename="../dbwork.cpp" line="75"/>
-        <source>In work</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dbwork.cpp" line="43"/>
-        <location filename="../dbwork.cpp" line="76"/>
-        <source>Awaits spares</source>
+        <source>Repair completed</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="45"/>
         <location filename="../dbwork.cpp" line="78"/>
-        <source>Customer-Awaits spares</source>
+        <source>Spares ordered</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="47"/>
         <location filename="../dbwork.cpp" line="80"/>
-        <source>Awaits issuing</source>
+        <source>Customer-Spares ordered</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="31"/>
+        <location filename="../dbwork.cpp" line="64"/>
+        <source>Accepted for repair</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="32"/>
+        <location filename="../dbwork.cpp" line="65"/>
+        <source>Accepted for diagnostics</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="35"/>
+        <location filename="../dbwork.cpp" line="68"/>
+        <source>Diagnostics completed</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="37"/>
+        <location filename="../dbwork.cpp" line="70"/>
+        <source>Awaits coordination</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="38"/>
+        <location filename="../dbwork.cpp" line="71"/>
+        <source>Customer agreed</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="39"/>
+        <location filename="../dbwork.cpp" line="72"/>
+        <source>Issued with diagnostics</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="40"/>
+        <location filename="../dbwork.cpp" line="73"/>
+        <source>Issued with repair</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="41"/>
+        <location filename="../dbwork.cpp" line="74"/>
+        <source>Isuued without repair</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="42"/>
+        <location filename="../dbwork.cpp" line="75"/>
+        <source>In diagnostics</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="43"/>
+        <location filename="../dbwork.cpp" line="76"/>
+        <source>In work</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="44"/>
+        <location filename="../dbwork.cpp" line="77"/>
+        <source>Awaits spares</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="46"/>
+        <location filename="../dbwork.cpp" line="79"/>
+        <source>Customer-Awaits spares</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="48"/>
         <location filename="../dbwork.cpp" line="81"/>
-        <source>Accepted for repair (warranty)</source>
+        <source>Awaits issuing</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="49"/>
         <location filename="../dbwork.cpp" line="82"/>
-        <location filename="../dbwork.cpp" line="106"/>
-        <source>Customer-Spares recieved</source>
+        <source>Accepted for repair (warranty)</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="50"/>
         <location filename="../dbwork.cpp" line="83"/>
         <location filename="../dbwork.cpp" line="107"/>
-        <source>Spares recieved</source>
+        <source>Customer-Spares recieved</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="53"/>
-        <location filename="../dbwork.cpp" line="87"/>
-        <source>Master</source>
+        <location filename="../dbwork.cpp" line="51"/>
+        <location filename="../dbwork.cpp" line="84"/>
+        <location filename="../dbwork.cpp" line="108"/>
+        <source>Spares recieved</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="54"/>
         <location filename="../dbwork.cpp" line="88"/>
-        <source>Acceptor</source>
+        <source>Master</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="55"/>
         <location filename="../dbwork.cpp" line="89"/>
-        <location filename="../dbwork.cpp" line="114"/>
+        <source>Acceptor</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="56"/>
+        <location filename="../dbwork.cpp" line="90"/>
+        <location filename="../dbwork.cpp" line="115"/>
         <source>Storekeeper</source>
         <translation></translation>
     </message>
@@ -204,7 +204,7 @@ with selected language.</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="126"/>
-        <location filename="../mainwindow.ui" line="301"/>
+        <location filename="../mainwindow.ui" line="298"/>
         <source>repaircenter</source>
         <translation></translation>
     </message>
@@ -247,32 +247,27 @@ with selected language.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="294"/>
+        <location filename="../mainwindow.ui" line="291"/>
         <source>New DB Name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="308"/>
+        <location filename="../mainwindow.ui" line="305"/>
         <source>New DB username:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="315"/>
-        <source>rpc</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="322"/>
+        <location filename="../mainwindow.ui" line="319"/>
         <source>New DB password:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="346"/>
+        <location filename="../mainwindow.ui" line="343"/>
         <source>Save settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="357"/>
+        <location filename="../mainwindow.ui" line="354"/>
         <source>Create</source>
         <translation></translation>
     </message>
@@ -292,81 +287,81 @@ with selected language.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="370"/>
+        <location filename="../mainwindow.ui" line="367"/>
         <source>Cleanup</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="376"/>
+        <location filename="../mainwindow.ui" line="373"/>
         <source>Clear salaries</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="387"/>
+        <location filename="../mainwindow.ui" line="384"/>
         <source>Clear completed orders</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
-        <location filename="../mainwindow.cpp" line="142"/>
-        <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="289"/>
-        <location filename="../mainwindow.cpp" line="308"/>
-        <location filename="../mainwindow.cpp" line="328"/>
+        <location filename="../mainwindow.cpp" line="124"/>
+        <location filename="../mainwindow.cpp" line="213"/>
+        <location filename="../mainwindow.cpp" line="255"/>
+        <location filename="../mainwindow.cpp" line="300"/>
+        <location filename="../mainwindow.cpp" line="319"/>
+        <location filename="../mainwindow.cpp" line="339"/>
         <source>Error!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="54"/>
+        <location filename="../mainwindow.cpp" line="125"/>
         <source>Unable to connect to the database!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="185"/>
+        <location filename="../mainwindow.cpp" line="256"/>
         <source>Unable to create database!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="175"/>
-        <location filename="../mainwindow.cpp" line="259"/>
-        <location filename="../mainwindow.cpp" line="269"/>
-        <location filename="../mainwindow.cpp" line="279"/>
+        <location filename="../mainwindow.cpp" line="246"/>
+        <location filename="../mainwindow.cpp" line="270"/>
+        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="290"/>
         <source>Done!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="176"/>
+        <location filename="../mainwindow.cpp" line="247"/>
         <source>Database succesfully created!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="260"/>
+        <location filename="../mainwindow.cpp" line="271"/>
         <source>Database succesfully updated!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="270"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>Database doesn&apos;t need to be updated</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="291"/>
         <source>Database succecfully cleared!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="290"/>
+        <location filename="../mainwindow.cpp" line="301"/>
         <source>Something went wrong during update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="309"/>
-        <location filename="../mainwindow.cpp" line="329"/>
+        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="340"/>
         <source>Something went wrong during clearing</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="143"/>
+        <location filename="../mainwindow.cpp" line="214"/>
         <source>Database with that name already exist!</source>
         <translation></translation>
     </message>

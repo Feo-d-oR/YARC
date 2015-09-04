@@ -18,9 +18,10 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DOUBLE)");
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
     q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ DOUBLE)");
+    q.exec("CREATE TABLE users (id INTEGER AUTO_INCREMENT PRIMARY KEY, user VARCHAR, password VARCHAR, hash VARCHAR, role INTEGER)");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
-    q.exec("INSERT INTO system VALUES('dbversion', 2, NULL)");
+    q.exec("INSERT INTO system VALUES('dbversion', 6, NULL)");
     q.exec("INSERT INTO system VALUES('percMaster', 0.6, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
     q.exec("INSERT INTO system VALUES('percFirm', 0.3, NULL)");
@@ -76,7 +77,7 @@ QSqlError DBWork::retranslate() //requires latest dbversion
     q.exec(QString("INSERT INTO states VALUES(14,'") + tr("Awaits spares") + "')");
     q.exec(QString("INSERT INTO states VALUES(15,'") + tr("Spares ordered") + "')");
     q.exec(QString("INSERT INTO states VALUES(16,'") + tr("Customer-Awaits spares") + "')");
-    q.exec(QString("INSERT INTO states VALUES(17,'") + tr("Customer-Spares ordered") + "')");
+    q.exec(QString("INSERT INTO states VALUES(17,'") + tr("Customer-Spares ordered") + "')6");
     q.exec(QString("INSERT INTO states VALUES(18,'") + tr("Awaits issuing") + "')");
     q.exec(QString("INSERT INTO states VALUES(19,'") + tr("Accepted for repair (warranty)") + "')");
     q.exec(QString("INSERT INTO states VALUES(20,'") + tr("Customer-Spares recieved") + "')");
@@ -109,7 +110,7 @@ QSqlError DBWork::updateTo2() /*from repaircenter v0.3*/
     return q.lastError();
 }
 
-QSqlError DBWork::updateTo3() /*from repaircenter v0.3.1b*/
+QSqlError DBWork::updateTo3() /*since repaircenter v0.3.1b*/
 {
     q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
 
@@ -120,7 +121,7 @@ QSqlError DBWork::updateTo3() /*from repaircenter v0.3.1b*/
     return q.lastError();
 }
 
-QSqlError DBWork::updateTo4() /*from repaircenter v0.3.2b*/
+QSqlError DBWork::updateTo4() /*since repaircenter v0.3.2b*/
 {
     q.exec(QString("ALTER TABLE system CHANGE value_n value_n DOUBLE NULL DEFAULT NULL"));
     q.exec(QString("ALTER TABLE orders CHANGE cost cost DOUBLE NULL DEFAULT NULL"));
@@ -130,13 +131,19 @@ QSqlError DBWork::updateTo4() /*from repaircenter v0.3.2b*/
     return q.lastError();
 }
 
-QSqlError DBWork::updateTo5() /*from repaircenter v0.3.3b*/
+QSqlError DBWork::updateTo5() /*since repaircenter v0.3.3b*/
 {
     q.exec(QString("ALTER TABLE customers ADD regular BOOLEAN NULL DEFAULT NULL"));
     q.exec(QString("ALTER TABLE orders ADD date_called TIMESTAMP NULL default NULL"));
-//    q.exec(QString(""));
-//    q.exec(QString(""));
-
     q.exec(QString("UPDATE system SET value_n = 5 WHERE name = 'dbversion'"));
     return q.lastError();
 }
+
+QSqlError DBWork::updateTo6() /*since repaircenter v0.3.4b*/
+{
+    q.exec("CREATE TABLE users (id INTEGER AUTO_INCREMENT PRIMARY KEY, user VARCHAR(32), password VARCHAR(32), hash VARCHAR(255), role INTEGER)");
+//    q.exec(QString(""));
+    q.exec(QString("UPDATE system SET value_n = 6 WHERE name = 'dbversion'"));
+    return q.lastError();
+}
+
