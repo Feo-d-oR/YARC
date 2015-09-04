@@ -1201,9 +1201,9 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="49"/>
-        <location filename="../mainwindow.cpp" line="73"/>
-        <location filename="../mainwindow.cpp" line="158"/>
+        <location filename="../mainwindow.cpp" line="50"/>
+        <location filename="../mainwindow.cpp" line="74"/>
+        <location filename="../mainwindow.cpp" line="159"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1224,7 +1224,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="353"/>
-        <location filename="../mainwindow.cpp" line="274"/>
+        <location filename="../mainwindow.cpp" line="275"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1493,39 +1493,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="50"/>
+        <location filename="../mainwindow.cpp" line="51"/>
         <source>Database not found!</source>
         <translation>База данных не найдена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="51"/>
+        <location filename="../mainwindow.cpp" line="52"/>
         <source>Change settings or create new one?</source>
         <translation>Изменить настройки или создать новую?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="52"/>
-        <location filename="../mainwindow.cpp" line="76"/>
+        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="77"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="54"/>
         <source>Change</source>
         <translation>Изменить</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="54"/>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="55"/>
+        <location filename="../mainwindow.cpp" line="78"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="74"/>
+        <location filename="../mainwindow.cpp" line="75"/>
         <source>Settings file not found!</source>
         <translation>Файл настроек не найден!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="75"/>
+        <location filename="../mainwindow.cpp" line="76"/>
         <source>Create settings file?</source>
         <translation>Создать файл настроек?</translation>
     </message>
@@ -1570,7 +1570,7 @@
         <translation type="vanished">Неисправность</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="158"/>
+        <location filename="../mainwindow.cpp" line="159"/>
         <source>Unable to connect to database!</source>
         <translation>Невозможно соедениться с базой данных!</translation>
     </message>
@@ -2111,241 +2111,247 @@
         <translation type="vanished">Язык (Language):</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="95"/>
+        <location filename="../settings.ui" line="62"/>
         <source>System Default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="100"/>
+        <location filename="../settings.ui" line="67"/>
         <source>Russian Русский</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="105"/>
+        <location filename="../settings.ui" line="72"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="123"/>
+        <location filename="../settings.ui" line="80"/>
         <source>Default acceptor:</source>
         <translation>Приёмщик по умолчанию:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="130"/>
+        <location filename="../settings.ui" line="97"/>
         <source>Default master:</source>
         <translation>Мастер по умолчанию:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="160"/>
-        <location filename="../settings.ui" line="623"/>
+        <location filename="../settings.ui" line="227"/>
+        <location filename="../settings.ui" line="677"/>
         <source>Requires active database connection</source>
         <translation>Требуется соединение с базой данных</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="170"/>
-        <location filename="../settings.ui" line="513"/>
-        <location filename="../settings.ui" line="765"/>
+        <location filename="../settings.ui" line="237"/>
+        <location filename="../settings.ui" line="567"/>
+        <location filename="../settings.ui" line="819"/>
         <source>Requires restart</source>
         <translation>Требуется перезапуск</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="75"/>
+        <location filename="../settings.ui" line="150"/>
         <source>Default state:</source>
         <translation>Состояние по умолчанию:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="194"/>
+        <location filename="../settings.ui" line="173"/>
+        <source>Username:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="248"/>
         <source>Main window</source>
         <translation>Главное окно</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="200"/>
+        <location filename="../settings.ui" line="254"/>
         <source>Orders table</source>
         <translation>Таблица заказов</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="259"/>
-        <location filename="../settings.ui" line="392"/>
+        <location filename="../settings.ui" line="313"/>
+        <location filename="../settings.ui" line="446"/>
         <source>120</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="379"/>
+        <location filename="../settings.ui" line="433"/>
         <source>200</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="493"/>
+        <location filename="../settings.ui" line="547"/>
         <source>Customer:</source>
         <translation>Заказчик:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="226"/>
+        <location filename="../settings.ui" line="280"/>
         <source>Width:</source>
         <translation>Ширина:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="239"/>
+        <location filename="../settings.ui" line="293"/>
         <source>210</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="266"/>
+        <location filename="../settings.ui" line="320"/>
         <source>Product:</source>
         <translation>Изделие:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="450"/>
+        <location filename="../settings.ui" line="504"/>
         <source>Visible?</source>
         <translation>Видимый?</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="366"/>
+        <location filename="../settings.ui" line="420"/>
         <source>Defect:</source>
         <translation>Неисправность:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="443"/>
+        <location filename="../settings.ui" line="497"/>
         <source>Acceptor:</source>
         <translation>Приёмщик:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="359"/>
+        <location filename="../settings.ui" line="413"/>
         <source>Master:</source>
         <translation>Мастер:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="406"/>
+        <location filename="../settings.ui" line="460"/>
         <source>Type:</source>
         <translation>Тип:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="299"/>
-        <location filename="../settings.ui" line="332"/>
-        <location filename="../settings.ui" line="436"/>
-        <location filename="../settings.ui" line="506"/>
+        <location filename="../settings.ui" line="353"/>
+        <location filename="../settings.ui" line="386"/>
+        <location filename="../settings.ui" line="490"/>
+        <location filename="../settings.ui" line="560"/>
         <source>100</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="246"/>
+        <location filename="../settings.ui" line="300"/>
         <source>Date:</source>
         <translation>Дата:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="399"/>
+        <location filename="../settings.ui" line="453"/>
         <source>State:</source>
         <translation>Состояние:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="209"/>
+        <location filename="../settings.ui" line="263"/>
         <source>Notified:</source>
         <translation>Оповещён:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="279"/>
+        <location filename="../settings.ui" line="333"/>
         <source>50</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="634"/>
+        <location filename="../settings.ui" line="688"/>
         <source>Database</source>
         <translation>База данных</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="646"/>
+        <location filename="../settings.ui" line="700"/>
         <source>MYSQL server:</source>
         <translation>Сервер MYSQL:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="669"/>
+        <location filename="../settings.ui" line="723"/>
         <source>Port:</source>
         <translation>Порт:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="689"/>
+        <location filename="../settings.ui" line="743"/>
         <source>Database name:</source>
         <translation>Имя базы данных:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="709"/>
+        <location filename="../settings.ui" line="763"/>
         <source>User name:</source>
         <translation>Имя пользователя:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="729"/>
+        <location filename="../settings.ui" line="206"/>
+        <location filename="../settings.ui" line="783"/>
         <source>Password:</source>
         <translation>Пароль:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="527"/>
+        <location filename="../settings.ui" line="581"/>
         <source>Money</source>
         <translation>Денежные</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="533"/>
+        <location filename="../settings.ui" line="587"/>
         <source>Percentage of master:</source>
         <translation>Процент мастера:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="570"/>
+        <location filename="../settings.ui" line="624"/>
         <source>Percentage of acceptor:</source>
         <translation>Процент приёмщика:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="781"/>
+        <location filename="../settings.ui" line="835"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="806"/>
+        <location filename="../settings.ui" line="860"/>
         <source>Save and close</source>
         <translation>Сохранить и закрыть</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="662"/>
+        <location filename="../settings.ui" line="716"/>
         <source>localhost</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="55"/>
+        <location filename="../settings.ui" line="163"/>
         <source>Language:</source>
         <translation>Язык (Language):</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="682"/>
+        <location filename="../settings.ui" line="736"/>
         <source>3306</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="702"/>
+        <location filename="../settings.ui" line="756"/>
         <source>repaircenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="722"/>
+        <location filename="../settings.ui" line="776"/>
         <source>root</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="165"/>
+        <location filename="../settings.cpp" line="180"/>
         <source>Attention!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="166"/>
+        <location filename="../settings.cpp" line="181"/>
         <source>Some changes will take effect the next time.
  Restart application?</source>
         <translation>Некоторые настройки вступят в силу только после перезапуска.
  Перезапустить приложение?</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="168"/>
+        <location filename="../settings.cpp" line="183"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="169"/>
+        <location filename="../settings.cpp" line="184"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>

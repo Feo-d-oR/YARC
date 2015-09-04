@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QDesktopServices>
+#include <QCryptographicHash>
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +27,7 @@ public:
     static int defAcceptor;
     static int defMaster;
     static int defState;
+    static int role;
     static QString currentID;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

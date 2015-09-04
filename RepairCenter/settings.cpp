@@ -6,7 +6,8 @@ Settings::Settings(QWidget *parent) :
     ui(new Ui::Settings)
 {
     ui->setupUi(this);
-    Settings::activateWindow();
+//    Settings::activateWindow();
+    user_changed = false;
 
     settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
@@ -45,6 +46,8 @@ Settings::Settings(QWidget *parent) :
     q.exec("SELECT value_n FROM system WHERE name = 'percAcceptor'");
     q.first();
     ui->pracc->setText(st.setNum(q.value(0).toFloat() *100));
+
+    ui->eUsername->setText(settings->value("user/username").toString());
 
     QString lang = settings->value("locale/language").toString();
     if (lang == "") //default system language
@@ -100,12 +103,6 @@ void Settings::on_cancel_clicked()
 
 void Settings::on_save_clicked()
 {
-    settings->setValue("mysql/hostname", ui->server->text());
-    settings->setValue("mysql/port", ui->port->text());
-    settings->setValue("mysql/database", ui->dbname->text());
-    settings->setValue("mysql/user", ui->username->text());
-    settings->setValue("mysql/password", ui->password->text());
-
     settings->setValue("orderstable/datee", ui->cbDate->isChecked());
     settings->setValue("orderstable/statee", ui->cbState->isChecked());
     settings->setValue("orderstable/customere", ui->cbCustomer->isChecked());
@@ -125,6 +122,20 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/acceptorw", ui->wAcceptor->text());
     settings->setValue("orderstable/masterw", ui->wMaster->text());
     settings->setValue("orderstable/notifiedw", ui->wNotified->text());
+
+    if(user_changed)
+    {
+       settings->setValue("user/username", ui->eUsername->text());
+       pwdhash = QCryptographicHash::hash(ui->ePassword->text().toUtf8(), QCryptographicHash::Sha1);
+       pwdhashstr = QString(pwdhash);
+       settings->setValue("user/password", pwdhashstr);
+    }
+
+    settings->setValue("mysql/hostname", ui->server->text());
+    settings->setValue("mysql/port", ui->port->text());
+    settings->setValue("mysql/database", ui->dbname->text());
+    settings->setValue("mysql/user", ui->username->text());
+    settings->setValue("mysql/password", ui->password->text());
 
     st.setNum(ui->prmast->text().toFloat() /100);
     q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percMaster'"));
@@ -179,3 +190,6 @@ void Settings::on_save_clicked()
     }
 
 }
+
+void Settings::on_ePassword_textEdited(const QString &arg1){
+    user_changed = true;}

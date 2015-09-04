@@ -29,6 +29,7 @@ float MainWindow::sPercFirm = 0;
 int MainWindow::defAcceptor = -1;
 int MainWindow::defMaster = -1;
 int MainWindow::defState = -1;
+int MainWindow::role = 0;
 QString MainWindow::prevCustomer = "";
 QString MainWindow::currentID = "";
 
