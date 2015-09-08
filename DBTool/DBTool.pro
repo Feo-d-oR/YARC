@@ -15,10 +15,12 @@ include($$PWD/../config.pri)
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    dbwork.cpp
+    dbwork.cpp \
+    simplecrypt.cpp
 
 HEADERS  += mainwindow.h \
-    dbwork.h
+    dbwork.h \
+    simplecrypt.h
 
 FORMS    += mainwindow.ui
 

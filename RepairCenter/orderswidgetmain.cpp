@@ -78,6 +78,7 @@ void OrdersWidgetMain::initModelOrders()
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
 
     model->select();
+    ui->datenotify->setDate(QDate::currentDate());
 }
 
 void OrdersWidgetMain::readUiSettings()

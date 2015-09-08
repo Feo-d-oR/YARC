@@ -37,7 +37,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow){
     ui->setupUi(this);
-//init database
+
+    crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
+
     if (checkSettings()) {
         if (dbConnect())
         {
@@ -141,7 +143,8 @@ bool MainWindow::dbConnect()
         db.setPort(settings->value("mysql/port").toInt());
         db.setDatabaseName(settings->value("mysql/database").toString());
         db.setUserName(settings->value("mysql/user").toString());
-        db.setPassword(settings->value("mysql/password").toString());
+        QString pass = settings->value("mysql/password").toString();
+        db.setPassword(crypto.decryptToString(pass));
         if (db.open())
             return true;
         else

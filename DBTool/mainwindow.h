@@ -6,6 +6,7 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QDesktopServices>
+#include "simplecrypt.h"
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +50,7 @@ private:
     QTranslator qTranslator;
     QString locale;
     QString loSettings;
+    SimpleCrypt crypto;
 };
 
 #endif // MAINWINDOW_H

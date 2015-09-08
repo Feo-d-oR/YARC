@@ -8,6 +8,7 @@ Settings::Settings(QWidget *parent) :
     ui->setupUi(this);
 //    Settings::activateWindow();
     user_changed = false;
+    dbconnected = false;
 
     settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
@@ -15,7 +16,9 @@ Settings::Settings(QWidget *parent) :
     ui->port->setText(settings->value("mysql/port").toString());
     ui->dbname->setText(settings->value("mysql/database").toString());
     ui->username->setText(settings->value("mysql/user").toString());
-    ui->password->setText(settings->value("mysql/password").toString());
+    ui->password->setText("********");
+    ui->eUsername->setText(settings->value("user/username").toString());
+    ui->ePassword->setText("********");
 
     if(settings->contains("orderstable/datee"))
     {
@@ -40,15 +43,6 @@ Settings::Settings(QWidget *parent) :
     ui->wNotified->setText(settings->value("orderstable/notifiedw").toString());
     }
 
-    q.exec("SELECT value_n FROM system WHERE name = 'percMaster'");
-    q.first();
-    ui->prmast->setText(st.setNum(q.value(0).toFloat() *100));
-    q.exec("SELECT value_n FROM system WHERE name = 'percAcceptor'");
-    q.first();
-    ui->pracc->setText(st.setNum(q.value(0).toFloat() *100));
-
-    ui->eUsername->setText(settings->value("user/username").toString());
-
     QString lang = settings->value("locale/language").toString();
     if (lang == "") //default system language
         ui->language->setCurrentIndex(0);
@@ -61,12 +55,24 @@ Settings::Settings(QWidget *parent) :
 
     langIdx = ui->language->currentIndex();
 
+    readDBSettings();
+}
+
+void Settings::readDBSettings()
+{
+    q.exec("SELECT value_n FROM system WHERE name = 'percMaster'");
+    if (q.first())
+        dbconnected = true;
+    ui->prmast->setText(st.setNum(q.value(0).toFloat() *100));
+    q.exec("SELECT value_n FROM system WHERE name = 'percAcceptor'");
+    q.first();
+    ui->pracc->setText(st.setNum(q.value(0).toFloat() *100));
+
     model_a = new QSqlQueryModel();
     model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2 AND isactive = 1");
     ui->eDefAcceptor->setModel(model_a);
     ui->eDefAcceptor->model()->sort(1, Qt::AscendingOrder);
     ui->eDefAcceptor->setModelColumn(1);
-
 
     model_m = new QSqlQueryModel();
     model_m->setQuery("SELECT id, name FROM employees WHERE position_type = 1 AND isactive = 1");
@@ -88,7 +94,6 @@ Settings::Settings(QWidget *parent) :
 
     QModelIndexList idx_s = ui->eDefState->model()->match(ui->eDefState->model()->index(0, 0), Qt::EditRole, settings->value("defaults/state").toInt(), 1, Qt::MatchExactly);
     ui->eDefState->setCurrentIndex(idx_s.value(0).row());
-
 }
 
 Settings::~Settings()
@@ -123,38 +128,44 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/masterw", ui->wMaster->text());
     settings->setValue("orderstable/notifiedw", ui->wNotified->text());
 
+    crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
+
     if(user_changed)
     {
-       settings->setValue("user/username", ui->eUsername->text());
-       pwdhash = QCryptographicHash::hash(ui->ePassword->text().toUtf8(), QCryptographicHash::Sha1);
-       pwdhashstr = QString(pwdhash);
-       settings->setValue("user/password", pwdhashstr);
+        settings->setValue("user/username", ui->eUsername->text());
+        settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));
+    }
+    if(db_changed)
+    {
+       settings->setValue("mysql/hostname", ui->server->text());
+       settings->setValue("mysql/port", ui->port->text());
+       settings->setValue("mysql/database", ui->dbname->text());
+       settings->setValue("mysql/user", ui->username->text());
+       settings->setValue("mysql/password", crypto.encryptToString(ui->password->text()));
     }
 
-    settings->setValue("mysql/hostname", ui->server->text());
-    settings->setValue("mysql/port", ui->port->text());
-    settings->setValue("mysql/database", ui->dbname->text());
-    settings->setValue("mysql/user", ui->username->text());
-    settings->setValue("mysql/password", ui->password->text());
+    if(dbconnected)
+    {
+        QSqlRecord rec_a = model_a->record(ui->eDefAcceptor->currentIndex());
+        QString id_a = rec_a.value(rec_a.indexOf("id")).toString();
+        settings->setValue("defaults/acceptor", id_a);
 
-    st.setNum(ui->prmast->text().toFloat() /100);
-    q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percMaster'"));
-    st.setNum(ui->pracc->text().toFloat() /100);
-    q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percAcceptor'"));
-    st.setNum(1 - (ui->pracc->text().toFloat() /100) - (ui->prmast->text().toFloat() /100));
-    q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percFirm'"));
+        QSqlRecord rec_m = model_m->record(ui->eDefMaster->currentIndex());
+        QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
+        settings->setValue("defaults/master", id_m);
 
-    QSqlRecord rec_a = model_a->record(ui->eDefAcceptor->currentIndex());
-    QString id_a = rec_a.value(rec_a.indexOf("id")).toString();
-    settings->setValue("defaults/acceptor", id_a);
+        QSqlRecord rec_s = model_s->record(ui->eDefState->currentIndex());
+        QString id_s = rec_s.value(rec_s.indexOf("id")).toString();
+        settings->setValue("defaults/state", id_s);
 
-    QSqlRecord rec_m = model_m->record(ui->eDefMaster->currentIndex());
-    QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
-    settings->setValue("defaults/master", id_m);
+        st.setNum(ui->prmast->text().toFloat() /100);
+        q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percMaster'"));
+        st.setNum(ui->pracc->text().toFloat() /100);
+        q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percAcceptor'"));
+        st.setNum(1 - (ui->pracc->text().toFloat() /100) - (ui->prmast->text().toFloat() /100));
+        q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percFirm'"));
+    }
 
-    QSqlRecord rec_s = model_s->record(ui->eDefState->currentIndex());
-    QString id_s = rec_s.value(rec_s.indexOf("id")).toString();
-    settings->setValue("defaults/state", id_s);
 
     if (ui->language->currentIndex() != langIdx) {
 
@@ -193,3 +204,6 @@ void Settings::on_save_clicked()
 
 void Settings::on_ePassword_textEdited(const QString &arg1){
     user_changed = true;}
+
+void Settings::on_password_textEdited(const QString &arg1){
+    db_changed = true;}

@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QDesktopServices>
 #include <QCryptographicHash>
+#include "simplecrypt.h"
 
 namespace Ui {
 class MainWindow;
@@ -61,7 +62,6 @@ private slots:
     void on_mPrintHWDocs_triggered();
     void on_mAboutQt_triggered();
     void on_mPaySalaries_triggered();
-
     void on_mUsers_triggered();
 
 private:
@@ -76,6 +76,7 @@ private:
     void readGlobalSettings();
     void loadMainWidget();
     QSettings * settings;
+    SimpleCrypt crypto;
 
 protected:
     void closeEvent(QCloseEvent *event);

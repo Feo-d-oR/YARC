@@ -177,7 +177,7 @@ void MainWindow::readSettings()
     ui->eport->setText(settings->value("mysql/port").toString());
     ui->edbname->setText(settings->value("mysql/database").toString());
     ui->eusername->setText(settings->value("mysql/user").toString());
-    ui->epassword->setText(settings->value("mysql/password").toString());
+//    ui->epassword->setText("********");
 }
 
 void MainWindow::saveSettings()
@@ -188,7 +188,8 @@ void MainWindow::saveSettings()
     settings->setValue("mysql/port", ui->port->text());
     settings->setValue("mysql/database", ui->dbname->text());
     settings->setValue("mysql/user", ui->username2->text());
-    settings->setValue("mysql/password", ui->password2->text());
+    crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
+    settings->setValue("mysql/password", crypto.encryptToString(ui->password2->text()));
 
     switch(ui->language->currentIndex())  {
     case 0://system default

@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     salaries.cpp \
     orderswidgetmain.cpp \
     orderswidgetmaster.cpp \
-    users.cpp
+    users.cpp \
+    simplecrypt.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -57,7 +58,8 @@ HEADERS  += mainwindow.h \
     salaries.h \
     orderswidgetmain.h \
     orderswidgetmaster.h \
-    users.h
+    users.h \
+    simplecrypt.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
