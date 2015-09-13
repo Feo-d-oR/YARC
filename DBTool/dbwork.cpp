@@ -18,7 +18,7 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DOUBLE)");
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
     q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ DOUBLE)");
-    q.exec("CREATE TABLE users (id INTEGER AUTO_INCREMENT PRIMARY KEY, user VARCHAR, password VARCHAR, hash VARCHAR, role INTEGER)");
+    q.exec("CREATE TABLE users (id INTEGER AUTO_INCREMENT PRIMARY KEY, user VARCHAR(32), password VARCHAR(32), hash VARCHAR(255), role INTEGER)");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 6, NULL)");

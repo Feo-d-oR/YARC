@@ -10,6 +10,8 @@
 #include <QDesktopServices>
 #include <QCryptographicHash>
 #include "simplecrypt.h"
+#include "orderswidgetmain.h"
+#include "orderswidgetmaster.h"
 
 namespace Ui {
 class MainWindow;
@@ -77,6 +79,8 @@ private:
     void loadMainWidget();
     QSettings * settings;
     SimpleCrypt crypto;
+    OrdersWidgetMaster * ordersmast;
+    OrdersWidgetMain * ordersmain;
 
 protected:
     void closeEvent(QCloseEvent *event);

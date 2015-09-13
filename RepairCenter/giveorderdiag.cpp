@@ -72,7 +72,7 @@ void GiveOrderDiag::fillFields()
 {
     qf.exec("SELECT * FROM diag_reports WHERE orderid = " + orderID);
     recf = qf.record();
-    qf.first();
+    qf.last();
     ui->eDate->setDate(qf.value(recf.indexOf("date")).toDate());
     ui->eInspect->setPlainText(qf.value(recf.indexOf("inspect")).toString());
     ui->eDefects->setPlainText(qf.value(recf.indexOf("defects")).toString());

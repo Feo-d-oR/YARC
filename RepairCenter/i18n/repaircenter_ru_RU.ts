@@ -1201,9 +1201,9 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="52"/>
-        <location filename="../mainwindow.cpp" line="76"/>
-        <location filename="../mainwindow.cpp" line="162"/>
+        <location filename="../mainwindow.cpp" line="50"/>
+        <location filename="../mainwindow.cpp" line="74"/>
+        <location filename="../mainwindow.cpp" line="177"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1224,7 +1224,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="353"/>
-        <location filename="../mainwindow.cpp" line="278"/>
+        <location filename="../mainwindow.cpp" line="293"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1493,39 +1493,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="51"/>
         <source>Database not found!</source>
         <translation>База данных не найдена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="54"/>
+        <location filename="../mainwindow.cpp" line="52"/>
         <source>Change settings or create new one?</source>
         <translation>Изменить настройки или создать новую?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="55"/>
-        <location filename="../mainwindow.cpp" line="79"/>
+        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="77"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="54"/>
         <source>Change</source>
         <translation>Изменить</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="57"/>
-        <location filename="../mainwindow.cpp" line="80"/>
+        <location filename="../mainwindow.cpp" line="55"/>
+        <location filename="../mainwindow.cpp" line="78"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="75"/>
         <source>Settings file not found!</source>
         <translation>Файл настроек не найден!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="76"/>
         <source>Create settings file?</source>
         <translation>Создать файл настроек?</translation>
     </message>
@@ -1570,7 +1570,7 @@
         <translation type="vanished">Неисправность</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="162"/>
+        <location filename="../mainwindow.cpp" line="177"/>
         <source>Unable to connect to database!</source>
         <translation>Невозможно соедениться с базой данных!</translation>
     </message>
@@ -1635,13 +1635,13 @@
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="232"/>
-        <location filename="../orderswidgetmain.cpp" line="215"/>
+        <location filename="../orderswidgetmain.cpp" line="216"/>
         <source>Order #</source>
         <translation>№ заказа</translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="237"/>
-        <location filename="../orderswidgetmain.cpp" line="217"/>
+        <location filename="../orderswidgetmain.cpp" line="218"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
@@ -1745,72 +1745,72 @@
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="89"/>
+        <location filename="../orderswidgetmain.cpp" line="90"/>
         <source>#</source>
         <translation>№</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="90"/>
+        <location filename="../orderswidgetmain.cpp" line="91"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="91"/>
+        <location filename="../orderswidgetmain.cpp" line="92"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="92"/>
+        <location filename="../orderswidgetmain.cpp" line="93"/>
         <source>Product</source>
         <translation>Изделие</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="93"/>
+        <location filename="../orderswidgetmain.cpp" line="94"/>
         <source>Notified?</source>
         <translation>Уведомлён?</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="94"/>
+        <location filename="../orderswidgetmain.cpp" line="95"/>
         <source>State</source>
         <translation>Состояние</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="95"/>
+        <location filename="../orderswidgetmain.cpp" line="96"/>
         <source>Master</source>
         <translation>Мастер</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="96"/>
+        <location filename="../orderswidgetmain.cpp" line="97"/>
         <source>Acceptor</source>
         <translation>Приёмщик</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="97"/>
+        <location filename="../orderswidgetmain.cpp" line="98"/>
         <source>Customer</source>
         <translation>Клиент</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="98"/>
+        <location filename="../orderswidgetmain.cpp" line="99"/>
         <source>Defect</source>
         <translation>Неисправность</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="262"/>
+        <location filename="../orderswidgetmain.cpp" line="263"/>
         <source>Caution!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="263"/>
+        <location filename="../orderswidgetmain.cpp" line="264"/>
         <source>Are you sure to delete order?</source>
         <translation>Вы уверены, что хотите удалить закза?</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="264"/>
+        <location filename="../orderswidgetmain.cpp" line="265"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="265"/>
+        <location filename="../orderswidgetmain.cpp" line="266"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>
@@ -2334,24 +2334,24 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="187"/>
+        <location filename="../settings.cpp" line="180"/>
         <source>Attention!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="188"/>
+        <location filename="../settings.cpp" line="181"/>
         <source>Some changes will take effect the next time.
  Restart application?</source>
         <translation>Некоторые настройки вступят в силу только после перезапуска.
  Перезапустить приложение?</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="190"/>
+        <location filename="../settings.cpp" line="183"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="191"/>
+        <location filename="../settings.cpp" line="184"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>

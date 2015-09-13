@@ -24,8 +24,6 @@ public:
 private slots:
     void on_cancel_clicked();
     void on_save_clicked();
-    void on_ePassword_textEdited(const QString &arg1);
-    void on_password_textEdited(const QString &arg1);
 
 private:
     Ui::Settings *ui;
@@ -36,8 +34,7 @@ private:
     QSqlQueryModel *model_m;
     QSqlQueryModel *model_s;
     QString st;
-    bool user_changed;
-    bool db_changed;
+
     SimpleCrypt crypto;
     void readDBSettings();
     bool dbconnected;

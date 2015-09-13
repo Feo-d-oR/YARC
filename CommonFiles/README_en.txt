@@ -3,8 +3,9 @@
 ===========================================
 
 ---------------- v0.3.4b ------------------
-Passwords now encrypted
-
+Passwords now encrypted a bit
+Separate UI for various roles
+Users management
 
 ---------------- v0.3.3b ------------------
 "Regular" field in "Customers"

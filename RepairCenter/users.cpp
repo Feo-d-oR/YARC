@@ -42,18 +42,17 @@ void Users::initModelUsers()
 //    ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     model_t = new QSqlQueryModel();
-    model_t->setQuery("SELECT id, name FROM position_types");
-    ui->eType->setModel(model_t);
-    ui->eType->setModelColumn(1);
-    ui->eType->setCurrentIndex(-1);
-
+    model_t->setQuery("SELECT id, name, position_type FROM employees");
+    ui->eEmployee->setModel(model_t);
+    ui->eEmployee->setModelColumn(1);
+    ui->eEmployee->setCurrentIndex(-1);
     model->select();
 
 }
 
 void Users::on_bAdd_clicked()
 {
-    QSqlRecord rec_t = model_t->record(ui->eType->currentIndex());
+    QSqlRecord rec_t = model_t->record(ui->eEmployee->currentIndex());
     QString id_t = rec_t.value(rec_t.indexOf("id")).toString();
     QByteArray pwdhash = QCryptographicHash::hash(ui->ePassword->text().toUtf8(), QCryptographicHash::Sha1);
     QString pwdhashstr = QString(pwdhash);
@@ -67,7 +66,7 @@ void Users::on_bAdd_clicked()
     model->select();
     ui->eUsername->clear();
     ui->ePassword->clear();
-    ui->eType->setCurrentIndex(-1);
+    ui->eEmployee->setCurrentIndex(-1);
 }
 
 void Users::on_bDelete_clicked()

@@ -6,9 +6,8 @@ Settings::Settings(QWidget *parent) :
     ui(new Ui::Settings)
 {
     ui->setupUi(this);
+    crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
 //    Settings::activateWindow();
-    user_changed = false;
-    dbconnected = false;
 
     settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
@@ -16,9 +15,9 @@ Settings::Settings(QWidget *parent) :
     ui->port->setText(settings->value("mysql/port").toString());
     ui->dbname->setText(settings->value("mysql/database").toString());
     ui->username->setText(settings->value("mysql/user").toString());
-    ui->password->setText("********");
+    ui->password->setText(crypto.decryptToString(settings->value("mysql/password").toString()));
     ui->eUsername->setText(settings->value("user/username").toString());
-    ui->ePassword->setText("********");
+    ui->ePassword->setText(crypto.decryptToString(settings->value("mysql/password").toString()));
 
     if(settings->contains("orderstable/datee"))
     {
@@ -128,21 +127,15 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/masterw", ui->wMaster->text());
     settings->setValue("orderstable/notifiedw", ui->wNotified->text());
 
-    crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
+    settings->setValue("user/username", ui->eUsername->text());
+    settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));
 
-    if(user_changed)
-    {
-        settings->setValue("user/username", ui->eUsername->text());
-        settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));
-    }
-    if(db_changed)
-    {
-       settings->setValue("mysql/hostname", ui->server->text());
-       settings->setValue("mysql/port", ui->port->text());
-       settings->setValue("mysql/database", ui->dbname->text());
-       settings->setValue("mysql/user", ui->username->text());
-       settings->setValue("mysql/password", crypto.encryptToString(ui->password->text()));
-    }
+    settings->setValue("mysql/hostname", ui->server->text());
+    settings->setValue("mysql/port", ui->port->text());
+    settings->setValue("mysql/database", ui->dbname->text());
+    settings->setValue("mysql/user", ui->username->text());
+    settings->setValue("mysql/password", crypto.encryptToString(ui->password->text()));
+
 
     if(dbconnected)
     {
@@ -201,9 +194,3 @@ void Settings::on_save_clicked()
     }
 
 }
-
-void Settings::on_ePassword_textEdited(const QString &arg1){
-    user_changed = true;}
-
-void Settings::on_password_textEdited(const QString &arg1){
-    db_changed = true;}

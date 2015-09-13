@@ -102,7 +102,7 @@
     </widget>
    </item>
    <item row="2" column="2">
-    <widget class="QComboBox" name="eType">
+    <widget class="QComboBox" name="eEmployee">
      <property name="minimumSize">
       <size>
        <width>120</width>
@@ -114,15 +114,15 @@
    <item row="2" column="0" colspan="2" alignment="Qt::AlignRight">
     <widget class="QLabel" name="label_17">
      <property name="text">
-      <string>Type:</string>
+      <string>Employee:</string>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
  <resources>
-  <include location="../DBTool/Icons.qrc"/>
   <include location="Icons.qrc"/>
+  <include location="../DBTool/Icons.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -18,8 +18,6 @@
 #include "printhwdocuments.h"
 #include "about.h"
 #include "salaries.h"
-#include "orderswidgetmain.h"
-#include "orderswidgetmaster.h"
 #include "users.h"
 
 QString MainWindow::sLocale = "";
@@ -123,16 +121,32 @@ void MainWindow::readGlobalSettings()
     defAcceptor = settings->value("defaults/acceptor").toInt();
     defMaster = settings->value("defaults/master").toInt();
     defState = settings->value("defaults/state").toInt();
+
+    QString username = settings->value("user/username").toString();
+    QString password = settings->value("user/password").toString();
+
+    q.exec(QString("SELECT role FROM users WHERE user = '"+ username +"' AND password = '"+ crypto.decryptToString(password) +"'"));
+    q.first();
+    role = q.value(0).toInt();
+    qDebug()<<"role="<<role;
 }
 
 void MainWindow::loadMainWidget()
 {
-    OrdersWidgetMain * orders = new OrdersWidgetMain(this);
-    connect(this, SIGNAL(sendReconnect()), orders, SLOT(on_reconnect_recieved()));
-    setCentralWidget(orders);
-
-//    OrdersWidgetMaster * orders = new OrdersWidgetMaster(this);
-//    setCentralWidget(orders);
+    if (role == 1)
+    {
+        ordersmast = new OrdersWidgetMaster(this);
+        connect(this, SIGNAL(sendReconnect()), ordersmast, SLOT(on_reconnect_recieved()));
+        setCentralWidget(ordersmast);
+        ui->acceptorToolBar->hide();
+    } else
+    if (role == 2)
+    {
+        ordersmain = new OrdersWidgetMain(this);
+        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
+        setCentralWidget(ordersmain);
+        ui->masterToolBar->hide();
+    } else return;
 
 }
 
@@ -170,7 +184,10 @@ void MainWindow::on_exit_triggered(){
 void MainWindow::showEditOrder(){
     EditOrder *ord = new EditOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), ord, SLOT(getMode(QString, QString)));
-    connect(ord,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
+    if (role == 2){
+        connect(ord,SIGNAL(orderSubmited()), ordersmain, SLOT(on_dialog_closed()));}
+    if (role == 1){
+        connect(ord,SIGNAL(orderSubmited()), ordersmast, SLOT(on_dialog_closed()));}
     ord->show();}
 
 void MainWindow::on_mNewOrder_triggered(){
@@ -263,10 +280,7 @@ void MainWindow::closeEvent(QCloseEvent *event){
     event->accept(); }
 
 void MainWindow::on_mHelp_triggered(){
-//    QString hpath;
-//    hpath = QDir::toNativeSeparators("file://"+QCoreApplication::applicationDirPath()+"/help/"+ sLocale +"/index.html");
     QDesktopServices::openUrl(QUrl::fromLocalFile(QString(QCoreApplication::applicationDirPath()+"/help/"+ sLocale +"/index.html")));
-//    QDesktopServices::openUrl(hpath);
 }
 
 void MainWindow::on_mPrintHWDocs_triggered(){
