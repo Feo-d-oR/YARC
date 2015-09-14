@@ -59,7 +59,7 @@ QSqlError DBWork::createTables()
     q.exec(QString("INSERT INTO position_types VALUES(1,'") + tr("Master") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(2,'") + tr("Acceptor") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
-    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Director") + "')");
+    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Manager") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Admin") + "')");
 
     q.exec(QString("INSERT INTO employees VALUES(NULL,'Admin','Admin','Admin','Admin',5,'Admin',0,'admin','admin')"));
@@ -97,7 +97,7 @@ QSqlError DBWork::retranslate() //requires latest dbversion
     q.exec(QString("INSERT INTO position_types VALUES(1,'") + tr("Master") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(2,'") + tr("Acceptor") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(3,'") + tr("Storekeeper") + "')");
-    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Director") + "')");
+    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Manager") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Admin") + "')");
 
     q.exec(QString("UPDATE system SET value_c = '")+ MainWindow::lang +("' WHERE name = 'dblocale'"));
