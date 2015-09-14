@@ -1,6 +1,7 @@
 #include "jrnworkreports.h"
 #include "ui_jrnworkreports.h"
 #include "editworkreport.h"
+#include "mainwindow.h"
 
 JrnWorkReports::JrnWorkReports(QWidget *parent) :
     QDialog(parent),
@@ -8,6 +9,10 @@ JrnWorkReports::JrnWorkReports(QWidget *parent) :
 {
     ui->setupUi(this);
     initModels();
+    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditWorks){
+        ui->bEdit->setDisabled(1);
+        ui->bAdd->setDisabled(1);
+        ui->bDelete->setDisabled(1);}
 }
 
 JrnWorkReports::~JrnWorkReports()

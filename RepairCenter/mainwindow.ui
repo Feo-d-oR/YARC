@@ -53,7 +53,6 @@
     <addaction name="mInit"/>
     <addaction name="separator"/>
     <addaction name="mSettings"/>
-    <addaction name="mUsers"/>
     <addaction name="separator"/>
     <addaction name="exit"/>
    </widget>
@@ -106,6 +105,9 @@
    <addaction name="help"/>
   </widget>
   <widget class="QToolBar" name="acceptorToolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>

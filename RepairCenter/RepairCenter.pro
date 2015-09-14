@@ -35,7 +35,6 @@ SOURCES += main.cpp\
     salaries.cpp \
     orderswidgetmain.cpp \
     orderswidgetmaster.cpp \
-    users.cpp \
     simplecrypt.cpp
 
 HEADERS  += mainwindow.h \
@@ -58,7 +57,6 @@ HEADERS  += mainwindow.h \
     salaries.h \
     orderswidgetmain.h \
     orderswidgetmaster.h \
-    users.h \
     simplecrypt.h
 
 FORMS    += mainwindow.ui \
@@ -80,8 +78,7 @@ FORMS    += mainwindow.ui \
     about.ui \
     salaries.ui \
     orderswidgetmain.ui \
-    orderswidgetmaster.ui \
-    users.ui
+    orderswidgetmaster.ui
 
 OTHER_FILES += \
     ../CommonFiles/README_en.txt \

@@ -1,6 +1,7 @@
 #include "jrndiagreports.h"
 #include "ui_jrndiagreports.h"
 #include "editdiagreport.h"
+#include "mainwindow.h"
 
 JrnDiagReports::JrnDiagReports(QWidget *parent) :
     QDialog(parent),
@@ -8,6 +9,10 @@ JrnDiagReports::JrnDiagReports(QWidget *parent) :
 {
     ui->setupUi(this);
     initModels();
+    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditDiag){
+        ui->bEdit->setDisabled(1);
+        ui->bAdd->setDisabled(1);
+        ui->bDelete->setDisabled(1);}
 }
 
 JrnDiagReports::~JrnDiagReports()

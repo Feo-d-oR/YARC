@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>910</width>
-    <height>484</height>
+    <width>822</width>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <normaloff>:/icons/icons/group.png</normaloff>:/icons/icons/group.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="1">
+   <item row="1" column="1" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -60,80 +60,9 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="bSave">
-       <property name="text">
-        <string>Save</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/icons/icons/table_save.png</normalon>
-        </iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="bClose">
-       <property name="text">
-        <string>Close</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/icons/icons/door_out.png</normalon>
-        </iconset>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
-   <item row="1" column="1">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>196</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="0" rowspan="3">
-    <widget class="QTableView" name="tview">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-       <horstretch>1</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>767</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="horizontalScrollMode">
-      <enum>QAbstractItemView::ScrollPerPixel</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
+   <item row="0" column="1" colspan="2">
     <layout class="QFormLayout" name="formLayout">
      <property name="sizeConstraint">
       <enum>QLayout::SetNoConstraint</enum>
@@ -167,7 +96,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>349</width>
+         <width>200</width>
          <height>16777215</height>
         </size>
        </property>
@@ -190,7 +119,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>349</width>
+         <width>200</width>
          <height>16777215</height>
         </size>
        </property>
@@ -213,7 +142,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>349</width>
+         <width>200</width>
          <height>16777215</height>
         </size>
        </property>
@@ -236,7 +165,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>349</width>
+         <width>200</width>
          <height>16777215</height>
         </size>
        </property>
@@ -291,7 +220,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>349</width>
+         <width>200</width>
          <height>16777215</height>
         </size>
        </property>
@@ -311,12 +240,140 @@
        </property>
       </widget>
      </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Username:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="eUsername">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Password:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="ePassword">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
+   <item row="4" column="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::MinimumExpanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="bSave">
+       <property name="text">
+        <string>Save</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/icons/table_save.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="bClose">
+       <property name="text">
+        <string>Close</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/icons/door_out.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>196</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" rowspan="5">
+    <widget class="QTableView" name="tview">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>767</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="horizontalScrollMode">
+      <enum>QAbstractItemView::ScrollPerPixel</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
   </layout>
-  <zorder>tview</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder></zorder>
  </widget>
  <resources>
   <include location="Icons.qrc"/>

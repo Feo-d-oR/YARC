@@ -3,9 +3,10 @@
 ===========================================
 
 ---------------- v0.3.4b ------------------
-Passwords now encrypted a bit
+Passwords now kinda encrypted :)
 Separate UI for various roles
-Users management
+Users management (in Employees catalog), default login and password: "admin"
+"Permissions" settings for works and spares editing
 
 ---------------- v0.3.3b ------------------
 "Regular" field in "Customers"

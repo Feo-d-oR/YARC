@@ -31,6 +31,12 @@ public:
     static int defMaster;
     static int defState;
     static int role;
+    static bool masterCanEditWorks;
+    static bool masterCanEditSpares;
+    static bool acceptorCanEditWorks;
+    static bool acceptorCanEditSpares;
+    static bool acceptorCanEditDiag;
+    static bool isadmin;
     static QString currentID;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -64,7 +70,6 @@ private slots:
     void on_mPrintHWDocs_triggered();
     void on_mAboutQt_triggered();
     void on_mPaySalaries_triggered();
-    void on_mUsers_triggered();
 
 private:
     bool checkSettings();
@@ -76,7 +81,7 @@ private:
     void showGiveOrder();
     void showGiveOrderDiag();
     void readGlobalSettings();
-    void loadMainWidget();
+    void loadUserInterface();
     QSettings * settings;
     SimpleCrypt crypto;
     OrdersWidgetMaster * ordersmast;

@@ -18,7 +18,6 @@
 #include "printhwdocuments.h"
 #include "about.h"
 #include "salaries.h"
-#include "users.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -28,6 +27,13 @@ int MainWindow::defAcceptor = -1;
 int MainWindow::defMaster = -1;
 int MainWindow::defState = -1;
 int MainWindow::role = 0;
+bool MainWindow::isadmin = 0;
+bool MainWindow::masterCanEditSpares = 0;
+bool MainWindow::masterCanEditWorks = 0;
+bool MainWindow::acceptorCanEditDiag = 0;
+bool MainWindow::acceptorCanEditWorks = 0;
+bool MainWindow::acceptorCanEditSpares = 0;
+
 QString MainWindow::prevCustomer = "";
 QString MainWindow::currentID = "";
 
@@ -42,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
         if (dbConnect())
         {
             readGlobalSettings();
-            loadMainWidget();
+            loadUserInterface();
         }
         else{
             QMessageBox mb;
@@ -104,6 +110,21 @@ bool MainWindow::checkSettings()
 void MainWindow::readGlobalSettings()
 {
     QSqlQuery q;
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
+
+    sLocale = settings->value("locale/language").toString();
+    defAcceptor = settings->value("defaults/acceptor").toInt();
+    defMaster = settings->value("defaults/master").toInt();
+    defState = settings->value("defaults/state").toInt();
+
+    QString username = settings->value("user/username").toString();
+    QString password = settings->value("user/password").toString();
+    q.exec(QString("SELECT position_type FROM employees WHERE username = '"+ username +"' AND password = '"+ crypto.decryptToString(password) +"'"));
+    q.first();
+    role = q.value(0).toInt();
+    qDebug()<<"role="<<role;
+
     q.exec("SELECT value_n FROM system WHERE name = 'percMaster'");
     q.first();
     sPercMast = q.value(0).toFloat();
@@ -114,40 +135,88 @@ void MainWindow::readGlobalSettings()
     q.first();
     sPercFirm = q.value(0).toFloat();
 
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
-    settings->setIniCodec("UTF-8");
-    sLocale = settings->value("locale/language").toString();
-
-    defAcceptor = settings->value("defaults/acceptor").toInt();
-    defMaster = settings->value("defaults/master").toInt();
-    defState = settings->value("defaults/state").toInt();
-
-    QString username = settings->value("user/username").toString();
-    QString password = settings->value("user/password").toString();
-
-    q.exec(QString("SELECT role FROM users WHERE user = '"+ username +"' AND password = '"+ crypto.decryptToString(password) +"'"));
+    q.exec("SELECT value_n FROM system WHERE name = 'masterCanEditWorks'");
     q.first();
-    role = q.value(0).toInt();
-    qDebug()<<"role="<<role;
+    masterCanEditWorks = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'masterCanEditSpares'");
+    q.first();
+    masterCanEditSpares = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditWorks'");
+    q.first();
+    acceptorCanEditWorks = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditSpares'");
+    q.first();
+    acceptorCanEditSpares = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditDiag'");
+    q.first();
+    acceptorCanEditDiag = q.value(0).toBool();
 }
 
-void MainWindow::loadMainWidget()
+void MainWindow::loadUserInterface()
 {
-    if (role == 1)
+    if (role == 1) //if master
     {
         ordersmast = new OrdersWidgetMaster(this);
         connect(this, SIGNAL(sendReconnect()), ordersmast, SLOT(on_reconnect_recieved()));
         setCentralWidget(ordersmast);
+
         ui->acceptorToolBar->hide();
-    } else
-    if (role == 2)
+        ui->mEmployees->setDisabled(1);
+        ui->mNewOrder->setDisabled(1);
+        ui->mGiveOrder->setDisabled(1);
+        ui->mGiveOrderDiag->setDisabled(1);
+        ui->mPaySalaries->setDisabled(1);
+        ui->mCustomers->setDisabled(1);
+        if (!masterCanEditWorks)
+            ui->mWorkTypes->setDisabled(1);
+        if (!masterCanEditSpares){
+            ui->mSpares->setDisabled(1);
+            ui->mSpareTypes->setDisabled(1);}
+
+    }
+    else if (role == 2) //if acceptor
     {
         ordersmain = new OrdersWidgetMain(this);
         connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
         setCentralWidget(ordersmain);
-        ui->masterToolBar->hide();
-    } else return;
 
+        ui->masterToolBar->hide();
+        if (!acceptorCanEditWorks)
+            ui->mNewWorkReport->setDisabled(1);
+        if(!acceptorCanEditDiag)
+            ui->mNewDiagReport->setDisabled(1);
+        ui->mEmployees->setDisabled(1);
+        ui->mPaySalaries->setDisabled(1);
+        ui->mEmployees->setDisabled(1);
+
+    }
+    else if (role == 3) //if storekeeper
+    {
+//        ordersmain = new OrdersWidgetMain(this);
+//        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
+//        setCentralWidget(ordersmain);
+    }
+    else if (role == 4) //if director
+    {
+//        ordersmain = new OrdersWidgetMain(this);
+//        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
+//        setCentralWidget(ordersmain);
+    }
+    else if (role == 5) //if admin
+    {
+        ordersmain = new OrdersWidgetMain(this);
+        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
+        setCentralWidget(ordersmain);
+        isadmin = true;
+    }
+    else
+    {
+        ui->catalogs->setDisabled(1);
+        ui->actions->setDisabled(1);
+        ui->journals->setDisabled(1);
+        ui->acceptorToolBar->setDisabled(1);
+        ui->masterToolBar->setDisabled(1);
+    }
 }
 
 bool MainWindow::dbConnect()
@@ -295,7 +364,3 @@ void MainWindow::on_mAboutQt_triggered(){
 void MainWindow::on_mPaySalaries_triggered(){
     Salaries * sal = new Salaries();
     sal->show();}
-
-void MainWindow::on_mUsers_triggered(){
-    Users * users = new Users();
-    users->show();}

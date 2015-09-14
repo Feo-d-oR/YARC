@@ -12,14 +12,14 @@
         <translation type="vanished">Принято на диагностику</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="33"/>
-        <location filename="../dbwork.cpp" line="66"/>
+        <location filename="../dbwork.cpp" line="38"/>
+        <location filename="../dbwork.cpp" line="75"/>
         <source>Customer refused to repair</source>
         <translation>Отказ клиента от ремонта</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="34"/>
-        <location filename="../dbwork.cpp" line="67"/>
+        <location filename="../dbwork.cpp" line="39"/>
+        <location filename="../dbwork.cpp" line="76"/>
         <source>Refused to repair</source>
         <translation>Отказ в ремонте</translation>
     </message>
@@ -28,8 +28,8 @@
         <translation type="vanished">Диагностика выполнена</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="36"/>
-        <location filename="../dbwork.cpp" line="69"/>
+        <location filename="../dbwork.cpp" line="41"/>
+        <location filename="../dbwork.cpp" line="78"/>
         <source>Repair completed</source>
         <translation>Ремонт выполнен</translation>
     </message>
@@ -66,8 +66,8 @@
         <translation type="vanished">Ожидает запчастей</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="45"/>
-        <location filename="../dbwork.cpp" line="78"/>
+        <location filename="../dbwork.cpp" line="50"/>
+        <location filename="../dbwork.cpp" line="87"/>
         <source>Spares ordered</source>
         <translation>Запчасти заказаны</translation>
     </message>
@@ -76,8 +76,8 @@
         <translation type="vanished">На руках-Ожидает запчастей</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="47"/>
-        <location filename="../dbwork.cpp" line="80"/>
+        <location filename="../dbwork.cpp" line="52"/>
+        <location filename="../dbwork.cpp" line="89"/>
         <source>Customer-Spares ordered</source>
         <translation>На руках-Запчасти заказаны</translation>
     </message>
@@ -90,121 +90,135 @@
         <translation type="vanished">Принято в ремонт (гарантия)</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="31"/>
-        <location filename="../dbwork.cpp" line="64"/>
+        <location filename="../dbwork.cpp" line="36"/>
+        <location filename="../dbwork.cpp" line="73"/>
         <source>Accepted for repair</source>
         <translation>Принято в ремонт</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="32"/>
-        <location filename="../dbwork.cpp" line="65"/>
+        <location filename="../dbwork.cpp" line="37"/>
+        <location filename="../dbwork.cpp" line="74"/>
         <source>Accepted for diagnostics</source>
         <translation>Принято на диагностику</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="35"/>
-        <location filename="../dbwork.cpp" line="68"/>
+        <location filename="../dbwork.cpp" line="40"/>
+        <location filename="../dbwork.cpp" line="77"/>
         <source>Diagnostics completed</source>
         <translation>Диагностика выполнена</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="37"/>
-        <location filename="../dbwork.cpp" line="70"/>
+        <location filename="../dbwork.cpp" line="42"/>
+        <location filename="../dbwork.cpp" line="79"/>
         <source>Awaits coordination</source>
         <translation>Ожидает согласования</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="38"/>
-        <location filename="../dbwork.cpp" line="71"/>
+        <location filename="../dbwork.cpp" line="43"/>
+        <location filename="../dbwork.cpp" line="80"/>
         <source>Customer agreed</source>
         <translation>Клиент согласился</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="39"/>
-        <location filename="../dbwork.cpp" line="72"/>
+        <location filename="../dbwork.cpp" line="44"/>
+        <location filename="../dbwork.cpp" line="81"/>
         <source>Issued with diagnostics</source>
         <translation>Выдано с диагностикой</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="40"/>
-        <location filename="../dbwork.cpp" line="73"/>
+        <location filename="../dbwork.cpp" line="45"/>
+        <location filename="../dbwork.cpp" line="82"/>
         <source>Issued with repair</source>
         <translation>Выдано с ремонтом</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="41"/>
-        <location filename="../dbwork.cpp" line="74"/>
+        <location filename="../dbwork.cpp" line="46"/>
+        <location filename="../dbwork.cpp" line="83"/>
         <source>Isuued without repair</source>
         <translation>Выдано без ремонта</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="42"/>
-        <location filename="../dbwork.cpp" line="75"/>
+        <location filename="../dbwork.cpp" line="47"/>
+        <location filename="../dbwork.cpp" line="84"/>
         <source>In diagnostics</source>
         <translation>На диагностике</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="43"/>
-        <location filename="../dbwork.cpp" line="76"/>
+        <location filename="../dbwork.cpp" line="48"/>
+        <location filename="../dbwork.cpp" line="85"/>
         <source>In work</source>
         <translation>В работе</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="44"/>
-        <location filename="../dbwork.cpp" line="77"/>
+        <location filename="../dbwork.cpp" line="49"/>
+        <location filename="../dbwork.cpp" line="86"/>
         <source>Awaits spares</source>
         <translation>Ожидает запчастей</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="46"/>
-        <location filename="../dbwork.cpp" line="79"/>
+        <location filename="../dbwork.cpp" line="51"/>
+        <location filename="../dbwork.cpp" line="88"/>
         <source>Customer-Awaits spares</source>
         <translation>Клиент-Ожидает запчастей</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="48"/>
-        <location filename="../dbwork.cpp" line="81"/>
+        <location filename="../dbwork.cpp" line="53"/>
+        <location filename="../dbwork.cpp" line="90"/>
         <source>Awaits issuing</source>
         <translation>Ожидает выдачи</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="49"/>
-        <location filename="../dbwork.cpp" line="82"/>
+        <location filename="../dbwork.cpp" line="54"/>
+        <location filename="../dbwork.cpp" line="91"/>
         <source>Accepted for repair (warranty)</source>
         <translation>Принято по гарантии</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="50"/>
-        <location filename="../dbwork.cpp" line="83"/>
-        <location filename="../dbwork.cpp" line="107"/>
+        <location filename="../dbwork.cpp" line="55"/>
+        <location filename="../dbwork.cpp" line="92"/>
+        <location filename="../dbwork.cpp" line="118"/>
         <source>Customer-Spares recieved</source>
         <translation>На руках-Запчасти получены</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="51"/>
-        <location filename="../dbwork.cpp" line="84"/>
-        <location filename="../dbwork.cpp" line="108"/>
+        <location filename="../dbwork.cpp" line="56"/>
+        <location filename="../dbwork.cpp" line="93"/>
+        <location filename="../dbwork.cpp" line="119"/>
         <source>Spares recieved</source>
         <translation>Запчасти получены</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="54"/>
-        <location filename="../dbwork.cpp" line="88"/>
+        <location filename="../dbwork.cpp" line="59"/>
+        <location filename="../dbwork.cpp" line="97"/>
         <source>Master</source>
         <translation>Мастер</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="55"/>
-        <location filename="../dbwork.cpp" line="89"/>
+        <location filename="../dbwork.cpp" line="60"/>
+        <location filename="../dbwork.cpp" line="98"/>
         <source>Acceptor</source>
         <translation>Приёмщик</translation>
     </message>
     <message>
-        <location filename="../dbwork.cpp" line="56"/>
-        <location filename="../dbwork.cpp" line="90"/>
-        <location filename="../dbwork.cpp" line="115"/>
+        <location filename="../dbwork.cpp" line="61"/>
+        <location filename="../dbwork.cpp" line="99"/>
+        <location filename="../dbwork.cpp" line="126"/>
         <source>Storekeeper</source>
         <translation>Кладовщик</translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="62"/>
+        <location filename="../dbwork.cpp" line="100"/>
+        <location filename="../dbwork.cpp" line="157"/>
+        <source>Director</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="63"/>
+        <location filename="../dbwork.cpp" line="101"/>
+        <location filename="../dbwork.cpp" line="158"/>
+        <source>Admin</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

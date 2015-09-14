@@ -29,10 +29,12 @@ void CatEmployees::initModel()
     ui->tview->hideColumn(model->fieldIndex("phone"));
     ui->tview->hideColumn(model->fieldIndex("address"));
     ui->tview->hideColumn(model->fieldIndex("isactive"));
+    ui->tview->hideColumn(model->fieldIndex("username"));
+    ui->tview->hideColumn(model->fieldIndex("password"));
 
-    ui->tview->setColumnWidth(model->fieldIndex("name"), 200);
-    ui->tview->setColumnWidth(model->fieldIndex("position"), 200);
-    ui->tview->setColumnWidth(pt_idx, 160);
+    ui->tview->setColumnWidth(model->fieldIndex("name"), 150);
+    ui->tview->setColumnWidth(model->fieldIndex("position"), 150);
+    ui->tview->setColumnWidth(pt_idx, 120);
 
     model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Name"));
     model->setHeaderData(model->fieldIndex("position"), Qt::Horizontal, tr("Position"));
@@ -56,6 +58,8 @@ void CatEmployees::initModel()
     mapper->addMapping(ui->ePositionType, pt_idx);
     mapper->addMapping(ui->ePosition, model->fieldIndex("position"));
     mapper->addMapping(ui->eisActive, model->fieldIndex("isactive"));
+    mapper->addMapping(ui->eUsername, model->fieldIndex("username"));
+    mapper->addMapping(ui->ePassword, model->fieldIndex("password"));
 
     connect(ui->tview->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
@@ -69,6 +73,8 @@ void CatEmployees::on_bAdd_clicked()
     rc = model->rowCount();
     model->insertRows(rc, 1);
     ui->tview->selectRow(rc);
+    ui->ePositionType->setCurrentIndex(-1);
+    ui->eisActive->setChecked(0);
 }
 
 void CatEmployees::on_bSave_clicked()
@@ -91,3 +97,4 @@ void CatEmployees::on_bDelete_clicked()
         model->select();
     }
 }
+

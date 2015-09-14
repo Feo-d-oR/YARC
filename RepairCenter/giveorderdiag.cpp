@@ -1,5 +1,6 @@
 #include "giveorderdiag.h"
 #include "ui_giveorderdiag.h"
+#include "mainwindow.h"
 
 GiveOrderDiag::GiveOrderDiag(QWidget *parent) :
     QDialog(parent),
@@ -7,6 +8,11 @@ GiveOrderDiag::GiveOrderDiag(QWidget *parent) :
 {
     GiveOrderDiag::activateWindow();
     ui->setupUi(this);
+
+    if(MainWindow::role ==2 && !MainWindow::acceptorCanEditDiag){
+        ui->eInspect->setDisabled(1);
+        ui->eDefects->setDisabled(1);
+        ui->eRecomm->setDisabled(1);}
 }
 
 GiveOrderDiag::~GiveOrderDiag()

@@ -1,5 +1,6 @@
 #include "settings.h"
 #include "ui_settings.h"
+#include "mainwindow.h"
 
 Settings::Settings(QWidget *parent) :
     QDialog(parent),
@@ -17,7 +18,7 @@ Settings::Settings(QWidget *parent) :
     ui->username->setText(settings->value("mysql/user").toString());
     ui->password->setText(crypto.decryptToString(settings->value("mysql/password").toString()));
     ui->eUsername->setText(settings->value("user/username").toString());
-    ui->ePassword->setText(crypto.decryptToString(settings->value("mysql/password").toString()));
+    ui->ePassword->setText(crypto.decryptToString(settings->value("user/password").toString()));
 
     if(settings->contains("orderstable/datee"))
     {
@@ -54,6 +55,10 @@ Settings::Settings(QWidget *parent) :
 
     langIdx = ui->language->currentIndex();
 
+    if(!MainWindow::isadmin){
+        ui->money->setDisabled(1);
+        ui->permissions->setDisabled(1);}
+
     readDBSettings();
 }
 
@@ -66,6 +71,22 @@ void Settings::readDBSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'percAcceptor'");
     q.first();
     ui->pracc->setText(st.setNum(q.value(0).toFloat() *100));
+
+    q.exec("SELECT value_n FROM system WHERE name = 'masterCanEditWorks'");
+    q.first();
+    ui->cbMEdWorks->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'masterCanEditSpares'");
+    q.first();
+    ui->cbMEdSpares->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditWorks'");
+    q.first();
+    ui->cbAEdWorks->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditSpares'");
+    q.first();
+    ui->cbAEdSpares->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditDiag'");
+    q.first();
+    ui->cbAEdDiag->setChecked(q.value(0).toBool());
 
     model_a = new QSqlQueryModel();
     model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2 AND isactive = 1");
@@ -157,6 +178,12 @@ void Settings::on_save_clicked()
         q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percAcceptor'"));
         st.setNum(1 - (ui->pracc->text().toFloat() /100) - (ui->prmast->text().toFloat() /100));
         q.exec(QString("UPDATE system SET value_n = " + st + " WHERE name = 'percFirm'"));
+
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbMEdSpares->isChecked()) + " WHERE name = 'masterCanEditSpares'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbMEdWorks->isChecked()) + " WHERE name = 'masterCanEditWorks'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbAEdDiag->isChecked()) + " WHERE name = 'acceptorCanEditDiag'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbAEdSpares->isChecked()) + " WHERE name = 'acceptorCanEditSpares'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbAEdWorks->isChecked()) + " WHERE name = 'acceptorCanEditWorks'"));
     }
 
 

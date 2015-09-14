@@ -8,6 +8,11 @@ GiveOrder::GiveOrder(QWidget *parent) :
 {
     GiveOrder::activateWindow();
     ui->setupUi(this);
+
+    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditWorks)
+        ui->tvieww->setDisabled(1);
+    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditSpares)
+        ui->tviews->setDisabled(1);
 }
 
 GiveOrder::~GiveOrder()

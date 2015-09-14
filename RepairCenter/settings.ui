@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>361</width>
+    <width>456</width>
     <height>491</height>
    </rect>
   </property>
@@ -17,8 +17,8 @@
    <iconset resource="Icons.qrc">
     <normaloff>:/icons/icons/database_connect.png</normaloff>:/icons/icons/database_connect.png</iconset>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
     <widget class="QTabWidget" name="tw">
      <property name="minimumSize">
       <size>
@@ -33,7 +33,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -243,7 +243,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="mainwindow">
       <attribute name="title">
        <string>Main window</string>
       </attribute>
@@ -576,7 +576,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="financial">
+     <widget class="QWidget" name="money">
       <attribute name="title">
        <string>Money</string>
       </attribute>
@@ -683,7 +683,142 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="db">
+     <widget class="QWidget" name="permissions">
+      <attribute name="title">
+       <string>Permissions</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="6" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>Acceptor can edit diagnostics:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>Master can edit works:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_32">
+         <property name="text">
+          <string>Acceptor can edit spares:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="cbMEdWorks">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="cbMEdSpares">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QCheckBox" name="cbAEdSpares">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_33">
+         <property name="text">
+          <string>Acceptor can edit works:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="cbAEdWorks">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QCheckBox" name="cbAEdDiag">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="11" column="0" colspan="3" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_36">
+         <property name="text">
+          <string>Requires restart</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>Master can edit spares:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="3">
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="3" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_35">
+         <property name="text">
+          <string>Requires active database connection</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="database">
       <attribute name="title">
        <string>Database</string>
       </attribute>
@@ -827,7 +962,7 @@
      </widget>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="cancel">
@@ -873,15 +1008,43 @@
  <tabstops>
   <tabstop>tw</tabstop>
   <tabstop>language</tabstop>
+  <tabstop>eDefAcceptor</tabstop>
+  <tabstop>eDefMaster</tabstop>
+  <tabstop>eDefState</tabstop>
+  <tabstop>eUsername</tabstop>
+  <tabstop>ePassword</tabstop>
+  <tabstop>save</tabstop>
+  <tabstop>cancel</tabstop>
+  <tabstop>cbDate</tabstop>
+  <tabstop>wDate</tabstop>
+  <tabstop>cbState</tabstop>
+  <tabstop>wState</tabstop>
+  <tabstop>cbCustomer</tabstop>
+  <tabstop>wCustomer</tabstop>
+  <tabstop>cbType</tabstop>
+  <tabstop>wType</tabstop>
+  <tabstop>cbProduct</tabstop>
+  <tabstop>wProduct</tabstop>
+  <tabstop>cbDefect</tabstop>
+  <tabstop>wDefect</tabstop>
+  <tabstop>cbAcceptor</tabstop>
+  <tabstop>wAcceptor</tabstop>
+  <tabstop>cbMaster</tabstop>
+  <tabstop>wMaster</tabstop>
+  <tabstop>cbNotified</tabstop>
+  <tabstop>wNotified</tabstop>
+  <tabstop>prmast</tabstop>
+  <tabstop>pracc</tabstop>
+  <tabstop>cbMEdWorks</tabstop>
+  <tabstop>cbMEdSpares</tabstop>
+  <tabstop>cbAEdWorks</tabstop>
+  <tabstop>cbAEdSpares</tabstop>
+  <tabstop>cbAEdDiag</tabstop>
   <tabstop>server</tabstop>
   <tabstop>port</tabstop>
   <tabstop>dbname</tabstop>
   <tabstop>username</tabstop>
   <tabstop>password</tabstop>
-  <tabstop>prmast</tabstop>
-  <tabstop>pracc</tabstop>
-  <tabstop>save</tabstop>
-  <tabstop>cancel</tabstop>
  </tabstops>
  <resources>
   <include location="Icons.qrc"/>

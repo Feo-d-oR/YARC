@@ -9,6 +9,14 @@ EditWorkReport::EditWorkReport(QWidget *parent) :
     EditWorkReport::activateWindow();
     ui->setupUi(this);
     isnew = true;
+    if(MainWindow::role == 1 && !MainWindow::masterCanEditWorks)
+        ui->bAddWork->setDisabled(1);
+    if(MainWindow::role == 1 && !MainWindow::masterCanEditSpares)
+        ui->bAddSpare->setDisabled(1);
+    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditWorks)
+        ui->bAddWork->setDisabled(1);
+    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditSpares)
+        ui->bAddSpare->setDisabled(1);
 }
 
 EditWorkReport::~EditWorkReport()
