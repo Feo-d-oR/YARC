@@ -84,12 +84,14 @@
      <string>Catalogs</string>
     </property>
     <addaction name="mCustomers"/>
+    <addaction name="mSuppliers"/>
     <addaction name="mEmployees"/>
     <addaction name="separator"/>
-    <addaction name="mProductTypes"/>
     <addaction name="mSpares"/>
     <addaction name="mSpareTypes"/>
+    <addaction name="separator"/>
     <addaction name="mWorkTypes"/>
+    <addaction name="mProductTypes"/>
    </widget>
    <widget class="QMenu" name="journals">
     <property name="title">
@@ -371,6 +373,15 @@
    </property>
    <property name="text">
     <string>Users</string>
+   </property>
+  </action>
+  <action name="mSuppliers">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/lorry.png</normaloff>:/icons/icons/lorry.png</iconset>
+   </property>
+   <property name="text">
+    <string>Suppliers</string>
    </property>
   </action>
  </widget>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CatCustomers</class>
- <widget class="QDialog" name="CatCustomers">
+ <class>CatSuppliers</class>
+ <widget class="QDialog" name="CatSuppliers">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>761</width>
-    <height>440</height>
+    <width>767</width>
+    <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Customers</string>
+   <string>Suppliers</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
-    <normaloff>:/icons/icons/vcard.png</normaloff>:/icons/icons/vcard.png</iconset>
+    <normaloff>:/icons/icons/lorry.png</normaloff>:/icons/icons/lorry.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -42,9 +42,8 @@
         <string>Add</string>
        </property>
        <property name="icon">
-        <iconset>
-         <normalon>:/icons/icons/table_row_insert.png</normalon>
-        </iconset>
+        <iconset resource="Icons.qrc">
+         <normaloff>:/icons/icons/lorry_add.png</normaloff>:/icons/icons/lorry_add.png</iconset>
        </property>
       </widget>
      </item>
@@ -57,9 +56,8 @@
         <string>Delete</string>
        </property>
        <property name="icon">
-        <iconset>
-         <normalon>:/icons/icons/table_row_delete.png</normalon>
-        </iconset>
+        <iconset resource="Icons.qrc">
+         <normaloff>:/icons/icons/lorry_delete.png</normaloff>:/icons/icons/lorry_delete.png</iconset>
        </property>
        <property name="checkable">
         <bool>false</bool>

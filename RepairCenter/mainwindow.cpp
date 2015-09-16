@@ -18,6 +18,7 @@
 #include "printhwdocuments.h"
 #include "about.h"
 #include "salaries.h"
+#include "catsuppliers.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -171,7 +172,8 @@ void MainWindow::loadUserInterface()
             ui->mWorkTypes->setDisabled(1);
         if (!masterCanEditSpares){
             ui->mSpares->setDisabled(1);
-            ui->mSpareTypes->setDisabled(1);}
+            ui->mSpareTypes->setDisabled(1);
+            ui->mSuppliers->setDisabled(1);}
 
     }
     else if (role == 2) //if acceptor
@@ -181,13 +183,16 @@ void MainWindow::loadUserInterface()
         setCentralWidget(ordersmain);
 
         ui->masterToolBar->hide();
+        ui->mEmployees->setDisabled(1);
+        ui->mPaySalaries->setDisabled(1);
         if (!acceptorCanEditWorks)
             ui->mNewWorkReport->setDisabled(1);
         if(!acceptorCanEditDiag)
             ui->mNewDiagReport->setDisabled(1);
-        ui->mEmployees->setDisabled(1);
-        ui->mPaySalaries->setDisabled(1);
-        ui->mEmployees->setDisabled(1);
+        if (!acceptorCanEditSpares){
+            ui->mSpares->setDisabled(1);
+            ui->mSpareTypes->setDisabled(1);
+            ui->mSuppliers->setDisabled(1);}
 
     }
     else if (role == 3) //if storekeeper
@@ -364,3 +369,7 @@ void MainWindow::on_mAboutQt_triggered(){
 void MainWindow::on_mPaySalaries_triggered(){
     Salaries * sal = new Salaries();
     sal->show();}
+
+void MainWindow::on_mSuppliers_triggered(){
+    CatSuppliers* csu = new CatSuppliers();
+    csu->show();}

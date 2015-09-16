@@ -3,10 +3,12 @@
 ===========================================
 
 ---------------- v0.3.4b ------------------
+Some nasty typos in SQL queries fixed
 Passwords now kinda encrypted :)
 Separate UI for various roles
 Users management (in Employees catalog), default login and password: "admin"
 "Permissions" settings for works and spares editing
+For spare parts: suppliers, buying price and quantity added
 
 ---------------- v0.3.3b ------------------
 "Regular" field in "Customers"

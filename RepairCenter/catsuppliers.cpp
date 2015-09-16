@@ -1,35 +1,35 @@
-#include "catcustomers.h"
-#include "ui_catcustomers.h"
+#include "catsuppliers.h"
+#include "ui_catsuppliers.h"
 
-CatCustomers::CatCustomers(QWidget *parent) :
+CatSuppliers::CatSuppliers(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::CatCustomers)
+    ui(new Ui::CatSuppliers)
 {
     ui->setupUi(this);
     initModel();
 }
 
-CatCustomers::~CatCustomers()
+CatSuppliers::~CatSuppliers()
 {
     delete ui;
 }
 
-void CatCustomers::initModel()
+void CatSuppliers::initModel()
 {
     model = new QSqlTableModel(ui->tview);
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->setTable("customers");
+    model->setTable("suppliers");
     ui->tview->setModel(model);
 
     ui->tview->hideColumn(model->fieldIndex("id"));
     ui->tview->setColumnWidth(model->fieldIndex("name"), 200);
     ui->tview->setColumnWidth(model->fieldIndex("phone"), 150);
     ui->tview->setColumnWidth(model->fieldIndex("address"), 300);
-    ui->tview->setColumnWidth(model->fieldIndex("regular"), 50);
+    ui->tview->setColumnWidth(model->fieldIndex("comment"), 500);
     model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("Name"));
     model->setHeaderData(model->fieldIndex("phone"), Qt::Horizontal, tr("Phone"));
     model->setHeaderData(model->fieldIndex("address"), Qt::Horizontal, tr("Address"));
-    model->setHeaderData(model->fieldIndex("regular"), Qt::Horizontal, tr("Regular?"));
+    model->setHeaderData(model->fieldIndex("comment"), Qt::Horizontal, tr("Comment"));
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();
@@ -37,7 +37,7 @@ void CatCustomers::initModel()
     model->select();
 }
 
-void CatCustomers::on_bAdd_clicked()
+void CatSuppliers::on_bAdd_clicked()
 {
     int rc;
     rc = model->rowCount();
@@ -45,18 +45,18 @@ void CatCustomers::on_bAdd_clicked()
     ui->tview->selectRow(rc);
 }
 
-void CatCustomers::on_bSave_clicked()
+void CatSuppliers::on_bSave_clicked()
 {
     model->submitAll();
 }
 
-void CatCustomers::on_bClose_clicked()
+void CatSuppliers::on_bClose_clicked()
 {
     model->revertAll();
     close();
 }
 
-void CatCustomers::on_bDelete_clicked()
+void CatSuppliers::on_bDelete_clicked()
 {
     QItemSelectionModel *sm = ui->tview->selectionModel();
     if (sm->hasSelection()){

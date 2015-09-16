@@ -153,14 +153,18 @@
     <message>
         <location filename="../dbwork.cpp" line="62"/>
         <location filename="../dbwork.cpp" line="100"/>
-        <location filename="../dbwork.cpp" line="157"/>
+        <source>Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dbwork.cpp" line="156"/>
         <source>Director</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="63"/>
         <location filename="../dbwork.cpp" line="101"/>
-        <location filename="../dbwork.cpp" line="158"/>
+        <location filename="../dbwork.cpp" line="157"/>
         <source>Admin</source>
         <translation type="unfinished"></translation>
     </message>

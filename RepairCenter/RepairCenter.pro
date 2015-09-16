@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     salaries.cpp \
     orderswidgetmain.cpp \
     orderswidgetmaster.cpp \
-    simplecrypt.cpp
+    simplecrypt.cpp \
+    catsuppliers.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -57,7 +58,8 @@ HEADERS  += mainwindow.h \
     salaries.h \
     orderswidgetmain.h \
     orderswidgetmaster.h \
-    simplecrypt.h
+    simplecrypt.h \
+    catsuppliers.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -78,7 +80,8 @@ FORMS    += mainwindow.ui \
     about.ui \
     salaries.ui \
     orderswidgetmain.ui \
-    orderswidgetmaster.ui
+    orderswidgetmaster.ui \
+    catsuppliers.ui
 
 OTHER_FILES += \
     ../CommonFiles/README_en.txt \

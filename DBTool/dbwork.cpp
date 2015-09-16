@@ -15,10 +15,10 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE work_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, date TIMESTAMP, orderid INTEGER, master INTEGER, work INTEGER, quant INTEGER, spares VARCHAR(64), quants VARCHAR(64))");
     q.exec("CREATE TABLE diag_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, date TIMESTAMP, orderid INTEGER, master INTEGER, inspect VARCHAR(1024), defects VARCHAR(1024), recomm VARCHAR(1024))");
     q.exec("CREATE TABLE works (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DOUBLE, comment VARCHAR(128))");
-    q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DOUBLE)");
+    q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, type INTEGER, name VARCHAR(255), price DOUBLE, buyingprice DOUBLE NULL, supplier INT NULL DEFAULT NULL, quantity INT NULL DEFAULT NULL)");
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
     q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ DOUBLE)");
-//    q.exec("CREATE TABLE users (id INTEGER AUTO_INCREMENT PRIMARY KEY, user VARCHAR(32), password VARCHAR(32), hash VARCHAR(255), role INTEGER)");
+    q.exec(QString("CREATE TABLE suppliers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NULL DEFAULT NULL, phone VARCHAR(255) NULL DEFAULT NULL, address VARCHAR(255) NULL DEFAULT NULL, comment VARCHAR(1024) NULL DEFAULT NULL)"));
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 6, NULL)");
@@ -152,7 +152,6 @@ QSqlError DBWork::updateTo5() /*since repaircenter v0.3.3b*/
 
 QSqlError DBWork::updateTo6() /*since repaircenter v0.3.4b*/
 {
-//    q.exec("CREATE TABLE users (id INTEGER AUTO_INCREMENT PRIMARY KEY, user VARCHAR(32), password VARCHAR(32), hash VARCHAR(255), role INTEGER)");
     q.exec(QString("ALTER TABLE employees ADD username VARCHAR(64) NULL DEFAULT NULL , ADD password VARCHAR(64) NULL DEFAULT NULL"));
     q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Director") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Admin") + "')");
@@ -163,8 +162,8 @@ QSqlError DBWork::updateTo6() /*since repaircenter v0.3.4b*/
     q.exec(QString("INSERT INTO system VALUES('acceptorCanEditWorks', 1, NULL)"));
     q.exec(QString("INSERT INTO system VALUES('acceptorCanEditSpares', 1, NULL)"));
     q.exec(QString("INSERT INTO system VALUES('acceptorCanEditDiag', 1, NULL)"));
-//    q.exec(QString(""));
-//    q.exec(QString(""));
+    q.exec(QString("ALTER TABLE spares ADD buyingprice DOUBLE NULL , ADD supplier INT NULL DEFAULT NULL , ADD quantity INT NULL DEFAULT NULL"));
+    q.exec(QString("CREATE TABLE suppliers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NULL DEFAULT NULL, phone VARCHAR(255) NULL DEFAULT NULL, address VARCHAR(255) NULL DEFAULT NULL, comment VARCHAR(1024) NULL DEFAULT NULL)"));
 //    q.exec(QString(""));
 //    q.exec(QString(""));
 //    q.exec(QString(""));
