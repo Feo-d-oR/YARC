@@ -136,7 +136,6 @@ win32:RC_FILE = appicon.rc
 rpcupd.commands = lupdate $$PWD/RepairCenter.pro
 rpcrel.commands = lrelease $$PWD/RepairCenter.pro
 rpcrel.depends = rpcupd
-#translate.commands = $(COPY_DIR) *.qm $$DESTDIR/i18n/
 
 QMAKE_EXTRA_TARGETS += rpcupd rpcrel
 
@@ -146,7 +145,7 @@ first.depends = $(first) cf_copy
 export(first.depends)
 export(cf_copy.commands)
 
-#md.commands = $(MKDIR) $$DESTDIR/i18n/
+md.commands = $(MKDIR) $$DESTDIR/i18n/
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = rpcrel
 

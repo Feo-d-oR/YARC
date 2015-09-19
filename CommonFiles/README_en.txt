@@ -4,10 +4,10 @@
 
 ---------------- v0.3.4b ------------------
 Some nasty typos in SQL queries fixed
-Passwords now kinda encrypted :)
+Passwords now kinda encrypted :) (Using SimpleCrypt by Andre Somers)
 Separate UI for various roles
 Users management (in Employees catalog), default login and password: "admin"
-"Permissions" settings for works and spares editing
+"Permissions" settings editing for works and spares
 For spare parts: suppliers, buying price and quantity added
 
 ---------------- v0.3.3b ------------------
