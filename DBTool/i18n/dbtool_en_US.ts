@@ -153,20 +153,16 @@
     <message>
         <location filename="../dbwork.cpp" line="62"/>
         <location filename="../dbwork.cpp" line="100"/>
-        <source>Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../dbwork.cpp" line="156"/>
-        <source>Director</source>
-        <translation type="unfinished"></translation>
+        <source>Manager</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="63"/>
         <location filename="../dbwork.cpp" line="101"/>
         <location filename="../dbwork.cpp" line="157"/>
         <source>Admin</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -337,7 +333,7 @@ with selected language.</source>
     <message>
         <location filename="../mainwindow.cpp" line="215"/>
         <source>Database with that name already exist!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="247"/>
@@ -345,43 +341,43 @@ with selected language.</source>
         <location filename="../mainwindow.cpp" line="281"/>
         <location filename="../mainwindow.cpp" line="291"/>
         <source>Done!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="248"/>
         <source>Database succesfully created!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="257"/>
         <source>Unable to create database!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="272"/>
         <source>Database succesfully updated!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="282"/>
         <source>Database doesn&apos;t need to be updated</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="292"/>
         <source>Database succecfully cleared!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="302"/>
         <source>Something went wrong during update</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="321"/>
         <location filename="../mainwindow.cpp" line="341"/>
         <source>Something went wrong during clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Something went wrong during cleanup</translation>
     </message>
 </context>
 </TS>

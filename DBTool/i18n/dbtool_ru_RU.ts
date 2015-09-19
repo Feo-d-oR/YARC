@@ -209,20 +209,16 @@
     <message>
         <location filename="../dbwork.cpp" line="62"/>
         <location filename="../dbwork.cpp" line="100"/>
-        <source>Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../dbwork.cpp" line="156"/>
-        <source>Director</source>
-        <translation type="unfinished"></translation>
+        <source>Manager</source>
+        <translation>Менеджер</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="63"/>
         <location filename="../dbwork.cpp" line="101"/>
         <location filename="../dbwork.cpp" line="157"/>
         <source>Admin</source>
-        <translation type="unfinished"></translation>
+        <translation>Admin</translation>
     </message>
 </context>
 <context>

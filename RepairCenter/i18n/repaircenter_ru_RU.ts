@@ -107,12 +107,12 @@
     <message>
         <location filename="../catemployees.ui" line="246"/>
         <source>Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя:</translation>
     </message>
     <message>
         <location filename="../catemployees.ui" line="266"/>
         <source>Password:</source>
-        <translation type="unfinished">Пароль:</translation>
+        <translation>Пароль:</translation>
     </message>
     <message>
         <location filename="../catemployees.ui" line="306"/>
@@ -172,7 +172,7 @@
     <message>
         <location filename="../catemployees.cpp" line="41"/>
         <source>Role</source>
-        <translation type="unfinished"></translation>
+        <translation>Роль</translation>
     </message>
     <message>
         <source>Position type</source>
@@ -281,7 +281,7 @@
         <location filename="../catspares.ui" line="123"/>
         <location filename="../catspares.ui" line="387"/>
         <source>Supplier:</source>
-        <translation type="unfinished"></translation>
+        <translation>Поставщик:</translation>
     </message>
     <message>
         <location filename="../catspares.ui" line="146"/>
@@ -292,17 +292,17 @@
     <message>
         <location filename="../catspares.ui" line="169"/>
         <source>Buying price:</source>
-        <translation type="unfinished"></translation>
+        <translation>Закупочная цена:</translation>
     </message>
     <message>
         <location filename="../catspares.ui" line="192"/>
         <source>Selling price:</source>
-        <translation type="unfinished"></translation>
+        <translation>Отпускная цена:</translation>
     </message>
     <message>
         <location filename="../catspares.ui" line="209"/>
         <source>Quantity:</source>
-        <translation type="unfinished">Кол-во:</translation>
+        <translation>Кол-во:</translation>
     </message>
     <message>
         <source>Price:</source>
@@ -341,7 +341,7 @@
     <message>
         <location filename="../catspares.cpp" line="42"/>
         <source>Qty</source>
-        <translation type="unfinished">Кол-во</translation>
+        <translation>Кол-во</translation>
     </message>
 </context>
 <context>
@@ -349,47 +349,47 @@
     <message>
         <location filename="../catsuppliers.ui" line="14"/>
         <source>Suppliers</source>
-        <translation type="unfinished"></translation>
+        <translation>Поставщики</translation>
     </message>
     <message>
         <location filename="../catsuppliers.ui" line="42"/>
         <source>Add</source>
-        <translation type="unfinished">Добавить</translation>
+        <translation>Добавить</translation>
     </message>
     <message>
         <location filename="../catsuppliers.ui" line="56"/>
         <source>Delete</source>
-        <translation type="unfinished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../catsuppliers.ui" line="89"/>
         <source>Save</source>
-        <translation type="unfinished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <location filename="../catsuppliers.ui" line="101"/>
         <source>Close</source>
-        <translation type="unfinished">Закрыть</translation>
+        <translation>Закрыть</translation>
     </message>
     <message>
         <location filename="../catsuppliers.cpp" line="29"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Наименование</translation>
     </message>
     <message>
         <location filename="../catsuppliers.cpp" line="30"/>
         <source>Phone</source>
-        <translation type="unfinished">Телефон</translation>
+        <translation>Телефон</translation>
     </message>
     <message>
         <location filename="../catsuppliers.cpp" line="31"/>
         <source>Address</source>
-        <translation type="unfinished">Адрес</translation>
+        <translation>Адрес</translation>
     </message>
     <message>
         <location filename="../catsuppliers.cpp" line="32"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментарий</translation>
     </message>
 </context>
 <context>
@@ -1575,14 +1575,13 @@
         <translation>Выплата зарплаты</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="375"/>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Пользователи</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="384"/>
+        <location filename="../mainwindow.ui" line="375"/>
         <source>Suppliers</source>
-        <translation type="unfinished"></translation>
+        <translation>Поствщики</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="58"/>
@@ -1937,7 +1936,7 @@
     <message>
         <location filename="../orderswidgetmaster.ui" line="148"/>
         <source>In work</source>
-        <translation type="unfinished"></translation>
+        <translation>В работе</translation>
     </message>
     <message>
         <location filename="../orderswidgetmaster.ui" line="167"/>
@@ -2250,7 +2249,7 @@
     <message>
         <location filename="../settings.ui" line="173"/>
         <source>Username:</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя:</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="248"/>
@@ -2349,32 +2348,32 @@
     <message>
         <location filename="../settings.ui" line="688"/>
         <source>Permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Привелегии</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="694"/>
         <source>Acceptor can edit diagnostics:</source>
-        <translation type="unfinished"></translation>
+        <translation>Приёмщик может редактировать акты диагностики:</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="701"/>
         <source>Master can edit works:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мастер может редактировать работы: </translation>
     </message>
     <message>
         <location filename="../settings.ui" line="708"/>
         <source>Acceptor can edit spares:</source>
-        <translation type="unfinished"></translation>
+        <translation>Приёмщик  может редактировать запчасти:</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="745"/>
         <source>Acceptor can edit works:</source>
-        <translation type="unfinished"></translation>
+        <translation>Приёмщик  может редактировать работы:</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="798"/>
         <source>Master can edit spares:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мастер может редактировать запчасти: </translation>
     </message>
     <message>
         <location filename="../settings.ui" line="823"/>

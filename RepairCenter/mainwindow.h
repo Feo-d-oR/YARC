@@ -70,7 +70,6 @@ private slots:
     void on_mPrintHWDocs_triggered();
     void on_mAboutQt_triggered();
     void on_mPaySalaries_triggered();
-
     void on_mSuppliers_triggered();
 
 private:

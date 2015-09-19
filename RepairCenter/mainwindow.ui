@@ -366,15 +366,6 @@
     <string>Pay salary</string>
    </property>
   </action>
-  <action name="mUsers">
-   <property name="icon">
-    <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/user_edit.png</normaloff>:/icons/icons/user_edit.png</iconset>
-   </property>
-   <property name="text">
-    <string>Users</string>
-   </property>
-  </action>
   <action name="mSuppliers">
    <property name="icon">
     <iconset resource="Icons.qrc">

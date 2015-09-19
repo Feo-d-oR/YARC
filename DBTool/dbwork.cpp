@@ -153,7 +153,7 @@ QSqlError DBWork::updateTo5() /*since repaircenter v0.3.3b*/
 QSqlError DBWork::updateTo6() /*since repaircenter v0.3.4b*/
 {
     q.exec(QString("ALTER TABLE employees ADD username VARCHAR(64) NULL DEFAULT NULL , ADD password VARCHAR(64) NULL DEFAULT NULL"));
-    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Director") + "')");
+    q.exec(QString("INSERT INTO position_types VALUES(4,'") + tr("Manager") + "')");
     q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Admin") + "')");
     q.exec(QString("INSERT INTO employees VALUES(NULL,'Admin','Admin','Admin','Admin',5,'Admin',0,'admin','admin')"));
 
