@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>989</width>
+    <width>880</width>
     <height>482</height>
    </rect>
   </property>
@@ -263,6 +263,35 @@
          <number>4</number>
         </property>
         <item>
+         <widget class="QPushButton" name="searchbyfield">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>22</horstretch>
+            <verstretch>24</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>22</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>22</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="Icons.qrc">
+            <normaloff>:/icons/icons/find.png</normaloff>:/icons/icons/find.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="horizontalSpacer">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -341,6 +370,9 @@
           <property name="accelerated">
            <bool>false</bool>
           </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>false</bool>
+          </property>
           <property name="dateTime">
            <datetime>
             <hour>0</hour>
@@ -366,9 +398,6 @@
             <month>12</month>
             <day>31</day>
            </date>
-          </property>
-          <property name="showGroupSeparator" stdset="0">
-           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -440,13 +469,13 @@
        <number>3</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="rightMargin">
        <number>5</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>5</number>
       </property>
       <item row="1" column="0">
        <widget class="QLabel" name="label">
@@ -1141,6 +1170,38 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>rbAll</tabstop>
+  <tabstop>rbCompleted</tabstop>
+  <tabstop>rbAccepted</tabstop>
+  <tabstop>rbConsent</tabstop>
+  <tabstop>rbWaitSpares</tabstop>
+  <tabstop>rbCall</tabstop>
+  <tabstop>searchtexttype</tabstop>
+  <tabstop>lSearch</tabstop>
+  <tabstop>searchbyfield</tabstop>
+  <tabstop>datestart</tabstop>
+  <tabstop>dateend</tabstop>
+  <tabstop>searchbydate</tabstop>
+  <tabstop>tview</tabstop>
+  <tabstop>dNumber</tabstop>
+  <tabstop>eState</tabstop>
+  <tabstop>eMaster</tabstop>
+  <tabstop>eCalled</tabstop>
+  <tabstop>datenotify</tabstop>
+  <tabstop>dComment</tabstop>
+  <tabstop>bSubmit</tabstop>
+  <tabstop>dDateIn</tabstop>
+  <tabstop>dCustomer</tabstop>
+  <tabstop>dPhone</tabstop>
+  <tabstop>dProductType</tabstop>
+  <tabstop>dProduct</tabstop>
+  <tabstop>dDisease</tabstop>
+  <tabstop>dDateOut</tabstop>
+  <tabstop>bView</tabstop>
+  <tabstop>bEdit</tabstop>
+  <tabstop>bDelete</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

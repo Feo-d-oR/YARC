@@ -70,7 +70,7 @@ void OrdersWidgetMaster::initModelOrders()
 
     connect(ui->tview->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
-
+    model->setFilter("number >= " + MainWindow::showlimit);
     model->select();
 }
 
@@ -151,42 +151,59 @@ void OrdersWidgetMaster::readUiSettings()
 
 
 void OrdersWidgetMaster::on_rbAll_clicked(bool checked){
-    if (checked)
+    if (checked){
         ui->lSearch->clear();
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter(QString());
+        model->setFilter("number >= " + MainWindow::showlimit);
         model->select();
+    }
 }
 
 void OrdersWidgetMaster::on_rbCompleted_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (3, 4, 5, 6, 18)");
+        model->setFilter("state IN (3, 4, 5, 6, 18) AND number >= " + MainWindow::showlimit);
+    }
 }
 
 void OrdersWidgetMaster::on_rbAccepted_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (1, 2, 12, 13, 19, 20, 21)");
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (1, 2, 12, 13, 19, 20, 21) AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (1, 2, 12, 13, 19, 20, 21)");
+    }
 }
 
 void OrdersWidgetMaster::on_rbConsent_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (7, 8)");
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (7, 8) AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (7, 8)");
+    }
 }
 
 void OrdersWidgetMaster::on_rbWaitSpares_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (14, 15, 16, 17)");
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (14, 15, 16, 17) AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (14, 15, 16, 17)");
+    }
 }
 
-void OrdersWidgetMaster::on_rbInWork_clicked(bool checked)
-{
-    if (checked)
-        model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (8,12,13,21)");
+void OrdersWidgetMaster::on_rbInWork_clicked(bool checked){
+    if (checked){
+        model->setSort(model->fieldIndex("number"),Qt::AscendingOrder);
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (4,5,6,7,20) AND called = 0 AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (4,5,6,7,20) AND called = 0");
+    }
 }
 
 void OrdersWidgetMaster::on_searchbydate_clicked()
@@ -196,19 +213,17 @@ void OrdersWidgetMaster::on_searchbydate_clicked()
     model->select();
 }
 
-void OrdersWidgetMaster::on_lSearch_textEdited(const QString &arg1)
+void OrdersWidgetMaster::on_searchbyfield_clicked(){
+    searchByField();}
+
+void OrdersWidgetMaster::on_lSearch_returnPressed(){
+    searchByField();}
+
+void OrdersWidgetMaster::searchByField()
 {
     model->setFilter(QString());
-    if(ui->lSearch->text() != ""){
-//        if(ui->searchtexttype->currentText() == tr("Order #"))
-            model->setFilter("number = " + arg1);
-//        if(ui->searchtexttype->currentText() == tr("Name"))        {
-//            getCustomerIds();
-//            model->setFilter("customer IN ('" + namesstr + "')");
-//            model->setFilter("relTblAl_5.name LIKE '%" + arg1 + "%'");
-            qDebug() << "filter:" << model->filter();
-        }
-//    }
+    if(ui->lSearch->text() != "")
+        model->setFilter("number = " + ui->lSearch->text());
 }
 
 void OrdersWidgetMaster::on_tview_clicked(const QModelIndex &index){

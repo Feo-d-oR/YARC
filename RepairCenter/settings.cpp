@@ -41,6 +41,9 @@ Settings::Settings(QWidget *parent) :
     ui->wAcceptor->setText(settings->value("orderstable/acceptorw").toString());
     ui->wMaster->setText(settings->value("orderstable/masterw").toString());
     ui->wNotified->setText(settings->value("orderstable/notifiedw").toString());
+
+    ui->eLimitOrders->setText(settings->value("orderstable/showlimit").toString());
+    ui->cbAffectFilters->setChecked(settings->value("orderstable/limitallfilters").toBool());
     }
 
     QString lang = settings->value("locale/language").toString();
@@ -116,15 +119,11 @@ void Settings::readDBSettings()
     ui->eDefState->setCurrentIndex(idx_s.value(0).row());
 }
 
-Settings::~Settings()
-{
-    delete ui;
-}
+Settings::~Settings(){
+    delete ui;}
 
-void Settings::on_cancel_clicked()
-{
-    close();
-}
+void Settings::on_cancel_clicked(){
+    close();}
 
 void Settings::on_save_clicked()
 {
@@ -147,6 +146,9 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/acceptorw", ui->wAcceptor->text());
     settings->setValue("orderstable/masterw", ui->wMaster->text());
     settings->setValue("orderstable/notifiedw", ui->wNotified->text());
+
+    settings->setValue("orderstable/showlimit", ui->eLimitOrders->text());
+    settings->setValue("orderstable/limitallfilters", ui->cbAffectFilters->isChecked());
 
     settings->setValue("user/username", ui->eUsername->text());
     settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));

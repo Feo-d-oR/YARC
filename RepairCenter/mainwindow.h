@@ -38,6 +38,9 @@ public:
     static bool acceptorCanEditDiag;
     static bool isadmin;
     static QString currentID;
+    static QString showlimit;
+    static bool limitallfilters;
+
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 

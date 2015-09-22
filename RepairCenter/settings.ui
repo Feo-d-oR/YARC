@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>456</width>
-    <height>491</height>
+    <width>528</width>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -257,13 +257,6 @@
           <bool>false</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="9" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_19">
-            <property name="text">
-             <string>Notified:</string>
-            </property>
-           </widget>
-          </item>
           <item row="5" column="1" alignment="Qt::AlignHCenter">
            <widget class="QCheckBox" name="cbProduct">
             <property name="text">
@@ -271,53 +264,6 @@
             </property>
             <property name="checked">
              <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="label_18">
-            <property name="text">
-             <string>Width:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QLineEdit" name="wState">
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>210</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_9">
-            <property name="text">
-             <string>Date:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="2">
-           <widget class="QLineEdit" name="wProduct">
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>120</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_13">
-            <property name="text">
-             <string>Product:</string>
             </property>
            </widget>
           </item>
@@ -334,10 +280,61 @@
             </property>
            </widget>
           </item>
-          <item row="6" column="1" alignment="Qt::AlignHCenter">
-           <widget class="QCheckBox" name="cbDefect">
+          <item row="1" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Date:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Width:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QCheckBox" name="cbAcceptor">
             <property name="text">
              <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QCheckBox" name="cbNotified">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>Acceptor:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Notified:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="2">
+           <widget class="QLineEdit" name="wAcceptor">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>100</string>
             </property>
            </widget>
           </item>
@@ -354,6 +351,116 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="wState">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>210</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QCheckBox" name="cbMaster">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Type:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>State:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLineEdit" name="wCustomer">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>120</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Defect:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>Visible?</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLineEdit" name="wDefect">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>200</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLineEdit" name="wType">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>100</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Customer:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QCheckBox" name="cbType">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="tristate">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
           <item row="3" column="1" alignment="Qt::AlignHCenter">
            <widget class="QCheckBox" name="cbCustomer">
             <property name="text">
@@ -361,21 +468,42 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="3">
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="8" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Master:</string>
             </property>
-            <property name="sizeHint" stdset="0">
+           </widget>
+          </item>
+          <item row="5" column="0" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Product:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLineEdit" name="wProduct">
+            <property name="maximumSize">
              <size>
               <width>40</width>
-              <height>20</height>
+              <height>16777215</height>
              </size>
             </property>
-           </spacer>
+            <property name="text">
+             <string>120</string>
+            </property>
+           </widget>
           </item>
-          <item row="7" column="2">
-           <widget class="QLineEdit" name="wAcceptor">
+          <item row="1" column="4" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_37">
+            <property name="text">
+             <string>Show orders from #</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="2">
+           <widget class="QLineEdit" name="wMaster">
             <property name="maximumSize">
              <size>
               <width>40</width>
@@ -397,6 +525,13 @@
             </property>
            </widget>
           </item>
+          <item row="6" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QCheckBox" name="cbDefect">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
           <item row="2" column="1" alignment="Qt::AlignHCenter">
            <widget class="QCheckBox" name="cbState">
             <property name="text">
@@ -407,128 +542,57 @@
             </property>
            </widget>
           </item>
-          <item row="8" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_14">
-            <property name="text">
-             <string>Master:</string>
+          <item row="1" column="5">
+           <widget class="QLineEdit" name="eLimitOrders">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
             </property>
-           </widget>
-          </item>
-          <item row="6" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_16">
-            <property name="text">
-             <string>Defect:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="2">
-           <widget class="QLineEdit" name="wDefect">
             <property name="maximumSize">
              <size>
-              <width>40</width>
+              <width>120</width>
               <height>16777215</height>
              </size>
             </property>
-            <property name="text">
-             <string>200</string>
-            </property>
            </widget>
           </item>
-          <item row="3" column="2">
-           <widget class="QLineEdit" name="wCustomer">
-            <property name="maximumSize">
+          <item row="1" column="6">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
              <size>
               <width>40</width>
-              <height>16777215</height>
+              <height>20</height>
              </size>
             </property>
+           </spacer>
+          </item>
+          <item row="2" column="4" alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_38">
             <property name="text">
-             <string>120</string>
+             <string>Affects all filters?</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>State:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_12">
-            <property name="text">
-             <string>Type:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1" alignment="Qt::AlignHCenter">
-           <widget class="QCheckBox" name="cbAcceptor">
+          <item row="2" column="5">
+           <widget class="QCheckBox" name="cbAffectFilters">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
-          <item row="8" column="1" alignment="Qt::AlignHCenter">
-           <widget class="QCheckBox" name="cbMaster">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
+          <item row="0" column="3" rowspan="11">
+           <widget class="Line" name="line_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
             </property>
            </widget>
           </item>
-          <item row="8" column="2">
-           <widget class="QLineEdit" name="wMaster">
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>100</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_15">
-            <property name="text">
-             <string>Acceptor:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="label_17">
-            <property name="text">
-             <string>Visible?</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="1" alignment="Qt::AlignHCenter">
-           <widget class="QCheckBox" name="cbNotified">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1" alignment="Qt::AlignHCenter">
-           <widget class="QCheckBox" name="cbType">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-            <property name="tristate">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="2">
+          <item row="10" column="1">
            <spacer name="verticalSpacer_4">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -541,27 +605,7 @@
             </property>
            </spacer>
           </item>
-          <item row="3" column="0" alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_11">
-            <property name="text">
-             <string>Customer:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLineEdit" name="wType">
-            <property name="maximumSize">
-             <size>
-              <width>40</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>100</string>
-            </property>
-           </widget>
-          </item>
-          <item row="11" column="0" colspan="4">
+          <item row="11" column="0" colspan="7">
            <widget class="QLabel" name="label_21">
             <property name="text">
              <string>Requires restart</string>

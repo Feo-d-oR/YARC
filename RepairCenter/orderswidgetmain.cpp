@@ -76,7 +76,7 @@ void OrdersWidgetMain::initModelOrders()
 
     connect(ui->tview->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
-
+    model->setFilter("number >= " + MainWindow::showlimit);
     model->select();
     ui->datenotify->setDate(QDate::currentDate());
 }
@@ -97,7 +97,6 @@ void OrdersWidgetMain::readUiSettings()
     model->setHeaderData(acceptorIdx, Qt::Horizontal, tr("Acceptor"));
     model->setHeaderData(customerIdx, Qt::Horizontal, tr("Customer"));
     model->setHeaderData(model->fieldIndex("disease"), Qt::Horizontal, tr("Defect"));
-
 
     if (settings->value("orderstable/datee").toBool() == true){
         ui->tview->setColumnWidth(model->fieldIndex("date_in"), settings->value("orderstable/datew").toInt());}
@@ -149,43 +148,60 @@ void OrdersWidgetMain::readUiSettings()
 
 
 void OrdersWidgetMain::on_rbAll_clicked(bool checked){
-    if (checked)
+    if (checked){
         ui->lSearch->clear();
         ui->searchtexttype->setCurrentIndex(0);
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter(QString());
+        model->setFilter("number >= " + MainWindow::showlimit);
         model->select();
+    }
 }
 
 void OrdersWidgetMain::on_rbCompleted_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (3, 4, 5, 6, 18)");
+        model->setFilter("state IN (3, 4, 5, 6, 18) AND number >= " + MainWindow::showlimit);
+    }
 }
 
 void OrdersWidgetMain::on_rbAccepted_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (1, 2, 12, 13, 19, 20, 21)");
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (1, 2, 12, 13, 19, 20, 21) AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (1, 2, 12, 13, 19, 20, 21)");
+    }
 }
 
 void OrdersWidgetMain::on_rbConsent_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (7, 8)");
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (7, 8) AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (7, 8)");
+    }
 }
 
 void OrdersWidgetMain::on_rbWaitSpares_clicked(bool checked){
-    if (checked)
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
-        model->setFilter("state IN (14, 15, 16, 17)");
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (14, 15, 16, 17) AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (14, 15, 16, 17)");
+    }
 }
 
-void OrdersWidgetMain::on_rbCall_clicked(bool checked)
-{
-    if (checked)
+void OrdersWidgetMain::on_rbCall_clicked(bool checked){
+    if (checked){
         model->setSort(model->fieldIndex("number"),Qt::AscendingOrder);
-        model->setFilter("state IN (4,5,6,7,20) AND called = 0");
+        if (MainWindow::limitallfilters)
+            model->setFilter("state IN (4,5,6,7,20) AND called = 0 AND number >= " + MainWindow::showlimit);
+        else
+            model->setFilter("state IN (4,5,6,7,20) AND called = 0");
+    }
 }
 
 void OrdersWidgetMain::on_searchbydate_clicked()
@@ -195,31 +211,20 @@ void OrdersWidgetMain::on_searchbydate_clicked()
     model->select();
 }
 
-//void OrdersWidgetMain::getCustomerIds()
-//{
-//    QStringList list;
-//    QSqlQuery q;
-//    q.exec("SELECT * FROM customers WHERE name LIKE '%" + ui->lSearch->text() + "%'");
-//    q.first();
-//    list.append(q.value(0).toString());
-//    while (q.next())
-//    { list.append(q.value(0).toString()); }
-//    namesstr = list.join("','");
-//    qDebug() << "list:" << list;
-//    qDebug() << "string:" << namesstr;
-//}
+void OrdersWidgetMain::on_searchbyfield_clicked(){
+    searchByField();}
 
-void OrdersWidgetMain::on_lSearch_textEdited(const QString &arg1)
+void OrdersWidgetMain::on_lSearch_returnPressed(){
+    searchByField();}
+
+void OrdersWidgetMain::searchByField()
 {
     model->setFilter(QString());
     if(ui->lSearch->text() != ""){
         if(ui->searchtexttype->currentText() == tr("Order #"))
-            model->setFilter("number = " + arg1);
+            model->setFilter("number = " + ui->lSearch->text());
         if(ui->searchtexttype->currentText() == tr("Name"))        {
-//            getCustomerIds();
-//            model->setFilter("customer IN ('" + namesstr + "')");
-            model->setFilter("relTblAl_5.name LIKE '%" + arg1 + "%'");
-            qDebug() << "filter:" << model->filter();
+            model->setFilter("relTblAl_5.name LIKE '%" + ui->lSearch->text() + "%'");
         }
     }
 }

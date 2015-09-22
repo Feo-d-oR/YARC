@@ -2,6 +2,10 @@
 ================ CHANGELOG ================
 ===========================================
 
+---------------- v0.3.5b ------------------
+Added->Setting->Limitation for orders table
+Modified->Search in orders table->Search executed only after button or returtn pressed
+
 ---------------- v0.3.4b ------------------
 Some nasty typos in SQL queries fixed
 Passwords now kinda encrypted :) (Using SimpleCrypt by Andre Somers)

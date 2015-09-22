@@ -34,9 +34,10 @@ bool MainWindow::masterCanEditWorks = 0;
 bool MainWindow::acceptorCanEditDiag = 0;
 bool MainWindow::acceptorCanEditWorks = 0;
 bool MainWindow::acceptorCanEditSpares = 0;
-
 QString MainWindow::prevCustomer = "";
 QString MainWindow::currentID = "";
+QString MainWindow::showlimit = "0";
+bool MainWindow::limitallfilters = false;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -118,6 +119,9 @@ void MainWindow::readGlobalSettings()
     defAcceptor = settings->value("defaults/acceptor").toInt();
     defMaster = settings->value("defaults/master").toInt();
     defState = settings->value("defaults/state").toInt();
+
+    showlimit = settings->value("orderstable/showlimit").toString();
+    limitallfilters = settings->value("orderstable/limitallfilters").toBool();
 
     QString username = settings->value("user/username").toString();
     QString password = settings->value("user/password").toString();

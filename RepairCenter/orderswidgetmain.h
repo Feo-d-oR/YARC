@@ -35,19 +35,21 @@ private slots:
     void on_rbWaitSpares_clicked(bool checked);
     void on_rbCall_clicked(bool checked);
     void on_searchbydate_clicked();
-    void on_lSearch_textEdited(const QString &arg1);
     void on_bSubmit_clicked();
     void on_bView_clicked();
     void on_bEdit_clicked();
     void on_bDelete_clicked();
     void on_tview_clicked(const QModelIndex &index);
     void on_eCalled_stateChanged(int state);
+    void on_searchbyfield_clicked();
+    void on_lSearch_returnPressed();
 
 private:
     Ui::OrdersWidgetMain *ui;
     void initModelOrders();
     void readUiSettings();
     void showEditOrder();
+    void searchByField();
     QSettings * settings;
     QSqlRelationalTableModel *model;
     QDataWidgetMapper *mapper;
