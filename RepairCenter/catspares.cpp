@@ -115,8 +115,7 @@ void CatSpares::on_bAdd_clicked()
     ui->cSupplier->setCurrentIndex(-1);
 }
 
-void CatSpares::on_bSave_clicked()
-{
+void CatSpares::on_bSave_clicked(){
     model->submitAll();
 }
 

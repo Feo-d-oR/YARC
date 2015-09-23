@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    newdbversion = 6;
+    newdbversion = 7;
     readTranslation();
 }
 
@@ -61,16 +61,24 @@ void MainWindow::on_bUpdate_clicked()
             if(dbversion == 4)
             {
                 DBWork upd;
-                QSqlError err = upd.updateTo4();
+                QSqlError err = upd.updateTo5();
+                qDebug() << err.text();
+                if (err.type() != QSqlError::NoError)
+                    updateError(err);
+            }
+            if(dbversion == 5)
+            {
+                DBWork upd;
+                QSqlError err = upd.updateTo6();
                 qDebug() << err.text();
                 if (err.type() != QSqlError::NoError)
                     updateError(err);
             }
 
-            if(dbversion == 5)
+            if(dbversion == 6)
             {
                 DBWork upd;
-                QSqlError err = upd.updateTo6();
+                QSqlError err = upd.updateTo7();
                 qDebug() << err.text();
                 if (err.type() != QSqlError::NoError)
                     updateError(err);

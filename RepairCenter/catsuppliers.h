@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtSql>
+#include <QDataWidgetMapper>
 
 namespace Ui {
 class CatSuppliers;
@@ -21,11 +22,16 @@ private slots:
     void on_bSave_clicked();
     void on_bClose_clicked();
     void on_bDelete_clicked();
+    void on_bClear_clicked();
+    void on_lSearch_returnPressed();
+    void on_bSearch_clicked();
 
 private:
     Ui::CatSuppliers *ui;
-    QSqlTableModel *model;
+    QSqlRelationalTableModel *model;
+    QDataWidgetMapper *mapper;
     void initModel();
+    void search();
 };
 
 #endif // CATSUPPLIERS_H
