@@ -74,6 +74,7 @@ private slots:
     void on_mAboutQt_triggered();
     void on_mPaySalaries_triggered();
     void on_mSuppliers_triggered();
+    void on_mNewPartsRequest_triggered();
 
 private:
     bool checkSettings();
@@ -84,12 +85,14 @@ private:
     void showEditDiagReport();
     void showGiveOrder();
     void showGiveOrderDiag();
+    void showPartsRequest();
     void readGlobalSettings();
     void loadUserInterface();
     QSettings * settings;
     SimpleCrypt crypto;
-    OrdersWidgetMaster * ordersmast;
-    OrdersWidgetMain * ordersmain;
+//    OrdersWidgetMaster * ordersmast;
+    QWidget * mainwidget;
+//    OrdersWidgetMain * ordersmain;
 
 protected:
     void closeEvent(QCloseEvent *event);

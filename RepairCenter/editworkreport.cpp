@@ -182,12 +182,13 @@ void EditWorkReport::submitReport()
     QString spares;
     QString quants;
 
+    lqt.clear();
+    lsp.clear();
+
     i = ui->tview->rowCount();
     int r;
     for(r=0; r<i; r++)
     {
-        lqt.clear();
-        lsp.clear();
         lqt.append(ui->tview->item(r,2)->text());
         lsp.append(ui->tview->item(r,3)->text());
     }

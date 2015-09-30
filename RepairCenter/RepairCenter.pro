@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     orderswidgetmain.cpp \
     orderswidgetmaster.cpp \
     simplecrypt.cpp \
-    catsuppliers.cpp
+    catsuppliers.cpp \
+    editpartsrequest.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -59,7 +60,8 @@ HEADERS  += mainwindow.h \
     orderswidgetmain.h \
     orderswidgetmaster.h \
     simplecrypt.h \
-    catsuppliers.h
+    catsuppliers.h \
+    editpartsrequest.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -81,7 +83,8 @@ FORMS    += mainwindow.ui \
     salaries.ui \
     orderswidgetmain.ui \
     orderswidgetmaster.ui \
-    catsuppliers.ui
+    catsuppliers.ui \
+    editpartsrequest.ui
 
 OTHER_FILES += \
     ../CommonFiles/README_en.txt \

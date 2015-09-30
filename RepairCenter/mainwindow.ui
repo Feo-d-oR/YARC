@@ -66,6 +66,7 @@
     <addaction name="separator"/>
     <addaction name="mNewWorkReport"/>
     <addaction name="mNewDiagReport"/>
+    <addaction name="mNewPartsRequest"/>
     <addaction name="separator"/>
     <addaction name="mPrintHWDocs"/>
     <addaction name="mPaySalaries"/>
@@ -373,6 +374,11 @@
    </property>
    <property name="text">
     <string>Suppliers</string>
+   </property>
+  </action>
+  <action name="mNewPartsRequest">
+   <property name="text">
+    <string>New parts request</string>
    </property>
   </action>
  </widget>

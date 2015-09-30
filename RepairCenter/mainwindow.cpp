@@ -19,6 +19,7 @@
 #include "about.h"
 #include "salaries.h"
 #include "catsuppliers.h"
+#include "editpartsrequest.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -161,14 +162,10 @@ void MainWindow::loadUserInterface()
 {
     if (role == 1) //if master
     {
-        ordersmast = new OrdersWidgetMaster(this);
-        connect(this, SIGNAL(sendReconnect()), ordersmast, SLOT(on_reconnect_recieved()));
-        setCentralWidget(ordersmast);
-
+        mainwidget = new OrdersWidgetMaster(this);
         ui->acceptorToolBar->hide();
         ui->mEmployees->setDisabled(1);
-        ui->mNewOrder->setDisabled(1);
-        ui->mGiveOrder->setDisabled(1);
+        ui->mNewOrder->setDisabled(1);        ui->mGiveOrder->setDisabled(1);
         ui->mGiveOrderDiag->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
         ui->mCustomers->setDisabled(1);
@@ -182,10 +179,7 @@ void MainWindow::loadUserInterface()
     }
     else if (role == 2) //if acceptor
     {
-        ordersmain = new OrdersWidgetMain(this);
-        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
-        setCentralWidget(ordersmain);
-
+        mainwidget = new OrdersWidgetMain(this);
         ui->masterToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
@@ -202,20 +196,14 @@ void MainWindow::loadUserInterface()
     else if (role == 3) //if storekeeper
     {
 //        ordersmain = new OrdersWidgetMain(this);
-//        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
-//        setCentralWidget(ordersmain);
     }
     else if (role == 4) //if director
     {
 //        ordersmain = new OrdersWidgetMain(this);
-//        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
-//        setCentralWidget(ordersmain);
     }
     else if (role == 5) //if admin
     {
-        ordersmain = new OrdersWidgetMain(this);
-        connect(this, SIGNAL(sendReconnect()), ordersmain, SLOT(on_reconnect_recieved()));
-        setCentralWidget(ordersmain);
+        mainwidget = new OrdersWidgetMain(this);
         isadmin = true;
     }
     else
@@ -226,6 +214,9 @@ void MainWindow::loadUserInterface()
         ui->acceptorToolBar->setDisabled(1);
         ui->masterToolBar->setDisabled(1);
     }
+
+    connect(this, SIGNAL(sendReconnect()), mainwidget, SLOT(on_reconnect_recieved()));
+    setCentralWidget(mainwidget);
 }
 
 bool MainWindow::dbConnect()
@@ -262,10 +253,7 @@ void MainWindow::on_exit_triggered(){
 void MainWindow::showEditOrder(){
     EditOrder *ord = new EditOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), ord, SLOT(getMode(QString, QString)));
-    if (role == 2){
-        connect(ord,SIGNAL(orderSubmited()), ordersmain, SLOT(on_dialog_closed()));}
-    if (role == 1){
-        connect(ord,SIGNAL(orderSubmited()), ordersmast, SLOT(on_dialog_closed()));}
+    connect(ord,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
     ord->show();}
 
 void MainWindow::on_mNewOrder_triggered(){
@@ -316,7 +304,7 @@ void MainWindow::on_mNewWorkReport_triggered(){
 void MainWindow::showGiveOrder(){
     GiveOrder *gor = new GiveOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), gor, SLOT(getMode(QString, QString)));
-    connect(gor,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
+    connect(gor,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
     gor->show();}
 
 void MainWindow::on_mGiveOrder_triggered(){
@@ -347,7 +335,7 @@ void MainWindow::on_mGiveOrderDiag_triggered(){
 void MainWindow::showGiveOrderDiag(){
     GiveOrderDiag * god = new GiveOrderDiag();
     connect(this, SIGNAL(sendMode(QString, QString)), god, SLOT(getMode(QString, QString)));
-    connect(god,SIGNAL(orderSubmited()), this, SLOT(on_dialog_closed()));
+    connect(god,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
     god->show();}
 
 void MainWindow::reject(){
@@ -377,3 +365,13 @@ void MainWindow::on_mPaySalaries_triggered(){
 void MainWindow::on_mSuppliers_triggered(){
     CatSuppliers* csu = new CatSuppliers();
     csu->show();}
+
+void MainWindow::on_mNewPartsRequest_triggered(){
+    showPartsRequest();
+    emit sendMode("new", currentID);}
+
+void MainWindow::showPartsRequest(){
+    EditPartsRequest * epr = new EditPartsRequest();
+    connect(this, SIGNAL(sendMode(QString, QString)), epr, SLOT(getMode(QString, QString)));
+    connect(epr,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
+    epr->show();}

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>894</width>
-    <height>444</height>
+    <height>483</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -134,43 +134,14 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Name:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="eName">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>300</width>
-          <height>16777215</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
+      <item row="7" column="0">
        <widget class="QLabel" name="label_6">
         <property name="text">
          <string>Buying price:</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="7" column="1">
        <widget class="QLineEdit" name="eBuyPrice">
         <property name="maximumSize">
          <size>
@@ -180,7 +151,7 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
+      <item row="8" column="0">
        <widget class="QLabel" name="label_5">
         <property name="minimumSize">
          <size>
@@ -193,7 +164,7 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="8" column="1">
        <widget class="QLineEdit" name="ePrice">
         <property name="maximumSize">
          <size>
@@ -203,14 +174,14 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="0">
+      <item row="9" column="0">
        <widget class="QLabel" name="label_8">
         <property name="text">
          <string>Quantity:</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
+      <item row="9" column="1">
        <widget class="QLineEdit" name="eQty">
         <property name="maximumSize">
          <size>
@@ -220,14 +191,14 @@
         </property>
        </widget>
       </item>
-      <item row="8" column="0" colspan="2">
+      <item row="10" column="0" colspan="2">
        <widget class="Line" name="line_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="9" column="0" colspan="2">
+      <item row="11" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <spacer name="horizontalSpacer_2">
@@ -268,7 +239,7 @@
         </item>
        </layout>
       </item>
-      <item row="10" column="0" colspan="2">
+      <item row="12" column="0" colspan="2">
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -280,6 +251,58 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="eName">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Part number:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="eArticle">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -409,6 +432,24 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>cSearchType</tabstop>
+  <tabstop>eSearchName</tabstop>
+  <tabstop>cSearchSupplier</tabstop>
+  <tabstop>bClear</tabstop>
+  <tabstop>bAdd</tabstop>
+  <tabstop>bDelete</tabstop>
+  <tabstop>eType</tabstop>
+  <tabstop>cSupplier</tabstop>
+  <tabstop>eName</tabstop>
+  <tabstop>eArticle</tabstop>
+  <tabstop>eBuyPrice</tabstop>
+  <tabstop>ePrice</tabstop>
+  <tabstop>eQty</tabstop>
+  <tabstop>bSave</tabstop>
+  <tabstop>bClose</tabstop>
+  <tabstop>tview</tabstop>
+ </tabstops>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

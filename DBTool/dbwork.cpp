@@ -26,7 +26,7 @@ QSqlError DBWork::createTables()
            date TIMESTAMP, orderid INTEGER, master INTEGER, inspect VARCHAR(1024), defects VARCHAR(1024), recomm VARCHAR(1024))");
     q.exec("CREATE TABLE works (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DOUBLE, comment VARCHAR(128))");
     q.exec("CREATE TABLE spares (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
-           type INTEGER, name VARCHAR(255), price DOUBLE, buyingprice DOUBLE, supplier INTEGER, quantity INTEGER)");
+           type INTEGER, name VARCHAR(255), price DOUBLE, buyingprice DOUBLE, supplier INTEGER, quantity INTEGER, partnum VARCHAR(64))");
     q.exec("CREATE TABLE spare_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))");
     q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ DOUBLE)");
     q.exec("CREATE TABLE suppliers (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
@@ -76,6 +76,20 @@ QSqlError DBWork::createTables()
     q.exec(QString("INSERT INTO position_types VALUES(5,'") + tr("Admin") + "')");
 
     q.exec("INSERT INTO employees VALUES(NULL,'Admin','Admin','Admin','Admin',5,'Admin',0,'admin','admin')");
+
+    q.exec("CREATE TABLE part_requests (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
+           date TIMESTAMP, master INTEGER, orderid INTEGER, spares VARCHAR(64), quants VARCHAR(64), \
+           sparesnew VARCHAR(1024), state INTEGER, comment VARCHAR(1024))");
+    q.exec("CREATE TABLE pr_states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
+    q.exec(QString("INSERT INTO pr_states VALUES(1,'") + tr("Placed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(2,'") + tr("Confirmed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(3,'") + tr("Rejected") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(4,'") + tr("Ordered") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(5,'") + tr("Awaits payment") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(6,'") + tr("Awaits receiving") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(7,'") + tr("Recieved") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(8,'") + tr("Completed") + "')");
+
     return q.lastError();
 }
 
@@ -175,8 +189,10 @@ QSqlError DBWork::updateTo6() /*since repaircenter v0.3.4b*/
     q.exec(("INSERT INTO system VALUES('acceptorCanEditWorks', 1, NULL)"));
     q.exec(("INSERT INTO system VALUES('acceptorCanEditSpares', 1, NULL)"));
     q.exec("INSERT INTO system VALUES('acceptorCanEditDiag', 1, NULL)");
-    q.exec("ALTER TABLE spares ADD buyingprice DOUBLE NULL DEFAULT NULL, ADD supplier INT NULL DEFAULT NULL , ADD quantity INT NULL DEFAULT NULL");
-    q.exec("CREATE TABLE suppliers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NULL DEFAULT NULL, phone VARCHAR(255) NULL DEFAULT NULL, address VARCHAR(255) NULL DEFAULT NULL, comment VARCHAR(1024) NULL DEFAULT NULL)");
+    q.exec("ALTER TABLE spares ADD buyingprice DOUBLE NULL DEFAULT NULL, \
+           ADD supplier INT NULL DEFAULT NULL , ADD quantity INT NULL DEFAULT NULL");
+    q.exec("CREATE TABLE suppliers (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NULL DEFAULT NULL, \
+           phone VARCHAR(255) NULL DEFAULT NULL, address VARCHAR(255) NULL DEFAULT NULL, comment VARCHAR(1024) NULL DEFAULT NULL)");
 
     q.exec(QString("UPDATE system SET value_n = 6 WHERE name = 'dbversion'"));
     return q.lastError();
@@ -184,10 +200,27 @@ QSqlError DBWork::updateTo6() /*since repaircenter v0.3.4b*/
 
 QSqlError DBWork::updateTo7() /*since repaircenter v0.3.5b*/
 {
-    q.exec("ALTER TABLE suppliers ADD whours VARCHAR(255) NULL DEFAULT NULL, ADD email VARCHAR(255) NULL DEFAULT NULL, \
+    q.exec("ALTER TABLE suppliers \
+           ADD whours VARCHAR(255) NULL DEFAULT NULL, ADD email VARCHAR(255) NULL DEFAULT NULL, \
            ADD website VARCHAR(255) NULL DEFAULT NULL, ADD org VARCHAR(255) NULL DEFAULT NULL, \
            ADD bank VARCHAR(1024) NULL DEFAULT NULL, ADD goods VARCHAR(1024) NULL DEFAULT NULL");
     q.exec("ALTER TABLE customers CHANGE regular regular BOOLEAN NOT NULL DEFAULT FALSE");
+
+    q.exec("CREATE TABLE part_requests (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
+           date TIMESTAMP, master INTEGER, orderid INTEGER, spares VARCHAR(64), quants VARCHAR(64), \
+           sparesnew VARCHAR(1024), state INTEGER, comment VARCHAR(1024))");
+    q.exec("CREATE TABLE pr_states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
+    q.exec(QString("INSERT INTO pr_states VALUES(1,'") + tr("Placed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(2,'") + tr("Confirmed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(3,'") + tr("Rejected") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(4,'") + tr("Ordered") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(5,'") + tr("Awaits payment") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(6,'") + tr("Awaits receiving") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(7,'") + tr("Recieved") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(8,'") + tr("Completed") + "')");
+
+    q.exec("ALTER TABLE spares ADD partnum VARCHAR(64) NULL DEFAULT NULL");
+
 //    q.exec("");
 //    q.exec(QString(""));
     q.exec("UPDATE system SET value_n = 7 WHERE name = 'dbversion'");

@@ -7,6 +7,10 @@ Added->Setting->Limitation for orders table
 Modified->Search in orders table->Search executed only after button or return pressed
 Modified->Suppliers catalog->Fields set expanded
 Added->Suppliers catalog->Search
+Added->Spares catalog->"Part number" field
+Fixed->Bug, where only last spare part stored in work report
+Added->EditPartsRequest dialog
+Modified->MainWindow->main widget loading
 
 ---------------- v0.3.4b ------------------
 Some nasty typos in SQL queries fixed

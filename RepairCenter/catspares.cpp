@@ -32,6 +32,7 @@ void CatSpares::initModels()
     ui->tview->hideColumn(model->fieldIndex("type"));
     ui->tview->hideColumn(model->fieldIndex("supplier"));
     ui->tview->hideColumn(model->fieldIndex("buyingprice"));
+    ui->tview->hideColumn(model->fieldIndex("partnum"));
 
     ui->tview->setColumnWidth(model->fieldIndex("name"), 350);
     ui->tview->setColumnWidth(model->fieldIndex("price"), 70);
