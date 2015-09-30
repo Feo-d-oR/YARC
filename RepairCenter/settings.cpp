@@ -6,10 +6,16 @@ Settings::Settings(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Settings)
 {
-    ui->setupUi(this);
     crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
-//    Settings::activateWindow();
 
+    ui->setupUi(this);
+
+    readSettings();
+    readDBSettings();
+}
+
+void Settings::readSettings()
+{
     settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     ui->server->setText(settings->value("mysql/hostname").toString());
@@ -49,20 +55,18 @@ Settings::Settings(QWidget *parent) :
     QString lang = settings->value("locale/language").toString();
     if (lang == "") //default system language
         ui->language->setCurrentIndex(0);
-
-    else if (lang == "ru_RU")//russian
-        ui->language->setCurrentIndex(1);
-
     else if (lang == "en_US")//english
+        ui->language->setCurrentIndex(1);
+    else if (lang == "ru_RU")//russian
         ui->language->setCurrentIndex(2);
 
     langIdx = ui->language->currentIndex();
 
-    if(!MainWindow::isadmin){
-        ui->money->setDisabled(1);
-        ui->permissions->setDisabled(1);}
-
-    readDBSettings();
+    if(!MainWindow::isadmin)
+    {
+        ui->money->setDisabled(true);
+        ui->permissions->setDisabled(true);
+    }
 }
 
 void Settings::readDBSettings()
@@ -195,12 +199,13 @@ void Settings::on_save_clicked()
         case 0://system default
             settings->setValue("locale/language", "");
             break;
-        case 1://russian
-            settings->setValue("locale/language", "ru_RU");
-            break;
-        case 2://american english
+        case 1://american english
             settings->setValue("locale/language", "en_US");
             break;
+        case 2://russian
+            settings->setValue("locale/language", "ru_RU");
+            break;
+
         }
     }
     settings->sync();

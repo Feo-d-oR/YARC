@@ -148,11 +148,11 @@ first.depends = $(first) cf_copy
 export(first.depends)
 export(cf_copy.commands)
 
-md.commands = $(MKDIR) $$DESTDIR/i18n/
+md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
-tl_copy.depends = rpcrel
+tl_copy.depends = rpcrel md
 
-QMAKE_EXTRA_TARGETS += first cf_copy tl_copy
+QMAKE_EXTRA_TARGETS += md first cf_copy tl_copy
 
 PRE_TARGETDEPS += tl_copy
 

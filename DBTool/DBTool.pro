@@ -41,5 +41,5 @@ md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = dbtrel md
 
-QMAKE_EXTRA_TARGETS += dbtupd dbtrel md tl_copy
+QMAKE_EXTRA_TARGETS += md dbtupd dbtrel md tl_copy
 PRE_TARGETDEPS += tl_copy

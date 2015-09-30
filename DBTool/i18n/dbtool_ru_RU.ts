@@ -224,49 +224,49 @@
         <location filename="../dbwork.cpp" line="84"/>
         <location filename="../dbwork.cpp" line="213"/>
         <source>Placed</source>
-        <translation type="unfinished"></translation>
+        <translation>Размещён</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="85"/>
         <location filename="../dbwork.cpp" line="214"/>
         <source>Confirmed</source>
-        <translation type="unfinished"></translation>
+        <translation>Одобрен</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="86"/>
         <location filename="../dbwork.cpp" line="215"/>
         <source>Rejected</source>
-        <translation type="unfinished"></translation>
+        <translation>Отклонён</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="87"/>
         <location filename="../dbwork.cpp" line="216"/>
         <source>Ordered</source>
-        <translation type="unfinished"></translation>
+        <translation>Заказано</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="88"/>
         <location filename="../dbwork.cpp" line="217"/>
         <source>Awaits payment</source>
-        <translation type="unfinished"></translation>
+        <translation>Ждёт оплаты</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="89"/>
         <location filename="../dbwork.cpp" line="218"/>
         <source>Awaits receiving</source>
-        <translation type="unfinished"></translation>
+        <translation>Ждёт получения</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="90"/>
         <location filename="../dbwork.cpp" line="219"/>
         <source>Recieved</source>
-        <translation type="unfinished"></translation>
+        <translation>Получен</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="91"/>
         <location filename="../dbwork.cpp" line="220"/>
         <source>Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершён</translation>
     </message>
 </context>
 <context>

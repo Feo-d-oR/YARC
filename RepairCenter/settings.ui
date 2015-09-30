@@ -33,7 +33,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -64,12 +64,12 @@
          </item>
          <item>
           <property name="text">
-           <string>Russian Русский</string>
+           <string>English</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>English</string>
+           <string>Русский Russian</string>
           </property>
          </item>
         </widget>

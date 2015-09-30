@@ -37,6 +37,7 @@ private:
 
     SimpleCrypt crypto;
     void readDBSettings();
+    void readSettings();
     bool dbconnected;
     bool isadmin;
 };
