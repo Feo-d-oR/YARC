@@ -60,6 +60,7 @@ void JrnWorkReports::initModels()
     ui->cSearchEmployee->setModelColumn(model_e->fieldIndex("name"));
     model_e->select();
 
+    model->setFilter("orderid >= " + MainWindow::showlimit);
     model->select();
 }
 
@@ -69,8 +70,11 @@ void JrnWorkReports::on_cSearchEmployee_currentIndexChanged(int index)
     {
 //        model->setFilter(QString());
         rec_e = model_e->record(index);
-        id_t = rec_e.value(rec_e.indexOf("id")).toString();
-        model->setFilter("master = '" + id_t + "'");
+        id_m = rec_e.value(rec_e.indexOf("id")).toString();
+        if (MainWindow::limitallfilters)
+            model->setFilter("master = '" + id_m + "' AND orderid >= " + MainWindow::showlimit);
+        else
+            model->setFilter("master = '" + id_m + "'");
     }
 }
 
@@ -89,6 +93,7 @@ void JrnWorkReports::on_bClear_clicked()
 {
     ui->eSearchNumber->clear();
     model->setFilter(QString());
+    model->setFilter("orderid >= " + MainWindow::showlimit);
     model->select();
     model_e->select();
 }

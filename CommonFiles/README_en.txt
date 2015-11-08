@@ -1,6 +1,10 @@
 ===========================================
 ================ CHANGELOG ================
 ===========================================
+------------------ v0.4 -------------------
+Added->Journal->Parts requests
+Added->Option "Show orders from #" now affects journals
+
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table
@@ -9,7 +13,7 @@ Modified->Suppliers catalog->Fields set expanded
 Added->Suppliers catalog->Search
 Added->Spares catalog->"Part number" field
 Fixed->Bug, where only last spare part stored in work report
-Added->EditPartsRequest dialog
+Added->EditPartsRequest dialog (not avilable yet)
 Modified->MainWindow->main widget loading
 
 ---------------- v0.3.4b ------------------

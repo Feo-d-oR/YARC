@@ -181,7 +181,7 @@ void EditPartsRequest::submitReport()
         q.prepare("INSERT INTO part_requests VALUES (NULL, NULL, :master, :orderid, :spares, :quants, :sparesnew, :state, :comment)");
     else
         q.prepare("UPDATE part_requests SET master = :master, spares = :spares, quants = :quants, sparesnew = :sparesnew, \
-                  comment = :comment,  WHERE id = " + requestID);
+                  comment = :comment WHERE id = " + requestID);
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":master", id_m);
     q.bindValue(":spares", spares);

@@ -66,6 +66,7 @@
     <addaction name="separator"/>
     <addaction name="mNewWorkReport"/>
     <addaction name="mNewDiagReport"/>
+    <addaction name="mNewPartsRequest"/>
     <addaction name="separator"/>
     <addaction name="mPrintHWDocs"/>
     <addaction name="mPaySalaries"/>
@@ -99,6 +100,7 @@
     </property>
     <addaction name="mJrnWorkReports"/>
     <addaction name="mJrnDiagReports"/>
+    <addaction name="mJrnPartsRequests"/>
    </widget>
    <addaction name="app"/>
    <addaction name="actions"/>
@@ -376,8 +378,21 @@
    </property>
   </action>
   <action name="mNewPartsRequest">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/report_bricks_add.png</normaloff>:/icons/icons/report_bricks_add.png</iconset>
+   </property>
    <property name="text">
     <string>New parts request</string>
+   </property>
+  </action>
+  <action name="mJrnPartsRequests">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/reports_bricks.png</normaloff>:/icons/icons/reports_bricks.png</iconset>
+   </property>
+   <property name="text">
+    <string>Parts requests</string>
    </property>
   </action>
  </widget>

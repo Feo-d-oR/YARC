@@ -75,6 +75,7 @@ private slots:
     void on_mPaySalaries_triggered();
     void on_mSuppliers_triggered();
     void on_mNewPartsRequest_triggered();
+    void on_mJrnPartsRequests_triggered();
 
 private:
     bool checkSettings();

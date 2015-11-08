@@ -20,6 +20,7 @@
 #include "salaries.h"
 #include "catsuppliers.h"
 #include "editpartsrequest.h"
+#include "jrnpartsrequests.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -375,3 +376,8 @@ void MainWindow::showPartsRequest(){
     connect(this, SIGNAL(sendMode(QString, QString)), epr, SLOT(getMode(QString, QString)));
     connect(epr,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
     epr->show();}
+
+void MainWindow::on_mJrnPartsRequests_triggered()
+{
+    JrnPartsRequests* jpr = new JrnPartsRequests();
+    jpr->show();}

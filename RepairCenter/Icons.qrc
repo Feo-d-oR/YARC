@@ -73,5 +73,7 @@
         <file>icons/lorry.png</file>
         <file>icons/lorry_add.png</file>
         <file>icons/lorry_delete.png</file>
+        <file>icons/report_bricks_add.png</file>
+        <file>icons/reports_bricks.png</file>
     </qresource>
 </RCC>

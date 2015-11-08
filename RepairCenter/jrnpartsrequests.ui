@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>JrnDiagReports</class>
- <widget class="QDialog" name="JrnDiagReports">
+ <class>JrnPartsRequests</class>
+ <widget class="QDialog" name="JrnPartsRequests">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>667</width>
+    <width>705</width>
     <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Diagnostics reports</string>
+   <string>Part requests journal</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
-    <normaloff>:/icons/icons/reports_magnify.png</normaloff>:/icons/icons/reports_magnify.png</iconset>
+    <normaloff>:/icons/icons/reports_bricks.png</normaloff>:/icons/icons/reports_bricks.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">

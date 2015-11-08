@@ -33,7 +33,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -245,7 +245,7 @@
      </widget>
      <widget class="QWidget" name="mainwindow">
       <attribute name="title">
-       <string>Main window</string>
+       <string>Interface</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>

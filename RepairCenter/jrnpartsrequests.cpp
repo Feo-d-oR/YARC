@@ -1,48 +1,58 @@
-#include "jrndiagreports.h"
-#include "ui_jrndiagreports.h"
-#include "editdiagreport.h"
+#include "jrnpartsrequests.h"
+#include "ui_jrnpartsrequests.h"
 #include "mainwindow.h"
+#include "editpartsrequest.h"
 
-JrnDiagReports::JrnDiagReports(QWidget *parent) :
+JrnPartsRequests::JrnPartsRequests(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::JrnDiagReports)
+    ui(new Ui::JrnPartsRequests)
 {
     ui->setupUi(this);
     initModels();
-    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditDiag){
+
+    if(MainWindow::role == 2 && !MainWindow::acceptorCanEditSpares){
+        ui->bEdit->setDisabled(1);
+        ui->bAdd->setDisabled(1);
+        ui->bDelete->setDisabled(1);}
+    if(MainWindow::role == 1 && !MainWindow::masterCanEditSpares){
         ui->bEdit->setDisabled(1);
         ui->bAdd->setDisabled(1);
         ui->bDelete->setDisabled(1);}
 }
 
-JrnDiagReports::~JrnDiagReports()
+JrnPartsRequests::~JrnPartsRequests()
 {
     delete ui;
 }
 
-void JrnDiagReports::initModels()
+void JrnPartsRequests::initModels()
 {
     model = new QSqlRelationalTableModel(ui->tview);
     model->setJoinMode(QSqlRelationalTableModel::LeftJoin);
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->setTable("diag_reports");
+    model->setTable("part_requests");
     model->setSort(model->fieldIndex("id"),Qt::DescendingOrder);
     master_idx = model->fieldIndex("master");
+    state_idx = model->fieldIndex("work");
     model->setRelation(master_idx, QSqlRelation("employees", "id", "name"));
+    model->setRelation(state_idx, QSqlRelation("pr_states", "id", "name"));
     ui->tview->setModel(model);
 
-    ui->tview->hideColumn(model->fieldIndex("id"));
-    ui->tview->hideColumn(model->fieldIndex("inspect"));
-    ui->tview->hideColumn(model->fieldIndex("defects"));
-    ui->tview->hideColumn(model->fieldIndex("recomm"));
+    ui->tview->hideColumn(model->fieldIndex("spares"));
+    ui->tview->hideColumn(model->fieldIndex("sparesnew"));
+    ui->tview->hideColumn(model->fieldIndex("quants"));
+    ui->tview->hideColumn(model->fieldIndex("comment"));
 
+    ui->tview->setColumnWidth(model->fieldIndex("id"), 70);
     ui->tview->setColumnWidth(model->fieldIndex("date"), 130);
     ui->tview->setColumnWidth(model->fieldIndex("orderid"), 70);
-    ui->tview->setColumnWidth(model->fieldIndex("master"), 120);
+    ui->tview->setColumnWidth(model->fieldIndex("master"), 130);
+    ui->tview->setColumnWidth(model->fieldIndex("state"), 120);
 
     model->setHeaderData(model->fieldIndex("date"), Qt::Horizontal, tr("Date"));
     model->setHeaderData(model->fieldIndex("orderid"), Qt::Horizontal, tr("Order #"));
     model->setHeaderData(model->fieldIndex("master"), Qt::Horizontal, tr("Master"));
+    model->setHeaderData(model->fieldIndex("state"), Qt::Horizontal, tr("State"));
 
     ui->tview->verticalHeader()->setDefaultSectionSize(24);
     ui->tview->verticalHeader()->hide();
@@ -60,7 +70,7 @@ void JrnDiagReports::initModels()
     model->select();
 }
 
-void JrnDiagReports::on_cSearchEmployee_currentIndexChanged(int index)
+void JrnPartsRequests::on_cSearchEmployee_currentIndexChanged(int index)
 {
     if (index != -1)
     {
@@ -73,7 +83,7 @@ void JrnDiagReports::on_cSearchEmployee_currentIndexChanged(int index)
             model->setFilter("master = '" + id_m + "'");    }
 }
 
-void JrnDiagReports::on_eSearchNumber_textEdited(const QString &arg1)
+void JrnPartsRequests::on_eSearchNumber_textEdited(const QString &arg1)
 {
 //    model->setFilter(QString());
     if(arg1 != "")
@@ -84,7 +94,7 @@ void JrnDiagReports::on_eSearchNumber_textEdited(const QString &arg1)
 
 }
 
-void JrnDiagReports::on_bClear_clicked()
+void JrnPartsRequests::on_bClear_clicked()
 {
     ui->eSearchNumber->clear();
     model->setFilter(QString());
@@ -93,53 +103,52 @@ void JrnDiagReports::on_bClear_clicked()
     model_e->select();
 }
 
-void JrnDiagReports::on_tview_clicked(const QModelIndex &index)
+void JrnPartsRequests::on_tview_clicked(const QModelIndex &index)
 {
     int row = index.row();
     const QAbstractItemModel * mdl = index.model();
-    iddr = mdl->data(mdl->index(row, 0), Qt::DisplayRole).toString();
-    qDebug()<<iddr;
+    idpr = mdl->data(mdl->index(row, 0), Qt::DisplayRole).toString();
 }
 
-void JrnDiagReports::on_dialog_closed()
+void JrnPartsRequests::on_dialog_closed()
 {
     model->select();
 }
 
 
-void JrnDiagReports::showEditDiagReport()
+void JrnPartsRequests::showEditPartRequest()
 {
-    EditDiagReport *drep = new EditDiagReport();
-    drep->show();
-    connect(this, SIGNAL(sendMode(QString, QString)), drep, SLOT(getMode(QString, QString)));
-    connect(drep,SIGNAL(reportSubmited()), this, SLOT(on_dialog_closed()));
+    EditPartsRequest *wrep = new EditPartsRequest();
+    wrep->show();
+    connect(this, SIGNAL(sendMode(QString, QString)), wrep, SLOT(getMode(QString, QString)));
+    connect(wrep,SIGNAL(requestSubmited()), this, SLOT(on_dialog_closed()));
 }
 
-void JrnDiagReports::on_bAdd_clicked()
+void JrnPartsRequests::on_bAdd_clicked()
 {
-    showEditDiagReport();
+    showEditPartRequest();
     emit sendMode("new", "0");
 }
 
-void JrnDiagReports::on_bView_clicked()
+void JrnPartsRequests::on_bView_clicked()
 {
-    showEditDiagReport();
-    emit sendMode("view", iddr);
+    showEditPartRequest();
+    emit sendMode("view", idpr);
 }
 
-void JrnDiagReports::on_bEdit_clicked()
+void JrnPartsRequests::on_bEdit_clicked()
 {
-    showEditDiagReport();
-    emit sendMode("edit", iddr);
+    showEditPartRequest();
+    emit sendMode("edit", idpr);
 }
 
-void JrnDiagReports::on_bClose_clicked()
+void JrnPartsRequests::on_bClose_clicked()
 {
     model->revertAll();
     close();
 }
 
-void JrnDiagReports::on_bDelete_clicked()
+void JrnPartsRequests::on_bDelete_clicked()
 {
     QItemSelectionModel *sm = ui->tview->selectionModel();
     if (sm->hasSelection()){
@@ -148,3 +157,4 @@ void JrnDiagReports::on_bDelete_clicked()
         model->select();
     }
 }
+

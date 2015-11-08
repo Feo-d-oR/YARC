@@ -448,7 +448,7 @@
       </size>
      </property>
      <property name="title">
-      <string>Quick preview</string>
+      <string>Quick edit</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

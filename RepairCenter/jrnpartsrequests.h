@@ -1,20 +1,20 @@
-#ifndef JRNDIAGREPORTS_H
-#define JRNDIAGREPORTS_H
+#ifndef JRNPARTSREQUESTS_H
+#define JRNPARTSREQUESTS_H
 
 #include <QDialog>
 #include <QtSql>
 
 namespace Ui {
-class JrnDiagReports;
+class JrnPartsRequests;
 }
 
-class JrnDiagReports : public QDialog
+class JrnPartsRequests : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit JrnDiagReports(QWidget *parent = 0);
-    ~JrnDiagReports();
+    explicit JrnPartsRequests(QWidget *parent = 0);
+    ~JrnPartsRequests();
 
 public slots:
     void on_dialog_closed();
@@ -34,16 +34,17 @@ private slots:
     void on_tview_clicked(const QModelIndex &index);
 
 private:
-    Ui::JrnDiagReports *ui;
+    Ui::JrnPartsRequests *ui;
     QSqlRelationalTableModel *model;
     QSqlTableModel *model_e;
     QSqlRecord rec_e;
     QString id_m;
-    QString iddr;
+    QString idpr;
     void initModels();
-    void showEditDiagReport();
+    void showEditPartRequest();
     int master_idx;
+    int state_idx;
 
 };
 
-#endif // JRNDIAGREPORTS_H
+#endif // JRNPARTSREQUESTS_H

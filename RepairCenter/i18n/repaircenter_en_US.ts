@@ -1357,6 +1357,79 @@
     </message>
 </context>
 <context>
+    <name>JrnPartsRequests</name>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="14"/>
+        <source>Part requests journal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="24"/>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="30"/>
+        <source>Order#:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="53"/>
+        <source>Master:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="89"/>
+        <source>Reset filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="118"/>
+        <source>New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="130"/>
+        <source>View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="141"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="152"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.ui" line="177"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.cpp" line="52"/>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.cpp" line="53"/>
+        <source>Order #</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.cpp" line="54"/>
+        <source>Master</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jrnpartsrequests.cpp" line="55"/>
+        <source>State</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>JrnWorkReports</name>
     <message>
         <location filename="../jrnworkreports.ui" line="14"/>
@@ -1433,40 +1506,40 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="59"/>
-        <location filename="../mainwindow.cpp" line="83"/>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="60"/>
+        <location filename="../mainwindow.cpp" line="84"/>
+        <location filename="../mainwindow.cpp" line="246"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="125"/>
+        <location filename="../mainwindow.ui" line="127"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="176"/>
+        <location filename="../mainwindow.ui" line="178"/>
         <source>About RepairCenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="334"/>
+        <location filename="../mainwindow.ui" line="336"/>
         <source>Ctrl+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="357"/>
-        <location filename="../mainwindow.cpp" line="358"/>
+        <location filename="../mainwindow.ui" line="359"/>
+        <location filename="../mainwindow.cpp" line="359"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="146"/>
+        <location filename="../mainwindow.ui" line="148"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="168"/>
+        <location filename="../mainwindow.ui" line="170"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
@@ -1481,185 +1554,190 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="75"/>
+        <location filename="../mainwindow.ui" line="76"/>
         <source>?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="84"/>
+        <location filename="../mainwindow.ui" line="85"/>
         <source>Catalogs</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="98"/>
+        <location filename="../mainwindow.ui" line="99"/>
         <source>Journals</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="143"/>
+        <location filename="../mainwindow.ui" line="145"/>
         <source>Exit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="165"/>
+        <location filename="../mainwindow.ui" line="167"/>
         <source>New order</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="189"/>
+        <location filename="../mainwindow.ui" line="191"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="199"/>
+        <location filename="../mainwindow.ui" line="201"/>
         <source>Employees</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="208"/>
+        <location filename="../mainwindow.ui" line="210"/>
         <source>Product types</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="217"/>
+        <location filename="../mainwindow.ui" line="219"/>
         <source>Reconnect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="220"/>
+        <location filename="../mainwindow.ui" line="222"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reconnect to database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="230"/>
+        <location filename="../mainwindow.ui" line="232"/>
         <source>Customers</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="240"/>
+        <location filename="../mainwindow.ui" line="242"/>
         <source>Spare parts</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="250"/>
-        <location filename="../mainwindow.ui" line="253"/>
+        <location filename="../mainwindow.ui" line="252"/>
+        <location filename="../mainwindow.ui" line="255"/>
         <source>Spare part types</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="262"/>
+        <location filename="../mainwindow.ui" line="264"/>
         <source>Works</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="271"/>
+        <location filename="../mainwindow.ui" line="273"/>
         <source>Work reports</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="283"/>
+        <location filename="../mainwindow.ui" line="285"/>
         <source>Diagnostics reports</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="292"/>
+        <location filename="../mainwindow.ui" line="294"/>
         <source>New work report</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="295"/>
+        <location filename="../mainwindow.ui" line="297"/>
         <source>Shift+W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="307"/>
+        <location filename="../mainwindow.ui" line="309"/>
         <source>New diagnostics report</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="310"/>
+        <location filename="../mainwindow.ui" line="312"/>
         <source>Shift+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="319"/>
+        <location filename="../mainwindow.ui" line="321"/>
         <source>Issue off repair</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="322"/>
+        <location filename="../mainwindow.ui" line="324"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="331"/>
+        <location filename="../mainwindow.ui" line="333"/>
         <source>Issue off diagnostics</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="343"/>
+        <location filename="../mainwindow.ui" line="345"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="352"/>
+        <location filename="../mainwindow.ui" line="354"/>
         <source>Print handwritten documents</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="366"/>
+        <location filename="../mainwindow.ui" line="368"/>
         <source>Pay salary</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="375"/>
+        <location filename="../mainwindow.ui" line="377"/>
         <source>Suppliers</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="380"/>
+        <location filename="../mainwindow.ui" line="386"/>
         <source>New parts request</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="60"/>
+        <location filename="../mainwindow.ui" line="395"/>
+        <source>Parts requests</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="61"/>
         <source>Database not found!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="61"/>
+        <location filename="../mainwindow.cpp" line="62"/>
         <source>Change settings or create new one?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="62"/>
-        <location filename="../mainwindow.cpp" line="86"/>
+        <location filename="../mainwindow.cpp" line="63"/>
+        <location filename="../mainwindow.cpp" line="87"/>
         <source>Create</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="63"/>
+        <location filename="../mainwindow.cpp" line="64"/>
         <source>Change</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="64"/>
-        <location filename="../mainwindow.cpp" line="87"/>
+        <location filename="../mainwindow.cpp" line="65"/>
+        <location filename="../mainwindow.cpp" line="88"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="84"/>
+        <location filename="../mainwindow.cpp" line="85"/>
         <source>Settings file not found!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="85"/>
+        <location filename="../mainwindow.cpp" line="86"/>
         <source>Create settings file?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="246"/>
         <source>Unable to connect to database!</source>
         <translation></translation>
     </message>

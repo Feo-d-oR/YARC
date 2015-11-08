@@ -16,6 +16,7 @@ public:
     QSqlError updateTo5();
     QSqlError updateTo6();
     QSqlError updateTo7();
+    QSqlError updateTo8();
     QSqlError retranslate();
 
 signals:

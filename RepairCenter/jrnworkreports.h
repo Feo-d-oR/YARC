@@ -31,7 +31,6 @@ private slots:
     void on_bClear_clicked();
     void on_bView_clicked();
     void on_bEdit_clicked();
-
     void on_tview_clicked(const QModelIndex &index);
 
 private:
@@ -39,7 +38,7 @@ private:
     QSqlRelationalTableModel *model;
     QSqlTableModel *model_e;
     QSqlRecord rec_e;
-    QString id_t;
+    QString id_m;
     QString idwr;
     void initModels();
     void showEditWorkReport();

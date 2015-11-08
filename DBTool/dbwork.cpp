@@ -226,3 +226,15 @@ QSqlError DBWork::updateTo7() /*since repaircenter v0.3.5b*/
     q.exec("UPDATE system SET value_n = 7 WHERE name = 'dbversion'");
     return q.lastError();
 }
+
+QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
+{
+    q.exec(QString("INSERT INTO pr_states VALUES(9,'") + tr("Info-Placed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(10,'") + tr("Info-Confirmed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(11,'") + tr("Info-Rejected") + "')");
+
+//    q.exec("");
+//    q.exec(QString(""));
+    q.exec("UPDATE system SET value_n = 8 WHERE name = 'dbversion'");
+    return q.lastError();
+}
