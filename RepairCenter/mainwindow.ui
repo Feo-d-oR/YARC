@@ -134,6 +134,21 @@
    </attribute>
    <addaction name="mNewWorkReport"/>
    <addaction name="mNewDiagReport"/>
+   <addaction name="mNewPartsRequest"/>
+  </widget>
+  <widget class="QToolBar" name="storekeeperToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="mSpares"/>
+   <addaction name="mSpareTypes"/>
+   <addaction name="mSuppliers"/>
   </widget>
   <action name="exit">
    <property name="icon">
@@ -174,6 +189,10 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/help.png</normaloff>:/icons/icons/help.png</iconset>
+   </property>
    <property name="text">
     <string>About RepairCenter</string>
    </property>
@@ -204,7 +223,7 @@
   <action name="mProductTypes">
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/laptop.png</normaloff>:/icons/icons/laptop.png</iconset>
+     <normaloff>:/icons/icons/category_laptop.png</normaloff>:/icons/icons/category_laptop.png</iconset>
    </property>
    <property name="text">
     <string>Product types</string>
@@ -235,8 +254,8 @@
   <action name="mSpares">
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/icons/brick.png</normaloff>
-     <normalon>:/icons/icons/brick_edit.png</normalon>:/icons/icons/brick.png</iconset>
+     <normaloff>:/icons/icons/bricks.png</normaloff>
+     <normalon>:/icons/icons/brick_edit.png</normalon>:/icons/icons/bricks.png</iconset>
    </property>
    <property name="text">
     <string>Spare parts</string>
@@ -244,9 +263,9 @@
   </action>
   <action name="mSpareTypes">
    <property name="icon">
-    <iconset>
-     <normalon>:/icons/icons/bricks.png</normalon>
-    </iconset>
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/category_bricks.png</normaloff>
+     <normalon>:/icons/icons/bricks.png</normalon>:/icons/icons/category_bricks.png</iconset>
    </property>
    <property name="text">
     <string>Spare part types</string>
@@ -355,6 +374,10 @@
    </property>
   </action>
   <action name="mAboutQt">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/help.png</normaloff>:/icons/icons/help.png</iconset>
+   </property>
    <property name="text">
     <string>About Qt</string>
    </property>

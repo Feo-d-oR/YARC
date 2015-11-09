@@ -12,6 +12,7 @@
 #include "simplecrypt.h"
 #include "orderswidgetmain.h"
 #include "orderswidgetmaster.h"
+#include "partswidgetstorekeeper.h"
 
 namespace Ui {
 class MainWindow;
@@ -37,7 +38,7 @@ public:
     static bool acceptorCanEditSpares;
     static bool acceptorCanEditDiag;
     static bool isadmin;
-    static QString currentID;
+    static QString currentOrderID;
     static QString showlimit;
     static bool limitallfilters;
 
@@ -91,9 +92,7 @@ private:
     void loadUserInterface();
     QSettings * settings;
     SimpleCrypt crypto;
-//    OrdersWidgetMaster * ordersmast;
     QWidget * mainwidget;
-//    OrdersWidgetMain * ordersmain;
 
 protected:
     void closeEvent(QCloseEvent *event);

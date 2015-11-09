@@ -157,7 +157,7 @@ void EditPartsRequest::submitReport()
     QSqlRecord rec_m = model_m->record(ui->eMaster->currentIndex());
     QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
 
-    QSqlRecord rec_s = model_s->record(ui->eState->currentIndex());
+    QSqlRecord rec_s = model_st->record(ui->eState->currentIndex());
     QString id_s = rec_s.value(rec_s.indexOf("id")).toString();
 
     QString spares;
@@ -180,8 +180,8 @@ void EditPartsRequest::submitReport()
     if (isnew)
         q.prepare("INSERT INTO part_requests VALUES (NULL, NULL, :master, :orderid, :spares, :quants, :sparesnew, :state, :comment)");
     else
-        q.prepare("UPDATE part_requests SET master = :master, spares = :spares, quants = :quants, sparesnew = :sparesnew, \
-                  comment = :comment WHERE id = " + requestID);
+        q.prepare("UPDATE part_requests SET spares = :spares, quants = :quants, sparesnew = :sparesnew, \
+                  comment = :comment, state = :state WHERE id = " + requestID);
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":master", id_m);
     q.bindValue(":spares", spares);

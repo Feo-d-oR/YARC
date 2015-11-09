@@ -34,7 +34,7 @@ QSqlError DBWork::createTables()
            email VARCHAR(255), website VARCHAR(255), org VARCHAR(255), bank VARCHAR(1024), goods VARCHAR(1024))");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
-    q.exec("INSERT INTO system VALUES('dbversion', 6, NULL)");
+    q.exec("INSERT INTO system VALUES('dbversion', 8, NULL)");
     q.exec("INSERT INTO system VALUES('percMaster', 0.6, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
     q.exec("INSERT INTO system VALUES('percFirm', 0.3, NULL)");
@@ -89,6 +89,10 @@ QSqlError DBWork::createTables()
     q.exec(QString("INSERT INTO pr_states VALUES(6,'") + tr("Awaits receiving") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(7,'") + tr("Recieved") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(8,'") + tr("Completed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(9,'") + tr("Info-Placed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(10,'") + tr("Info-Confirmed") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(11,'") + tr("Info-Rejected") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(12,'") + tr("Info-Completed") + "')");
 
     return q.lastError();
 }
@@ -205,6 +209,7 @@ QSqlError DBWork::updateTo7() /*since repaircenter v0.3.5b*/
            ADD website VARCHAR(255) NULL DEFAULT NULL, ADD org VARCHAR(255) NULL DEFAULT NULL, \
            ADD bank VARCHAR(1024) NULL DEFAULT NULL, ADD goods VARCHAR(1024) NULL DEFAULT NULL");
     q.exec("ALTER TABLE customers CHANGE regular regular BOOLEAN NOT NULL DEFAULT FALSE");
+    q.exec("ALTER TABLE spares ADD partnum VARCHAR(64) NULL DEFAULT NULL");
 
     q.exec("CREATE TABLE part_requests (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            date TIMESTAMP, master INTEGER, orderid INTEGER, spares VARCHAR(64), quants VARCHAR(64), \
@@ -219,10 +224,6 @@ QSqlError DBWork::updateTo7() /*since repaircenter v0.3.5b*/
     q.exec(QString("INSERT INTO pr_states VALUES(7,'") + tr("Recieved") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(8,'") + tr("Completed") + "')");
 
-    q.exec("ALTER TABLE spares ADD partnum VARCHAR(64) NULL DEFAULT NULL");
-
-//    q.exec("");
-//    q.exec(QString(""));
     q.exec("UPDATE system SET value_n = 7 WHERE name = 'dbversion'");
     return q.lastError();
 }
@@ -232,6 +233,7 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
     q.exec(QString("INSERT INTO pr_states VALUES(9,'") + tr("Info-Placed") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(10,'") + tr("Info-Confirmed") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(11,'") + tr("Info-Rejected") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(12,'") + tr("Info-Completed") + "')");
 
 //    q.exec("");
 //    q.exec(QString(""));

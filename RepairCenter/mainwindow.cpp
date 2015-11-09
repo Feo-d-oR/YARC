@@ -37,7 +37,7 @@ bool MainWindow::acceptorCanEditDiag = 0;
 bool MainWindow::acceptorCanEditWorks = 0;
 bool MainWindow::acceptorCanEditSpares = 0;
 QString MainWindow::prevCustomer = "";
-QString MainWindow::currentID = "";
+QString MainWindow::currentOrderID = "";
 QString MainWindow::showlimit = "0";
 bool MainWindow::limitallfilters = false;
 
@@ -165,8 +165,10 @@ void MainWindow::loadUserInterface()
     {
         mainwidget = new OrdersWidgetMaster(this);
         ui->acceptorToolBar->hide();
+        ui->storekeeperToolBar->hide();
         ui->mEmployees->setDisabled(1);
-        ui->mNewOrder->setDisabled(1);        ui->mGiveOrder->setDisabled(1);
+        ui->mNewOrder->setDisabled(1);
+        ui->mGiveOrder->setDisabled(1);
         ui->mGiveOrderDiag->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
         ui->mCustomers->setDisabled(1);
@@ -175,13 +177,13 @@ void MainWindow::loadUserInterface()
         if (!masterCanEditSpares){
             ui->mSpares->setDisabled(1);
             ui->mSpareTypes->setDisabled(1);
-            ui->mSuppliers->setDisabled(1);}
-
+            ui->mSuppliers->setDisabled(1);}    
     }
     else if (role == 2) //if acceptor
     {
         mainwidget = new OrdersWidgetMain(this);
         ui->masterToolBar->hide();
+        ui->storekeeperToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
         if (!acceptorCanEditWorks)
@@ -192,16 +194,24 @@ void MainWindow::loadUserInterface()
             ui->mSpares->setDisabled(1);
             ui->mSpareTypes->setDisabled(1);
             ui->mSuppliers->setDisabled(1);}
-
     }
     else if (role == 3) //if storekeeper
     {
-//        ordersmain = new OrdersWidgetMain(this);
+        mainwidget = new PartsWidgetStorekeeper(this);
+        ui->masterToolBar->hide();
+        ui->mEmployees->setDisabled(1);
+        ui->mPaySalaries->setDisabled(1);
+        ui->acceptorToolBar->hide();
+        ui->mEmployees->setDisabled(1);
+        ui->mNewOrder->setDisabled(1);
+        ui->mGiveOrder->setDisabled(1);
+        ui->mGiveOrderDiag->setDisabled(1);
+        ui->mPaySalaries->setDisabled(1);
+        ui->mCustomers->setDisabled(1);
     }
-    else if (role == 4) //if director
-    {
-//        ordersmain = new OrdersWidgetMain(this);
-    }
+//    else if (role == 4) //if director
+//    {
+//    }
     else if (role == 5) //if admin
     {
         mainwidget = new OrdersWidgetMain(this);
@@ -300,7 +310,7 @@ void MainWindow::showEditWorkReport(){
 
 void MainWindow::on_mNewWorkReport_triggered(){
     showEditWorkReport();
-    emit sendMode("new", currentID);}
+    emit sendMode("new", currentOrderID);}
 
 void MainWindow::showGiveOrder(){
     GiveOrder *gor = new GiveOrder();
@@ -310,7 +320,7 @@ void MainWindow::showGiveOrder(){
 
 void MainWindow::on_mGiveOrder_triggered(){
     showGiveOrder();
-    emit sendMode("new", currentID);}
+    emit sendMode("new", currentOrderID);}
 
 void MainWindow::on_mAbout_triggered(){
     About * ab = new About();
@@ -322,7 +332,7 @@ void MainWindow::on_mJrnDiagReports_triggered(){
 
 void MainWindow::on_mNewDiagReport_triggered(){
     showEditDiagReport();
-    emit sendMode("new", currentID);}
+    emit sendMode("new", currentOrderID);}
 
 void MainWindow::showEditDiagReport(){
     EditDiagReport * edr = new EditDiagReport();
@@ -331,7 +341,7 @@ void MainWindow::showEditDiagReport(){
 
 void MainWindow::on_mGiveOrderDiag_triggered(){
     showGiveOrderDiag();
-    emit sendMode("new", currentID);}
+    emit sendMode("new", currentOrderID);}
 
 void MainWindow::showGiveOrderDiag(){
     GiveOrderDiag * god = new GiveOrderDiag();
@@ -369,15 +379,14 @@ void MainWindow::on_mSuppliers_triggered(){
 
 void MainWindow::on_mNewPartsRequest_triggered(){
     showPartsRequest();
-    emit sendMode("new", currentID);}
+    emit sendMode("new", currentOrderID);}
 
 void MainWindow::showPartsRequest(){
     EditPartsRequest * epr = new EditPartsRequest();
     connect(this, SIGNAL(sendMode(QString, QString)), epr, SLOT(getMode(QString, QString)));
-    connect(epr,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
+    connect(epr,SIGNAL(requestSubmited()), mainwidget, SLOT(on_dialog_closed()));
     epr->show();}
 
-void MainWindow::on_mJrnPartsRequests_triggered()
-{
+void MainWindow::on_mJrnPartsRequests_triggered(){
     JrnPartsRequests* jpr = new JrnPartsRequests();
     jpr->show();}

@@ -4,7 +4,7 @@
 ------------------ v0.4 -------------------
 Added->Journal->Parts requests
 Added->Option "Show orders from #" now affects journals
-
+Added->Storekeeper user interface
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table

@@ -43,7 +43,7 @@ void OrdersWidgetMain::initModelOrders()
 
     model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);  //setting default sorting
 
-    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1 AND isactive = 1");
+//    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1 AND isactive = 1");
 
 //setting tableview widget
     ui->tview->setModel(model);
@@ -233,7 +233,7 @@ void OrdersWidgetMain::on_tview_clicked(const QModelIndex &index){
     int row = index.row();
     const QAbstractItemModel * mdl = index.model();
     currentID = mdl->data(mdl->index(row, 0), Qt::DisplayRole).toString();
-    MainWindow::currentID = currentID;
+    MainWindow::currentOrderID = currentID;
     qDebug() << "orderID: " << currentID;
 }
 
