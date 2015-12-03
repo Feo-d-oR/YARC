@@ -870,48 +870,53 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.ui" line="342"/>
-        <location filename="../editpartsrequest.cpp" line="27"/>
+        <location filename="../editpartsrequest.ui" line="345"/>
+        <source>Total:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editpartsrequest.ui" line="376"/>
+        <location filename="../editpartsrequest.cpp" line="29"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.ui" line="367"/>
+        <location filename="../editpartsrequest.ui" line="401"/>
         <source>Save and close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.cpp" line="23"/>
+        <location filename="../editpartsrequest.cpp" line="25"/>
         <source>Parts request</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.cpp" line="24"/>
+        <location filename="../editpartsrequest.cpp" line="26"/>
         <source>Save changes?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.cpp" line="25"/>
+        <location filename="../editpartsrequest.cpp" line="27"/>
         <source>Yes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.cpp" line="26"/>
+        <location filename="../editpartsrequest.cpp" line="28"/>
         <source>No</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.cpp" line="52"/>
+        <location filename="../editpartsrequest.cpp" line="54"/>
         <source>New parts request</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.cpp" line="61"/>
+        <location filename="../editpartsrequest.cpp" line="63"/>
         <source>View parts request</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editpartsrequest.cpp" line="72"/>
+        <location filename="../editpartsrequest.cpp" line="74"/>
         <source>Edit parts request</source>
         <translation></translation>
     </message>
@@ -1508,7 +1513,7 @@
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="60"/>
         <location filename="../mainwindow.cpp" line="84"/>
-        <location filename="../mainwindow.cpp" line="256"/>
+        <location filename="../mainwindow.cpp" line="258"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1530,7 +1535,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="382"/>
-        <location filename="../mainwindow.cpp" line="369"/>
+        <location filename="../mainwindow.cpp" line="371"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1738,9 +1743,9 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="256"/>
+        <location filename="../mainwindow.cpp" line="258"/>
         <source>Unable to connect to database!</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1787,13 +1792,13 @@
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="232"/>
-        <location filename="../orderswidgetmain.cpp" line="224"/>
+        <location filename="../orderswidgetmain.cpp" line="225"/>
         <source>Order #</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../orderswidgetmain.ui" line="237"/>
-        <location filename="../orderswidgetmain.cpp" line="226"/>
+        <location filename="../orderswidgetmain.cpp" line="227"/>
         <source>Name</source>
         <translation></translation>
     </message>
@@ -1897,72 +1902,72 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="90"/>
+        <location filename="../orderswidgetmain.cpp" line="89"/>
         <source>#</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="91"/>
+        <location filename="../orderswidgetmain.cpp" line="90"/>
         <source>Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="92"/>
+        <location filename="../orderswidgetmain.cpp" line="91"/>
         <source>Type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="93"/>
+        <location filename="../orderswidgetmain.cpp" line="92"/>
         <source>Product</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="94"/>
+        <location filename="../orderswidgetmain.cpp" line="93"/>
         <source>Notified?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="95"/>
+        <location filename="../orderswidgetmain.cpp" line="94"/>
         <source>State</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="96"/>
+        <location filename="../orderswidgetmain.cpp" line="95"/>
         <source>Master</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="97"/>
+        <location filename="../orderswidgetmain.cpp" line="96"/>
         <source>Acceptor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="98"/>
+        <location filename="../orderswidgetmain.cpp" line="97"/>
         <source>Customer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="99"/>
+        <location filename="../orderswidgetmain.cpp" line="98"/>
         <source>Defect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="268"/>
+        <location filename="../orderswidgetmain.cpp" line="269"/>
         <source>Caution!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="269"/>
+        <location filename="../orderswidgetmain.cpp" line="270"/>
         <source>Are you sure to delete order?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="270"/>
+        <location filename="../orderswidgetmain.cpp" line="271"/>
         <source>Yes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmain.cpp" line="271"/>
+        <location filename="../orderswidgetmain.cpp" line="272"/>
         <source>No</source>
         <translation></translation>
     </message>
@@ -2078,52 +2083,52 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="92"/>
+        <location filename="../orderswidgetmaster.cpp" line="91"/>
         <source>#</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="93"/>
+        <location filename="../orderswidgetmaster.cpp" line="92"/>
         <source>Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="94"/>
+        <location filename="../orderswidgetmaster.cpp" line="93"/>
         <source>Type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="95"/>
+        <location filename="../orderswidgetmaster.cpp" line="94"/>
         <source>Product</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="96"/>
+        <location filename="../orderswidgetmaster.cpp" line="95"/>
         <source>Notified?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="97"/>
+        <location filename="../orderswidgetmaster.cpp" line="96"/>
         <source>State</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="98"/>
+        <location filename="../orderswidgetmaster.cpp" line="97"/>
         <source>Master</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="99"/>
+        <location filename="../orderswidgetmaster.cpp" line="98"/>
         <source>Acceptor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="100"/>
+        <location filename="../orderswidgetmaster.cpp" line="99"/>
         <source>Customer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../orderswidgetmaster.cpp" line="101"/>
+        <location filename="../orderswidgetmaster.cpp" line="100"/>
         <source>Defect</source>
         <translation></translation>
     </message>
@@ -2172,14 +2177,14 @@
     </message>
     <message>
         <location filename="../partswidgetstorekeeper.ui" line="91"/>
-        <location filename="../partswidgetstorekeeper.cpp" line="91"/>
-        <location filename="../partswidgetstorekeeper.cpp" line="180"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="93"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="183"/>
         <source>Order #</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../partswidgetstorekeeper.ui" line="96"/>
-        <location filename="../partswidgetstorekeeper.cpp" line="182"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="185"/>
         <source>Request #</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2206,6 +2211,26 @@
     <message>
         <location filename="../partswidgetstorekeeper.ui" line="533"/>
         <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../partswidgetstorekeeper.ui" line="554"/>
+        <source>Sum:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../partswidgetstorekeeper.ui" line="580"/>
+        <source>Summary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../partswidgetstorekeeper.ui" line="586"/>
+        <source>To pay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../partswidgetstorekeeper.ui" line="593"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;money amount&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2250,47 +2275,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="89"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="91"/>
         <source>#</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="90"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="92"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="92"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="94"/>
         <source>State</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="93"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="95"/>
         <source>Master</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="94"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="96"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="252"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="97"/>
+        <source>Sum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../partswidgetstorekeeper.cpp" line="260"/>
         <source>Caution!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="253"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="261"/>
         <source>Are you sure to delete parts request?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="254"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="262"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="255"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="263"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>

@@ -50,12 +50,14 @@ private:
     void readUiSettings();
     void showEditPartsRequest();
     void searchByField();
+    void calculateSumm();
     QSettings * settings;
     QSqlRelationalTableModel *model;
     QDataWidgetMapper *mapper;
     QSqlQueryModel * model_m;
     QSqlQueryModel * model_s;
     int reqStateIdx, masterIdx, ordStateIdx;
+    double summ;
     QString namesstr;
     QString currentID, orderID;
     QSqlQuery q;

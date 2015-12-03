@@ -177,7 +177,7 @@ void MainWindow::loadUserInterface()
         if (!masterCanEditSpares){
             ui->mSpares->setDisabled(1);
             ui->mSpareTypes->setDisabled(1);
-            ui->mSuppliers->setDisabled(1);}    
+            ui->mSuppliers->setDisabled(1);}
     }
     else if (role == 2) //if acceptor
     {
@@ -226,13 +226,14 @@ void MainWindow::loadUserInterface()
         ui->masterToolBar->setDisabled(1);
     }
 
-    connect(this, SIGNAL(sendReconnect()), mainwidget, SLOT(on_reconnect_recieved()));
+//    connect(this, SIGNAL(sendReconnect()), mainwidget, SLOT(on_reconnect_recieved()));
     setCentralWidget(mainwidget);
 }
 
 bool MainWindow::dbConnect()
 {
-        QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db.close();
+        db = QSqlDatabase::addDatabase("QMYSQL");
         db.setHostName(settings->value("mysql/hostname").toString());
         db.setPort(settings->value("mysql/port").toInt());
         db.setDatabaseName(settings->value("mysql/database").toString());
@@ -248,9 +249,10 @@ bool MainWindow::dbConnect()
 
 void MainWindow::on_mInit_triggered()
 {
-    if (dbConnect()) {
+    if(dbConnect()){
         readGlobalSettings();
-        emit sendReconnect();
+        loadUserInterface();
+//        emit sendReconnect();
     }
     else{
         QMessageBox::critical(this, tr("RepairCenter"), tr("Unable to connect to database!"));

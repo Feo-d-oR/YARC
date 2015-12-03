@@ -23,24 +23,19 @@ signals:
 
 private:
     Ui::EditPartsRequest *ui;
-    QSqlQuery qf;
-    QSqlQuery qfs;
-    QSqlRecord recf;
-    QSqlRecord recfs;
+    QSqlQuery qf, qfs;
+    QSqlRecord recf, recfs;
     void submitReport();
     void fillFields();
     void setModels();
-    bool saved;
-    bool isnew;
-    int i;
-    QString requestID;
-    QString orderID;
-    QString id_s;
-    QStringList lsp;
-    QStringList lqt;
-    QSqlQueryModel *model_m;
+    void calcSumm();
+    bool saved, isnew, holdCalc;
+    int i, row;
+    double summ;
+    QString requestID, orderID, id_s;
+    QStringList lsp, lqt;
+    QSqlQueryModel *model_m, *model_st;
     QSqlTableModel *model_s;
-    QSqlQueryModel *model_st;
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -55,6 +50,7 @@ private slots:
    void on_bUse_clicked();
    void on_bRemove_clicked();
    void on_eSpare_currentIndexChanged(int index);
+   void on_tview_cellChanged(int row, int column);
 };
 
 #endif // EDITPARTSREQUEST_H

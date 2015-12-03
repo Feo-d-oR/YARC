@@ -78,7 +78,6 @@ void OrdersWidgetMain::initModelOrders()
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
     model->setFilter("number >= " + MainWindow::showlimit);
     model->select();
-    ui->datenotify->setDate(QDate::currentDate());
 }
 
 void OrdersWidgetMain::readUiSettings()
@@ -144,6 +143,8 @@ void OrdersWidgetMain::readUiSettings()
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();
     ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    ui->datenotify->setDate(QDate::currentDate());
 }
 
 

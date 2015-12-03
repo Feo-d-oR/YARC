@@ -79,7 +79,7 @@ QSqlError DBWork::createTables()
 
     q.exec("CREATE TABLE part_requests (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            date TIMESTAMP, master INTEGER, orderid INTEGER, spares VARCHAR(64), quants VARCHAR(64), \
-           sparesnew VARCHAR(1024), state INTEGER, comment VARCHAR(1024))");
+           sparesnew VARCHAR(1024), state INTEGER, comment VARCHAR(1024), summ DOUBLE)");
     q.exec("CREATE TABLE pr_states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
     q.exec(QString("INSERT INTO pr_states VALUES(1,'") + tr("Placed") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(2,'") + tr("Confirmed") + "')");
@@ -234,6 +234,7 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
     q.exec(QString("INSERT INTO pr_states VALUES(10,'") + tr("Info-Confirmed") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(11,'") + tr("Info-Rejected") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(12,'") + tr("Info-Completed") + "')");
+    q.exec("ALTER TABLE part_requests ADD summ DOUBLE NULL DEFAULT NULL");
 
 //    q.exec("");
 //    q.exec(QString(""));

@@ -8,6 +8,8 @@ EditPartsRequest::EditPartsRequest(QWidget *parent) :
 {
     ui->setupUi(this);
     isnew = true;
+    saved = false;
+    holdCalc = true;
 }
 
 EditPartsRequest::~EditPartsRequest()
@@ -118,6 +120,8 @@ void EditPartsRequest::setModels()
 
 void EditPartsRequest::fillFields()
 {
+    holdCalc = true;
+
     qf.exec("SELECT * FROM part_requests WHERE id = " + requestID);
     recf = qf.record();
     qf.first();
@@ -145,11 +149,14 @@ void EditPartsRequest::fillFields()
         qfs.exec("SELECT * FROM spares WHERE id = " + lsp.at(i));
         qfs.first();
         recfs = qfs.record();
+        ui->tview->setItem(i, 3, new QTableWidgetItem(qfs.value(recfs.indexOf("id")).toString()));
         ui->tview->setItem(i, 0, new QTableWidgetItem(qfs.value(recfs.indexOf("name")).toString()));
         ui->tview->setItem(i, 1, new QTableWidgetItem(lqt.at(i)));
         ui->tview->setItem(i, 2, new QTableWidgetItem(qfs.value(recfs.indexOf("price")).toString()));
-        ui->tview->setItem(i, 3, new QTableWidgetItem(qfs.value(recfs.indexOf("id")).toString()));
     }
+
+    calcSumm();
+    holdCalc = false;
 }
 
 void EditPartsRequest::submitReport()
@@ -178,10 +185,10 @@ void EditPartsRequest::submitReport()
 
     QSqlQuery q;
     if (isnew)
-        q.prepare("INSERT INTO part_requests VALUES (NULL, NULL, :master, :orderid, :spares, :quants, :sparesnew, :state, :comment)");
+        q.prepare("INSERT INTO part_requests VALUES (NULL, NULL, :master, :orderid, :spares, :quants, :sparesnew, :state, :comment, :summ)");
     else
         q.prepare("UPDATE part_requests SET spares = :spares, quants = :quants, sparesnew = :sparesnew, \
-                  comment = :comment, state = :state WHERE id = " + requestID);
+                  comment = :comment, state = :state, summ = :summ WHERE id = " + requestID);
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":master", id_m);
     q.bindValue(":spares", spares);
@@ -189,6 +196,7 @@ void EditPartsRequest::submitReport()
     q.bindValue(":sparesnew", ui->eSparesNew->toPlainText());
     q.bindValue(":state", id_s);
     q.bindValue(":comment", ui->eComment->toPlainText());
+    q.bindValue(":summ", ui->eSumm->text().toDouble());
     q.exec();
     saved = true;
     qDebug() << q.lastError().text();
@@ -208,12 +216,14 @@ void EditPartsRequest::on_eSpare_currentIndexChanged(int index)
 
 void EditPartsRequest::on_bUse_clicked()
 {
+    holdCalc = true;
     int rc = ui->tview->rowCount();
     ui->tview->insertRow(rc);
+    ui->tview->setItem(rc, 3, new QTableWidgetItem(id_s));
     ui->tview->setItem(rc, 0, new QTableWidgetItem(ui->eSpare->currentText()));
     ui->tview->setItem(rc, 1, new QTableWidgetItem("1"));
+    holdCalc = false;
     ui->tview->setItem(rc, 2, new QTableWidgetItem(ui->eSPrice->text()));
-    ui->tview->setItem(rc, 3, new QTableWidgetItem(id_s));
 }
 
 void EditPartsRequest::on_bRemove_clicked(){
@@ -230,3 +240,22 @@ void EditPartsRequest::on_bSave_clicked(){
 void EditPartsRequest::reject(){
     close();}
 
+
+void EditPartsRequest::on_tview_cellChanged(int row, int column)
+{
+    if ((column == 2 || column == 1) && !holdCalc)
+    {
+        calcSumm();
+    }
+}
+
+void EditPartsRequest::calcSumm()
+{
+    summ = 0;
+    int rc = ui->tview->rowCount();
+    for (row=0; row<rc; row++)
+    {
+        summ += ui->tview->item(row, 2)->text().toDouble() * ui->tview->item(row, 1)->text().toDouble();
+    }
+    ui->eSumm->setText(QString::number(summ,'f',2));
+}

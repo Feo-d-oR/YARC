@@ -11,7 +11,6 @@ OrdersWidgetMaster::OrdersWidgetMaster(QWidget *parent) :
     initModelOrders();
     initModelMasters();
     readUiSettings();
-    ui->dateend->setDate(QDate::currentDate());
 }
 
 OrdersWidgetMaster::~OrdersWidgetMaster()
@@ -147,6 +146,8 @@ void OrdersWidgetMaster::readUiSettings()
     ui->tview->verticalHeader()->hide();
     ui->tview->horizontalHeader()->show();
     ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    ui->dateend->setDate(QDate::currentDate());
 }
 
 

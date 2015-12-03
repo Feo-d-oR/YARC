@@ -11,6 +11,7 @@ PartsWidgetStorekeeper::PartsWidgetStorekeeper(QWidget *parent) :
     initModelRequests();
     initModels();
     readUiSettings();
+    calculateSumm();
 }
 
 PartsWidgetStorekeeper::~PartsWidgetStorekeeper()
@@ -58,6 +59,7 @@ void PartsWidgetStorekeeper::initModelRequests()
     mapper->addMapping(ui->eOrderId, model->fieldIndex("orderid"));
     mapper->addMapping(ui->eMaster, masterIdx);
     mapper->addMapping(ui->eComment, model->fieldIndex("comment"));
+    mapper->addMapping(ui->eSumm, model->fieldIndex("summ"));
 
     connect(ui->tview->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
@@ -92,6 +94,7 @@ void PartsWidgetStorekeeper::readUiSettings()
     model->setHeaderData(reqStateIdx, Qt::Horizontal, tr("State"));
     model->setHeaderData(masterIdx, Qt::Horizontal, tr("Master"));
     model->setHeaderData(model->fieldIndex("comment"), Qt::Horizontal, tr("Comment"));
+    model->setHeaderData(model->fieldIndex("summ"), Qt::Horizontal, tr("Sum"));
 
     //hiding unneeded columns
     ui->tview->hideColumn(model->fieldIndex("spares"));
@@ -201,12 +204,16 @@ void PartsWidgetStorekeeper::on_tview_clicked(const QModelIndex &index){
 }
 
 void PartsWidgetStorekeeper::on_dialog_closed(){
-    model->select();}
+    model->select();
+    calculateSumm();
+}
 
 void PartsWidgetStorekeeper::on_reconnect_recieved(){
+    qDebug()<<"reconnect";
     initModelRequests();
     initModels();
     readUiSettings();
+    calculateSumm();
 }
 
 void PartsWidgetStorekeeper::on_bSubmit_clicked(){
@@ -219,6 +226,7 @@ void PartsWidgetStorekeeper::on_bSubmit_clicked(){
         qDebug()<<"order state changed";
     }
     model->submitAll();
+    calculateSumm();
 }
 
 void PartsWidgetStorekeeper::on_cbSearchMaster_activated(int index)
@@ -266,4 +274,18 @@ void PartsWidgetStorekeeper::on_bDelete_clicked()
     if (mb.clickedButton() == bNo)
         mb.close();
     }
+}
+
+void PartsWidgetStorekeeper::calculateSumm()
+{
+    summ = 0;
+    q.exec("SELECT summ FROM part_requests WHERE state IN (2, 5)");
+    q.first();
+    do
+    {
+        summ += q.value(0).toDouble();
+        qDebug() << q.value(0).toDouble();
+    }
+    while (q.next());
+    ui->lToPay->setText("<b>" + QString::number(summ,'f',2) + "</b>");
 }

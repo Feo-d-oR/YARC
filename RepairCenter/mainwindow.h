@@ -90,6 +90,7 @@ private:
     void showPartsRequest();
     void readGlobalSettings();
     void loadUserInterface();
+    QSqlDatabase db;
     QSettings * settings;
     SimpleCrypt crypto;
     QWidget * mainwidget;
