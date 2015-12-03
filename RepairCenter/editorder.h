@@ -33,6 +33,7 @@ private:
     void setModels();
     void getCustomer();
     void setDefaults();
+    void mandatoryAlert();
     QSqlQuery q;
     QSqlRecord rec;
     QSqlQuery qc;

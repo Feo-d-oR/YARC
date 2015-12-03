@@ -36,7 +36,14 @@ bool MainWindow::masterCanEditWorks = 0;
 bool MainWindow::acceptorCanEditDiag = 0;
 bool MainWindow::acceptorCanEditWorks = 0;
 bool MainWindow::acceptorCanEditSpares = 0;
+bool MainWindow::productTypeM = 0;
+bool MainWindow::productM = 0;
+bool MainWindow::serialM = 0;
+bool MainWindow::defectM = 0;
+bool MainWindow::conditionM = 0;
+bool MainWindow::completenessM = 0;
 QString MainWindow::prevCustomer = "";
+QString MainWindow::defWarranty = "";
 QString MainWindow::currentOrderID = "";
 QString MainWindow::showlimit = "0";
 bool MainWindow::limitallfilters = false;
@@ -121,6 +128,7 @@ void MainWindow::readGlobalSettings()
     defAcceptor = settings->value("defaults/acceptor").toInt();
     defMaster = settings->value("defaults/master").toInt();
     defState = settings->value("defaults/state").toInt();
+    defWarranty = settings->value("defaults/warranty").toString();
 
     showlimit = settings->value("orderstable/showlimit").toString();
     limitallfilters = settings->value("orderstable/limitallfilters").toBool();
@@ -157,6 +165,26 @@ void MainWindow::readGlobalSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditDiag'");
     q.first();
     acceptorCanEditDiag = q.value(0).toBool();
+
+    q.exec("SELECT value_n FROM system WHERE name = 'productTypeM'");
+    q.first();
+    productTypeM = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'productM'");
+    q.first();
+    productM = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'serialM'");
+    q.first();
+    serialM = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'defectM'");
+    q.first();
+    defectM = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'conditionM'");
+    q.first();
+    conditionM = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'completenessM'");
+    q.first();
+    completenessM = q.value(0).toBool();
+
 }
 
 void MainWindow::loadUserInterface()

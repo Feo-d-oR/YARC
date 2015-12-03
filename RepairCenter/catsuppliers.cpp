@@ -52,7 +52,7 @@ void CatSuppliers::initModel()
     mapper->addMapping(ui->eEmail, model->fieldIndex("email"));
     mapper->addMapping(ui->eWebsite, model->fieldIndex("website"));
     mapper->addMapping(ui->eOrg, model->fieldIndex("org"));
-    mapper->addMapping(ui->eBank, model->fieldIndex("bank"));
+    mapper->addMapping(ui->eBankData, model->fieldIndex("bank"));
     mapper->addMapping(ui->eGoods, model->fieldIndex("goods"));
     mapper->addMapping(ui->eComment, model->fieldIndex("comment"));
 
@@ -75,7 +75,7 @@ void CatSuppliers::on_bAdd_clicked()
     ui->eWebsite->clear();
     ui->eAddress->clear();
     ui->eOrg->clear();
-    ui->eBank->clear();
+    ui->eBankData->clear();
     ui->eGoods->clear();
     ui->eComment->clear();
 }

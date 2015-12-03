@@ -28,6 +28,7 @@ public:
     static float sPercAcc;
     static float sPercFirm;
     static QString prevCustomer;
+    static QString defWarranty;
     static int defAcceptor;
     static int defMaster;
     static int defState;
@@ -37,6 +38,12 @@ public:
     static bool acceptorCanEditWorks;
     static bool acceptorCanEditSpares;
     static bool acceptorCanEditDiag;
+    static bool productTypeM;
+    static bool productM;
+    static bool serialM;
+    static bool defectM;
+    static bool conditionM;
+    static bool completenessM;
     static bool isadmin;
     static QString currentOrderID;
     static QString showlimit;

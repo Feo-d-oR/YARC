@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 
 # Comment to not build excessive
 SUBDIRS += RepairCenter
-#SUBDIRS += DBTool
+SUBDIRS += DBTool
 #SUBDIRS += QtRpt/QtRptDesigner
 
 #Un-remark this line, if you want to buld QtRPT as a library

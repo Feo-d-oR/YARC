@@ -5,6 +5,9 @@
 Added->Journal->Parts requests
 Added->Option "Show orders from #" now affects journals
 Added->Storekeeper user interface
+Added->"Email", "Bank data" fields in "Customers" catalog
+Added->Search in "Customers" catalog
+Added->"Default warranty" option
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table

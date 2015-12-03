@@ -63,7 +63,7 @@
     </widget>
    </item>
    <item row="9" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_9">
+    <widget class="QLabel" name="llDefect">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -108,7 +108,7 @@
     </widget>
    </item>
    <item row="4" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="llName">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -279,7 +279,7 @@
     </widget>
    </item>
    <item row="4" column="4" colspan="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="llPhone">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -330,7 +330,7 @@
     </widget>
    </item>
    <item row="7" column="4" colspan="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="llSerial">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -404,7 +404,7 @@
     <widget class="QLineEdit" name="eDisease"/>
    </item>
    <item row="10" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_10">
+    <widget class="QLabel" name="llCondition">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -426,7 +426,7 @@
     <widget class="QLineEdit" name="eCond"/>
    </item>
    <item row="11" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_11">
+    <widget class="QLabel" name="llCompleteness">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -534,7 +534,7 @@
     </widget>
    </item>
    <item row="6" column="4" colspan="2" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="llProduct">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -575,7 +575,7 @@
     </widget>
    </item>
    <item row="6" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_6">
+    <widget class="QLabel" name="llProductType">
      <property name="minimumSize">
       <size>
        <width>0</width>

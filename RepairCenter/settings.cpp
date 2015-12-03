@@ -52,6 +52,8 @@ void Settings::readSettings()
     ui->cbAffectFilters->setChecked(settings->value("orderstable/limitallfilters").toBool());
     }
 
+    ui->eWarranty->setText(settings->value("defaults/warranty").toString());
+
     QString lang = settings->value("locale/language").toString();
     if (lang == "") //default system language
         ui->language->setCurrentIndex(0);
@@ -94,6 +96,26 @@ void Settings::readDBSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'acceptorCanEditDiag'");
     q.first();
     ui->cbAEdDiag->setChecked(q.value(0).toBool());
+
+    q.exec("SELECT value_n FROM system WHERE name = 'productTypeM'");
+    q.first();
+    ui->cbProductTypeM->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'productM'");
+    q.first();
+    ui->cbProductM->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'serialM'");
+    q.first();
+    ui->cbSerialM->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'defectM'");
+    q.first();
+    ui->cbDefectM->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'conditionM'");
+    q.first();
+    ui->cbConditionM->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'completenessM'");
+    q.first();
+    ui->cbCompletenessM->setChecked(q.value(0).toBool());
+
 
     model_a = new QSqlQueryModel();
     model_a->setQuery("SELECT id, name FROM employees WHERE position_type = 2 AND isactive = 1");
@@ -154,6 +176,8 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/showlimit", ui->eLimitOrders->text());
     settings->setValue("orderstable/limitallfilters", ui->cbAffectFilters->isChecked());
 
+    settings->setValue("defaults/warranty", ui->eWarranty->text());
+
     settings->setValue("user/username", ui->eUsername->text());
     settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));
 
@@ -190,6 +214,14 @@ void Settings::on_save_clicked()
         q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbAEdDiag->isChecked()) + " WHERE name = 'acceptorCanEditDiag'"));
         q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbAEdSpares->isChecked()) + " WHERE name = 'acceptorCanEditSpares'"));
         q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbAEdWorks->isChecked()) + " WHERE name = 'acceptorCanEditWorks'"));
+
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbProductTypeM->isChecked()) + " WHERE name = 'productTypeM'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbProduct->isChecked()) + " WHERE name = 'productM'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbSerialM->isChecked()) + " WHERE name = 'serialM'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbDefectM->isChecked()) + " WHERE name = 'defectM'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbConditionM->isChecked()) + " WHERE name = 'conditionM'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbCompletenessM->isChecked()) + " WHERE name = 'completenessM'"));
+
     }
 
 

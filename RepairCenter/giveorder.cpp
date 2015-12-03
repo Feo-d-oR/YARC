@@ -80,6 +80,8 @@ void GiveOrder::setModels()
     QModelIndexList idx_a = ui->eGiver->model()->match(ui->eGiver->model()->index(0, 0), Qt::EditRole, MainWindow::defAcceptor, 1, Qt::MatchExactly);
     ui->eGiver->setCurrentIndex(idx_a.value(0).row());
 
+    ui->eWarranty->setText(MainWindow::defWarranty);
+
     ui->tvieww->setColumnWidth(0, 300);
     ui->tvieww->setColumnWidth(1, 100);
     ui->tvieww->setColumnWidth(2, 100);

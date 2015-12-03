@@ -19,7 +19,8 @@ QSqlError DBWork::createTables()
            position_type INTEGER, position VARCHAR(128), isactive BOOLEAN NOT NULL DEFAULT FALSE, \
            username VARCHAR(64), password VARCHAR(64))");
     q.exec("CREATE TABLE customers (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
-           name VARCHAR(64), phone VARCHAR(64), address VARCHAR(128), regular BOOLEAN NOT NULL DEFAULT FALSE)");
+           name VARCHAR(64), phone VARCHAR(64), address TEXT, regular BOOLEAN NOT NULL DEFAULT FALSE, \
+           email VARCHAR(128) NULL DEFAULT NULL, bankdata TEXT NULL DEFAULT NULL)");
     q.exec("CREATE TABLE work_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            date TIMESTAMP, orderid INTEGER, master INTEGER, work INTEGER, quant INTEGER, spares VARCHAR(64), quants VARCHAR(64))");
     q.exec("CREATE TABLE diag_reports (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
@@ -31,7 +32,7 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE salaries (id INTEGER AUTO_INCREMENT PRIMARY KEY, employee INTEGER, summ DOUBLE)");
     q.exec("CREATE TABLE suppliers (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            name VARCHAR(255),phone VARCHAR(255), address VARCHAR(255), comment VARCHAR(1024), whours VARCHAR(255), \
-           email VARCHAR(255), website VARCHAR(255), org VARCHAR(255), bank VARCHAR(1024), goods VARCHAR(1024))");
+           email VARCHAR(255), website VARCHAR(255), org VARCHAR(255), bankdata TEXT, goods VARCHAR(1024))");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', 8, NULL)");
@@ -44,6 +45,12 @@ QSqlError DBWork::createTables()
     q.exec("INSERT INTO system VALUES('acceptorCanEditWorks', 1, NULL)");
     q.exec("INSERT INTO system VALUES('acceptorCanEditSpares', 1, NULL)");
     q.exec("INSERT INTO system VALUES('acceptorCanEditDiag', 1, NULL)");
+    q.exec("INSERT INTO system VALUES('productTypeM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('productM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('serialM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('defectM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('conditionM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('completenessM', 0, NULL)");
 
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
     q.exec(QString("INSERT INTO states VALUES(1,'") + tr("Accepted for repair") + "')");
@@ -235,6 +242,17 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
     q.exec(QString("INSERT INTO pr_states VALUES(11,'") + tr("Info-Rejected") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(12,'") + tr("Info-Completed") + "')");
     q.exec("ALTER TABLE part_requests ADD summ DOUBLE NULL DEFAULT NULL");
+    q.exec("ALTER TABLE customers ADD email VARCHAR(128) NULL DEFAULT NULL, ADD bankdata TEXT NULL DEFAULT NULL, \
+           CHANGE address address TEXT NULL DEFAULT NULL");
+    q.exec("ALTER TABLE suppliers CHANGE bank bankdata TEXT NULL DEFAULT NULL");
+
+    q.exec("INSERT INTO system VALUES('productTypeM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('productM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('serialM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('defectM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('conditionM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('completenessM', 0, NULL)");
+
 
 //    q.exec("");
 //    q.exec(QString(""));

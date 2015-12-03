@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
+    <width>486</width>
     <height>484</height>
    </rect>
   </property>
@@ -43,6 +43,173 @@
        <string>Main</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>Default master:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="3">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>Requires active database connection</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="3">
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_28">
+         <property name="text">
+          <string>Username:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="eUsername">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_27">
+         <property name="text">
+          <string>Default state:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>Password:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>Default acceptor:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="eDefAcceptor">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Language:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="eDefMaster">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0" colspan="3">
+        <widget class="QLabel" name="label_22">
+         <property name="text">
+          <string>Requires restart</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="eDefState">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLineEdit" name="ePassword">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>310</width>
+           <height>2000</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item row="0" column="1">
         <widget class="QComboBox" name="language">
          <property name="sizePolicy">
@@ -74,170 +241,23 @@
          </item>
         </widget>
        </item>
-       <item row="2" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_24">
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_40">
          <property name="text">
-          <string>Default acceptor:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="eDefState">
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_25">
-         <property name="text">
-          <string>Default master:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="eDefAcceptor">
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="eDefMaster">
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>310</width>
-           <height>2000</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="4" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_27">
-         <property name="text">
-          <string>Default state:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>Language:</string>
+          <string>Default warranty:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_28">
-         <property name="text">
-          <string>Username:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QLineEdit" name="ePassword">
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="eWarranty">
          <property name="maximumSize">
           <size>
            <width>200</width>
            <height>16777215</height>
           </size>
-         </property>
-         <property name="frame">
-          <bool>true</bool>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QLineEdit" name="eUsername">
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_29">
-         <property name="text">
-          <string>Password:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="3">
-        <widget class="Line" name="line">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="3">
-        <widget class="Line" name="line_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0" colspan="3">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string>Requires active database connection</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0" colspan="3">
-        <widget class="QLabel" name="label_22">
-         <property name="text">
-          <string>Requires restart</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -744,62 +764,134 @@
       <attribute name="title">
        <string>Permissions</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="6" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_34">
-         <property name="text">
-          <string>Acceptor can edit diagnostics:</string>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Role permissions</string>
          </property>
-        </widget>
-       </item>
-       <item row="0" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_30">
-         <property name="text">
-          <string>Master can edit works:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_32">
-         <property name="text">
-          <string>Acceptor can edit spares:</string>
-         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QCheckBox" name="cbMEdWorks">
+            <property name="text">
+             <string>Master can edit works</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbMEdSpares">
+            <property name="text">
+             <string>Master can edit spares</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbAEdWorks">
+            <property name="text">
+             <string>Acceptor can edit works</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbAEdSpares">
+            <property name="text">
+             <string>Acceptor can edit spares</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbAEdDiag">
+            <property name="text">
+             <string>Acceptor can edit diagnostics</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QCheckBox" name="cbMEdWorks">
-         <property name="text">
-          <string/>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Mandatory fields</string>
          </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QCheckBox" name="cbProductTypeM">
+            <property name="text">
+             <string>Product type</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbProductM">
+            <property name="text">
+             <string>Product</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbSerialM">
+            <property name="text">
+             <string>Serial</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbDefectM">
+            <property name="text">
+             <string>Defect</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbConditionM">
+            <property name="text">
+             <string>Condition</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbCompletenessM">
+            <property name="text">
+             <string>Completeness</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QCheckBox" name="cbMEdSpares">
+       <item row="2" column="1">
+        <widget class="QLabel" name="label_35">
          <property name="text">
-          <string/>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QCheckBox" name="cbAEdSpares">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_33">
-         <property name="text">
-          <string>Acceptor can edit works:</string>
+          <string>Requires active database connection</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -807,39 +899,6 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QCheckBox" name="cbAEdWorks">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QCheckBox" name="cbAEdDiag">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <spacer name="verticalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="11" column="0" colspan="3" alignment="Qt::AlignRight">
         <widget class="QLabel" name="label_36">
          <property name="text">
           <string>Requires restart</string>
@@ -849,29 +908,21 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_31">
-         <property name="text">
-          <string>Master can edit spares:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="3">
-        <widget class="Line" name="line_3">
+       <item row="1" column="1">
+        <spacer name="verticalSpacer_5">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Vertical</enum>
          </property>
-        </widget>
-       </item>
-       <item row="10" column="0" colspan="3" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_35">
-         <property name="text">
-          <string>Requires active database connection</string>
+         <property name="sizeType">
+          <enum>QSizePolicy::Maximum</enum>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>200</height>
+          </size>
          </property>
-        </widget>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -1094,9 +1145,6 @@
   <tabstop>pracc</tabstop>
   <tabstop>cbMEdWorks</tabstop>
   <tabstop>cbMEdSpares</tabstop>
-  <tabstop>cbAEdWorks</tabstop>
-  <tabstop>cbAEdSpares</tabstop>
-  <tabstop>cbAEdDiag</tabstop>
   <tabstop>server</tabstop>
   <tabstop>port</tabstop>
   <tabstop>dbname</tabstop>

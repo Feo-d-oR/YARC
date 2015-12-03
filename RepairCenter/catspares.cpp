@@ -92,16 +92,6 @@ void CatSpares::on_cSearchType_activated(int index)
     }
 }
 
-void CatSpares::on_eSearchName_textEdited(const QString &arg1)
-{
-    if(arg1 != "")
-    {
-        model->setFilter("spares.name LIKE '%" + arg1 + "%'");
-        qDebug() << "filter:" << model->filter();
-    }
-    else model->setFilter(QString());
-
-}
 
 void CatSpares::on_bAdd_clicked()
 {
@@ -154,4 +144,14 @@ void CatSpares::on_cSearchSupplier_activated(int index)
         id_s = rec_s.value(rec_s.indexOf("id")).toString();
         model->setFilter("supplier = '" + id_s + "'");
     }
+}
+
+void CatSpares::on_eSearchName_returnPressed()
+{
+    if(ui->eSearchName->text() != "")
+    {
+        model->setFilter("spares.name LIKE '%" + ui->eSearchName->text() + "%'");
+        qDebug() << "filter:" << model->filter();
+    }
+    else model->setFilter(QString());
 }

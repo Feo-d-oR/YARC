@@ -61,6 +61,7 @@ void EditOrder::getMode(QString mode, QString num)
         setModels();
         allocateNumber();
         setDefaults();
+        ui->eProductType->setCurrentIndex(-1);
     }
     else if (mode == "view")
     {
@@ -107,6 +108,18 @@ void EditOrder::setDefaults()
     QModelIndexList idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, MainWindow::defState, 1, Qt::MatchExactly);
     ui->eState->setCurrentIndex(idx_s.value(0).row());
 
+    if (MainWindow::productTypeM)
+        ui->llProductType->setStyleSheet("QLabel{color: crimson}");
+    if (MainWindow::productM)
+        ui->llProduct->setStyleSheet("QLabel{color: crimson}");
+    if (MainWindow::serialM)
+        ui->llSerial->setStyleSheet("QLabel{color: crimson}");
+    if (MainWindow::defectM)
+        ui->llDefect->setStyleSheet("QLabel{color: crimson}");
+    if (MainWindow::conditionM)
+        ui->llCondition->setStyleSheet("QLabel{color: crimson}");
+    if (MainWindow::completenessM)
+        ui->llCompleteness->setStyleSheet("QLabel{color: crimson}");
 }
 
 void EditOrder::setModels()
@@ -301,9 +314,49 @@ void EditOrder::on_bPrint_clicked()
 
 void EditOrder::on_bSave_clicked()
 {
+//    if (MainWindow::productTypeM)
+//        if(ui->eProductType->currentIndex() != -1)
+//            break;
+//        else{mandatoryAlert(); break;}
+
+//    if (MainWindow::productM)
+//        if(ui->eProduct->text() != "")
+//            return;
+//        else{mandatoryAlert();}
+
+//    if (MainWindow::serialM)
+//        if(ui->eSerial->text() != "")
+//            return;
+//        else{mandatoryAlert();}
+
+//    if (MainWindow::defectM)
+//        if(ui->eDisease->text() != "")
+//            return;
+//        else{mandatoryAlert();}
+
+//    if (MainWindow::conditionM)
+//        if(ui->eCond->text() != "")
+//            return;
+//        else{mandatoryAlert();}
+
+//    if (MainWindow::completenessM)
+//        if(ui->eComplect->text() != "")
+//            return;
+//        else{mandatoryAlert();}
+
     submitOrder();    
     close();
     emit orderSubmited();
+}
+
+void EditOrder::mandatoryAlert()
+{
+    QMessageBox mb;
+    mb.setWindowTitle(tr("Attention!"));
+    mb.setText(tr("Not all required fields are filled!"));
+    QPushButton *bOk = mb.addButton(tr("OK"), QMessageBox::ActionRole);
+    mb.setDefaultButton(bOk);
+    mb.exec();
 }
 
 void EditOrder::on_bAddType_clicked()

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtSql>
+#include <QDataWidgetMapper>
 
 namespace Ui {
 class CatCustomers;
@@ -21,10 +22,13 @@ private slots:
     void on_bSave_clicked();
     void on_bClose_clicked();
     void on_bDelete_clicked();
+    void on_bClear_clicked();
+    void on_eSearchName_returnPressed();
 
 private:
     Ui::CatCustomers *ui;
-    QSqlTableModel *model;
+    QSqlRelationalTableModel *model;
+    QDataWidgetMapper *mapper;
     void initModel();
 };
 

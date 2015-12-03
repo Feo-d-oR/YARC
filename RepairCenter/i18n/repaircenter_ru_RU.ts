@@ -47,22 +47,63 @@
         <translation>Клиенты</translation>
     </message>
     <message>
-        <location filename="../catcustomers.ui" line="42"/>
+        <location filename="../catcustomers.ui" line="24"/>
+        <source>Search</source>
+        <translation type="unfinished">Поиск</translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="30"/>
+        <location filename="../catcustomers.ui" line="188"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="61"/>
+        <source>Reset filter</source>
+        <translation type="unfinished">Сбросить фильтр</translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="113"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="137"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../catcustomers.ui" line="57"/>
+        <location filename="../catcustomers.ui" line="155"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../catcustomers.ui" line="91"/>
+        <location filename="../catcustomers.ui" line="198"/>
+        <source>Phone:</source>
+        <translation type="unfinished">Телефон:</translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="222"/>
+        <source>E-mail:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="232"/>
+        <source>Address:</source>
+        <translation type="unfinished">Адрес:</translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="245"/>
+        <source>Bank data:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../catcustomers.ui" line="280"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../catcustomers.ui" line="103"/>
+        <location filename="../catcustomers.ui" line="295"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
@@ -72,17 +113,16 @@
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../catcustomers.cpp" line="30"/>
         <source>Phone</source>
-        <translation>Телефон</translation>
+        <translation type="vanished">Телефон</translation>
     </message>
     <message>
-        <location filename="../catcustomers.cpp" line="31"/>
         <source>Address</source>
-        <translation>Адрес</translation>
+        <translation type="vanished">Адрес</translation>
     </message>
     <message>
-        <location filename="../catcustomers.cpp" line="32"/>
+        <location filename="../catcustomers.ui" line="208"/>
+        <location filename="../catcustomers.cpp" line="30"/>
         <source>Regular?</source>
         <translation>Постоянный?</translation>
     </message>
@@ -103,6 +143,11 @@
         <location filename="../catemployees.ui" line="54"/>
         <source>Delete</source>
         <translation>Удалить</translation>
+    </message>
+    <message>
+        <location filename="../catemployees.ui" line="177"/>
+        <source>Role:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../catemployees.ui" line="246"/>
@@ -145,9 +190,8 @@
         <translation>Адрес:</translation>
     </message>
     <message>
-        <location filename="../catemployees.ui" line="177"/>
         <source>Position type:</source>
-        <translation>Тип должности:</translation>
+        <translation type="vanished">Тип должности:</translation>
     </message>
     <message>
         <location filename="../catemployees.ui" line="209"/>
@@ -263,13 +307,13 @@
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="66"/>
+        <location filename="../catspares.ui" line="69"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="93"/>
-        <location filename="../catspares.ui" line="338"/>
+        <location filename="../catspares.ui" line="99"/>
+        <location filename="../catspares.ui" line="350"/>
         <source>Type:</source>
         <translation>Тип:</translation>
     </message>
@@ -278,29 +322,29 @@
         <translation type="obsolete">Добавить в справочник</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="123"/>
-        <location filename="../catspares.ui" line="410"/>
+        <location filename="../catspares.ui" line="129"/>
+        <location filename="../catspares.ui" line="422"/>
         <source>Supplier:</source>
         <translation>Поставщик:</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="264"/>
-        <location filename="../catspares.ui" line="361"/>
+        <location filename="../catspares.ui" line="276"/>
+        <location filename="../catspares.ui" line="373"/>
         <source>Name:</source>
         <translation>Наименование:</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="140"/>
+        <location filename="../catspares.ui" line="146"/>
         <source>Buying price:</source>
         <translation>Закупочная цена:</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="163"/>
+        <location filename="../catspares.ui" line="169"/>
         <source>Selling price:</source>
         <translation>Отпускная цена:</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="180"/>
+        <location filename="../catspares.ui" line="186"/>
         <source>Quantity:</source>
         <translation>Кол-во:</translation>
     </message>
@@ -309,27 +353,27 @@
         <translation type="vanished">Стоимость:</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="219"/>
+        <location filename="../catspares.ui" line="225"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="231"/>
+        <location filename="../catspares.ui" line="240"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="287"/>
+        <location filename="../catspares.ui" line="299"/>
         <source>Part number:</source>
         <translation>Артикул:</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="332"/>
+        <location filename="../catspares.ui" line="344"/>
         <source>Search</source>
         <translation>Поиск</translation>
     </message>
     <message>
-        <location filename="../catspares.ui" line="396"/>
+        <location filename="../catspares.ui" line="408"/>
         <source>Reset filter</source>
         <translation>Сбросить фильтр</translation>
     </message>
@@ -379,72 +423,76 @@
         <translation>Редактирование</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="200"/>
+        <location filename="../catsuppliers.ui" line="250"/>
         <source>Name:</source>
         <translation>Название:</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="210"/>
+        <location filename="../catsuppliers.ui" line="260"/>
         <source>Phone:</source>
         <translation>Телефон:</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="220"/>
+        <location filename="../catsuppliers.ui" line="270"/>
         <source>Working hours:</source>
         <translation>Часы работы:</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="230"/>
+        <location filename="../catsuppliers.ui" line="280"/>
         <source>E-mail:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="240"/>
+        <location filename="../catsuppliers.ui" line="290"/>
         <source>Website:</source>
         <translation>Сайт:</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="257"/>
+        <location filename="../catsuppliers.ui" line="307"/>
         <source>Address:</source>
         <translation>Адрес:</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="267"/>
+        <location filename="../catsuppliers.ui" line="317"/>
         <source>Organisation:</source>
         <translation>Юр. лицо:</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="277"/>
-        <source>Bank details:</source>
-        <translation>Реквизиты:</translation>
+        <location filename="../catsuppliers.ui" line="327"/>
+        <source>Bank data:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="305"/>
+        <source>Bank details:</source>
+        <translation type="vanished">Реквизиты:</translation>
+    </message>
+    <message>
+        <location filename="../catsuppliers.ui" line="218"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="317"/>
+        <location filename="../catsuppliers.ui" line="233"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="362"/>
+        <location filename="../catsuppliers.ui" line="403"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="374"/>
+        <location filename="../catsuppliers.ui" line="418"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="388"/>
+        <location filename="../catsuppliers.ui" line="368"/>
         <source>Comment:</source>
         <translation>Комментарий:</translation>
     </message>
     <message>
-        <location filename="../catsuppliers.ui" line="402"/>
+        <location filename="../catsuppliers.ui" line="351"/>
         <source>Goods:</source>
         <translation>Товары:</translation>
     </message>
@@ -810,14 +858,29 @@
         <translation>Новый заказ</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="70"/>
+        <location filename="../editorder.cpp" line="71"/>
         <source>View order</source>
         <translation>Просмотр заказа</translation>
     </message>
     <message>
-        <location filename="../editorder.cpp" line="80"/>
+        <location filename="../editorder.cpp" line="81"/>
         <source>Edit order</source>
         <translation>Редактирование заказа</translation>
+    </message>
+    <message>
+        <location filename="../editorder.cpp" line="355"/>
+        <source>Attention!</source>
+        <translation type="unfinished">Внимание!</translation>
+    </message>
+    <message>
+        <location filename="../editorder.cpp" line="356"/>
+        <source>Not all required fields are filled!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editorder.cpp" line="357"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1590,9 +1653,9 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="60"/>
-        <location filename="../mainwindow.cpp" line="84"/>
-        <location filename="../mainwindow.cpp" line="258"/>
+        <location filename="../mainwindow.cpp" line="67"/>
+        <location filename="../mainwindow.cpp" line="91"/>
+        <location filename="../mainwindow.cpp" line="286"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1614,7 +1677,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="382"/>
-        <location filename="../mainwindow.cpp" line="371"/>
+        <location filename="../mainwindow.cpp" line="399"/>
         <source>About Qt</source>
         <translation></translation>
     </message>
@@ -1897,39 +1960,39 @@
         <translation>Поставщики</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="61"/>
+        <location filename="../mainwindow.cpp" line="68"/>
         <source>Database not found!</source>
         <translation>База данных не найдена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="62"/>
+        <location filename="../mainwindow.cpp" line="69"/>
         <source>Change settings or create new one?</source>
         <translation>Изменить настройки или создать новую?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="63"/>
-        <location filename="../mainwindow.cpp" line="87"/>
+        <location filename="../mainwindow.cpp" line="70"/>
+        <location filename="../mainwindow.cpp" line="94"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="64"/>
+        <location filename="../mainwindow.cpp" line="71"/>
         <source>Change</source>
         <translation>Изменить</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="65"/>
-        <location filename="../mainwindow.cpp" line="88"/>
+        <location filename="../mainwindow.cpp" line="72"/>
+        <location filename="../mainwindow.cpp" line="95"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="85"/>
+        <location filename="../mainwindow.cpp" line="92"/>
         <source>Settings file not found!</source>
         <translation>Файл настроек не найден!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="86"/>
+        <location filename="../mainwindow.cpp" line="93"/>
         <source>Create settings file?</source>
         <translation>Создать файл настроек?</translation>
     </message>
@@ -1974,7 +2037,7 @@
         <translation type="vanished">Неисправность</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="258"/>
+        <location filename="../mainwindow.cpp" line="286"/>
         <source>Unable to connect to database!</source>
         <translation>Невозможно соедениться с базой данных!</translation>
     </message>
@@ -2715,37 +2778,37 @@
         <translation type="vanished">Язык (Language):</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="80"/>
+        <location filename="../settings.ui" line="104"/>
         <source>Default acceptor:</source>
         <translation>Приёмщик по умолчанию:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="97"/>
+        <location filename="../settings.ui" line="49"/>
         <source>Default master:</source>
         <translation>Мастер по умолчанию:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="227"/>
-        <location filename="../settings.ui" line="734"/>
-        <location filename="../settings.ui" line="869"/>
+        <location filename="../settings.ui" line="56"/>
+        <location filename="../settings.ui" line="754"/>
+        <location filename="../settings.ui" line="894"/>
         <source>Requires active database connection</source>
         <translation>Требуется соединение с базой данных</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="237"/>
-        <location filename="../settings.ui" line="614"/>
-        <location filename="../settings.ui" line="845"/>
-        <location filename="../settings.ui" line="1011"/>
+        <location filename="../settings.ui" line="160"/>
+        <location filename="../settings.ui" line="634"/>
+        <location filename="../settings.ui" line="904"/>
+        <location filename="../settings.ui" line="1062"/>
         <source>Requires restart</source>
         <translation>Требуется перезапуск</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="150"/>
+        <location filename="../settings.ui" line="90"/>
         <source>Default state:</source>
         <translation>Состояние по умолчанию:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="173"/>
+        <location filename="../settings.ui" line="73"/>
         <source>Username:</source>
         <translation>Имя пользователя:</translation>
     </message>
@@ -2754,264 +2817,329 @@
         <translation type="vanished">Главное окно</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="254"/>
+        <location filename="../settings.ui" line="274"/>
         <source>Orders table</source>
         <translation>Таблица заказов</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="330"/>
-        <location filename="../settings.ui" line="370"/>
+        <location filename="../settings.ui" line="350"/>
+        <location filename="../settings.ui" line="390"/>
         <source>120</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="452"/>
+        <location filename="../settings.ui" line="472"/>
         <source>200</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="556"/>
+        <location filename="../settings.ui" line="576"/>
         <source>Customer:</source>
         <translation>Заказчик:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="525"/>
+        <location filename="../settings.ui" line="545"/>
         <source>Width:</source>
         <translation>Ширина:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="439"/>
+        <location filename="../settings.ui" line="459"/>
         <source>210</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="459"/>
+        <location filename="../settings.ui" line="479"/>
         <source>Product:</source>
         <translation>Изделие:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="297"/>
+        <location filename="../settings.ui" line="317"/>
         <source>Visible?</source>
         <translation>Видимый?</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="317"/>
+        <location filename="../settings.ui" line="337"/>
         <source>Defect:</source>
         <translation>Неисправность:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="539"/>
+        <location filename="../settings.ui" line="559"/>
         <source>Acceptor:</source>
         <translation>Приёмщик:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="357"/>
+        <location filename="../settings.ui" line="377"/>
         <source>Master:</source>
         <translation>Мастер:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="403"/>
+        <location filename="../settings.ui" line="423"/>
         <source>Type:</source>
         <translation>Тип:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="283"/>
-        <location filename="../settings.ui" line="343"/>
-        <location filename="../settings.ui" line="416"/>
-        <location filename="../settings.ui" line="492"/>
+        <location filename="../settings.ui" line="303"/>
+        <location filename="../settings.ui" line="363"/>
+        <location filename="../settings.ui" line="436"/>
+        <location filename="../settings.ui" line="512"/>
         <source>100</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="607"/>
+        <location filename="../settings.ui" line="627"/>
         <source>Date:</source>
         <translation>Дата:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="583"/>
+        <location filename="../settings.ui" line="603"/>
         <source>State:</source>
         <translation>Состояние:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="532"/>
+        <location filename="../settings.ui" line="552"/>
         <source>Notified:</source>
         <translation>Оповещён:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="62"/>
+        <location filename="../settings.ui" line="229"/>
         <source>System Default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="67"/>
+        <location filename="../settings.ui" line="234"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="72"/>
+        <location filename="../settings.ui" line="239"/>
         <source>Русский Russian</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="248"/>
+        <location filename="../settings.ui" line="247"/>
+        <source>Default warranty:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="268"/>
         <source>Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="396"/>
+        <location filename="../settings.ui" line="416"/>
         <source>50</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="600"/>
+        <location filename="../settings.ui" line="620"/>
         <source>Show orders from #</source>
         <translation>Показывать заказы с №</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="518"/>
+        <location filename="../settings.ui" line="538"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="270"/>
+        <location filename="../settings.ui" line="290"/>
         <source>Affects all filters?</source>
         <translation>Влияет на все фильтры?</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="624"/>
+        <location filename="../settings.ui" line="644"/>
         <source>Requires reconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="745"/>
+        <location filename="../settings.ui" line="765"/>
         <source>Permissions</source>
         <translation>Привелегии</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="751"/>
         <source>Acceptor can edit diagnostics:</source>
-        <translation>Приёмщик может редактировать акты диагностики:</translation>
+        <translation type="vanished">Приёмщик может редактировать акты диагностики:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="758"/>
         <source>Master can edit works:</source>
-        <translation>Мастер может редактировать работы: </translation>
+        <translation type="vanished">Мастер может редактировать работы: </translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="765"/>
         <source>Acceptor can edit spares:</source>
-        <translation>Приёмщик  может редактировать запчасти:</translation>
+        <translation type="vanished">Приёмщик  может редактировать запчасти:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="802"/>
         <source>Acceptor can edit works:</source>
-        <translation>Приёмщик  может редактировать работы:</translation>
+        <translation type="vanished">Приёмщик  может редактировать работы:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="855"/>
         <source>Master can edit spares:</source>
-        <translation>Мастер может редактировать запчасти: </translation>
+        <translation type="vanished">Мастер может редактировать запчасти: </translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="880"/>
+        <location filename="../settings.ui" line="931"/>
         <source>Database</source>
         <translation>База данных</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="892"/>
+        <location filename="../settings.ui" line="943"/>
         <source>MYSQL server:</source>
         <translation>Сервер MYSQL:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="915"/>
+        <location filename="../settings.ui" line="966"/>
         <source>Port:</source>
         <translation>Порт:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="935"/>
+        <location filename="../settings.ui" line="986"/>
         <source>Database name:</source>
         <translation>Имя базы данных:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="955"/>
+        <location filename="../settings.ui" line="1006"/>
         <source>User name:</source>
         <translation>Имя пользователя:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="206"/>
-        <location filename="../settings.ui" line="975"/>
+        <location filename="../settings.ui" line="97"/>
+        <location filename="../settings.ui" line="1026"/>
         <source>Password:</source>
         <translation>Пароль:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="638"/>
+        <location filename="../settings.ui" line="658"/>
         <source>Money</source>
         <translation>Денежные</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="644"/>
+        <location filename="../settings.ui" line="664"/>
         <source>Percentage of master:</source>
         <translation>Процент мастера:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="681"/>
+        <location filename="../settings.ui" line="701"/>
         <source>Percentage of acceptor:</source>
         <translation>Процент приёмщика:</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1027"/>
+        <location filename="../settings.ui" line="771"/>
+        <source>Role permissions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="777"/>
+        <source>Master can edit works</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="787"/>
+        <source>Master can edit spares</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="804"/>
+        <source>Acceptor can edit works</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="814"/>
+        <source>Acceptor can edit spares</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="824"/>
+        <source>Acceptor can edit diagnostics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="837"/>
+        <source>Mandatory fields</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="843"/>
+        <source>Product type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="850"/>
+        <source>Product</source>
+        <translation type="unfinished">Изделие</translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="860"/>
+        <source>Serial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="867"/>
+        <source>Defect</source>
+        <translation type="unfinished">Неисправность</translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="877"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="884"/>
+        <source>Completeness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="1078"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1052"/>
+        <location filename="../settings.ui" line="1103"/>
         <source>Save and close</source>
         <translation>Сохранить и закрыть</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="908"/>
+        <location filename="../settings.ui" line="959"/>
         <source>localhost</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="163"/>
+        <location filename="../settings.ui" line="140"/>
         <source>Language:</source>
         <translation>Язык (Language):</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="928"/>
+        <location filename="../settings.ui" line="979"/>
         <source>3306</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="948"/>
+        <location filename="../settings.ui" line="999"/>
         <source>repaircenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="968"/>
+        <location filename="../settings.ui" line="1019"/>
         <source>root</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="214"/>
+        <location filename="../settings.cpp" line="246"/>
         <source>Attention!</source>
         <translation>Внимание!</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="215"/>
+        <location filename="../settings.cpp" line="247"/>
         <source>Some changes will take effect the next time.
  Restart application?</source>
         <translation>Некоторые настройки вступят в силу только после перезапуска.
  Перезапустить приложение?</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="217"/>
+        <location filename="../settings.cpp" line="249"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="218"/>
+        <location filename="../settings.cpp" line="250"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>

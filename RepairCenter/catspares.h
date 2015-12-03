@@ -23,9 +23,9 @@ private slots:
     void on_bClose_clicked();
     void on_bDelete_clicked();
     void on_cSearchType_activated(int index);
-    void on_eSearchName_textEdited(const QString &arg1);
     void on_bClear_clicked();
     void on_cSearchSupplier_activated(int index);
+    void on_eSearchName_returnPressed();
 
 private:
     Ui::CatSpares *ui;
