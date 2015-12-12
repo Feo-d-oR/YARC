@@ -34,6 +34,7 @@ private:
     void getCustomer();
     void setDefaults();
     void mandatoryAlert();
+    bool mandatoryCheck();
     QSqlQuery q;
     QSqlRecord rec;
     QSqlQuery qc;

@@ -120,6 +120,10 @@ void EditOrder::setDefaults()
         ui->llCondition->setStyleSheet("QLabel{color: crimson}");
     if (MainWindow::completenessM)
         ui->llCompleteness->setStyleSheet("QLabel{color: crimson}");
+    if (MainWindow::customerM)
+        ui->llCustomer->setStyleSheet("QLabel{color: crimson}");
+    if (MainWindow::phoneM)
+        ui->llPhone->setStyleSheet("QLabel{color: crimson}");
 }
 
 void EditOrder::setModels()
@@ -314,39 +318,42 @@ void EditOrder::on_bPrint_clicked()
 
 void EditOrder::on_bSave_clicked()
 {
-//    if (MainWindow::productTypeM)
-//        if(ui->eProductType->currentIndex() != -1)
-//            break;
-//        else{mandatoryAlert(); break;}
+    if(!mandatoryCheck()){
+        mandatoryAlert();
+        return;}
+    else{
+        submitOrder();
+        close();
+        emit orderSubmited();}
+}
 
-//    if (MainWindow::productM)
-//        if(ui->eProduct->text() != "")
-//            return;
-//        else{mandatoryAlert();}
-
-//    if (MainWindow::serialM)
-//        if(ui->eSerial->text() != "")
-//            return;
-//        else{mandatoryAlert();}
-
-//    if (MainWindow::defectM)
-//        if(ui->eDisease->text() != "")
-//            return;
-//        else{mandatoryAlert();}
-
-//    if (MainWindow::conditionM)
-//        if(ui->eCond->text() != "")
-//            return;
-//        else{mandatoryAlert();}
-
-//    if (MainWindow::completenessM)
-//        if(ui->eComplect->text() != "")
-//            return;
-//        else{mandatoryAlert();}
-
-    submitOrder();    
-    close();
-    emit orderSubmited();
+bool EditOrder::mandatoryCheck()
+{
+    if (MainWindow::productTypeM)
+        if(ui->eProductType->currentIndex() == -1)
+            return false;
+    if(MainWindow::productM)
+            if(ui->eProduct->text() == "")
+                return false;
+    if(MainWindow::serialM)
+        if(ui->eSerial->text() == "")
+            return false;
+    if(MainWindow::defectM)
+        if(ui->eDisease->text() == "")
+            return false;
+    if(MainWindow::conditionM)
+        if(ui->eCond->text() == "")
+            return false;
+    if(MainWindow::completenessM)
+        if(ui->eComplect->text() == "")
+            return false;
+    if(MainWindow::customerM)
+        if(ui->eCustomer->text() == "")
+            return false;
+    if(MainWindow::phoneM)
+        if(ui->ePhone->text() == "")
+            return false;
+    return true;
 }
 
 void EditOrder::mandatoryAlert()

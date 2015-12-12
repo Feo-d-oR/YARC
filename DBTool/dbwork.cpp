@@ -51,6 +51,8 @@ QSqlError DBWork::createTables()
     q.exec("INSERT INTO system VALUES('defectM', 0, NULL)");
     q.exec("INSERT INTO system VALUES('conditionM', 0, NULL)");
     q.exec("INSERT INTO system VALUES('completenessM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('customerM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('phoneM', 0, NULL)");
 
     q.exec("CREATE TABLE states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
     q.exec(QString("INSERT INTO states VALUES(1,'") + tr("Accepted for repair") + "')");
@@ -252,6 +254,8 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
     q.exec("INSERT INTO system VALUES('defectM', 0, NULL)");
     q.exec("INSERT INTO system VALUES('conditionM', 0, NULL)");
     q.exec("INSERT INTO system VALUES('completenessM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('customerM', 0, NULL)");
+    q.exec("INSERT INTO system VALUES('phoneM', 0, NULL)");
 
 
 //    q.exec("");

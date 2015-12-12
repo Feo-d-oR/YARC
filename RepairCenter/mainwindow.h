@@ -44,6 +44,8 @@ public:
     static bool defectM;
     static bool conditionM;
     static bool completenessM;
+    static bool customerM;
+    static bool phoneM;
     static bool isadmin;
     static QString currentOrderID;
     static QString showlimit;

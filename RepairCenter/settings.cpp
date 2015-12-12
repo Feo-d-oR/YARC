@@ -115,6 +115,12 @@ void Settings::readDBSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'completenessM'");
     q.first();
     ui->cbCompletenessM->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'customerM'");
+    q.first();
+    ui->cbCustomerM->setChecked(q.value(0).toBool());
+    q.exec("SELECT value_n FROM system WHERE name = 'phoneM'");
+    q.first();
+    ui->cbPhoneM->setChecked(q.value(0).toBool());
 
 
     model_a = new QSqlQueryModel();
@@ -221,7 +227,8 @@ void Settings::on_save_clicked()
         q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbDefectM->isChecked()) + " WHERE name = 'defectM'"));
         q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbConditionM->isChecked()) + " WHERE name = 'conditionM'"));
         q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbCompletenessM->isChecked()) + " WHERE name = 'completenessM'"));
-
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbCustomerM->isChecked()) + " WHERE name = 'customerM'"));
+        q.exec(QString("UPDATE system SET value_n = " + QString::number(ui->cbPhoneM->isChecked()) + " WHERE name = 'phoneM'"));
     }
 
 

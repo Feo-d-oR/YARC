@@ -42,6 +42,8 @@ bool MainWindow::serialM = 0;
 bool MainWindow::defectM = 0;
 bool MainWindow::conditionM = 0;
 bool MainWindow::completenessM = 0;
+bool MainWindow::customerM = 0;
+bool MainWindow::phoneM = 0;
 QString MainWindow::prevCustomer = "";
 QString MainWindow::defWarranty = "";
 QString MainWindow::currentOrderID = "";
@@ -184,6 +186,12 @@ void MainWindow::readGlobalSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'completenessM'");
     q.first();
     completenessM = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'customerM'");
+    q.first();
+    customerM = q.value(0).toBool();
+    q.exec("SELECT value_n FROM system WHERE name = 'phoneM'");
+    q.first();
+    phoneM = q.value(0).toBool();
 
 }
 
