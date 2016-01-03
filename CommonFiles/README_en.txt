@@ -9,6 +9,7 @@ Added->"Email", "Bank data" fields in "Customers" catalog
 Added->Search in "Customers" catalog
 Added->"Default warranty" option
 Added->Optional mandatory fields
+Added->Dutch (nl_NL) translation by Gertjan Muller (incomplete)
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table

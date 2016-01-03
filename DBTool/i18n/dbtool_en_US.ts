@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.0" language="en_US">
 <context>
     <name>DBWork</name>
     <message>
@@ -216,25 +216,25 @@
         <location filename="../dbwork.cpp" line="101"/>
         <location filename="../dbwork.cpp" line="242"/>
         <source>Info-Placed</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="102"/>
         <location filename="../dbwork.cpp" line="243"/>
         <source>Info-Confirmed</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="103"/>
         <location filename="../dbwork.cpp" line="244"/>
         <source>Info-Rejected</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="104"/>
         <location filename="../dbwork.cpp" line="245"/>
         <source>Info-Completed</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -250,110 +250,120 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="67"/>
+        <location filename="../mainwindow.ui" line="51"/>
+        <source>Русский</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="56"/>
+        <source>Dutch</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="72"/>
         <source>Database will be created or updated 
 with selected language.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="79"/>
+        <location filename="../mainwindow.ui" line="84"/>
         <source>Update DB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="88"/>
+        <location filename="../mainwindow.ui" line="93"/>
         <source>MYSQL server:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="98"/>
-        <location filename="../mainwindow.ui" line="217"/>
+        <location filename="../mainwindow.ui" line="103"/>
+        <location filename="../mainwindow.ui" line="222"/>
         <source>localhost</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="105"/>
-        <location filename="../mainwindow.ui" line="233"/>
+        <location filename="../mainwindow.ui" line="110"/>
+        <location filename="../mainwindow.ui" line="238"/>
         <source>Port:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="112"/>
-        <location filename="../mainwindow.ui" line="246"/>
+        <location filename="../mainwindow.ui" line="117"/>
+        <location filename="../mainwindow.ui" line="251"/>
         <source>3306</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="119"/>
+        <location filename="../mainwindow.ui" line="124"/>
         <source>Database name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="126"/>
-        <location filename="../mainwindow.ui" line="301"/>
+        <location filename="../mainwindow.ui" line="131"/>
+        <location filename="../mainwindow.ui" line="306"/>
         <source>repaircenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="133"/>
-        <location filename="../mainwindow.ui" line="256"/>
+        <location filename="../mainwindow.ui" line="138"/>
+        <location filename="../mainwindow.ui" line="261"/>
         <source>Username:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="140"/>
-        <location filename="../mainwindow.ui" line="263"/>
+        <location filename="../mainwindow.ui" line="145"/>
+        <location filename="../mainwindow.ui" line="268"/>
         <source>root</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="147"/>
-        <location filename="../mainwindow.ui" line="270"/>
+        <location filename="../mainwindow.ui" line="152"/>
+        <location filename="../mainwindow.ui" line="275"/>
         <source>Password:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="175"/>
+        <location filename="../mainwindow.ui" line="180"/>
         <source>Update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="164"/>
+        <location filename="../mainwindow.ui" line="169"/>
         <source>Retranslate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="187"/>
+        <location filename="../mainwindow.ui" line="192"/>
         <source>Create DB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="193"/>
+        <location filename="../mainwindow.ui" line="198"/>
         <source>MYSQL Server:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="294"/>
+        <location filename="../mainwindow.ui" line="299"/>
         <source>New DB Name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="308"/>
+        <location filename="../mainwindow.ui" line="313"/>
         <source>New DB username:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="322"/>
+        <location filename="../mainwindow.ui" line="327"/>
         <source>New DB password:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="346"/>
+        <location filename="../mainwindow.ui" line="351"/>
         <source>Save settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="357"/>
+        <location filename="../mainwindow.ui" line="362"/>
         <source>Create</source>
         <translation></translation>
     </message>
@@ -364,36 +374,31 @@ with selected language.</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="46"/>
-        <source>Russian Русский</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="51"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="370"/>
+        <location filename="../mainwindow.ui" line="375"/>
         <source>Cleanup</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="376"/>
+        <location filename="../mainwindow.ui" line="381"/>
         <source>Clear salaries</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="387"/>
+        <location filename="../mainwindow.ui" line="392"/>
         <source>Clear completed orders</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="139"/>
-        <location filename="../mainwindow.cpp" line="229"/>
-        <location filename="../mainwindow.cpp" line="271"/>
-        <location filename="../mainwindow.cpp" line="316"/>
-        <location filename="../mainwindow.cpp" line="335"/>
-        <location filename="../mainwindow.cpp" line="355"/>
+        <location filename="../mainwindow.cpp" line="238"/>
+        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="325"/>
+        <location filename="../mainwindow.cpp" line="344"/>
+        <location filename="../mainwindow.cpp" line="364"/>
         <source>Error!</source>
         <translation></translation>
     </message>
@@ -403,51 +408,51 @@ with selected language.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="230"/>
+        <location filename="../mainwindow.cpp" line="239"/>
         <source>Database with that name already exist!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="262"/>
-        <location filename="../mainwindow.cpp" line="286"/>
-        <location filename="../mainwindow.cpp" line="296"/>
-        <location filename="../mainwindow.cpp" line="306"/>
+        <location filename="../mainwindow.cpp" line="271"/>
+        <location filename="../mainwindow.cpp" line="295"/>
+        <location filename="../mainwindow.cpp" line="305"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Done!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="263"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Database succesfully created!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="272"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>Unable to create database!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="287"/>
+        <location filename="../mainwindow.cpp" line="296"/>
         <source>Database succesfully updated!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="297"/>
+        <location filename="../mainwindow.cpp" line="306"/>
         <source>Database doesn&apos;t need to be updated</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="307"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Database succecfully cleared!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="317"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>Something went wrong during update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="336"/>
-        <location filename="../mainwindow.cpp" line="356"/>
+        <location filename="../mainwindow.cpp" line="345"/>
+        <location filename="../mainwindow.cpp" line="365"/>
         <source>Something went wrong during clearing</source>
         <translation>Something went wrong during cleanup</translation>
     </message>

@@ -162,7 +162,7 @@ void MainWindow::readTranslation()
             langIdx = 0;
         else
         {   qTranslator.load("./i18n/dbtool_en_US.qm");\
-            langIdx = 2;
+            langIdx = 1;
             MainWindow::lang = "en_US";
         }
     }
@@ -170,16 +170,22 @@ void MainWindow::readTranslation()
     {
         locale = "ru_RU";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
-        langIdx = 1;
+        langIdx = 2;
         MainWindow::lang = "ru_RU";
     }
-
     else if (lang == "en_US")//english
     {
         locale = "en_US";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
-        langIdx = 2;
+        langIdx = 1;
         MainWindow::lang = "en_US";
+    }
+    else if (lang == "nl_NL")//english
+    {
+        locale = "nl_NL";
+        qTranslator.load("./i18n/dbtool_"+locale+".qm");
+        langIdx = 3;
+        MainWindow::lang = "nl_NL";
     }
     QApplication::installTranslator(&qTranslator);
 }
@@ -210,11 +216,14 @@ void MainWindow::saveSettings()
     case 0://system default
         settings->setValue("locale/language", "");
         break;
-    case 1://russian
+    case 1://english
+        settings->setValue("locale/language", "en_US");
+        break;
+    case 2://russian
         settings->setValue("locale/language", "ru_RU");
         break;
-    case 2://american english
-        settings->setValue("locale/language", "en_US");
+    case 3://dutch
+        settings->setValue("locale/language", "nl_NL");
         break;
     }
     settings->sync();
@@ -372,22 +381,28 @@ void MainWindow::on_language_activated(int index)
          break;}
         else
         {   qTranslator.load("./i18n/dbtool_en_US.qm");\
-            langIdx = 2;
+            langIdx = 1;
             MainWindow::lang = "en_US";
             break;
         }
         break;
-    case 1://russian
-        locale = "ru_RU";
-        qTranslator.load("./i18n/dbtool_"+locale+".qm");
-        langIdx = 1;
-        MainWindow::lang = "ru_RU";
-        break;
-    case 2://american english
+    case 1://english
         locale = "en_US";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
-        langIdx = 2;
+        langIdx = 1;
         MainWindow::lang = "en_US";
+        break;
+    case 2://russian
+        locale = "ru_RU";
+        qTranslator.load("./i18n/dbtool_"+locale+".qm");
+        langIdx = 2;
+        MainWindow::lang = "ru_RU";
+        break;
+    case 3://dutch
+        locale = "nl_NL";
+        qTranslator.load("./i18n/dbtool_"+locale+".qm");
+        langIdx = 3;
+        MainWindow::lang = "nl_NL";
         break;
     }
     QApplication::installTranslator(&qTranslator);

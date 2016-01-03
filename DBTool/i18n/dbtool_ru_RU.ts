@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>DBWork</name>
     <message>
         <source>Taken for repair</source>
-        <translation type="vanished">Принято в ремонт</translation>
+        <translation>Принято в ремонт</translation>
     </message>
     <message>
         <source>Taken for diagnosis</source>
-        <translation type="vanished">Принято на диагностику</translation>
+        <translation>Принято на диагностику</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="60"/>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Diagnosis completed</source>
-        <translation type="vanished">Диагностика выполнена</translation>
+        <translation>Диагностика выполнена</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="63"/>
@@ -35,35 +35,35 @@
     </message>
     <message>
         <source>Waits for agreement</source>
-        <translation type="vanished">Ожидает согласования</translation>
+        <translation>Ожидает согласования</translation>
     </message>
     <message>
         <source>Agreed</source>
-        <translation type="vanished">Согласовано</translation>
+        <translation>Согласовано</translation>
     </message>
     <message>
         <source>Given with diagnosis</source>
-        <translation type="vanished">Выдано с диагностикой</translation>
+        <translation>Выдано с диагностикой</translation>
     </message>
     <message>
         <source>Given with repair</source>
-        <translation type="vanished">Выдано с ремонтом</translation>
+        <translation>Выдано с ремонтом</translation>
     </message>
     <message>
         <source>Given without repair</source>
-        <translation type="vanished">Выдано без ремонта</translation>
+        <translation>Выдано без ремонта</translation>
     </message>
     <message>
         <source>In diagnosing</source>
-        <translation type="vanished">На диагностике</translation>
+        <translation>На диагностике</translation>
     </message>
     <message>
         <source>In the work</source>
-        <translation type="vanished">В работе</translation>
+        <translation>В работе</translation>
     </message>
     <message>
         <source>Waits for spares</source>
-        <translation type="vanished">Ожидает запчастей</translation>
+        <translation>Ожидает запчастей</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="72"/>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>Customer-Waits for spares</source>
-        <translation type="vanished">На руках-Ожидает запчастей</translation>
+        <translation>На руках-Ожидает запчастей</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="74"/>
@@ -83,11 +83,11 @@
     </message>
     <message>
         <source>Waits for giving out</source>
-        <translation type="vanished">Ожидает выдачи</translation>
+        <translation>Ожидает выдачи</translation>
     </message>
     <message>
         <source>Taken for repair (warranty)</source>
-        <translation type="vanished">Принято в ремонт (гарантия)</translation>
+        <translation>Принято в ремонт (гарантия)</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="58"/>
@@ -272,25 +272,25 @@
         <location filename="../dbwork.cpp" line="101"/>
         <location filename="../dbwork.cpp" line="242"/>
         <source>Info-Placed</source>
-        <translation type="unfinished"></translation>
+        <translation>Инфо-Размещён</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="102"/>
         <location filename="../dbwork.cpp" line="243"/>
         <source>Info-Confirmed</source>
-        <translation type="unfinished"></translation>
+        <translation>Инфо-Подтверждён</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="103"/>
         <location filename="../dbwork.cpp" line="244"/>
         <source>Info-Rejected</source>
-        <translation type="unfinished"></translation>
+        <translation>Инфо-Отклонён</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="104"/>
         <location filename="../dbwork.cpp" line="245"/>
         <source>Info-Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Инфо-Завершён</translation>
     </message>
 </context>
 <context>
@@ -306,111 +306,121 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="67"/>
+        <location filename="../mainwindow.ui" line="51"/>
+        <source>Русский</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="56"/>
+        <source>Dutch</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="72"/>
         <source>Database will be created or updated 
 with selected language.</source>
         <translation>База данных будет создана или обновлена
 с выбранным языком.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="79"/>
+        <location filename="../mainwindow.ui" line="84"/>
         <source>Update DB</source>
         <translation>Обновление БД</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="88"/>
+        <location filename="../mainwindow.ui" line="93"/>
         <source>MYSQL server:</source>
         <translation>Сервер MYSQL:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="98"/>
-        <location filename="../mainwindow.ui" line="217"/>
+        <location filename="../mainwindow.ui" line="103"/>
+        <location filename="../mainwindow.ui" line="222"/>
         <source>localhost</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="105"/>
-        <location filename="../mainwindow.ui" line="233"/>
+        <location filename="../mainwindow.ui" line="110"/>
+        <location filename="../mainwindow.ui" line="238"/>
         <source>Port:</source>
         <translation>Порт:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="112"/>
-        <location filename="../mainwindow.ui" line="246"/>
+        <location filename="../mainwindow.ui" line="117"/>
+        <location filename="../mainwindow.ui" line="251"/>
         <source>3306</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="119"/>
+        <location filename="../mainwindow.ui" line="124"/>
         <source>Database name:</source>
         <translation>Название БД:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="126"/>
-        <location filename="../mainwindow.ui" line="301"/>
+        <location filename="../mainwindow.ui" line="131"/>
+        <location filename="../mainwindow.ui" line="306"/>
         <source>repaircenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="133"/>
-        <location filename="../mainwindow.ui" line="256"/>
+        <location filename="../mainwindow.ui" line="138"/>
+        <location filename="../mainwindow.ui" line="261"/>
         <source>Username:</source>
         <translation>Имя пользователя:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="140"/>
-        <location filename="../mainwindow.ui" line="263"/>
+        <location filename="../mainwindow.ui" line="145"/>
+        <location filename="../mainwindow.ui" line="268"/>
         <source>root</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="147"/>
-        <location filename="../mainwindow.ui" line="270"/>
+        <location filename="../mainwindow.ui" line="152"/>
+        <location filename="../mainwindow.ui" line="275"/>
         <source>Password:</source>
         <translation>Пароль:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="175"/>
+        <location filename="../mainwindow.ui" line="180"/>
         <source>Update</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="164"/>
+        <location filename="../mainwindow.ui" line="169"/>
         <source>Retranslate</source>
         <translation>Обновить перевод</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="187"/>
+        <location filename="../mainwindow.ui" line="192"/>
         <source>Create DB</source>
         <translation>Создать БД</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="193"/>
+        <location filename="../mainwindow.ui" line="198"/>
         <source>MYSQL Server:</source>
         <translation>Сервер MYSQL:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="294"/>
+        <location filename="../mainwindow.ui" line="299"/>
         <source>New DB Name:</source>
         <translation>Название новой БД:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="308"/>
+        <location filename="../mainwindow.ui" line="313"/>
         <source>New DB username:</source>
         <translation>Имя нового пользователя:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="322"/>
+        <location filename="../mainwindow.ui" line="327"/>
         <source>New DB password:</source>
         <translation>Пароль нового пользователя:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="346"/>
+        <location filename="../mainwindow.ui" line="351"/>
         <source>Save settings</source>
         <translation>Сохранить настройки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="357"/>
+        <location filename="../mainwindow.ui" line="362"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
@@ -421,36 +431,31 @@ with selected language.</source>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="46"/>
-        <source>Russian Русский</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="51"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="370"/>
+        <location filename="../mainwindow.ui" line="375"/>
         <source>Cleanup</source>
         <translation>Очистка</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="376"/>
+        <location filename="../mainwindow.ui" line="381"/>
         <source>Clear salaries</source>
         <translation>Очистить зарплату</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="387"/>
+        <location filename="../mainwindow.ui" line="392"/>
         <source>Clear completed orders</source>
         <translation>Очистить выданные заказы</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="139"/>
-        <location filename="../mainwindow.cpp" line="229"/>
-        <location filename="../mainwindow.cpp" line="271"/>
-        <location filename="../mainwindow.cpp" line="316"/>
-        <location filename="../mainwindow.cpp" line="335"/>
-        <location filename="../mainwindow.cpp" line="355"/>
+        <location filename="../mainwindow.cpp" line="238"/>
+        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="325"/>
+        <location filename="../mainwindow.cpp" line="344"/>
+        <location filename="../mainwindow.cpp" line="364"/>
         <source>Error!</source>
         <translation>Ошибка!</translation>
     </message>
@@ -460,51 +465,51 @@ with selected language.</source>
         <translation>Не могу подключиться к базе данных!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="272"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>Unable to create database!</source>
         <translation>Не могу создать базу данных!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="262"/>
-        <location filename="../mainwindow.cpp" line="286"/>
-        <location filename="../mainwindow.cpp" line="296"/>
-        <location filename="../mainwindow.cpp" line="306"/>
+        <location filename="../mainwindow.cpp" line="271"/>
+        <location filename="../mainwindow.cpp" line="295"/>
+        <location filename="../mainwindow.cpp" line="305"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Done!</source>
         <translation>Готово!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="263"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Database succesfully created!</source>
         <translation>База данных успешно создана!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="287"/>
+        <location filename="../mainwindow.cpp" line="296"/>
         <source>Database succesfully updated!</source>
         <translation>База данных успешно обновлена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="297"/>
+        <location filename="../mainwindow.cpp" line="306"/>
         <source>Database doesn&apos;t need to be updated</source>
         <translation>База данных не нуждается в обновлении</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="307"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Database succecfully cleared!</source>
         <translation>База данных успешно очищена!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="317"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>Something went wrong during update</source>
         <translation>Что-то пошло не так во время обновления</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="336"/>
-        <location filename="../mainwindow.cpp" line="356"/>
+        <location filename="../mainwindow.cpp" line="345"/>
+        <location filename="../mainwindow.cpp" line="365"/>
         <source>Something went wrong during clearing</source>
         <translation>Что-то пошло не так во время очистки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="230"/>
+        <location filename="../mainwindow.cpp" line="239"/>
         <source>Database with that name already exist!</source>
         <translation>База данных с таким именем уже существует!</translation>
     </message>
