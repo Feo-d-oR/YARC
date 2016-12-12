@@ -9,7 +9,10 @@ Added->"Email", "Bank data" fields in "Customers" catalog
 Added->Search in "Customers" catalog
 Added->"Default warranty" option
 Added->Optional mandatory fields
-Added->Dutch (nl_NL) translation by Gertjan Muller (incomplete)
+Added->Prepayment
+Fixed->Default settings
+Added->Connection check every 10 seconds
+Added->Automatic recalculation of sum in "GiveOrder"
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table

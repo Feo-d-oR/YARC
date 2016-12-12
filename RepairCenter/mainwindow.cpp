@@ -62,12 +62,13 @@ MainWindow::MainWindow(QWidget *parent) :
         {
             readGlobalSettings();
             loadUserInterface();
+            connTimer();
         }
         else{
             QMessageBox mb;
             mb.setIcon(QMessageBox::Critical);
             mb.setWindowTitle(tr("RepairCenter"));
-            mb.setText(tr("Database not found!"));
+            mb.setText(tr("Database settings not found or incorrect!"));
             mb.setInformativeText(tr("Change settings or create new one?"));
             QPushButton *bCreate = mb.addButton(tr("Create"), QMessageBox::ActionRole);
             QPushButton *bEdit = mb.addButton(tr("Change"), QMessageBox::ActionRole);
@@ -114,7 +115,7 @@ bool MainWindow::checkSettings()
 {
     settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
-    if (settings->contains("mysql/hostname"))
+    if (settings->contains("mysql/password"))
         return true;
     else
         return false;
@@ -297,6 +298,24 @@ void MainWindow::on_mInit_triggered()
 
 void MainWindow::on_exit_triggered(){
     close();
+}
+
+void MainWindow::connTimer()
+{
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(checkDBconnection()));
+    timer->start(10000); //every 10 seconds
+    qDebug() << "timer every 10sec";
+}
+
+void MainWindow::checkDBconnection()
+{
+    qDebug() << "slot called";
+    if (!db.isOpen())
+    {            qDebug() << "connection lost";
+            QMessageBox::critical(this, tr("RepairCenter"), tr("Database connection is lost!"));
+    }
+    else return;
 }
 
 void MainWindow::showEditOrder(){

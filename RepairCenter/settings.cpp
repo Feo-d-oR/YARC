@@ -23,8 +23,12 @@ void Settings::readSettings()
     ui->dbname->setText(settings->value("mysql/database").toString());
     ui->username->setText(settings->value("mysql/user").toString());
     ui->password->setText(crypto.decryptToString(settings->value("mysql/password").toString()));
-    ui->eUsername->setText(settings->value("user/username").toString());
-    ui->ePassword->setText(crypto.decryptToString(settings->value("user/password").toString()));
+
+    if(settings->contains("user/username"))
+    {
+        ui->eUsername->setText(settings->value("user/username").toString());
+        ui->ePassword->setText(crypto.decryptToString(settings->value("user/password").toString()));
+    }
 
     if(settings->contains("orderstable/datee"))
     {
@@ -48,8 +52,11 @@ void Settings::readSettings()
     ui->wMaster->setText(settings->value("orderstable/masterw").toString());
     ui->wNotified->setText(settings->value("orderstable/notifiedw").toString());
 
-    ui->eLimitOrders->setText(settings->value("orderstable/showlimit").toString());
-    ui->cbAffectFilters->setChecked(settings->value("orderstable/limitallfilters").toBool());
+    if(settings->contains("orderstable/showlimit"))
+    {
+        ui->eLimitOrders->setText(settings->value("orderstable/showlimit").toString());
+        ui->cbAffectFilters->setChecked(settings->value("orderstable/limitallfilters").toBool());
+    }
     }
 
     ui->eWarranty->setText(settings->value("defaults/warranty").toString());

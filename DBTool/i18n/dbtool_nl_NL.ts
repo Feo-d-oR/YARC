@@ -155,6 +155,10 @@
         <source>Info-Completed</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Awaits reception</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>

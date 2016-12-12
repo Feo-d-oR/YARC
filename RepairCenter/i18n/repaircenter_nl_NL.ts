@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Phone</source>
-        <translation type="vanished">Telefoonnummer</translation>
+        <translation type="obsolete">Telefoonnummer</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -60,7 +60,7 @@
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Adres</translation>
+        <translation type="obsolete">Adres</translation>
     </message>
     <message>
         <source>Customers</source>
@@ -343,7 +343,7 @@
     </message>
     <message>
         <source>Bank details:</source>
-        <translation type="vanished">Rekeninggegevens:</translation>
+        <translation type="obsolete">Rekeninggegevens:</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -527,7 +527,7 @@
     </message>
     <message>
         <source>New</source>
-        <translation>Nieuw</translation>
+        <translation type="obsolete">Nieuw</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -535,11 +535,11 @@
     </message>
     <message>
         <source>Date:</source>
-        <translation>Datum:</translation>
+        <translation type="obsolete">Datum:</translation>
     </message>
     <message>
         <source>Name:</source>
-        <translation>Naam:</translation>
+        <translation type="obsolete">Naam:</translation>
     </message>
     <message>
         <source>Order</source>
@@ -551,7 +551,7 @@
     </message>
     <message>
         <source>Completeness:</source>
-        <translation>Voortgang:</translation>
+        <translation type="obsolete">Voortgang:</translation>
     </message>
     <message>
         <source>Product type:</source>
@@ -563,11 +563,11 @@
     </message>
     <message>
         <source>Claimed defect:</source>
-        <translation>Defect:</translation>
+        <translation type="obsolete">Defect:</translation>
     </message>
     <message>
         <source>Master:</source>
-        <translation>Reperatuer:</translation>
+        <translation type="obsolete">Reperatuer:</translation>
     </message>
     <message>
         <source>Add to catalog</source>
@@ -579,15 +579,15 @@
     </message>
     <message>
         <source>Notes:</source>
-        <translation>Notities:</translation>
+        <translation type="obsolete">Notities:</translation>
     </message>
     <message>
         <source>Phone:</source>
-        <translation>Telefoonnummer:</translation>
+        <translation type="obsolete">Telefoonnummer:</translation>
     </message>
     <message>
         <source>State:</source>
-        <translation>Staat:</translation>
+        <translation type="obsolete">Staat:</translation>
     </message>
     <message>
         <source>Edit order</source>
@@ -607,23 +607,23 @@
     </message>
     <message>
         <source>Approx. cost:</source>
-        <translation>Geschatte kosten:</translation>
+        <translation type="obsolete">Geschatte kosten:</translation>
     </message>
     <message>
         <source>Order #:</source>
-        <translation>Ordernummer:</translation>
+        <translation type="obsolete">Ordernummer:</translation>
     </message>
     <message>
         <source>Regular</source>
-        <translation>Terugkerend</translation>
+        <translation type="obsolete">Terugkerend</translation>
     </message>
     <message>
         <source>Previous</source>
-        <translation>Vorige</translation>
+        <translation type="obsolete">Vorige</translation>
     </message>
     <message>
         <source>Product:</source>
-        <translation>Product:</translation>
+        <translation type="obsolete">Product:</translation>
     </message>
     <message>
         <source>View order</source>
@@ -639,11 +639,11 @@
     </message>
     <message>
         <source>Serial:</source>
-        <translation>Serienummer:</translation>
+        <translation type="obsolete">Serienummer:</translation>
     </message>
     <message>
         <source>Condition:</source>
-        <translation>Staat:</translation>
+        <translation type="obsolete">Staat:</translation>
     </message>
     <message>
         <source>Save and close</source>
@@ -659,6 +659,74 @@
     </message>
     <message>
         <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S&amp;erial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Order #:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Claimed defect:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Date:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comp&amp;leteness:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;State:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Phone:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Master:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ne&amp;w</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pre&amp;vious</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Regular</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prod&amp;uct:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No&amp;tes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cond&amp;ition:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Approx. cost:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prepayment:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2051,7 +2119,7 @@
     </message>
     <message>
         <source>Master can edit spares:</source>
-        <translation type="vanished">Reperateur kan reserveonderdelen aanpassen:</translation>
+        <translation type="obsolete">Reperateur kan reserveonderdelen aanpassen:</translation>
     </message>
     <message>
         <source>Permissions</source>
@@ -2115,7 +2183,7 @@
     </message>
     <message>
         <source>Acceptor can edit works:</source>
-        <translation type="vanished">Innemer kan werkzaamheden aanpassen:</translation>
+        <translation type="obsolete">Innemer kan werkzaamheden aanpassen:</translation>
     </message>
     <message>
         <source>Product:</source>
@@ -2183,11 +2251,11 @@
     </message>
     <message>
         <source>Acceptor can edit spares:</source>
-        <translation type="vanished">Innemer kan resereve onderdelen aanpassen:</translation>
+        <translation type="obsolete">Innemer kan resereve onderdelen aanpassen:</translation>
     </message>
     <message>
         <source>Master can edit works:</source>
-        <translation type="vanished">Reperateur kan werkzaamheden aanpassen:</translation>
+        <translation type="obsolete">Reperateur kan werkzaamheden aanpassen:</translation>
     </message>
     <message>
         <source>Requires active database connection</source>
@@ -2212,7 +2280,7 @@
     </message>
     <message>
         <source>Acceptor can edit diagnostics:</source>
-        <translation type="vanished">Innemer kan diagnose aanpassen:</translation>
+        <translation type="obsolete">Innemer kan diagnose aanpassen:</translation>
     </message>
     <message>
         <source>Database name:</source>
@@ -2220,7 +2288,7 @@
     </message>
     <message>
         <source>Русский Russian</source>
-        <translation type="vanished">Русский</translation>
+        <translation type="obsolete">Русский</translation>
     </message>
     <message>
         <source>Default warranty:</source>
@@ -2293,6 +2361,10 @@
     <message>
         <source>Dutch</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>admin</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

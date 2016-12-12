@@ -14,7 +14,7 @@ class GiveOrder;
 
 class GiveOrder : public QDialog
 {
-    Q_OBJECT
+   Q_OBJECT
 
 public:
     explicit GiveOrder(QWidget *parent = 0);
@@ -75,9 +75,10 @@ private slots:
    void on_eOrderID_textChanged(const QString &arg1);
    void setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage);
    void print();
-
    void on_bCancel_clicked();
    void on_bPrint_clicked();
    void on_eWarranty_textChanged(const QString &arg1);
+   void on_tvieww_cellChanged(int row, int column);
+   void on_tviews_cellChanged(int row, int column);
 };
 #endif // GIVEORDER_H

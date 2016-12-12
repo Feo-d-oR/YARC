@@ -12,7 +12,7 @@ QSqlError DBWork::createTables()
            date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, \
            product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), \
            cond VARCHAR(255), complect VARCHAR(255), cost DOUBLE, acceptor INTEGER, master INTEGER, giver INTEGER, \
-           warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT FALSE, date_called TIMESTAMP)");
+           warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT FALSE, date_called TIMESTAMP, prepay DOUBLE)");
     q.exec("CREATE TABLE product_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(32))");
     q.exec("CREATE TABLE employees (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            name VARCHAR(64)NULL, fullname VARCHAR(255), phone VARCHAR(64), address VARCHAR(255), \
@@ -95,7 +95,7 @@ QSqlError DBWork::createTables()
     q.exec(QString("INSERT INTO pr_states VALUES(3,'") + tr("Rejected") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(4,'") + tr("Ordered") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(5,'") + tr("Awaits payment") + "')");
-    q.exec(QString("INSERT INTO pr_states VALUES(6,'") + tr("Awaits receiving") + "')");
+    q.exec(QString("INSERT INTO pr_states VALUES(6,'") + tr("Awaits reception") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(7,'") + tr("Recieved") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(8,'") + tr("Completed") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(9,'") + tr("Info-Placed") + "')");
@@ -256,6 +256,7 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
     q.exec("INSERT INTO system VALUES('completenessM', 0, NULL)");
     q.exec("INSERT INTO system VALUES('customerM', 0, NULL)");
     q.exec("INSERT INTO system VALUES('phoneM', 0, NULL)");
+    q.exec("ALTER TABLE orders ADD prepay DOUBLE NULL default NULL");
 
 
 //    q.exec("");

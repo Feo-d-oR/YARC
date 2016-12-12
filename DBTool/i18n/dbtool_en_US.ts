@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>DBWork</name>
     <message>
@@ -196,6 +196,10 @@
     </message>
     <message>
         <location filename="../dbwork.cpp" line="98"/>
+        <source>Awaits reception</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../dbwork.cpp" line="232"/>
         <source>Awaits receiving</source>
         <translation></translation>

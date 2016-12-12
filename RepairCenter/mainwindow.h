@@ -86,6 +86,7 @@ private slots:
     void on_mSuppliers_triggered();
     void on_mNewPartsRequest_triggered();
     void on_mJrnPartsRequests_triggered();
+    void checkDBconnection();
 
 private:
     bool checkSettings();
@@ -103,6 +104,7 @@ private:
     QSettings * settings;
     SimpleCrypt crypto;
     QWidget * mainwidget;
+    void connTimer();
 
 protected:
     void closeEvent(QCloseEvent *event);

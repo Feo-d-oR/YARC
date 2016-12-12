@@ -29,12 +29,12 @@ RESOURCES += \
 
 TRANSLATIONS += i18n/dbtool_ru_RU.ts
 TRANSLATIONS += i18n/dbtool_en_US.ts
-TRANSLATIONS += i18n/dbtool_nl_NL.ts
+#TRANSLATIONS += i18n/dbtool_nl_NL.ts
 
 OTHER_FILES += \
     i18n/dbtool_ru_RU.ts \
     i18n/dbtool_en_US.ts \
-    i18n/dbtool_nl_NL.ts
+#    i18n/dbtool_nl_NL.ts
 
 dbtupd.commands = lupdate $$PWD/DBTool.pro
 dbtrel.commands = lrelease $$PWD/DBTool.pro

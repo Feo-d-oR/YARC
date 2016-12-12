@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>DBWork</name>
     <message>
         <source>Taken for repair</source>
-        <translation>Принято в ремонт</translation>
+        <translation type="vanished">Принято в ремонт</translation>
     </message>
     <message>
         <source>Taken for diagnosis</source>
-        <translation>Принято на диагностику</translation>
+        <translation type="vanished">Принято на диагностику</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="60"/>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Diagnosis completed</source>
-        <translation>Диагностика выполнена</translation>
+        <translation type="vanished">Диагностика выполнена</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="63"/>
@@ -35,35 +35,35 @@
     </message>
     <message>
         <source>Waits for agreement</source>
-        <translation>Ожидает согласования</translation>
+        <translation type="vanished">Ожидает согласования</translation>
     </message>
     <message>
         <source>Agreed</source>
-        <translation>Согласовано</translation>
+        <translation type="vanished">Согласовано</translation>
     </message>
     <message>
         <source>Given with diagnosis</source>
-        <translation>Выдано с диагностикой</translation>
+        <translation type="vanished">Выдано с диагностикой</translation>
     </message>
     <message>
         <source>Given with repair</source>
-        <translation>Выдано с ремонтом</translation>
+        <translation type="vanished">Выдано с ремонтом</translation>
     </message>
     <message>
         <source>Given without repair</source>
-        <translation>Выдано без ремонта</translation>
+        <translation type="vanished">Выдано без ремонта</translation>
     </message>
     <message>
         <source>In diagnosing</source>
-        <translation>На диагностике</translation>
+        <translation type="vanished">На диагностике</translation>
     </message>
     <message>
         <source>In the work</source>
-        <translation>В работе</translation>
+        <translation type="vanished">В работе</translation>
     </message>
     <message>
         <source>Waits for spares</source>
-        <translation>Ожидает запчастей</translation>
+        <translation type="vanished">Ожидает запчастей</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="72"/>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>Customer-Waits for spares</source>
-        <translation>На руках-Ожидает запчастей</translation>
+        <translation type="vanished">На руках-Ожидает запчастей</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="74"/>
@@ -83,11 +83,11 @@
     </message>
     <message>
         <source>Waits for giving out</source>
-        <translation>Ожидает выдачи</translation>
+        <translation type="vanished">Ожидает выдачи</translation>
     </message>
     <message>
         <source>Taken for repair (warranty)</source>
-        <translation>Принято в ремонт (гарантия)</translation>
+        <translation type="vanished">Принято в ремонт (гарантия)</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="58"/>
@@ -252,6 +252,10 @@
     </message>
     <message>
         <location filename="../dbwork.cpp" line="98"/>
+        <source>Awaits reception</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../dbwork.cpp" line="232"/>
         <source>Awaits receiving</source>
         <translation>Ждёт получения</translation>

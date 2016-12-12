@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -116,7 +116,7 @@ OTHER_FILES += \
     ../CommonFiles/Launch RepairCenter.sh \
     i18n/repaircenter_en_US.ts \
     i18n/repaircenter_ru_RU.ts \
-    i18n/repaircenter_nl_NL.ts \
+#    i18n/repaircenter_nl_NL.ts \
     ../CommonFiles/help/en_US/application.html \
     ../CommonFiles/help/en_US/catalogs.html \
     ../CommonFiles/help/en_US/dbservice.html \
@@ -140,7 +140,7 @@ RESOURCES += \
 
 TRANSLATIONS += i18n/repaircenter_ru_RU.ts
 TRANSLATIONS += i18n/repaircenter_en_US.ts
-TRANSLATIONS += i18n/repaircenter_nl_NL.ts
+#TRANSLATIONS += i18n/repaircenter_nl_NL.ts
 
 win32:RC_FILE = appicon.rc
 

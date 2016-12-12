@@ -158,6 +158,16 @@ void GiveOrder::calculateSumm()
     ui->eSumm->setText(summstr);
 }
 
+void GiveOrder::on_tvieww_cellChanged(int row, int column)
+{
+    calculateSumm();
+}
+
+void GiveOrder::on_tviews_cellChanged(int row, int column)
+{
+    calculateSumm();
+}
+
 void GiveOrder::on_bSumm_clicked()
 {
     calculateSumm();

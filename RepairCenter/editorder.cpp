@@ -238,7 +238,7 @@ void EditOrder::submitOrder()
     qc.exec();
 
     q.prepare("UPDATE orders SET date_in = :date_in, state = :state, customer = :customer, phone = :phone, product_type = :product_type, product = :product, "
-              " serial = :serial, disease = :disease, cond = :cond, complect = :complect, cost = :cost, acceptor = :acceptor, master = :master, comment = :comment "
+              " serial = :serial, disease = :disease, cond = :cond, complect = :complect, cost = :cost, acceptor = :acceptor, master = :master, comment = :comment, prepay = :prepay "
               "WHERE number = " + orderID);
     q.bindValue(":date_in", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":state", id_s.toInt());
@@ -251,6 +251,7 @@ void EditOrder::submitOrder()
     q.bindValue(":cond", ui->eCond->text());
     q.bindValue(":complect", ui->eComplect->text());
     q.bindValue(":cost", ui->eCost->text());
+    q.bindValue(":prepay", ui->ePrepay->text());
     q.bindValue(":acceptor", id_a.toInt());
     q.bindValue(":master", id_m.toInt());
     q.bindValue(":comment", ui->eComment->toPlainText());
@@ -288,6 +289,8 @@ void EditOrder::setRptValue(const int recNo, const QString paramName, QVariant &
         paramValue = ui->eComplect->text();
     if (paramName == "cost")
         paramValue = ui->eCost->text();
+    if (paramName == "prepay")
+        paramValue = ui->ePrepay->text();
     if (paramName == "acceptor")
         paramValue = ui->eAcceptor->currentText();
 }
