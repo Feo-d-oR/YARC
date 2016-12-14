@@ -191,23 +191,19 @@ BtnDelegate::BtnDelegate(QObject *parent) : QItemDelegate(parent) {
 
 }
 
-QWidget* BtnDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem& /* option */, const QModelIndex &/* index */) const {
+QWidget* BtnDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem& /* option */, const QModelIndex & /*index*/) const {
     QWidget *editor = new QWidget(parent);
-    //editor->setStyleSheet("background-color: red; border-top-color: white; border-bottom-color: red;");
-    QHBoxLayout *h  = new QHBoxLayout();
+    editor->setStyleSheet("background-color: red; border-top-color: white; border-bottom-color: red;");
+    QHBoxLayout *h  = new QHBoxLayout(editor);
     QPushButton *btn = new QPushButton("...", editor);
     btn->setMaximumWidth(20);
     QLineEdit *dd = new QLineEdit(editor);
-    QLabel *lb = new QLabel(editor);
-    lb->setVisible(false);
     dd->setStyleSheet("background-color: white; border-top-color: white; border-bottom-color: red;");
     h->addWidget(dd);
-    h->addWidget(lb);
     h->addWidget(btn);
     h->setContentsMargins(0,0,0,0);
     h->setSpacing(0);
-    editor->setLayout(h);
-    //QTableWidget *table = qobject_cast<QTableWidget *>(parent->parent());
+
     QObject::disconnect(btn, SIGNAL(clicked()), this, SIGNAL(clicked()));
     QObject::disconnect(this, SIGNAL(closeEditor(QWidget *, QAbstractItemDelegate::EndEditHint)),
                         this, SLOT(editorClose_(QWidget *, QAbstractItemDelegate::EndEditHint)));
@@ -219,13 +215,16 @@ QWidget* BtnDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem& 
     return editor;
 }
 
-void BtnDelegate::currentItemChanged_( QTableWidgetItem * current, QTableWidgetItem * previous) {
+void BtnDelegate::currentItemChanged_(QTableWidgetItem * current, QTableWidgetItem * previous) {
+    Q_UNUSED(current);
+    Q_UNUSED(previous);
     emit editorClose(this);
 }
 
 void BtnDelegate::editorClose_(QWidget *editor, QAbstractItemDelegate::EndEditHint hint) {
     Q_UNUSED(editor);
     Q_UNUSED(hint);
+    delete editor;
     emit editorClose(this);
 }
 
@@ -233,15 +232,12 @@ void BtnDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
     QString value = index.model()->data(index, Qt::EditRole).toString();    
     QLineEdit *le = editor->findChild<QLineEdit *>();
     le->setText(value);
-    QLabel *lb = editor->findChild<QLabel *>();
-    lb->setText("");
     if (index.model()->data(index, Qt::DecorationRole).type() == QVariant::Icon) {
         le->setReadOnly(true);
         le->setVisible(false);
     }
     if (index.model()->data(index, Qt::DecorationRole) == 1) {
         le->setVisible(false);
-        lb->setVisible(true);
     }
 }
 
@@ -258,4 +254,48 @@ void BtnDelegate::commitAndCloseEditor() {
     QLineEdit *editor = qobject_cast<QLineEdit *>(sender());
     emit commitData(editor);
     emit closeEditor(editor);
+}
+
+//Описываем делегат Combobox
+ComboboxDelegate::ComboboxDelegate(ComboValues comboValues, QObject *parent) : QItemDelegate(parent) {
+    m_comboValues = comboValues;
+}
+
+QWidget *ComboboxDelegate::createEditor(QWidget *parent,
+                                    const QStyleOptionViewItem& /* option */,
+                                    const QModelIndex& /* index */) const {
+    QComboBox *editor = new QComboBox(parent);
+    ComboValues::const_iterator iter;
+    for (iter=m_comboValues.begin(); iter != m_comboValues.end(); iter++) {
+        editor->addItem((*iter).first,(*iter).second);
+    }
+
+    //editor->setCalendarPopup(m_calpopup);
+    //editor->installEventFilter(const_cast<CalendarDelegate*>(this));
+    //connect(editor, SIGNAL(editingFinished()), this, SLOT(commitAndCloseEditor()));
+    return editor;
+}
+
+void ComboboxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const {
+    QString value = index.model()->data(index, Qt::EditRole).toString();
+    QComboBox *ed = qobject_cast<QComboBox*>(editor);
+    ed->setCurrentIndex(ed->findText(value));
+}
+
+void ComboboxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
+    QComboBox *ed = static_cast<QComboBox*>(editor);
+    model->setData(index, ed->currentText());
+}
+
+void ComboboxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex& /* index */) const {
+    editor->setGeometry(option.rect);
+}
+
+QVariant ComboboxDelegate::getValue(QString key) {
+    ComboValues::const_iterator iter;
+    for (iter=m_comboValues.begin(); iter != m_comboValues.end(); iter++) {
+        if ((*iter).first == key)
+            return (*iter).second;
+    }
+    return QVariant();
 }

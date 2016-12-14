@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -41,9 +41,9 @@ public:
     ~RptBandObject();
     QString name;
     QString groupingField;
-    int showInGroup;
-    int startNewPage;
-    int startNewNumeration;
+    bool showInGroup;
+    bool startNewPage;
+    bool startNewNumeration;
     int realHeight;
     int height;
     int width;
@@ -55,6 +55,7 @@ public:
     RptPageObject *parentReportPage;
 
 private:
+	QtRPT *m_qtrpt;
     void setProperty(QtRPT *qtrpt, QDomElement docElem);
 };
 

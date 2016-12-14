@@ -338,6 +338,8 @@
    <addaction name="actAddBarcode"/>
    <addaction name="actAddDiagram"/>
    <addaction name="actAddDrawing"/>
+   <addaction name="actAddCrossTab"/>
+   <addaction name="actAddCrossTabBD"/>
   </widget>
   <action name="actionExit">
    <property name="text">
@@ -1023,6 +1025,9 @@
    </property>
   </action>
   <action name="actAddDiagram">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -1122,6 +1127,9 @@
    </property>
   </action>
   <action name="actAddBarcode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -1149,6 +1157,9 @@
    </property>
   </action>
   <action name="actAddRichText">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -1185,6 +1196,42 @@
    </property>
    <property name="toolTip">
     <string>To ungroup</string>
+   </property>
+  </action>
+  <action name="actAddCrossTab">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/new/prefix1/images/crossTab.png</normaloff>:/new/prefix1/images/crossTab.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add CrossTab object</string>
+   </property>
+   <property name="toolTip">
+    <string>Add CrossTab object</string>
+   </property>
+  </action>
+  <action name="actAddCrossTabBD">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/new/prefix1/images/crossTabBD.png</normaloff>:/new/prefix1/images/crossTabBD.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add CrossTabBD object</string>
+   </property>
+   <property name="toolTip">
+    <string>Add CrossTabBD object</string>
    </property>
   </action>
  </widget>

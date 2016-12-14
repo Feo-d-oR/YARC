@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -35,7 +35,80 @@ limitations under the License.
       RptBandObject
         RptFieldObject
   \endcode
-  There are possible to have some RptFieldObject on the report's page but different type.
+  There are possible to have some RptBandObject on the report's page but different type.
+*/
+
+/*!
+ \variable RptBandObject::name
+ \brief The name of band.
+*/
+
+/*!
+ \variable RptBandObject::groupingField
+ \brief The name of the field on which the grouping is performed. Used with DataGroupHeader band only.
+*/
+
+/*!
+ \variable RptBandObject::showInGroup
+ \brief The value of which is DataGroupHeader will be shown inside or outside of Data group.
+  Used with DataGroupHeader band only.
+*/
+
+/*!
+ \variable RptBandObject::startNewPage
+ \brief The value of which is each group prints on different page.
+  Used with DataGroupHeader band only.
+*/
+
+/*!
+ \variable RptBandObject::startNewNumeration
+ \brief The value of which is each group has own numeration.
+  Used with DataGroupHeader band only.
+*/
+
+/*!
+ \variable RptBandObject::realHeight
+ \brief Real height of the band. Height is adjusted by QtRPT
+ \sa height
+*/
+
+/*!
+ \variable RptBandObject::height
+ \brief Height of the band, setted by user.
+ \sa realHeight
+*/
+
+/*!
+ \variable RptBandObject::width
+ \brief Width of the band.
+*/
+
+/*!
+ \variable RptBandObject::left
+ \brief Left position of the band.
+*/
+
+/*!
+ \variable RptBandObject::right
+ \brief Right position of the band.
+*/
+
+/*!
+ \variable RptBandObject::type
+ \brief Type of the band.
+ \sa QtRptName::BandType
+*/
+
+/*!
+ \variable RptBandObject::fieldList
+ \brief List of fields which are placed on current band.
+ \sa RptFieldObject
+*/
+
+/*!
+ \variable RptBandObject::parentReportPage
+ \brief pointer to parent report page.
+ \sa RptPageObject
 */
 
 /*!
@@ -92,6 +165,7 @@ void RptBandObject::setProperty(QtRPT *qtrpt, QDomElement docElem) {
 */
 void RptBandObject::addField(RptFieldObject *field) {
     field->parentBand = this;
+	field->m_qtrpt = this->m_qtrpt;
     fieldList.append(field);
 }
 

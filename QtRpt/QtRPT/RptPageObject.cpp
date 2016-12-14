@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -104,7 +104,8 @@ limitations under the License.
  \fn RptPageObject::RptPageObject()
     Constructs a RptPageObject object.
 */
-RptPageObject::RptPageObject() {
+RptPageObject::RptPageObject(QtRPT *qtrpt) {
+	this->m_qtrpt = qtrpt;
     this->orientation=0;
     this->ph=1188;
     this->pw=840;
@@ -153,6 +154,7 @@ void RptPageObject::setProperty(QtRPT *qtrpt, QDomElement docElem) {
 */
 void RptPageObject::addBand(RptBandObject *band) {
     band->parentReportPage = this;
+	band->m_qtrpt = this->m_qtrpt;
     bandList.append(band);
 }
 

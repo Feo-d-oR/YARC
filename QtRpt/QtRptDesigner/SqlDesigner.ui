@@ -94,7 +94,7 @@
    <item row="1" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="page"/>
      <widget class="QWidget" name="page_2">
@@ -223,7 +223,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QTreeWidget" name="treeWidget">
+          <widget class="QTreeWidget" name="tablesTree">
            <property name="maximumSize">
             <size>
              <width>110</width>
@@ -337,11 +337,48 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <widget class="QPlainTextEdit" name="plainTextEdit"/>
-          <widget class="QTreeView" name="treeView"/>
+          <widget class="QTreeView" name="xmlStructTree">
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="dragEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="dragDropMode">
+            <enum>QAbstractItemView::DragOnly</enum>
+           </property>
+           <property name="defaultDropAction">
+            <enum>Qt::CopyAction</enum>
+           </property>
+          </widget>
          </widget>
-         <widget class="QTableWidget" name="tableWidget">
+         <widget class="QTableWidget" name="xmlFieldsTable">
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::DropOnly</enum>
+          </property>
+          <property name="defaultDropAction">
+           <enum>Qt::CopyAction</enum>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>250</number>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>20</number>
+          </attribute>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderDefaultSectionSize">
+           <number>20</number>
+          </attribute>
+          <attribute name="verticalHeaderHighlightSections">
+           <bool>false</bool>
           </attribute>
           <attribute name="verticalHeaderStretchLastSection">
            <bool>false</bool>
@@ -362,7 +399,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="btnPreviewXMLData">
                <property name="text">
                 <string>Preview data</string>
                </property>
@@ -497,7 +534,7 @@
   <tabstop>edtUserName</tabstop>
   <tabstop>edtHost</tabstop>
   <tabstop>edtPassword</tabstop>
-  <tabstop>treeWidget</tabstop>
+  <tabstop>tablesTree</tabstop>
   <tabstop>graphicsView</tabstop>
   <tabstop>sqlEditor</tabstop>
   <tabstop>btnClose</tabstop>

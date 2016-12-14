@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = RepairCenter
 TEMPLATE = app
 
+QMAKE_CXXFLAGS += -std=gnu++11
+
 include(../QtRpt/QtRPT/QtRPT.pri)
 include($$PWD/../config.pri)
 
@@ -102,18 +104,6 @@ OTHER_FILES += \
     ../CommonFiles/print_forms/order.xml \
     ../CommonFiles/print_forms/warranty_works_hw.xml \
     ../CommonFiles/print_forms/warranty_works.xml \
-    ../CommonFiles/help/ru_RU/application.html \
-    ../CommonFiles/help/ru_RU/catalogs.html \
-    ../CommonFiles/help/ru_RU/firststart.html \
-    ../CommonFiles/help/ru_RU/index.html \
-    ../CommonFiles/help/ru_RU/install.html \
-    ../CommonFiles/help/ru_RU/journals.html \
-    ../CommonFiles/help/ru_RU/mainwindow.html \
-    ../CommonFiles/help/ru_RU/print_forms.html \
-    ../CommonFiles/help/ru_RU/qtrpt.html \
-    ../CommonFiles/help/ru_RU/workflow.html \
-    ../CommonFiles/Launch QtRptDesigner.sh \
-    ../CommonFiles/Launch RepairCenter.sh \
     i18n/repaircenter_en_US.ts \
     i18n/repaircenter_ru_RU.ts \
 #    i18n/repaircenter_nl_NL.ts \

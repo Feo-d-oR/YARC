@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ limitations under the License.
 
 #include <QObject>
 #include <QSqlQuery>
+#include <QImage>
 
 class RptSql : public QObject
 {
@@ -35,6 +36,7 @@ public:
     bool openQuery(QString sql, QString dbCoding, QString charsetCoding);
     int getRecordCount();
     QString getFieldValue(QString fieldName, int recNo);
+    QImage getFieldImage(QString fieldName, int recNo);
 
 private:
     QSqlDatabase db;

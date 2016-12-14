@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ FldPropertyDlg::FldPropertyDlg(QWidget *parent) : QDialog(parent), ui(new Ui::Fl
     ui->setupUi(this);
 }
 
-QString FldPropertyDlg::showThis(int index, QWidget *widget, QString value) {
+QString FldPropertyDlg::showThis(int index, GraphicsBox *widget, QString value) {
     QIcon iconFolder(QPixmap(QString::fromUtf8(":/new/prefix1/images/folder.png")));
     QIcon iconVariable(QPixmap(QString::fromUtf8(":/new/prefix1/images/variable.png")));
     QIcon iconFunction(QPixmap(QString::fromUtf8(":/new/prefix1/images/function1.png")));
@@ -138,11 +138,68 @@ QString FldPropertyDlg::showThis(int index, QWidget *widget, QString value) {
 
                 item = new QTreeWidgetItem(f1);
                 item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("To upper case"));
+                item->setText(0,"To Upper");
+                item->setData(0,Qt::UserRole,"<ToUpper(Word)>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("To lower case"));
+                item->setText(0,"To Lower");
+                item->setData(0,Qt::UserRole,"<ToLower(Word)>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("English"));
                 item->setText(0,"NumberToWords (ENG)");
                 item->setData(0,Qt::UserRole,"<NumberToWords('ENG', )>");
                 f1->addChild(item);
 
-                 //------------------Math functions----------------------
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("German"));
+                item->setText(0,"NumberToWords (GER)");
+                item->setData(0,Qt::UserRole,"<NumberToWords('GER', )>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("Ukrainian"));
+                item->setText(0,"NumberToWords (UKR)");
+                item->setData(0,Qt::UserRole,"<NumberToWords('UKR', )>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("Spanish"));
+                item->setText(0,"NumberToWords (ESP)");
+                item->setData(0,Qt::UserRole,"<NumberToWords('ESP', )>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("French"));
+                item->setText(0,"NumberToWords (FR_FR)");
+                item->setData(0,Qt::UserRole,"<NumberToWords('FR', )>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("French(BE)"));
+                item->setText(0,"NumberToWords (FR_BE)");
+                item->setData(0,Qt::UserRole,"<NumberToWords('FR_BE', )>");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setToolTip(0,tr("French(CH)"));
+                item->setText(0,"NumberToWords (FR_CH)");
+                item->setData(0,Qt::UserRole,"<NumberToWords('FR_CH', )>");
+                f1->addChild(item);
+
+                //------------------Math functions----------------------
                 f1 = new QTreeWidgetItem(rootItem);
                 f1->setIcon(0,iconFolder);
                 f1->setText(0,tr("Math functions"));
@@ -155,6 +212,24 @@ QString FldPropertyDlg::showThis(int index, QWidget *widget, QString value) {
                 item->setData(0,Qt::UserRole,"Frac()");
                 f1->addChild(item);
 
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setText(0,"Floor");
+                item->setData(0,Qt::UserRole,"Floor()");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setText(0,"Ceil");
+                item->setData(0,Qt::UserRole,"Ceil()");
+                f1->addChild(item);
+
+                item = new QTreeWidgetItem(f1);
+                item->setIcon(0,iconFunction);
+                item->setText(0,"Round");
+                item->setData(0,Qt::UserRole,"Round()");
+                f1->addChild(item);
+
                 this->setWindowTitle(tr("Functions"));
                 this->setWindowIcon(iconFunction);
             }
@@ -162,7 +237,7 @@ QString FldPropertyDlg::showThis(int index, QWidget *widget, QString value) {
         }
         case 1: {
             this->setWindowTitle("Data Group property");
-            ReportBand *band = qobject_cast<ReportBand *>(widget);
+            ReportBand *band = static_cast<ReportBand *>(widget);
             ui->edtFiledGrouping->setText(band->getGroupingField());
             ui->chkStartLineNum->setChecked(band->getStartNewNumertaion());
             ui->chkStartNewPage->setChecked(band->getStartNewPage());
@@ -208,7 +283,7 @@ QString FldPropertyDlg::showThis(int index, QWidget *widget, QString value) {
                 break;
             }
             case 1: {
-                ReportBand *band = qobject_cast<ReportBand *>(widget);
+                ReportBand *band = static_cast<ReportBand *>(widget);
                 band->setGroupingField(ui->edtFiledGrouping->text());
                 band->setStartNewNumeration(ui->chkStartLineNum->checkState());
                 band->setStartNewPage(ui->chkStartNewPage->checkState());

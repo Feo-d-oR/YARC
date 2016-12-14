@@ -2770,43 +2770,64 @@
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../QtRpt/QtRPT/RptCrossTabObject.cpp" line="36"/>
+        <source>Total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/RptCrossTabObject.cpp" line="298"/>
+        <source>R-Total</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QtRPT</name>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1409"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1536"/>
         <source>Save as PDF</source>
         <translation>Сохранить как PDF</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1414"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1541"/>
         <source>Save as HTML</source>
         <translation>Сохранить как HTML</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1419"/>
         <source>Save as ODT</source>
-        <translation>Сохранить как ODT</translation>
+        <translation type="vanished">Сохранить как ODT</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1440"/>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1445"/>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1450"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1547"/>
+        <source>Save as XLSX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1568"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1573"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1578"/>
         <source>Save File</source>
         <translation>Сохранить файл</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1440"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1568"/>
         <source>PDF Files (*.pdf)</source>
         <translation>Файлы PDF (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1445"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1573"/>
         <source>HTML Files (*.html)</source>
         <translation>Файлы HTML (*.html)</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1450"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1578"/>
+        <source>XLSX Files (*.xlsx)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>ODT Files (*.odt)</source>
-        <translation>Файлы ODT (*.odt)</translation>
+        <translation type="vanished">Файлы ODT (*.odt)</translation>
     </message>
 </context>
 <context>

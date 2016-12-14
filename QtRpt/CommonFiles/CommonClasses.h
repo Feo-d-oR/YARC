@@ -1,11 +1,11 @@
 /*
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -36,7 +36,15 @@ limitations under the License.
 
 QString double2MoneyUKR(double n, int currency = 1);
 QString double2MoneyRUS(double n, int currency = 2);
+QString double2MoneyGER(double number, bool bAdditional = false);
 QString double2MoneyENG(double number);
+QString double2MoneyESP_Group(int _siGroup, char *_tscGroup, int _siGValue);
+QString double2MoneyESP(double _dbValue, int _blDecimals);
+QString double2MoneyFrench(int number, int language);
+QString double2MoneyFrenchBE(double number, bool bAdditional /*= false*/);
+QString double2MoneyFrenchFR(double number, bool bAdditional /*= false*/);
+QString double2MoneyFrenchCH(double number, bool bAdditional /*= false*/);
+
 QString double2Money(double n, QString lang);
 QString colorToString(QColor color);
 QColor colorFromString(QString value);

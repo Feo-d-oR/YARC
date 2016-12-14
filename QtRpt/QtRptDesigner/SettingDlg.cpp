@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -75,9 +75,12 @@ SettingDlg::SettingDlg(QWidget *parent) : QDialog(parent),  ui(new Ui::SettingDl
 
     else if (language == "es_ES")
         ui->cmbLanguage->setCurrentIndex(12);
+	
+    else if (language == "ta_IN")
+        ui->cmbLanguage->setCurrentIndex(13);
 
     else if (language == "uk_UA")
-        ui->cmbLanguage->setCurrentIndex(13);
+        ui->cmbLanguage->setCurrentIndex(14);
 
     langIndex = ui->cmbLanguage->currentIndex();
 
@@ -141,7 +144,10 @@ void SettingDlg::showThis() {
                 case 12://spanish
                     settings.setValue("language", "es_ES");
                     break;
-                case 13://ukraine
+                case 13://Tamil
+                    settings.setValue("language", "ta_IN");
+                    break;
+                case 14://ukraine
                     settings.setValue("language", "uk_UA");
                     break;
             }

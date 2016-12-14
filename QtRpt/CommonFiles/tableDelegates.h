@@ -83,8 +83,7 @@ public:
                 QWidget *parent,
                 const QStyleOptionViewItem &option,
                 const QModelIndex &index) const;
-    void setEditorData(QWidget *editor,
-                       const QModelIndex &index) const;
+    void setEditorData(QWidget *editor, const QModelIndex &index) const;
     void setModelData(QWidget *editor,
                       QAbstractItemModel *model,
                       const QModelIndex &index) const;
@@ -130,5 +129,28 @@ signals:
     void clicked();
     void editorClose(QItemDelegate *item);
 };
+
+//Описываем делегат Combobox
+typedef QList<QPair<QString, QVariant> > ComboValues;
+class ComboboxDelegate : public QItemDelegate {
+    Q_OBJECT
+public:
+    ComboboxDelegate(ComboValues comboValues, QObject *parent = 0);
+    QWidget *createEditor(QWidget *parent,
+                          const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const;
+    void setEditorData(QWidget *editor, const QModelIndex &index) const;
+    void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const;
+    void updateEditorGeometry(
+            QWidget *editor,
+            const QStyleOptionViewItem &option,
+            const QModelIndex &index) const;
+    QVariant getValue(QString key);
+
+private:
+    ComboValues m_comboValues;
+};
+
+
 
 #endif // TABLEDELEGATES_H

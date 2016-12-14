@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ limitations under the License.
 EditFldDlg::EditFldDlg(QWidget *parent) :  QDialog(parent), ui(new Ui::EditFldDlg) {
     ui->setupUi(this);
 
-    this->setStyleSheet("/**/");
     QObject::connect(ui->btnLoadImage, SIGNAL(clicked()), this, SLOT(loadImage()));
     QObject::connect(ui->btnSaveImage, SIGNAL(clicked()), this, SLOT(saveImage()));
     QObject::connect(ui->btnAddVariable, SIGNAL(clicked()), this, SLOT(openProperty()));
@@ -38,7 +37,7 @@ EditFldDlg::EditFldDlg(QWidget *parent) :  QDialog(parent), ui(new Ui::EditFldDl
     QObject::connect(ui->btnAddFunction, SIGNAL(clicked()), this, SLOT(openProperty()));
     QObject::connect(ui->rdPrinting, SIGNAL(toggled(bool)), this, SLOT(conditionalToggled(bool)));
     QObject::connect(ui->rdTransparent, SIGNAL(toggled(bool)), this, SLOT(backGroundToggled(bool)));
-    //QObject::connect(ui->edtCondition, SIGNAL(textEdited(const QString&)), this, SLOT(conditionChanged(const QString&)));
+    QObject::connect(ui->edtCondition, SIGNAL(textEdited(const QString&)), this, SLOT(conditionChanged(const QString&)));
     QObject::connect(ui->btnColorB, SIGNAL(clicked()), this, SLOT(chooseColor()));
     QObject::connect(ui->btnColorF, SIGNAL(clicked()), this, SLOT(chooseColor()));
     QObject::connect(ui->chkBold, SIGNAL(clicked()), this, SLOT(encodeHighLightingString()));
@@ -92,19 +91,18 @@ void EditFldDlg::conditionalToggled(bool value) {
 }
 
 void EditFldDlg::decodeHighLightingString() {
-    QStringList list = m_cond_higlighting.split(";");
-    for (int i=0; i<list.count(); i++) {
-        if (list.at(i).contains("bold")) ui->chkBold->setChecked(true);
-        if (list.at(i).contains("italic")) ui->chkItalic->setChecked(true);
-        if (list.at(i).contains("underline")) ui->chkUnderline->setChecked(true);
-        if (list.at(i).contains("strikeout")) ui->chkStrikeout->setChecked(true);
-        if (list.at(i).contains("fontColor")) {
-            int start = list.at(i).indexOf("rgba(",0,Qt::CaseInsensitive);
-            ui->lblColorF->setStyleSheet("QLabel {background-color: "+list.at(i).mid(start)+"}");
+    for(auto str : m_cond_higlighting.split(";")) {
+        if (str.contains("bold")) ui->chkBold->setChecked(true);
+        if (str.contains("italic")) ui->chkItalic->setChecked(true);
+        if (str.contains("underline")) ui->chkUnderline->setChecked(true);
+        if (str.contains("strikeout")) ui->chkStrikeout->setChecked(true);
+        if (str.contains("fontColor")) {
+            int start = str.indexOf("rgba(",0,Qt::CaseInsensitive);
+            ui->lblColorF->setStyleSheet("QLabel {background-color: "+str.mid(start)+"}");
         }
-        if (list.at(i).contains("backgroundColor")) {
-            int start = list.at(i).indexOf("rgba(",0,Qt::CaseInsensitive);
-            ui->lblColorB->setStyleSheet("QLabel {background-color: "+list.at(i).mid(start)+"}");
+        if (str.contains("backgroundColor")) {
+            int start = str.indexOf("rgba(",0,Qt::CaseInsensitive);
+            ui->lblColorB->setStyleSheet("QLabel {background-color: "+str.mid(start)+"}");
             ui->rdOther->setChecked(true);
             backGroundToggled(false);
         }
@@ -180,7 +178,8 @@ void EditFldDlg::textDirection() {
     ui->textEdit->document()->setDefaultTextOption(topt);
 }
 
-int EditFldDlg::showText(TContainerField *cont) {
+int EditFldDlg::showText(QGraphicsItem *gItem) {
+    GraphicsBox *cont = static_cast<GraphicsBox*>(gItem);
     ui->textEdit->setPlainText(cont->getText());
     ui->stackedWidget->setCurrentIndex(0);
     ui->textEdit->setFocus();
@@ -192,8 +191,24 @@ int EditFldDlg::showText(TContainerField *cont) {
     if (cont->getTextDirection())
         ui->btnTextDirection->click();
 
-    boolImage = cont->getType() == TextImage ? true : false;
-    ui->chkImage->setChecked(boolImage);
+    switch (cont->getFieldType()) {
+        case TextImage: {
+            ui->radioButtonTextImage->setChecked(true);
+            boolImage = true;
+            break;
+        }
+        case DatabaseImage: {
+            ui->radioButtonDatabaseImage->setChecked(true);
+            boolImage = true;
+            break;
+        }
+        default: {
+            ui->radioButtonText->setChecked(true);
+            boolImage = false;
+            break;
+        }
+    }
+
     ui->lblAttention->setVisible(boolImage);
     ui->rdPrinting->setChecked(true);
 
@@ -207,8 +222,9 @@ int EditFldDlg::showText(TContainerField *cont) {
     }
 
     if (this->exec()) {
-        if (ui->chkImage->isChecked()) cont->setType(TextImage,0);
-        else cont->setType(Text,0);
+        if (ui->radioButtonTextImage->isChecked()) cont->setFieldType(TextImage);
+        else if (ui->radioButtonDatabaseImage->isChecked()) cont->setFieldType(DatabaseImage);
+        else cont->setFieldType(Text);
 
         QString plainTextEditContents = ui->textEdit->toPlainText();
         QStringList lines = plainTextEditContents.split("\n");
@@ -236,13 +252,10 @@ int EditFldDlg::showText(TContainerField *cont) {
         }
 
         if (cont->getTextDirection() != ui->btnTextDirection->isChecked()) {
-            QLabel *label = qobject_cast<QLabel *>(cont->childWidget);
-            if (label != 0) {
-                if (ui->btnTextDirection->isChecked())
-                    label->setAlignment(Qt::AlignRight);
-                else
-                    label->setAlignment(Qt::AlignLeft);
-            }
+            if (ui->btnTextDirection->isChecked())
+                cont->setAlignment(Qt::AlignRight);
+            else
+                cont->setAlignment(Qt::AlignLeft);
         }
         cont->setTextDirection(ui->btnTextDirection->isChecked());
 
@@ -263,7 +276,8 @@ int EditFldDlg::showText(TContainerField *cont) {
     } else return QDialog::Rejected;
 }
 
-int EditFldDlg::showTextRich(TContainerField *cont) {
+int EditFldDlg::showTextRich(QGraphicsItem *gItem) {
+    GraphicsBox *cont = static_cast<GraphicsBox*>(gItem);
     ui->textEditRich->textEdit->setHtml(cont->getText());
     ui->stackedWidget->setCurrentIndex(4);
     ui->textEdit->setFocus();
@@ -301,10 +315,12 @@ int EditFldDlg::showTextRich(TContainerField *cont) {
     } else return QDialog::Rejected;
 }
 
-int EditFldDlg::showImage(TContainerField *cont) {
+int EditFldDlg::showImage(QGraphicsItem *gItem) {
+    GraphicsBox *cont = static_cast<GraphicsBox*>(gItem);
+
     ui->stackedWidget->setCurrentIndex(1);
     ui->label->setPixmap(cont->getImage());
-    QObject::connect(ui->chkIgnoreAspectRatio, SIGNAL(toggled(bool)), this, SLOT(setScaledContents(bool)));    
+    QObject::connect(ui->chkIgnoreAspectRatio, SIGNAL(toggled(bool)), this, SLOT(setScaledContents(bool)));
 
     ui->chkIgnoreAspectRatio->setChecked(cont->getIgnoreAspectRatio());
     m_imgFormat = cont->getImgFormat();
@@ -317,7 +333,8 @@ int EditFldDlg::showImage(TContainerField *cont) {
     } else return QDialog::Rejected;
 }
 
-int EditFldDlg::showBarcode(TContainerField *cont) {
+int EditFldDlg::showBarcode(QGraphicsItem *gItem) {
+    GraphicsBox *cont = static_cast<GraphicsBox*>(gItem);
     ui->stackedWidget->setCurrentIndex(3);
     QObject::connect(ui->edtValue, SIGNAL(textChanged(QString)), ui->wBarcode, SLOT(setValue(QString)));
     QObject::connect(ui->bstyle, SIGNAL(activated(int)), SLOT(update_preview()));
@@ -350,6 +367,61 @@ int EditFldDlg::showBarcode(TContainerField *cont) {
     } else return QDialog::Rejected;
 }
 
+int EditFldDlg::showCrosstab(QGraphicsItem *gItem) {
+    GraphicsBox *cont = static_cast<GraphicsBox*>(gItem);
+    RptCrossTabObject *m_crossTab = cont->getCrossTab();
+    if (m_crossTab == nullptr)
+        return QDialog::Rejected;
+    ui->stackedWidget->setCurrentIndex(5);
+    ui->spnRowCount->setValue(m_crossTab->rowDataCount());
+    ui->spnColCount->setValue(m_crossTab->colDataCount());
+    ui->chkRowHeader->setChecked(m_crossTab->isRowHeaderVisible());
+    ui->chkColHeader->setChecked(m_crossTab->isColHeaderVisible());
+    ui->chkRowTotal->setChecked(m_crossTab->isRowTotalVisible());
+    ui->chkColTotal->setChecked(m_crossTab->isColTotalVisible());
+    ui->tblColHeaders->setRowCount(m_crossTab->colDataCount());
+    ui->tblRowHeaders->setRowCount(m_crossTab->rowDataCount());
+    for(int i=0; i<ui->tblColHeaders->rowCount(); i++) {
+        QTableWidgetItem *newItem = new QTableWidgetItem(m_crossTab->getColName(i));
+        ui->tblColHeaders->setItem(i,0,newItem);
+    }
+    for(int i=0; i<ui->tblRowHeaders->rowCount(); i++) {
+        QTableWidgetItem *newItem = new QTableWidgetItem(m_crossTab->getRowName(i));
+        ui->tblRowHeaders->setItem(i,0,newItem);
+    }
+    QObject::connect(ui->spnRowCount, SIGNAL(valueChanged(int)), SLOT(setCrossTabRowCount(int)));
+    QObject::connect(ui->spnColCount, SIGNAL(valueChanged(int)), SLOT(setCrossTabColCount(int)));
+    if (this->exec()) {
+        m_crossTab->setRowHeaderVisible(ui->chkRowHeader->isChecked());
+        m_crossTab->setColHeaderVisible(ui->chkColHeader->isChecked());
+        m_crossTab->setRowTotalVisible(ui->chkRowTotal->isChecked());
+        m_crossTab->setColTotalVisible(ui->chkColTotal->isChecked());
+        m_crossTab->clear();
+        for(int i=0; i<ui->tblColHeaders->rowCount(); i++)
+            if (ui->tblColHeaders->item(i,0) == 0)
+                m_crossTab->addCol("");
+            else
+                m_crossTab->addCol(ui->tblColHeaders->item(i,0)->text());
+
+        for(int i=0; i<ui->tblRowHeaders->rowCount(); i++)
+            if (ui->tblRowHeaders->item(i,0) == 0)
+                m_crossTab->addRow("");
+            else
+                m_crossTab->addRow(ui->tblRowHeaders->item(i,0)->text());
+
+        m_crossTab->initMatrix();
+        return QDialog::Accepted;
+    } else return QDialog::Rejected;
+}
+
+void EditFldDlg::setCrossTabRowCount(int value) {
+    ui->tblRowHeaders->setRowCount(value);
+}
+
+void EditFldDlg::setCrossTabColCount(int value) {
+    ui->tblColHeaders->setRowCount(value);
+}
+
 void EditFldDlg::update_preview() {
     if (sender() == ui->bstyle)
         ui->wBarcode->setBarcodeType((BarCode::BarcodeTypes)ui->wBarcode->metaObject()->enumerator(0).value(ui->bstyle->currentIndex()));
@@ -363,7 +435,8 @@ void EditFldDlg::setScaledContents(bool value) {
     ui->label->setScaledContents(value);
 }
 
-int EditFldDlg::showDiagram(TContainerField *cont) {
+int EditFldDlg::showDiagram(QGraphicsItem *gItem) {
+    GraphicsBox *cont = static_cast<GraphicsBox*>(gItem);
     ui->stackedWidget->setCurrentIndex(2);
     ui->tabDiagram->setTabEnabled(1,false);
     ui->chkShowGrid->setChecked( cont->getChart()->getParam(DrawGrid).toBool() );
@@ -386,7 +459,7 @@ int EditFldDlg::showDiagram(TContainerField *cont) {
     QTableWidgetItem *newItem;
     int i=0;
     ui->tableWidget->setRowCount( cont->getChart()->getGraphParamList().size() );
-    foreach(GraphParam graphParam, cont->getChart()->getGraphParamList() ) {
+    for(auto graphParam : cont->getChart()->getGraphParamList() ) {
         newItem = new QTableWidgetItem( graphParam.caption );
         ui->tableWidget->setItem(i,0,newItem);
 
@@ -438,7 +511,7 @@ void EditFldDlg::addRow() {
     ui->tableWidget->setCurrentCell(ui->tableWidget->rowCount()-1,0);
     QTableWidgetItem *newItem;
 
-    newItem = new QTableWidgetItem("New grapth");
+    newItem = new QTableWidgetItem("New graph");
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,0,newItem);
 
     newItem = new QTableWidgetItem("Field");
@@ -509,8 +582,6 @@ void EditFldDlg::selectGraphColor() {
 
 void EditFldDlg::loadImage() {
     QString fileName = QFileDialog::getOpenFileName(this);
-    //const int w = this->width();
-    //const int h = this->height();
     if (!fileName.isEmpty()) {
         QPixmap p;
         p.load(fileName);        
@@ -518,10 +589,6 @@ void EditFldDlg::loadImage() {
         ui->label->setScaledContents(ui->chkIgnoreAspectRatio->isChecked());
         QFileInfo fi(fileName);
         m_imgFormat = fi.suffix().toUpper();
-        //ui->label->pixmap()->scaled(w,h,Qt::KeepAspectRatio);
-        //ui->label->adjustSize();
-        //ui->label->resize(ui->label->pixmap()->size());
-       // ui->label->updateGeometry();
     }
 }
 

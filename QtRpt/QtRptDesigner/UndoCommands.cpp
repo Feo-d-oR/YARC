@@ -1,6 +1,6 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 1.5.5
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
@@ -123,7 +123,7 @@ void AddContainerCommand::redo() {
 
         m_mainWindow->setContainerConnections(pair.second);
         ReportBand *band = qobject_cast<ReportBand *>(pw->parentWidget());
-        band->newFeildTreeItem(pair.second);
+        band->newFieldTreeItem(pair.second);
         m_dataList[i] = pair;
     }
 }
@@ -194,7 +194,7 @@ void DelContainerCommand::undo() {
 
         m_mainWindow->setContainerConnections(pair.second);
         ReportBand *band = qobject_cast<ReportBand *>(pw->parentWidget());
-        band->newFeildTreeItem(pair.second);
+        band->newFieldTreeItem(pair.second);
         m_dataList[i] = pair;
         //emit pair.second->inFocus(true);
     }

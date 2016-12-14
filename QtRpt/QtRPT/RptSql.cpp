@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ limitations under the License.
 #include <QDebug>
 #include <QSqlError>
 #include <QSqlRecord>
+#include <QImage>
 
 RptSql::RptSql(QString dbType, QString dbName, QString dbHost, QString dbUser, QString dbPassword, int dbPort, QString dbConnectionName, QObject *parent) : QObject(parent) {
     /*#ifdef QT_DEBUG
@@ -84,6 +85,22 @@ QString RptSql::getFieldValue(QString fieldName, int recNo) {
     } else {
         qDebug() << "Query is not active";
         return "";
+    }
+}
+
+QImage RptSql::getFieldImage(QString fieldName, int recNo) {
+    if (query->isActive()){
+        if (recNo >= getRecordCount()) {
+            qDebug() << "recNo more than recordCount";
+            return QImage();
+        } else {
+            query->seek(recNo);
+            int fieldNo = query->record().indexOf(fieldName);
+            return QImage::fromData(query->value(fieldNo).toByteArray());
+        }
+    } else {
+        qDebug() << "Query is not active";
+        return QImage();
     }
 }
 

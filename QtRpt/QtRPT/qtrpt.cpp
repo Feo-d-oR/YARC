@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ limitations under the License.
 */
 
 #include "qtrpt.h"
-
+#include <QBuffer>
 #include <QApplication>
 #include <QAction>
 #include <QTime>
@@ -174,11 +174,11 @@ QtRPT::QtRPT(QObject *parent) : QObject(parent) {
     xmlDoc = QDomDocument("Reports");
     m_backgroundImage = 0;
     m_orientation = 0;
-    rptSql = 0;
     m_printMode = QtRPT::Printer;
     m_resolution = QPrinter::HighResolution;
     painter = 0;
     printer = 0;
+    //m_xlsx = 0;
 }
 
 /*!
@@ -378,6 +378,10 @@ FieldType QtRPT::getFieldType(QDomElement e) {
         return Diagram;
     } else if (e.attribute("type","label") == "line") {
         return Line;
+    } else if (e.attribute("type","label") == "DatabaseImage") {
+        return DatabaseImage;
+    } else if (e.attribute("type","label") == "crossTab") {
+        return CrossTab;
     } else return Text;
 }
 
@@ -400,6 +404,8 @@ QString QtRPT::getFieldTypeName(FieldType type) {
         case Diagram: return "diagram";
         case Line: return "line";
         case Barcode: return "barcode";
+        case DatabaseImage: return "DatabaseImage";
+        case CrossTab: return "crossTab";
         default: return "label";
     }
 }
@@ -438,14 +444,15 @@ void QtRPT::drawFields(RptFieldObject *fieldObject, int bandTop, bool draw) {
     fieldObject->setTop(top_/koefRes_h);
 
     if (fieldObject->autoHeight == 1) {
-        height_ = fieldObject->parentBand->realHeight*koefRes_h;//band.toElement().attribute("realHeight").toInt()*koefRes_h;
+        if (fieldObject->parentBand != 0)
+            height_ = fieldObject->parentBand->realHeight*koefRes_h;
     }
 
     FieldType fieldType = fieldObject->fieldType;
     QPen pen = getPen(fieldObject);
 
 	if (draw) {
-        if (!getDrawingFields().contains(fieldType) && fieldType != Barcode) {
+        if (!getDrawingFields().contains(fieldType) && fieldType != Barcode && fieldType != Image && fieldType != CrossTab) {
             //Fill background
             if ( fieldObject->backgroundColor  != QColor(255,255,255,0)) {
                 if (painter->isActive())
@@ -560,8 +567,9 @@ void QtRPT::drawFields(RptFieldObject *fieldObject, int bandTop, bool draw) {
                 painter->drawEllipse(left_, top_, width_, height_);
             }
         }
-        if (fieldType == TextImage) { //Proccess field as ImageField
-            QImage image = sectionFieldImage(fieldObject->value);
+        if (fieldType == TextImage || fieldType == DatabaseImage) { //Proccess field as ImageField
+            QImage image = (fieldType == TextImage) ? sectionValueImage(fieldObject->value) : sectionFieldImage(fieldObject->value);
+
             if (!image.isNull()) {
                 QImage scaledImage = image.scaled(QSize(width_,height_),Qt::KeepAspectRatio);
                 QPoint point(left_, top_);
@@ -578,19 +586,26 @@ void QtRPT::drawFields(RptFieldObject *fieldObject, int bandTop, bool draw) {
                 }
                 if (painter->isActive())
                     painter->drawImage(point,scaledImage);
+
+                if (m_printMode == QtRPT::Html) {
+                    QByteArray ba;
+                    QBuffer buffer(&ba);
+                    buffer.open(QIODevice::WriteOnly);
+                    scaledImage.save(&buffer, "PNG"); // writes image into ba in PNG format
+
+                    fieldObject->picture = ba;
+                    m_HTML.append(fieldObject->getHTMLStyle());
+                }
             }
         }
         if (fieldType == Image) {  //Proccess as static ImageField
             QImage image = QImage::fromData(fieldObject->picture, fieldObject->imgFormat.toLatin1().data());
-            //QPixmap pixmap = QPixmap::fromImage(QImage::fromData(fieldObject->picture, fieldObject->imgFormat.toLatin1().data()));
             if (fieldObject->ignoreAspectRatio == 1) {
                 if (painter->isActive())
                     painter->drawImage(QRectF(left_,top_,width_,height_),image);
-                    //painter.drawPixmap(left_,top_,width_,height_,pixmap);
             } else {
                 if (painter->isActive())
                     painter->drawImage(QRectF(left_,top_,image.width()*koefRes_w,image.height()*koefRes_h),image);
-                    //painter.drawPixmap(left_,top_,pixmap.width()*koefRes_w,pixmap.height()*koefRes_h,pixmap);
             }
 
             if (m_printMode == QtRPT::Html) {
@@ -675,7 +690,9 @@ void QtRPT::drawFields(RptFieldObject *fieldObject, int bandTop, bool draw) {
             painter->save();
             painter->translate( rect.topLeft() );
         }
-        document.drawContents( painter, rect.translated( -rect.topLeft() ) );
+        if (draw) {
+            document.drawContents( painter, rect.translated( -rect.topLeft() ) );
+        }
         if (painter->isActive())
             painter->restore();
     }
@@ -695,8 +712,33 @@ void QtRPT::drawFields(RptFieldObject *fieldObject, int bandTop, bool draw) {
             if (m_printMode == QtRPT::Html) {
                 m_HTML.append("<div "+fieldObject->getHTMLStyle()+">"+txt+"</div>\n");
             }
-            if (m_printMode == QtRPT::Odt) {
+            if (m_printMode == QtRPT::Xlsx) {
+                RptTabElement element;
+                element.fieldObject = fieldObject;
+                element.top = top_;
+                element.left = left_;
+                element.value = txt;
+                crossTab->addElement(element);
+                //qDebug()<<QString("left %1 top %2").arg(left_).arg(top_);
+                int col = left_/200;
+                int row = top_/200;
+                //qDebug()<<QString(txt+" col-%1 row-%2").arg(col).arg(row);
+                if (col == 0) col = 1;
+                if (row == 0) row = 1;
+                /*m_xlsx->write(row,col, txt);
 
+                for (int col=1; col<100; ++col) {
+                    bool fnd = false;
+                    for (int row=1; row<100; ++row) {
+                        if (QXlsx::Cell *cell=m_xlsx->cellAt(row, col))
+                            if (!cell->value().toString().isEmpty()) {
+                                fnd = true;
+                                break;
+                            }
+                    }
+                    m_xlsx->setColumnHidden(col,!fnd);
+                    if (fnd) m_xlsx->setColumnWidth(col,10);
+                }*/
             }
         } else {
             QRect boundRect = painter->boundingRect(left_+10,top_,width_-15,height_, flags, txt);
@@ -706,6 +748,15 @@ void QtRPT::drawFields(RptFieldObject *fieldObject, int bandTop, bool draw) {
                  correct also another bands.
                 */
                 fieldObject->parentBand->realHeight = qRound(boundRect.height()/koefRes_h);
+            }
+        }
+    }
+    if (fieldType == CrossTab) {
+        if (draw) {
+            fieldObject->crossTab->makeFeelMatrix();
+            const int bandTop_ = bandTop;
+            for(auto field : fieldObject->crossTab->fieldList) {
+                drawFields(field,bandTop_,true);
             }
         }
     }
@@ -911,7 +962,10 @@ QScriptValue funcAggregate(QScriptContext *context, QScriptEngine *engine) {
     double min = 0;
     double max = 0;
     int count = 0;
+
     for (int i=0; i<listOfPair.size(); i++) {
+        if (i == 0) //set initial value for Min
+            min = listOfPair.at(i).paramValue.toDouble();
         if (listOfPair.at(i).paramName == paramName) {
             if (listIdxOfGroup.size() > 0 && self.property("showInGroup").toBool() == true) {
                 for (int k = 0; k < listIdxOfGroup.size(); k++) {
@@ -961,26 +1015,49 @@ QScriptValue funcAggregate(QScriptContext *context, QScriptEngine *engine) {
     return 0;
 }
 
-QScriptValue funcText(QScriptContext *context, QScriptEngine *engine) {
+QScriptValue funcToUpper(QScriptContext *context, QScriptEngine *engine) {
+    Q_UNUSED(engine);
+    QString param = context->argument(0).toString();
+    return param.toUpper();
+}
+
+QScriptValue funcToLower(QScriptContext *context, QScriptEngine *engine) {
+    Q_UNUSED(engine);
+    QString param = context->argument(0).toString();
+    return param.toLower();
+}
+
+QScriptValue funcNumberToWords(QScriptContext *context, QScriptEngine *engine) {
     Q_UNUSED(engine);
     QString paramLanguage = context->argument(0).toString();
     double value = context->argument(1).toString().toDouble();
-    QString paramValue;
-    if (paramLanguage == "ENG")
-        paramValue = double2MoneyENG(value);
-    if (paramLanguage == "UKR")
-        paramValue = double2MoneyUKR(value,0);
-
-    return paramValue;
+    return double2Money(value,paramLanguage);
 }
 
 QScriptValue funcFrac(QScriptContext *context, QScriptEngine *engine) {
     Q_UNUSED(engine);
     double value = context->argument(0).toString().toDouble();
-    int b;
-    b = qFloor(value);
-    b = (value-b) * 100;
+    int b = qFloor(value);
+    b = (value-b) * 100+0.5;
     return b;
+}
+
+QScriptValue funcFloor(QScriptContext *context, QScriptEngine *engine) {
+    Q_UNUSED(engine);
+    double value = context->argument(0).toString().toDouble();
+    return qFloor(value);
+}
+
+QScriptValue funcCeil(QScriptContext *context, QScriptEngine *engine) {
+    Q_UNUSED(engine);
+    double value = context->argument(0).toString().toDouble();
+    return qCeil(value);
+}
+
+QScriptValue funcRound(QScriptContext *context, QScriptEngine *engine) {
+    Q_UNUSED(engine);
+    double value = context->argument(0).toString().toDouble();
+    return qRound(value);
 }
 
 QStringList QtRPT::splitValue(QString value) {
@@ -1055,13 +1132,15 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
     for (int i = 0; i < res.size(); ++i) {
         if (res.at(i).contains("[") && res.at(i).contains("]") && !res.at(i).contains("<") ) {
             QString tmp;
-            if (rptSql != 0 ) {//if we have Sql DataSource
-                if (res.at(i).contains(rptSql->objectName())) {
-                    QString fieldName = res.at(i);
-                    fieldName.replace("[","");
-                    fieldName.replace("]","");
-                    fieldName.replace(rptSql->objectName()+".","");
-                    tmp = rptSql->getFieldValue(fieldName, m_recNo);
+            if (rtpSqlVector.size() > 0) {
+                if (rtpSqlVector[m_pageReport] != 0 ) {//if we have Sql DataSource
+                    if (res.at(i).contains(rtpSqlVector[m_pageReport]->objectName())) {
+                        QString fieldName = res.at(i);
+                        fieldName.replace("[","");
+                        fieldName.replace("]","");
+                        fieldName.replace(rtpSqlVector[m_pageReport]->objectName()+".","");
+                        tmp = rtpSqlVector[m_pageReport]->getFieldValue(fieldName, m_recNo);
+                    }
                 }
             } else
                 tmp = sectionValue(res.at(i));
@@ -1081,7 +1160,9 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
                     av.pageReport = m_pageReport;
                     bool founded = false;
                     for (int j = 0; j < listOfPair.size(); ++j) {
-                        if (listOfPair.at(j).pageReport == av.pageReport && listOfPair.at(j).lnNo == av.lnNo && listOfPair.at(j).paramName == av.paramName)
+                        if (listOfPair.at(j).pageReport == av.pageReport &&
+                            listOfPair.at(j).lnNo == av.lnNo &&
+                            listOfPair.at(j).paramName == av.paramName)
                             founded = true;
                     }
                     if (!founded)
@@ -1117,28 +1198,30 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
                         !tl.at(j-1).toUpper().contains("MAX") &&
                         !tl.at(j-1).toUpper().contains("MIN") &&
                         !tl.at(j-1).toUpper().contains("NumberToWords") &&
-                        !tl.at(j-1).toUpper().contains("Frac")
+                        !tl.at(j-1).toUpper().contains("Frac") &&
+                        !tl.at(j-1).toUpper().contains("Floor") &&
+                        !tl.at(j-1).toUpper().contains("Ceil") &&
+                        !tl.at(j-1).toUpper().contains("Round") &&
+                        !tl.at(j-1).toUpper().contains("ToUpper") &&
+                        !tl.at(j-1).toUpper().contains("ToLower")
                     ) {
-                        formulaStr.replace(tl.at(j), sectionValue(tl.at(j)));  //My code
-                        //---
-                        if (tl.at(j).contains("[") && tl.at(j).contains("]") && !tl.at(j).contains("<") ) {
-                            QString tmp;
-                            if (rptSql != 0 ) {//if we have Sql DataSource
-                                if (tl.at(j).contains(rptSql->objectName())) {
-                                    QString fieldName = tl.at(j);
-                                    fieldName.replace("[","");
-                                    fieldName.replace("]","");
-                                    fieldName.replace(rptSql->objectName()+".","");
-                                    tmp = rptSql->getFieldValue(fieldName, m_recNo);
-                                    qDebug()<<"tmp";
-                                    qDebug()<<tmp;
-                                    formulaStr.replace(tl.at(j), tmp);
-                                    qDebug()<<"0 entro sql";
-                                    qDebug()<<formulaStr;
-                                }
+                        if (rtpSqlVector.size() > 0 && rtpSqlVector[m_pageReport] != 0 ) {  //if we have Sql DataSource
+                        /*todo   After testing - remove commented
+                         * if (tl.at(j).contains("[") && tl.at(j).contains("]") && !tl.at(j).contains("<") ) {
+                         */
+                            if (tl.at(j).contains(rtpSqlVector[m_pageReport]->objectName())) {
+                                QString fieldName = tl.at(j);
+                                fieldName.replace("[","");
+                                fieldName.replace("]","");
+                                fieldName.replace(rtpSqlVector[m_pageReport]->objectName()+".","");
+                                QString tmp = rtpSqlVector[m_pageReport]->getFieldValue(fieldName, m_recNo);
+                                qDebug()<<"value from DB: "<<tmp;
+                                formulaStr.replace(tl.at(j), tmp);
+                                qDebug()<<"formula with value: "<<formulaStr;
                             }
-                        }  else
-                            formulaStr.replace(tl.at(j), sectionValue(tl.at(j)));  //original
+                        } else {
+                            formulaStr.replace(tl.at(j), sectionValue(tl.at(j)));
+                        }
                     }
                 }
 
@@ -1147,11 +1230,26 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
                 QScriptValue fun = myEngine.newFunction(funcAggregate);
                 myEngine.globalObject().setProperty("Sum", fun);
 
-                fun = myEngine.newFunction(funcText);
+                fun = myEngine.newFunction(funcToUpper);
+                myEngine.globalObject().setProperty("ToUpper", fun);
+
+                fun = myEngine.newFunction(funcToLower);
+                myEngine.globalObject().setProperty("ToLower", fun);
+
+                fun = myEngine.newFunction(funcNumberToWords);
                 myEngine.globalObject().setProperty("NumberToWords", fun);
 
                 fun = myEngine.newFunction(funcFrac);
                 myEngine.globalObject().setProperty("Frac", fun);
+
+                fun = myEngine.newFunction(funcFloor);
+                myEngine.globalObject().setProperty("Floor", fun);
+
+                fun = myEngine.newFunction(funcCeil);
+                myEngine.globalObject().setProperty("Ceil", fun);
+
+                fun = myEngine.newFunction(funcRound);
+                myEngine.globalObject().setProperty("Round", fun);
 
                 formulaStr = formulaStr.replace("Sum(","Sum(0,", Qt::CaseInsensitive);
                 formulaStr = formulaStr.replace("Avg(","Sum(1,", Qt::CaseInsensitive);
@@ -1240,7 +1338,11 @@ QVariant QtRPT::processFunctions(QString value) {
 }
 
 QImage QtRPT::sectionFieldImage(QString value) {
-    return sectionValueImage(value);
+    QString fieldName = value;
+    fieldName.replace("[","");
+    fieldName.replace("]","");
+    fieldName.replace(rtpSqlVector[m_pageReport]->objectName()+".","");
+    return rtpSqlVector[m_pageReport]->getFieldImage(fieldName, m_recNo);
 }
 
 QString QtRPT::sectionValue(QString paramName) {
@@ -1274,7 +1376,7 @@ QImage QtRPT::sectionValueImage(QString paramName) {
  Print report direct to PDF file by \a filePath.
  Second param \a open indicates open or not after printing a pdf file.
 
- \sa printExec(), printHTML(), printODT()
+ \sa printExec(), printHTML(), printXLSX()
  */
 void QtRPT::printPDF(const QString &filePath, bool open) {
 #ifndef QT_NO_PRINTER
@@ -1298,13 +1400,13 @@ void QtRPT::printPDF(const QString &filePath, bool open) {
  Print report direct to HTML file by \a filePath.
  Second param \a open indicates open or not after printing a pdf file.
 
- \sa printExec(), printPDF(), printODT()
+ \sa printExec(), printPDF(), printXLSX()
  */
 void QtRPT::printHTML(const QString &filePath, bool open) {
 #ifndef QT_NO_PRINTER
     m_printMode = QtRPT::Html;
     m_HTML.clear();
-    m_HTML.append("<HTML><BODY>");
+    m_HTML.append("<HTML><HEAD><meta charset=\"UTF-8\"></HEAD><BODY>");
 
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -1330,7 +1432,6 @@ void QtRPT::printHTML(const QString &filePath, bool open) {
 #endif
 }
 
-#include <QTextDocumentWriter>
 /*!
  \fn QtRPT::printODT(const QString &filePath, bool open)
  Print report direct to ODT file by \a filePath.
@@ -1340,10 +1441,36 @@ void QtRPT::printHTML(const QString &filePath, bool open) {
 
  \sa printExec(), printHTML(), printPDF()
  */
-void QtRPT::printODT(const QString &filePath, bool open) {
+void QtRPT::printXLSX(const QString &filePath, bool open) {
 #ifndef QT_NO_PRINTER
-    Q_UNUSED(filePath);
     Q_UNUSED(open);
+    crossTab = new RptCrossTabObject();
+    m_printMode = QtRPT::Xlsx;
+    //if (m_xlsx != 0) delete m_xlsx;
+    //m_xlsx = new QXlsx::Document(this);
+
+    QFile file(filePath);
+    //if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    //    return;
+
+    if (printer == 0){
+        printer = new QPrinter(m_resolution);
+    };
+    printer->setOutputFormat(QPrinter::PdfFormat);
+    if (painter == 0){
+        painter = new QPainter();
+    };
+    printPreview(printer);
+
+    crossTab->resortMatrix();
+    qDebug()<<crossTab;
+
+    //m_xlsx->write("A1", "Hello Qt!");
+    //m_xlsx->saveAs(filePath);
+
+    file.close();
+    //if (open)
+    //    QDesktopServices::openUrl(QUrl("file:"+filePath));
 #endif
 }
 
@@ -1363,7 +1490,7 @@ void QtRPT::printODT(const QString &filePath, bool open) {
  If  printer with the \a printerName is not valid,
  the default printer will be used.
 
- \sa printPDF(), printHTML(), printODT()
+ \sa printPDF(), printHTML(), printXLSX()
  */
 void QtRPT::printExec(bool maximum, bool direct, QString printerName) {
 #ifndef QT_NO_PRINTER
@@ -1415,15 +1542,16 @@ void QtRPT::printExec(bool maximum, bool direct, QString printerName) {
         actExpToHtml->setObjectName("actExpToHtml");
         connect(actExpToHtml, SIGNAL(triggered()), SLOT(exportTo()));
 
-        icon.addPixmap(QPixmap(QString::fromUtf8(":/html.png")), QIcon::Normal, QIcon::On);
-        QAction *actExpToOdt = new QAction(icon,tr("Save as ODT"),this);
-        actExpToOdt->setObjectName("actExpToOdt");
-        connect(actExpToOdt, SIGNAL(triggered()), SLOT(exportTo()));
+        QIcon icon1;
+        icon1.addPixmap(QPixmap(QString::fromUtf8(":/excel.png")), QIcon::Normal, QIcon::On);
+        QAction *actExpToXlsx = new QAction(icon1,tr("Save as XLSX"),this);
+        actExpToXlsx->setObjectName("actExpToXlsx");
+        connect(actExpToXlsx, SIGNAL(triggered()), SLOT(exportTo()));
 
         QList<QToolBar *> l1 = preview.findChildren<QToolBar *>();
         l1.at(0)->addAction(actExpToPdf);
         l1.at(0)->addAction(actExpToHtml);
-        //l1.at(0)->addAction(actExpToOdt);
+        l1.at(0)->addAction(actExpToXlsx);
 
         //preview.addActions(lst);
         pr->installEventFilter(this);
@@ -1446,10 +1574,10 @@ void QtRPT::exportTo() {
         if (fileName.isEmpty() || fileName.isNull() ) return;
         printHTML(fileName,true);
     }
-    if (sender()->objectName() == "actExpToOdt") {
-        QString fileName = QFileDialog::getSaveFileName(qobject_cast<QWidget *>(this->parent()), tr("Save File"), "", tr("ODT Files (*.odt)"));
+    if (sender()->objectName() == "actExpToXlsx") {
+        QString fileName = QFileDialog::getSaveFileName(qobject_cast<QWidget *>(this->parent()), tr("Save File"), "", tr("XLSX Files (*.xlsx)"));
         if (fileName.isEmpty() || fileName.isNull() ) return;
-        printODT("",true);
+        printXLSX(fileName,true);
     }
 }
 
@@ -1483,6 +1611,10 @@ void QtRPT::printPreview(QPrinter *printer) {
 #else
     if (pageList.size() == 0) return;
     setPageSettings(printer,0);
+
+    if (painter == 0){
+        painter = new QPainter();
+    };
     painter->begin(printer);
 
     fromPage = printer->fromPage();
@@ -1595,7 +1727,7 @@ void QtRPT::processReport(QPrinter *printer, bool draw, int pageReport) {
 
         //processMHeader(y,draw);
         //processPFooter(draw);
-    prcessGroupHeader(printer,y,draw,pageReport);
+    processGroupHeader(printer,y,draw,pageReport);
         //processMasterData(printer,y,draw,pageReport);
         //processMFooter(printer,y,draw);
 
@@ -1658,7 +1790,7 @@ void QtRPT::newPage(QPrinter *printer, int &y, bool draw, bool newReportPage) {
     if (draw)
       emit newPage(curPage);
 
-    if (m_printMode != QtRPT::Html)
+    if (m_printMode != QtRPT::Html && m_printMode != QtRPT::Xlsx)
         y = 0;
     if (newReportPage)
         processRTitle(y,draw);
@@ -1682,8 +1814,9 @@ void QtRPT::setBackgroundImage(QPixmap image) {
 }
 
 void QtRPT::drawBackground() {
-    if (painter->isActive())
+    if (painter->isActive()) {
         painter->setBackgroundMode(Qt::TransparentMode);
+    }
     if (m_backgroundImage != 0) {
         if (painter->isActive())
             painter->drawPixmap(-ml*koefRes_w,
@@ -1693,9 +1826,8 @@ void QtRPT::drawBackground() {
     }
 }
 
-void QtRPT::prcessGroupHeader(QPrinter *printer, int &y, bool draw, int pageReport) {
+void QtRPT::processGroupHeader(QPrinter *printer, int &y, bool draw, int pageReport) {
     m_recNo = 0;
-    RptBandObject *bandObj = 0;
     if (pageList.at(m_pageReport)->getBand(DataGroupHeader) == 0) {
         processMHeader(y,draw);
         processPFooter(draw);
@@ -1705,7 +1837,7 @@ void QtRPT::prcessGroupHeader(QPrinter *printer, int &y, bool draw, int pageRepo
         if (pageList.at(pageReport)->getBand(MasterData) != 0)
             fillListOfValue(pageList.at(pageReport)->getBand(MasterData));
         if (listOfPair.size() > 0) {
-            if (!recordCount.isEmpty()) {
+            if (recordCount.size()>=pageReport+1) {
                 for (int i = 0; i < recordCount.at(pageReport); i++) {
                     m_recNo = i;
                     if (pageList.at(pageReport)->getBand(DataGroupHeader) != 0) {
@@ -1718,7 +1850,7 @@ void QtRPT::prcessGroupHeader(QPrinter *printer, int &y, bool draw, int pageRepo
             listOfGroup.clear();
             mg_recNo = 0;
 
-            bandObj = pageList.at(pageReport)->getBand(MasterHeader);
+            RptBandObject *bandObj = pageList.at(pageReport)->getBand(MasterHeader);
             if (bandObj != 0 && bandObj->showInGroup == 0)
                 processMHeader(y,draw);
 
@@ -1791,8 +1923,10 @@ void QtRPT::prcessGroupHeader(QPrinter *printer, int &y, bool draw, int pageRepo
                         m_recNo = listOfPair.at(j).lnNo;
 
                         //-----------Added codes here. Thanks to puterk
-                        if (y + pageList.at(pageReport)->getBand(DataGroupFooter)->height > ph-mb-mt-yPF-yMF)
-                            newPage(printer, y, draw);
+                        if (pageList.at(pageReport)->getBand(DataGroupFooter) != 0) {
+                            if (y + pageList.at(pageReport)->getBand(DataGroupFooter)->height > ph-mb-mt-yPF-yMF)
+                                newPage(printer, y, draw);
+                        }
                         //-----------ends here. Thanks to puterk
 
                         if (pageList.at(pageReport)->getBand(DataGroupFooter) != 0) {
@@ -1817,17 +1951,18 @@ void QtRPT::processMasterData(QPrinter *printer, int &y, bool draw, int pageRepo
                 for (int i = 0; i < recordCount.at(pageReport); i++) {
                     m_recNo = i;
 
-                    bool founded = false;
-                    if (listIdxOfGroup.size() > 0) { //If report with groups, we checking that current line in the current group
+                    bool found = false;
+                    //If report with groups, we checking that current line in the current group
+                    if (listIdxOfGroup.size() > 0) {
                         for (int k = 0; k < listIdxOfGroup.size(); k++) {
                             if (listIdxOfGroup.at(k) == i)
-                                founded = true;
+                                found = true;
                         }
                     } else {
-                        founded = true;
+                        found = true;
                     }
 
-                    if (founded) {
+                    if (found) {
                         mg_recNo += 1;
                         int yPF = 0;
                         if (pageList.at(pageReport)->getBand(PageFooter) != 0) {
@@ -1839,7 +1974,7 @@ void QtRPT::processMasterData(QPrinter *printer, int &y, bool draw, int pageRepo
                             yMF = pageList.at(pageReport)->getBand(MasterFooter)->height;
                         }
 
-                        drawBandRow(pageList.at(pageReport)->getBand(MasterData), y,false);
+                        drawBandRow(pageList.at(pageReport)->getBand(MasterData), y, false);
                         if (y + pageList.at(pageReport)->getBand(MasterData)->realHeight > ph-mb-mt-yPF-yMF) {
                             if (m_printMode != QtRPT::Html) {
                                 newPage(printer, y, draw);
@@ -1847,8 +1982,10 @@ void QtRPT::processMasterData(QPrinter *printer, int &y, bool draw, int pageRepo
                             }
                         }
 
-                        if (allowPrintPage(draw,curPage)) drawBandRow(pageList.at(pageReport)->getBand(MasterData), y,true);
-                        else fillListOfValue(pageList.at(pageReport)->getBand(MasterData));
+                        if (allowPrintPage(draw,curPage)) {
+                            drawBandRow(pageList.at(pageReport)->getBand(MasterData), y, true);
+                        } else
+                            fillListOfValue(pageList.at(pageReport)->getBand(MasterData));
                         y += pageList.at(m_pageReport)->getBand(MasterData)->realHeight;
                     }
                 }
@@ -1906,49 +2043,85 @@ void QtRPT::processRSummary(QPrinter *printer, int &y, bool draw) {
 }
 
 void QtRPT::openDataSource(int pageReport) {
-    QDomElement docElem = xmlDoc.documentElement().childNodes().at(pageReport).toElement();
-    QDomNode n = docElem.firstChild();
-    QDomElement dsElement;
-    while(!n.isNull()) {
-        QDomElement e = n.toElement();
-        if ((!e.isNull()) && (e.tagName() == "DataSource")) {
-            dsElement = e;
-        }
-        n = n.nextSibling();
-    }
+    RptSqlConnection SqlConnection;
 
-    if (!dsElement.isNull() && dsElement.attribute("type") == "SQL") {
-        QString dsName = dsElement.attribute("name");
-        QString dbType = dsElement.attribute("dbType");
-        QString dbName = dsElement.attribute("dbName");
-        QString dbHost = dsElement.attribute("dbHost");
-        QString dbUser = dsElement.attribute("dbUser");
-        QString dbPassword = dsElement.attribute("dbPassword");
-        QString dbCoding = dsElement.attribute("dbCoding");
-        QString charsetCoding = dsElement.attribute("charsetCoding");
-        QString sqlQuery = dsElement.text().trimmed();
-        int dbPort = dsElement.attribute("dbPort").toInt();
-        QString dbConnectionName = dsElement.attribute("dbConnectionName");
-        rptSql = new RptSql(dbType,dbName,dbHost,dbUser,dbPassword,dbPort,dbConnectionName,this);
-        rptSql->setObjectName(dsName);
+    getUserSqlConnection(pageReport, SqlConnection);
+
+    if (SqlConnection.m_bIsActive) {
+        // If user connection is active, use their parameters
+        QString sqlQuery = SqlConnection.m_sqlQuery;
+        RptSql *rptSql = new RptSql(SqlConnection.m_dbType,SqlConnection.m_dbName,SqlConnection.m_dbHost,SqlConnection.m_dbUser,SqlConnection.m_dbPassword,SqlConnection.m_dbPort,SqlConnection.m_dbConnectionName,this);
+        rptSql->setObjectName(SqlConnection.m_dsName);
+
+        if (rtpSqlVector.size() <= pageReport) {
+            rtpSqlVector.resize(pageReport);
+            rtpSqlVector.insert(pageReport, rptSql);
+        } else {
+            rtpSqlVector.replace(pageReport, rptSql);
+        }
+
         if (!m_sqlQuery.isEmpty())
             sqlQuery = m_sqlQuery;
-        if (!rptSql->openQuery(sqlQuery,dbCoding,charsetCoding)) {
+        if (!rptSql->openQuery(sqlQuery,SqlConnection.m_dbCoding,SqlConnection.m_charsetCoding)) {
             recordCount << 0;
             return;
         }
 
         recordCount << rptSql->getRecordCount();
     }
-    if (!dsElement.isNull() && dsElement.attribute("type") == "XML") {
+    else {
+        QDomElement docElem = xmlDoc.documentElement().childNodes().at(pageReport).toElement();
+        QDomNode n = docElem.firstChild();
+        QDomElement dsElement;
+        while(!n.isNull()) {
+            QDomElement e = n.toElement();
+            if ((!e.isNull()) && (e.tagName() == "DataSource")) {
+                dsElement = e;
+            }
+            n = n.nextSibling();
+        }
 
+        if (!dsElement.isNull() && dsElement.attribute("type") == "SQL") {
+            QString dsName = dsElement.attribute("name");
+            QString dbType = dsElement.attribute("dbType");
+            QString dbName = dsElement.attribute("dbName");
+            QString dbHost = dsElement.attribute("dbHost");
+            QString dbUser = dsElement.attribute("dbUser");
+            QString dbPassword = dsElement.attribute("dbPassword");
+            QString dbCoding = dsElement.attribute("dbCoding");
+            QString charsetCoding = dsElement.attribute("charsetCoding");
+            QString sqlQuery = dsElement.text().trimmed();
+            int dbPort = dsElement.attribute("dbPort").toInt();
+            QString dbConnectionName = dsElement.attribute("dbConnectionName");
+            RptSql *rptSql = new RptSql(dbType,dbName,dbHost,dbUser,dbPassword,dbPort,dbConnectionName,this);
+            rptSql->setObjectName(dsName);
+
+            if (rtpSqlVector.size() <= pageReport) {
+                rtpSqlVector.resize(pageReport);
+                rtpSqlVector.insert(pageReport, rptSql);
+            } else {
+                rtpSqlVector.replace(pageReport, rptSql);
+            }
+
+            if (!m_sqlQuery.isEmpty())
+                sqlQuery = m_sqlQuery;
+            if (!rptSql->openQuery(sqlQuery,dbCoding,charsetCoding)) {
+                recordCount << 0;
+                return;
+            }
+
+            recordCount << rptSql->getRecordCount();
+        }
+        if (!dsElement.isNull() && dsElement.attribute("type") == "XML") {
+
+        }
     }
 }
 
 /*!
  \fn QtRPT::setSqlQuery(QString sqlString)
   Sets SQL query \a sqlString.
-  If in XML was defiened SQL query, it will be replaced.
+  If in XML was defined SQL query, it will be replaced.
  */
 void QtRPT::setSqlQuery(QString sqlString) {
     m_sqlQuery = sqlString;
@@ -1966,7 +2139,7 @@ void QtRPT::setSqlQuery(QString sqlString) {
   Pass \a fieldObject to user's application as a reference to requested RptFieldObject.
   User should set the appropriate properties of the \a fieldObject.
   This signal is emitted before following signals: setValue, setValueImage, setValueDiagram
-  \sa setValue(), setValueImage(), setValueDiagram()
+  \sa setValue(), setValueImage(), setValueDiagram(), RptFieldObject
  */
 
 /*!
@@ -2011,3 +2184,69 @@ void QtRPT::setSqlQuery(QString sqlString) {
   This signal is emitted after following signal: setField()
   \sa setField(), setValue(), setValueImage()
  */
+
+//-----------------------------
+/*!
+  \page qtrptproject.html
+  \title QtRptProject
+  \list
+  \li Version 2.0.0
+  \li Programmer: Aleksey Osipov
+  \li Web-site: \l {http://www.aliks-os.tk} {http://www.aliks-os.tk}
+  \li Email: \l {mailto:aliks-os@ukr.net} {aliks-os@ukr.net}
+  \li Web-site: \l {http://www.qtrpt.tk} {http://www.qtrpt.tk}
+  \li Address in Facebook \l {https://www.facebook.com/qtrpt} {https://www.facebook.com/qtrpt}
+  \endlist
+  QtRPT is the easy-to-use print report engine written in C++ QtToolkit. It allows combining several reports in one XML file. For separately taken field, you can specify some condition depending on which this field will display in different font and background color, etc. The project consists of two parts: report library QtRPT and report designer application QtRptDesigner. Report file is a file in XML format. The report designer makes easy to create report XML file. Thanks to Qt library, our project can be used in programs for work in the operating systems Windows, Linux, MacOS
+
+  \contentspage {Basic Qt} {Contents}
+  Table of contents:
+  \list
+  \li \l {QtRptName} {QtRptName Namespace}
+  \li \l {QtRPT} {QtRPT class}
+  \li \l {RptPageObject} {RptPageObject class}
+  \li \l {RptBandObject} {RptBandObject class}
+  \li \l {RptFieldObject} {RptFieldObject class}
+  \endlist
+*/
+
+void QtRPT::setUserSqlConnection(int pageReport, const RptSqlConnection & SqlConnection) {
+    if (userSqlConnection.count() <= pageReport) {
+        // If page does not exist, add new connection for this page
+        userSqlConnection.resize(pageReport);
+        userSqlConnection.insert(pageReport, SqlConnection);
+    } else {
+        // If page exists, replace connection for this page
+        userSqlConnection.replace(pageReport, SqlConnection);
+    }
+}
+
+void QtRPT::getUserSqlConnection(int pageReport, RptSqlConnection & SqlConnection) {
+    if (userSqlConnection.count() <= pageReport) {
+        // Return inactive connection
+        SqlConnection.reset();
+    } else {
+        SqlConnection = userSqlConnection.at(pageReport);
+    }
+}
+
+void QtRPT::setUserSqlConnection(int pageReport, QString dsName, QString dbType, QString dbName,
+                                 QString dbHost, QString dbUser, QString dbPassword, int dbPort,
+                                 QString dbConnectionName, QString sqlQuery, QString dbCoding,
+                                 QString charsetCoding) {
+    // Create enabled RptSqlConnection object with all parameters
+    RptSqlConnection SqlConnection(dsName, dbType, dbName, dbHost, dbUser,
+                                   dbPassword, dbPort, dbConnectionName, sqlQuery, dbCoding, charsetCoding);
+
+    setUserSqlConnection(pageReport, SqlConnection);
+}
+
+void QtRPT::activateUserSqlConnection(int pageReport, bool bActive) {
+    RptSqlConnection SqlConnection;
+
+    // Enable or disable connection
+    getUserSqlConnection(pageReport, SqlConnection);
+    SqlConnection.m_bIsActive = bActive;
+    setUserSqlConnection(pageReport, SqlConnection);
+}
+

@@ -1,11 +1,11 @@
 /*
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ limitations under the License.
 */
 
 #include "CommonClasses.h"
-//#include <QDebug>
+#include <QDebug>
 
 QString double2MoneyUKR(double n, int currency) {
     static QString cap[4][10] =	{
@@ -178,14 +178,16 @@ QString double2MoneyUKR(double n, int currency) {
 
         s += cap[2+1][r[2]];
         s += ((r[1] == 1) ? cap2[r[0]] : cap[1+1][r[1]]+cap[0+rod][r[0]])+capt;
-        s += olds;
+        if (hi == 0)  //Если не нужна часть после запятой
+            s += olds;
 
-        if ((hi == 0) && (nPor >= 1))
+        if (hi == 0 && nPor >= 1)
             break;
     }
     QString up(s[0]);
     s.replace(0,1,up);
-    return s.replace(" ,",",");
+    //return s.replace(" ,",",");
+    return s.replace(",","");
 }
 
 QString double2MoneyRUS(double n, int currency) {
@@ -471,13 +473,534 @@ QString double2MoneyENG(double number) {
     return output;
 }
 
+//Thanks to Norbert Schlia
+QString double2MoneyGER(double number, bool bAdditional /*= false*/) {
+    Q_UNUSED(bAdditional);
+    static QMap<double, QString> numbers;
+
+    //Only initialize once
+    if (numbers.isEmpty()) {
+        numbers[0] = "null";
+        numbers[1] = "ein";
+        numbers[2] = "zwei";
+        numbers[3] = "drei";
+        numbers[4] = "vier";
+        numbers[5] = "fünf";
+        numbers[6] = "sechs";
+        numbers[7] = "sieben";
+        numbers[8] = "acht";
+        numbers[9] = "neun";
+        numbers[10] = "zehn";
+        numbers[11] = "elf";
+        numbers[12] = "zwölf";
+        numbers[13] = "dreizehn";
+        numbers[14] = "vierzehn";
+        numbers[15] = "fünfzehn";
+        numbers[16] = "sechzehn";
+        numbers[17] = "siebzehn";
+        numbers[18] = "achtzehn";
+        numbers[19] = "neunzehn";
+        numbers[20] = "zwanzig";
+        numbers[30] = "dreissig";
+        numbers[40] = "vierzig";
+        numbers[50] = "fünfzig";
+        numbers[60] = "sechszig";
+        numbers[70] = "siebzig";
+        numbers[80] = "achtzig";
+        numbers[90] = "neunzig";
+    }
+
+    static QMap<uint, QString> powers;
+
+    //Only initialize once
+    if (powers.isEmpty()) {
+        powers[2] = "hundert";
+        powers[3] = "tausend";
+        powers[6] = "millionen";
+        powers[9] = "milliarden";
+    }
+
+    QString output;
+
+    if ((long long)number == 1 && !bAdditional) {
+        output = "eins";
+    }
+    else if (number < 21) {
+        output = numbers[(long long)number];
+    } else if (number < 100) {
+        output = numbers[10 * qFloor(number / 10)];
+        int remainder = (long long)number % 10;
+
+        if (remainder > 0)
+            output = double2MoneyGER(remainder, true) + "und" + output;
+    } else {
+        uint power = 2;
+        uint place = 0;
+        QString powerString;
+
+        //QMap::keys is ordered
+        foreach (uint pow, powers.keys()) {
+            uint place_value = qPow(10, pow);
+            uint tmp_place = qFloor(number / place_value);
+            if (tmp_place < 1)
+                break;
+
+            place = tmp_place;
+            power = pow;
+
+            if (pow == 6 && number < 2E6) {
+                powerString = "emillion";
+            }
+            else if (pow == 9 && number < 2E9) {
+                powerString = "emilliarde";
+            }
+            else {
+                powerString = powers[pow];
+            }
+        }
+
+        if (power > 0) {
+            output = double2MoneyGER(place, true) + powerString;
+            double remainder = (long long)number % (long long)double(qPow(10, power));
+
+            if (remainder > 0)
+                output += double2MoneyGER(remainder, true);
+        }
+    }
+
+    return output;
+}
+
+//Thanks to Manuel Soriano
+#define	VALEN 16
+QString double2MoneyESP_Group(int _siGroup, char *_tscGroup, int _siGValue) {
+    int			siInd1, siWk1, siValue;
+    QString		stReturn, stWk1;
+
+    static QMap<int, QString> stUnits;
+    static QMap<int, QString> stDeci;
+    if (stUnits.isEmpty())
+    {
+        stUnits[0] = "cero ";
+        stUnits[1] = "uno ";
+        stUnits[2] = "dos ";
+        stUnits[3] = "tres ";
+        stUnits[4] = "cuatro ";
+        stUnits[5] = "cinco ";
+        stUnits[6] = "seis ";
+        stUnits[7] = "siete ";
+        stUnits[8] = "ocho ";
+        stUnits[9] = "nueve ";
+        stUnits[10] = "diez ";
+        stUnits[11] = "once ";
+        stUnits[12] = "doce ";
+        stUnits[13] = "trece ";
+        stUnits[14] = "catorce ";
+        stUnits[15] = "quince ";
+        stUnits[16] = "diez y seis ";
+        stUnits[17] = "diez y siete ";
+        stUnits[18] = "diez y ocho ";
+        stUnits[19] = "diez y nueve ";
+
+        stDeci[2] = "veinte ";
+        stDeci[3] = "treinta ";
+        stDeci[4] = "cuarenta ";
+        stDeci[5] = "cincuenta ";
+        stDeci[6] = "sesenta ";
+        stDeci[7] = "setenta ";
+        stDeci[8] = "ochenta ";
+        stDeci[9] = "noventa ";
+    }
+
+    for (siInd1=0; siInd1 < 3; siInd1++)
+    {
+        siValue = *(_tscGroup+siInd1) - 0x30;
+        stWk1 = stUnits[siValue];
+
+        if (_siGValue == 0)			// "cero" away
+        {
+            stReturn.clear();
+            siInd1 = 3;
+            continue;
+        }
+
+        if (siValue == 0)			// We do not want the "cero" text in our sentence
+        {
+            continue;
+        }
+
+        if (_siGValue == 1)
+        {
+            if (_siGroup == 3)
+            {
+                stReturn.clear();	// mil
+                siInd1 = 3;
+                continue;
+            }
+        }
+
+        if (siInd1 == 0)
+        {
+            if (siValue == 1)
+            {
+                if (atoi(_tscGroup) == 100)
+                {
+                    stReturn = ::QString("cien ");
+                    siInd1 = 3;
+                    continue;
+                }
+                else
+                {
+                    stWk1 = ::QString("ciento ");
+                }
+            }
+            else
+            {
+                stWk1 += ::QString("cientos ");
+            }
+        }
+
+        if (siInd1 == 1)
+        {
+            if (siValue == 1)
+            {
+                siWk1 = (siValue * 10) + *(_tscGroup+siInd1+1) - 0x30;
+                stReturn += stUnits[siWk1];
+                siInd1 = 3;
+                continue;
+            }
+
+            if (siValue > 1)
+            {
+                stWk1 = stDeci[siValue];
+                stWk1 += ::QString("y ");
+            }
+        }
+
+        if (siInd1 == 2)
+        {
+            if ((siValue == 1) && (_siGroup < 4))
+                stWk1 = ::QString("un ");
+        }
+
+        stReturn += stWk1;
+    }
+
+    return stReturn;
+}
+
+/*
+Thank you to Manuel Soriano
+0 : Does not print the decimals
+1 : Print the decimals
+*/
+QString double2MoneyESP(double _dbValue, int _blDecimals) {
+    QString		stValue, stReturn;
+
+    long		slValue, slDecimals;
+    int			siLen, siWk1, siValue;
+    char		tscGroup[4], tscValue[VALEN];
+
+    static QMap<int, QString> stMillos;
+    if (stMillos.isEmpty())
+    {
+        stMillos[0] = "billónes ";
+        stMillos[1] = "millardos ";
+        stMillos[2] = "millones ";
+        stMillos[3] = "mil ";
+        stMillos[4] = "";
+        stMillos[5] = "";
+    }
+
+    static QMap<int, QString> stMillo;
+    if (stMillo.isEmpty())
+    {
+        stMillo[0] = "billón ";
+        stMillo[1] = "millardo ";
+        stMillo[2] = "millón ";
+        stMillo[3] = "mil ";
+        stMillo[4] = "";
+        stMillo[5] = "";
+    }
+
+
+    stReturn.clear();
+    memset(tscValue, 0x00, sizeof(tscValue));
+    memset(tscValue, 0x30, sizeof(tscValue)-1);
+
+    slValue = _dbValue * 1;
+    slDecimals = (_dbValue - slValue) * 100.;
+
+    stValue.setNum(slValue);
+    siLen = stValue.length();
+
+    memcpy(tscValue+((VALEN-siLen)-1), stValue.toLatin1().data(), siLen);
+
+    for (siWk1=0; siWk1 < (VALEN/3); siWk1++)
+    {
+        memset(tscGroup, 0x00, sizeof(tscGroup));
+        memcpy(tscGroup, tscValue+(3*siWk1), 3);
+        if (strcmp(tscGroup, "000") == 0)
+            continue;
+        siValue = atoi(tscGroup);
+        stReturn += double2MoneyESP_Group(siWk1, tscGroup, siValue);
+        if (siValue == 1)
+            stReturn += stMillo[siWk1];
+        else
+            stReturn += stMillos[siWk1];
+    }
+
+    if ((slDecimals > 0) && _blDecimals)
+    {
+        stReturn += ::QString("con ");
+        stValue.setNum(slDecimals);
+        siLen = stValue.length();
+
+        memset(tscValue, 0x00, sizeof(tscValue));
+        memset(tscValue, 0x30, sizeof(tscValue)-1);
+        memcpy(tscValue+((VALEN-siLen)-1), stValue.toLatin1().data(), siLen);
+
+        for (siWk1=0; siWk1 < (VALEN/3); siWk1++)
+        {
+            memset(tscGroup, 0x00, sizeof(tscGroup));
+            memcpy(tscGroup, tscValue+(3*siWk1), 3);
+            if (strcmp(tscGroup, "000") == 0)
+                continue;
+            siValue = atoi(tscGroup);
+            stReturn += double2MoneyESP_Group(siWk1, tscGroup, siValue);
+            if (siValue == 1)
+                stReturn += stMillo[siWk1];
+            else
+                stReturn += stMillos[siWk1];
+        }
+    }
+
+    return stReturn;
+}
+
+//Thanks to Laurent Guilbert
+QString double2MoneyFrenchBE(double number, bool bAdditional /*= false*/) {
+    Q_UNUSED(bAdditional);
+    int whole = (int)number;
+    int precision = ((number-whole)*100)+0.5;
+
+    if (precision > 0) {
+        return double2MoneyFrench(whole,1) + " Euros " + double2MoneyFrench(precision,1) + " Centime(s)";
+    } else {
+        return double2MoneyFrench(whole,1) + " Euros ";
+    }
+}
+
+QString double2MoneyFrenchFR(double number, bool bAdditional /*= false*/) {
+    Q_UNUSED(bAdditional);
+    int whole = (int)number;
+    int precision = (number - whole) * 100;
+
+    if (precision > 0) {
+        return double2MoneyFrench(whole,0) + " Euros " + double2MoneyFrench(precision,1) + " Centime(s)";
+    } else {
+        return double2MoneyFrench(whole,0) + " Euros ";
+    }
+}
+
+QString double2MoneyFrenchCH(double number, bool bAdditional /*= false*/) {
+    Q_UNUSED(bAdditional);
+    int whole = (int)number;
+    int precision = (number - whole) * 100;
+
+    if (precision > 0) {
+        return double2MoneyFrench(whole,2) + " Francs " + double2MoneyFrench(precision,1) + " Centime(s)";
+    } else {
+        return double2MoneyFrench(whole,2) + " Francs ";
+    }
+}
+
+QString double2MoneyFrench(int number, int language) {
+    QMap<double, QString> numbers;
+
+    //Only initialize once
+    if (numbers.isEmpty()) {
+        numbers[0] = "zéro";
+        numbers[1] = "un";
+        numbers[2] = "deux";
+        numbers[3] = "trois";
+        numbers[4] = "quatre";
+        numbers[5] = "cinq";
+        numbers[6] = "six";
+        numbers[7] = "sept";
+        numbers[8] = "huit";
+        numbers[9] = "neuf";
+        numbers[10] = "dix";
+        numbers[11] = "onze";
+        numbers[12] = "douze";
+        numbers[13] = "treize";
+        numbers[14] = "quatorze";
+        numbers[15] = "quinze";
+        numbers[16] = "seize";
+        numbers[17] = "dix-sept";
+        numbers[18] = "dix-huit";
+        numbers[19] = "dix-neuf";
+        numbers[20] = "vingt";
+        numbers[30] = "trente";
+        numbers[40] = "quarante";
+        numbers[50] = "cinquante";
+        numbers[60] = "soixante";
+
+        switch(language) {
+            case 0: // France
+                numbers[70] = "soixante-dix";
+                numbers[80] = "quatre-vingt";
+                numbers[90] = "quatre-vingt-dix";
+                break;
+            case 1: // Belgium
+                numbers[70] = "septante";
+                numbers[80] = "quatre-vingt";
+                numbers[90] = "nonante";
+                break;
+            case 2: // Switzerland
+                numbers[70] = "septante";
+                numbers[80] = "huitante";
+                numbers[90] = "nonante";
+                break;
+        }
+    }
+
+    QMap<uint, QString> powers;
+
+    //Only initialize once
+    if (powers.isEmpty()) {
+        powers[3] = "mille";
+        powers[6] = "million";
+        powers[9] = "milliard";
+    }
+
+    QString output = "";
+
+    int remainder = 0;
+
+    if (number == 1) {
+        output = "et-" + numbers[number];
+    }
+    else if (number < 20) {
+        output = numbers[number];
+    } else if (number < 100) {
+        remainder = number % 10;
+        // FRANCE
+        if (language == 0) {
+            if ((number >= 70) && (number <= 79)) {
+                output = numbers[10 * (qFloor(number / 10) - 1)];
+                remainder += 10;
+            } else if ((number == 80) && (remainder == 0)) {
+                output = numbers[10 * qFloor(number / 10)] + "s";
+            } else if ((number >= 90) && (number <= 99)) {
+                output = numbers[10 * (qFloor(number / 10)-1)];
+                remainder += 10;
+            } else {
+                output = numbers[10 * qFloor(number / 10)];
+            }
+        }
+        // BELGIUM
+        if (language == 1) {
+            if ((number == 80) && (remainder == 0)) {
+                output = numbers[10 * qFloor(number / 10)] + "s";
+            } else {
+                output = numbers[10 * qFloor(number / 10)];
+            }
+        }
+        // FRENCH SWITZERLAND
+        if (language == 2) {
+            output = numbers[10 * qFloor(number / 10)];
+        }
+
+        if (remainder > 0) {
+            output =  output + "-" + double2MoneyFrench(remainder, language);
+        }
+    } else if (number < 999) {
+        remainder = number % 100;
+        if (floor(number / 100) == 1) {
+            output = "cent-" + double2MoneyFrench(remainder, language);
+        } else {
+            if (remainder > 0 ) {
+                output = numbers[qFloor(number / 100)] + "-cent-" + double2MoneyFrench(remainder, language);
+            } else {
+                output = numbers[qFloor(number / 100)] + "-cents";
+            }
+        }
+    } else {
+        uint power = 2;
+        uint place = 0;
+        QString powerString;
+
+        //QMap::keys is ordered
+        foreach (uint pow, powers.keys()) {
+            uint place_value = qPow(10, pow);
+            uint tmp_place = qFloor(number / place_value);
+            if (tmp_place < 1)
+                break;
+
+            place = tmp_place;
+            power = pow;
+
+            if (pow == 6 && number < 2E6) {
+                powerString = powers[pow];
+            }
+            else if (pow == 9 && number < 2E9) {
+                powerString = powers[pow];
+            }
+            else {
+                powerString = powers[pow];
+            }
+        }
+
+        if (power > 0) {
+            if (power == 3) {
+                if (floor(number / 1000) == 1) {
+                    output = powerString + "-";
+                } else {
+                    output = double2MoneyFrench(place, language) + "-" + powerString + "-";
+                }
+            }
+            if (power == 6) {
+                if (floor(number / 1000000) == 1) {
+                    output = numbers[1] + "-" + powerString + "-";
+                } else {
+                    output = double2MoneyFrench(place, language) + "-" + powerString + "s-";
+                }
+            }
+            if (power == 9) {
+                if (floor(number / 1000000000) == 1) {
+                    output = numbers[1] + "-" + powerString + "-";
+                } else {
+                    output = double2MoneyFrench(place, language) + "-" + powerString + "s-";
+                }
+            }
+            remainder = (long long)number % (long long)double(qPow(10, power));
+
+            if (remainder > 0)
+                output = output + double2MoneyFrench(remainder, language);
+        }
+    }
+
+    return output;
+}
+
 QString double2Money(double n, QString lang) {
     if (lang == "UKR")
-        return double2MoneyUKR(n);
-    else if (lang == "RUS")
-        return double2MoneyRUS(n);
+        return double2MoneyUKR(n,0);
+    //else if (lang == "RUS")
+    //    return double2MoneyRUS(n);
+    else if (lang == "GER")
+        return double2MoneyGER(n);
     else if (lang == "ENG")
         return double2MoneyENG(n);
+    else if (lang == "ESP")
+        return double2MoneyESP(n,0);
+    else if (lang == "FR_FR")
+        return double2MoneyFrench(n,0);
+    else if (lang == "FR_BE")
+        return double2MoneyFrench(n,1);
+    else if (lang == "FR_CH")
+        return double2MoneyFrench(n,2);
     else
         return double2MoneyENG(n);
 }
@@ -492,6 +1015,8 @@ QString colorToString(QColor color) {
 }
 
 QColor colorFromString(QString value) {
+    //if (value == "rgba(255,255,255,0)")
+    //    value = "rgba(255,255,255,255)";
     QColor color;
     if (value.isEmpty()) return color;
     int start; int end;
@@ -515,3 +1040,26 @@ QString eventType(QEvent *ev) {
 
     if (!name.isEmpty()) return name; else return (QString)ev->type();
 }
+
+/*pointer to QVariant and back
+http://blog.bigpixel.ro/2010/04/storing-pointer-in-qvariant/
+usage
+
+MyClass *p;
+QVariant v = VPtr<MyClass>::asQVariant(p);
+
+MyClass *p1 = VPtr<MyClass>::asPtr(v);
+*/
+template <class T> class VPtr
+{
+public:
+    static T* asPtr(QVariant v)
+    {
+    return  (T *) v.value<void *>();
+    }
+
+    static QVariant asQVariant(T* ptr)
+    {
+    return qVariantFromValue((void *) ptr);
+    }
+};

@@ -1,6 +1,6 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 1.5.5
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
@@ -48,7 +48,8 @@ TContainerField::TContainerField(QWidget *parent, QPoint p, QWidget *cWidget) : 
     m_highlighting = "";
     m_formatString = "";
     m_xmlDoc = 0;
-    m_barcode = 0;
+    m_barcode = nullptr;
+    m_crossTab = nullptr;
     m_autoHeight = false;
     radius = 6;
     m_textWrap = true;
@@ -134,6 +135,9 @@ TContainerField *TContainerField::clone() {
         newContField->setBarcodeType(this->getBarcodeType());
         newContField->setBarcodeFrameType(this->getBarcodeFrameType());
     }
+    if (newContField->getType() == CrossTab) {
+        newContField->m_crossTab = this->m_crossTab;
+    }
     newContField->setVisible(true);
     newContField->move(newPos);
     return newContField;
@@ -178,6 +182,12 @@ void TContainerField::resizeEvent(QResizeEvent *e) {
                 m_label->setPixmap(m_pixmap.scaled(m_label->width(),m_label->height(),Qt::KeepAspectRatio));
         }
     }
+    if (this->m_type == CrossTab) {
+        if (m_crossTab != nullptr) {
+            m_crossTab->rect.setHeight(this->rect().height());
+            m_crossTab->rect.setWidth(this->rect().width());
+        }
+    }
 }
 
 QString TContainerField::getImgFormat() {
@@ -189,6 +199,8 @@ void TContainerField::setImgFromat(QString value) {
 }
 
 TContainerField::~TContainerField() {
+    if (m_crossTab != nullptr)
+        delete m_crossTab;
 }
 
 #include "UndoCommands.h"
@@ -201,7 +213,8 @@ void TContainerField::edit() {
     EditFldDlg *dlg = new EditFldDlg(this);
     switch(m_type) {
         case Text:
-        case TextImage: {
+        case TextImage:
+        case DatabaseImage: {
             if (dlg->showText(this) == QDialog::Accepted)
                 emit contChanged(true);
             break;
@@ -224,6 +237,11 @@ void TContainerField::edit() {
         }
         case Barcode: {
             if (dlg->showBarcode(this) == QDialog::Accepted)
+                emit contChanged(true);
+            break;
+        }
+        case CrossTab: {
+            if (dlg->showCrosstab(this) == QDialog::Accepted)
                 emit contChanged(true);
             break;
         }
@@ -303,6 +321,39 @@ void TContainerField::setType(FieldType value, QDomDocument *xmlDoc) {
             }
             break;
         }
+        case CrossTab: {
+            setText("");
+            //m_label->setVisible(false);
+            //this->setSheetValue(BackgroundColor, "rgba(255,255,255,255)");
+            //this->setStyleSheet("background-color:transparent;");
+            if (this->parentWidget()->objectName() == "MainWindow") {
+                this->resize(400,300);
+                this->setBaseSize(400,300);
+            }
+            m_crossTab = new RptCrossTabObject();
+            m_crossTab->rect.setHeight(this->rect().height());
+            m_crossTab->rect.setWidth(this->rect().width());
+            m_crossTab->addCol("C1");
+            m_crossTab->addCol("C2");
+            m_crossTab->addCol("C3");
+            m_crossTab->addRow("R1");
+            m_crossTab->addRow("R2");
+            m_crossTab->addRow("R3");
+            m_crossTab->setColHeaderVisible(true);
+            m_crossTab->setRowHeaderVisible(true);
+            m_crossTab->setColTotalVisible(true);
+            m_crossTab->setRowTotalVisible(true);
+            m_crossTab->initMatrix();
+            //Fill values into matrix
+            for (int r=0; r<m_crossTab->rowCount(); r++)
+                for (int c=0; c<m_crossTab->colCount(); c++)
+                    m_crossTab->setMatrixValue(QString::number(c),
+                                               QString::number(r),
+                                               QString("%1%2").arg(c).arg(r).toDouble());
+
+
+            break;
+        }
         default:
             break;
     }
@@ -318,8 +369,7 @@ void TContainerField::loadParamFromXML(QDomElement e) {
         setTextWrap( e.attribute("textWrap","1").toInt() );
     } else if (this->m_type == Image || e.attribute("picture","text") != "text") {
         //load picture into lable
-        QByteArray byteArray;
-        byteArray = QByteArray::fromBase64(e.attribute("picture","text").toLatin1());
+        QByteArray byteArray = QByteArray::fromBase64(e.attribute("picture","text").toLatin1());
         m_imgFormat = e.attribute("imgFormat","PNG");
         m_pixmap = QPixmap::fromImage(QImage::fromData(byteArray, m_imgFormat.toLatin1().data()));
         m_label->setPixmap(m_pixmap);
@@ -340,10 +390,29 @@ void TContainerField::loadParamFromXML(QDomElement e) {
         setBarcodeType( (BarCode::BarcodeTypes)e.attribute("barcodeType","13").toInt() );
         setBarcodeFrameType( (BarCode::FrameTypes)e.attribute("barcodeFrameType","0").toInt() );
         setBarcodeHeight(e.attribute("barcodeHeight","50").toInt() );
+    } else if (this->m_type == CrossTab) {
+        m_crossTab->setColHeaderVisible(e.attribute("crossTabColHeaderVisible","1").toInt());
+        m_crossTab->setRowHeaderVisible(e.attribute("crossTabRowHeaderVisible","1").toInt());
+        m_crossTab->setColTotalVisible(e.attribute("crossTabColTotalVisible","1").toInt());
+        m_crossTab->setRowTotalVisible(e.attribute("crossTabRowTotalVisible","1").toInt());
+        m_crossTab->clear();
+        QDomNode g = e.firstChild();
+        while(!g.isNull()) {
+            QDomElement ge = g.toElement(); // try to convert the node to an element.
+            if (ge.nodeName() == "row") {
+                m_crossTab->addRow(ge.attribute("caption"));
+            }
+            if (ge.nodeName() == "col") {
+                m_crossTab->addCol(ge.attribute("caption"));
+            }
+            g = g.nextSibling();
+        }
+        m_crossTab->initMatrix();
     }
     this->setText(e.attribute("value"));
 
-    this->setSheetValue(BackgroundColor,e.attribute("backgroundColor","rgba(255,255,255,0)"));
+    if (this->m_type != CrossTab)
+        this->setSheetValue(BackgroundColor,e.attribute("backgroundColor","rgba(255,255,255,0)"));
     this->setSheetValue(FontColor,e.attribute("fontColor","rgba(0,0,0,255)"));
     this->setSheetValue(BorderColor,e.attribute("borderColor","rgba(0,0,0,255)"));
     this->setSheetValue(FrameTop,e.attribute("borderTop","rgba(0,0,0,255)"));
@@ -434,6 +503,22 @@ QDomElement TContainerField::saveParamToXML(QDomDocument *xmlDoc) {
         elem.setAttribute("barcodeFrameType",m_barcode->getFrameType());
         elem.setAttribute("barcodeHeight",m_barcode->getHeight());
     }
+    if (this->m_type == CrossTab) {
+        elem.setAttribute("crossTabColHeaderVisible",m_crossTab->isColHeaderVisible());
+        elem.setAttribute("crossTabRowHeaderVisible",m_crossTab->isRowHeaderVisible());
+        elem.setAttribute("crossTabColTotalVisible",m_crossTab->isColTotalVisible());
+        elem.setAttribute("crossTabRowTotalVisible",m_crossTab->isRowTotalVisible());
+        for(int i=0; i<m_crossTab->rowCount(); i++) {
+            QDomElement row = xmlDoc->createElement("row");
+            row.setAttribute("caption",m_crossTab->getRowName(i));
+            elem.appendChild(row);
+        }
+        for(int i=0; i<m_crossTab->colCount(); i++) {
+            QDomElement col = xmlDoc->createElement("col");
+            col.setAttribute("caption",m_crossTab->getColName(i));
+            elem.appendChild(col);
+        }
+    }
 
     QString hAl, vAl;
     if (m_label->alignment() & Qt::AlignLeft)
@@ -498,14 +583,14 @@ Chart *TContainerField::getChart() {
 void TContainerField::paintEvent( QPaintEvent * event) {
     Q_UNUSED(event);
 
-    if (!QtRPT::getDrawingFields().contains(m_type) && m_type != Barcode) {
+    if (!QtRPT::getDrawingFields().contains(m_type) &&
+        m_type != Barcode && m_type != CrossTab) {
         QWidget::paintEvent(event);
         return;
     }
 
-    //label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    QBrush brush( getColorValue(BackgroundColor) );
     QPainter p(this);
+    QBrush brush( getColorValue(BackgroundColor) );
     p.setRenderHint(QPainter::Antialiasing,true);
     p.setPen(QPen( getColorValue(BorderColor), getBorderWidth(), Qt::SolidLine, Qt::RoundCap));
 
@@ -570,13 +655,78 @@ void TContainerField::paintEvent( QPaintEvent * event) {
             break;
         }
         case Barcode: {
-            if (m_barcode != 0) {
+            if (m_barcode != nullptr) {
                 m_barcode->setValue(m_label->text());
                 m_barcode->drawBarcode(&p,0,0,this->width(),this->height());
             }
             break;
         }
-    default: QWidget::paintEvent(event);
+        case CrossTab: {
+            p.setPen(QPen( getColorValue(BorderColor), 1, Qt::SolidLine, Qt::RoundCap));
+
+            int fieldWidth = m_crossTab->rect.width()/m_crossTab->allColCount();
+            int fieldheight = m_crossTab->rect.height()/m_crossTab->allRowCount();
+            int posInCell_V = fieldheight/2;
+            int posInCell_H = 5;
+            //grid drawing
+            for(int row=0; row<m_crossTab->allRowCount(); row++) {
+                QPoint p1(0, row*fieldheight),
+                       p2(width(), row*fieldheight);
+                p.drawLine(p1,p2);
+            }
+            for(int col=0; col<m_crossTab->allColCount(); col++) {
+                QPoint p1(col*fieldWidth, 0),
+                       p2(col*fieldWidth, height());
+                p.drawLine(p1,p2);
+            }
+
+            for(int row=0; row<m_crossTab->rowCount(); row++) {
+                QString row_txt = m_crossTab->getRowName(row);
+                int tmpRow = row;
+                if (m_crossTab->isColHeaderVisible()) {
+                    tmpRow += 1;
+                }
+                //row's header drawing
+                if (m_crossTab->isRowHeaderVisible()) {
+                    QPoint p1(posInCell_H, (tmpRow)*fieldheight+posInCell_V);
+                    p.drawText(p1,row_txt);
+
+                    //row's total drawing
+                    if (m_crossTab->isRowTotalVisible()) {
+                        if (row == m_crossTab->rowCount()-1) {
+                            QPoint p1(posInCell_H, (tmpRow+1)*fieldheight+posInCell_V);
+                            p.drawText(p1,tr("Total"));
+                        }
+                    }
+                }
+                //---
+                for(int col=0; col<m_crossTab->colCount(); col++) {
+                    if (row == 0) {
+                        QString col_txt = m_crossTab->getColName(col);
+                        int tmpCol = col;
+                        if (m_crossTab->isRowHeaderVisible()) {
+                            tmpCol += 1;
+                        }
+                        //col's header drawing
+                        if (m_crossTab->isColHeaderVisible()) {
+                            QPoint p1((tmpCol)*fieldWidth+posInCell_H, posInCell_V);
+                            p.drawText(p1,col_txt);
+
+                            //total col drawing
+                            if (m_crossTab->isColTotalVisible()) {
+                                if (col == m_crossTab->colCount()-1) {
+                                    QPoint p1((tmpCol+1)*fieldWidth+posInCell_H, posInCell_V);
+                                    p.drawText(p1,tr("Total"));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            break;
+        }
+        default: QWidget::paintEvent(event);
     }
 }
 
@@ -617,6 +767,10 @@ int TContainerField::getBarcodeHeight() {
 void TContainerField::setBarcodeHeight(int value) {
     m_barcode->setHeight(value);
     this->repaint();
+}
+
+RptCrossTabObject *TContainerField::getCrossTab() {
+    return m_crossTab;
 }
 
 void TContainerField::setProperties() {

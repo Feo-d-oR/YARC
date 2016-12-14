@@ -2421,43 +2421,56 @@
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../QtRpt/QtRPT/RptCrossTabObject.cpp" line="36"/>
+        <source>Total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../QtRpt/QtRPT/RptCrossTabObject.cpp" line="298"/>
+        <source>R-Total</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QtRPT</name>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1409"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1536"/>
         <source>Save as PDF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1414"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1541"/>
         <source>Save as HTML</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1419"/>
-        <source>Save as ODT</source>
-        <translation></translation>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1547"/>
+        <source>Save as XLSX</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1440"/>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1445"/>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1450"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1568"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1573"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1578"/>
         <source>Save File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1440"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1568"/>
         <source>PDF Files (*.pdf)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1445"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1573"/>
         <source>HTML Files (*.html)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1450"/>
-        <source>ODT Files (*.odt)</source>
-        <translation></translation>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1578"/>
+        <source>XLSX Files (*.xlsx)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

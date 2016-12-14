@@ -112,6 +112,8 @@
         <file>images/xmlAttr.png</file>
         <file>images/update.png</file>
         <file>images/readme.png</file>
+        <file>images/crossTab.png</file>
+        <file>images/crossTabBD.png</file>
     </qresource>
     <qresource prefix="/language">
         <file>i18n/QtRprtDesigner_sr_RS.qm</file>
@@ -125,5 +127,6 @@
         <file>i18n/QtRprtDesigner_de_DE.qm</file>
         <file>i18n/QtRprtDesigner_nl_BE.qm</file>
         <file>i18n/QtRprtDesigner_es_ES.qm</file>
+        <file>i18n/QtRprtDesigner_ta_IN.qm</file>
     </qresource>
 </RCC>

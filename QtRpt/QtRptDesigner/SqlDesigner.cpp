@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -32,21 +32,22 @@ limitations under the License.
 #include "SQLHighlighter.h"
 #include "XmlViewModel.h"
 
-SqlDesigner::SqlDesigner(QWidget *parent) : QWidget(parent), ui(new Ui::SqlDesigner) {
+SqlDesigner::SqlDesigner(QDomDocument *xmlDoc, QWidget *parent) : QWidget(parent), ui(new Ui::SqlDesigner) {
     ui->setupUi(this);
+    m_xmlDoc = xmlDoc;
     QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
-
-    newDiagramDocument();
 
     ui->sqlEditor->setAcceptDrops(true);
     ui->graphicsView->setAcceptDrops(true);
     ui->sqlEditor->installEventFilter(this);
-    ui->treeWidget->viewport()->installEventFilter(this);
+    ui->tablesTree->viewport()->installEventFilter(this);
+    ui->xmlFieldsTable->viewport()->installEventFilter(this);
 
     QActionGroup *actGroup = new QActionGroup(this);
     actGroup->addAction(ui->actAddRelationship);
     actGroup->addAction(ui->actSelect);
+    m_currentPageNo = -1;
 
     new SQLHighlighter(ui->sqlEditor->document(), &settings);
     QObject::connect(ui->rbCustom, SIGNAL(clicked()), this, SLOT(rbChecked()));
@@ -61,35 +62,7 @@ SqlDesigner::SqlDesigner(QWidget *parent) : QWidget(parent), ui(new Ui::SqlDesig
     QObject::connect(ui->actRedo, SIGNAL(triggered()), this, SLOT(redo()));
     QObject::connect(ui->actDelete, SIGNAL(triggered()), this, SLOT(deleteSelected()));
     QObject::connect(ui->btnSelectXML, SIGNAL(clicked()), this, SLOT(selectXMLFile()));
-    QObject::connect(scene, SIGNAL(sqlChanged(QString)), this, SLOT(sqlChanged(QString)));
-}
-
-void SqlDesigner::showDataSource(QDomElement e) {
-    ui->cmbType->clear();
-    ui->cmbType->addItems(QSqlDatabase::drivers());
-    if (!e.isNull() && e.attribute("type") == "SQL") {
-        ui->stackedWidget->setCurrentIndex(1);
-        ui->rbSql->setChecked(true);
-        ui->sqlEditor->setText(e.text().trimmed());
-        ui->edtDBName->setText(e.attribute("dbName"));
-        ui->edtHost->setText(e.attribute("dbHost"));
-        ui->edtUserName->setText(e.attribute("dbUser"));
-        ui->edtPassword->setText(e.attribute("dbPassword"));
-        ui->edtConnectionCoding->setText(e.attribute("dbCoding"));
-        ui->edtCharsetCoding->setText(e.attribute("charsetCoding"));
-        ui->cmbType->setCurrentIndex(ui->cmbType->findText(e.attribute("dbType")));
-        ui->edtConName->setText(e.attribute("dbConnectionName"));
-        ui->edtPort->setText(e.attribute("dbPort"));
-
-        scene->load(e);
-    } else if (!e.isNull() && e.attribute("type") == "XML") {
-        ui->stackedWidget->setCurrentIndex(2);
-
-
-    } else {
-        ui->stackedWidget->setCurrentIndex(0);
-        ui->rbCustom->setChecked(true);
-    }
+    QObject::connect(ui->btnPreviewXMLData, SIGNAL(clicked()), this, SLOT(previewXMLData()));
 }
 
 void SqlDesigner::connectDB() {
@@ -117,11 +90,11 @@ void SqlDesigner::connectDB() {
 }
 
 void SqlDesigner::refreshTable(QSqlDatabase *db) {
-    ui->treeWidget->clear();
+    ui->tablesTree->clear();
     QIcon icon;
     QStringList lst = db->tables(QSql::Tables);
     for (int i=0; i<lst.size(); i++) {
-        QTreeWidgetItem *tableItem = new QTreeWidgetItem(ui->treeWidget);
+        QTreeWidgetItem *tableItem = new QTreeWidgetItem(ui->tablesTree);
         tableItem->setText(0,lst.at(i));
         icon.addPixmap(QPixmap(":/new/prefix1/images/table.png"), QIcon::Normal, QIcon::On);
         tableItem->setIcon(0, icon);
@@ -146,7 +119,34 @@ QDomElement SqlDesigner::saveParamToXML(QDomDocument *xmlDoc) {
         elem.setAttribute("dbPort",ui->edtPort->text());
         QDomText t = xmlDoc->createTextNode(ui->sqlEditor->toPlainText());
         elem.appendChild(t);
-        scene->save(xmlDoc,elem);
+        currentScene->save(xmlDoc,elem);
+    }
+    if (ui->rbXml->isChecked()) {
+
+    }
+    return elem;
+}
+
+QDomElement SqlDesigner::buildDomElem() {
+    QDomElement elem;
+    if (ui->rbSql->isChecked()) {
+        elem = m_xmlDoc->createElement("DataSource");
+        elem.setAttribute("name","DB1");
+        elem.setAttribute("type","SQL");
+        elem.setAttribute("dbType",ui->cmbType->currentText());
+        elem.setAttribute("dbName",ui->edtDBName->text());
+        elem.setAttribute("dbHost",ui->edtHost->text());
+        elem.setAttribute("dbUser",ui->edtUserName->text());
+        elem.setAttribute("dbPassword",ui->edtPassword->text());
+        elem.setAttribute("dbCoding",ui->edtConnectionCoding->text());
+        elem.setAttribute("charsetCoding",ui->edtCharsetCoding->text());
+        elem.setAttribute("dbConnectionName",ui->edtConName->text());
+        elem.setAttribute("dbPort",ui->edtPort->text());
+        QDomText t = m_xmlDoc->createTextNode(ui->sqlEditor->toPlainText());
+        elem.appendChild(t);
+    }
+    if (ui->rbXml->isChecked()) {
+
     }
     return elem;
 }
@@ -162,33 +162,24 @@ void SqlDesigner::selectXMLFile() {
         QDomDocument document;
         if (document.setContent(&file)) {
             XMLViewModel *model = new XMLViewModel(&document, this);
-            ui->treeView->setModel(model);
+            ui->xmlStructTree->setModel(model);
 
         } else qDebug()<<"not set";
         file.close();
     } else qDebug()<<"not found";
 }
 
-void SqlDesigner::showXMLStuct() {
-    QFile file("11.xml");
-    if (file.open(QIODevice::ReadOnly)) {
-        QDomDocument document;
-        if (document.setContent(&file)) {
-            XMLViewModel *model = new XMLViewModel(&document, this);
-            ui->treeView->setModel(model);
-
-        } else qDebug()<<"not set";
-        file.close();
-    } else qDebug()<<"not found";
+void SqlDesigner::previewXMLData() {
+    qDebug()<<"preview xml data";
 }
 
 void SqlDesigner::rbChecked() {
-    if (ui->rbCustom->isChecked()) ui->stackedWidget->setCurrentIndex(0);
-    if (ui->rbSql->isChecked()) ui->stackedWidget->setCurrentIndex(1);
-    if (ui->rbXml->isChecked()) {
+    if (ui->rbCustom->isChecked())
+        ui->stackedWidget->setCurrentIndex(0);
+    if (ui->rbSql->isChecked())
+        ui->stackedWidget->setCurrentIndex(1);
+    if (ui->rbXml->isChecked())
         ui->stackedWidget->setCurrentIndex(2);
-        //showXMLStuct();
-    }
     emit changed(true);
 }
 
@@ -206,11 +197,11 @@ void SqlDesigner::btnClose() {
 #include "column.h"
 #include "columnlist.h"
 bool SqlDesigner::eventFilter(QObject *obj, QEvent *e) {
-    if (obj == ui->treeWidget->viewport()) {
+    if (obj == ui->tablesTree->viewport()) {
         if (e->type() == QEvent::MouseButtonPress) {
             QMouseEvent  *me = static_cast<QMouseEvent *>(e);
             if (me->buttons() & Qt::LeftButton) {
-                QTreeWidgetItem *item = ui->treeWidget->itemAt(me->pos());
+                QTreeWidgetItem *item = ui->tablesTree->itemAt(me->pos());
 
                 if (item) {
                     ColumnList *colLst = new ColumnList(NULL);
@@ -218,12 +209,12 @@ bool SqlDesigner::eventFilter(QObject *obj, QEvent *e) {
                     QSqlQuery q("select * from "+item->text(0)+" LIMIT 0, 0",db);
                     QSqlRecord rec = q.record();
                     for (int i=0; i<rec.count(); i++) {
-                        Column *col =new Column(colLst);
+                        Column *col = new Column(colLst);
                         col->setName(rec.fieldName(i));
                         col->setDataType( QVariant::typeToName(rec.field(i).type()) );
                         colLst->appendColumn(col);
                     }
-                    scene->passColumnsForDroping(colLst);
+                    currentScene->passColumnsForDroping(colLst);
                 }
             }
         }
@@ -249,25 +240,158 @@ bool SqlDesigner::eventFilter(QObject *obj, QEvent *e) {
              }
         }
     }
+    if (obj == ui->xmlFieldsTable->viewport()) {
+        if (e->type() == QEvent::Drop) {
+            qDebug()<<"DROP";
+            QDropEvent *de = static_cast<QDropEvent*>(e);
+            const QMimeData *mimeData = de->mimeData();
+            QByteArray encoded = mimeData->data("application/x-qabstractitemmodeldatalist");
+            QDataStream stream(&encoded, QIODevice::ReadOnly);
+            while (!stream.atEnd()) {
+                int row, col;
+                QMap<int,  QVariant> roleDataMap;
+                stream >> row >> col >> roleDataMap;
+                //for (int i=0; i<roleDataMap.size(); i++)
+                //    qDebug()<<roleDataMap[i].toString();
+                ui->xmlFieldsTable->setRowCount(ui->xmlFieldsTable->rowCount()+1);
+
+                QString fieldName = roleDataMap[0].toString().replace("("+roleDataMap[3].toString()+")","");
+                QTableWidgetItem *item = new QTableWidgetItem(fieldName);
+                ui->xmlFieldsTable->setItem(ui->xmlFieldsTable->rowCount()-1,0,item);
+
+                QString fieldPath = "path";
+                item = new QTableWidgetItem(fieldPath);
+                ui->xmlFieldsTable->setItem(ui->xmlFieldsTable->rowCount()-1,1,item);
+            }
+            return true;
+        }
+    }
     return QWidget::eventFilter(obj,e);
 }
 
 void SqlDesigner::addRelation() {
-    scene->setMode(DiagramDocument::AddRelation);
+    currentScene->setMode(DiagramDocument::AddRelation);
 }
 
 void SqlDesigner::newDiagramDocument() {
-    scene = new DiagramDocument(this);
+    if (currentScene != nullptr) delete currentScene;
+    QDomElement dsElement;
+    currentScene = addDiagramDocument(dsElement);
+}
+
+void SqlDesigner::removeDiagramDocument(int pageNo) {
+    if (pageNo < diagramDocumentList.size()) {
+        if (diagramDocumentList[pageNo].document != nullptr)
+            delete diagramDocumentList[pageNo].document;
+        diagramDocumentList.removeAt(pageNo);
+    }
+}
+
+void SqlDesigner::clearAll() {
+    for(auto documentSet : diagramDocumentList)
+        delete documentSet.document;
+    diagramDocumentList.clear();
+    m_currentPageNo = 0;
+}
+
+DiagramDocument* SqlDesigner::addDiagramDocument(QDomElement e) {
+    DocumentSet documentSet = newDocumentSet(e);
+    diagramDocumentList.append(documentSet);
+    return documentSet.document;
+}
+
+DocumentSet SqlDesigner::newDocumentSet(QDomElement e) {
+    DiagramDocument *scene = new DiagramDocument(this);
+    scene->load(e);
+    DocumentSet documentSet;
+    documentSet.document = scene;
+    documentSet.element = e;
+
     QRectF sceneRect = scene->sceneRect().united(QRectF(QPointF(0, 0), QPointF(100, 100)));
     scene->setSceneRect(sceneRect);
     QObject::connect(scene, SIGNAL(modeChanged(DiagramDocument::Mode)),
                      SLOT(updateMode(DiagramDocument::Mode)));
+    QObject::connect(scene, SIGNAL(sqlChanged(QString)), this, SLOT(sqlChanged(QString)));
     QUndoStack *undoStack = scene->undoStack();
     QObject::connect(undoStack, SIGNAL(canUndoChanged(bool)), ui->actUndo, SLOT(setEnabled(bool)));
     QObject::connect(undoStack, SIGNAL(canRedoChanged(bool)), ui->actRedo, SLOT(setEnabled(bool)));
     ui->actUndo->setEnabled(undoStack->canUndo());
     ui->actRedo->setEnabled(undoStack->canRedo());
     ui->graphicsView->setScene(scene);
+    return documentSet;
+}
+
+void SqlDesigner::loadDiagramDocument(int pageNo, QDomElement e) {
+    if (pageNo < diagramDocumentList.size()) {
+        delete diagramDocumentList[pageNo].document;
+
+        DocumentSet documentSet = newDocumentSet(e);
+        diagramDocumentList[pageNo] = documentSet;
+    } else {
+        addDiagramDocument(e);
+    }
+    currentScene = diagramDocumentList[pageNo].document;
+}
+
+void SqlDesigner::setCurrentPage(int pageNo) {
+    if (m_currentPageNo != pageNo && m_currentPageNo >= 0) {
+        diagramDocumentList[m_currentPageNo].document = currentScene;
+        QDomElement e = buildDomElem();
+        diagramDocumentList[m_currentPageNo].element = e;
+    }
+
+    if (pageNo < diagramDocumentList.size()) {
+        currentScene = diagramDocumentList[pageNo].document;
+        showDSData(diagramDocumentList[pageNo].element);
+
+        ui->graphicsView->setScene(currentScene);
+        QUndoStack *undoStack = currentScene->undoStack();
+        ui->actUndo->setEnabled(undoStack->canUndo());
+        ui->actRedo->setEnabled(undoStack->canRedo());
+    }
+
+    m_currentPageNo = pageNo;
+}
+
+void SqlDesigner::showDSData(QDomElement e) {
+    ui->cmbType->clear();
+    ui->cmbType->addItems(QSqlDatabase::drivers());
+    //clear values
+    ui->sqlEditor->setText("");
+    ui->edtDBName->setText("");
+    ui->edtHost->setText("");
+    ui->edtUserName->setText("");
+    ui->edtPassword->setText("");
+    ui->edtConnectionCoding->setText("");
+    ui->edtCharsetCoding->setText("");
+    ui->edtConName->setText("");
+    ui->edtPort->setText("");
+
+    if (!e.isNull() && e.attribute("type") == "SQL") {
+        ui->rbSql->setChecked(true);
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->sqlEditor->setText(e.text().trimmed());
+        ui->edtDBName->setText(e.attribute("dbName"));
+        ui->edtHost->setText(e.attribute("dbHost"));
+        ui->edtUserName->setText(e.attribute("dbUser"));
+        ui->edtPassword->setText(e.attribute("dbPassword"));
+        ui->edtConnectionCoding->setText(e.attribute("dbCoding"));
+        ui->edtCharsetCoding->setText(e.attribute("charsetCoding"));
+        ui->cmbType->setCurrentIndex(ui->cmbType->findText(e.attribute("dbType")));
+        ui->edtConName->setText(e.attribute("dbConnectionName"));
+        ui->edtPort->setText(e.attribute("dbPort"));
+    } else if (!e.isNull() && e.attribute("type") == "XML") {
+        ui->rbXml->isChecked();
+        ui->stackedWidget->setCurrentIndex(2);
+    } else {
+        ui->rbCustom->setChecked(true);
+        ui->stackedWidget->setCurrentIndex(0);
+    }
+}
+
+void SqlDesigner::showDSData(int pageNo) {
+    m_currentPageNo = pageNo;
+    showDSData(diagramDocumentList[pageNo].element);
 }
 
 void SqlDesigner::clearDiagram() {
@@ -275,21 +399,21 @@ void SqlDesigner::clearDiagram() {
 }
 
 void SqlDesigner::undo() {
-    QUndoStack *undoStack = scene->undoStack();
+    QUndoStack *undoStack = currentScene->undoStack();
     undoStack->undo();
 }
 
 void SqlDesigner::redo() {
-    QUndoStack *undoStack = scene->undoStack();
+    QUndoStack *undoStack = currentScene->undoStack();
     undoStack->redo();
 }
 
 void SqlDesigner::select() {
-    scene->setMode(DiagramDocument::Select);
+    currentScene->setMode(DiagramDocument::Select);
 }
 
 void SqlDesigner::deleteSelected() {
-    scene->deleteSelectedItems();
+    currentScene->deleteSelectedItems();
     emit changed(true);
 }
 

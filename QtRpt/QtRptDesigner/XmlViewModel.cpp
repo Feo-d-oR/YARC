@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ void XMLViewModel::insertChilds(QDomNode node, QStandardItem *parent) {
 
             QIcon icon(QPixmap(QString::fromUtf8(":/new/prefix1/images/xmlAttr.png")));
             QStandardItem *subItem = new QStandardItem(icon, str);
+            subItem->setToolTip(node.attributes().item(t).toAttr().value());
             parent->appendRow(subItem);
         }
     }

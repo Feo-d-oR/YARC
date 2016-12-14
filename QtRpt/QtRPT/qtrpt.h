@@ -1,12 +1,12 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 2.0.0
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
 Web-site: http://www.aliks-os.tk
 
-Copyright 2012-2015 Aleksey Osipov
+Copyright 2012-2016 Aleksey Osipov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -33,6 +33,13 @@ limitations under the License.
 #include <RptFieldObject.h>
 #include <RptBandObject.h>
 #include <RptPageObject.h>
+#include <RptSqlConnection.h>
+
+#if QT_VERSION >= 0x50000
+    #ifdef QXLSX_LIBRARY
+        #include "xlsxdocument.h"
+    #endif
+#endif
 
 
 using namespace QtRptName;
@@ -58,10 +65,16 @@ class RptSql;
 class RptPageObject;
 class RptBandObject;
 class RptFieldObject;
+class RptCrossTabObject;
 
 QScriptValue funcAggregate(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcText(QScriptContext *context, QScriptEngine *engine);
+QScriptValue funcToUpper(QScriptContext *context, QScriptEngine *engine);
+QScriptValue funcToLower(QScriptContext *context, QScriptEngine *engine);
+QScriptValue funcNumberToWords(QScriptContext *context, QScriptEngine *engine);
 QScriptValue funcFrac(QScriptContext *context, QScriptEngine *engine);
+QScriptValue funcFloor(QScriptContext *context, QScriptEngine *engine);
+QScriptValue funcCeil(QScriptContext *context, QScriptEngine *engine);
+QScriptValue funcRound(QScriptContext *context, QScriptEngine *engine);
 static QList<AggregateValues> listOfPair;
 static QList<int> listIdxOfGroup;
 
@@ -90,7 +103,7 @@ public:
     void setBackgroundImage(QPixmap image);
     void printPDF(const QString &filePath, bool open = true);
     void printHTML(const QString &filePath, bool open = true);
-    void printODT(const QString &filePath, bool open = true);
+    void printXLSX(const QString &filePath, bool open = true);
     void setSqlQuery(QString sqlString);
     static FieldType getFieldType(QDomElement e);
     static QString getFieldTypeName(FieldType type);
@@ -100,7 +113,10 @@ public:
     QList<int> recordCount;
     ~QtRPT();
 
-private:    
+    void setUserSqlConnection(int pageReport, QString dsName, QString dbType, QString dbName, QString dbHost, QString dbUser, QString dbPassword, int dbPort, QString dbConnectionName, QString sql, QString dbCoding = "UTF8", QString charsetCoding = "UTF8");
+    void activateUserSqlConnection(int pageReport, bool bActive);
+
+private:
     QPixmap *m_backgroundImage;
     QPrinter *printer;
     QPainter *painter;
@@ -140,7 +156,7 @@ private:
     void processRTitle(int &y, bool draw);
     void processMHeader(int &y, bool draw);
     void processMasterData(QPrinter *printer, int &y, bool draw, int pageReport);
-    void prcessGroupHeader(QPrinter *printer, int &y, bool draw, int pageReport);
+    void processGroupHeader(QPrinter *printer, int &y, bool draw, int pageReport);
     void setPageSettings(QPrinter *printer, int pageReport);
     void drawBackground();
     bool isFieldVisible(RptFieldObject *fieldObject);
@@ -157,16 +173,21 @@ private:
     void drawFields(RptFieldObject *fieldObject, int bandTop, bool firstPass);
     void drawLines(RptFieldObject *fieldObject, int bandTop);
     void openDataSource(int pageReport);
-    RptSql *rptSql;
+    void setUserSqlConnection(int pageReport, const RptSqlConnection &SqlConnection);
+    void getUserSqlConnection(int pageReport, RptSqlConnection &SqlConnection);
+    QVector <RptSql *> rtpSqlVector;
+    QVector <RptSqlConnection> userSqlConnection;
     QString m_sqlQuery;
     QString m_HTML;
+    //QXlsx::Document *m_xlsx;
+    RptCrossTabObject *crossTab;
 
     void makeReportObjectStructure();
     enum PrintMode {
         Printer = 0,
         Pdf = 1,
         Html = 2,
-        Odt = 3
+        Xlsx = 3
     };
     PrintMode m_printMode;
     QPrinter::PrinterMode m_resolution;
@@ -194,3 +215,4 @@ private slots:
 #endif
 
 #endif // QTRPT_H
+

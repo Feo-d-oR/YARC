@@ -1,6 +1,6 @@
 /*
 Name: QtRpt
-Version: 1.5.3
+Version: 1.5.5
 Web-site: http://www.qtrpt.tk
 Programmer: Aleksey Osipov
 E-mail: aliks-os@ukr.net
@@ -29,8 +29,6 @@ limitations under the License.
 #include "TContainerField.h"
 #include "ReportBand.h"
 #include "mainwindow.h"
-
-typedef QList<RptContainer *> RptContainerList;
 
 struct PairCont {
     QByteArray first;
