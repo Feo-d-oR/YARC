@@ -117,23 +117,6 @@ OTHER_FILES += \
     i18n/repaircenter_en_US.ts \
     i18n/repaircenter_ru_RU.ts \
 #    i18n/repaircenter_nl_NL.ts \
-    ../CommonFiles/help/en_US/application.html \
-    ../CommonFiles/help/en_US/catalogs.html \
-    ../CommonFiles/help/en_US/dbservice.html \
-    ../CommonFiles/help/en_US/firststart.html \
-    ../CommonFiles/help/en_US/index.html \
-    ../CommonFiles/help/en_US/install.html \
-    ../CommonFiles/help/en_US/journals.html \
-    ../CommonFiles/help/en_US/mainwindow.html \
-    ../CommonFiles/help/en_US/others.html \
-    ../CommonFiles/help/en_US/print_forms.html \
-    ../CommonFiles/help/en_US/qtrpt.html \
-    ../CommonFiles/help/en_US/salaries.html \
-    ../CommonFiles/help/en_US/workflow.html \
-    ../CommonFiles/help/ru_RU/dbservice.html \
-    ../CommonFiles/help/ru_RU/others.html \
-    ../CommonFiles/help/ru_RU/salaries.html
-
 
 RESOURCES += \
     Icons.qrc
