@@ -131,6 +131,7 @@ bool MainWindow::connectDB()
     if(db.open())
     {
         q = QSqlQuery(db);
+        q.exec("SET SESSION sql_mode = ''");    //disabling strict mode for easier life ;)
         return true;
     }
     else
@@ -180,13 +181,13 @@ void MainWindow::readTranslation()
         langIdx = 1;
         MainWindow::lang = "en_US";
     }
-    else if (lang == "nl_NL")//english
-    {
-        locale = "nl_NL";
-        qTranslator.load("./i18n/dbtool_"+locale+".qm");
-        langIdx = 3;
-        MainWindow::lang = "nl_NL";
-    }
+//    else if (lang == "nl_NL")//dutch
+//    {
+//        locale = "nl_NL";
+//        qTranslator.load("./i18n/dbtool_"+locale+".qm");
+//        langIdx = 3;
+//        MainWindow::lang = "nl_NL";
+//    }
     QApplication::installTranslator(&qTranslator);
 }
 
@@ -259,6 +260,7 @@ void MainWindow::on_create_clicked()
             db.setPassword(ui->password->text());
             db.setDatabaseName(ui->dbname->text());
             db.open();
+            q.exec("SET SESSION sql_mode = ''");    //disabling strict mode for easier life ;)
 
             DBWork dbw;
             dbw.createTables();

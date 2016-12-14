@@ -48,6 +48,7 @@ private:
     int rows;
     int rcw;
     int rcs;
+    bool armed;
     double summ;
     double sal;
     double salm;
@@ -70,7 +71,6 @@ public slots:
    void getMode(QString mode, QString num);
 
 private slots:
-   void on_bSumm_clicked();
    void on_bSave_clicked();
    void on_eOrderID_textChanged(const QString &arg1);
    void setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage);

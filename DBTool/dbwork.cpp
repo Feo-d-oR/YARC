@@ -35,7 +35,7 @@ QSqlError DBWork::createTables()
            email VARCHAR(255), website VARCHAR(255), org VARCHAR(255), bankdata TEXT, goods VARCHAR(1024))");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
-    q.exec("INSERT INTO system VALUES('dbversion', 8, NULL)");
+    q.exec("INSERT INTO system VALUES('dbversion', "+dbver+", NULL)");
     q.exec("INSERT INTO system VALUES('percMaster', 0.6, NULL)");
     q.exec("INSERT INTO system VALUES('percAcceptor', 0.1, NULL)");
     q.exec("INSERT INTO system VALUES('percFirm', 0.3, NULL)");
@@ -261,6 +261,6 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
 
 //    q.exec("");
 //    q.exec(QString(""));
-    q.exec("UPDATE system SET value_n = 8 WHERE name = 'dbversion'");
+    q.exec("UPDATE system SET value_n = "+dbver+" WHERE name = 'dbversion'");
     return q.lastError();
 }

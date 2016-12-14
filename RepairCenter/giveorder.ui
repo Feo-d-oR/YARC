@@ -320,18 +320,6 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QToolButton" name="bSumm">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/icons/icons/update.png</normalon>
-        </iconset>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
@@ -429,7 +417,6 @@
   <tabstop>tvieww</tabstop>
   <tabstop>tviews</tabstop>
   <tabstop>eSumm</tabstop>
-  <tabstop>bSumm</tabstop>
   <tabstop>bPrint</tabstop>
   <tabstop>bSave</tabstop>
   <tabstop>cAct</tabstop>

@@ -68,8 +68,8 @@ void Settings::readSettings()
         ui->language->setCurrentIndex(1);
     else if (lang == "ru_RU")//russian
         ui->language->setCurrentIndex(2);
-    else if (lang == "nl_NL")//dutch
-        ui->language->setCurrentIndex(3);
+//    else if (lang == "nl_NL")//dutch
+//        ui->language->setCurrentIndex(3);
 
     langIdx = ui->language->currentIndex();
 
@@ -253,9 +253,9 @@ void Settings::on_save_clicked()
         case 2://russian
             settings->setValue("locale/language", "ru_RU");
             break;
-        case 3://dutch
-            settings->setValue("locale/language", "nl_NL");
-            break;
+//        case 3://dutch
+//            settings->setValue("locale/language", "nl_NL");
+//            break;
         }
     }
     settings->sync();

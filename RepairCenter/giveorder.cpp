@@ -13,6 +13,7 @@ GiveOrder::GiveOrder(QWidget *parent) :
         ui->tvieww->setDisabled(1);
     if(MainWindow::role == 2 && !MainWindow::acceptorCanEditSpares)
         ui->tviews->setDisabled(1);
+    armed = false;
 }
 
 GiveOrder::~GiveOrder()
@@ -137,6 +138,7 @@ void GiveOrder::fillFields()
         }
         qw.next();
     }
+    armed = true;
 }
 
 void GiveOrder::calculateSumm()
@@ -160,17 +162,16 @@ void GiveOrder::calculateSumm()
 
 void GiveOrder::on_tvieww_cellChanged(int row, int column)
 {
-    calculateSumm();
+    if (armed)
+        calculateSumm();
+    else return;
 }
 
 void GiveOrder::on_tviews_cellChanged(int row, int column)
 {
-    calculateSumm();
-}
-
-void GiveOrder::on_bSumm_clicked()
-{
-    calculateSumm();
+    if (armed)
+        calculateSumm();
+    else return;
 }
 
 void GiveOrder::submitOrder()
@@ -179,8 +180,6 @@ void GiveOrder::submitOrder()
     q.first();
     if(q.value(0).toInt() != 10)
     {
-        qDebug() << "Going salary";
-
         sala = 0;
         salf = 0;
         QString st;

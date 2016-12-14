@@ -41,7 +41,7 @@ void OrdersWidgetMaster::initModelOrders()
 
     model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);  //setting default sorting
 
-//    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1 AND isactive = 1");
+    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1 AND isactive = 1");
 
 //setting tableview widget
     ui->tview->setModel(model);
@@ -139,6 +139,7 @@ void OrdersWidgetMaster::readUiSettings()
     ui->tview->hideColumn(model->fieldIndex("complect"));
     ui->tview->hideColumn(model->fieldIndex("cost"));
     ui->tview->hideColumn(model->fieldIndex("date_called"));
+    ui->tview->hideColumn(model->fieldIndex("prepay"));
 
     ui->tview->setColumnWidth(model->fieldIndex("number"), 50);
 

@@ -68,7 +68,7 @@ MainWindow::MainWindow(QWidget *parent) :
             QMessageBox mb;
             mb.setIcon(QMessageBox::Critical);
             mb.setWindowTitle(tr("RepairCenter"));
-            mb.setText(tr("Database settings not found or incorrect!"));
+            mb.setText(tr("Cannot connect to database!"));
             mb.setInformativeText(tr("Change settings or create new one?"));
             QPushButton *bCreate = mb.addButton(tr("Create"), QMessageBox::ActionRole);
             QPushButton *bEdit = mb.addButton(tr("Change"), QMessageBox::ActionRole);
@@ -203,6 +203,7 @@ void MainWindow::loadUserInterface()
         mainwidget = new OrdersWidgetMaster(this);
         ui->acceptorToolBar->hide();
         ui->storekeeperToolBar->hide();
+        ui->storekeeperToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mNewOrder->setDisabled(1);
         ui->mGiveOrder->setDisabled(1);
@@ -221,6 +222,7 @@ void MainWindow::loadUserInterface()
         mainwidget = new OrdersWidgetMain(this);
         ui->masterToolBar->hide();
         ui->storekeeperToolBar->hide();
+        ui->storekeeperToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
         if (!acceptorCanEditWorks)
@@ -235,6 +237,7 @@ void MainWindow::loadUserInterface()
     else if (role == 3) //if storekeeper
     {
         mainwidget = new PartsWidgetStorekeeper(this);
+        ui->acceptorToolBar->hide();
         ui->masterToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
@@ -278,7 +281,11 @@ bool MainWindow::dbConnect()
         QString pass = settings->value("mysql/password").toString();
         db.setPassword(crypto.decryptToString(pass));
         if (db.open())
+        {
+            q = QSqlQuery(db);
+            q.exec("SET SESSION sql_mode = ''"); //disabling strict mode for easier life ;)
             return true;
+        }
         else
             return false;
         return false;
@@ -311,7 +318,12 @@ void MainWindow::connTimer()
 void MainWindow::checkDBconnection()
 {
     qDebug() << "slot called";
-    if (!db.isOpen())
+    q.exec("SELECT value_n FROM system WHERE name = 'dbversion'");
+    q.first();
+    dbversion = q.value(0).toInt();
+    q.clear();
+    qDebug()<<"dbversion: "<< dbversion;
+    if (dbversion == 0)
     {            qDebug() << "connection lost";
             QMessageBox::critical(this, tr("RepairCenter"), tr("Database connection is lost!"));
     }

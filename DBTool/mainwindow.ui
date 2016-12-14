@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>375</width>
-    <height>432</height>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,11 +49,6 @@
         <item>
          <property name="text">
           <string>Русский</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Dutch</string>
          </property>
         </item>
        </widget>

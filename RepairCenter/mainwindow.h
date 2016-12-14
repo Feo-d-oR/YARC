@@ -91,6 +91,7 @@ private slots:
 private:
     bool checkSettings();
     bool dbConnect();
+    int dbversion;
     Ui::MainWindow *ui;
     void showEditOrder();
     void showEditWorkReport();
@@ -101,6 +102,7 @@ private:
     void readGlobalSettings();
     void loadUserInterface();
     QSqlDatabase db;
+    QSqlQuery q;
     QSettings * settings;
     SimpleCrypt crypto;
     QWidget * mainwidget;
