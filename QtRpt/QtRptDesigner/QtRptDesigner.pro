@@ -20,6 +20,7 @@ include(../CommonFiles/CommonFiles_QtRptDesigner.pri)
 include(Graphics/Graphics.pri)
 include(../QtRPT/QtRPT.pri)
 include(SQLDiagram/SQLDiagram.pri)
+include($$PWD/../../config.pri)
 
 DESTDIR = $${DEST_DIRECTORY}
 

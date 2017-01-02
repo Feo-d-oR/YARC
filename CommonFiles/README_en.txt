@@ -14,6 +14,7 @@ Fixed->Default settings
 Added->Connection check every 10 seconds
 Added->Automatic recalculation of sum in "GiveOrder"
 Added->MySQL Strict Mode workaround
+Updated->QtRpt library 2.0.0
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table
