@@ -57,11 +57,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow){
     ui->setupUi(this);
 
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
+
     crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
 
     if (checkSettings()) {
         if (dbConnect())
         {
+            loadWindowState();
             readGlobalSettings();
             loadUserInterface();
             connTimer();
@@ -117,8 +121,6 @@ MainWindow::~MainWindow(){
 
 bool MainWindow::checkSettings()
 {
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
-    settings->setIniCodec("UTF-8");
     if (settings->contains("mysql/password"))
         return true;
     else
@@ -128,8 +130,6 @@ bool MainWindow::checkSettings()
 void MainWindow::readGlobalSettings()
 {
     QSqlQuery q;
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
-    settings->setIniCodec("UTF-8");
 
     sLocale = settings->value("locale/language").toString();
     defAcceptor = settings->value("defaults/acceptor").toInt();
@@ -200,6 +200,18 @@ void MainWindow::readGlobalSettings()
     phoneM = q.value(0).toBool();
     q.clear();
 
+}
+
+void MainWindow::loadWindowState()
+{
+    if(settings->value("ui/mainwindowstate") == "max")
+        QMainWindow::showMaximized();
+    else if(settings->value("ui/mainwindowstate") == "full")
+        QMainWindow::showFullScreen();
+    else if(settings->value("ui/mainwindowstate") == "last"){
+        restoreGeometry(settings->value("ui/geometry").toByteArray());
+        restoreState(settings->value("ui/state").toByteArray());}
+    else return;
 }
 
 void MainWindow::loadUserInterface()
@@ -440,6 +452,9 @@ void MainWindow::reject(){
     return; }
 
 void MainWindow::closeEvent(QCloseEvent *event){
+    settings->setValue("ui/geometry", saveGeometry());
+    settings->setValue("ui/state", saveState());
+    settings->sync();
     QApplication::closeAllWindows();
     event->accept(); }
 
@@ -477,3 +492,11 @@ void MainWindow::on_mJrnPartsRequests_triggered(){
 void MainWindow::on_mOrdersLog_triggered(){
     OrdersLog* ordl = new OrdersLog();
     ordl->show();}
+
+void MainWindow::on_mFullscreen_triggered(bool checked)
+{
+    if (checked)
+        QMainWindow::showFullScreen();
+    else
+        QMainWindow::showNormal();
+}

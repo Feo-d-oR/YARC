@@ -39,6 +39,9 @@ void Settings::readSettings()
     ui->cbAcceptor->setChecked(settings->value("orderstable/acceptore").toBool());
     ui->cbMaster->setChecked(settings->value("orderstable/mastere").toBool());
     ui->cbNotified->setChecked(settings->value("orderstable/notifiede").toBool());
+    ui->cbID->setChecked(settings->value("orderstable/ide").toBool());
+    ui->cbSum->setChecked(settings->value("orderstable/sume").toBool());
+    ui->cbComment->setChecked(settings->value("orderstable/commente").toBool());
 
     ui->wDate->setText(settings->value("orderstable/datew").toString());
     ui->wState->setText(settings->value("orderstable/statew").toString());
@@ -49,6 +52,9 @@ void Settings::readSettings()
     ui->wAcceptor->setText(settings->value("orderstable/acceptorw").toString());
     ui->wMaster->setText(settings->value("orderstable/masterw").toString());
     ui->wNotified->setText(settings->value("orderstable/notifiedw").toString());
+    ui->wID->setText(settings->value("orderstable/idw").toString());
+    ui->wSum->setText(settings->value("orderstable/sumw").toString());
+    ui->wComment->setText(settings->value("orderstable/commentw").toString());
 
     if(settings->contains("orderstable/showlimit"))
     {
@@ -56,6 +62,15 @@ void Settings::readSettings()
         ui->cbAffectFilters->setChecked(settings->value("orderstable/limitallfilters").toBool());
     }
     }
+
+    if(settings->value("ui/mainwindowstate") == "max")
+        ui->rbMaximize->setChecked(true);
+    else if(settings->value("ui/mainwindowstate") == "last")
+        ui->rbLastState->setChecked(true);
+    else if(settings->value("ui/mainwindowstate") == "full")
+        ui->rbFullscreen->setChecked(true);
+    else
+        ui->rbMaximize->setChecked(true);
 
     ui->eWarranty->setText(settings->value("defaults/warranty").toString());
 
@@ -175,6 +190,9 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/acceptore", ui->cbAcceptor->isChecked());
     settings->setValue("orderstable/mastere", ui->cbMaster->isChecked());
     settings->setValue("orderstable/notifiede", ui->cbNotified->isChecked());
+    settings->setValue("orderstable/ide", ui->cbID->isChecked());
+    settings->setValue("orderstable/sume", ui->cbSum->isChecked());
+    settings->setValue("orderstable/commente", ui->cbComment->isChecked());
 
     settings->setValue("orderstable/datew", ui->wDate->text());
     settings->setValue("orderstable/statew", ui->wState->text());
@@ -185,11 +203,23 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/acceptorw", ui->wAcceptor->text());
     settings->setValue("orderstable/masterw", ui->wMaster->text());
     settings->setValue("orderstable/notifiedw", ui->wNotified->text());
+    settings->setValue("orderstable/idw", ui->wSum->text());
+    settings->setValue("orderstable/sumw", ui->wSum->text());
+    settings->setValue("orderstable/commentw", ui->wComment->text());
 
     settings->setValue("orderstable/showlimit", ui->eLimitOrders->text());
     settings->setValue("orderstable/limitallfilters", ui->cbAffectFilters->isChecked());
 
     settings->setValue("defaults/warranty", ui->eWarranty->text());
+
+    if (ui->rbMaximize->isChecked())
+        settings->setValue("ui/mainwindowstate", "max");
+    else if (ui->rbLastState->isChecked())
+        settings->setValue("ui/mainwindowstate", "last");
+    else if (ui->rbFullscreen->isChecked())
+        settings->setValue("ui/mainwindowstate", "full");
+    else
+        settings->setValue("ui/mainwindowstate", "max");
 
     settings->setValue("user/username", ui->eUsername->text());
     settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));

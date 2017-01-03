@@ -89,6 +89,9 @@ private slots:
     void on_mJrnPartsRequests_triggered();
     void checkDBconnection();
     void on_mOrdersLog_triggered();
+    void loadWindowState();
+
+    void on_mFullscreen_triggered(bool checked);
 
 private:
     bool checkSettings();

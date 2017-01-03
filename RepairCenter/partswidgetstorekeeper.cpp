@@ -35,8 +35,6 @@ void PartsWidgetStorekeeper::initModelRequests()
 
     model->setSort(model->fieldIndex("id"),Qt::DescendingOrder);  //setting default sorting
 
-//    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1 AND isactive = 1");
-
 //setting tableview widget
     ui->tview->setModel(model);
 
@@ -83,22 +81,42 @@ void PartsWidgetStorekeeper::initModels()
 
 void PartsWidgetStorekeeper::readUiSettings()
 {
-//    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
-//    settings->setIniCodec("UTF-8");
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
 
     //setting headers
     model->setHeaderData(model->fieldIndex("id"), Qt::Horizontal, tr("#"));
     model->setHeaderData(model->fieldIndex("date"), Qt::Horizontal, tr("Date"));
-    model->setHeaderData(model->fieldIndex("oederid"), Qt::Horizontal, tr("Order #"));
+    model->setHeaderData(model->fieldIndex("orderid"), Qt::Horizontal, tr("Order #"));
     model->setHeaderData(reqStateIdx, Qt::Horizontal, tr("State"));
     model->setHeaderData(masterIdx, Qt::Horizontal, tr("Master"));
     model->setHeaderData(model->fieldIndex("comment"), Qt::Horizontal, tr("Comment"));
     model->setHeaderData(model->fieldIndex("summ"), Qt::Horizontal, tr("Sum"));
 
+    if (settings->value("orderstable/datee").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("date"), settings->value("orderstable/datew").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("date"));
+    if (settings->value("orderstable/statee").toBool() == true){
+        ui->tview->setColumnWidth(reqStateIdx, settings->value("orderstable/statew").toInt());}
+                else ui->tview->hideColumn(reqStateIdx);
+    if (settings->value("orderstable/ide").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("orderid"), settings->value("orderstable/idw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("orderid"));
+    if (settings->value("orderstable/commente").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("comment"), settings->value("orderstable/commentw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("comment"));
+    if (settings->value("orderstable/mastere").toBool() == true){
+        ui->tview->setColumnWidth(masterIdx, settings->value("orderstable/masterw").toInt());}
+                else ui->tview->hideColumn(masterIdx);
+    if (settings->value("orderstable/sume").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("summ"), settings->value("orderstable/sumw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("summ"));
+
+
     //hiding unneeded columns
     ui->tview->hideColumn(model->fieldIndex("spares"));
     ui->tview->hideColumn(model->fieldIndex("quants"));
-    ui->tview->hideColumn(model->fieldIndex("ssearchbyfieldparesnew"));
+    ui->tview->hideColumn(model->fieldIndex("sparesnew"));
 
     ui->tview->setColumnWidth(model->fieldIndex("id"), 50);
 
@@ -298,14 +316,14 @@ void PartsWidgetStorekeeper::on_bDelete_clicked()
 
 void PartsWidgetStorekeeper::calculateSumm()
 {
-    summ = 0;
-    q.exec("SELECT summ FROM part_requests WHERE state IN (2, 5)");
-    q.first();
-    do
-    {
-        summ += q.value(0).toDouble();
-        qDebug() << q.value(0).toDouble();
-    }
-    while (q.next());
-    ui->lToPay->setText("<b>" + QString::number(summ,'f',2) + "</b>");
+//    summ = 0;
+//    q.exec("SELECT summ FROM part_requests WHERE state IN (2, 5)");
+//    q.first();
+//    do
+//    {
+//        summ += q.value(0).toDouble();
+//        qDebug() << q.value(0).toDouble();
+//    }
+//    while (q.next());
+//    ui->lToPay->setText("<b>" + QString::number(summ,'f',2) + "</b>");
 }

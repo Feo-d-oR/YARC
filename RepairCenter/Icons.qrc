@@ -77,5 +77,6 @@
         <file>icons/reports_bricks.png</file>
         <file>icons/category_bricks.png</file>
         <file>icons/category_laptop.png</file>
+        <file>icons/arrow_out.png</file>
     </qresource>
 </RCC>

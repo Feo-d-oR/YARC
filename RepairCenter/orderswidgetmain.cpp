@@ -97,6 +97,7 @@ void OrdersWidgetMain::readUiSettings()
     model->setHeaderData(acceptorIdx, Qt::Horizontal, tr("Acceptor"));
     model->setHeaderData(customerIdx, Qt::Horizontal, tr("Customer"));
     model->setHeaderData(model->fieldIndex("disease"), Qt::Horizontal, tr("Defect"));
+    model->setHeaderData(model->fieldIndex("comment"), Qt::Horizontal, tr("Comment"));
 
     if (settings->value("orderstable/datee").toBool() == true){
         ui->tview->setColumnWidth(model->fieldIndex("date_in"), settings->value("orderstable/datew").toInt());}
@@ -125,13 +126,16 @@ void OrdersWidgetMain::readUiSettings()
     if (settings->value("orderstable/notifiede").toBool() == true){
         ui->tview->setColumnWidth(model->fieldIndex("called"), settings->value("orderstable/notifiedw").toInt());}
                 else ui->tview->hideColumn(model->fieldIndex("called"));
+    if (settings->value("orderstable/commente").toBool() == true){
+        ui->tview->setColumnWidth(model->fieldIndex("comment"), settings->value("orderstable/commentw").toInt());}
+                else ui->tview->hideColumn(model->fieldIndex("comment"));
+
 
     //hiding unneeded columns
     ui->tview->hideColumn(model->fieldIndex("date_out"));
     ui->tview->hideColumn(model->fieldIndex("serial"));
     ui->tview->hideColumn(giverIdx);
     ui->tview->hideColumn(model->fieldIndex("warranty"));
-    ui->tview->hideColumn(model->fieldIndex("comment"));
     ui->tview->hideColumn(model->fieldIndex("phone"));
     ui->tview->hideColumn(model->fieldIndex("cond"));
     ui->tview->hideColumn(model->fieldIndex("complect"));
