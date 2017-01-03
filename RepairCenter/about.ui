@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>264</width>
-    <height>306</height>
+    <height>335</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -90,7 +90,7 @@
    <item>
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;This project also use:&lt;/p&gt;&lt;p&gt;QtRpt library version 2.0.0 by Aleksey Osipov&lt;/p&gt;&lt;p&gt;SimpleCrypt library by Andre Somers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;This project also use:&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://sourceforge.net/projects/qtrpt/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;QtRpt library version 2.0.0 by Aleksey Osipov&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://wiki.qt.io/Simple_encryption_with_SimpleCrypt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;SimpleCrypt library by Andre Somers &lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://www.fatcow.com/free-icons&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;FatCow icons&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="openExternalLinks">
       <bool>true</bool>

@@ -7,16 +7,14 @@ Settings::Settings(QWidget *parent) :
     ui(new Ui::Settings)
 {
     crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
-
     ui->setupUi(this);
-
     readSettings();
     readDBSettings();
 }
 
 void Settings::readSettings()
 {
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     ui->server->setText(settings->value("mysql/hostname").toString());
     ui->port->setText(settings->value("mysql/port").toString());

@@ -21,6 +21,7 @@
 #include "catsuppliers.h"
 #include "editpartsrequest.h"
 #include "jrnpartsrequests.h"
+#include "orderslog.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -30,6 +31,7 @@ int MainWindow::defAcceptor = -1;
 int MainWindow::defMaster = -1;
 int MainWindow::defState = -1;
 int MainWindow::role = 0;
+int MainWindow::userID = 0;
 bool MainWindow::isadmin = 0;
 bool MainWindow::masterCanEditSpares = 0;
 bool MainWindow::masterCanEditWorks = 0;
@@ -82,6 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
             }
             if (mb.clickedButton() == bEdit){
                 Settings* sdb = new Settings();
+                sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
                 sdb->show();
             }
             if (mb.clickedButton() == bCancel)
@@ -92,15 +95,16 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox mb;
         mb.setIcon(QMessageBox::Critical);
         mb.setWindowTitle(tr("RepairCenter"));
-        mb.setText(tr("Settings file not found!"));
-        mb.setInformativeText(tr("Create settings file?"));
-        QPushButton *bEdit = mb.addButton(tr("Create"), QMessageBox::ActionRole);
+        mb.setText(tr("Settings file not found or incomplete!"));
+        mb.setInformativeText(tr("Change settings?"));
+        QPushButton *bEdit = mb.addButton(tr("Change"), QMessageBox::ActionRole);
         QPushButton *bCancel = mb.addButton(tr("Cancel"), QMessageBox::RejectRole);
         mb.setDefaultButton(bEdit);
         mb.exec();
 
         if (mb.clickedButton() == bEdit){
             Settings* sdb = new Settings();
+            sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
             sdb->show();
         }
         if (mb.clickedButton() == bCancel)
@@ -113,7 +117,7 @@ MainWindow::~MainWindow(){
 
 bool MainWindow::checkSettings()
 {
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     if (settings->contains("mysql/password"))
         return true;
@@ -124,7 +128,7 @@ bool MainWindow::checkSettings()
 void MainWindow::readGlobalSettings()
 {
     QSqlQuery q;
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
 
     sLocale = settings->value("locale/language").toString();
@@ -138,9 +142,10 @@ void MainWindow::readGlobalSettings()
 
     QString username = settings->value("user/username").toString();
     QString password = settings->value("user/password").toString();
-    q.exec(QString("SELECT position_type FROM employees WHERE username = '"+ username +"' AND password = '"+ crypto.decryptToString(password) +"'"));
+    q.exec(QString("SELECT id, position_type FROM employees WHERE username = '"+ username +"' AND password = '"+ crypto.decryptToString(password) +"'"));
     q.first();
-    role = q.value(0).toInt();
+    userID = q.value(0).toInt();
+    role = q.value(1).toInt();
     qDebug()<<"role="<<role;
 
     q.exec("SELECT value_n FROM system WHERE name = 'percMaster'");
@@ -193,6 +198,7 @@ void MainWindow::readGlobalSettings()
     q.exec("SELECT value_n FROM system WHERE name = 'phoneM'");
     q.first();
     phoneM = q.value(0).toBool();
+    q.clear();
 
 }
 
@@ -244,6 +250,8 @@ void MainWindow::loadUserInterface()
         ui->acceptorToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mNewOrder->setDisabled(1);
+        ui->mNewWorkReport->setDisabled(1);
+        ui->mNewDiagReport->setDisabled(1);
         ui->mGiveOrder->setDisabled(1);
         ui->mGiveOrderDiag->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
@@ -334,6 +342,7 @@ void MainWindow::showEditOrder(){
     EditOrder *ord = new EditOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), ord, SLOT(getMode(QString, QString)));
     connect(ord,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
+    ord->setWindowFlags(ord->windowFlags() | Qt::WindowStaysOnTopHint);
     ord->show();}
 
 void MainWindow::on_mNewOrder_triggered(){
@@ -346,6 +355,7 @@ void MainWindow::on_mEmployees_triggered(){
 
 void MainWindow::on_mSettings_triggered(){
     Settings* sdb = new Settings();
+    sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
     sdb->show();}
 
 void MainWindow::on_mProductTypes_triggered(){
@@ -385,6 +395,7 @@ void MainWindow::showGiveOrder(){
     GiveOrder *gor = new GiveOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), gor, SLOT(getMode(QString, QString)));
     connect(gor,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
+    gor->setWindowFlags(gor->windowFlags() | Qt::WindowStaysOnTopHint);
     gor->show();}
 
 void MainWindow::on_mGiveOrder_triggered(){
@@ -393,7 +404,13 @@ void MainWindow::on_mGiveOrder_triggered(){
 
 void MainWindow::on_mAbout_triggered(){
     About * ab = new About();
+    ab->setWindowFlags(ab->windowFlags() | Qt::WindowStaysOnTopHint);
     ab->show();}
+
+void MainWindow::on_mAboutQt_triggered(){
+    QMessageBox mb;
+    mb.aboutQt(this, tr("About Qt"));
+    mb.exec();}
 
 void MainWindow::on_mJrnDiagReports_triggered(){
     JrnDiagReports* jdr = new JrnDiagReports();
@@ -416,6 +433,7 @@ void MainWindow::showGiveOrderDiag(){
     GiveOrderDiag * god = new GiveOrderDiag();
     connect(this, SIGNAL(sendMode(QString, QString)), god, SLOT(getMode(QString, QString)));
     connect(god,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
+    god->setWindowFlags(god->windowFlags() | Qt::WindowStaysOnTopHint);
     god->show();}
 
 void MainWindow::reject(){
@@ -433,13 +451,9 @@ void MainWindow::on_mPrintHWDocs_triggered(){
     PrintHWDocuments * phwd = new PrintHWDocuments();
     phwd->show();}
 
-void MainWindow::on_mAboutQt_triggered(){
-    QMessageBox mb;
-    mb.aboutQt(this, tr("About Qt"));
-    mb.exec();}
-
 void MainWindow::on_mPaySalaries_triggered(){
     Salaries * sal = new Salaries();
+    sal->setWindowFlags(sal->windowFlags() | Qt::WindowStaysOnTopHint);
     sal->show();}
 
 void MainWindow::on_mSuppliers_triggered(){
@@ -459,3 +473,7 @@ void MainWindow::showPartsRequest(){
 void MainWindow::on_mJrnPartsRequests_triggered(){
     JrnPartsRequests* jpr = new JrnPartsRequests();
     jpr->show();}
+
+void MainWindow::on_mOrdersLog_triggered(){
+    OrdersLog* ordl = new OrdersLog();
+    ordl->show();}

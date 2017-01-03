@@ -60,7 +60,7 @@ void EditWorkReport::getMode(QString mode, QString num)
     {
         QWidget::setWindowTitle(tr("New work report"));
         ui->eOrderID->setText(num);
-        ui->eDate->setDate(QDate::currentDate());
+        ui->eDate->setDateTime(QDateTime::currentDateTime());
         setModels();
         isnew = true;
     }
@@ -126,7 +126,7 @@ void EditWorkReport::fillFields()
     qf.first();
 
     ui->eOrderID->setText(qf.value(recf.indexOf("orderid")).toString());
-    ui->eDate->setDate(qf.value(recf.indexOf("date")).toDate());
+    ui->eDate->setDateTime(qf.value(recf.indexOf("date")).toDateTime());
 
     QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, qf.value(recf.indexOf("master")), 1, Qt::MatchExactly);
     ui->eMaster->setCurrentIndex(idx_m.value(0).row());
@@ -196,10 +196,12 @@ void EditWorkReport::submitReport()
     quants = lqt.join(",");
 
     QSqlQuery q;
-    if (isnew)
+    if (isnew){
         q.prepare("INSERT INTO work_reports VALUES (NULL, NULL, :orderid, :master, :work, :quant, :spares, :quants)");
+        reportID = q.lastInsertId().toString();}
     else
-        q.prepare("UPDATE work_reports SET master = :master, work = :work, quant = :quant, spares = :spares, quants = :quants WHERE id = " + reportID);
+        q.prepare("UPDATE work_reports SET date = :date, master = :master, work = :work, quant = :quant, spares = :spares, quants = :quants WHERE id = " + reportID);
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":master", id_m);
     q.bindValue(":work", id_w);
@@ -207,6 +209,17 @@ void EditWorkReport::submitReport()
     q.bindValue(":spares", spares);
     q.bindValue(":quants", quants);
     q.exec();
+    q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", ui->eOrderID->text());
+    q.bindValue(":employee", id_m.toInt());
+    if (isnew)
+        q.bindValue(":operation", tr("Work report submited"));
+    else
+        q.bindValue(":operation", tr("Work report edited"));
+    q.exec();
+    q.clear();
     saved = true;
     qDebug() << q.lastError().text();
 }

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OrdersLog</class>
+ <widget class="QDialog" name="OrdersLog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>743</width>
+    <height>487</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Order operations history</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Icons.qrc">
+    <normaloff>:/icons/icons/reports_hammer.png</normaloff>:/icons/icons/reports_hammer.png</iconset>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="minimumSize">
+      <size>
+       <width>610</width>
+       <height>71</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>71</height>
+      </size>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>&amp;Search</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Order #:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="eOrderID">
+        <property name="minimumSize">
+         <size>
+          <width>81</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>81</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Employee:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="eEmployee">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>248</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignRight">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Date:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="eDateStart">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="accelerated">
+         <bool>false</bool>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="eDateEnd">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="accelerated">
+         <bool>false</bool>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="bSearchByDate">
+        <property name="toolTip">
+         <string>Search by date range</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Icons.qrc">
+          <normaloff>:/icons/icons/find.png</normaloff>:/icons/icons/find.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="bClear">
+        <property name="toolTip">
+         <string>Clear filter</string>
+        </property>
+        <property name="toolTipDuration">
+         <number>-1</number>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Icons.qrc">
+          <normaloff>:/icons/icons/filter_clear.png</normaloff>:/icons/icons/filter_clear.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::MinimumExpanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>1</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableView" name="tview">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="dragDropOverwriteMode">
+      <bool>true</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="horizontalScrollMode">
+      <enum>QAbstractItemView::ScrollPerPixel</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="bClose">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Close</string>
+       </property>
+       <property name="icon">
+        <iconset resource="Icons.qrc">
+         <normaloff>:/icons/icons/door_out.png</normaloff>:/icons/icons/door_out.png</iconset>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>eOrderID</tabstop>
+  <tabstop>eEmployee</tabstop>
+  <tabstop>eDateStart</tabstop>
+  <tabstop>eDateEnd</tabstop>
+  <tabstop>bSearchByDate</tabstop>
+  <tabstop>bClear</tabstop>
+  <tabstop>tview</tabstop>
+  <tabstop>bClose</tabstop>
+ </tabstops>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

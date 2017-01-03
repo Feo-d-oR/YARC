@@ -208,11 +208,17 @@
    </item>
    <item row="0" column="3">
     <widget class="QDateEdit" name="eDate">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="maximumSize">
       <size>
        <width>100</width>
        <height>16777215</height>
       </size>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
      <property name="displayFormat">
       <string>dd.MM.yyyy</string>

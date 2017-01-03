@@ -55,7 +55,7 @@ void GiveOrder::getMode(QString mode, QString num)
 {
     if (mode == "new")
     {
-        ui->eDate->setDate(QDate::currentDate());
+        ui->eDate->setDateTime(QDateTime::currentDateTime());
         ui->eOrderID->setText(num);
         setModels();
     }
@@ -210,6 +210,14 @@ void GiveOrder::submitOrder()
     q.bindValue(":date_out", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":giver", id_e);
     q.bindValue(":warranty", ui->eWarranty->text());
+    q.exec();
+    q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", orderID);
+    q.bindValue(":state", 10);
+    q.bindValue(":employee", id_e.toInt());
+    q.bindValue(":operation", tr("Order given out"));
     q.exec();
     q.clear();
     saved = true;

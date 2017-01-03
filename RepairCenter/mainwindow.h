@@ -33,6 +33,7 @@ public:
     static int defMaster;
     static int defState;
     static int role;
+    static int userID;
     static bool masterCanEditWorks;
     static bool masterCanEditSpares;
     static bool acceptorCanEditWorks;
@@ -87,6 +88,7 @@ private slots:
     void on_mNewPartsRequest_triggered();
     void on_mJrnPartsRequests_triggered();
     void checkDBconnection();
+    void on_mOrdersLog_triggered();
 
 private:
     bool checkSettings();

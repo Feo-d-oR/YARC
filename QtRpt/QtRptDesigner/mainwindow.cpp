@@ -592,7 +592,7 @@ MainWindow::MainWindow(QWidget *parent) :  QMainWindow(parent), ui(new Ui::MainW
 
     newReportPage();
 
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     if (settings.value("CheckUpdates",true).toBool())
         checkUpdates();
@@ -634,7 +634,7 @@ void MainWindow::openDBGroupProperty() {
 }
 
 void MainWindow::updateRecentFileActions() {
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     QStringList files = settings.value("recentFileList").toStringList();
 
@@ -663,7 +663,7 @@ void MainWindow::openRecentFile() {
 void MainWindow::setCurrentFile(const QString &fileName) {
     setWindowFilePath(fileName);
 
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     QStringList files = settings.value("recentFileList").toStringList();
     files.removeAll(fileName);
@@ -817,7 +817,7 @@ void MainWindow::newReportPage() {
     ui->tabWidget->addTab(repPage,tr("Page %1").arg(ui->tabWidget->count()+1));
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
 
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     ui->actShowGrid->setChecked(settings.value("ShowGrid",true).toBool());
     repPage->showGrid(settings.value("ShowGrid",true).toBool());
@@ -951,7 +951,7 @@ void MainWindow::showSetting() {
     dialog->showThis();
     delete dialog;
     RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     ui->actShowGrid->setChecked(settings.value("ShowGrid",true).toBool());
     repPage->showGrid(settings.value("ShowGrid",true).toBool());
@@ -1035,7 +1035,7 @@ void MainWindow::openFile() {
     if (sender() != 0 && sender() == ui->actionOpenReport) {
         newReport();
 
-        QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+        QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
         settings.setIniCodec("UTF-8");
         QString folderPath = QApplication::applicationDirPath();
         if (settings.value("recentFileList").toStringList().count() > 0)

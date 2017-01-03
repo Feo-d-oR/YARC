@@ -53,7 +53,7 @@ void EditPartsRequest::getMode(QString mode, QString num)
      {
          QWidget::setWindowTitle(tr("New parts request"));
          ui->eOrderID->setText(num);
-         ui->eDate->setDate(QDate::currentDate());
+         ui->eDate->setDateTime(QDateTime::currentDateTime());
          setModels();
          isnew = true;
      }
@@ -127,7 +127,7 @@ void EditPartsRequest::fillFields()
     qf.first();
 
     ui->eOrderID->setText(qf.value(recf.indexOf("orderid")).toString());
-    ui->eDate->setDate(qf.value(recf.indexOf("date")).toDate());
+    ui->eDate->setDateTime(qf.value(recf.indexOf("date")).toDateTime());
     ui->eSparesNew->setPlainText(qf.value(recf.indexOf("sparesnew")).toString());
     ui->eComment->setPlainText(qf.value(recf.indexOf("comment")).toString());
 
@@ -198,6 +198,7 @@ void EditPartsRequest::submitReport()
     q.bindValue(":comment", ui->eComment->toPlainText());
     q.bindValue(":summ", ui->eSumm->text().toDouble());
     q.exec();
+    q.clear();
     saved = true;
     qDebug() << q.lastError().text();
 }

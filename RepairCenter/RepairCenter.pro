@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     catsuppliers.cpp \
     editpartsrequest.cpp \
     jrnpartsrequests.cpp \
-    partswidgetstorekeeper.cpp
+    partswidgetstorekeeper.cpp \
+    orderslog.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -67,7 +68,8 @@ HEADERS  += mainwindow.h \
     catsuppliers.h \
     editpartsrequest.h \
     jrnpartsrequests.h \
-    partswidgetstorekeeper.h
+    partswidgetstorekeeper.h \
+    orderslog.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -92,10 +94,10 @@ FORMS    += mainwindow.ui \
     catsuppliers.ui \
     editpartsrequest.ui \
     jrnpartsrequests.ui \
-    partswidgetstorekeeper.ui
+    partswidgetstorekeeper.ui \
+    orderslog.ui
 
 OTHER_FILES += \
-    ../CommonFiles/README_en.txt \
     ../CommonFiles/print_forms/act_diag_hw.xml \
     ../CommonFiles/print_forms/act_diag.xml \
     ../CommonFiles/print_forms/act_works_hw.xml \
@@ -108,33 +110,32 @@ OTHER_FILES += \
     i18n/repaircenter_ru_RU.ts \
 #    i18n/repaircenter_nl_NL.ts \
 
+DISTFILES += \
+    ../CommonFiles/CHANGELOG.txt \
+    ../CommonFiles/README.txt \
+    repaircenter.conf
+
 RESOURCES += \
     Icons.qrc
+
+win32:RC_FILE = appicon.rc
 
 TRANSLATIONS += i18n/repaircenter_ru_RU.ts
 TRANSLATIONS += i18n/repaircenter_en_US.ts
 #TRANSLATIONS += i18n/repaircenter_nl_NL.ts
 
-win32:RC_FILE = appicon.rc
-
 rpcupd.commands = lupdate $$PWD/RepairCenter.pro
 rpcrel.commands = lrelease $$PWD/RepairCenter.pro
 rpcrel.depends = rpcupd
 
-QMAKE_EXTRA_TARGETS += rpcupd rpcrel
-
-cf_copy.commands = $(COPY_DIR) $$shell_path($$PWD/../CommonFiles/*) $$shell_path($$DESTDIR)
-
-first.depends = $(first) cf_copy
-export(first.depends)
-export(cf_copy.commands)
+cf_copy.commands += $(COPY_DIR) $$shell_path($$PWD/../CommonFiles/*) $$shell_path($$DESTDIR)
+#var_copy.commands += $(COPY) $$shell_path($$PWD/repaircenter.conf) $$shell_path($$DESTDIR)
 
 md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = rpcrel md
 
-QMAKE_EXTRA_TARGETS += md first cf_copy tl_copy
-
-PRE_TARGETDEPS += tl_copy
+QMAKE_EXTRA_TARGETS += md cf_copy tl_copy rpcupd rpcrel first #var_copy
+first.depends = $(first) cf_copy tl_copy #var_copy
 
 

@@ -8,9 +8,10 @@ OrdersWidgetMain::OrdersWidgetMain(QWidget *parent) :
     ui(new Ui::OrdersWidgetMain)
 {
     ui->setupUi(this);
-
+    ui->bDelete->setDisabled(true);
     initModelOrders();
     readUiSettings();
+    ui->datestart->setDate(QDate::currentDate());
     ui->dateend->setDate(QDate::currentDate());
 }
 
@@ -51,7 +52,7 @@ void OrdersWidgetMain::initModelOrders()
 //setting mapper & relations for right panel
     ui->eState->setModel(model->relationModel(stateIdx));
     ui->eState->setModelColumn(model->relationModel(stateIdx)->fieldIndex("name"));
-    ui->eState->model()->sort(2, Qt::AscendingOrder);
+    ui->eState->model()->sort(1, Qt::AscendingOrder);
 
     ui->eMaster->setModel(model->relationModel(masterIdx));
     ui->eMaster->setModelColumn(model->relationModel(masterIdx)->fieldIndex("name"));
@@ -82,7 +83,7 @@ void OrdersWidgetMain::initModelOrders()
 
 void OrdersWidgetMain::readUiSettings()
 {
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
 
     //setting headers
@@ -146,6 +147,9 @@ void OrdersWidgetMain::readUiSettings()
     ui->tview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     ui->datenotify->setDate(QDate::currentDate());
+
+    if(MainWindow::isadmin)
+        ui->bDelete->setDisabled(false);
 }
 
 
@@ -213,8 +217,6 @@ void OrdersWidgetMain::on_searchbydate_clicked()
     model->select();
 }
 
-void OrdersWidgetMain::on_searchbyfield_clicked(){
-    searchByField();}
 
 void OrdersWidgetMain::on_lSearch_returnPressed(){
     searchByField();}
@@ -247,8 +249,28 @@ void OrdersWidgetMain::on_reconnect_recieved(){
     readUiSettings();
 }
 
-void OrdersWidgetMain::on_bSubmit_clicked(){
-    model->submitAll();}
+void OrdersWidgetMain::on_bSubmit_clicked()
+{
+    q.clear();
+    q.exec("SELECT id FROM employees WHERE name = '" + ui->eMaster->currentText() + "'");
+    q.first();
+    QString employee = q.value(0).toString();
+    q.clear();
+    q.exec("SELECT id FROM states WHERE name = '" + ui->eState->currentText() + "'");
+    q.first();
+    QString state = q.value(0).toString();
+    q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", ui->dNumber->text());
+    q.bindValue(":operation", tr("Order status changed"));
+    q.bindValue(":employee", employee);
+    q.bindValue(":state", state);
+    q.bindValue(":comment", ui->dComment->toPlainText());
+    q.exec();
+    q.clear();
+    model->submitAll();
+}
 
 void OrdersWidgetMain::showEditOrder(){
     EditOrder *ord = new EditOrder();

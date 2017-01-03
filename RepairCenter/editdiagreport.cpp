@@ -43,7 +43,7 @@ void EditDiagReport::getMode(QString mode, QString num)
 {
     if (mode == "new"){
         QWidget::setWindowTitle(tr("New diagnostics report"));
-        ui->eDate->setDate(QDate::currentDate());
+        ui->eDate->setDateTime(QDateTime::currentDateTime());
         ui->eOrderID->setText(num);
         setModels();
         isnew = true;
@@ -115,7 +115,7 @@ void EditDiagReport::fillFields()
     qf.first();
 
     ui->eOrderID->setText(qf.value(recf.indexOf("orderid")).toString());
-    ui->eDate->setDate(qf.value(recf.indexOf("date")).toDate());
+    ui->eDate->setDateTime(qf.value(recf.indexOf("date")).toDateTime());
 
     QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, qf.value(recf.indexOf("master")), 1, Qt::MatchExactly);
     ui->eMaster->setCurrentIndex(idx_m.value(0).row());
@@ -134,13 +134,25 @@ void EditDiagReport::submitReport()
     if (isnew)
         q.prepare("INSERT INTO diag_reports VALUES (NULL, NULL, :orderid, :master, :inspect, :defects, :recomm)");
     else
-        q.prepare("UPDATE diag_reports SET master = :master, inspect = :inspect, defects = :defects, recomm = :recomm WHERE id = " + reportID);
+        q.prepare("UPDATE diag_reports SET date = :date, master = :master, inspect = :inspect, defects = :defects, recomm = :recomm WHERE id = " + reportID);
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":master", id_m);
     q.bindValue(":inspect", ui->eInspect->toPlainText());
     q.bindValue(":defects", ui->eDefects->toPlainText());
     q.bindValue(":recomm", ui->eRecomm->toPlainText());
     q.exec();
+    q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, employee = :employee");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", ui->eOrderID->text());
+    q.bindValue(":employee", id_m.toInt());
+    if (isnew)
+        q.bindValue(":operation", tr("Diagnosis report submited"));
+    else
+        q.bindValue(":operation", tr("Diagnosis report edited"));
+    q.exec();
+    q.clear();
     saved = true;
 }
 

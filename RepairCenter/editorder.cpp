@@ -57,7 +57,7 @@ void EditOrder::getMode(QString mode, QString num)
         saved = false;
         isnew = true;
         QWidget::setWindowTitle(tr("New order"));
-        ui->eDate->setDate(QDate::currentDate());
+        ui->eDate->setDateTime(QDateTime::currentDateTime());
         setModels();
         allocateNumber();
         setDefaults();
@@ -181,7 +181,7 @@ void EditOrder::fillFields()
     q.first();
 
     ui->eNumber->setText(orderID);
-    ui->eDate->setDate(q.value(rec.indexOf("date_in")).toDate());
+    ui->eDate->setDateTime(q.value(rec.indexOf("date_in")).toDateTime());
     ui->eProduct->setText(q.value(rec.indexOf("product")).toString());
     ui->eSerial->setText(q.value(rec.indexOf("serial")).toString());
     ui->eSerial->setText(q.value(rec.indexOf("serial")).toString());
@@ -196,7 +196,8 @@ void EditOrder::fillFields()
         block = true;
         qc.exec("INSERT INTO customers (id) VALUES (null)");
         newCustomerID = qc.lastInsertId().toString();
-        ui->eDate->setDate(QDate::currentDate());
+        ui->eDate->setDateTime(QDateTime::currentDateTime());
+        ui->eDate->setReadOnly(false);
         customerID = newCustomerID;
     }
     else
@@ -256,6 +257,19 @@ void EditOrder::submitOrder()
     q.bindValue(":master", id_m.toInt());
     q.bindValue(":comment", ui->eComment->toPlainText());
     q.exec();
+    q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", orderID);
+    q.bindValue(":state", id_s.toInt());
+    q.bindValue(":employee", id_a.toInt());
+    q.bindValue(":comment", ui->eComment->toPlainText());
+    if (isnew)
+        q.bindValue(":operation", tr("Order created"));
+    else
+        q.bindValue(":operation", tr("Order edited"));
+    q.exec();
+    q.clear();
     MainWindow::prevCustomer = customerID;
     saved = true;
 }

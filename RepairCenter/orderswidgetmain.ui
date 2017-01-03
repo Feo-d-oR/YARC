@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>500</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,7 +91,7 @@
            </size>
           </property>
           <property name="text">
-           <string>All</string>
+           <string>&amp;All</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -113,7 +113,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Completed</string>
+           <string>&amp;Completed</string>
           </property>
          </widget>
         </item>
@@ -132,7 +132,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Accepted</string>
+           <string>Acc&amp;epted</string>
           </property>
          </widget>
         </item>
@@ -151,7 +151,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Coordination</string>
+           <string>C&amp;oordination</string>
           </property>
          </widget>
         </item>
@@ -170,7 +170,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Wait for spares</string>
+           <string>&amp;Wait for spares</string>
           </property>
          </widget>
         </item>
@@ -183,7 +183,7 @@
            </size>
           </property>
           <property name="text">
-           <string>To notify</string>
+           <string>&amp;To notify</string>
           </property>
          </widget>
         </item>
@@ -253,6 +253,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="inputMask">
+           <string/>
+          </property>
          </widget>
         </item>
        </layout>
@@ -262,35 +265,6 @@
         <property name="spacing">
          <number>4</number>
         </property>
-        <item>
-         <widget class="QPushButton" name="searchbyfield">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>22</horstretch>
-            <verstretch>24</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>22</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>22</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="Icons.qrc">
-            <normaloff>:/icons/icons/find.png</normaloff>:/icons/icons/find.png</iconset>
-          </property>
-         </widget>
-        </item>
         <item>
          <spacer name="horizontalSpacer">
           <property name="orientation">
@@ -514,13 +488,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="locale">
@@ -564,13 +538,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="editable">
@@ -683,13 +657,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="readOnly">
@@ -718,13 +692,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="readOnly">
@@ -760,13 +734,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -798,13 +772,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -836,13 +810,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -998,13 +972,15 @@
         </item>
         <item>
          <widget class="QPushButton" name="bDelete">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Delete</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normalon>:/icons/icons/page_delete.png</normalon>
-           </iconset>
+           <iconset resource="Icons.qrc">
+            <normaloff>:/icons/icons/page_delete.png</normaloff>:/icons/icons/page_delete.png</iconset>
           </property>
          </widget>
         </item>
@@ -1083,13 +1059,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>23</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>70</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="readOnly">
@@ -1179,7 +1155,6 @@
   <tabstop>rbCall</tabstop>
   <tabstop>searchtexttype</tabstop>
   <tabstop>lSearch</tabstop>
-  <tabstop>searchbyfield</tabstop>
   <tabstop>datestart</tabstop>
   <tabstop>dateend</tabstop>
   <tabstop>searchbydate</tabstop>
@@ -1200,7 +1175,6 @@
   <tabstop>dDateOut</tabstop>
   <tabstop>bView</tabstop>
   <tabstop>bEdit</tabstop>
-  <tabstop>bDelete</tabstop>
  </tabstops>
  <resources>
   <include location="Icons.qrc"/>

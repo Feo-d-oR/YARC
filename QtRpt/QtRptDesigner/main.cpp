@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     QTranslator qTranslator;
     QString locale = QLocale::system().name(); //reading system locale
     QString loSettings;
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     settings.beginGroup("language");
     loSettings = settings.value("language").toString();

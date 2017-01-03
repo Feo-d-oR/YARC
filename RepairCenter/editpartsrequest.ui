@@ -51,6 +51,9 @@
        <property name="inputMethodHints">
         <set>Qt::ImhDate</set>
        </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
        <property name="displayFormat">
         <string>dd.MM.yyyy</string>
        </property>

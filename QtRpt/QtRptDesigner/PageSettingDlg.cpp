@@ -46,7 +46,7 @@ PageSettingDlg::PageSettingDlg(QWidget *parent) : QDialog(parent), ui(new Ui::Pa
 }
 
 void PageSettingDlg::showThis(PageSetting pageSetting) {
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     settings.beginGroup("language");
     QString measurement = settings.value("measurement").toString();

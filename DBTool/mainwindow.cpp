@@ -150,7 +150,7 @@ bool MainWindow::connectDB()
 
 void MainWindow::readTranslation()
 {
-    QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     lang = settings->value("locale/language").toString();
 
@@ -193,7 +193,7 @@ void MainWindow::readTranslation()
 
 void MainWindow::readSettings()
 {
-    QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     ui->eserver->setText(settings->value("mysql/hostname").toString());
     ui->eport->setText(settings->value("mysql/port").toString());
@@ -204,7 +204,7 @@ void MainWindow::readSettings()
 
 void MainWindow::saveSettings()
 {
-    QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    QSettings *settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
     settings->setValue("mysql/hostname", ui->server->text());
     settings->setValue("mysql/port", ui->port->text());

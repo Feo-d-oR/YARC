@@ -51,7 +51,7 @@ void GiveOrderDiag::getMode(QString mode, QString num)
 {
     if (mode == "new")
     {
-        ui->eDate->setDate(QDate::currentDate());
+        ui->eDate->setDateTime(QDateTime::currentDateTime());
         ui->eOrderID->setText(num);
         qDebug()<<num;
         setModels();
@@ -79,7 +79,7 @@ void GiveOrderDiag::fillFields()
     qf.exec("SELECT * FROM diag_reports WHERE orderid = " + orderID);
     recf = qf.record();
     qf.last();
-    ui->eDate->setDate(qf.value(recf.indexOf("date")).toDate());
+    ui->eDate->setDateTime(qf.value(recf.indexOf("date")).toDateTime());
     ui->eInspect->setPlainText(qf.value(recf.indexOf("inspect")).toString());
     ui->eDefects->setPlainText(qf.value(recf.indexOf("defects")).toString());
     ui->eRecomm->setPlainText(qf.value(recf.indexOf("recomm")).toString());
@@ -95,10 +95,17 @@ void GiveOrderDiag::submitOrder()
     q.bindValue(":state", "9");
     q.bindValue(":date_out", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":giver", id_e);
-
     q.exec();
-    saved = true;
     q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", orderID);
+    q.bindValue(":state", 9);
+    q.bindValue(":employee", id_e.toInt());
+    q.bindValue(":operation", tr("Order given out"));
+    q.exec();
+    q.clear();
+    saved = true;
 }
 
 void GiveOrderDiag::setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage)

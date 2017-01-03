@@ -67,7 +67,7 @@
            </size>
           </property>
           <property name="text">
-           <string>All</string>
+           <string>&amp;All</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -89,7 +89,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Completed</string>
+           <string>&amp;Completed</string>
           </property>
          </widget>
         </item>
@@ -108,7 +108,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Accepted</string>
+           <string>Acc&amp;epted</string>
           </property>
          </widget>
         </item>
@@ -121,7 +121,7 @@
            </size>
           </property>
           <property name="text">
-           <string>In work</string>
+           <string>&amp;In work</string>
           </property>
          </widget>
         </item>
@@ -140,7 +140,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Coordination</string>
+           <string>C&amp;oordination</string>
           </property>
          </widget>
         </item>
@@ -159,7 +159,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Wait for spares</string>
+           <string>&amp;Wait for spares</string>
           </property>
          </widget>
         </item>
@@ -221,34 +221,8 @@
             <height>16777215</height>
            </size>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="searchbyfield">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>22</horstretch>
-            <verstretch>24</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>22</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>22</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="text">
+          <property name="inputMask">
            <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="Icons.qrc">
-            <normaloff>:/icons/icons/find.png</normaloff>:/icons/icons/find.png</iconset>
           </property>
          </widget>
         </item>
@@ -508,7 +482,7 @@
         <property name="maximumSize">
          <size>
           <width>70</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="readOnly">
@@ -543,7 +517,7 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="locale">
@@ -593,7 +567,7 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="editable">
@@ -728,7 +702,7 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -766,7 +740,7 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -804,7 +778,7 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>23</height>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -892,7 +866,6 @@
   <tabstop>rbWaitSpares</tabstop>
   <tabstop>cbSearchMaster</tabstop>
   <tabstop>lSearch</tabstop>
-  <tabstop>searchbyfield</tabstop>
   <tabstop>datestart</tabstop>
   <tabstop>dateend</tabstop>
   <tabstop>searchbydate</tabstop>

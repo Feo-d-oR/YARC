@@ -28,7 +28,7 @@ limitations under the License.
 
 SettingDlg::SettingDlg(QWidget *parent) : QDialog(parent),  ui(new Ui::SettingDlg) {
     ui->setupUi(this);
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     ui->dsp1->setValue(settings.value("GridStep",1).toDouble());
     ui->chShowGrid->setChecked(settings.value("ShowGrid",true).toBool());
@@ -96,7 +96,7 @@ SettingDlg::SettingDlg(QWidget *parent) : QDialog(parent),  ui(new Ui::SettingDl
 
 void SettingDlg::showThis() {
     if (exec() == QDialog::Accepted) {
-        QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+        QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
         settings.setIniCodec("UTF-8");
         settings.setValue("GridStep", ui->dsp1->value());
         settings.setValue("ShowGrid", ui->chShowGrid->checkState());

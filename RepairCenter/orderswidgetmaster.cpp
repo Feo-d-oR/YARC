@@ -49,7 +49,7 @@ void OrdersWidgetMaster::initModelOrders()
 //setting mapper & relations for right panel
     ui->eState->setModel(model->relationModel(stateIdx));
     ui->eState->setModelColumn(model->relationModel(stateIdx)->fieldIndex("name"));
-    ui->eState->model()->sort(2, Qt::AscendingOrder);
+    ui->eState->model()->sort(1, Qt::AscendingOrder);
 
     ui->eMaster->setModel(model->relationModel(masterIdx));
     ui->eMaster->setModelColumn(model->relationModel(masterIdx)->fieldIndex("name"));
@@ -84,7 +84,7 @@ void OrdersWidgetMaster::initModelMasters()
 
 void OrdersWidgetMaster::readUiSettings()
 {
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
     settings->setIniCodec("UTF-8");
 
     //setting headers
@@ -215,9 +215,6 @@ void OrdersWidgetMaster::on_searchbydate_clicked()
     model->select();
 }
 
-void OrdersWidgetMaster::on_searchbyfield_clicked(){
-    searchByField();}
-
 void OrdersWidgetMaster::on_lSearch_returnPressed(){
     searchByField();}
 
@@ -245,7 +242,26 @@ void OrdersWidgetMaster::on_reconnect_recieved(){
     readUiSettings();
 }
 
-void OrdersWidgetMaster::on_bSubmit_clicked(){
+void OrdersWidgetMaster::on_bSubmit_clicked()
+{
+    q.clear();
+    q.exec("SELECT id FROM employees WHERE name = '" + ui->eMaster->currentText() + "'");
+    q.first();
+    QString employee = q.value(0).toString();
+    q.clear();
+    q.exec("SELECT id FROM states WHERE name = '" + ui->eState->currentText() + "'");
+    q.first();
+    QString state = q.value(0).toString();
+    q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", ui->dNumber->text());
+    q.bindValue(":operation", tr("Order status changed by master"));
+    q.bindValue(":employee", employee);
+    q.bindValue(":state", state);
+    q.bindValue(":comment", ui->dComment->toPlainText());
+    q.exec();
+    q.clear();
     model->submitAll();}
 
 void OrdersWidgetMaster::on_cbSearchMaster_activated(int index)

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>280</width>
-    <height>240</height>
+    <width>279</width>
+    <height>246</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -64,7 +64,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>Acts of executed works &amp; warranty cards</string>
+      <string>Acts of executed works and warranty cards</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item alignment="Qt::AlignRight">

@@ -35,7 +35,7 @@ limitations under the License.
 SqlDesigner::SqlDesigner(QDomDocument *xmlDoc, QWidget *parent) : QWidget(parent), ui(new Ui::SqlDesigner) {
     ui->setupUi(this);
     m_xmlDoc = xmlDoc;
-    QSettings settings(QCoreApplication::applicationDirPath()+"/setting.ini",QSettings::IniFormat);
+    QSettings settings(QCoreApplication::applicationDirPath()+"/qtrptdesigner.conf",QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
 
     ui->sqlEditor->setAcceptDrops(true);

@@ -12,7 +12,7 @@ QSqlError DBWork::createTables()
            date_in TIMESTAMP, state VARCHAR(16), date_out TIMESTAMP, customer INTEGER, phone INTEGER, \
            product_type INTEGER, product VARCHAR(32), serial VARCHAR(16), disease VARCHAR(255), \
            cond VARCHAR(255), complect VARCHAR(255), cost DOUBLE, acceptor INTEGER, master INTEGER, giver INTEGER, \
-           warranty VARCHAR(16), comment VARCHAR(255), called BOOLEAN NOT NULL DEFAULT FALSE, date_called TIMESTAMP, prepay DOUBLE)");
+           warranty VARCHAR(16), comment VARCHAR(1024), called BOOLEAN NOT NULL DEFAULT FALSE, date_called TIMESTAMP, prepay DOUBLE)");
     q.exec("CREATE TABLE product_types (id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(32))");
     q.exec("CREATE TABLE employees (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            name VARCHAR(64)NULL, fullname VARCHAR(255), phone VARCHAR(64), address VARCHAR(255), \
@@ -33,6 +33,8 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE suppliers (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            name VARCHAR(255),phone VARCHAR(255), address VARCHAR(255), comment VARCHAR(1024), whours VARCHAR(255), \
            email VARCHAR(255), website VARCHAR(255), org VARCHAR(255), bankdata TEXT, goods VARCHAR(1024))");
+    q.exec("CREATE TABLE orders_log (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
+           date TIMESTAMP, orderid INTEGER, operation VARCHAR(64), state INTEGER, employee INTEGER, comment VARCHAR(1024))");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', "+dbver+", NULL)");
@@ -89,6 +91,7 @@ QSqlError DBWork::createTables()
     q.exec("CREATE TABLE part_requests (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            date TIMESTAMP, master INTEGER, orderid INTEGER, spares VARCHAR(64), quants VARCHAR(64), \
            sparesnew VARCHAR(1024), state INTEGER, comment VARCHAR(1024), summ DOUBLE)");
+
     q.exec("CREATE TABLE pr_states (id INTEGER PRIMARY KEY, name VARCHAR(32))");
     q.exec(QString("INSERT INTO pr_states VALUES(1,'") + tr("Placed") + "')");
     q.exec(QString("INSERT INTO pr_states VALUES(2,'") + tr("Confirmed") + "')");
@@ -258,6 +261,10 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
     q.exec("INSERT INTO system VALUES('phoneM', 0, NULL)");
     q.exec("ALTER TABLE orders ADD prepay DOUBLE NULL default NULL");
 
+    q.exec("ALTER TABLE orders CHANGE comment comment VARCHAR(1024) NULL DEFAULT NULL");
+
+    q.exec("CREATE TABLE orders_log (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
+           date TIMESTAMP, orderid INTEGER, operation VARCHAR(64), state INTEGER, employee INTEGER, comment VARCHAR(1024))");
 
 //    q.exec("");
 //    q.exec(QString(""));

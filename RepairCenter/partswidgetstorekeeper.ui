@@ -6,14 +6,77 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>974</width>
-    <height>500</height>
+    <width>838</width>
+    <height>520</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <widget class="QTableView" name="tview">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="horizontalScrollMode">
+      <enum>QAbstractItemView::ScrollPerPixel</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="maximumSize">
+      <size>
+       <width>350</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Summary</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>To pay:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="lToPay">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;money amount&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
@@ -25,7 +88,7 @@
         <item>
          <widget class="QRadioButton" name="rbAll">
           <property name="text">
-           <string>All</string>
+           <string>&amp;All</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -35,35 +98,35 @@
         <item>
          <widget class="QRadioButton" name="rbNew">
           <property name="text">
-           <string>New</string>
+           <string>&amp;New</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="rbActive">
           <property name="text">
-           <string>Active</string>
+           <string>A&amp;ctive</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="rbInfo">
           <property name="text">
-           <string>Informational</string>
+           <string>&amp;Informational</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="rbRecieve">
           <property name="text">
-           <string>To recive</string>
+           <string>&amp;To recive</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="rbGive">
           <property name="text">
-           <string>To give</string>
+           <string>To &amp;give</string>
           </property>
          </widget>
         </item>
@@ -112,34 +175,8 @@
             <height>16777215</height>
            </size>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="searchbyfield">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>22</horstretch>
-            <verstretch>24</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>22</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>22</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="text">
+          <property name="inputMask">
            <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="Icons.qrc">
-            <normaloff>:/icons/icons/find.png</normaloff>:/icons/icons/find.png</iconset>
           </property>
          </widget>
         </item>
@@ -178,37 +215,6 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QTableView" name="tview">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Sunken</enum>
-     </property>
-     <property name="lineWidth">
-      <number>1</number>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="horizontalScrollMode">
-      <enum>QAbstractItemView::ScrollPerPixel</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <attribute name="horizontalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-    </widget>
-   </item>
    <item row="1" column="1">
     <widget class="QGroupBox" name="groupBox">
      <property name="sizePolicy">
@@ -217,9 +223,15 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>355</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
-       <width>350</width>
+       <width>450</width>
        <height>16777215</height>
       </size>
      </property>
@@ -274,29 +286,12 @@
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Date:</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
+         </widget>
         </item>
-       </layout>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Date:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QDateEdit" name="eDate">
           <property name="maximumSize">
@@ -330,21 +325,41 @@
           </property>
          </widget>
         </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Request state:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+         <widget class="QComboBox" name="eRequestState">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+          <property name="minimumSize">
            <size>
-            <width>13</width>
-            <height>20</height>
+            <width>170</width>
+            <height>0</height>
            </size>
           </property>
-         </spacer>
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="bSubmit">
@@ -360,31 +375,14 @@
         </item>
        </layout>
       </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Request state:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QComboBox" name="eRequestState">
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Order #:</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="5" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLineEdit" name="eOrderId">
@@ -394,6 +392,12 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>100</width>
@@ -402,6 +406,29 @@
           </property>
           <property name="readOnly">
            <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignRight">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Sum:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="eSumm">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -420,64 +447,26 @@
         </item>
        </layout>
       </item>
-      <item row="8" column="0" colspan="2">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Order state:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QComboBox" name="eOrderState">
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Master:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="1">
-       <widget class="QComboBox" name="eMaster">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="editable">
-         <bool>false</bool>
-        </property>
-        <property name="maxVisibleItems">
-         <number>11</number>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="0">
+      <item row="7" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Comment:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
-      <item row="13" column="1">
+      <item row="7" column="1">
        <widget class="QPlainTextEdit" name="eComment">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
         </property>
         <property name="maximumSize">
          <size>
@@ -487,23 +476,158 @@
         </property>
        </widget>
       </item>
-      <item row="14" column="1">
+      <item row="9" column="0" colspan="2">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Order state:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QComboBox" name="eOrderState">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>170</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+          </property>
+          <property name="minimumContentsLength">
+           <number>400</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bSubmitOrder">
+          <property name="text">
+           <string>Save</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normalon>:/icons/icons/page_save.png</normalon>
+           </iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Master:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="QComboBox" name="eMaster">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>170</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="maxVisibleItems">
+         <number>11</number>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToContents</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Order&lt;br&gt;comment:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+        </property>
+        <property name="indent">
+         <number>-1</number>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="1">
+       <widget class="QPlainTextEdit" name="eOrderComment">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>150</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="1">
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Expanding</enum>
+         <enum>QSizePolicy::MinimumExpanding</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>500</height>
+          <height>2</height>
          </size>
         </property>
        </spacer>
       </item>
       <item row="16" column="0" colspan="2">
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QPushButton" name="bView">
@@ -540,62 +664,6 @@
          </widget>
         </item>
        </layout>
-      </item>
-      <item row="15" column="0" colspan="2">
-       <widget class="Line" name="line_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Sum:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QLineEdit" name="eSumm">
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="maximumSize">
-      <size>
-       <width>350</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="title">
-      <string>Summary</string>
-     </property>
-     <layout class="QFormLayout" name="formLayout_2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>To pay:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="lToPay">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;money amount&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::RichText</enum>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>

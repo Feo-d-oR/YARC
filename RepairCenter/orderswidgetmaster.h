@@ -5,8 +5,6 @@
 #include <QtSql>
 #include <QSettings>
 #include <QDataWidgetMapper>
-#include <QMessageBox>
-#include <QDesktopServices>
 
 namespace Ui {
 class OrdersWidgetMaster;
@@ -38,7 +36,6 @@ private slots:
     void on_bSubmit_clicked();
     void on_tview_clicked(const QModelIndex &index);
     void on_cbSearchMaster_activated(int index);
-    void on_searchbyfield_clicked();
     void on_lSearch_returnPressed();
 
 private:
@@ -54,6 +51,7 @@ private:
     int customerIdx, stateIdx, masterIdx, typeIdx, acceptorIdx, giverIdx;
     QString namesstr;
     QString currentID;
+    QSqlQuery q;
 };
 
 #endif // ORDERSWIDGETMASTER_H

@@ -6,7 +6,6 @@
 #include <QSettings>
 #include <QDataWidgetMapper>
 #include <QMessageBox>
-#include <QDesktopServices>
 
 namespace Ui {
 class OrdersWidgetMain;
@@ -41,7 +40,6 @@ private slots:
     void on_bDelete_clicked();
     void on_tview_clicked(const QModelIndex &index);
     void on_eCalled_stateChanged(int state);
-    void on_searchbyfield_clicked();
     void on_lSearch_returnPressed();
 
 private:
@@ -52,6 +50,7 @@ private:
     void searchByField();
     QSettings * settings;
     QSqlRelationalTableModel *model;
+    QSqlQuery q;
     QDataWidgetMapper *mapper;
     int customerIdx, stateIdx, masterIdx, typeIdx, acceptorIdx, giverIdx;
     QString namesstr;

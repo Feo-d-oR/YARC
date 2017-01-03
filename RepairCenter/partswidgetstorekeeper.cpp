@@ -29,7 +29,6 @@ void PartsWidgetStorekeeper::initModelRequests()
     //remember column indexes
     reqStateIdx = model->fieldIndex("state");
     masterIdx = model->fieldIndex("master");
-//    ordStateIdx = model->fieldIndex("orderid");
     //setting relations
     model->setRelation(reqStateIdx, QSqlRelation("pr_states","id","name"));
     model->setRelation(masterIdx, QSqlRelation("employees","id","name"));
@@ -44,7 +43,7 @@ void PartsWidgetStorekeeper::initModelRequests()
 //setting mapper & relations for right panel
     ui->eRequestState->setModel(model->relationModel(reqStateIdx));
     ui->eRequestState->setModelColumn(model->relationModel(reqStateIdx)->fieldIndex("name"));
-    ui->eRequestState->model()->sort(2, Qt::AscendingOrder);
+    ui->eRequestState->model()->sort(1, Qt::AscendingOrder);
 
     ui->eMaster->setModel(model->relationModel(masterIdx));
     ui->eMaster->setModelColumn(model->relationModel(masterIdx)->fieldIndex("name"));
@@ -84,7 +83,7 @@ void PartsWidgetStorekeeper::initModels()
 
 void PartsWidgetStorekeeper::readUiSettings()
 {
-//    settings = new QSettings(QCoreApplication::applicationDirPath()+"/settings.conf",QSettings::IniFormat);
+//    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
 //    settings->setIniCodec("UTF-8");
 
     //setting headers
@@ -173,9 +172,6 @@ void PartsWidgetStorekeeper::on_rbGive_clicked(bool checked){
 void PartsWidgetStorekeeper::on_lSearch_returnPressed(){
     searchByField();}
 
-void PartsWidgetStorekeeper::on_searchbyfield_clicked(){
-    searchByField();}
-
 void PartsWidgetStorekeeper::searchByField()
 {
     model->setFilter(QString());
@@ -195,12 +191,13 @@ void PartsWidgetStorekeeper::on_tview_clicked(const QModelIndex &index){
     MainWindow::currentOrderID = orderID;
     qDebug() << "orderID: " << orderID;
 
-    q.exec("SELECT state FROM orders WHERE number = " + orderID);
+    q.exec("SELECT state, comment FROM orders WHERE number = " + orderID);
     rec = q.record();
     q.first();
     idx_s = ui->eOrderState->model()->match(ui->eOrderState->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("state")), 1, Qt::MatchExactly);
     ui->eOrderState->setCurrentIndex(idx_s.value(0).row());
-    orderState = ui->eOrderState->currentIndex();
+    ui->eOrderComment->setPlainText(q.value(rec.indexOf("comment")).toString());
+//    orderState = ui->eOrderState->currentIndex();
 }
 
 void PartsWidgetStorekeeper::on_dialog_closed(){
@@ -217,17 +214,40 @@ void PartsWidgetStorekeeper::on_reconnect_recieved(){
 }
 
 void PartsWidgetStorekeeper::on_bSubmit_clicked(){
-    newOrderState = ui->eOrderState->currentIndex();
-    if (newOrderState != orderState)
-    {
-        rec_s = model_s->record(ui->eOrderState->currentIndex());
-        id_s = rec_s.value(rec_s.indexOf("id")).toString();
-        q.exec("UPDATE orders SET state = " + id_s +" WHERE number = " + orderID);
-        qDebug()<<"order state changed";
-    }
+
     model->submitAll();
     calculateSumm();
 }
+
+void PartsWidgetStorekeeper::on_bSubmitOrder_clicked()
+{
+//    newOrderState = ui->eOrderState->currentIndex();
+//    if (newOrderState != orderState)
+//    {
+
+    rec_s = model_s->record(ui->eOrderState->currentIndex());
+    id_s = rec_s.value(rec_s.indexOf("id")).toString();
+    q.clear();
+    q.prepare("UPDATE orders SET state = :state, comment = :comment WHERE number = " + orderID);
+    q.bindValue(":state", id_s);
+    q.bindValue(":comment", ui->eOrderComment->toPlainText());
+    q.exec();
+    q.clear();
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", orderID);
+    q.bindValue(":operation", tr("Status changed by storekeeper"));
+    q.bindValue(":state", id_s.toInt());
+    q.bindValue(":employee", MainWindow::userID);
+    q.bindValue(":comment", ui->eOrderComment->toPlainText());
+    q.exec();
+    q.clear();
+
+    qDebug()<<"order state changed";
+//}
+
+}
+
 
 void PartsWidgetStorekeeper::on_cbSearchMaster_activated(int index)
 {
