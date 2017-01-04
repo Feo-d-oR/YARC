@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>915</width>
-    <height>483</height>
+    <width>971</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -201,10 +201,29 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Order #:</string>
+         <widget class="QComboBox" name="cbSearchText">
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
           </property>
+          <property name="maximumSize">
+           <size>
+            <width>110</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <item>
+           <property name="text">
+            <string>Order #</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Product</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item alignment="Qt::AlignLeft">

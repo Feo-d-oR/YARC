@@ -224,8 +224,12 @@ void OrdersWidgetMaster::on_lSearch_returnPressed(){
 void OrdersWidgetMaster::searchByField()
 {
     model->setFilter(QString());
-    if(ui->lSearch->text() != "")
-        model->setFilter("number = " + ui->lSearch->text());
+    if(ui->lSearch->text() != ""){
+        if(ui->cbSearchText->currentText() == tr("Order #"))
+            model->setFilter("number = " + ui->lSearch->text());
+        if(ui->cbSearchText->currentText() == tr("Product"))
+            model->setFilter("product LIKE '%" + ui->lSearch->text() + "%'");
+    }
 }
 
 void OrdersWidgetMaster::on_tview_clicked(const QModelIndex &index){

@@ -160,7 +160,7 @@ void OrdersWidgetMain::readUiSettings()
 void OrdersWidgetMain::on_rbAll_clicked(bool checked){
     if (checked){
         ui->lSearch->clear();
-        ui->searchtexttype->setCurrentIndex(0);
+        ui->cbSearchText->setCurrentIndex(0);
         model->setSort(model->fieldIndex("number"),Qt::DescendingOrder);
         model->setFilter("number >= " + MainWindow::showlimit);
         model->select();
@@ -229,11 +229,12 @@ void OrdersWidgetMain::searchByField()
 {
     model->setFilter(QString());
     if(ui->lSearch->text() != ""){
-        if(ui->searchtexttype->currentText() == tr("Order #"))
+        if(ui->cbSearchText->currentText() == tr("Order #"))
             model->setFilter("number = " + ui->lSearch->text());
-        if(ui->searchtexttype->currentText() == tr("Name"))        {
+        if(ui->cbSearchText->currentText() == tr("Name"))
             model->setFilter("relTblAl_5.name LIKE '%" + ui->lSearch->text() + "%'");
-        }
+        if(ui->cbSearchText->currentText() == tr("Product"))
+            model->setFilter("product LIKE '%" + ui->lSearch->text() + "%'");
     }
 }
 
