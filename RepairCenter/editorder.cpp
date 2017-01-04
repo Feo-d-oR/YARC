@@ -99,13 +99,13 @@ void EditOrder::allocateNumber()
 
 void EditOrder::setDefaults()
 {
-    QModelIndexList idx_a = ui->eAcceptor->model()->match(ui->eAcceptor->model()->index(0, 0), Qt::EditRole, MainWindow::defAcceptor, 1, Qt::MatchExactly);
+    idx_a = ui->eAcceptor->model()->match(ui->eAcceptor->model()->index(0, 0), Qt::EditRole, MainWindow::defAcceptor, 1, Qt::MatchExactly);
     ui->eAcceptor->setCurrentIndex(idx_a.value(0).row());
 
-    QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, MainWindow::defMaster, 1, Qt::MatchExactly);
+    idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, MainWindow::defMaster, 1, Qt::MatchExactly);
     ui->eMaster->setCurrentIndex(idx_m.value(0).row());
 
-    QModelIndexList idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, MainWindow::defState, 1, Qt::MatchExactly);
+    idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, MainWindow::defState, 1, Qt::MatchExactly);
     ui->eState->setCurrentIndex(idx_s.value(0).row());
 
     if (MainWindow::productTypeM)
@@ -206,16 +206,16 @@ void EditOrder::fillFields()
         getCustomer();
     }
 
-    QModelIndexList idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("state")), 1, Qt::MatchExactly);
+    idx_s = ui->eState->model()->match(ui->eState->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("state")), 1, Qt::MatchExactly);
     ui->eState->setCurrentIndex(idx_s.value(0).row());
 
-    QModelIndexList idx_t = ui->eProductType->model()->match(ui->eProductType->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("product_type")), 1, Qt::MatchExactly);
+    idx_t = ui->eProductType->model()->match(ui->eProductType->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("product_type")), 1, Qt::MatchExactly);
     ui->eProductType->setCurrentIndex(idx_t.value(0).row());
 
-    QModelIndexList idx_a = ui->eAcceptor->model()->match(ui->eAcceptor->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("acceptor")), 1, Qt::MatchExactly);
+    idx_a = ui->eAcceptor->model()->match(ui->eAcceptor->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("acceptor")), 1, Qt::MatchExactly);
     ui->eAcceptor->setCurrentIndex(idx_a.value(0).row());
 
-    QModelIndexList idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("master")), 1, Qt::MatchExactly);
+    idx_m = ui->eMaster->model()->match(ui->eMaster->model()->index(0, 0), Qt::EditRole, q.value(rec.indexOf("master")), 1, Qt::MatchExactly);
     ui->eMaster->setCurrentIndex(idx_m.value(0).row());
 }
 
@@ -385,11 +385,12 @@ void EditOrder::mandatoryAlert()
 
 void EditOrder::on_bAddType_clicked()
 {
+    QSqlQuery qpt;
     qpt.exec("INSERT INTO product_types (name) VALUES ('" + ui->eProductType->currentText() + "')");
+    int lastid = qpt.lastInsertId().toInt(); //QtSql, as of late, returns 0 lastInsertId after model->select(),so additional variable needeed
     model_t->select();
-    QModelIndexList idx_t = ui->eProductType->model()->match(ui->eProductType->model()->index(0, 0), Qt::EditRole, qpt.lastInsertId().toInt(), 1, Qt::MatchExactly);
+    idx_t = ui->eProductType->model()->match(ui->eProductType->model()->index(0, 0), Qt::EditRole, lastid, 1, Qt::MatchExactly);
     ui->eProductType->setCurrentIndex(idx_t.value(0).row());
-
 }
 
 void EditOrder::reject()

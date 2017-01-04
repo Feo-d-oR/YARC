@@ -166,8 +166,9 @@ void EditWorkReport::on_bAddWork_clicked()
 {
     QSqlQuery qw;
     qw.exec("INSERT INTO works (name, price) VALUES ('" + ui->eWork->currentText() + "','" + ui->eWPrice->text() + "')");
+    int lastidw = qw.lastInsertId().toInt();  //QtSql,. as of late, returns 0 lastInsertId after model->select(),so additional variable needeed
     model_w->select();
-    QModelIndexList idx_w = ui->eWork->model()->match(ui->eWork->model()->index(0, 0), Qt::EditRole, qw.lastInsertId().toInt(), 1, Qt::MatchExactly);
+    QModelIndexList idx_w = ui->eWork->model()->match(ui->eWork->model()->index(0, 0), Qt::EditRole, lastidw, 1, Qt::MatchExactly);
     ui->eWork->setCurrentIndex(idx_w.value(0).row());
 }
 
@@ -240,8 +241,9 @@ void EditWorkReport::on_bAddSpare_clicked()
 {
     QSqlQuery qas;
     qas.exec("INSERT INTO spares (name, price) VALUES ('" + ui->eSpare->currentText() + "','" + ui->eSPrice->text() + "')");
+    int lastids = qas.lastInsertId().toInt();  //QtSql, as of late, returns 0 lastInsertId after model->select(),so additional variable needeed
     model_s->select();
-    QModelIndexList idx_w = ui->eSpare->model()->match(ui->eSpare->model()->index(0, 0), Qt::EditRole, qas.lastInsertId().toInt(), 1, Qt::MatchExactly);
+    QModelIndexList idx_w = ui->eSpare->model()->match(ui->eSpare->model()->index(0, 0), Qt::EditRole, lastids, 1, Qt::MatchExactly);
     ui->eSpare->setCurrentIndex(idx_w.value(0).row());
 }
 

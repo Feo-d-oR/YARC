@@ -1144,12 +1144,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="218"/>
+        <location filename="../editworkreport.cpp" line="219"/>
         <source>Work report submited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="220"/>
+        <location filename="../editworkreport.cpp" line="221"/>
         <source>Work report edited</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1603,10 +1603,10 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="76"/>
-        <location filename="../mainwindow.cpp" line="101"/>
-        <location filename="../mainwindow.cpp" line="322"/>
-        <location filename="../mainwindow.cpp" line="348"/>
+        <location filename="../mainwindow.cpp" line="73"/>
+        <location filename="../mainwindow.cpp" line="98"/>
+        <location filename="../mainwindow.cpp" line="325"/>
+        <location filename="../mainwindow.cpp" line="351"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1762,12 +1762,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="441"/>
-        <source>Fullscreen</source>
+        <location filename="../mainwindow.ui" line="445"/>
+        <source>&amp;Fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="444"/>
+        <location filename="../mainwindow.ui" line="448"/>
         <source>F11</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1822,54 +1822,54 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="74"/>
         <source>Cannot connect to database!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="75"/>
         <source>Change settings or create new one?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="79"/>
+        <location filename="../mainwindow.cpp" line="76"/>
         <source>Create</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="80"/>
-        <location filename="../mainwindow.cpp" line="104"/>
+        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="101"/>
         <source>Change</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="81"/>
-        <location filename="../mainwindow.cpp" line="105"/>
+        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="102"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="102"/>
+        <location filename="../mainwindow.cpp" line="99"/>
         <source>Settings file not found or incomplete!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="103"/>
+        <location filename="../mainwindow.cpp" line="100"/>
         <source>Change settings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="325"/>
         <source>Unable to connect to database!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="348"/>
+        <location filename="../mainwindow.cpp" line="351"/>
         <source>Database connection is lost!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>

@@ -39,7 +39,6 @@ private:
     QSqlRecord rec;
     QSqlQuery qc;
     QSqlRecord recc;
-    QSqlQuery qpt;
     QString orderID;
     QString customerID;
     QString newCustomerID;
@@ -52,6 +51,7 @@ private:
     QSqlTableModel *model_t;
     QSqlQueryModel *model_c;
     QtRPT *report;
+    QModelIndexList idx_t, idx_a, idx_m, idx_s;
 
 protected:
     void closeEvent(QCloseEvent *event);

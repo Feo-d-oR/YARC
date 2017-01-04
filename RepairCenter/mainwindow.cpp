@@ -57,9 +57,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow){
     ui->setupUi(this);
 
-    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
-    settings->setIniCodec("UTF-8");
-
     crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
 
     if (checkSettings()) {
@@ -121,14 +118,20 @@ MainWindow::~MainWindow(){
 
 bool MainWindow::checkSettings()
 {
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
+
     if (settings->contains("mysql/password"))
         return true;
-    else
-        return false;
+    else{
+        delete settings;
+        return false;}
 }
 
 void MainWindow::readGlobalSettings()
 {
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
     QSqlQuery q;
 
     sLocale = settings->value("locale/language").toString();
@@ -208,9 +211,9 @@ void MainWindow::loadWindowState()
         QMainWindow::showMaximized();
     else if(settings->value("ui/mainwindowstate") == "full")
         QMainWindow::showFullScreen();
-    else if(settings->value("ui/mainwindowstate") == "last"){
+    else if(settings->value("ui/mainwindowstate") == "last")
         restoreGeometry(settings->value("ui/geometry").toByteArray());
-        restoreState(settings->value("ui/state").toByteArray());}
+//        restoreState(settings->value("ui/state").toByteArray())
     else return;
 }
 
@@ -453,7 +456,7 @@ void MainWindow::reject(){
 
 void MainWindow::closeEvent(QCloseEvent *event){
     settings->setValue("ui/geometry", saveGeometry());
-    settings->setValue("ui/state", saveState());
+//    settings->setValue("ui/state", saveState());
     settings->sync();
     QApplication::closeAllWindows();
     event->accept(); }
