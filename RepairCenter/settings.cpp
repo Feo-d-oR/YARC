@@ -63,6 +63,27 @@ void Settings::readSettings()
     }
     }
 
+    if(settings->contains("defaults/cond1"))
+    {
+        ui->eCond1->setText(settings->value("defaults/cond1").toString());
+        ui->eCond2->setText(settings->value("defaults/cond2").toString());
+        ui->eCond3->setText(settings->value("defaults/cond3").toString());
+        ui->eCond4->setText(settings->value("defaults/cond4").toString());
+        ui->eCond5->setText(settings->value("defaults/cond5").toString());
+
+        ui->eDefect1->setText(settings->value("defaults/defect1").toString());
+        ui->eDefect2->setText(settings->value("defaults/defect2").toString());
+        ui->eDefect3->setText(settings->value("defaults/defect3").toString());
+        ui->eDefect4->setText(settings->value("defaults/defect4").toString());
+        ui->eDefect5->setText(settings->value("defaults/defect5").toString());
+
+        ui->eCompl1->setText(settings->value("defaults/compl1").toString());
+        ui->eCompl2->setText(settings->value("defaults/compl2").toString());
+        ui->eCompl3->setText(settings->value("defaults/compl3").toString());
+        ui->eCompl4->setText(settings->value("defaults/compl4").toString());
+        ui->eCompl5->setText(settings->value("defaults/compl5").toString());
+    }
+
     if(settings->value("ui/mainwindowstate") == "max")
         ui->rbMaximize->setChecked(true);
     else if(settings->value("ui/mainwindowstate") == "last")
@@ -211,6 +232,24 @@ void Settings::on_save_clicked()
     settings->setValue("orderstable/limitallfilters", ui->cbAffectFilters->isChecked());
 
     settings->setValue("defaults/warranty", ui->eWarranty->text());
+
+    settings->setValue("defaults/cond1", ui->eCond1->text());
+    settings->setValue("defaults/cond2", ui->eCond2->text());
+    settings->setValue("defaults/cond3", ui->eCond3->text());
+    settings->setValue("defaults/cond4", ui->eCond4->text());
+    settings->setValue("defaults/cond5", ui->eCond5->text());
+
+    settings->setValue("defaults/defect1", ui->eDefect1->text());
+    settings->setValue("defaults/defect2", ui->eDefect2->text());
+    settings->setValue("defaults/defect3", ui->eDefect3->text());
+    settings->setValue("defaults/defect4", ui->eDefect4->text());
+    settings->setValue("defaults/defect5", ui->eDefect5->text());
+
+    settings->setValue("defaults/compl1", ui->eCompl1->text());
+    settings->setValue("defaults/compl2", ui->eCompl2->text());
+    settings->setValue("defaults/compl3", ui->eCompl3->text());
+    settings->setValue("defaults/compl4", ui->eCompl4->text());
+    settings->setValue("defaults/compl5", ui->eCompl5->text());
 
     if (ui->rbMaximize->isChecked())
         settings->setValue("ui/mainwindowstate", "max");

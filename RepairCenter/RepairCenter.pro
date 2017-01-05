@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     editpartsrequest.cpp \
     jrnpartsrequests.cpp \
     partswidgetstorekeeper.cpp \
-    orderslog.cpp
+    orderslog.cpp \
+    qdynamiccheckbox.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -69,7 +70,8 @@ HEADERS  += mainwindow.h \
     editpartsrequest.h \
     jrnpartsrequests.h \
     partswidgetstorekeeper.h \
-    orderslog.h
+    orderslog.h \
+    qdynamiccheckbox.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \

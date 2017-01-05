@@ -61,6 +61,7 @@ void EditOrder::getMode(QString mode, QString num)
         setModels();
         allocateNumber();
         setDefaults();
+        setCheckboxTemplates();
         ui->eProductType->setCurrentIndex(-1);
     }
     else if (mode == "view")
@@ -248,9 +249,9 @@ void EditOrder::submitOrder()
     q.bindValue(":product_type", id_t.toInt());
     q.bindValue(":product", ui->eProduct->text());
     q.bindValue(":serial", ui->eSerial->text());
-    q.bindValue(":disease", ui->eDisease->text());
-    q.bindValue(":cond", ui->eCond->text());
-    q.bindValue(":complect", ui->eComplect->text());
+    q.bindValue(":disease", composeString(ui->layout_defects, ui->eDisease->text()));
+    q.bindValue(":cond", composeString(ui->layout_conds, ui->eCond->text()));
+    q.bindValue(":complect", composeString(ui->layout_compls, ui->eComplect->text()));
     q.bindValue(":cost", ui->eCost->text());
     q.bindValue(":prepay", ui->ePrepay->text());
     q.bindValue(":acceptor", id_a.toInt());
@@ -296,11 +297,11 @@ void EditOrder::setRptValue(const int recNo, const QString paramName, QVariant &
     if (paramName == "serial")
         paramValue = ui->eSerial->text();
     if (paramName == "disease")
-        paramValue = ui->eDisease->text();
+        paramValue = composeString(ui->layout_defects, ui->eDisease->text());
     if (paramName == "cond")
-        paramValue = ui->eCond->text();
+        paramValue = composeString(ui->layout_conds, ui->eCond->text());
     if (paramName == "complect")
-        paramValue = ui->eComplect->text();
+        paramValue = composeString(ui->layout_compls, ui->eComplect->text());
     if (paramName == "cost")
         paramValue = ui->eCost->text();
     if (paramName == "prepay")
@@ -450,3 +451,59 @@ void EditOrder::on_cbOldCustomer_currentIndexChanged(int index)
     }
 }
 
+void EditOrder::setCheckboxTemplates()
+{
+    settings = new QSettings(QCoreApplication::applicationDirPath()+"/repaircenter.conf",QSettings::IniFormat);
+    settings->setIniCodec("UTF-8");
+    int i;
+    QString num;
+    for (i=1; i<=20; i++)
+    {
+        num = QString::number(i);
+        if (settings->contains("defaults/cond" + num) && (settings->value("defaults/cond" + num) != ""))
+        {
+            qDynamicCheckBox *chb = new qDynamicCheckBox(this);
+            chb->setText(settings->value("defaults/cond" + num).toString());
+            chb->setID("chBoxCond" + num);
+            ui->layout_conds->addWidget(chb);
+        }
+        if (settings->contains("defaults/defect" + num) && settings->value("defaults/defect" + num) != "")
+        {
+            qDynamicCheckBox *chb = new qDynamicCheckBox(this);
+            chb->setText(settings->value("defaults/defect" + num).toString());
+            chb->setID("chBoxDef" + num);
+            ui->layout_defects->addWidget(chb);
+        }
+        if (settings->contains("defaults/compl" + num) && settings->value("defaults/compl" + num) != "")
+        {
+            qDynamicCheckBox *chb = new qDynamicCheckBox(this);
+            chb->setText(settings->value("defaults/compl" + num).toString());
+            chb->setID("chBoxCompl" + num);
+            ui->layout_compls->addWidget(chb);
+        }
+    }
+    ui->layout_conds->setStretch(ui->layout_conds->count()-1,1);
+    ui->layout_compls->setStretch(ui->layout_compls->count()-1,1);
+    ui->layout_defects->setStretch(ui->layout_defects->count()-1,1);
+}
+
+QString EditOrder::composeString(QLayout *layout, QString str)
+{
+    QString strResult;
+    for (int i = 0; i < layout->count(); i++)
+    {
+        qDynamicCheckBox *chb = qobject_cast<qDynamicCheckBox*>(layout->itemAt(i)->widget());
+        if (chb->isChecked())
+        {
+            strResult.append(chb->text());
+            qDebug()<<"chbText="<<chb->text();
+            qDebug()<<"chbShortcut="<<chb->shortcut();
+
+            strResult.append(", ");
+        }
+    }
+    strResult.remove("&");
+    strResult.append(str);
+    qDebug()<<"strResult="<<strResult;
+    return strResult;
+}

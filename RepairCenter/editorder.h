@@ -7,6 +7,7 @@
 #include <QtSql>
 #include "qtrpt.h"
 #include "CommonClasses.h"
+#include "qdynamiccheckbox.h"
 
 namespace Ui {
 class EditOrder;
@@ -35,6 +36,8 @@ private:
     void setDefaults();
     void mandatoryAlert();
     bool mandatoryCheck();
+    void setCheckboxTemplates();
+    QString composeString(QLayout *layout, QString str);
     QSqlQuery q;
     QSqlRecord rec;
     QSqlQuery qc;
@@ -48,6 +51,7 @@ private:
     QSqlQueryModel *model_s;
     QSqlQueryModel *model_a;
     QSqlQueryModel *model_m;
+    QSettings * settings;
     QSqlTableModel *model_t;
     QSqlQueryModel *model_c;
     QtRPT *report;
