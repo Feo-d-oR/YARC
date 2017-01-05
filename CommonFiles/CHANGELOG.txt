@@ -11,10 +11,26 @@ Added->"Default warranty" option
 Added->Optional mandatory fields
 Added->Prepayment
 Fixed->Default settings
-Added->Connection check every 10 seconds
+Added->Optional connection check interval, 0 means no check
 Added->Automatic recalculation of sum in "GiveOrder"
 Added->MySQL Strict Mode workaround
 Updated->QtRpt library 2.0.0
+Fixed->Every timestamp now with actual time
+Improved->All date fields now read-only, except when you fill handwritten documents
+Improved->Config files renamed, default config included in distribution
+Improved->Order 'comment' field now up to 1024 characters
+Modified->'Search by field' buttons removed, just hit 'Enter'
+Modified->Now only admin can delete orders
+Fixed->Alphabetical sorting in 'Order state' comboboxes
+Improved->'Settings','Edit order', 'Give order' dialogues now always on top (tested only in KDE)
+Added->Order operations history
+Added->Window size settings (maximize, last state, fullscreen)
+Fixed->Bug with adding catalog elements on-the-fly (not exactly a bug, just catching up to QtSql changes)
+Added->Search by product name
+Added->Checkboxes with template strings for defects,etc. in 'New order' (5 in settings, up to 20 through config file)
+Added->'Complete' checkboxes in dialogs, sets corresponding order status on save.
+Modified->Connection check interval now in settings
+Added->Optioanal main table autoupdate interval, doesn't reset filters (0 means no update)
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table
