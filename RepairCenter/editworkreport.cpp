@@ -210,7 +210,6 @@ void EditWorkReport::submitReport()
     q.bindValue(":spares", spares);
     q.bindValue(":quants", quants);
     q.exec();
-    q.clear();
     q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee");
     q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", ui->eOrderID->text());
@@ -219,10 +218,12 @@ void EditWorkReport::submitReport()
         q.bindValue(":operation", tr("Work report submited"));
     else
         q.bindValue(":operation", tr("Work report edited"));
+    if(ui->cbRepairComplete->isChecked())
+        q.bindValue(":state", 6);
     q.exec();
-    q.clear();
     saved = true;
-    qDebug() << q.lastError().text();
+    if(ui->cbRepairComplete->isChecked())
+        q.exec("UPDATE orders SET state = 6 WHERE number = " + ui->eOrderID->text());
 }
 
 void EditWorkReport::on_eSpare_currentIndexChanged(int index)

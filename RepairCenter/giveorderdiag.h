@@ -26,7 +26,9 @@ signals:
 private:
     Ui::GiveOrderDiag *ui;
     QString orderID;
+    QString reportID;
     bool saved;
+    bool isnew;
     QSqlQueryModel * model_e;
     QSqlQuery qf;
     QSqlQuery q;

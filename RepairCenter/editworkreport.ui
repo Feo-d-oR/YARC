@@ -21,143 +21,6 @@
     <normaloff>:/icons/icons/report_hammer_edit.png</normaloff>:/icons/icons/report_hammer_edit.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="1" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Work:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QLineEdit" name="eOrderID">
-       <property name="minimumSize">
-        <size>
-         <width>51</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>70</width>
-         <height>16777215</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Date:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDateEdit" name="eDate">
-       <property name="inputMethodHints">
-        <set>Qt::ImhDate</set>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-       <property name="displayFormat">
-        <string>dd.MM.yyyy</string>
-       </property>
-       <property name="calendarPopup">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item alignment="Qt::AlignRight">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Master:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="eMaster">
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>300</width>
-         <height>16777215</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <widget class="QPushButton" name="bCancel">
-       <property name="text">
-        <string>Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/icons/icons/door_out.png</normalon>
-        </iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="bSave">
-       <property name="text">
-        <string>Save and close</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normalon>:/icons/icons/page_save.png</normalon>
-        </iconset>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
    <item row="1" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -266,14 +129,7 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0" alignment="Qt::AlignRight">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Order #:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="2">
+   <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
@@ -412,12 +268,152 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="0" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Order #:</string>
      </property>
     </widget>
+   </item>
+   <item row="0" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLineEdit" name="eOrderID">
+       <property name="minimumSize">
+        <size>
+         <width>51</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>70</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Date:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDateEdit" name="eDate">
+       <property name="inputMethodHints">
+        <set>Qt::ImhDate</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="displayFormat">
+        <string>dd.MM.yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item alignment="Qt::AlignRight">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Master:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="eMaster">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>300</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" alignment="Qt::AlignRight">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Work:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="bCancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/icons/door_out.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="cbRepairComplete">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets corresponding order state&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Repair complete</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="bSave">
+       <property name="text">
+        <string>Save and close</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/icons/page_save.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

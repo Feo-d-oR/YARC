@@ -142,8 +142,7 @@ void EditDiagReport::submitReport()
     q.bindValue(":defects", ui->eDefects->toPlainText());
     q.bindValue(":recomm", ui->eRecomm->toPlainText());
     q.exec();
-    q.clear();
-    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, employee = :employee");
+    q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, state = :state, operation = :operation, employee = :employee");
     q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", ui->eOrderID->text());
     q.bindValue(":employee", id_m.toInt());
@@ -151,8 +150,11 @@ void EditDiagReport::submitReport()
         q.bindValue(":operation", tr("Diagnosis report submited"));
     else
         q.bindValue(":operation", tr("Diagnosis report edited"));
+    if(ui->cbDiagComplete->isChecked())
+        q.bindValue(":state", 5);
     q.exec();
-    q.clear();
+    if(ui->cbDiagComplete->isChecked())
+        q.exec("UPDATE orders SET state = 5 WHERE number = " + ui->eOrderID->text());
     saved = true;
 }
 

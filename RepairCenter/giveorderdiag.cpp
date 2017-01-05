@@ -9,6 +9,8 @@ GiveOrderDiag::GiveOrderDiag(QWidget *parent) :
     GiveOrderDiag::activateWindow();
     ui->setupUi(this);
 
+    isnew = false;
+
     if(MainWindow::role ==2 && !MainWindow::acceptorCanEditDiag){
         ui->eInspect->setDisabled(1);
         ui->eDefects->setDisabled(1);
@@ -78,11 +80,15 @@ void GiveOrderDiag::fillFields()
 {
     qf.exec("SELECT * FROM diag_reports WHERE orderid = " + orderID);
     recf = qf.record();
-    qf.last();
-    ui->eDate->setDateTime(qf.value(recf.indexOf("date")).toDateTime());
-    ui->eInspect->setPlainText(qf.value(recf.indexOf("inspect")).toString());
-    ui->eDefects->setPlainText(qf.value(recf.indexOf("defects")).toString());
-    ui->eRecomm->setPlainText(qf.value(recf.indexOf("recomm")).toString());
+    if (qf.last())
+    {
+        ui->eDate->setDateTime(qf.value(recf.indexOf("date")).toDateTime());
+        ui->eInspect->setPlainText(qf.value(recf.indexOf("inspect")).toString());
+        ui->eDefects->setPlainText(qf.value(recf.indexOf("defects")).toString());
+        ui->eRecomm->setPlainText(qf.value(recf.indexOf("recomm")).toString());
+        reportID = qf.value(recf.indexOf("id")).toString();
+    }
+    else isnew = true;
 }
 
 void GiveOrderDiag::submitOrder()
@@ -90,21 +96,38 @@ void GiveOrderDiag::submitOrder()
     QSqlRecord rec_e = model_e->record(ui->eGiver->currentIndex());
     QString id_e = rec_e.value(rec_e.indexOf("id")).toString();
 
+    if (isnew)
+        q.prepare("INSERT INTO diag_reports VALUES (NULL, NULL, :orderid, :employee, :inspect, :defects, :recomm)");
+    else
+        q.prepare("UPDATE diag_reports SET date = :date, employee = :employee, inspect = :inspect, defects = :defects, recomm = :recomm WHERE id = " + reportID);
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", orderID);
+    q.bindValue(":employee", id_e);
+    q.bindValue(":inspect", ui->eInspect->toPlainText());
+    q.bindValue(":defects", ui->eDefects->toPlainText());
+    q.bindValue(":recomm", ui->eRecomm->toPlainText());
+    q.exec();
+
     q.prepare("UPDATE orders SET state = :state, date_out = :date_out, giver = :giver "
               "WHERE number = " + orderID);
     q.bindValue(":state", "9");
     q.bindValue(":date_out", ui->eDate->dateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":giver", id_e);
     q.exec();
-    q.clear();
     q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee");
     q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", orderID);
-    q.bindValue(":state", 9);
+    if (ui->cbIssuedDiag->isChecked()){
+            q.bindValue(":state", 9);
+            q.bindValue(":operation", tr("Order issued")); }
+    else {
+        q.bindValue(":operation", tr("Someone playing around...")); }
     q.bindValue(":employee", id_e.toInt());
-    q.bindValue(":operation", tr("Order given out"));
     q.exec();
-    q.clear();
+
+    if(ui->cbIssuedDiag->isChecked())
+        q.exec("UPDATE orders SET state = 9 WHERE number = " + orderID);
+
     saved = true;
 }
 

@@ -622,6 +622,16 @@
     </message>
     <message>
         <location filename="../editdiagreport.ui" line="212"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets corresponding order state&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="215"/>
+        <source>Diagnostics complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editdiagreport.ui" line="222"/>
         <source>Save and close</source>
         <translation>Сохранить и закрыть</translation>
     </message>
@@ -692,12 +702,12 @@
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../editdiagreport.cpp" line="151"/>
+        <location filename="../editdiagreport.cpp" line="150"/>
         <source>Diagnosis report submited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../editdiagreport.cpp" line="153"/>
+        <location filename="../editdiagreport.cpp" line="152"/>
         <source>Diagnosis report edited</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1143,114 +1153,124 @@
 <context>
     <name>EditWorkReport</name>
     <message>
-        <location filename="../editworkreport.ui" line="27"/>
+        <location filename="../editworkreport.ui" line="363"/>
         <source>Work:</source>
         <translation>Работа:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="52"/>
+        <location filename="../editworkreport.ui" line="299"/>
         <source>Date:</source>
         <translation>Дата:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="91"/>
+        <location filename="../editworkreport.ui" line="338"/>
         <source>Master:</source>
         <translation>Мастер:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="125"/>
+        <location filename="../editworkreport.ui" line="372"/>
         <location filename="../editworkreport.cpp" line="36"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="150"/>
+        <location filename="../editworkreport.ui" line="397"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets corresponding order state&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editworkreport.ui" line="400"/>
+        <source>Repair complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../editworkreport.ui" line="407"/>
         <source>Save and close</source>
         <translation>Сохранить и закрыть</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="185"/>
+        <location filename="../editworkreport.ui" line="48"/>
         <source>Cost:</source>
         <translation>Стоимость:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="211"/>
-        <location filename="../editworkreport.ui" line="331"/>
+        <location filename="../editworkreport.ui" line="74"/>
+        <location filename="../editworkreport.ui" line="187"/>
         <source>Add to catalog</source>
         <translation>Добавить в справочник</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="226"/>
+        <location filename="../editworkreport.ui" line="89"/>
         <source>Qty:</source>
         <translation>Кол-во:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="272"/>
+        <location filename="../editworkreport.ui" line="274"/>
         <source>Order #:</source>
         <translation>№ заказа:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="282"/>
+        <location filename="../editworkreport.ui" line="138"/>
         <source>Spare parts:</source>
         <translation>Запчасти:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="291"/>
+        <location filename="../editworkreport.ui" line="147"/>
         <source>Name:</source>
         <translation>Наименование:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="311"/>
+        <location filename="../editworkreport.ui" line="167"/>
         <source>Price:</source>
         <translation>Стоимость:</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="355"/>
+        <location filename="../editworkreport.ui" line="211"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="370"/>
+        <location filename="../editworkreport.ui" line="226"/>
         <source>Remove</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="392"/>
+        <location filename="../editworkreport.ui" line="248"/>
         <source>Name</source>
         <translation>Наименование</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="397"/>
+        <location filename="../editworkreport.ui" line="253"/>
         <source>Price</source>
         <translation>Стоимость</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="402"/>
+        <location filename="../editworkreport.ui" line="258"/>
         <source>Qty</source>
         <translation>Кол-во</translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="65"/>
+        <location filename="../editworkreport.ui" line="312"/>
         <source>dd.MM.yyyy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="254"/>
+        <location filename="../editworkreport.ui" line="117"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="352"/>
+        <location filename="../editworkreport.ui" line="208"/>
         <source>Добавить в список</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="367"/>
+        <location filename="../editworkreport.ui" line="223"/>
         <source>Удалить из списка</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../editworkreport.ui" line="407"/>
+        <location filename="../editworkreport.ui" line="263"/>
         <source>ID</source>
         <translation></translation>
     </message>
@@ -1299,12 +1319,12 @@
         <translation>Редактирование отчёта о работе</translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="219"/>
+        <location filename="../editworkreport.cpp" line="218"/>
         <source>Work report submited</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../editworkreport.cpp" line="221"/>
+        <location filename="../editworkreport.cpp" line="220"/>
         <source>Work report edited</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1323,111 +1343,121 @@
         <translation>№ заказа:</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="66"/>
+        <location filename="../giveorder.ui" line="49"/>
         <source>Date:</source>
         <translation>Дата:</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="82"/>
+        <location filename="../giveorder.ui" line="65"/>
         <source>dd.MM.yyyy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="92"/>
+        <location filename="../giveorder.ui" line="75"/>
         <source>Warranty:</source>
         <translation>Гарантия:</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="111"/>
+        <location filename="../giveorder.ui" line="94"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Text to print, for example, &amp;quot;100 days&amp;quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Текст для печати, например, &amp;quot;100 дней&amp;quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="131"/>
+        <location filename="../giveorder.ui" line="114"/>
         <source>Issued by:</source>
         <translation>Выдал:</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="187"/>
+        <location filename="../giveorder.ui" line="163"/>
         <source>Works</source>
         <translation>Работы</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="203"/>
-        <location filename="../giveorder.ui" line="253"/>
+        <location filename="../giveorder.ui" line="179"/>
+        <location filename="../giveorder.ui" line="229"/>
         <source>Name</source>
         <translation>Наименование</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="208"/>
-        <location filename="../giveorder.ui" line="258"/>
+        <location filename="../giveorder.ui" line="184"/>
+        <location filename="../giveorder.ui" line="234"/>
         <source>Qty</source>
         <translation>Кол-во</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="213"/>
+        <location filename="../giveorder.ui" line="189"/>
         <source>Cost</source>
         <translation>Стоимость</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="218"/>
+        <location filename="../giveorder.ui" line="194"/>
         <source>Master</source>
         <translation>Мастер</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="237"/>
+        <location filename="../giveorder.ui" line="213"/>
         <source>Spare parts</source>
         <translation>Запчасти</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="263"/>
+        <location filename="../giveorder.ui" line="239"/>
         <source>Price</source>
         <translation>Стоимость</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="268"/>
+        <location filename="../giveorder.ui" line="244"/>
         <source>Work</source>
         <translation>Работа</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="300"/>
+        <location filename="../giveorder.ui" line="276"/>
         <source>Total:</source>
         <translation>Сумма:</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="340"/>
+        <location filename="../giveorder.ui" line="316"/>
         <location filename="../giveorder.cpp" line="33"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="365"/>
+        <location filename="../giveorder.ui" line="341"/>
         <source>Act</source>
         <translation>Акт</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="375"/>
+        <location filename="../giveorder.ui" line="351"/>
         <source>Warranty card</source>
         <translation>Гарантия</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="382"/>
+        <location filename="../giveorder.ui" line="358"/>
         <source>Preview</source>
         <translation>Просмотр</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="389"/>
+        <location filename="../giveorder.ui" line="365"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="401"/>
+        <location filename="../giveorder.ui" line="377"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets corresponding order state&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../giveorder.ui" line="380"/>
+        <source>Issued with repair</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../giveorder.ui" line="390"/>
         <source>Save and close</source>
         <translation>Сохранить и закрыть</translation>
     </message>
     <message>
-        <location filename="../giveorder.ui" line="223"/>
-        <location filename="../giveorder.ui" line="273"/>
+        <location filename="../giveorder.ui" line="199"/>
+        <location filename="../giveorder.ui" line="249"/>
         <source>ID</source>
         <translation></translation>
     </message>
@@ -1447,8 +1477,13 @@
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../giveorder.cpp" line="220"/>
-        <source>Order given out</source>
+        <location filename="../giveorder.cpp" line="219"/>
+        <source>Order issued</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../giveorder.cpp" line="221"/>
+        <source>Someone playing around...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1464,7 +1499,7 @@
     <name>GiveOrderDiag</name>
     <message>
         <location filename="../giveorderdiag.ui" line="14"/>
-        <location filename="../giveorderdiag.cpp" line="28"/>
+        <location filename="../giveorderdiag.cpp" line="30"/>
         <source>Issue off diagnostics</source>
         <translation>Выдача акта диагностики</translation>
     </message>
@@ -1511,7 +1546,7 @@
     </message>
     <message>
         <location filename="../giveorderdiag.ui" line="184"/>
-        <location filename="../giveorderdiag.cpp" line="32"/>
+        <location filename="../giveorderdiag.cpp" line="34"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
@@ -1527,27 +1562,42 @@
     </message>
     <message>
         <location filename="../giveorderdiag.ui" line="234"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets corresponding order state&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="237"/>
+        <source>Issued with diag.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.ui" line="247"/>
         <source>Save and close</source>
         <translation>Сохранить и закрыть</translation>
     </message>
     <message>
-        <location filename="../giveorderdiag.cpp" line="29"/>
+        <location filename="../giveorderdiag.cpp" line="31"/>
         <source>Save changes?</source>
         <translation>Сохранить изменения?</translation>
     </message>
     <message>
-        <location filename="../giveorderdiag.cpp" line="30"/>
+        <location filename="../giveorderdiag.cpp" line="32"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../giveorderdiag.cpp" line="31"/>
+        <location filename="../giveorderdiag.cpp" line="33"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../giveorderdiag.cpp" line="105"/>
-        <source>Order given out</source>
+        <location filename="../giveorderdiag.cpp" line="122"/>
+        <source>Order issued</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../giveorderdiag.cpp" line="124"/>
+        <source>Someone playing around...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

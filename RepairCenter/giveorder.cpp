@@ -211,15 +211,18 @@ void GiveOrder::submitOrder()
     q.bindValue(":giver", id_e);
     q.bindValue(":warranty", ui->eWarranty->text());
     q.exec();
-    q.clear();
     q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee");
     q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", orderID);
-    q.bindValue(":state", 10);
+    if (ui->cbIssuedWRepair->isChecked()){
+            q.bindValue(":state", 10);
+            q.bindValue(":operation", tr("Order issued")); }
+    else {
+        q.bindValue(":operation", tr("Someone playing around...")); }
     q.bindValue(":employee", id_e.toInt());
-    q.bindValue(":operation", tr("Order given out"));
     q.exec();
-    q.clear();
+    if(ui->cbIssuedWRepair->isChecked())
+        q.exec("UPDATE orders SET state = 10 WHERE number = " + orderID);
     saved = true;
 }
 

@@ -229,6 +229,19 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="cbIssuedDiag">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets corresponding order state&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Issued with diag.</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="bSave">
        <property name="text">
         <string>Save and close</string>
