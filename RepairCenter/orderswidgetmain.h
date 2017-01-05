@@ -41,6 +41,7 @@ private slots:
     void on_tview_clicked(const QModelIndex &index);
     void on_eCalled_stateChanged(int state);
     void on_lSearch_returnPressed();
+    void updateTable();
 
 private:
     Ui::OrdersWidgetMain *ui;
@@ -48,6 +49,7 @@ private:
     void readUiSettings();
     void showEditOrder();
     void searchByField();
+    void updateTimer();
     QSettings * settings;
     QSqlRelationalTableModel *model;
     QSqlQuery q;

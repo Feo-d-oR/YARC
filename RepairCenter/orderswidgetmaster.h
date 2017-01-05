@@ -37,6 +37,7 @@ private slots:
     void on_tview_clicked(const QModelIndex &index);
     void on_cbSearchMaster_activated(int index);
     void on_lSearch_returnPressed();
+    void updateTable();
 
 private:
     Ui::OrdersWidgetMaster *ui;
@@ -44,6 +45,7 @@ private:
     void initModelMasters();
     void readUiSettings();
     void searchByField();
+    void updateTimer();
     QSettings * settings;
     QSqlRelationalTableModel *model;
     QDataWidgetMapper *mapper;

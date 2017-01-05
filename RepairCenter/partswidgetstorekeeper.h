@@ -41,8 +41,8 @@ private slots:
     void on_bView_clicked();
     void on_bEdit_clicked();
     void on_bDelete_clicked();
-
     void on_bSubmitOrder_clicked();
+    void updateTable();
 
 private:
     Ui::PartsWidgetStorekeeper *ui;
@@ -52,6 +52,7 @@ private:
     void showEditPartsRequest();
     void searchByField();
     void calculateSumm();
+    void updateTimer();
     QSettings * settings;
     QSqlRelationalTableModel *model;
     QDataWidgetMapper *mapper;

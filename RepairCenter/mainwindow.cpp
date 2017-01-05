@@ -51,6 +51,7 @@ QString MainWindow::defWarranty = "";
 QString MainWindow::currentOrderID = "";
 QString MainWindow::showlimit = "0";
 bool MainWindow::limitallfilters = false;
+int MainWindow::tableUpdateInterval = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -142,6 +143,8 @@ void MainWindow::readGlobalSettings()
 
     showlimit = settings->value("orderstable/showlimit").toString();
     limitallfilters = settings->value("orderstable/limitallfilters").toBool();
+    tableUpdateInterval = settings->value("ui/tableupdateinterval").toInt();
+    connCheckInterval = settings->value("mysql/conncheckinterval").toInt();
 
     QString username = settings->value("user/username").toString();
     QString password = settings->value("user/password").toString();
@@ -314,6 +317,7 @@ bool MainWindow::dbConnect()
         return false;
 }
 
+
 void MainWindow::on_mInit_triggered()
 {
     if(dbConnect()){
@@ -332,20 +336,20 @@ void MainWindow::on_exit_triggered(){
 
 void MainWindow::connTimer()
 {
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(checkDBconnection()));
-    timer->start(10000); //every 10 seconds
-    qDebug() << "timer every 10sec";
+    if(connCheckInterval != 0){
+        QTimer *timer = new QTimer(this);
+        qDebug()<<"connCheckInterval"<<connCheckInterval*1000;
+        connect(timer, SIGNAL(timeout()), this, SLOT(checkDBconnection()));
+        timer->start(connCheckInterval*1000);} //every X seconds
 }
 
 void MainWindow::checkDBconnection()
 {
-    qDebug() << "slot called";
+    qDebug()<<"checking DB connection";
     q.exec("SELECT value_n FROM system WHERE name = 'dbversion'");
     q.first();
     dbversion = q.value(0).toInt();
     q.clear();
-    qDebug()<<"dbversion: "<< dbversion;
     if (dbversion == 0)
     {            qDebug() << "connection lost";
             QMessageBox::critical(this, tr("RepairCenter"), tr("Database connection is lost!"));
@@ -400,6 +404,7 @@ void MainWindow::on_mJrnWorkReports_triggered(){
 void MainWindow::showEditWorkReport(){
     EditWorkReport *ewr = new EditWorkReport();
     connect(this, SIGNAL(sendMode(QString, QString)), ewr, SLOT(getMode(QString, QString)));
+    connect(ewr,SIGNAL(reportSubmited()), mainwidget, SLOT(on_dialog_closed()));
     ewr->show();}
 
 void MainWindow::on_mNewWorkReport_triggered(){
@@ -438,6 +443,7 @@ void MainWindow::on_mNewDiagReport_triggered(){
 void MainWindow::showEditDiagReport(){
     EditDiagReport * edr = new EditDiagReport();
     connect(this, SIGNAL(sendMode(QString, QString)), edr, SLOT(getMode(QString, QString)));
+    connect(edr,SIGNAL(reportSubmited()), mainwidget, SLOT(on_dialog_closed()));
     edr->show();}
 
 void MainWindow::on_mGiveOrderDiag_triggered(){

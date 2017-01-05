@@ -21,6 +21,7 @@ void Settings::readSettings()
     ui->dbname->setText(settings->value("mysql/database").toString());
     ui->username->setText(settings->value("mysql/user").toString());
     ui->password->setText(crypto.decryptToString(settings->value("mysql/password").toString()));
+    ui->eConnCheckInterval->setText(settings->value("mysql/conncheckinterval").toString());
 
     if(settings->contains("user/username"))
     {
@@ -92,6 +93,8 @@ void Settings::readSettings()
         ui->rbFullscreen->setChecked(true);
     else
         ui->rbMaximize->setChecked(true);
+
+    ui->eTableUpdateInterval->setText(settings->value("ui/tableupdateinterval").toString());
 
     ui->eWarranty->setText(settings->value("defaults/warranty").toString());
 
@@ -260,6 +263,8 @@ void Settings::on_save_clicked()
     else
         settings->setValue("ui/mainwindowstate", "max");
 
+    settings->setValue("ui/tableupdateinterval", ui->eTableUpdateInterval->text());
+
     settings->setValue("user/username", ui->eUsername->text());
     settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));
 
@@ -268,7 +273,7 @@ void Settings::on_save_clicked()
     settings->setValue("mysql/database", ui->dbname->text());
     settings->setValue("mysql/user", ui->username->text());
     settings->setValue("mysql/password", crypto.encryptToString(ui->password->text()));
-
+    settings->setValue("mysql/conncheckinterval", ui->eConnCheckInterval->text());
 
     if(dbconnected)
     {

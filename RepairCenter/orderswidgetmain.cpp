@@ -11,6 +11,7 @@ OrdersWidgetMain::OrdersWidgetMain(QWidget *parent) :
     ui->bDelete->setDisabled(true);
     initModelOrders();
     readUiSettings();
+    updateTimer();
     ui->datestart->setDate(QDate::currentDate());
     ui->dateend->setDate(QDate::currentDate());
 }
@@ -320,4 +321,19 @@ void OrdersWidgetMain::on_eCalled_stateChanged(int state)
         ui->datenotify->setEnabled(false);}
     if (state == 2){
         ui->datenotify->setEnabled(true);}
+}
+
+void OrdersWidgetMain::updateTimer()
+{
+    if (MainWindow::tableUpdateInterval != 0){
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(updateTable()));
+        qDebug()<<"tableUpdateInterval"<<MainWindow::tableUpdateInterval*1000;
+        timer->start(MainWindow::tableUpdateInterval*1000); } //every X seconds
+}
+
+void OrdersWidgetMain::updateTable()
+{
+    qDebug()<<"model-<select";
+    model->select();
 }

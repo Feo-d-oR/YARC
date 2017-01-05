@@ -51,6 +51,7 @@ public:
     static QString currentOrderID;
     static QString showlimit;
     static bool limitallfilters;
+    static int tableUpdateInterval;
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -90,7 +91,6 @@ private slots:
     void checkDBconnection();
     void on_mOrdersLog_triggered();
     void loadWindowState();
-
     void on_mFullscreen_triggered(bool checked);
 
 private:
@@ -112,6 +112,7 @@ private:
     SimpleCrypt crypto;
     QWidget * mainwidget;
     void connTimer();
+    int connCheckInterval;
 
 protected:
     void closeEvent(QCloseEvent *event);

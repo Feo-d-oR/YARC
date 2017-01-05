@@ -11,6 +11,9 @@ OrdersWidgetMaster::OrdersWidgetMaster(QWidget *parent) :
     initModelOrders();
     initModelMasters();
     readUiSettings();
+    updateTimer();
+    ui->datestart->setDate(QDate::currentDate());
+    ui->dateend->setDate(QDate::currentDate());
 }
 
 OrdersWidgetMaster::~OrdersWidgetMaster()
@@ -280,4 +283,17 @@ void OrdersWidgetMaster::on_cbSearchMaster_activated(int index)
         QString id_t = rec_m.value(rec_m.indexOf("id")).toString();
         model->setFilter("master = '" + id_t + "'");
     }
+}
+
+void OrdersWidgetMaster::updateTimer()
+{
+    if (MainWindow::tableUpdateInterval != 0){
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(updateTable()));
+        timer->start(MainWindow::tableUpdateInterval*1000); } //every X seconds
+}
+
+void OrdersWidgetMaster::updateTable()
+{
+    model->select();
 }

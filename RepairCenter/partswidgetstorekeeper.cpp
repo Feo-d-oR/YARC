@@ -12,6 +12,7 @@ PartsWidgetStorekeeper::PartsWidgetStorekeeper(QWidget *parent) :
     initModels();
     readUiSettings();
     calculateSumm();
+    updateTimer();
 }
 
 PartsWidgetStorekeeper::~PartsWidgetStorekeeper()
@@ -326,4 +327,17 @@ void PartsWidgetStorekeeper::calculateSumm()
 //    }
 //    while (q.next());
 //    ui->lToPay->setText("<b>" + QString::number(summ,'f',2) + "</b>");
+}
+
+void PartsWidgetStorekeeper::updateTimer()
+{
+    if (MainWindow::tableUpdateInterval != 0){
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(updateTable()));
+        timer->start(MainWindow::tableUpdateInterval*1000); } //every X seconds
+}
+
+void PartsWidgetStorekeeper::updateTable()
+{
+    model->select();
 }
