@@ -10,8 +10,11 @@
     <height>501</height>
    </rect>
   </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::PreventContextMenu</enum>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Parts requests operations history</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

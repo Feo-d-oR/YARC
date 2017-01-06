@@ -253,7 +253,7 @@
     <message>
         <location filename="../dbwork.cpp" line="103"/>
         <source>Awaits reception</source>
-        <translation type="unfinished"></translation>
+        <translation>Ждёт получения</translation>
     </message>
     <message>
         <location filename="../dbwork.cpp" line="237"/>
