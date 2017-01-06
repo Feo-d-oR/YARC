@@ -151,12 +151,12 @@
         <item>
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>Master:</string>
+           <string>Employee:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cbSearchMaster">
+         <widget class="QComboBox" name="cbSearchEmployee">
           <property name="minimumSize">
            <size>
             <width>170</width>

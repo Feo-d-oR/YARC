@@ -227,12 +227,13 @@ void MainWindow::loadUserInterface()
         mainwidget = new OrdersWidgetMaster(this);
         ui->acceptorToolBar->hide();
         ui->storekeeperToolBar->hide();
-        ui->storekeeperToolBar->hide();
+        ui->adminToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mNewOrder->setDisabled(1);
         ui->mGiveOrder->setDisabled(1);
         ui->mGiveOrderDiag->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
+        ui->mode->setDisabled(1);
         ui->mCustomers->setDisabled(1);
         if (!masterCanEditWorks)
             ui->mWorkTypes->setDisabled(1);
@@ -246,9 +247,10 @@ void MainWindow::loadUserInterface()
         mainwidget = new OrdersWidgetMain(this);
         ui->masterToolBar->hide();
         ui->storekeeperToolBar->hide();
-        ui->storekeeperToolBar->hide();
+        ui->adminToolBar->hide();
         ui->mEmployees->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
+        ui->mode->setDisabled(1);
         if (!acceptorCanEditWorks)
             ui->mNewWorkReport->setDisabled(1);
         if(!acceptorCanEditDiag)
@@ -263,6 +265,9 @@ void MainWindow::loadUserInterface()
         mainwidget = new PartsWidgetStorekeeper(this);
         ui->acceptorToolBar->hide();
         ui->masterToolBar->hide();
+        ui->adminToolBar->hide();
+        ui->mode->setDisabled(1);
+        ui->mode->setDisabled(1);
         ui->mEmployees->setDisabled(1);
         ui->mPaySalaries->setDisabled(1);
         ui->acceptorToolBar->hide();
@@ -280,16 +285,26 @@ void MainWindow::loadUserInterface()
 //    }
     else if (role == 5) //if admin
     {
-        mainwidget = new OrdersWidgetMain(this);
         isadmin = true;
+        if (settings->value("ui/adminmode") == "acceptor")
+            mainwidget = new OrdersWidgetMain(this);
+        else if (settings->value("ui/adminmode") == "storekeeper")
+            mainwidget = new PartsWidgetStorekeeper(this);
+        else if (settings->value("ui/adminmode") == "master")
+            mainwidget = new OrdersWidgetMaster(this);
+        else
+            mainwidget = new OrdersWidgetMain(this);
     }
     else
     {
         ui->catalogs->setDisabled(1);
         ui->actions->setDisabled(1);
         ui->journals->setDisabled(1);
+        ui->mode->setDisabled(1);
         ui->acceptorToolBar->setDisabled(1);
         ui->masterToolBar->setDisabled(1);
+        ui->storekeeperToolBar->setDisabled(1);
+        ui->adminToolBar->setDisabled(1);
     }
 
 //    connect(this, SIGNAL(sendReconnect()), mainwidget, SLOT(on_reconnect_recieved()));
@@ -508,4 +523,22 @@ void MainWindow::on_mFullscreen_triggered(bool checked)
         QMainWindow::showFullScreen();
     else
         QMainWindow::showNormal();
+}
+
+void MainWindow::on_mOrdersMode_triggered()
+{
+    mainwidget = new OrdersWidgetMain(this);
+    setCentralWidget(mainwidget);
+}
+
+void MainWindow::on_mStorekeeperMode_triggered()
+{
+    mainwidget = new PartsWidgetStorekeeper(this);
+    setCentralWidget(mainwidget);
+}
+
+void MainWindow::on_mMasterMode_triggered()
+{
+    mainwidget = new OrdersWidgetMaster(this);
+    setCentralWidget(mainwidget);
 }

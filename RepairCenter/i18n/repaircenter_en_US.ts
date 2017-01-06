@@ -1660,8 +1660,8 @@
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="74"/>
         <location filename="../mainwindow.cpp" line="99"/>
-        <location filename="../mainwindow.cpp" line="329"/>
-        <location filename="../mainwindow.cpp" line="355"/>
+        <location filename="../mainwindow.cpp" line="349"/>
+        <location filename="../mainwindow.cpp" line="375"/>
         <source>RepairCenter</source>
         <translation></translation>
     </message>
@@ -1686,163 +1686,204 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="129"/>
-        <location filename="../mainwindow.ui" line="143"/>
+        <location filename="../mainwindow.ui" line="109"/>
+        <source>&amp;Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="138"/>
+        <location filename="../mainwindow.ui" line="152"/>
+        <location filename="../mainwindow.ui" line="167"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="163"/>
+        <location filename="../mainwindow.ui" line="186"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="200"/>
+        <location filename="../mainwindow.ui" line="223"/>
         <source>&amp;About RepairCenter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="213"/>
+        <location filename="../mainwindow.ui" line="236"/>
         <source>&amp;Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="223"/>
+        <location filename="../mainwindow.ui" line="246"/>
         <source>&amp;Employees</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="232"/>
+        <location filename="../mainwindow.ui" line="255"/>
         <source>&amp;Product types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="241"/>
+        <location filename="../mainwindow.ui" line="264"/>
         <source>&amp;Reconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="254"/>
+        <location filename="../mainwindow.ui" line="277"/>
         <source>&amp;Customers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="264"/>
+        <location filename="../mainwindow.ui" line="287"/>
         <source>Sp&amp;are parts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="274"/>
+        <location filename="../mainwindow.ui" line="297"/>
         <source>Spare part &amp;types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="286"/>
+        <location filename="../mainwindow.ui" line="309"/>
         <source>&amp;Works</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="295"/>
+        <location filename="../mainwindow.ui" line="318"/>
         <source>&amp;Work reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="307"/>
+        <location filename="../mainwindow.ui" line="330"/>
         <source>&amp;Diagnostics reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="316"/>
+        <location filename="../mainwindow.ui" line="339"/>
         <source>New &amp;work report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="331"/>
+        <location filename="../mainwindow.ui" line="354"/>
         <source>New &amp;diagnostics report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="343"/>
+        <location filename="../mainwindow.ui" line="366"/>
         <source>&amp;Issue off repair</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="355"/>
+        <location filename="../mainwindow.ui" line="378"/>
         <source>Issue &amp;off diagnostics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="367"/>
+        <location filename="../mainwindow.ui" line="390"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="376"/>
+        <location filename="../mainwindow.ui" line="399"/>
         <source>&amp;Print handwritten documents</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="385"/>
+        <location filename="../mainwindow.ui" line="408"/>
         <source>About &amp;Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="394"/>
+        <location filename="../mainwindow.ui" line="417"/>
         <source>Pay &amp;salary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="403"/>
+        <location filename="../mainwindow.ui" line="426"/>
         <source>&amp;Suppliers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="412"/>
+        <location filename="../mainwindow.ui" line="435"/>
         <source>New parts &amp;request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="421"/>
+        <location filename="../mainwindow.ui" line="438"/>
+        <source>Shift+P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="447"/>
         <source>&amp;Parts requests</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="430"/>
+        <location filename="../mainwindow.ui" line="456"/>
         <source>&amp;Order operations history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="433"/>
+        <location filename="../mainwindow.ui" line="459"/>
         <source>Order operations history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="445"/>
+        <location filename="../mainwindow.ui" line="471"/>
         <source>&amp;Fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="448"/>
+        <location filename="../mainwindow.ui" line="474"/>
         <source>F11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="358"/>
+        <location filename="../mainwindow.ui" line="483"/>
+        <source>&amp;Acceptor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="486"/>
+        <source>Acceptor UI mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="495"/>
+        <source>&amp;Storekeeper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="498"/>
+        <source>Storekeeper UI mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="507"/>
+        <source>&amp;Master</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="510"/>
+        <source>Master UI mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="381"/>
         <source>Ctrl+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="166"/>
+        <location filename="../mainwindow.ui" line="189"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="185"/>
+        <location filename="../mainwindow.ui" line="208"/>
         <source>&amp;New order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="188"/>
+        <location filename="../mainwindow.ui" line="211"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
@@ -1852,27 +1893,27 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="244"/>
+        <location filename="../mainwindow.ui" line="267"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reconnect to database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="277"/>
+        <location filename="../mainwindow.ui" line="300"/>
         <source>Spare part types</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="319"/>
+        <location filename="../mainwindow.ui" line="342"/>
         <source>Shift+W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="334"/>
+        <location filename="../mainwindow.ui" line="357"/>
         <source>Shift+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="346"/>
+        <location filename="../mainwindow.ui" line="369"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>
@@ -1914,17 +1955,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="329"/>
+        <location filename="../mainwindow.cpp" line="349"/>
         <source>Unable to connect to database!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="355"/>
+        <location filename="../mainwindow.cpp" line="375"/>
         <source>Database connection is lost!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2430,14 +2471,14 @@
     </message>
     <message>
         <location filename="../partswidgetstorekeeper.ui" line="122"/>
-        <location filename="../partswidgetstorekeeper.cpp" line="91"/>
-        <location filename="../partswidgetstorekeeper.cpp" line="198"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="92"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="199"/>
         <source>Order #</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../partswidgetstorekeeper.ui" line="127"/>
-        <location filename="../partswidgetstorekeeper.cpp" line="200"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="201"/>
         <source>Request #</source>
         <translation></translation>
     </message>
@@ -2514,6 +2555,10 @@
     </message>
     <message>
         <location filename="../partswidgetstorekeeper.ui" line="154"/>
+        <source>Employee:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../partswidgetstorekeeper.ui" line="508"/>
         <source>Master:</source>
         <translation></translation>
@@ -2549,57 +2594,57 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="89"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="90"/>
         <source>#</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="90"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="91"/>
         <source>Date</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="92"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="93"/>
         <source>State</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="93"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="94"/>
         <source>Master</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="94"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="95"/>
         <source>Comment</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="95"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="96"/>
         <source>Sum</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="258"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="259"/>
         <source>Status changed by storekeeper</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="299"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="300"/>
         <source>Caution!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="300"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="301"/>
         <source>Are you sure to delete parts request?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="301"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="302"/>
         <source>Yes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../partswidgetstorekeeper.cpp" line="302"/>
+        <location filename="../partswidgetstorekeeper.cpp" line="303"/>
         <source>No</source>
         <translation></translation>
     </message>
@@ -2876,38 +2921,43 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1200"/>
+        <location filename="../settings.ui" line="1017"/>
+        <source>1000</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="1265"/>
         <source>Permissions</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1370"/>
+        <location filename="../settings.ui" line="1435"/>
         <source>Database</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1382"/>
+        <location filename="../settings.ui" line="1447"/>
         <source>MYSQL server:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1405"/>
+        <location filename="../settings.ui" line="1470"/>
         <source>Port:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1425"/>
+        <location filename="../settings.ui" line="1490"/>
         <source>Database name:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1445"/>
+        <location filename="../settings.ui" line="1510"/>
         <source>User name:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../settings.ui" line="230"/>
-        <location filename="../settings.ui" line="1465"/>
+        <location filename="../settings.ui" line="1530"/>
         <source>Password:</source>
         <translation></translation>
     </message>
@@ -3028,11 +3078,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1017"/>
-        <source>600</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings.ui" line="1024"/>
         <source>Update interval, sec.:</source>
         <translation type="unfinished"></translation>
@@ -3043,132 +3088,152 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1046"/>
+        <location filename="../settings.ui" line="1048"/>
         <source>M&amp;aximized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1056"/>
+        <location filename="../settings.ui" line="1058"/>
         <source>&amp;Last state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1063"/>
+        <location filename="../settings.ui" line="1065"/>
         <source>&amp;Fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1119"/>
+        <location filename="../settings.ui" line="1089"/>
+        <source>Default admin UI:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="1115"/>
+        <source>Acceptor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="1120"/>
+        <source>Storekeeper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="1125"/>
+        <source>Master</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="1184"/>
         <source>Money</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1125"/>
+        <location filename="../settings.ui" line="1190"/>
         <source>Percentage of master:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1162"/>
+        <location filename="../settings.ui" line="1227"/>
         <source>Percentage of acceptor:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1206"/>
+        <location filename="../settings.ui" line="1271"/>
         <source>Role permissions</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1212"/>
+        <location filename="../settings.ui" line="1277"/>
         <source>Master can edit works</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1222"/>
+        <location filename="../settings.ui" line="1287"/>
         <source>Master can edit spares</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1239"/>
+        <location filename="../settings.ui" line="1304"/>
         <source>Acceptor can edit works</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1249"/>
+        <location filename="../settings.ui" line="1314"/>
         <source>Acceptor can edit spares</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1259"/>
+        <location filename="../settings.ui" line="1324"/>
         <source>Acceptor can edit diagnostics</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1285"/>
+        <location filename="../settings.ui" line="1350"/>
         <source>Mandatory fields</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1291"/>
+        <location filename="../settings.ui" line="1356"/>
         <source>Product type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1298"/>
+        <location filename="../settings.ui" line="1363"/>
         <source>Product</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1308"/>
+        <location filename="../settings.ui" line="1373"/>
         <source>Serial</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1315"/>
+        <location filename="../settings.ui" line="1380"/>
         <source>Defect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1325"/>
+        <location filename="../settings.ui" line="1390"/>
         <source>Condition</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1332"/>
+        <location filename="../settings.ui" line="1397"/>
         <source>Completeness</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1339"/>
+        <location filename="../settings.ui" line="1404"/>
         <source>Customer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1346"/>
+        <location filename="../settings.ui" line="1411"/>
         <source>Phone</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1488"/>
+        <location filename="../settings.ui" line="1553"/>
         <source>Connection check interval, sec.:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1501"/>
+        <location filename="../settings.ui" line="1566"/>
         <source>10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1527"/>
+        <location filename="../settings.ui" line="1592"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1539"/>
+        <location filename="../settings.ui" line="1604"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1398"/>
+        <location filename="../settings.ui" line="1463"/>
         <source>localhost</source>
         <translation></translation>
     </message>
@@ -3178,38 +3243,38 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1418"/>
+        <location filename="../settings.ui" line="1483"/>
         <source>3306</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1438"/>
+        <location filename="../settings.ui" line="1503"/>
         <source>repaircenter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="1458"/>
+        <location filename="../settings.ui" line="1523"/>
         <source>root</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="336"/>
+        <location filename="../settings.cpp" line="362"/>
         <source>Attention!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="337"/>
+        <location filename="../settings.cpp" line="363"/>
         <source>Some changes will take effect the next time.
  Restart application?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="339"/>
+        <location filename="../settings.cpp" line="365"/>
         <source>Yes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="340"/>
+        <location filename="../settings.cpp" line="366"/>
         <source>No</source>
         <translation></translation>
     </message>

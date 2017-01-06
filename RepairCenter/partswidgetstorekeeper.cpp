@@ -46,6 +46,7 @@ void PartsWidgetStorekeeper::initModelRequests()
 
     ui->eMaster->setModel(model->relationModel(masterIdx));
     ui->eMaster->setModelColumn(model->relationModel(masterIdx)->fieldIndex("name"));
+    model->relationModel(model->fieldIndex("master"))->setFilter("position_type = 1");
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);
 
     mapper = new QDataWidgetMapper(this);
@@ -68,10 +69,10 @@ void PartsWidgetStorekeeper::initModelRequests()
 void PartsWidgetStorekeeper::initModels()
 {
     model_m = new QSqlQueryModel();
-    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = '1' AND isactive = '1'");
-    ui->cbSearchMaster->setModel(model_m);
-    ui->cbSearchMaster->setModelColumn(1);
-    ui->cbSearchMaster->model()->sort(1, Qt::AscendingOrder);
+    model_m->setQuery("SELECT id, name FROM employees WHERE isactive = '1'");
+    ui->cbSearchEmployee->setModel(model_m);
+    ui->cbSearchEmployee->setModelColumn(1);
+    ui->cbSearchEmployee->model()->sort(1, Qt::AscendingOrder);
 
     model_s = new QSqlQueryModel();
     model_s->setQuery("SELECT id, name FROM states");
@@ -131,7 +132,7 @@ void PartsWidgetStorekeeper::readUiSettings()
 void PartsWidgetStorekeeper::on_rbAll_clicked(bool checked){
     if (checked){
         ui->lSearch->clear();
-        ui->cbSearchMaster->setCurrentIndex(-1);
+        ui->cbSearchEmployee->setCurrentIndex(-1);
         model->setSort(model->fieldIndex("id"),Qt::DescendingOrder);
         model->setFilter("orderid >= " + MainWindow::showlimit);
         model->select();

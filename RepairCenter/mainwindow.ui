@@ -104,10 +104,19 @@
     <addaction name="mJrnPartsRequests"/>
     <addaction name="mOrdersLog"/>
    </widget>
+   <widget class="QMenu" name="mode">
+    <property name="title">
+     <string>&amp;Mode</string>
+    </property>
+    <addaction name="mOrdersMode"/>
+    <addaction name="mStorekeeperMode"/>
+    <addaction name="mMasterMode"/>
+   </widget>
    <addaction name="app"/>
    <addaction name="actions"/>
    <addaction name="catalogs"/>
    <addaction name="journals"/>
+   <addaction name="mode"/>
    <addaction name="help"/>
   </widget>
   <widget class="QToolBar" name="acceptorToolBar">
@@ -152,6 +161,20 @@
    <addaction name="mSpares"/>
    <addaction name="mSpareTypes"/>
    <addaction name="mSuppliers"/>
+  </widget>
+  <widget class="QToolBar" name="adminToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="mOrdersMode"/>
+   <addaction name="mStorekeeperMode"/>
+   <addaction name="mMasterMode"/>
   </widget>
   <action name="exit">
    <property name="icon">
@@ -411,6 +434,9 @@
    <property name="text">
     <string>New parts &amp;request</string>
    </property>
+   <property name="shortcut">
+    <string>Shift+P</string>
+   </property>
   </action>
   <action name="mJrnPartsRequests">
    <property name="icon">
@@ -446,6 +472,42 @@
    </property>
    <property name="shortcut">
     <string>F11</string>
+   </property>
+  </action>
+  <action name="mOrdersMode">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/page.png</normaloff>:/icons/icons/page.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Acceptor</string>
+   </property>
+   <property name="toolTip">
+    <string>Acceptor UI mode</string>
+   </property>
+  </action>
+  <action name="mStorekeeperMode">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/bricks.png</normaloff>:/icons/icons/bricks.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Storekeeper</string>
+   </property>
+   <property name="toolTip">
+    <string>Storekeeper UI mode</string>
+   </property>
+  </action>
+  <action name="mMasterMode">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/hammer.png</normaloff>:/icons/icons/hammer.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Master</string>
+   </property>
+   <property name="toolTip">
+    <string>Master UI mode</string>
    </property>
   </action>
  </widget>

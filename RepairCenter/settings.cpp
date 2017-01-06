@@ -96,6 +96,17 @@ void Settings::readSettings()
 
     ui->eTableUpdateInterval->setText(settings->value("ui/tableupdateinterval").toString());
 
+    QString adminmode = settings->value("ui/adminmode").toString();
+
+    if (adminmode == "acceptor")
+        ui->cbDefaultAdminUI->setCurrentIndex(0);
+    else if (adminmode == "storekeeper")
+        ui->cbDefaultAdminUI->setCurrentIndex(1);
+    else if (adminmode == "master")
+        ui->cbDefaultAdminUI->setCurrentIndex(2);
+    else
+        ui->cbDefaultAdminUI->setCurrentIndex(0);
+
     ui->eWarranty->setText(settings->value("defaults/warranty").toString());
 
     QString lang = settings->value("locale/language").toString();
@@ -264,6 +275,21 @@ void Settings::on_save_clicked()
         settings->setValue("ui/mainwindowstate", "max");
 
     settings->setValue("ui/tableupdateinterval", ui->eTableUpdateInterval->text());
+
+    if (ui->cbDefaultAdminUI->currentIndex() != -1) {
+
+        switch(ui->cbDefaultAdminUI->currentIndex())  {
+        case 0:
+            settings->setValue("ui/adminmode", "acceptor");
+            break;
+        case 1:
+            settings->setValue("ui/adminmode", "storekeeper");
+            break;
+        case 2:
+            settings->setValue("ui/adminmode", "master");
+            break;
+        }
+    }
 
     settings->setValue("user/username", ui->eUsername->text());
     settings->setValue("user/password", crypto.encryptToString(ui->ePassword->text()));

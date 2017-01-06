@@ -92,6 +92,9 @@ private slots:
     void on_mOrdersLog_triggered();
     void loadWindowState();
     void on_mFullscreen_triggered(bool checked);
+    void on_mOrdersMode_triggered();
+    void on_mStorekeeperMode_triggered();
+    void on_mMasterMode_triggered();
 
 private:
     bool checkSettings();
