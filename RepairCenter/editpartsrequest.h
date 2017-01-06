@@ -25,7 +25,7 @@ private:
     Ui::EditPartsRequest *ui;
     QSqlQuery qf, qfs;
     QSqlRecord recf, recfs;
-    void submitReport();
+    void submitRequest();
     void fillFields();
     void setModels();
     void calcSumm();

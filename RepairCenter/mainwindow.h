@@ -95,6 +95,7 @@ private slots:
     void on_mOrdersMode_triggered();
     void on_mStorekeeperMode_triggered();
     void on_mMasterMode_triggered();
+    void on_mPartReqLog_triggered();
 
 private:
     bool checkSettings();

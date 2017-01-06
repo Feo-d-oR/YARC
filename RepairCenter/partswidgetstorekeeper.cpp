@@ -11,7 +11,7 @@ PartsWidgetStorekeeper::PartsWidgetStorekeeper(QWidget *parent) :
     initModelRequests();
     initModels();
     readUiSettings();
-    calculateSumm();
+//    calculateSumm();
     updateTimer();
 }
 
@@ -222,7 +222,7 @@ void PartsWidgetStorekeeper::on_tview_clicked(const QModelIndex &index){
 
 void PartsWidgetStorekeeper::on_dialog_closed(){
     model->select();
-    calculateSumm();
+//    calculateSumm();
 }
 
 void PartsWidgetStorekeeper::on_reconnect_recieved(){
@@ -230,13 +230,28 @@ void PartsWidgetStorekeeper::on_reconnect_recieved(){
     initModelRequests();
     initModels();
     readUiSettings();
-    calculateSumm();
+//    calculateSumm();
 }
 
 void PartsWidgetStorekeeper::on_bSubmit_clicked(){
 
     model->submitAll();
-    calculateSumm();
+
+    //    calculateSumm();
+
+    q.exec("SELECT id FROM pr_states WHERE name = '" + ui->eRequestState->currentText() + "'");
+    q.first();
+    QString state = q.value(0).toString();
+
+    q.prepare("INSERT INTO partreq_log SET date = :date, reqid = :reqid, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", orderID);
+    q.bindValue(":reqid", ui->eId->text());
+    q.bindValue(":operation", tr("Status changed by storekeeper"));
+    q.bindValue(":state", state);
+    q.bindValue(":employee", MainWindow::userID);
+    q.bindValue(":comment", ui->eComment->toPlainText());
+    q.exec();
 }
 
 void PartsWidgetStorekeeper::on_bSubmitOrder_clicked()
@@ -247,12 +262,10 @@ void PartsWidgetStorekeeper::on_bSubmitOrder_clicked()
 
     rec_s = model_s->record(ui->eOrderState->currentIndex());
     id_s = rec_s.value(rec_s.indexOf("id")).toString();
-    q.clear();
     q.prepare("UPDATE orders SET state = :state, comment = :comment WHERE number = " + orderID);
     q.bindValue(":state", id_s);
     q.bindValue(":comment", ui->eOrderComment->toPlainText());
     q.exec();
-    q.clear();
     q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
     q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", orderID);
@@ -261,7 +274,6 @@ void PartsWidgetStorekeeper::on_bSubmitOrder_clicked()
     q.bindValue(":employee", MainWindow::userID);
     q.bindValue(":comment", ui->eOrderComment->toPlainText());
     q.exec();
-    q.clear();
 
     qDebug()<<"order state changed";
 //}

@@ -31,6 +31,8 @@ Added->Checkboxes with template strings for defects,etc. in 'New order' (5 in se
 Added->'Complete' checkboxes in dialogs, sets corresponding order status on save.
 Modified->Connection check interval now in settings
 Added->Optioanal main table autoupdate interval, doesn't reset filters (0 means no update)
+Added->Switchable admin UI mode
+Added->Part requests operation history
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table

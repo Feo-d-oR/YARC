@@ -81,7 +81,7 @@
      <item alignment="Qt::AlignRight">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Master:</string>
+        <string>Employee:</string>
        </property>
       </widget>
      </item>

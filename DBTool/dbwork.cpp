@@ -35,6 +35,8 @@ QSqlError DBWork::createTables()
            email VARCHAR(255), website VARCHAR(255), org VARCHAR(255), bankdata TEXT, goods VARCHAR(1024))");
     q.exec("CREATE TABLE orders_log (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            date TIMESTAMP, orderid INTEGER, operation VARCHAR(64), state INTEGER, employee INTEGER, comment VARCHAR(1024))");
+    q.exec("CREATE TABLE partreq_log (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
+            date TIMESTAMP, reqid INTEGER, orderid INTEGER, operation VARCHAR(64), state INTEGER, employee INTEGER, comment VARCHAR(1024))");
 
     q.exec("CREATE TABLE system (name VARCHAR(32) PRIMARY KEY, value_n DOUBLE, value_c VARCHAR(255))");
     q.exec("INSERT INTO system VALUES('dbversion', "+dbver+", NULL)");
@@ -265,6 +267,8 @@ QSqlError DBWork::updateTo8() /*since repaircenter v0.4*/
 
     q.exec("CREATE TABLE orders_log (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
            date TIMESTAMP, orderid INTEGER, operation VARCHAR(64), state INTEGER, employee INTEGER, comment VARCHAR(1024))");
+    q.exec("CREATE TABLE partreq_log (id INTEGER AUTO_INCREMENT PRIMARY KEY, \
+            date TIMESTAMP, reqid INTEGER, orderid INTEGER, operation VARCHAR(64), state INTEGER, employee INTEGER, comment VARCHAR(1024))");
 
 //    q.exec("");
 //    q.exec(QString(""));

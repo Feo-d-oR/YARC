@@ -258,7 +258,6 @@ void EditOrder::submitOrder()
     q.bindValue(":master", id_m.toInt());
     q.bindValue(":comment", ui->eComment->toPlainText());
     q.exec();
-    q.clear();
     q.prepare("INSERT INTO orders_log SET date = :date, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
     q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
     q.bindValue(":orderid", orderID);
@@ -270,7 +269,6 @@ void EditOrder::submitOrder()
     else
         q.bindValue(":operation", tr("Order edited"));
     q.exec();
-    q.clear();
     MainWindow::prevCustomer = customerID;
     saved = true;
 }

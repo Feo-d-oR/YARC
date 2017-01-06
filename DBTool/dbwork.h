@@ -18,7 +18,7 @@ public:
     QSqlError updateTo7();
     QSqlError updateTo8();
     QSqlError retranslate();
-    QString dbver = "7";
+    QString dbver = "8";
 
 signals:
 

@@ -22,6 +22,7 @@
 #include "editpartsrequest.h"
 #include "jrnpartsrequests.h"
 #include "orderslog.h"
+#include "partsreqlog.h"
 
 QString MainWindow::sLocale = "";
 float MainWindow::sPercMast = 0;
@@ -483,8 +484,7 @@ void MainWindow::closeEvent(QCloseEvent *event){
     event->accept(); }
 
 void MainWindow::on_mHelp_triggered(){
-    QDesktopServices::openUrl(QUrl::fromLocalFile(QString(QCoreApplication::applicationDirPath()+"/help/"+ sLocale +"/index.html")));
-}
+    QDesktopServices::openUrl(QUrl::fromLocalFile(QString(QCoreApplication::applicationDirPath()+"/help/"+ sLocale +"/index.html")));}
 
 void MainWindow::on_mPrintHWDocs_triggered(){
     PrintHWDocuments * phwd = new PrintHWDocuments();
@@ -517,28 +517,26 @@ void MainWindow::on_mOrdersLog_triggered(){
     OrdersLog* ordl = new OrdersLog();
     ordl->show();}
 
-void MainWindow::on_mFullscreen_triggered(bool checked)
-{
+
+void MainWindow::on_mPartReqLog_triggered(){
+    PartsReqLog* partl = new PartsReqLog();
+    partl->show();}
+
+void MainWindow::on_mFullscreen_triggered(bool checked){
     if (checked)
         QMainWindow::showFullScreen();
     else
-        QMainWindow::showNormal();
-}
+        QMainWindow::showNormal();}
 
-void MainWindow::on_mOrdersMode_triggered()
-{
+void MainWindow::on_mOrdersMode_triggered(){
     mainwidget = new OrdersWidgetMain(this);
-    setCentralWidget(mainwidget);
-}
+    setCentralWidget(mainwidget);}
 
-void MainWindow::on_mStorekeeperMode_triggered()
-{
+void MainWindow::on_mStorekeeperMode_triggered(){
     mainwidget = new PartsWidgetStorekeeper(this);
-    setCentralWidget(mainwidget);
-}
+    setCentralWidget(mainwidget);}
 
-void MainWindow::on_mMasterMode_triggered()
-{
+void MainWindow::on_mMasterMode_triggered(){
     mainwidget = new OrdersWidgetMaster(this);
-    setCentralWidget(mainwidget);
-}
+    setCentralWidget(mainwidget);}
+

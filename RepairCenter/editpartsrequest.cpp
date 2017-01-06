@@ -31,7 +31,7 @@ void EditPartsRequest::closeEvent(QCloseEvent *event)
         mb.exec();
 
         if (mb.clickedButton() == bSave){
-            submitReport();
+            submitRequest();
             saved = true;
             event->accept();
         }
@@ -82,7 +82,7 @@ void EditPartsRequest::getMode(QString mode, QString num)
 void EditPartsRequest::setModels()
 {
     model_m = new QSqlQueryModel();
-    model_m->setQuery("SELECT id, name FROM employees WHERE position_type = '1' AND isactive = '1'");
+    model_m->setQuery("SELECT id, name FROM employees WHERE isactive = '1'");
     ui->eMaster->setModel(model_m);
     ui->eMaster->setModelColumn(1);
     ui->eMaster->model()->sort(1, Qt::AscendingOrder);
@@ -159,7 +159,7 @@ void EditPartsRequest::fillFields()
     holdCalc = false;
 }
 
-void EditPartsRequest::submitReport()
+void EditPartsRequest::submitRequest()
 {
     QSqlRecord rec_m = model_m->record(ui->eMaster->currentIndex());
     QString id_m = rec_m.value(rec_m.indexOf("id")).toString();
@@ -198,7 +198,23 @@ void EditPartsRequest::submitReport()
     q.bindValue(":comment", ui->eComment->toPlainText());
     q.bindValue(":summ", ui->eSumm->text().toDouble());
     q.exec();
-    q.clear();
+
+    QString lastID = q.lastInsertId().toString();
+
+    q.prepare("INSERT INTO partreq_log SET date = :date, reqid = :reqid, orderid = :orderid, operation = :operation, state = :state, employee = :employee, comment = :comment");
+    q.bindValue(":date", QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    q.bindValue(":orderid", ui->eOrderID->text());
+    q.bindValue(":state", id_s.toInt());
+    q.bindValue(":employee", id_m.toInt());
+    q.bindValue(":comment", ui->eComment->toPlainText());
+    if (isnew) {
+        q.bindValue(":operation", tr("Request created"));
+        q.bindValue(":reqid", lastID);}
+    else {
+        q.bindValue(":operation", tr("Request edited"));
+        q.bindValue(":reqid", requestID); }
+    q.exec();
+
     saved = true;
     qDebug() << q.lastError().text();
 }
@@ -234,7 +250,7 @@ void EditPartsRequest::on_bCancel_clicked(){
     close();}
 
 void EditPartsRequest::on_bSave_clicked(){
-    submitReport();
+    submitRequest();
     close();
     emit requestSubmited();}
 

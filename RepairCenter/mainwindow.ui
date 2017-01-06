@@ -103,6 +103,7 @@
     <addaction name="mJrnDiagReports"/>
     <addaction name="mJrnPartsRequests"/>
     <addaction name="mOrdersLog"/>
+    <addaction name="mPartReqLog"/>
    </widget>
    <widget class="QMenu" name="mode">
     <property name="title">
@@ -508,6 +509,15 @@
    </property>
    <property name="toolTip">
     <string>Master UI mode</string>
+   </property>
+  </action>
+  <action name="mPartReqLog">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/icons/reports_bricks.png</normaloff>:/icons/icons/reports_bricks.png</iconset>
+   </property>
+   <property name="text">
+    <string>Part requests operations history</string>
    </property>
   </action>
  </widget>

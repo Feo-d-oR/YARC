@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     jrnpartsrequests.cpp \
     partswidgetstorekeeper.cpp \
     orderslog.cpp \
-    qdynamiccheckbox.cpp
+    qdynamiccheckbox.cpp \
+    partsreqlog.cpp
 
 HEADERS  += mainwindow.h \
     editorder.h \
@@ -71,7 +72,8 @@ HEADERS  += mainwindow.h \
     jrnpartsrequests.h \
     partswidgetstorekeeper.h \
     orderslog.h \
-    qdynamiccheckbox.h
+    qdynamiccheckbox.h \
+    partsreqlog.h
 
 FORMS    += mainwindow.ui \
     editorder.ui \
@@ -97,7 +99,8 @@ FORMS    += mainwindow.ui \
     editpartsrequest.ui \
     jrnpartsrequests.ui \
     partswidgetstorekeeper.ui \
-    orderslog.ui
+    orderslog.ui \
+    partsreqlog.ui
 
 OTHER_FILES += \
     ../CommonFiles/print_forms/act_diag_hw.xml \
