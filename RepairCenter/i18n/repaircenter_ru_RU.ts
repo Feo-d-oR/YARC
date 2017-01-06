@@ -2013,7 +2013,7 @@
     <message>
         <location filename="../mainwindow.ui" line="460"/>
         <source>Order operations history</source>
-        <translation>Операции с запросами запчастей</translation>
+        <translation>Операции с заказами</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="472"/>
@@ -2058,7 +2058,7 @@
     <message>
         <location filename="../mainwindow.ui" line="520"/>
         <source>Part requests operations history</source>
-        <translation>Операции с заказами</translation>
+        <translation>Операции с запрсами запчастей</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="382"/>

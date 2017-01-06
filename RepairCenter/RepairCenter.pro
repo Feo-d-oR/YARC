@@ -134,13 +134,13 @@ rpcrel.commands = lrelease $$PWD/RepairCenter.pro
 rpcrel.depends = rpcupd
 
 cf_copy.commands += $(COPY_DIR) $$shell_path($$PWD/../CommonFiles/*) $$shell_path($$DESTDIR)
-#var_copy.commands += $(COPY) $$shell_path($$PWD/repaircenter.conf) $$shell_path($$DESTDIR)
+var_copy.commands += $(COPY) $$shell_path($$PWD/repaircenter.conf) $$shell_path($$DESTDIR)
 
 md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = rpcrel md
 
-QMAKE_EXTRA_TARGETS += md cf_copy tl_copy rpcupd rpcrel first #var_copy
-first.depends = $(first) cf_copy tl_copy #var_copy
+QMAKE_EXTRA_TARGETS += md cf_copy tl_copy rpcupd rpcrel first var_copy
+first.depends = $(first) cf_copy tl_copy var_copy
 
 

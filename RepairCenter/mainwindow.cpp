@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
             }
             if (mb.clickedButton() == bEdit){
                 Settings* sdb = new Settings();
-                sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
+//                sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
                 sdb->show();
             }
             if (mb.clickedButton() == bCancel)
@@ -107,7 +107,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
         if (mb.clickedButton() == bEdit){
             Settings* sdb = new Settings();
-            sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
+//            sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
             sdb->show();
         }
         if (mb.clickedButton() == bCancel)
@@ -377,7 +377,7 @@ void MainWindow::showEditOrder(){
     EditOrder *ord = new EditOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), ord, SLOT(getMode(QString, QString)));
     connect(ord,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
-    ord->setWindowFlags(ord->windowFlags() | Qt::WindowStaysOnTopHint);
+//    ord->setWindowFlags(ord->windowFlags() | Qt::WindowStaysOnTopHint);
     ord->show();}
 
 void MainWindow::on_mNewOrder_triggered(){
@@ -390,7 +390,7 @@ void MainWindow::on_mEmployees_triggered(){
 
 void MainWindow::on_mSettings_triggered(){
     Settings* sdb = new Settings();
-    sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
+//    sdb->setWindowFlags(sdb->windowFlags() | Qt::WindowStaysOnTopHint);
     sdb->show();}
 
 void MainWindow::on_mProductTypes_triggered(){
@@ -431,7 +431,7 @@ void MainWindow::showGiveOrder(){
     GiveOrder *gor = new GiveOrder();
     connect(this, SIGNAL(sendMode(QString, QString)), gor, SLOT(getMode(QString, QString)));
     connect(gor,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
-    gor->setWindowFlags(gor->windowFlags() | Qt::WindowStaysOnTopHint);
+//    gor->setWindowFlags(gor->windowFlags() | Qt::WindowStaysOnTopHint);
     gor->show();}
 
 void MainWindow::on_mGiveOrder_triggered(){
@@ -440,7 +440,7 @@ void MainWindow::on_mGiveOrder_triggered(){
 
 void MainWindow::on_mAbout_triggered(){
     About * ab = new About();
-    ab->setWindowFlags(ab->windowFlags() | Qt::WindowStaysOnTopHint);
+//    ab->setWindowFlags(ab->windowFlags() | Qt::WindowStaysOnTopHint);
     ab->show();}
 
 void MainWindow::on_mAboutQt_triggered(){
@@ -470,7 +470,7 @@ void MainWindow::showGiveOrderDiag(){
     GiveOrderDiag * god = new GiveOrderDiag();
     connect(this, SIGNAL(sendMode(QString, QString)), god, SLOT(getMode(QString, QString)));
     connect(god,SIGNAL(orderSubmited()), mainwidget, SLOT(on_dialog_closed()));
-    god->setWindowFlags(god->windowFlags() | Qt::WindowStaysOnTopHint);
+//    god->setWindowFlags(god->windowFlags() | Qt::WindowStaysOnTopHint);
     god->show();}
 
 void MainWindow::reject(){
@@ -492,7 +492,7 @@ void MainWindow::on_mPrintHWDocs_triggered(){
 
 void MainWindow::on_mPaySalaries_triggered(){
     Salaries * sal = new Salaries();
-    sal->setWindowFlags(sal->windowFlags() | Qt::WindowStaysOnTopHint);
+//    sal->setWindowFlags(sal->windowFlags() | Qt::WindowStaysOnTopHint);
     sal->show();}
 
 void MainWindow::on_mSuppliers_triggered(){
