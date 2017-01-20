@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<TS version="2.0" language="it_IT">
 <context>
     <name>DBWork</name>
     <message>
@@ -256,12 +256,12 @@
     <message>
         <location filename="../mainwindow.ui" line="51"/>
         <source>Русский</source>
-        <translation>Italiano</translation>
+        <translation>Русский</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="56"/>
         <source>Italiano</source>
-        <translation></translation>
+        <translation>Italiano</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="72"/>
@@ -380,7 +380,7 @@ con la lingua selezionata.</translation>
     <message>
         <location filename="../mainwindow.ui" line="46"/>
         <source>English</source>
-        <translation>Italiano</translation>
+        <translation>English</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="375"/>

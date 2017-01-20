@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<TS version="2.0" language="it_IT">
 <context>
     <name>About</name>
     <message>
@@ -872,7 +872,7 @@ per la riparazione:</translation>
     <name>EditPartsRequest</name>
     <message>
         <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../editpartsrequest.ui" line="22"/>
@@ -3003,7 +3003,7 @@ per la riparazione:</translation>
     <message>
         <location filename="../settings.ui" line="179"/>
         <source>English</source>
-        <translation></translation>
+        <translation>English</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="517"/>
@@ -3186,7 +3186,7 @@ per la riparazione:</translation>
     <message>
         <location filename="../settings.ui" line="189"/>
         <source>Italiano</source>
-        <translation></translation>
+        <translation>Italiano</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="330"/>
