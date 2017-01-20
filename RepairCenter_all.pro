@@ -11,4 +11,5 @@ contains(DEFINES,QTRPT_LIBRARY) {
     SUBDIRS += QtRpt/QtRPT
 }
 
+
 CONFIG += ordered
