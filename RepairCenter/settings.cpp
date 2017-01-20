@@ -116,6 +116,8 @@ void Settings::readSettings()
         ui->language->setCurrentIndex(1);
     else if (lang == "ru_RU")//russian
         ui->language->setCurrentIndex(2);
+    else if (lang == "it_IT")//italian
+        ui->language->setCurrentIndex(3);
 //    else if (lang == "nl_NL")//dutch
 //        ui->language->setCurrentIndex(3);
 
@@ -350,6 +352,9 @@ void Settings::on_save_clicked()
             break;
         case 2://russian
             settings->setValue("locale/language", "ru_RU");
+            break;
+        case 3://italiano
+            settings->setValue("locale/language", "it_IT");
             break;
 //        case 3://dutch
 //            settings->setValue("locale/language", "nl_NL");

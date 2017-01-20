@@ -77,9 +77,6 @@
      <property name="movable">
       <bool>false</bool>
      </property>
-     <property name="tabBarAutoHide">
-      <bool>false</bool>
-     </property>
      <widget class="QWidget" name="main">
       <attribute name="title">
        <string>Main</string>
@@ -116,8 +113,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>691</width>
-            <height>685</height>
+            <width>704</width>
+            <height>578</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_5">
@@ -185,6 +182,11 @@
                 <item>
                  <property name="text">
                   <string>Русский</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Italiano</string>
                  </property>
                 </item>
                </widget>

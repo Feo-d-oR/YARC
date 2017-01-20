@@ -11,8 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = RepairCenter
 TEMPLATE = app
 
-QMAKE_CXXFLAGS += -std=gnu++11
-
 include(../QtRpt/QtRPT/QtRPT.pri)
 include($$PWD/../config.pri)
 
@@ -113,6 +111,7 @@ OTHER_FILES += \
     ../CommonFiles/print_forms/warranty_works.xml \
     i18n/repaircenter_en_US.ts \
     i18n/repaircenter_ru_RU.ts \
+    i18n/repaircenter_it_IT.ts \
 #    i18n/repaircenter_nl_NL.ts \
 
 DISTFILES += \
@@ -127,6 +126,7 @@ win32:RC_FILE = appicon.rc
 
 TRANSLATIONS += i18n/repaircenter_ru_RU.ts
 TRANSLATIONS += i18n/repaircenter_en_US.ts
+TRANSLATIONS += i18n/repaircenter_it_IT.ts
 #TRANSLATIONS += i18n/repaircenter_nl_NL.ts
 
 rpcupd.commands = lupdate $$PWD/RepairCenter.pro

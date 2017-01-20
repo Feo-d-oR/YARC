@@ -181,6 +181,14 @@ void MainWindow::readTranslation()
         langIdx = 1;
         MainWindow::lang = "en_US";
     }
+    else if (lang == "it_IT")//italian
+    {
+        locale = "it_IT";
+        qTranslator.load("./i18n/dbtool_"+locale+".qm");
+        langIdx = 1;
+        MainWindow::lang = "it_IT";
+    }
+
 //    else if (lang == "nl_NL")//dutch
 //    {
 //        locale = "nl_NL";
@@ -223,9 +231,13 @@ void MainWindow::saveSettings()
     case 2://russian
         settings->setValue("locale/language", "ru_RU");
         break;
-    case 3://dutch
-        settings->setValue("locale/language", "nl_NL");
+    case 3://italian
+        settings->setValue("locale/language", "it_IT");
         break;
+//    case 3://dutch
+//        settings->setValue("locale/language", "nl_NL");
+//        break;
+
     }
     settings->sync();
 
@@ -400,11 +412,11 @@ void MainWindow::on_language_activated(int index)
         langIdx = 2;
         MainWindow::lang = "ru_RU";
         break;
-    case 3://dutch
-        locale = "nl_NL";
+    case 3://italian
+        locale = "it_IT";
         qTranslator.load("./i18n/dbtool_"+locale+".qm");
         langIdx = 3;
-        MainWindow::lang = "nl_NL";
+        MainWindow::lang = "it_IT";
         break;
     }
     QApplication::installTranslator(&qTranslator);

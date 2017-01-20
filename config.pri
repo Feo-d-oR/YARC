@@ -1,8 +1,13 @@
 REPAIRC_VERSION = v0.4
 
+#DEFINES += AUTO_DEPLOY     #select either
+#DEFINES += MANUAL_DEPLOY
+
+CONFIG += optimize_full
+QMAKE_CXXFLAGS += -std=gnu++11
+
 win32{
     TARGET_CUSTOM_EXT = .exe
-    DEPLOY_COMMAND = windeployqt
 
     CONFIG(debug, debug|release) {
         DEPLOY_TARGET = $$shell_quote($$shell_path($$PWD/../RepairCenter_$${REPAIRC_VERSION}_windows_x86_Qt$$[QT_VERSION]_binary/debug/$${TARGET}$${TARGET_CUSTOM_EXT}))
@@ -12,8 +17,18 @@ win32{
         DEPLOY_TARGET = $$shell_quote($$shell_path($$PWD/../RepairCenter_$${REPAIRC_VERSION}_windows_x86_Qt$$[QT_VERSION]_binary/$${TARGET}$${TARGET_CUSTOM_EXT}))
         DEST_DIRECTORY = $$shell_quote($$shell_path($$PWD/../RepairCenter_$${REPAIRC_VERSION}_windows_x86_Qt$$[QT_VERSION]_binary))
     }
-    QMAKE_POST_LINK = $${DEPLOY_COMMAND} $${DEPLOY_TARGET}
-#    DEST_DIRECTORY ~= s,/,\\,g
+#contains(DEFINES,AUTO_DEPLOY) {
+#    DEPLOY_COMMAND = windeployqt
+#    QMAKE_POST_LINK = $${DEPLOY_COMMAND} $${DEPLOY_TARGET}
+#    }
+#contains(DEFINES,MANUAL_DEPLOY) {
+#    QMAKE_POST_LINK += $(COPY) $$[QT_INSTALL_BINS]/Qt5Core.dll $${DEST_DIRECTORY} &
+#    QMAKE_POST_LINK += $(COPY) $$[QT_INSTALL_BINS]/Qt5Sql.dll $${DEST_DIRECTORY} &
+#    QMAKE_POST_LINK += $(COPY) $$[QT_INSTALL_BINS]/Qt5Gui.dll $${DEST_DIRECTORY} &
+#    QMAKE_POST_LINK += $(COPY) $$[QT_INSTALL_BINS]/Qt5Widgets.dll $${DEST_DIRECTORY} &
+#    QMAKE_POST_LINK += $(COPY) $$[QT_INSTALL_BINS]/Qt5Network.dll $${DEST_DIRECTORY}
+#    }
+
 }
 
 linux-g++-64{

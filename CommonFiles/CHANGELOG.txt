@@ -33,6 +33,7 @@ Modified->Connection check interval now in settings
 Added->Optioanal main table autoupdate interval, doesn't reset filters (0 means no update)
 Added->Switchable admin UI mode
 Added->Part requests operation history
+Added->Italian translation by Lirent Pone
 
 ---------------- v0.3.5b ------------------
 Added->Setting->Limitation for orders table

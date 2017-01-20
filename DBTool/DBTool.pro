@@ -29,11 +29,13 @@ RESOURCES += \
 
 TRANSLATIONS += i18n/dbtool_ru_RU.ts
 TRANSLATIONS += i18n/dbtool_en_US.ts
+TRANSLATIONS += i18n/dbtool_it_IT.ts
 #TRANSLATIONS += i18n/dbtool_nl_NL.ts
 
 OTHER_FILES += \
     i18n/dbtool_ru_RU.ts \
     i18n/dbtool_en_US.ts \
+    i18n/dbtool_it_IT.ts \
 #    i18n/dbtool_nl_NL.ts
 
 dbtupd.commands = lupdate $$PWD/DBTool.pro
@@ -45,3 +47,4 @@ tl_copy.depends = dbtrel md
 
 QMAKE_EXTRA_TARGETS += md dbtupd dbtrel md tl_copy
 PRE_TARGETDEPS += tl_copy
+

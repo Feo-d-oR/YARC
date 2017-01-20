@@ -97,7 +97,7 @@ unix {
     RCC_DIR = tmp-lin64
 }
 
-CONFIG += c++11
+#CONFIG += c++11
 CONFIG += app_bundle
 CONFIG -= debug_and_release debug_and_release_target
 
@@ -105,7 +105,7 @@ CONFIG -= debug_and_release debug_and_release_target
 all.depends = locale
 #QMAKE_EXTRA_TARGETS += all
 
-QMAKE_CXXFLAGS += -std=c++0x
+#QMAKE_CXXFLAGS += -std=c++0x
 
 TRANSLATION_TARGETS = $$replace(TRANSLATIONS, "\.ts", ".qm")
 locale.depends = $$TRANSLATION_TARGETS

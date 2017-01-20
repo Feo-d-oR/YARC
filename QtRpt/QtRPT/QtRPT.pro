@@ -22,7 +22,7 @@ HEADERS += \
     qtrpt_global.h
 
 include(QtRPT.pri)
-include(config.pri)
+#include(config.pri)
 
 DLLDESTDIR = $${DEST_DIRECTORY}
 DESTDIR    = $${DEST_DIRECTORY}/lib
@@ -48,5 +48,4 @@ linux {
     OBJECTS_DIR = tmp-lin64
     RCC_DIR = tmp-lin64
 }
-
 

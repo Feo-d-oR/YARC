@@ -51,6 +51,11 @@
           <string>Русский</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>Italiano</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
