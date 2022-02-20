@@ -1677,6 +1677,7 @@ void QtRPT::setPageSettings(QPrinter *printer, int pageReport) {
     int orientation = pageList.at(pageReport)->orientation;
 
     QSizeF paperSize;
+    QMarginsF *pageMargins = new QMarginsF(ml/4+0.01, mt/4+0.01, mr/4+0.01, mb/4+0.01);
     paperSize.setWidth(pw/4);
     paperSize.setHeight(ph/4);
     if (printer->printerState() != QPrinter::Active) {
@@ -1684,11 +1685,12 @@ void QtRPT::setPageSettings(QPrinter *printer, int pageReport) {
             paperSize.setWidth(ph/4);
             paperSize.setHeight(pw/4);
         }
-        printer->setPaperSize(paperSize,QPrinter::Millimeter);
+        QPageSize *pageSize = new QPageSize(paperSize, QPageSize::Millimeter, Q_NULLPTR, QPageSize::ExactMatch);
+        printer->setPageSize(*pageSize);
     }
-    printer->setPageMargins(ml/4+0.01, mt/4+0.01, mr/4+0.01, mb/4+0.01, QPrinter::Millimeter);
+    printer->setPageMargins(*pageMargins, QPageLayout::Millimeter);
 
-    QRect r = printer->pageRect();
+    QRect r = printer->pageLayout().paintRectPixels(printer->resolution());// pageRect();
     //pageList.at(pageReport)->border = true;
     //Draw page's border
     if (pageList.at(pageReport)->border) {
@@ -1699,8 +1701,8 @@ void QtRPT::setPageSettings(QPrinter *printer, int pageReport) {
             pen.setStyle(getPenStyle(pageList.at(pageReport)->borderStyle));
             painter->setPen(pen);
             painter->drawRect(0-r.left()+92,0-r.top()+92,
-                              printer->paperRect().width()-192,
-                              printer->paperRect().height()-192);   //Rect around page
+                              printer->pageLayout().paintRectPixels(printer->resolution()).width()-192,
+                              printer->pageLayout().paintRectPixels(printer->resolution()).height()-192);   //Rect around page
             painter->setPen(cpen);
         }
     }

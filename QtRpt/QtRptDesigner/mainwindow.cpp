@@ -2641,7 +2641,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e) {
         if (QApplication::keyboardModifiers() == Qt::ControlModifier) {
             qreal scale;
             RepScrollArea *repPage = qobject_cast<RepScrollArea *>(ui->tabWidget->currentWidget());
-            if (m->delta() > 0 ) scale = repPage->getScale()+0.25;
+            if (m->angleDelta().y() > 0 ) scale = repPage->getScale()+0.25;
             else scale = repPage->getScale()-0.25;
             cbZoom->setEditText(QString::number(scale*100)+"%");
             repPage->setScale(cbZoom->currentText());
