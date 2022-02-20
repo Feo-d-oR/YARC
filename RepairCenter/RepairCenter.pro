@@ -15,7 +15,7 @@ include(../QtRpt/QtRPT/QtRPT.pri)
 include($$PWD/../config.pri)
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+    mainwindow.cpp \
     editorder.cpp \
     catemployees.cpp \
     catproducttypes.cpp \
@@ -136,7 +136,17 @@ rpcrel.depends = rpcupd
 cf_copy.commands += $(COPY_DIR) $$shell_path($$PWD/../CommonFiles/*) $$shell_path($$DESTDIR)
 var_copy.commands += $(COPY) $$shell_path($$PWD/repaircenter.conf) $$shell_path($$DESTDIR)
 
-md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
+if ( ! exists( $$shell_path($$DESTDIR/i18n/) ) )
+{
+    message("Creating $$shell_path($$DESTDIR/i18n/)")
+    md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
+}
+if ( exists( $$shell_path($$DESTDIR/i18n/) ) )
+{
+    message("Skipping $$shell_path($$DESTDIR/i18n/)")
+    md.commands = echo skip $(MKDIR) $$shell_path($$DESTDIR/i18n/)
+}
+
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = rpcrel md
 

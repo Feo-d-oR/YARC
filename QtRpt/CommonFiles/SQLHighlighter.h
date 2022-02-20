@@ -14,22 +14,22 @@
 #include <QtGui/QTextCharFormat>
 #include <QSettings>
 
-enum FontHihgligth {Comment=0,
+enum FontHighlight {Comment=0,
                     QuotedString=1,
                     PrimaryKeyword=2,
                     TypeKeyword=3,
                     ExoticKeywords=4};
-Q_DECLARE_FLAGS(FontHihgligths, FontHihgligth)
-Q_DECLARE_METATYPE(FontHihgligth)
+Q_DECLARE_FLAGS(FontHihgligths, FontHighlight)
+Q_DECLARE_METATYPE(FontHighlight)
 
-struct FontHihgligthParam{
-    FontHihgligth type;
+struct FontHighlightParam{
+    FontHighlight type;
     QString remark;
     QString color;
     bool bold;
     bool italic;
 };
-Q_DECLARE_METATYPE(FontHihgligthParam)
+Q_DECLARE_METATYPE(FontHighlightParam)
 
 class SQLHighlighter : public QSyntaxHighlighter
 {
@@ -38,7 +38,7 @@ class SQLHighlighter : public QSyntaxHighlighter
 
 public:
     SQLHighlighter(class QTextDocument *parent = NULL, QSettings *settings = 0);
-    FontHihgligthParam getFontColor(int type);
+    FontHighlightParam getFontColor(int type);
     void saveSettings(QSettings *settings);
 
 protected:
@@ -57,7 +57,7 @@ private:
     QRegExp 		commentStartExpression;
     QRegExp 		commentEndExpression;
     QTextCharFormat commentFormat;
-    QList<FontHihgligthParam> lst;
+    QList<FontHighlightParam> lst;
 };
 
 #endif // _SQLHighlighter_H_

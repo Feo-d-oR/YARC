@@ -1338,12 +1338,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.cpp" line="219"/>
+        <location filename="../giveorder.cpp" line="223"/>
         <source>Order issued</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../giveorder.cpp" line="221"/>
+        <location filename="../giveorder.cpp" line="225"/>
         <source>Someone playing around...</source>
         <translation></translation>
     </message>

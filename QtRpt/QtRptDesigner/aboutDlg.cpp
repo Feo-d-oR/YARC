@@ -31,7 +31,7 @@ AboutDlg::AboutDlg(QWidget *parent) : QDialog(parent) {
     setMinimumSize(MinSize);
 
     QRect gry = geometry();
-    gry.moveCenter(qApp->desktop()->availableGeometry().center());
+    gry.moveCenter(qApp->primaryScreen()->availableGeometry().center());
     setGeometry(gry);
 
     QPushButton *btnOK = new QPushButton(this);

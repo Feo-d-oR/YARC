@@ -260,6 +260,7 @@ void EditPartsRequest::reject(){
 
 void EditPartsRequest::on_tview_cellChanged(int row, int column)
 {
+    Q_UNUSED(row)
     if ((column == 2 || column == 1) && !holdCalc)
     {
         calcSumm();

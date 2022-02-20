@@ -129,9 +129,12 @@ bool GraphicsHelperClass::borderIsCheck(Command command) {
     if (command == FrameBottom)
         color = m_borderBottomColor;
 
-    if (color.red() != 255 && color.green() != 255 & color.blue() != 255)
+    if ( (color.red() != 255) && (color.green() != 255) && (color.blue() != 255) ) {
         return true;
-    else return false;
+    }
+    else {
+        return false;
+    }
 }
 
 void GraphicsHelperClass::setBorder(Command command, QVariant values, bool yesFrame) {
@@ -414,13 +417,17 @@ QDataStream &operator>>(QDataStream &stream, GraphicsHelperClass &obj) {
     }
 
     if (obj.m_type == Diagram) {
-        Chart *chart = item->getChart();
+        /*
+         * Chart *chart = item->getChart();
         chart = new Chart(0);
+*/
         stream >> *item->getChart();
     }
     if (obj.m_type == Barcode) {
+        /*
         BarCode *barcode = item->getBarCode();
         barcode = new BarCode(0);
+*/
         stream >> *item->getBarCode();
     }
     //obj.setParamFromProperties();

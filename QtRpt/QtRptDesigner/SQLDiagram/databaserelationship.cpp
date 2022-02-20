@@ -108,7 +108,7 @@ Column *DatabaseRelationship::childColumn() const {
 void DatabaseRelationship::setChildColumn(Column *column) {
 	if (d->childColumn != column) {
 		d->childColumn = column;
-        emit propertyChanged("childColumn", qVariantFromValue<Column*>(column));
+        emit propertyChanged("childColumn", QVariant::fromValue(column));
 		static_cast<DatabaseTable *>(connector(0)->hub()->owner())->updateLayout();
 		updateLayout();
 		update();
@@ -122,7 +122,7 @@ Column *DatabaseRelationship::parentColumn() const {
 void DatabaseRelationship::setParentColumn(Column *column) {
 	if (d->parentColumn != column) {
 		d->parentColumn = column;
-        emit propertyChanged("parentColumn", qVariantFromValue<Column*>(column));
+        emit propertyChanged("parentColumn", QVariant::fromValue(column));
 		updateLayout();
 		update();
 	}
@@ -178,12 +178,12 @@ void DatabaseRelationship::updateLayout() {
 		QLineF line2 = QLineF::fromPolar(1, a2).translated(p2);
 		QPointF intersection;
 		line << p1;
-		if (line1.intersect(line2, &intersection) != QLineF::NoIntersection) {
+        if (line1.intersects(line2, &intersection) != QLineF::NoIntersection) {
 			// 2-segment line
 			line << intersection;
 		}
 		else {
-			if (line1.intersect(line2.normalVector(), &intersection) != QLineF::NoIntersection) {
+            if (line1.intersects(line2.normalVector(), &intersection) != QLineF::NoIntersection) {
 				// 3-segment line
 				qreal len = QLineF(p1, intersection).length() * 0.5;
 				line << QLineF::fromPolar(len, a1).translated(p1).p2();

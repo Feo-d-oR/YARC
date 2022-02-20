@@ -162,6 +162,8 @@ void GiveOrder::calculateSumm()
 
 void GiveOrder::on_tvieww_cellChanged(int row, int column)
 {
+    Q_UNUSED(row)
+    Q_UNUSED(column)
     if (armed)
         calculateSumm();
     else return;
@@ -169,6 +171,8 @@ void GiveOrder::on_tvieww_cellChanged(int row, int column)
 
 void GiveOrder::on_tviews_cellChanged(int row, int column)
 {
+    Q_UNUSED(row)
+    Q_UNUSED(column)
     if (armed)
         calculateSumm();
     else return;
@@ -228,6 +232,7 @@ void GiveOrder::submitOrder()
 
 void GiveOrder::setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage)
 {
+    Q_UNUSED(reportPage)
     q.exec("SELECT * FROM orders WHERE number = " + orderID);
     q.first();
     rec = q.record();

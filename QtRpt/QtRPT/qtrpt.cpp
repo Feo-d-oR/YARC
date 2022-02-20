@@ -1521,7 +1521,7 @@ void QtRPT::printExec(bool maximum, bool direct, QString printerName) {
 
         connect(&preview, SIGNAL(paintRequested(QPrinter*)), SLOT(printPreview(QPrinter*)));
         //preview.setWindowState(Qt::WindowMaximized); //Qt BUG https://bugreports.qt-project.org/browse/QTBUG-14517
-        QRect geom = QApplication::desktop()->availableGeometry();
+        QRect geom = qApp->desktop()->geometry();//availableGeometry();
         geom.setTop(30);
         geom.setLeft(5);
         geom.setHeight(geom.height()-6);

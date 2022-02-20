@@ -142,14 +142,15 @@ void AddCommand::undo() {
 }
 
 void AddCommand::redo() {
-    if (myDiagramItem->scene() == 0)
+    if (myDiagramItem->scene() == 0) {
         myGraphicsScene->addItem(myDiagramItem);
-	if (mpItem != 0) {
-		myDiagramItem->setParentItem(mpItem);
+    }
+    if (mpItem != 0) {
+        myDiagramItem->setParentItem(mpItem);
 
         RepScrollArea *area = qobject_cast<RepScrollArea*>(myGraphicsScene->parent());
         area->newFieldTreeItem(myDiagramItem);
-	}
+    }
     myDiagramItem->setPos(initialPosition);
     myGraphicsScene->clearSelection();
     myGraphicsScene->update();

@@ -133,6 +133,8 @@ void GiveOrderDiag::submitOrder()
 
 void GiveOrderDiag::setRptValue(const int recNo, const QString paramName, QVariant &paramValue, const int reportPage)
 {
+    Q_UNUSED(recNo)
+    Q_UNUSED(reportPage)
     q.exec("SELECT * FROM orders WHERE number = " + orderID);
     q.first();
     rec = q.record();

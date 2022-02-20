@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<TS version="2.1" language="it_IT">
 <context>
     <name>About</name>
     <message>
@@ -872,7 +872,7 @@ per la riparazione:</translation>
     <name>EditPartsRequest</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation type="vanished">Dialog</translation>
     </message>
     <message>
         <location filename="../editpartsrequest.ui" line="22"/>
@@ -1346,12 +1346,12 @@ per la riparazione:</translation>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../giveorder.cpp" line="219"/>
+        <location filename="../giveorder.cpp" line="223"/>
         <source>Order issued</source>
         <translation>Ordine emesso</translation>
     </message>
     <message>
-        <location filename="../giveorder.cpp" line="221"/>
+        <location filename="../giveorder.cpp" line="225"/>
         <source>Someone playing around...</source>
         <translation>Someone playing around...</translation>
     </message>

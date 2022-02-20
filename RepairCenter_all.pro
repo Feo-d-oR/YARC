@@ -1,4 +1,4 @@
-TEMPLATE = subdirs   
+TEMPLATE = subdirs
 
 # Comment to not build excessive
 SUBDIRS += RepairCenter

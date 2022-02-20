@@ -345,9 +345,9 @@ void RepScrollArea::correctBandGeom(ReportBand *rep) {
 
     QList<ReportBand *> allReportBand = getReportBands();
     if (allReportBand.size() != 0)
-        qSort(allReportBand.begin(), allReportBand.end(), compareBandType);
+        std::sort(allReportBand.begin(), allReportBand.end(), compareBandType);
 
-    for(auto band : allReportBand) {
+    for(auto band : qAsConst(allReportBand)) {
         if (band == rep) continue;
         band->setPos( QPointF(band->pos().x(), top_) );
         top_ += band->getHeight()+15;

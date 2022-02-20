@@ -21,6 +21,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#include <QButtonGroup>
 #include <QColorDialog>
 #include "XYZ_TextEditor.h"
 #include "ui_XYZ_TextEditor.h"
