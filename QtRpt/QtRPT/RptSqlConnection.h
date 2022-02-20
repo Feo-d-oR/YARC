@@ -35,6 +35,7 @@ public:
     void reset();
 
     RptSqlConnection &operator=(const RptSqlConnection & other);
+    RptSqlConnection(const RptSqlConnection &) = default;
 
 public:
     bool m_bIsActive;

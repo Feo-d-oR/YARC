@@ -1680,10 +1680,10 @@ per la riparazione:</translation>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="75"/>
-        <location filename="../mainwindow.cpp" line="100"/>
-        <location filename="../mainwindow.cpp" line="345"/>
-        <location filename="../mainwindow.cpp" line="371"/>
+        <location filename="../mainwindow.cpp" line="76"/>
+        <location filename="../mainwindow.cpp" line="101"/>
+        <location filename="../mainwindow.cpp" line="346"/>
+        <location filename="../mainwindow.cpp" line="372"/>
         <source>RepairCenter</source>
         <translation>RepairCenter</translation>
     </message>
@@ -1945,54 +1945,54 @@ per la riparazione:</translation>
         <translation>Ctrl+G</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="76"/>
+        <location filename="../mainwindow.cpp" line="77"/>
         <source>Cannot connect to database!</source>
         <translation>Impossibile connettersi al database!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="78"/>
         <source>Change settings or create new one?</source>
         <translation>Modifica le impostazioni o creare nuova configurazione?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="79"/>
         <source>Create</source>
         <translation>Crea</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="79"/>
-        <location filename="../mainwindow.cpp" line="103"/>
+        <location filename="../mainwindow.cpp" line="80"/>
+        <location filename="../mainwindow.cpp" line="104"/>
         <source>Change</source>
         <translation>Cambia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="80"/>
-        <location filename="../mainwindow.cpp" line="104"/>
+        <location filename="../mainwindow.cpp" line="81"/>
+        <location filename="../mainwindow.cpp" line="105"/>
         <source>Cancel</source>
         <translation>Annulla</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="101"/>
+        <location filename="../mainwindow.cpp" line="102"/>
         <source>Settings file not found or incomplete!</source>
         <translation>File di configurazione non trovato!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="102"/>
+        <location filename="../mainwindow.cpp" line="103"/>
         <source>Change settings?</source>
         <translation>Salvare impostazioni?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="345"/>
+        <location filename="../mainwindow.cpp" line="346"/>
         <source>Unable to connect to database!</source>
         <translation>Impossibile connettersi al database!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="371"/>
+        <location filename="../mainwindow.cpp" line="372"/>
         <source>Database connection is lost!</source>
         <translation>La connessione al database è stata pers!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>About Qt</source>
         <translation>Informazioni su QT</translation>
     </message>
@@ -2813,39 +2813,39 @@ per la riparazione:</translation>
 <context>
     <name>QtRPT</name>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1536"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1550"/>
         <source>Save as PDF</source>
         <translation>Salva come PDF</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1541"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1555"/>
         <source>Save as HTML</source>
         <translation>Salva come HTML</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1547"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1561"/>
         <source>Save as XLSX</source>
         <translation>Salva come XLSX</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1568"/>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1573"/>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1578"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1582"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1587"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1592"/>
         <source>Save File</source>
         <translation>Salva File</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1568"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1582"/>
         <source>PDF Files (*.pdf)</source>
         <translation>PDF Files (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1573"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1587"/>
         <source>HTML Files (*.html)</source>
         <translation>HTML Files (*.html)</translation>
     </message>
     <message>
-        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1578"/>
+        <location filename="../../QtRpt/QtRPT/qtrpt.cpp" line="1592"/>
         <source>XLSX Files (*.xlsx)</source>
         <translation>XLSX Files (*.xlsx)</translation>
     </message>

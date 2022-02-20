@@ -26,7 +26,8 @@ limitations under the License.
 
 #include <QPainter>
 #include <QDomDocument>
-#include <QScriptEngine>
+// -- deprecated #include <QScriptEngine>
+#include <QJSEngine>
 #include <QPrintPreviewWidget>
 #include <QTextDocument>
 #include <qtrptnamespace.h>
@@ -67,14 +68,16 @@ class RptBandObject;
 class RptFieldObject;
 class RptCrossTabObject;
 
-QScriptValue funcAggregate(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcToUpper(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcToLower(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcNumberToWords(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcFrac(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcFloor(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcCeil(QScriptContext *context, QScriptEngine *engine);
-QScriptValue funcRound(QScriptContext *context, QScriptEngine *engine);
+/*
+QJSValue funcAggregate(QScriptContext *context, QScriptEngine *engine);
+QJSValue funcToUpper(QScriptContext *context, QScriptEngine *engine);
+QJSValue funcToLower(QScriptContext *context, QScriptEngine *engine);
+QJSValue funcNumberToWords(QScriptContext *context, QScriptEngine *engine);
+QJSValue funcFrac(QScriptContext *context, QScriptEngine *engine);
+QJSValue funcFloor(QScriptContext *context, QScriptEngine *engine);
+QJSValue funcCeil(QScriptContext *context, QScriptEngine *engine);
+QJSValue funcRound(QScriptContext *context, QScriptEngine *engine);
+*/
 static QList<AggregateValues> listOfPair;
 static QList<int> listIdxOfGroup;
 
@@ -109,7 +112,7 @@ public:
     static QString getFieldTypeName(FieldType type);
     static QList<FieldType> getDrawingFields();
     static Qt::PenStyle getPenStyle(QString value);
-    QList<RptPageObject*> pageList;    
+    QList<RptPageObject*> pageList;
     QList<int> recordCount;
     ~QtRPT();
 
@@ -208,6 +211,26 @@ public slots:
 private slots:
     void exportTo();
 
+};
+
+#ifndef QTRPT_LIBRARY
+class rptFunctions : public QObject
+#else
+#include <qtrpt_global.h>
+class QTRPTSHARED_EXPORT rptFunctions : public QObject
+#endif
+{
+    Q_OBJECT
+public:
+    rptFunctions(QObject *parent = nullptr) : QObject(parent) {}
+    Q_INVOKABLE QJSValue funcToUpper(QJSValue param);
+    Q_INVOKABLE QJSValue funcToLower(QJSValue param);
+    Q_INVOKABLE QJSValue funcNumberToWords(QJSValue paramLanguage, QJSValue paramValue);
+    Q_INVOKABLE QJSValue funcFrac(QJSValue paramValue);
+    Q_INVOKABLE QJSValue funcFloor(QJSValue paramValue);
+    Q_INVOKABLE QJSValue funcCeil(QJSValue paramValue);
+    Q_INVOKABLE QJSValue funcRound(QJSValue paramValue);
+    Q_INVOKABLE QJSValue funcAggregate(QJSValue parFuncMode, QJSValue parName, QJSValue parShowInGroup);
 };
 
 #ifdef QTRPT_LIBRARY

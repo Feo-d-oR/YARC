@@ -30,6 +30,7 @@ limitations under the License.
 #include <QPrintPreviewDialog>
 #include <QDesktopServices>
 #include <QDesktopWidget>
+#include <QPainterPath>
 #include <QPrinterInfo>
 #include <QTextCursor>
 #include <QTextBlock>
@@ -451,7 +452,7 @@ void QtRPT::drawFields(RptFieldObject *fieldObject, int bandTop, bool draw) {
     FieldType fieldType = fieldObject->fieldType;
     QPen pen = getPen(fieldObject);
 
-	if (draw) {
+    if (draw) {
         if (!getDrawingFields().contains(fieldType) && fieldType != Barcode && fieldType != Image && fieldType != CrossTab) {
             //Fill background
             if ( fieldObject->backgroundColor  != QColor(255,255,255,0)) {
@@ -878,36 +879,36 @@ QVariant QtRPT::processHighligthing(RptFieldObject *field, HiType type) {
                 exp.remove("bold=");
                 QString formulaStr = exp.insert(0,cond);
                 formulaStr = sectionField(field->parentBand,formulaStr,true);
-                QScriptEngine myEngine;
-                return myEngine.evaluate(formulaStr).toInteger();
+                QJSEngine myEngine;
+                return myEngine.evaluate(formulaStr).toInt();
             }
             if (list.at(i).contains("italic") && type == FntItalic) {
                 exp.remove("italic=");
                 QString formulaStr = exp.insert(0,cond);
                 formulaStr = sectionField(field->parentBand,formulaStr,true);
-                QScriptEngine myEngine;
-                return myEngine.evaluate(formulaStr).toInteger();
+                QJSEngine myEngine;
+                return myEngine.evaluate(formulaStr).toInt();
             }
             if (list.at(i).contains("underline") && type == FntUnderline) {
                 exp.remove("underline=");
                 QString formulaStr = exp.insert(0,cond);
                 formulaStr = sectionField(field->parentBand,formulaStr,true);
-                QScriptEngine myEngine;
-                return myEngine.evaluate(formulaStr).toInteger();
+                QJSEngine myEngine;
+                return myEngine.evaluate(formulaStr).toInt();
             }
             if (list.at(i).contains("strikeout") && type == FntStrikeout) {
                 exp.remove("strikeout=");
                 QString formulaStr = exp.insert(0,cond);
                 formulaStr = sectionField(field->parentBand,formulaStr,true);
-                QScriptEngine myEngine;
-                return myEngine.evaluate(formulaStr).toInteger();
+                QJSEngine myEngine;
+                return myEngine.evaluate(formulaStr).toInt();
             }
             if (list.at(i).contains("fontColor") && type == FntColor) {
                 exp.remove("fontColor=");
                 QString formulaStr = exp.insert(1,"'");
                 formulaStr = exp.insert(0,cond);
                 formulaStr = sectionField(field->parentBand,formulaStr,true)+"':'"+colorToString(field->m_fontColor)+"'";
-                QScriptEngine myEngine;
+                QJSEngine myEngine;
                 return myEngine.evaluate(formulaStr).toString();
             }
             if (list.at(i).contains("backgroundColor") && type == BgColor) {
@@ -918,7 +919,7 @@ QVariant QtRPT::processHighligthing(RptFieldObject *field, HiType type) {
                 //qDebug()<<colorToString(field->backgroundColor);
                 formulaStr = sectionField(field->parentBand,formulaStr,true)+"':'"+colorToString(field->m_backgroundColor)+"'";
                 //formulaStr = sectionField(field->parentBand,formulaStr,true)+"':'rgba(255,0,255,255)'";
-                QScriptEngine myEngine;
+                QJSEngine myEngine;
                 //qDebug()<<formulaStr;
                 //qDebug()<<myEngine.evaluate(formulaStr).toString();
                 //qDebug()<<"---";
@@ -934,16 +935,16 @@ bool QtRPT::isFieldVisible(RptFieldObject *fieldObject) {
     QString formulaStr = fieldObject->printing;
     if (fieldObject->printing.size() > 1) {
         formulaStr = sectionField(fieldObject->parentBand,fieldObject->printing,true);
-        QScriptEngine myEngine;
+        QJSEngine myEngine;
         //myEngine.globalObject().setProperty("quant1","3");
         //qDebug()<<myEngine.evaluate("quant1;").toString();
-        visible = myEngine.evaluate(formulaStr).toInteger();
+        visible = myEngine.evaluate(formulaStr).toInt();
 
-        //QScriptValue fun = myEngine.evaluate("(function(a, b) { return a == b; })");
-        //QScriptValue fun = myEngine.evaluate("if (1>2) true else false");
-        //QScriptValueList args;
+        //QJSValue fun = myEngine.evaluate("(function(a, b) { return a == b; })");
+        //QJSValue fun = myEngine.evaluate("if (1>2) true else false");
+        //QJSValueList args;
         /*args << "k" << "k";
-        QScriptValue threeAgain = fun.call(QScriptValue(), args);
+        QJSValue threeAgain = fun.call(QJSValue(), args);
         qDebug()<<threeAgain.toString();*/
 
     } else {
@@ -952,10 +953,11 @@ bool QtRPT::isFieldVisible(RptFieldObject *fieldObject) {
     return visible;
 }
 
-QScriptValue funcAggregate(QScriptContext *context, QScriptEngine *engine) {
+#if 0
+QJSValue funcAggregate(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
 
-    QScriptValue self = context->thisObject();
+    QJSValue self = context->thisObject();
     int funcMode = context->argument(0).toInteger();
     QString paramName = context->argument(1).toString();
     double total = 0;
@@ -1015,26 +1017,26 @@ QScriptValue funcAggregate(QScriptContext *context, QScriptEngine *engine) {
     return 0;
 }
 
-QScriptValue funcToUpper(QScriptContext *context, QScriptEngine *engine) {
+QJSValue funcToUpper(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
     QString param = context->argument(0).toString();
     return param.toUpper();
 }
 
-QScriptValue funcToLower(QScriptContext *context, QScriptEngine *engine) {
+QJSValue funcToLower(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
     QString param = context->argument(0).toString();
     return param.toLower();
 }
 
-QScriptValue funcNumberToWords(QScriptContext *context, QScriptEngine *engine) {
+QJSValue funcNumberToWords(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
     QString paramLanguage = context->argument(0).toString();
     double value = context->argument(1).toString().toDouble();
     return double2Money(value,paramLanguage);
 }
 
-QScriptValue funcFrac(QScriptContext *context, QScriptEngine *engine) {
+QJSValue funcFrac(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
     double value = context->argument(0).toString().toDouble();
     int b = qFloor(value);
@@ -1042,23 +1044,24 @@ QScriptValue funcFrac(QScriptContext *context, QScriptEngine *engine) {
     return b;
 }
 
-QScriptValue funcFloor(QScriptContext *context, QScriptEngine *engine) {
+QJSValue funcFloor(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
     double value = context->argument(0).toString().toDouble();
     return qFloor(value);
 }
 
-QScriptValue funcCeil(QScriptContext *context, QScriptEngine *engine) {
+QJSValue funcCeil(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
     double value = context->argument(0).toString().toDouble();
     return qCeil(value);
 }
 
-QScriptValue funcRound(QScriptContext *context, QScriptEngine *engine) {
+QJSValue funcRound(QScriptContext *context, QJSEngine *engine) {
     Q_UNUSED(engine);
     double value = context->argument(0).toString().toDouble();
     return qRound(value);
 }
+#endif
 
 QStringList QtRPT::splitValue(QString value) {
     QString tmpStr;
@@ -1126,7 +1129,7 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
             }
         }
     }
-    if (!tmpStr.isEmpty()) res << tmpStr;    
+    if (!tmpStr.isEmpty()) res << tmpStr;
 
     tmpStr.clear();
     for (int i = 0; i < res.size(); ++i) {
@@ -1186,7 +1189,7 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
 
             if (res[i].contains("<") && res[i].contains(">")) {
                 QString formulaStr=res[i];
-                QScriptEngine myEngine;
+                QJSEngine myEngine;
 
                 QStringList tl = splitValue(formulaStr);
                 for (int j = 1; j < tl.size(); ++j) {
@@ -1226,8 +1229,18 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
                 }
 
                 myEngine.globalObject().setProperty("showInGroup", band->showInGroup);
+                QJSValue funcs = myEngine.newQObject(new rptFunctions());
+                myEngine.globalObject().setProperty("Sum", funcs.property("funcAggregate"));
+                myEngine.globalObject().setProperty("ToUpper", funcs.property("funcToUpper"));
+                myEngine.globalObject().setProperty("ToLower", funcs.property("funcToLower"));
+                myEngine.globalObject().setProperty("NumberToWords", funcs.property("funcNumberToWords"));
+                myEngine.globalObject().setProperty("Frac", funcs.property("funcFrac"));
+                myEngine.globalObject().setProperty("Floor", funcs.property("funcFloor"));
+                myEngine.globalObject().setProperty("Ceil", funcs.property("funcCeil"));
+                myEngine.globalObject().setProperty("Round", funcs.property("funcRound"));
 
-                QScriptValue fun = myEngine.newFunction(funcAggregate);
+#if 0
+                QJSValue fun = myEngine.newFunction(funcAggregate);
                 myEngine.globalObject().setProperty("Sum", fun);
 
                 fun = myEngine.newFunction(funcToUpper);
@@ -1250,6 +1263,7 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
 
                 fun = myEngine.newFunction(funcRound);
                 myEngine.globalObject().setProperty("Round", fun);
+#endif
 
                 formulaStr = formulaStr.replace("Sum(","Sum(0,", Qt::CaseInsensitive);
                 formulaStr = formulaStr.replace("Avg(","Sum(1,", Qt::CaseInsensitive);
@@ -1259,9 +1273,9 @@ QString QtRPT::sectionField(RptBandObject *band, QString value, bool exp, bool f
                 formulaStr = formulaStr.replace("[","'[");
                 formulaStr = formulaStr.replace("]","]'");
                 formulaStr = formulaStr.replace("<","");
-                formulaStr = formulaStr.replace(">","");                
+                formulaStr = formulaStr.replace(">","");
 
-                QScriptValue result  = myEngine.evaluate(formulaStr);
+                QJSValue result  = myEngine.evaluate(formulaStr);
                 res[i] = getFormattedValue(result.toString(), formatString);
             }
 
@@ -1355,7 +1369,7 @@ QString QtRPT::sectionValue(QString paramName) {
     //if (!listOfGroup.isEmpty()) //group processing
     //    m_recNo = mg_recNo;
 
-    emit setValue(m_recNo, paramName, paramValue, m_pageReport);        
+    emit setValue(m_recNo, paramName, paramValue, m_pageReport);
     return paramValue.toString();
 }
 
@@ -1663,6 +1677,7 @@ void QtRPT::setPageSettings(QPrinter *printer, int pageReport) {
     int orientation = pageList.at(pageReport)->orientation;
 
     QSizeF paperSize;
+    QMarginsF *pageMargins = new QMarginsF(ml/4+0.01, mt/4+0.01, mr/4+0.01, mb/4+0.01);
     paperSize.setWidth(pw/4);
     paperSize.setHeight(ph/4);
     if (printer->printerState() != QPrinter::Active) {
@@ -1670,11 +1685,12 @@ void QtRPT::setPageSettings(QPrinter *printer, int pageReport) {
             paperSize.setWidth(ph/4);
             paperSize.setHeight(pw/4);
         }
-        printer->setPaperSize(paperSize,QPrinter::Millimeter);
+        QPageSize *pageSize = new QPageSize(paperSize, QPageSize::Millimeter, Q_NULLPTR, QPageSize::ExactMatch);
+        printer->setPageSize(*pageSize);
     }
-    printer->setPageMargins(ml/4+0.01, mt/4+0.01, mr/4+0.01, mb/4+0.01, QPrinter::Millimeter);
+    printer->setPageMargins(*pageMargins, QPageLayout::Millimeter);
 
-    QRect r = printer->pageRect();
+    QRect r = printer->pageLayout().paintRectPixels(printer->resolution());// pageRect();
     //pageList.at(pageReport)->border = true;
     //Draw page's border
     if (pageList.at(pageReport)->border) {
@@ -1685,8 +1701,8 @@ void QtRPT::setPageSettings(QPrinter *printer, int pageReport) {
             pen.setStyle(getPenStyle(pageList.at(pageReport)->borderStyle));
             painter->setPen(pen);
             painter->drawRect(0-r.left()+92,0-r.top()+92,
-                              printer->paperRect().width()-192,
-                              printer->paperRect().height()-192);   //Rect around page
+                              printer->pageLayout().paintRectPixels(printer->resolution()).width()-192,
+                              printer->pageLayout().paintRectPixels(printer->resolution()).height()-192);   //Rect around page
             painter->setPen(cpen);
         }
     }
@@ -2248,5 +2264,102 @@ void QtRPT::activateUserSqlConnection(int pageReport, bool bActive) {
     getUserSqlConnection(pageReport, SqlConnection);
     SqlConnection.m_bIsActive = bActive;
     setUserSqlConnection(pageReport, SqlConnection);
+}
+
+QJSValue rptFunctions::funcToUpper(QJSValue param) {
+    return param.toString().toUpper();
+}
+
+QJSValue rptFunctions::funcToLower(QJSValue param) {
+    return param.toString().toLower();
+}
+
+QJSValue rptFunctions::funcNumberToWords(QJSValue paramLanguage, QJSValue paramValue) {
+    double value = paramValue.toString().toDouble();
+    return double2Money(value,paramLanguage.toString());
+}
+
+QJSValue rptFunctions::funcFrac(QJSValue paramValue) {
+    double value = paramValue.toString().toDouble();
+    int b = qFloor(value);
+    b = (value-b) * 100+0.5;
+    return b;
+}
+
+QJSValue rptFunctions::funcFloor(QJSValue paramValue) {
+    double value = paramValue.toString().toDouble();
+    return qFloor(value);
+}
+
+QJSValue rptFunctions::funcCeil(QJSValue paramValue) {
+    double value = paramValue.toString().toDouble();
+    return qCeil(value);
+}
+
+QJSValue rptFunctions::funcRound(QJSValue paramValue) {
+    double value = paramValue.toString().toDouble();
+    return qRound(value);
+}
+
+QJSValue rptFunctions::funcAggregate(QJSValue parFuncMode, QJSValue parName, QJSValue parShowInGroup)
+{
+    double total = 0;
+    double min = 0;
+    double max = 0;
+    int count = 0;
+    int funcMode = parFuncMode.toInt();
+    QString paramName = parName.toString();
+    bool showInGroup = parShowInGroup.toBool();
+    for (int i=0; i<listOfPair.size(); i++) {
+        if (i == 0) //set initial value for Min
+            min = listOfPair.at(i).paramValue.toDouble();
+        if (listOfPair.at(i).paramName == paramName) {
+            if ( (listIdxOfGroup.size() > 0) && (showInGroup == true) ) {
+                for (int k = 0; k < listIdxOfGroup.size(); k++) {
+                    if (listIdxOfGroup.at(k) == listOfPair.at(i).lnNo) {
+                        total += listOfPair.at(i).paramValue.toDouble();
+                        count += 1;
+                        if (max < listOfPair.at(i).paramValue.toDouble())
+                            max = listOfPair.at(i).paramValue.toDouble();
+                        if (min > listOfPair.at(i).paramValue.toDouble())
+                            min = listOfPair.at(i).paramValue.toDouble();
+                    }
+                }
+            } else {
+                if (!listOfPair.at(i).paramValue.toString().isEmpty()) {
+                    total += listOfPair.at(i).paramValue.toDouble();
+                    count += 1;
+                    if (max < listOfPair.at(i).paramValue.toDouble())
+                        max = listOfPair.at(i).paramValue.toDouble();
+                    if (min > listOfPair.at(i).paramValue.toDouble())
+                        min = listOfPair.at(i).paramValue.toDouble();
+                }
+            }
+        }
+    }
+
+    switch (funcMode) {
+    case 0:  //SUM
+        return total;
+        break;
+    case 1:  //AVG
+        if (count > 0)
+            return total/count;
+        else
+            return 0;
+        break;
+    case 2:  //COUNT
+        return count;
+        break;
+    case 3:  //MAX
+        return max;
+        break;
+    case 4:  //MIN
+        return min;
+        break;
+    default: return 0;
+    }
+    return 0;
+
 }
 

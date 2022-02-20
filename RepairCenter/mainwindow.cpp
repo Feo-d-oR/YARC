@@ -57,6 +57,7 @@ int MainWindow::tableUpdateInterval = 0;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow){
+    QStringList *zeroArg = new QStringList;
     ui->setupUi(this);
 
     crypto = SimpleCrypt(Q_UINT64_C(0xd3752f1e9b140689));
@@ -82,7 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
             mb.exec();
 
             if (mb.clickedButton() == bCreate){
-                if (QProcess::startDetached(QDir::toNativeSeparators(QCoreApplication::applicationDirPath()+"/DBTool")))
+                if (QProcess::startDetached(QDir::toNativeSeparators(QCoreApplication::applicationDirPath()+"/DBTool"), *zeroArg))
                     QApplication::quit();
             }
             if (mb.clickedButton() == bEdit){

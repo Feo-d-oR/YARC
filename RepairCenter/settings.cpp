@@ -373,7 +373,7 @@ void Settings::on_save_clicked()
     mb.exec();
 
     if (mb.clickedButton() == bYes){
-        if ( QProcess::startDetached(QString("\"") + QApplication::applicationFilePath() + "\"") )
+        if ( QProcess::startDetached(QString("\"") + QApplication::applicationFilePath() + "\"", QStringList(Q_NULLPTR)) )
           QApplication::quit();
     }
     if (mb.clickedButton() == bNo){

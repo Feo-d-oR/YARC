@@ -42,22 +42,13 @@ dbtupd.commands = lupdate $$PWD/DBTool.pro
 dbtrel.commands = lrelease $$PWD/DBTool.pro
 dbtrel.depends = dbtupd
 
-if ( ! exists( $$shell_path($$DESTDIR/i18n/) ) )
-{
-    message("Creating $$shell_path($$DESTDIR/i18n/)")
-    md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
+exists( $$shell_path($$DESTDIR/i18n) ) {
+    message("[$$TARGET] Skipping folder $$shell_path($$DESTDIR/i18n)")
+    md.commands = echo skip $(MKDIR) $$shell_path($$DESTDIR/i18n)
+} else {
+    message("[$$TARGET] Creating folder $$shell_path($$DESTDIR/i18n)")
+    md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n)
 }
-if ( exists( $$shell_path($$DESTDIR/i18n/) ) )
-{
-    message("Skipping $$shell_path($$DESTDIR/i18n/)")
-    md.commands = echo skip $(MKDIR) $$shell_path($$DESTDIR/i18n/)
-}
-
-#exists ( $$shell_path($$DESTDIR/i18n/) )
-#{
-#    message("Creating $$shell_path($$DESTDIR/i18n/)")
-#    md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n/)
-#}
 
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
 tl_copy.depends = dbtrel #md

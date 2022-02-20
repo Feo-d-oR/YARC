@@ -122,8 +122,9 @@ void RepScrollArea::setScale(const QString &scale) {
     double newScale = scale.left(scale.indexOf(tr("%"))).toDouble() ;/// 100.0;
     setPaperSize(newScale);
 
-    QMatrix oldMatrix = ui->graphicsView->matrix();
-    ui->graphicsView->resetMatrix();
+    QTransform oldMatrix = ui->graphicsView->transform();// matrix();
+    //QMatrix oldMatrix = ui->graphicsView->transform();
+    ui->graphicsView->resetTransform();
     ui->graphicsView->translate(oldMatrix.dx(), oldMatrix.dy());
     ui->graphicsView->scale(newScale/100, newScale/100);
 }

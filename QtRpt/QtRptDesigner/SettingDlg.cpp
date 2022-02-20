@@ -157,7 +157,7 @@ void SettingDlg::showThis() {
                                              QMessageBox::Yes | QMessageBox::No);
             if (reply == QMessageBox::Yes) {
                 this->parentWidget()->close();
-                QProcess::startDetached(QApplication::applicationFilePath());
+                QProcess::startDetached(QApplication::applicationFilePath(), QStringList(Q_NULLPTR));
             }
         }
 
