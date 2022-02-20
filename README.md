@@ -12,7 +12,7 @@ So, I've picked up it, very nice work and a startup for the needs I'm in right n
 # Features
 - Ease of use
 - Multi-user
-- MYSQL database
+- MySQL / MariaDB database
 - Crossplatform
 - Optional mandatory fields
 - Quick printing without preview
