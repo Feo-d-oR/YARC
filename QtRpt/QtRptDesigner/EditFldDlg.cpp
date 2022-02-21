@@ -326,7 +326,11 @@ int EditFldDlg::showImage(QGraphicsItem *gItem) {
     m_imgFormat = cont->getImgFormat();
     if (this->exec()) {
         cont->setIgnoreAspectRatio(ui->chkIgnoreAspectRatio->isChecked());
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+        cont->setImage(*ui->label->pixmap());
+#else
         cont->setImage(ui->label->pixmap(Qt::ReturnByValue));
+#endif
         cont->setImgFromat(m_imgFormat);
 
         return QDialog::Accepted;
@@ -597,7 +601,12 @@ void EditFldDlg::saveImage() {
                                                     QCoreApplication::applicationDirPath(),
                                                     tr("Images (*.png)"));
     if (!fileName.isEmpty()) {
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+        QPixmap p = QPixmap(*ui->label->pixmap());
+#else
         QPixmap p = QPixmap(ui->label->pixmap(Qt::ReturnByValue));
+#endif
+
         if (p.isNull()) return;
         p.save(fileName, m_imgFormat.toLatin1().data());
     }

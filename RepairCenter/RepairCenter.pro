@@ -138,16 +138,16 @@ var_copy.commands += $(COPY) $$shell_path($$PWD/repaircenter.conf) $$shell_path(
 
 exists( $$shell_path($$DESTDIR/i18n) ) {
     message("[$$TARGET] Skipping folder $$shell_path($$DESTDIR/i18n)")
-    md.commands = echo skip $(MKDIR) $$shell_path($$DESTDIR/i18n)
+    rpcmd.commands = echo "skipping $$shell_path($$DESTDIR/i18n)"
 } else {
     message("[$$TARGET] Creating folder $$shell_path($$DESTDIR/i18n)")
-    md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n)
+    rpcmd.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n)
 }
 
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
-tl_copy.depends = rpcrel md
+tl_copy.depends = rpcrel rpcmd
 
 first.depends = $(first) cf_copy tl_copy var_copy
 
-QMAKE_EXTRA_TARGETS += md cf_copy tl_copy rpcupd rpcrel first var_copy
+QMAKE_EXTRA_TARGETS += rpcmd cf_copy tl_copy rpcupd rpcrel first var_copy
 

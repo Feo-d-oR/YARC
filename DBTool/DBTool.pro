@@ -44,15 +44,14 @@ dbtrel.depends = dbtupd
 
 exists( $$shell_path($$DESTDIR/i18n) ) {
     message("[$$TARGET] Skipping folder $$shell_path($$DESTDIR/i18n)")
-    md.commands = echo skip $(MKDIR) $$shell_path($$DESTDIR/i18n)
+    dbtmd.commands = echo "skip system(mkdir $$shell_path($$DESTDIR/i18n) )"
 } else {
     message("[$$TARGET] Creating folder $$shell_path($$DESTDIR/i18n)")
-    md.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n)
+    dbtmd.commands = $(MKDIR) $$shell_path($$DESTDIR/i18n)
 }
 
 tl_copy.commands += $(COPY) $$shell_path($$PWD/i18n/*.qm) $$shell_path($$DESTDIR/i18n)
-tl_copy.depends = dbtrel #md
+tl_copy.depends = dbtrel dbtmd
 
-QMAKE_EXTRA_TARGETS += dbtupd dbtrel tl_copy # md
-PRE_TARGETDEPS += tl_copy
-
+QMAKE_EXTRA_TARGETS += dbtmd dbtupd dbtrel tl_copy # md
+#PRE_TARGETDEPS += tl_copy
